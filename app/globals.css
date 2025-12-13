@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-noto-sans: 'Noto Sans JP', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-warm-cream text-espresso-brown;
+    font-family: var(--font-noto-sans), var(--font-inter), sans-serif;
+    line-height: 1.8;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    /* Inherit font-family from body (Noto Sans JP) */
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+  
+  p {
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
