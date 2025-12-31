@@ -1,0 +1,100 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
+
+export const metadata: Metadata = {
+  title: 'ブログ | ホームサービス向けVertical SaaS | 株式会社Amber',
+  description: 'ホームサービス向けVertical SaaSに関する記事一覧。予約管理、業務効率化、LINE連携などの実務知見を発信しています。',
+  keywords: ['ホームサービス', 'Vertical SaaS', '予約管理システム', 'LINE連携', '業務管理システム'],
+  openGraph: {
+    title: 'ブログ | ホームサービス向けVertical SaaS | 株式会社Amber',
+    description: 'ホームサービス向けVertical SaaSに関する記事一覧。予約管理、業務効率化、LINE連携などの実務知見を発信しています。',
+    url: `${siteUrl}/service/saas/blog`,
+    type: 'website',
+  },
+  alternates: {
+    canonical: `${siteUrl}/service/saas/blog`,
+  },
+}
+
+export default function SaaSBlogPage() {
+  const posts = getAllPosts('saas')
+
+  return (
+    <>
+      <Header />
+      <main className="min-h-screen pt-24 pb-24 px-6 bg-warm-cream">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <Link 
+              href="/service/saas" 
+              className="text-deep-forest-green hover:text-espresso-brown transition-colors"
+            >
+              ← ホームサービス向けVertical SaaSに戻る
+            </Link>
+          </div>
+
+          <div className="mb-16">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
+              {getCategoryName('saas')} ブログ
+            </h1>
+            <p className="text-xl text-espresso-brown leading-relaxed">
+              ホームサービス向けVertical SaaSに関する記事を発信しています。<br />
+              現場で9ヶ月間働いた経験から得た実務知見を、記事としてお届けします。
+            </p>
+          </div>
+
+          {posts.length === 0 ? (
+            <div className="bg-warm-cream p-12 rounded-sm border border-stone-gray text-center">
+              <p className="text-espresso-brown text-lg">
+                記事の準備中です。近日公開予定です。
+              </p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`${getCategoryPath('saas')}/${post.slug}`}
+                  className="bg-warm-cream p-6 rounded-sm border border-stone-gray hover:shadow-lg transition-shadow block"
+                >
+                  <div className="mb-4">
+                    <span className="text-sm text-warm-amber font-semibold">
+                      {new Date(post.date).toLocaleDateString('ja-JP', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </span>
+                  </div>
+                  <h2 className="text-xl font-bold text-deep-forest-green mb-3 line-clamp-2">
+                    {post.title}
+                  </h2>
+                  <p className="text-espresso-brown text-sm leading-relaxed line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {post.keywords.slice(0, 3).map((keyword, index) => (
+                      <span
+                        key={index}
+                        className="text-xs bg-stone-gray/30 text-espresso-brown px-2 py-1 rounded-sm"
+                      >
+                        {keyword}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </main>
+      <Footer />
+    </>
+  )
+}
+

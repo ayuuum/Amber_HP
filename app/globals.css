@@ -3,19 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: 'Inter', system-ui, sans-serif;
   --font-noto-sans: 'Noto Sans JP', sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-warm-cream text-espresso-brown;
-    font-family: var(--font-noto-sans), var(--font-inter), sans-serif;
+    @apply text-espresso-brown;
+    background-color: #f5eedf;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(196, 154, 108, 0.25), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(31, 51, 38, 0.15), transparent 40%),
+      linear-gradient(120deg, rgba(245, 238, 223, 0.95), rgba(243, 234, 216, 0.75));
+    font-family: var(--font-noto-sans), system-ui, sans-serif;
     line-height: 1.8;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    /* Inherit font-family from body (Noto Sans JP) */
+    font-family: var(--font-noto-sans), system-ui, sans-serif;
     line-height: 1.6;
     letter-spacing: 0.02em;
   }
@@ -44,5 +48,77 @@
       transform: translateY(0);
     }
   }
-}
 
+  /* ブログ記事用のスタイル */
+  .prose {
+    @apply text-espresso-brown;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold text-deep-forest-green mt-8 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-xl font-bold text-deep-forest-green mt-6 mb-3;
+  }
+
+  .prose h4 {
+    @apply text-lg font-semibold text-deep-forest-green mt-4 mb-2;
+  }
+
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+
+  .prose ul {
+    @apply list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose a {
+    @apply text-deep-forest-green hover:text-warm-amber underline;
+  }
+
+  .prose strong {
+    @apply font-bold text-deep-forest-green;
+  }
+
+  .prose code {
+    @apply bg-stone-gray/30 px-1 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-stone-gray/30 p-4 rounded-sm overflow-x-auto mb-4;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-warm-amber pl-4 italic my-4;
+  }
+
+  .prose img {
+    @apply rounded-sm my-4;
+  }
+
+  .prose table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  .prose th, .prose td {
+    @apply border border-stone-gray px-4 py-2;
+  }
+
+  .prose th {
+    @apply bg-stone-gray/20 font-semibold;
+  }
+}

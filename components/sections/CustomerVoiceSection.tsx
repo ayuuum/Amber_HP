@@ -32,12 +32,10 @@ export default function CustomerVoiceSection() {
   }
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -20, rotateY: -15, scale: 0.9 },
+    hidden: { opacity: 0, y: 32, scale: 0.98 },
     visible: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
-      rotateY: 0,
       scale: 1,
       transition: {
         duration: 0.7,
@@ -51,12 +49,11 @@ export default function CustomerVoiceSection() {
       id="customer-voice" 
       ref={sectionRef}
       className="py-24 px-6 bg-stone-gray/30"
-      style={{ perspective: 1000 }}
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30, rotateX: -15 }}
-          animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -15 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
@@ -64,9 +61,9 @@ export default function CustomerVoiceSection() {
             導入実績
           </h2>
           <motion.p
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, type: 'spring', stiffness: 200 }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="text-2xl text-warm-amber font-bold mb-8"
           >
             70店舗導入予定
@@ -84,19 +81,16 @@ export default function CustomerVoiceSection() {
               key={index}
               variants={cardVariants}
               whileHover={{ 
-                scale: 1.05, 
-                rotateY: index === 0 ? 8 : -8,
-                rotateX: 5,
-                z: 30,
-                transition: { duration: 0.3 }
+                scale: 1.02, 
+                y: -6,
+                transition: { duration: 0.25 }
               }}
-              style={{ perspective: 1000 }}
               className="bg-warm-cream p-8 rounded-sm border border-stone-gray shadow-lg overflow-hidden"
             >
               <div className="relative h-40 mb-6 rounded-sm overflow-hidden">
                 <Image
                   src={testimonial.image}
-                  alt=""
+                  alt={`${testimonial.author}の導入事例`}
                   fill
                   className="object-cover opacity-80"
                 />

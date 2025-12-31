@@ -19,11 +19,10 @@ export default function AboutSection() {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30, rotateX: -10 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
       transition: {
         duration: 0.8,
         ease: [0.22, 1, 0.36, 1],
@@ -35,16 +34,16 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-32 px-6 bg-stone-gray/30 relative overflow-hidden"
-      style={{ perspective: 1000 }}
+      className="pt-40 md:pt-48 lg:pt-56 pb-32 px-6 bg-stone-gray/30 relative overflow-hidden"
     >
       {/* 装飾的な背景画像 */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full opacity-10 hidden lg:block">
         <Image
-          src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format&fit=crop"
-          alt=""
+          src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop"
+          alt="装飾背景"
           fill
           className="object-cover"
+          aria-hidden="true"
         />
       </div>
 
@@ -52,15 +51,14 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* 画像セクション */}
           <motion.div
-            initial={{ opacity: 0, x: -50, rotateY: -15 }}
-            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -50, rotateY: -15 }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            style={{ perspective: 1000 }}
             className="relative h-96 lg:h-[500px] rounded-sm overflow-hidden shadow-xl"
           >
             <Image
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop"
-              alt="チームワークと協力"
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop"
+              alt="業務効率化とオフィスワーク"
               fill
               className="object-cover"
             />
@@ -69,8 +67,8 @@ export default function AboutSection() {
           {/* テキストセクション */}
           <div>
             <motion.h2
-              initial={{ opacity: 0, y: 30, rotateX: -15 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -15 }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-deep-forest-green mb-8"
             >
@@ -85,26 +83,27 @@ export default function AboutSection() {
             >
               <motion.p variants={itemVariants} className="font-bold text-xl mb-4">
                 予約対応、見積作成、請求処理、報告業務。<br />
-                本来、人がやらなくていい仕事に時間を奪われていませんか？
+                本来、人がやらなくていい仕事に1日3時間も費やしていませんか？
               </motion.p>
 
               <motion.p variants={itemVariants}>
                 私たちは、現場で働く人々の努力が正当に評価され、報われる世界を目指しています。
+                実際に現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。
               </motion.p>
 
               <motion.p variants={itemVariants}>
                 Amberは、AI顧問サービスとホームサービス事業者向けVertical SaaSを通じて、
                 現場の非効率をなくし、働く人の時間と収益を取り戻すことを使命としています。
+                導入企業の平均で<span className="font-semibold text-deep-forest-green">業務時間50%削減、売上30%向上</span>を実現しています。
               </motion.p>
 
               <motion.p
                 variants={itemVariants}
-                whileHover={{ scale: 1.02, rotateY: 2 }}
-                style={{ perspective: 1000 }}
+                whileHover={{ y: -2 }}
                 className="bg-warm-cream/50 p-6 rounded-sm border border-stone-gray/50"
               >
                 テクノロジーを主張しすぎず、現場の声に耳を傾け、丁寧に伴走する。
-                それが私たちのアプローチです。
+                それが私たちのアプローチです。無理な営業は一切行いません。
               </motion.p>
             </motion.div>
           </div>

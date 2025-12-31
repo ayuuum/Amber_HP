@@ -25,6 +25,8 @@ npm install
 ```env
 NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN=your-service-domain
 NEXT_PUBLIC_MICROCMS_API_KEY=your-api-key
+NEXT_PUBLIC_SITE_URL=https://amber-inc.com
+ADMIN_PASSWORD=your-admin-password
 ```
 
 ### 3. 開発サーバーの起動
@@ -43,6 +45,8 @@ npm run dev
 2. 環境変数を設定：
    - `NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN`
    - `NEXT_PUBLIC_MICROCMS_API_KEY`
+   - `NEXT_PUBLIC_SITE_URL`
+   - `ADMIN_PASSWORD`（管理画面のパスワード）
 3. デプロイを実行
 
 ## microCMSの設定
@@ -64,6 +68,13 @@ npm run dev
 ├── app/
 │   ├── api/
 │   │   └── contact/        # お問い合わせAPI
+│   ├── service/
+│   │   ├── consulting/
+│   │   │   └── blog/       # AI顧問サービス向けブログ
+│   │   ├── training/
+│   │   │   └── blog/       # 生成AI研修向けブログ
+│   │   └── saas/
+│   │       └── blog/       # Vertical SaaS向けブログ
 │   ├── globals.css         # グローバルスタイル
 │   ├── layout.tsx          # ルートレイアウト
 │   └── page.tsx            # トップページ
@@ -71,10 +82,61 @@ npm run dev
 │   ├── sections/           # 各セクションコンポーネント
 │   ├── Header.tsx          # ヘッダー
 │   └── Footer.tsx          # フッター
+├── content/
+│   └── blog/              # ブログ記事（Markdown）
+│       ├── consulting/    # AI顧問サービス向け記事
+│       ├── training/      # 生成AI研修向け記事
+│       └── saas/          # Vertical SaaS向け記事
 ├── lib/
-│   └── microcms.ts        # microCMSクライアント
+│   ├── microcms.ts        # microCMSクライアント
+│   └── markdown.ts        # Markdownパース用ユーティリティ
 └── public/                # 静的ファイル
 ```
+
+## ブログ機能
+
+### ブログ記事の投稿方法
+
+ブログ記事は以下の2つの方法で追加できます：
+
+#### 方法1: 管理画面から追加（推奨）
+
+1. `/admin/login` にアクセス
+2. 環境変数 `ADMIN_PASSWORD` で設定したパスワードでログイン
+3. 「新規作成」ボタンから記事を作成
+4. タイトル、カテゴリ、説明、本文などを入力
+5. 画像は「画像アップロード」ボタンからアップロード可能
+6. プレビュー機能で確認してから保存
+
+#### 方法2: エディタから直接追加
+
+1. `content/blog/`ディレクトリ内の該当カテゴリフォルダにMarkdownファイルを作成
+2. フロントマターにメタデータを記述
+3. 記事本文をMarkdown形式で記述
+4. ビルド時に自動的にページが生成されます
+
+**注意**: 管理画面とエディタの両方から追加できますが、管理画面で作成した記事もMarkdownファイルとして保存されます。
+
+### 記事のフロントマター例
+
+```markdown
+---
+title: "記事タイトル"
+description: "記事の説明"
+date: "2024-01-15"
+category: "consulting"  # consulting, training, saas のいずれか
+keywords: ["キーワード1", "キーワード2"]
+---
+
+# 記事本文
+```
+
+### ブログのURL構造
+
+- AI顧問サービス向けブログ一覧: `/service/consulting/blog`
+- 生成AI研修向けブログ一覧: `/service/training/blog`
+- Vertical SaaS向けブログ一覧: `/service/saas/blog`
+- 個別記事: `/service/{category}/blog/{slug}`
 
 ## カラーパレット
 

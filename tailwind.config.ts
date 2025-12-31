@@ -16,12 +16,12 @@ const config: Config = {
         'stone-gray': '#E3E0D6',
       },
       fontFamily: {
-        sans: ['var(--font-noto-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-noto-sans)', 'var(--font-inter)', 'sans-serif'], // Unify serif to sans as well just in case
+        sans: ['var(--font-noto-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-noto-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-noto-sans)', 'system-ui', 'sans-serif'],
       },
     },
   },
   plugins: [],
 }
 export default config
-
