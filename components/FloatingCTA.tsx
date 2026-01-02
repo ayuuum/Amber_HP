@@ -53,13 +53,13 @@ export default function FloatingCTA() {
         >
           <motion.div
             whileHover={{ scale: 1.02, y: -4 }}
-            className="bg-deep-forest-green text-warm-cream rounded-sm shadow-2xl overflow-hidden border border-stone-gray/20"
+            className="bg-deep-forest-green text-white rounded-sm shadow-2xl overflow-hidden border border-white/20"
           >
             <div className="flex items-center gap-3 px-6 py-4">
               <MessageCircle className="w-5 h-5 flex-shrink-0" />
               <Link
                 href="#contact"
-                className="font-bold text-sm md:text-base hover:text-warm-amber transition-colors"
+                className="font-bold text-sm md:text-base hover:text-white transition-colors"
               >
                 無料で相談する
                 <span className="block text-xs font-normal opacity-90 mt-0.5">
@@ -68,7 +68,7 @@ export default function FloatingCTA() {
               </Link>
               <button
                 onClick={handleDismiss}
-                className="ml-2 p-1 hover:bg-espresso-brown/20 rounded-sm transition-colors"
+                className="ml-2 p-1 hover:bg-deep-forest-green/20 rounded-sm transition-colors"
                 aria-label="閉じる"
               >
                 <X className="w-4 h-4" />

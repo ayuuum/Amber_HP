@@ -29,7 +29,7 @@ export default function AITrainingSection() {
                             fill
                             className="object-cover"
                         />
-                        <div className="absolute top-4 left-4 bg-warm-amber text-warm-cream px-4 py-2 rounded-sm text-sm font-bold shadow-md">
+                        <div className="absolute top-4 left-4 bg-deep-forest-green text-white px-4 py-2 rounded-sm text-sm font-bold shadow-md">
                             助成金活用で75%OFF
                         </div>
                     </motion.div>
@@ -43,11 +43,11 @@ export default function AITrainingSection() {
                         <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
                             法人向け生成AI研修
                         </h2>
-                        <p className="text-xl text-espresso-brown leading-relaxed mb-4">
+                        <p className="text-xl text-deep-forest-green leading-relaxed mb-4">
                             現場ですぐに使えるスキルを習得。<br />
                             助成金を活用して、実質75%の割引価格で高品質な研修を提供します。
                         </p>
-                        <p className="text-base text-espresso-brown leading-relaxed mb-6">
+                        <p className="text-base text-deep-forest-green leading-relaxed mb-6">
                             ChatGPTの基本から、資料作成・要約・企画立案・営業対応まで、<br />
                             実務で即活用できるスキルを<span className="font-semibold text-deep-forest-green">1日6時間の集中研修</span>で習得できます。<br />
                             受講者の<span className="font-semibold text-deep-forest-green">95%が実務で活用</span>を開始しています。
@@ -57,7 +57,7 @@ export default function AITrainingSection() {
                                 <motion.button
                                     whileHover={{ scale: 1.02, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="bg-deep-forest-green text-warm-cream px-8 py-3 rounded-sm hover:bg-espresso-brown transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
+                                    className="bg-deep-forest-green text-white px-8 py-3 rounded-sm hover:bg-deep-forest-green transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
                                 >
                                     詳しく見る
                                     <motion.span>
@@ -69,7 +69,7 @@ export default function AITrainingSection() {
                                 <motion.button
                                     whileHover={{ scale: 1.02, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-3 rounded-sm hover:bg-deep-forest-green hover:text-warm-cream transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
+                                    className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-3 rounded-sm hover:bg-deep-forest-green hover:text-white transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
                                 >
                                     無料で相談する
                                 </motion.button>

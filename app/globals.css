@@ -8,22 +8,26 @@
 
 @layer base {
   body {
-    @apply text-espresso-brown;
-    background-color: #f5eedf;
+    @apply text-deep-forest-green;
+    background-color: #ffffff;
     background-image:
-      radial-gradient(circle at 15% 10%, rgba(196, 154, 108, 0.25), transparent 45%),
-      radial-gradient(circle at 85% 0%, rgba(31, 51, 38, 0.15), transparent 40%),
-      linear-gradient(120deg, rgba(245, 238, 223, 0.95), rgba(243, 234, 216, 0.75));
+      radial-gradient(circle at 85% 0%, rgba(31, 51, 38, 0.1), transparent 40%),
+      linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.75));
     font-family: var(--font-noto-sans), system-ui, sans-serif;
     line-height: 1.8;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-noto-sans), system-ui, sans-serif;
     line-height: 1.6;
     letter-spacing: 0.02em;
   }
-  
+
   p {
     letter-spacing: 0.01em;
   }
@@ -33,16 +37,17 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .fade-in {
     animation: fadeIn 1s ease-in-out;
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -51,7 +56,7 @@
 
   /* ブログ記事用のスタイル */
   .prose {
-    @apply text-espresso-brown;
+    @apply text-deep-forest-green;
   }
 
   .prose h2 {
@@ -70,7 +75,8 @@
     @apply mb-4 leading-relaxed;
   }
 
-  .prose ul, .prose ol {
+  .prose ul,
+  .prose ol {
     @apply mb-4 pl-6;
   }
 
@@ -87,7 +93,7 @@
   }
 
   .prose a {
-    @apply text-deep-forest-green hover:text-warm-amber underline;
+    @apply text-deep-forest-green hover:text-deep-forest-green underline;
   }
 
   .prose strong {
@@ -95,15 +101,15 @@
   }
 
   .prose code {
-    @apply bg-stone-gray/30 px-1 py-0.5 rounded text-sm;
+    @apply bg-white/30 px-1 py-0.5 rounded text-sm;
   }
 
   .prose pre {
-    @apply bg-stone-gray/30 p-4 rounded-sm overflow-x-auto mb-4;
+    @apply bg-white/30 p-4 rounded-sm overflow-x-auto mb-4;
   }
 
   .prose blockquote {
-    @apply border-l-4 border-warm-amber pl-4 italic my-4;
+    @apply border-l-4 border-deep-forest-green pl-4 italic my-4;
   }
 
   .prose img {
@@ -114,11 +120,12 @@
     @apply w-full border-collapse mb-4;
   }
 
-  .prose th, .prose td {
-    @apply border border-stone-gray px-4 py-2;
+  .prose th,
+  .prose td {
+    @apply border border-deep-forest-green px-4 py-2;
   }
 
   .prose th {
-    @apply bg-stone-gray/20 font-semibold;
+    @apply bg-white/20 font-semibold;
   }
 }

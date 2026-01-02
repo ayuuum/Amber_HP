@@ -60,7 +60,7 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 px-6 bg-deep-forest-green text-warm-cream relative overflow-hidden"
+      className="py-24 px-6 bg-deep-forest-green text-white relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -92,10 +92,10 @@ export default function StatsSection() {
                 y: -6,
                 transition: { duration: 0.25 }
               }}
-              className="bg-warm-cream/10 backdrop-blur-sm p-6 rounded-sm border border-warm-amber/20 text-center"
+              className="bg-white/10 backdrop-blur-sm p-6 rounded-sm border border-deep-forest-green/20 text-center"
             >
               <div className="mb-4">
-                <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-warm-amber block">
+                <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-white block">
                   {stat.number}
                   <span className="text-2xl md:text-3xl">{stat.suffix}</span>
                 </span>

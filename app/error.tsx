@@ -18,7 +18,7 @@ export default function Error({
   }, [error])
 
   return (
-    <main className="min-h-screen bg-warm-cream">
+    <main className="min-h-screen bg-white">
       <Header />
       <div className="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center px-4 pt-20">
         <div className="max-w-md text-center">
@@ -48,4 +48,5 @@ export default function Error({
     </main>
   )
 }
+
 

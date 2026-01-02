@@ -53,7 +53,7 @@ export default function FAQSection() {
     <section
       ref={sectionRef}
       id="faq"
-      className="py-24 px-6 bg-warm-cream"
+      className="py-24 px-6 bg-white"
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -65,7 +65,7 @@ export default function FAQSection() {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
             よくある質問
           </h2>
-          <p className="text-xl text-espresso-brown leading-relaxed">
+          <p className="text-xl text-deep-forest-green leading-relaxed">
             お客様からよくいただく質問をまとめました
           </p>
         </motion.div>
@@ -77,11 +77,11 @@ export default function FAQSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-warm-cream border border-stone-gray rounded-sm overflow-hidden shadow-md"
+              className="bg-white border border-deep-forest-green rounded-sm overflow-hidden shadow-md"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-stone-gray/10 transition-colors"
+                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-white/10 transition-colors"
               >
                 <span className="font-semibold text-deep-forest-green pr-4">
                   {faq.question}
@@ -90,7 +90,7 @@ export default function FAQSection() {
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ChevronDown className="w-5 h-5 text-espresso-brown flex-shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-deep-forest-green flex-shrink-0" />
                 </motion.div>
               </button>
               <AnimatePresence>
@@ -102,7 +102,7 @@ export default function FAQSection() {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 py-4 text-espresso-brown leading-relaxed border-t border-stone-gray/30">
+                    <div className="px-6 py-4 text-deep-forest-green leading-relaxed border-t border-deep-forest-green/30">
                       {faq.answer}
                     </div>
                   </motion.div>
@@ -118,14 +118,14 @@ export default function FAQSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-12 text-center"
         >
-          <p className="text-espresso-brown mb-4">
+          <p className="text-deep-forest-green mb-4">
             他にご質問がございましたら、お気軽にお問い合わせください。
           </p>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-deep-forest-green text-warm-cream px-8 py-3 rounded-sm hover:bg-espresso-brown transition-colors font-semibold"
+            className="inline-block bg-deep-forest-green text-white px-8 py-3 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold"
           >
             お問い合わせする
           </motion.a>
@@ -134,3 +134,4 @@ export default function FAQSection() {
     </section>
   )
 }
+

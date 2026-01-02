@@ -150,7 +150,7 @@ export default function EditArticlePage() {
   }
 
   if (isLoading) {
-    return <div className="text-center py-12 text-espresso-brown">読み込み中...</div>
+    return <div className="text-center py-12 text-deep-forest-green">読み込み中...</div>
   }
 
   return (
@@ -162,8 +162,8 @@ export default function EditArticlePage() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="title" className="block text-espresso-brown font-semibold mb-2">
-              タイトル <span className="text-warm-amber">*</span>
+            <label htmlFor="title" className="block text-deep-forest-green font-semibold mb-2">
+              タイトル <span className="text-deep-forest-green">*</span>
             </label>
             <input
               type="text"
@@ -172,13 +172,13 @@ export default function EditArticlePage() {
               required
               value={formData.title}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-stone-gray rounded-sm bg-warm-cream text-espresso-brown focus:outline-none focus:border-deep-forest-green"
+              className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
             />
           </div>
 
           <div>
-            <label htmlFor="category" className="block text-espresso-brown font-semibold mb-2">
-              カテゴリ <span className="text-warm-amber">*</span>
+            <label htmlFor="category" className="block text-deep-forest-green font-semibold mb-2">
+              カテゴリ <span className="text-deep-forest-green">*</span>
             </label>
             <select
               id="category"
@@ -186,7 +186,7 @@ export default function EditArticlePage() {
               required
               value={formData.category}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-stone-gray rounded-sm bg-warm-cream text-espresso-brown focus:outline-none focus:border-deep-forest-green"
+              className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
             >
               <option value="consulting">AI顧問サービス</option>
               <option value="training">生成AI研修</option>
@@ -196,7 +196,7 @@ export default function EditArticlePage() {
         </div>
 
         <div>
-          <label htmlFor="description" className="block text-espresso-brown font-semibold mb-2">
+          <label htmlFor="description" className="block text-deep-forest-green font-semibold mb-2">
             説明（SEO用）
           </label>
           <textarea
@@ -205,13 +205,13 @@ export default function EditArticlePage() {
             value={formData.description}
             onChange={handleChange}
             rows={3}
-            className="w-full px-4 py-3 border border-stone-gray rounded-sm bg-warm-cream text-espresso-brown focus:outline-none focus:border-deep-forest-green resize-none"
+            className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green resize-none"
           />
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="date" className="block text-espresso-brown font-semibold mb-2">
+            <label htmlFor="date" className="block text-deep-forest-green font-semibold mb-2">
               公開日
             </label>
             <input
@@ -220,12 +220,12 @@ export default function EditArticlePage() {
               name="date"
               value={formData.date}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-stone-gray rounded-sm bg-warm-cream text-espresso-brown focus:outline-none focus:border-deep-forest-green"
+              className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
             />
           </div>
 
           <div>
-            <label className="block text-espresso-brown font-semibold mb-2">
+            <label className="block text-deep-forest-green font-semibold mb-2">
               キーワード
             </label>
             <div className="flex gap-2">
@@ -240,12 +240,12 @@ export default function EditArticlePage() {
                   }
                 }}
                 placeholder="キーワードを入力してEnter"
-                className="flex-1 px-4 py-3 border border-stone-gray rounded-sm bg-warm-cream text-espresso-brown focus:outline-none focus:border-deep-forest-green"
+                className="flex-1 px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
               />
               <button
                 type="button"
                 onClick={handleAddKeyword}
-                className="px-4 py-3 bg-stone-gray/30 text-espresso-brown rounded-sm hover:bg-stone-gray/50 transition-colors"
+                className="px-4 py-3 bg-white/30 text-deep-forest-green rounded-sm hover:bg-white/50 transition-colors"
               >
                 追加
               </button>
@@ -254,7 +254,7 @@ export default function EditArticlePage() {
               {formData.keywords.map((keyword, index) => (
                 <span
                   key={index}
-                  className="inline-flex items-center gap-1 bg-warm-amber/20 text-espresso-brown px-3 py-1 rounded-sm text-sm"
+                  className="inline-flex items-center gap-1 bg-deep-forest-green/20 text-deep-forest-green px-3 py-1 rounded-sm text-sm"
                 >
                   {keyword}
                   <button
@@ -272,11 +272,11 @@ export default function EditArticlePage() {
 
         <div>
           <div className="flex items-center justify-between mb-2">
-            <label htmlFor="content" className="block text-espresso-brown font-semibold">
-              本文（Markdown） <span className="text-warm-amber">*</span>
+            <label htmlFor="content" className="block text-deep-forest-green font-semibold">
+              本文（Markdown） <span className="text-deep-forest-green">*</span>
             </label>
             <div className="flex gap-2">
-              <label className="px-4 py-2 bg-stone-gray/30 text-espresso-brown rounded-sm hover:bg-stone-gray/50 transition-colors cursor-pointer inline-flex items-center gap-2">
+              <label className="px-4 py-2 bg-white/30 text-deep-forest-green rounded-sm hover:bg-white/50 transition-colors cursor-pointer inline-flex items-center gap-2">
                 <Upload className="w-4 h-4" />
                 画像アップロード
                 <input
@@ -289,7 +289,7 @@ export default function EditArticlePage() {
               <button
                 type="button"
                 onClick={handlePreview}
-                className="px-4 py-2 bg-stone-gray/30 text-espresso-brown rounded-sm hover:bg-stone-gray/50 transition-colors inline-flex items-center gap-2"
+                className="px-4 py-2 bg-white/30 text-deep-forest-green rounded-sm hover:bg-white/50 transition-colors inline-flex items-center gap-2"
               >
                 {showPreview ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 {showPreview ? '編集に戻る' : 'プレビュー'}
@@ -298,7 +298,7 @@ export default function EditArticlePage() {
           </div>
           {showPreview ? (
             <div
-              className="prose prose-lg max-w-none bg-warm-cream p-6 rounded-sm border border-stone-gray min-h-[500px]"
+              className="prose prose-lg max-w-none bg-white p-6 rounded-sm border border-deep-forest-green min-h-[500px]"
               dangerouslySetInnerHTML={{ __html: previewHtml }}
             />
           ) : (
@@ -309,7 +309,7 @@ export default function EditArticlePage() {
               value={formData.content}
               onChange={handleChange}
               rows={20}
-              className="w-full px-4 py-3 border border-stone-gray rounded-sm bg-warm-cream text-espresso-brown focus:outline-none focus:border-deep-forest-green resize-none font-mono text-sm"
+              className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green resize-none font-mono text-sm"
             />
           )}
         </div>
@@ -318,7 +318,7 @@ export default function EditArticlePage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-deep-forest-green text-warm-cream px-8 py-4 rounded-sm hover:bg-espresso-brown transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+            className="bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
           >
             <Save className="w-5 h-5" />
             {isSubmitting ? '保存中...' : '更新する'}
@@ -326,7 +326,7 @@ export default function EditArticlePage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-4 rounded-sm hover:bg-deep-forest-green hover:text-warm-cream transition-colors font-semibold"
+            className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-4 rounded-sm hover:bg-deep-forest-green hover:text-white transition-colors font-semibold"
           >
             キャンセル
           </button>

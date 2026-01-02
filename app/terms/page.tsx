@@ -16,12 +16,12 @@ export default function TermsPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-24 pb-24 px-6 bg-warm-cream">
+      <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-8">
             利用規約
           </h1>
-          <div className="prose prose-lg max-w-none text-espresso-brown leading-relaxed space-y-6">
+          <div className="prose prose-lg max-w-none text-deep-forest-green leading-relaxed space-y-6">
             <section>
               <h2 className="text-2xl font-bold text-deep-forest-green mt-8 mb-4">第1条（適用）</h2>
               <p>
@@ -89,7 +89,7 @@ export default function TermsPage() {
               <p>
                 本規約に関するお問い合わせは、以下の連絡先までご連絡ください。
               </p>
-              <div className="bg-stone-gray/20 p-6 rounded-sm mt-4">
+              <div className="bg-white/20 p-6 rounded-sm mt-4">
                 <p className="font-semibold mb-2">株式会社Amber</p>
                 <p>メール: ayumu.matsui@amber-inc.com</p>
                 <p>電話: 080-3814-0263</p>
@@ -97,7 +97,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <p className="text-sm text-espresso-brown/70 mt-8">
+              <p className="text-sm text-deep-forest-green/70 mt-8">
                 制定日: 2024年1月1日<br />
                 最終更新日: 2024年1月1日
               </p>
@@ -109,4 +109,5 @@ export default function TermsPage() {
     </>
   )
 }
+
 

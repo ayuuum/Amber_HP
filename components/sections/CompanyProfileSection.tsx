@@ -12,7 +12,7 @@ export default function CompanyProfileSection() {
         <section
             id="company" // Linked from Header
             ref={sectionRef}
-            className="py-24 px-6 bg-warm-cream relative overflow-hidden"
+            className="py-24 px-6 bg-white relative overflow-hidden"
         >
             <div className="max-w-6xl mx-auto relative z-10">
                 <motion.h2
@@ -32,7 +32,7 @@ export default function CompanyProfileSection() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-2xl font-bold text-espresso-brown mb-8 flex items-center gap-4 border-b border-stone-gray pb-4"
+                                className="text-2xl font-bold text-deep-forest-green mb-8 flex items-center gap-4 border-b border-deep-forest-green pb-4"
                             >
                                 代表プロフィール
                             </motion.h3>
@@ -60,10 +60,10 @@ export default function CompanyProfileSection() {
                                 >
                                     <div>
                                         <p className="text-sm text-deep-forest-green font-bold">代表取締役</p>
-                                        <p className="text-2xl font-serif font-bold text-espresso-brown mt-1">松井 歩武</p>
-                                        <p className="text-sm text-espresso-brown/60 mt-1 font-serif">Ayumu Matsui</p>
+                                        <p className="text-2xl font-serif font-bold text-deep-forest-green mt-1">松井 歩武</p>
+                                        <p className="text-sm text-deep-forest-green/60 mt-1 font-serif">Ayumu Matsui</p>
                                     </div>
-                                    <p className="text-base leading-relaxed text-espresso-brown/90">
+                                    <p className="text-base leading-relaxed text-deep-forest-green/90">
                                         慶應義塾大学商学部在学中からベンチャーキャピタルでインターン。<br />
                                         新卒で戦略コンサルティングファームに入社。その後スタートアップにて経営企画。<br />
                                         大手IT企業にて法人向け生成AI研修の講師を務める。
@@ -79,7 +79,7 @@ export default function CompanyProfileSection() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
-                            className="text-2xl font-bold text-espresso-brown mb-8 flex items-center gap-4 border-b border-stone-gray pb-4"
+                            className="text-2xl font-bold text-deep-forest-green mb-8 flex items-center gap-4 border-b border-deep-forest-green pb-4"
                         >
                             会社概要
                         </motion.h3>
@@ -90,17 +90,17 @@ export default function CompanyProfileSection() {
                             transition={{ duration: 0.8, delay: 0.6 }}
                             className="space-y-6"
                         >
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-stone-gray/30 pb-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-deep-forest-green/30 pb-4">
                                 <dt className="font-bold text-deep-forest-green">会社名</dt>
-                                <dd className="sm:col-span-2 text-espresso-brown">株式会社Amber</dd>
+                                <dd className="sm:col-span-2 text-deep-forest-green">株式会社Amber</dd>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-stone-gray/30 pb-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-deep-forest-green/30 pb-4">
                                 <dt className="font-bold text-deep-forest-green">代表取締役</dt>
-                                <dd className="sm:col-span-2 text-espresso-brown">松井 歩武</dd>
+                                <dd className="sm:col-span-2 text-deep-forest-green">松井 歩武</dd>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-stone-gray/30 pb-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-deep-forest-green/30 pb-4">
                                 <dt className="font-bold text-deep-forest-green">所在地</dt>
-                                <dd className="sm:col-span-2 text-espresso-brown">
+                                <dd className="sm:col-span-2 text-deep-forest-green">
                                     〒105-0001<br />
                                     東京都港区虎ノ門３丁目１−１ 2階
                                 </dd>

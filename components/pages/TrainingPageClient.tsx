@@ -77,10 +77,10 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
     }
 
     return (
-        <main className="min-h-screen pt-24 pb-24 px-6 bg-cream">
+        <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-12">
-                    <Link href="/#ai-training" className="text-deep-forest-green hover:text-espresso-brown transition-colors">
+                    <Link href="/#ai-training" className="text-deep-forest-green hover:text-deep-forest-green transition-colors">
                         ← Back to Home
                     </Link>
                 </div>
@@ -99,7 +99,7 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             fill
                             className="object-cover"
                         />
-                        <div className="absolute top-4 left-4 bg-warm-amber text-warm-cream px-6 py-3 rounded-sm text-lg font-bold shadow-lg">
+                        <div className="absolute top-4 left-4 bg-deep-forest-green text-white px-6 py-3 rounded-sm text-lg font-bold shadow-lg">
                             助成金活用で75%OFF
                         </div>
                     </motion.div>
@@ -113,11 +113,11 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
                             法人向け生成AI研修
                         </h1>
-                        <p className="text-xl text-espresso-brown leading-relaxed mb-6 font-medium">
+                        <p className="text-xl text-deep-forest-green leading-relaxed mb-6 font-medium">
                             「AIを知る」ことではなく、<br />
                             「AIが仕事の一部になる」ことを目的としています。
                         </p>
-                        <div className="text-lg text-espresso-brown leading-relaxed space-y-4">
+                        <div className="text-lg text-deep-forest-green leading-relaxed space-y-4">
                             <p>
                                 「明日から仕事のやり方が変わる研修」を設計します。<br />
                                 一度きりの勉強会で終わらせない、実務定着型の研修です。
@@ -129,7 +129,7 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             <div className="pt-4">
                                 <Link
                                     href="/service/training/blog"
-                                    className="inline-block text-deep-forest-green hover:text-warm-amber transition-colors font-semibold"
+                                    className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors font-semibold"
                                 >
                                     関連記事を見る →
                                 </Link>
@@ -155,8 +155,8 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             "社員ごとに使い方がバラバラで、効果が出ていない",
                             "研修をやっても、現場で使われずに終わってしまう"
                         ].map((text, i) => (
-                            <div key={i} className="bg-warm-cream p-6 rounded-sm shadow-md border-l-4 border-warm-amber flex-1">
-                                <p className="text-espresso-brown font-medium leading-relaxed">{text}</p>
+                            <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-deep-forest-green flex-1">
+                                <p className="text-deep-forest-green font-medium leading-relaxed">{text}</p>
                             </div>
                         ))}
                     </div>
@@ -178,9 +178,9 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             <motion.div
                                 key={index}
                                 whileHover={{ scale: 1.02 }}
-                                className="bg-deep-forest-green text-warm-cream p-8 rounded-sm shadow-xl"
+                                className="bg-deep-forest-green text-white p-8 rounded-sm shadow-xl"
                             >
-                                <h3 className="text-xl font-bold mb-4 border-b border-warm-amber/50 pb-2 inline-block">
+                                <h3 className="text-xl font-bold mb-4 border-b border-deep-forest-green/50 pb-2 inline-block">
                                     {feature.title}
                                 </h3>
                                 <p className="leading-relaxed opacity-90">
@@ -219,10 +219,10 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                                     y: -6,
                                     transition: { duration: 0.25 }
                                 }}
-                                className="bg-warm-cream p-8 rounded-sm border border-stone-gray shadow-lg"
+                                className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-lg"
                             >
                                 <h3 className="text-xl font-semibold text-deep-forest-green mb-4">{item.title}</h3>
-                                <p className="text-espresso-brown leading-relaxed">
+                                <p className="text-deep-forest-green leading-relaxed">
                                     {item.description}
                                 </p>
                             </motion.div>

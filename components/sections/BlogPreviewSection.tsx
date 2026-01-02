@@ -60,7 +60,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
   return (
     <section
       ref={sectionRef}
-      className="py-24 px-6 bg-stone-gray/20 relative overflow-hidden"
+      className="py-24 px-6 bg-white/20 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -72,7 +72,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
             関連記事
           </h2>
-          <p className="text-xl text-espresso-brown max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
             {getCategoryName(category)}に関する記事を発信しています。<br />
             現場で9ヶ月間働いた経験から得た実務知見をお届けします。
           </p>
@@ -93,10 +93,10 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                 y: -6,
                 transition: { duration: 0.25 }
               }}
-              className="bg-warm-cream p-6 rounded-sm border border-stone-gray shadow-lg hover:shadow-xl transition-shadow h-full flex flex-col"
+              className="bg-white p-6 rounded-sm border border-deep-forest-green shadow-lg hover:shadow-xl transition-shadow h-full flex flex-col"
             >
               <div className="mb-4">
-                <span className="text-xs text-warm-amber font-semibold">
+                <span className="text-xs text-deep-forest-green font-semibold">
                   {new Date(post.date).toLocaleDateString('ja-JP', {
                     year: 'numeric',
                     month: 'long',
@@ -108,10 +108,10 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                 href={`${getCategoryPath(category)}/${post.slug}`}
                 className="block flex-grow"
               >
-                <h3 className="text-xl font-bold text-deep-forest-green mb-3 line-clamp-2 hover:text-warm-amber transition-colors">
+                <h3 className="text-xl font-bold text-deep-forest-green mb-3 line-clamp-2 hover:text-deep-forest-green transition-colors">
                   {post.title}
                 </h3>
-                <p className="text-espresso-brown text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-deep-forest-green text-sm leading-relaxed mb-4 line-clamp-3">
                   {post.excerpt || post.description}
                 </p>
               </Link>
@@ -121,7 +121,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                     {post.keywords.slice(0, 3).map((keyword, idx) => (
                       <span
                         key={idx}
-                        className="text-xs bg-stone-gray/30 text-espresso-brown px-2 py-1 rounded-sm"
+                        className="text-xs bg-white/30 text-deep-forest-green px-2 py-1 rounded-sm"
                       >
                         {keyword}
                       </span>
@@ -130,7 +130,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                 )}
                 <Link
                   href={`${getCategoryPath(category)}/${post.slug}`}
-                  className="inline-block text-deep-forest-green hover:text-warm-amber transition-colors text-sm font-semibold"
+                  className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors text-sm font-semibold"
                 >
                   続きを読む →
                 </Link>
@@ -147,7 +147,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
         >
           <Link
             href={getCategoryPath(category)}
-            className="inline-block bg-deep-forest-green text-warm-cream px-8 py-4 rounded-sm hover:bg-espresso-brown transition-colors font-semibold"
+            className="inline-block bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold"
           >
             すべての記事を見る
           </Link>

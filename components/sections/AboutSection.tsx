@@ -34,7 +34,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="pt-40 md:pt-48 lg:pt-56 pb-32 px-6 bg-stone-gray/30 relative overflow-hidden"
+      className="pt-40 md:pt-48 lg:pt-56 pb-32 px-6 bg-white/30 relative overflow-hidden"
     >
       {/* 装飾的な背景画像 */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full opacity-10 hidden lg:block">
@@ -79,7 +79,7 @@ export default function AboutSection() {
               variants={containerVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              className="space-y-6 text-base md:text-lg leading-relaxed text-espresso-brown"
+              className="space-y-6 text-base md:text-lg leading-relaxed text-deep-forest-green"
             >
               <motion.p variants={itemVariants} className="font-bold text-xl mb-4">
                 予約対応、見積作成、請求処理、報告業務。<br />
@@ -100,7 +100,7 @@ export default function AboutSection() {
               <motion.p
                 variants={itemVariants}
                 whileHover={{ y: -2 }}
-                className="bg-warm-cream/50 p-6 rounded-sm border border-stone-gray/50"
+                className="bg-white/50 p-6 rounded-sm border border-deep-forest-green/50"
               >
                 テクノロジーを主張しすぎず、現場の声に耳を傾け、丁寧に伴走する。
                 それが私たちのアプローチです。無理な営業は一切行いません。

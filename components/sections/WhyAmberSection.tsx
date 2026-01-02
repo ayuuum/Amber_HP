@@ -59,7 +59,7 @@ export default function WhyAmberSection() {
     <section
       id="why"
       ref={sectionRef}
-      className="py-24 px-6 bg-stone-gray/20 relative overflow-hidden"
+      className="py-24 px-6 bg-white/20 relative overflow-hidden"
     >
       {/* 背景装飾 */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/4 h-full opacity-5 hidden lg:block">
@@ -82,7 +82,7 @@ export default function WhyAmberSection() {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
             Why Amber
           </h2>
-          <p className="text-xl text-espresso-brown max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
             AI × 現場理解 × プロダクト<br />
             この3つの要素が、Amberの強みです。<br />
             <span className="text-base">実際に現場で働いた経験と、VC・コンサル背景を持つメンバーが、<br />
@@ -109,7 +109,7 @@ export default function WhyAmberSection() {
                 transition: { duration: 0.25 }
               }}
               style={{ transformStyle: 'flat' }}
-              className="bg-warm-cream p-8 rounded-sm border border-stone-gray shadow-lg overflow-hidden"
+              className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-lg overflow-hidden"
             >
               <div className="relative h-48 mb-6 rounded-sm overflow-hidden">
                 <Image
@@ -122,7 +122,7 @@ export default function WhyAmberSection() {
               <h3 className="text-2xl font-bold text-deep-forest-green mb-4">
                 {strength.title}
               </h3>
-              <p className="text-espresso-brown leading-relaxed">
+              <p className="text-deep-forest-green leading-relaxed">
                 {strength.description}
               </p>
             </motion.div>

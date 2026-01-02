@@ -62,7 +62,7 @@ export default function CustomerLogosSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-6 bg-stone-gray/10"
+      className="py-16 px-6 bg-white/10"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -71,7 +71,7 @@ export default function CustomerLogosSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm text-espresso-brown/70 uppercase tracking-wide font-semibold mb-4">
+          <p className="text-sm text-deep-forest-green/70 uppercase tracking-wide font-semibold mb-4">
             導入実績
           </p>
           <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green">
@@ -94,7 +94,7 @@ export default function CustomerLogosSection() {
                 y: -2,
                 transition: { duration: 0.2 }
               }}
-              className="flex items-center justify-center p-4 bg-warm-cream rounded-sm border border-stone-gray/30 hover:border-stone-gray hover:shadow-md transition-all"
+              className="flex items-center justify-center p-4 bg-white rounded-sm border border-deep-forest-green/30 hover:border-deep-forest-green hover:shadow-md transition-all"
             >
               <div className="relative w-full h-16 grayscale hover:grayscale-0 transition-all">
                 <Image
@@ -111,3 +111,4 @@ export default function CustomerLogosSection() {
     </section>
   )
 }
+

@@ -43,10 +43,10 @@ export default function AIConsultingSection() {
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
               AI顧問サービス
             </h2>
-            <p className="text-xl text-espresso-brown leading-relaxed mb-4">
+            <p className="text-xl text-deep-forest-green leading-relaxed mb-4">
               伴走型AI導入支援・業務改善・自動化サービス
             </p>
-            <p className="text-base text-espresso-brown leading-relaxed mb-8">
+            <p className="text-base text-deep-forest-green leading-relaxed mb-8">
               現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。<br />
               「現場で使えないAI」は提案しません。平均<span className="font-semibold text-deep-forest-green">3ヶ月で業務効率50%向上</span>を実現します。
             </p>
@@ -55,7 +55,7 @@ export default function AIConsultingSection() {
                 <motion.button
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-deep-forest-green text-warm-cream px-8 py-3 rounded-sm hover:bg-espresso-brown transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
+                  className="bg-deep-forest-green text-white px-8 py-3 rounded-sm hover:bg-deep-forest-green transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
                 >
                   詳しく見る
                   <motion.span>
@@ -67,7 +67,7 @@ export default function AIConsultingSection() {
                 <motion.button
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-3 rounded-sm hover:bg-deep-forest-green hover:text-warm-cream transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
+                  className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-3 rounded-sm hover:bg-deep-forest-green hover:text-white transition-colors inline-flex items-center gap-2 w-full sm:w-auto justify-center"
                 >
                   無料で相談する
                 </motion.button>

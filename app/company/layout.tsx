@@ -30,3 +30,4 @@ export default function CompanyLayout({
   return <>{children}</>
 }
 
+

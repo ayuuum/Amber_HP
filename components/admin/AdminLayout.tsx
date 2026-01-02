@@ -35,8 +35,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <div className="min-h-screen bg-warm-cream">
-      <nav className="bg-deep-forest-green text-warm-cream border-b border-stone-gray/20">
+    <div className="min-h-screen bg-white">
+      <nav className="bg-deep-forest-green text-white border-b border-deep-forest-green/20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-6">
@@ -47,7 +47,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <Link
                   href="/admin"
                   className={`px-3 py-2 rounded-sm transition-colors ${
-                    pathname === '/admin' ? 'bg-warm-amber/20' : 'hover:bg-espresso-brown/20'
+                    pathname === '/admin' ? 'bg-deep-forest-green/20' : 'hover:bg-deep-forest-green/20'
                   }`}
                 >
                   <FileText className="w-4 h-4 inline mr-2" />
@@ -56,7 +56,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <Link
                   href="/admin/new"
                   className={`px-3 py-2 rounded-sm transition-colors ${
-                    pathname === '/admin/new' ? 'bg-warm-amber/20' : 'hover:bg-espresso-brown/20'
+                    pathname === '/admin/new' ? 'bg-deep-forest-green/20' : 'hover:bg-deep-forest-green/20'
                   }`}
                 >
                   <Plus className="w-4 h-4 inline mr-2" />
@@ -67,14 +67,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="flex items-center gap-4">
               <Link
                 href="/"
-                className="px-3 py-2 rounded-sm hover:bg-espresso-brown/20 transition-colors"
+                className="px-3 py-2 rounded-sm hover:bg-deep-forest-green/20 transition-colors"
               >
                 <Home className="w-4 h-4 inline mr-2" />
                 サイトに戻る
               </Link>
               <button
                 onClick={handleLogout}
-                className="px-3 py-2 rounded-sm hover:bg-espresso-brown/20 transition-colors"
+                className="px-3 py-2 rounded-sm hover:bg-deep-forest-green/20 transition-colors"
               >
                 <LogOut className="w-4 h-4 inline mr-2" />
                 ログアウト
@@ -89,4 +89,5 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     </div>
   )
 }
+
 

@@ -48,7 +48,7 @@ export default function CustomerVoiceSection() {
     <section 
       id="customer-voice" 
       ref={sectionRef}
-      className="py-24 px-6 bg-stone-gray/30"
+      className="py-24 px-6 bg-white/30"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -64,7 +64,7 @@ export default function CustomerVoiceSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl text-warm-amber font-bold mb-8"
+            className="text-2xl text-deep-forest-green font-bold mb-8"
           >
             70店舗導入予定
           </motion.p>
@@ -85,7 +85,7 @@ export default function CustomerVoiceSection() {
                 y: -6,
                 transition: { duration: 0.25 }
               }}
-              className="bg-warm-cream p-8 rounded-sm border border-stone-gray shadow-lg overflow-hidden"
+              className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-lg overflow-hidden"
             >
               <div className="relative h-40 mb-6 rounded-sm overflow-hidden">
                 <Image
@@ -95,10 +95,10 @@ export default function CustomerVoiceSection() {
                   className="object-cover opacity-80"
                 />
               </div>
-              <p className="text-espresso-brown leading-relaxed mb-4">
+              <p className="text-deep-forest-green leading-relaxed mb-4">
                 {testimonial.text}
               </p>
-              <p className="text-sm text-stone-gray">{testimonial.author}</p>
+              <p className="text-sm text-white">{testimonial.author}</p>
             </motion.div>
           ))}
         </motion.div>

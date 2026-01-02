@@ -67,10 +67,10 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
     }
 
     return (
-        <main className="min-h-screen pt-24 pb-24 px-6 bg-cream">
+        <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-12">
-                    <Link href="/#vertical-saas" className="text-deep-forest-green hover:text-espresso-brown transition-colors">
+                    <Link href="/#vertical-saas" className="text-deep-forest-green hover:text-deep-forest-green transition-colors">
                         ← Back to Home
                     </Link>
                 </div>
@@ -84,17 +84,17 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
                         ホームサービス業のための<br />AIエージェント
                     </h1>
-                    <p className="text-xl text-espresso-brown max-w-3xl mx-auto leading-relaxed mb-4">
+                    <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-4">
                         「現場の仕事」と「事務作業」を一つの流れに。
                     </p>
-                    <p className="text-lg text-espresso-brown max-w-3xl mx-auto leading-relaxed mb-6">
+                    <p className="text-lg text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-6">
                         <br />
                         ホームサービス事業者の業務を包括的にサポートします。
                     </p>
                     <div>
                         <Link
                             href="/service/saas/blog"
-                            className="inline-block text-deep-forest-green hover:text-warm-amber transition-colors font-semibold"
+                            className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors font-semibold"
                         >
                             関連記事を見る →
                         </Link>
@@ -113,13 +113,13 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-6">
                             対象となる事業者様
                         </h2>
-                        <ul className="space-y-3 text-espresso-brown font-medium">
-                            <li className="flex items-center"><span className="text-warm-amber mr-2">●</span>ハウスクリーニング</li>
-                            <li className="flex items-center"><span className="text-warm-amber mr-2">●</span>不用品回収</li>
-                            <li className="flex items-center"><span className="text-warm-amber mr-2">●</span>リフォーム・修理</li>
-                            <li className="flex items-center"><span className="text-warm-amber mr-2">●</span>害虫駆除・引越し など</li>
+                        <ul className="space-y-3 text-deep-forest-green font-medium">
+                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>ハウスクリーニング</li>
+                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>不用品回収</li>
+                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>リフォーム・修理</li>
+                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>害虫駆除・引越し など</li>
                         </ul>
-                        <p className="mt-4 text-sm text-espresso-brown opacity-80">
+                        <p className="mt-4 text-sm text-deep-forest-green opacity-80">
                             ※個人のお客様から直接依頼を受けるホームサービス事業者向け
                         </p>
                     </div>
@@ -127,7 +127,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-6">
                             よくあるお悩み
                         </h2>
-                        <ul className="space-y-3 text-espresso-brown">
+                        <ul className="space-y-3 text-deep-forest-green">
                             <li className="flex items-start">
                                 <span className="text-red-400 mr-2 font-bold">✕</span>
                                 予約・見積・請求がバラバラで管理が大変
@@ -165,12 +165,12 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                                 key={index}
                                 variants={cardVariants}
                                 whileHover="hover"
-                                className="bg-warm-cream p-6 rounded-sm border border-stone-gray shadow-lg"
+                                className="bg-white p-6 rounded-sm border border-deep-forest-green shadow-lg"
                             >
                                 <h3 className="text-xl font-semibold text-deep-forest-green mb-3">
                                     {feature.title}
                                 </h3>
-                                <p className="text-espresso-brown leading-relaxed text-sm">
+                                <p className="text-deep-forest-green leading-relaxed text-sm">
                                     {feature.description}
                                 </p>
                             </motion.div>
@@ -185,7 +185,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={{ scale: 1.01, y: -4 }}
-                    className="bg-warm-cream p-4 md:p-8 rounded-sm border border-stone-gray shadow-xl overflow-hidden mb-24"
+                    className="bg-white p-4 md:p-8 rounded-sm border border-deep-forest-green shadow-xl overflow-hidden mb-24"
                 >
                     <div className="relative aspect-video rounded-sm overflow-hidden">
                         <Image
@@ -215,17 +215,17 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-6">
                             このサービスが目指す状態
                         </h2>
-                        <ul className="space-y-4 text-espresso-brown text-lg">
+                        <ul className="space-y-4 text-deep-forest-green text-lg">
                             <li className="flex items-center">
-                                <span className="text-warm-amber text-2xl mr-3">◎</span>
+                                <span className="text-deep-forest-green text-2xl mr-3">◎</span>
                                 事務作業に追われず、現場と顧客対応に集中できる
                             </li>
                             <li className="flex items-center">
-                                <span className="text-warm-amber text-2xl mr-3">◎</span>
+                                <span className="text-deep-forest-green text-2xl mr-3">◎</span>
                                 自社で予約が回り、プラットフォーム手数料に依存しない
                             </li>
                             <li className="flex items-center">
-                                <span className="text-warm-amber text-2xl mr-3">◎</span>
+                                <span className="text-deep-forest-green text-2xl mr-3">◎</span>
                                 スマホ一つで、仕事の全体が把握できる
                             </li>
                         </ul>
@@ -237,9 +237,9 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="bg-deep-forest-green text-warm-cream p-8 rounded-sm shadow-xl"
+                        className="bg-deep-forest-green text-white p-8 rounded-sm shadow-xl"
                     >
-                        <h2 className="text-2xl font-serif font-bold mb-6 border-b border-warm-amber/30 pb-4">
+                        <h2 className="text-2xl font-serif font-bold mb-6 border-b border-deep-forest-green/30 pb-4">
                             Amberが大切にしていること
                         </h2>
                         <p className="leading-relaxed mb-4 opacity-90">

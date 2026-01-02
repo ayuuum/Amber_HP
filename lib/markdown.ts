@@ -104,3 +104,4 @@ export function getCategoryPath(category: 'consulting' | 'training' | 'saas'): s
   return `/service/${category}/blog`
 }
 
+
