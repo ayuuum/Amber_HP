@@ -1,11 +1,12 @@
-export function StructuredData() {
+export default function StructuredData() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: '株式会社Amber',
+    alternateName: 'Amber Inc.',
     url: 'https://amber-inc.com',
-    logo: 'https://amber-inc.com/logo.png',
-    description: 'AI顧問サービスとホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
+    logo: 'https://amber-inc.com/og-image.jpg',
+    description: 'AI顧問サービス、中小企業向け生成AI研修、ホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'JP',
@@ -19,9 +20,12 @@ export function StructuredData() {
       telephone: '+81-80-3814-0263',
       contactType: 'customer service',
       email: 'ayumu.matsui@amber-inc.com',
+      availableLanguage: ['Japanese'],
     },
     sameAs: [
       // SNSアカウントがあれば追加
+      // 'https://twitter.com/amber_inc',
+      // 'https://www.facebook.com/amber.inc',
     ],
   }
 
@@ -51,22 +55,44 @@ export function StructuredData() {
     description: '助成金を活用した法人向け生成AI研修。実務で使える生成AIの活用法を学べます。',
   }
 
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: '株式会社Amber',
+    url: 'https://amber-inc.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://amber-inc.com/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(trainingServiceSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(trainingServiceSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
       />
     </>
   )
 }
-
-
