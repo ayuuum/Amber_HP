@@ -59,7 +59,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 z-50 relative">
+          <Link href="/" className="flex-shrink-0 z-50 relative" aria-label="株式会社Amber">
             <span className="text-2xl font-bold font-serif text-white tracking-wide">
               Amber
             </span>

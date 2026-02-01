@@ -2,33 +2,23 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import Image from 'next/image'
+import { Building2, Users, TrendingUp } from 'lucide-react'
 
-// 顧客ロゴのプレースホルダー（実際のロゴに置き換えてください）
-const customerLogos = [
+const highlights = [
   {
-    name: '顧客企業A',
-    logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&q=80&auto=format&fit=crop',
+    icon: Building2,
+    number: '70+',
+    label: '導入店舗',
   },
   {
-    name: '顧客企業B',
-    logo: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=200&q=80&auto=format&fit=crop',
+    icon: Users,
+    number: '500+',
+    label: '研修受講者',
   },
   {
-    name: '顧客企業C',
-    logo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&q=80&auto=format&fit=crop',
-  },
-  {
-    name: '顧客企業D',
-    logo: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=200&q=80&auto=format&fit=crop',
-  },
-  {
-    name: '顧客企業E',
-    logo: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=200&q=80&auto=format&fit=crop',
-  },
-  {
-    name: '顧客企業F',
-    logo: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=80&auto=format&fit=crop',
+    icon: TrendingUp,
+    number: '95%',
+    label: '継続率',
   },
 ]
 
@@ -41,7 +31,7 @@ export default function CustomerLogosSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
       },
     },
   }
@@ -64,7 +54,7 @@ export default function CustomerLogosSection() {
       ref={sectionRef}
       className="py-16 px-6 bg-white/10"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -75,7 +65,7 @@ export default function CustomerLogosSection() {
             導入実績
           </p>
           <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green">
-            ご利用いただいている企業様
+            多くの企業様にご利用いただいています
           </h3>
         </motion.div>
 
@@ -83,32 +73,33 @@ export default function CustomerLogosSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {customerLogos.map((customer, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{
-                scale: 1.03,
-                y: -2,
-                transition: { duration: 0.2 }
-              }}
-              className="flex items-center justify-center p-4 bg-white rounded-sm border border-deep-forest-green/30 hover:border-deep-forest-green hover:shadow-md transition-all"
-            >
-              <div className="relative w-full h-16 grayscale hover:grayscale-0 transition-all">
-                <Image
-                  src={customer.logo}
-                  alt={customer.name}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </motion.div>
-          ))}
+          {highlights.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{
+                  scale: 1.03,
+                  y: -4,
+                  transition: { duration: 0.2 }
+                }}
+                className="flex flex-col items-center justify-center p-8 bg-white rounded-sm border border-deep-forest-green/30 hover:border-deep-forest-green hover:shadow-lg transition-all"
+              >
+                <Icon className="w-10 h-10 text-deep-forest-green mb-4" />
+                <span className="text-4xl md:text-5xl font-bold text-deep-forest-green mb-2">
+                  {item.number}
+                </span>
+                <span className="text-deep-forest-green/80 font-medium">
+                  {item.label}
+                </span>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>
   )
 }
-

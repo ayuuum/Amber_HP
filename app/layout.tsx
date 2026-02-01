@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | 株式会社Amber',
   },
   description: '東京を拠点にAI顧問サービス、中小企業向け生成AI研修、ホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。株式会社Amber公式サイト。',
-  keywords: ['AI顧問サービス', '生成AI研修', 'Vertical SaaS', 'ホームサービス', '業務効率化', '中小企業', 'AI導入'],
+  keywords: ['株式会社Amber', '松井歩武', 'AI顧問サービス', '生成AI研修', 'Vertical SaaS', 'ホームサービス', '業務効率化', '中小企業', 'AI導入'],
   authors: [{ name: '株式会社Amber' }],
   creator: '株式会社Amber',
   publisher: '株式会社Amber',

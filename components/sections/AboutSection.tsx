@@ -39,8 +39,8 @@ export default function AboutSection() {
       {/* 装飾的な背景画像 */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full opacity-10 hidden lg:block">
         <Image
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop"
-          alt="装飾背景"
+          src="/images/about-team.png"
+          alt="Amberチームの働く環境"
           fill
           className="object-cover"
           aria-hidden="true"
@@ -57,8 +57,8 @@ export default function AboutSection() {
             className="relative h-96 lg:h-[500px] rounded-sm overflow-hidden shadow-xl"
           >
             <Image
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop"
-              alt="業務効率化とオフィスワーク"
+              src="/images/about-team.png"
+              alt="Amberチームの働く環境"
               fill
               className="object-cover"
             />

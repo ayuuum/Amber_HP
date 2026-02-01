@@ -40,7 +40,7 @@ export default function Footer() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8"
         >
           <motion.div variants={itemVariants}>
-            <h3 className="text-xl font-bold mb-4">Amber</h3>
+            <h3 className="text-xl font-bold mb-4">株式会社Amber</h3>
             <p className="text-white text-sm">
               暮らしを支える人に最新のテクノロジーを提供する。
             </p>

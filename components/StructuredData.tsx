@@ -22,6 +22,15 @@ export default function StructuredData() {
       email: 'ayumu.matsui@amber-inc.com',
       availableLanguage: ['Japanese'],
     },
+    founder: {
+      '@type': 'Person',
+      name: '松井 歩武',
+      jobTitle: '代表取締役',
+      sameAs: [
+        // 'https://twitter.com/ayumu_matsui', // もしあれば追加
+        // 'https://www.linkedin.com/in/ayumu-matsui', // もしあれば追加
+      ],
+    },
     sameAs: [
       // SNSアカウントがあれば追加
       // 'https://twitter.com/amber_inc',

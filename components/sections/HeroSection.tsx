@@ -32,11 +32,39 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-base md:text-lg lg:text-xl text-deep-forest-green leading-relaxed max-w-2xl mx-auto"
+          className="text-base md:text-lg lg:text-xl text-deep-forest-green leading-relaxed max-w-2xl mx-auto mb-10"
         >
           予約対応、見積作成、請求処理に1日3時間もかかっていませんか？
           AIで業務を自動化し、本来の仕事に集中できる環境を実現します。
         </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Link href="#about">
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green/90 transition-colors inline-flex items-center gap-2 font-semibold shadow-lg"
+            >
+              サービスを見る
+              <span>→</span>
+            </motion.button>
+          </Link>
+          <Link href="#contact">
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-4 rounded-sm hover:bg-deep-forest-green hover:text-white transition-colors inline-flex items-center gap-2 font-semibold"
+            >
+              無料で相談する
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
 
       <motion.div

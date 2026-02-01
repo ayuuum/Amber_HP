@@ -50,9 +50,9 @@ export default function WhyAmberSection() {
   }
 
   const images = [
-    'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80&auto=format&fit=crop',
+    '/images/why-field-experience.png',
+    '/images/why-long-term-growth.png',
+    '/images/why-gradual-adoption.png',
   ]
 
   return (
@@ -64,8 +64,8 @@ export default function WhyAmberSection() {
       {/* 背景装飾 */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/4 h-full opacity-5 hidden lg:block">
         <Image
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop"
-          alt="装飾背景"
+          src="/images/why-field-experience.png"
+          alt="現場経験の装飾背景"
           fill
           className="object-cover"
           aria-hidden="true"
@@ -86,7 +86,7 @@ export default function WhyAmberSection() {
             AI × 現場理解 × プロダクト<br />
             この3つの要素が、Amberの強みです。<br />
             <span className="text-base">実際に現場で働いた経験と、VC・コンサル背景を持つメンバーが、<br />
-            長期的な事業成長を支援します。</span>
+              長期的な事業成長を支援します。</span>
           </p>
         </motion.div>
 

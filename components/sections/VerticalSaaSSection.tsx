@@ -58,6 +58,22 @@ export default function VerticalSaaSSection() {
               </motion.button>
             </Link>
           </div>
+
+          {/* SaaS Dashboard Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="relative w-full max-w-4xl mx-auto mt-12 rounded-sm overflow-hidden shadow-2xl"
+          >
+            <Image
+              src="/images/saas-dashboard.png"
+              alt="ホームサービス事業者向けSaaSダッシュボード"
+              width={1200}
+              height={750}
+              className="w-full h-auto"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>

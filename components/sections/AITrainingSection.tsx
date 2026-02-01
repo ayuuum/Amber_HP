@@ -24,8 +24,8 @@ export default function AITrainingSection() {
                         className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1"
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&auto=format&fit=crop"
-                            alt="法人向け生成AI研修と学習"
+                            src="/images/training-workshop.png"
+                            alt="法人向け生成AI研修"
                             fill
                             className="object-cover"
                         />

@@ -27,8 +27,8 @@ export default function AIConsultingSection() {
             className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1"
           >
             <Image
-              src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80&auto=format&fit=crop"
-              alt="AIとテクノロジーによる業務改善"
+              src="/images/consulting-meeting.png"
+              alt="AI顧問サービス - ビジネスコンサルティング"
               fill
               className="object-cover"
             />

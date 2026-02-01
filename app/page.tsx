@@ -14,7 +14,7 @@ import ContactSection from '@/components/sections/ContactSection'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
-import { StructuredData } from '@/components/StructuredData'
+import StructuredData from '@/components/StructuredData'
 import { getAllPosts } from '@/lib/markdown'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
