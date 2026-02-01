@@ -5,6 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
 import type { BlogPost } from '@/lib/markdown'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import { Plus, Minus } from 'lucide-react'
+import { useState } from 'react'
 
 const plans = [
     {
@@ -58,11 +61,32 @@ const serviceSteps = [
     },
 ]
 
+const faqs = [
+    {
+        question: '特定のAIツール（ChatGPTなど）の導入しか支援してもらえませんか？',
+        answer: 'いいえ。ChatGPTだけでなく、Claude、Gemini、GitHub Copilotなどの汎用ツールから、業界特化型のAI、さらには既存のSaaS（Notion, Slack等）に内蔵されたAI機能の活用まで、貴社の課題に最適なツールを選定・支援します。',
+    },
+    {
+        question: 'コンサルプランの期間は決まっていますか？',
+        answer: '標準的には3ヶ月〜6ヶ月を1つのフェーズとしていますが、単発の課題解決から1年以上の長期的な伴走支援まで、企業のフェーズに合わせて柔軟に対応可能です。',
+    },
+    {
+        question: 'ITに詳しくない担当者でも大丈夫でしょうか？',
+        answer: '全く問題ありません。むしろITに詳しくない現場の方が「AIで何ができるか」がクリアになった時のインパクトが大きいです。専門用語を使わず、実務ベースで分かりやすく支援します。',
+    },
+    {
+        question: 'AIを導入して本当に収益は上がりますか？',
+        answer: 'はい。単なる作業時間の削減（コストカット）だけでなく、削減した時間で「より付加価値の高い業務（顧客対応や新規提案）」に集中できる体制を作ることで、結果として売上・収益の向上を目指します。',
+    },
+]
+
 type ConsultingPageClientProps = {
     blogPosts: BlogPost[]
 }
 
 export default function ConsultingPageClient({ blogPosts }: ConsultingPageClientProps) {
+    const [openFaq, setOpenFaq] = useState<number | null>(null)
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -89,10 +113,13 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
     return (
         <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
-                <div className="mb-12">
-                    <Link href="/#ai-consulting" className="text-deep-forest-green hover:text-deep-forest-green transition-colors">
-                        ← Back to Home
-                    </Link>
+                <div className="mb-8">
+                    <Breadcrumbs
+                        items={[
+                            { label: 'サービス', href: '/' },
+                            { label: 'AI活用支援・AI顧問サービス' }
+                        ]}
+                    />
                 </div>
 
                 {/* Hero Section */}
@@ -117,8 +144,8 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="text-center lg:text-left order-1 lg:order-2"
                     >
-                        <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-                            AI顧問サービス
+                        <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6 leading-tight">
+                            AI活用支援・<br className="md:hidden" />AI顧問サービス
                         </h1>
                         <p className="text-xl text-deep-forest-green leading-relaxed mb-6 font-medium">
                             AIを「導入する」サービスではなく、<br />
@@ -215,6 +242,47 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                             <h3 className="text-xl font-bold mb-4 text-deep-forest-green">AIの日常化</h3>
                             <p className="opacity-90">AIが「特別な新しい技術」ではなく、文房具のように当たり前に使われる状態を目指します。</p>
                         </div>
+                    </div>
+                </motion.div>
+
+                {/* FAQ Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-24"
+                >
+                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
+                        よくあるご質問
+                    </h2>
+                    <div className="max-w-3xl mx-auto space-y-4">
+                        {faqs.map((faq, index) => (
+                            <div key={index} className="border-b border-deep-forest-green/20">
+                                <button
+                                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                                    className="w-full py-4 flex items-center justify-between text-left transition-colors hover:text-deep-forest-green"
+                                >
+                                    <span className="text-lg font-bold text-deep-forest-green pr-8">
+                                        Q. {faq.question}
+                                    </span>
+                                    {openFaq === index ? (
+                                        <Minus className="w-5 h-5 flex-shrink-0" />
+                                    ) : (
+                                        <Plus className="w-5 h-5 flex-shrink-0" />
+                                    )}
+                                </button>
+                                <motion.div
+                                    initial={false}
+                                    animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
+                                    className="overflow-hidden"
+                                >
+                                    <p className="pb-6 text-deep-forest-green/80 leading-relaxed leading-relaxed">
+                                        {faq.answer}
+                                    </p>
+                                </motion.div>
+                            </div>
+                        ))}
                     </div>
                 </motion.div>
 

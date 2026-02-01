@@ -13,6 +13,13 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   {
+    label: '私たちについて',
+    children: [
+      { label: 'ミッション・ビジョン', href: '/#about' },
+      { label: 'Amberが選ばれる理由', href: '/#why-amber' },
+    ],
+  },
+  {
     label: 'サービス',
     children: [
       { label: 'AI顧問サービス', href: '/service/consulting' },
@@ -21,20 +28,19 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: 'ブログ',
+    label: 'ニュース',
     children: [
-      { label: 'AI顧問サービス ブログ', href: '/service/consulting/blog' },
-      { label: '法人向け生成AI研修 ブログ', href: '/service/training/blog' },
-      { label: 'ホームサービス向けVertical SaaS ブログ', href: '/service/saas/blog' },
+      { label: 'AI顧問・活用事例', href: '/service/consulting/blog' },
+      { label: '研修・セミナー情報', href: '/service/training/blog' },
+      { label: 'SaaSアップデート', href: '/service/saas/blog' },
     ],
   },
   {
-    label: '会社概要',
-    href: '/company',
-  },
-  {
-    label: 'お問い合わせ',
-    href: '#contact',
+    label: '会社情報',
+    children: [
+      { label: '会社概要', href: '/company' },
+      { label: '採用情報', href: '/recruit' },
+    ],
   },
 ]
 

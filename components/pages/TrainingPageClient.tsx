@@ -5,6 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
 import type { BlogPost } from '@/lib/markdown'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import { Plus, Minus, Info } from 'lucide-react'
+import { useState } from 'react'
 
 const curriculum = [
     {
@@ -48,11 +51,32 @@ const features = [
     },
 ]
 
+const faqs = [
+    {
+        question: '助成金の受給対象になりますか？',
+        answer: '雇用保険を納めている正社員がいらっしゃる企業様であれば、「人材開発支援助成金」の対象となる可能性が高いです。具体的な受給要件については、無料相談にて診断・ご案内いたします。',
+    },
+    {
+        question: '研修の時間はどのくらいですか？',
+        answer: '標準的なプログラムは、1回3時間×2回の計6時間、あるいは1日（6時間）完結型ですが、貴社の課題や参加者のスキルレベルに合わせて1時間から数日間のプログラムまで調整可能です。',
+    },
+    {
+        question: '全くパソコンを使わない部署への研修も可能ですか？',
+        answer: 'はい。現場作業中心の企業様でも、報告書作成や顧客対応の効率化など、スマートフォンからでも使えるAI活用法を提案可能です。',
+    },
+    {
+        question: 'プロンプト（指示文）が難しそうですが、使いこなせますか？',
+        answer: 'ご安心ください。「プロンプトを作る技術」を学ぶのではなく、あらかじめ用意された高品質な「テンプレート」を選んで使う方法から指導するため、誰でも即座に成果を出せます。',
+    },
+]
+
 type TrainingPageClientProps = {
     blogPosts: BlogPost[]
 }
 
 export default function TrainingPageClient({ blogPosts }: TrainingPageClientProps) {
+    const [openFaq, setOpenFaq] = useState<number | null>(null)
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -79,10 +103,13 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
     return (
         <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
-                <div className="mb-12">
-                    <Link href="/#ai-training" className="text-deep-forest-green hover:text-deep-forest-green transition-colors">
-                        ← Back to Home
-                    </Link>
+                <div className="mb-8">
+                    <Breadcrumbs
+                        items={[
+                            { label: 'サービス', href: '/' },
+                            { label: '法人向け生成AI研修' }
+                        ]}
+                    />
                 </div>
 
                 {/* Hero Section */}
@@ -137,6 +164,54 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                         </div>
                     </motion.div>
                 </div>
+
+                {/* Grant Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-24 bg-deep-forest-green/5 p-8 md:p-12 rounded-sm border border-deep-forest-green/20"
+                >
+                    <div className="flex flex-col md:flex-row items-center gap-8">
+                        <div className="flex-1">
+                            <h2 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green mb-6">
+                                人材開発支援助成金の活用で<br />
+                                研修費用の最大75%が補助されます
+                            </h2>
+                            <p className="text-lg text-deep-forest-green mb-6 leading-relaxed">
+                                「AI研修をやりたいが予算が…」という企業様も、国の助成金制度を活用することで大幅にコストを抑えた導入が可能です。
+                            </p>
+                            <ul className="space-y-3 mb-8">
+                                <li className="flex items-center gap-2 text-deep-forest-green font-medium">
+                                    <Info className="w-5 h-5" />
+                                    <span>リスキリング支援コースの活用</span>
+                                </li>
+                                <li className="flex items-center gap-2 text-deep-forest-green font-medium">
+                                    <Info className="w-5 h-5" />
+                                    <span>1人あたり最大10万円以上の補助</span>
+                                </li>
+                                <li className="flex items-center gap-2 text-deep-forest-green font-medium">
+                                    <Info className="w-5 h-5" />
+                                    <span>煩雑な申請書類の作成も無料サポート</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="bg-white p-6 rounded-sm shadow-xl border border-deep-forest-green text-center min-w-[280px]">
+                            <p className="text-sm font-bold text-deep-forest-green mb-2">実質負担額のイメージ</p>
+                            <div className="text-3xl font-bold text-deep-forest-green mb-1">
+                                ¥50,000<span className="text-sm">〜</span>
+                            </div>
+                            <p className="text-xs text-deep-forest-green/60 mb-4">（1名あたりの想定）</p>
+                            <div className="text-sm text-deep-forest-green font-bold bg-deep-forest-green/10 py-2 rounded-sm mb-4">
+                                助成金で最大75%削減
+                            </div>
+                            <p className="text-xs text-left leading-relaxed text-deep-forest-green/70">
+                                ※受給には一定の要件があります。詳細はお問い合わせください。
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
 
                 {/* Target Audience */}
                 <motion.div
@@ -228,6 +303,47 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             </motion.div>
                         ))}
                     </motion.div>
+                </motion.div>
+
+                {/* FAQ Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-24"
+                >
+                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
+                        よくあるご質問
+                    </h2>
+                    <div className="max-w-3xl mx-auto space-y-4">
+                        {faqs.map((faq, index) => (
+                            <div key={index} className="border-b border-deep-forest-green/20">
+                                <button
+                                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                                    className="w-full py-4 flex items-center justify-between text-left transition-colors hover:text-deep-forest-green"
+                                >
+                                    <span className="text-lg font-bold text-deep-forest-green pr-8">
+                                        Q. {faq.question}
+                                    </span>
+                                    {openFaq === index ? (
+                                        <Minus className="w-5 h-5 flex-shrink-0" />
+                                    ) : (
+                                        <Plus className="w-5 h-5 flex-shrink-0" />
+                                    )}
+                                </button>
+                                <motion.div
+                                    initial={false}
+                                    animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
+                                    className="overflow-hidden"
+                                >
+                                    <p className="pb-6 text-deep-forest-green/80 leading-relaxed">
+                                        {faq.answer}
+                                    </p>
+                                </motion.div>
+                            </div>
+                        ))}
+                    </div>
                 </motion.div>
 
                 {/* Blog Preview Section */}
