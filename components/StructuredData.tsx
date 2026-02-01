@@ -22,6 +22,17 @@ export default function StructuredData() {
       email: 'ayumu.matsui@amber-inc.com',
       availableLanguage: ['Japanese'],
     },
+    location: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'JP',
+        addressRegion: '東京都',
+        addressLocality: '港区',
+        postalCode: '105-0001',
+        streetAddress: '虎ノ門3丁目1-1 2階',
+      },
+    },
     founder: {
       '@type': 'Person',
       name: '松井 歩武',
@@ -100,6 +111,45 @@ export default function StructuredData() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(websiteSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            name: '株式会社Amber',
+            image: 'https://amber-inc.com/og-image.jpg',
+            '@id': 'https://amber-inc.com',
+            url: 'https://amber-inc.com',
+            telephone: '+81-80-3814-0263',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '虎ノ門3丁目1-1 2階',
+              addressLocality: '港区',
+              addressRegion: '東京都',
+              postalCode: '105-0001',
+              addressCountry: 'JP',
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 35.6664,
+              longitude: 139.7466,
+            },
+            openingHoursSpecification: {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday'
+              ],
+              opens: '09:00',
+              closes: '18:00'
+            }
+          }),
         }}
       />
     </>

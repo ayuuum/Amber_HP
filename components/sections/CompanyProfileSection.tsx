@@ -19,10 +19,25 @@ export default function CompanyProfileSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8 }}
-                    className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-deep-forest-green mb-16 text-center"
+                    className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-deep-forest-green mb-8 text-center"
                 >
                     Company
                 </motion.h2>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                    className="max-w-3xl mx-auto text-center mb-20"
+                >
+                    <p className="text-xl md:text-2xl font-serif font-bold text-deep-forest-green leading-relaxed">
+                        「暮らしを支える人に、<br className="md:hidden" />最新のテクノロジーを。」
+                    </p>
+                    <p className="mt-6 text-deep-forest-green/80 leading-relaxed">
+                        私たちは、現場で働く人々の努力が正当に評価され、報われる世界を目指しています。
+                        日々の業務上の非効率をテクノロジーで解消し、働く人が本来の価値を発揮できる環境を創造します。
+                    </p>
+                </motion.div>
 
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
                     {/* 左側：代表挨拶・プロフィール */}

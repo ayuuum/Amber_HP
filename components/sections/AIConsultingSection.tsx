@@ -47,8 +47,8 @@ export default function AIConsultingSection() {
               伴走型AI導入支援・業務改善・自動化サービス
             </p>
             <p className="text-base text-deep-forest-green leading-relaxed mb-8">
-              現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。<br />
-              「現場で使えないAI」は提案しません。平均<span className="font-semibold text-deep-forest-green">3ヶ月で業務効率50%向上</span>を実現します。
+              実際に現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。<br />
+              実務の現場で「機能する」AIを、丁寧な伴走支援で定着させます。
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/service/consulting">

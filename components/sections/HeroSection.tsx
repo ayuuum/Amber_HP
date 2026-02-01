@@ -24,9 +24,9 @@ export default function HeroSection() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-deep-forest-green mb-8 md:mb-10"
         >
-          <span className="whitespace-nowrap">暮らしを支える人を</span>
+          <span className="whitespace-nowrap">暮らしを支える人に、</span>
           <br />
-          <span className="whitespace-nowrap">テクノロジーで支える</span>
+          <span className="whitespace-nowrap">最新のテクノロジーを。</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
@@ -34,8 +34,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="text-base md:text-lg lg:text-xl text-deep-forest-green leading-relaxed max-w-2xl mx-auto mb-10"
         >
-          予約対応、見積作成、請求処理に1日3時間もかかっていませんか？
-          AIで業務を自動化し、本来の仕事に集中できる環境を実現します。
+          AI顧問サービスとVertical SaaSで、現場の非効率をなくし、<br className="hidden md:block" />
+          働く人の時間と収益を取り戻します。
         </motion.p>
 
         {/* CTA Buttons */}

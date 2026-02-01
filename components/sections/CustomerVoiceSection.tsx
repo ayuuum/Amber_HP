@@ -8,12 +8,12 @@ const testimonials = [
   {
     text: '「現場の非効率な作業が大幅に減り、本来注力すべき業務に集中できるようになりました。AI顧問サービスの提案が的確で、すぐに効果を実感できました。」',
     author: '- ホームサービス事業者様',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80&auto=format&fit=crop',
+    image: '/images/field-cleaning.png',
   },
   {
-    text: '「予約管理から請求まで、すべてが一つのシステムで完結するようになり、業務効率が格段に向上しました。LINE対応も自動化され、顧客満足度も上がっています。」',
+    text: '「予約管理から施工、請求まで、すべてが一つのシステムで完結するようになり、業務効率が格段に向上しました。LINE対応も自動化され、顧客満足度も上がっています。」',
     author: '- ホームサービス事業者様',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format&fit=crop',
+    image: '/images/field-repair.png',
   },
 ]
 
@@ -45,8 +45,8 @@ export default function CustomerVoiceSection() {
   }
 
   return (
-    <section 
-      id="customer-voice" 
+    <section
+      id="customer-voice"
       ref={sectionRef}
       className="py-24 px-6 bg-white/30"
     >
@@ -58,7 +58,7 @@ export default function CustomerVoiceSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-            導入実績
+            支援事例・お客様の声
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -80,8 +80,8 @@ export default function CustomerVoiceSection() {
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{ 
-                scale: 1.02, 
+              whileHover={{
+                scale: 1.02,
                 y: -6,
                 transition: { duration: 0.25 }
               }}

@@ -26,7 +26,7 @@ export default function VerticalSaaSSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-            ホームサービス業のための<br />AIエージェント
+            ホームサービス業のための<br />AI業務OS
           </h2>
           <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-4">
             予約管理、顧客管理、請求処理を一元化。ホームサービス事業者の業務を包括的にサポートします。

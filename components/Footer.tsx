@@ -42,7 +42,7 @@ export default function Footer() {
           <motion.div variants={itemVariants}>
             <h3 className="text-xl font-bold mb-4">株式会社Amber</h3>
             <p className="text-white text-sm">
-              暮らしを支える人に最新のテクノロジーを提供する。
+              暮らしを支える人に、<br />最新のテクノロジーを。
             </p>
           </motion.div>
 
@@ -107,6 +107,13 @@ export default function Footer() {
                 <motion.div whileHover={{ x: 5 }}>
                   <Link href="#contact" className="hover:text-white transition-colors block">
                     お問い合わせ
+                  </Link>
+                </motion.div>
+              </li>
+              <li>
+                <motion.div whileHover={{ x: 5 }}>
+                  <Link href="/recruit" className="hover:text-white transition-colors block">
+                    採用情報
                   </Link>
                 </motion.div>
               </li>

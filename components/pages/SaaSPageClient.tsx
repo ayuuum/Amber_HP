@@ -82,14 +82,13 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     className="text-center mb-16"
                 >
                     <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-                        ホームサービス業のための<br />AIエージェント
+                        ホームサービス業のための<br />AI業務OS
                     </h1>
-                    <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-4">
-                        「現場の仕事」と「事務作業」を一つの流れに。
+                    <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-4 font-bold">
+                        「現場の仕事」と「事務作業」を、AIで一つの滑らかな流れに。
                     </p>
                     <p className="text-lg text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-6">
-                        <br />
-                        ホームサービス事業者の業務を包括的にサポートします。
+                        ホームサービス事業者の運営を、インフラから劇的に進化させます。
                     </p>
                     <div>
                         <Link
@@ -189,8 +188,8 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                 >
                     <div className="relative aspect-video rounded-sm overflow-hidden">
                         <Image
-                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop"
-                            alt="デジタル業務管理システム"
+                            src="/images/saas-field-management.png"
+                            alt="AI業務OSによる現場管理イメージ"
                             fill
                             className="object-cover"
                         />

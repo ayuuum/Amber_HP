@@ -246,7 +246,7 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                     className="mb-24"
                 >
                     <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
-                        Amberの研修の特徴
+                        実務に直結する<br className="md:hidden" />生成AI研修の4つの特徴
                     </h2>
                     <div className="grid md:grid-cols-2 gap-8">
                         {features.map((feature, index) => (
@@ -275,8 +275,15 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                     className="mb-16"
                 >
                     <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
-                        主な研修内容
+                        実務で即戦力となる<br className="md:hidden" />研修カリキュラム
                     </h2>
+
+                    <div className="mb-12 text-center max-w-3xl mx-auto">
+                        <p className="text-deep-forest-green opacity-80 leading-relaxed">
+                            ChatGPT、Claude 3.5 Sonnet、Google Gemini、Microsoft Copilotなど、<br />
+                            最新のAIツールを実務にどう組み込むかに焦点を当てたカリキュラムをご提供します。
+                        </p>
+                    </div>
 
                     <motion.div
                         variants={containerVariants}

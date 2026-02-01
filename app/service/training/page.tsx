@@ -5,9 +5,9 @@ import Footer from '@/components/Footer'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: '法人向け生成AI研修 | 助成金対応・ChatGPT実務定着リスキリング',
-    description: '助成金活用で最大75%OFF。実務直結の法人向け生成AI研修。明日から仕事で使えるスキルを習得。ChatGPTの基礎から高度なプロンプト活用まで。',
-    keywords: ['法人向け生成AI研修', 'ChatGPT研修', '生成AI活用', 'リスキリング', '人材開発支援助成金', '社員教育'],
+    title: '法人向け生成AI研修・DX人材育成 | 助成金対応・ChatGPT/Claude実務定着',
+    description: '助成金活用で最大75%OFF。ChatGPT、Claude、Gemini、Copilotを網羅した実務直結の法人向け生成AI研修。リスキリングから業務自動化、プロンプトエンジニアリングまで、明日から使えるスキルを習得。',
+    keywords: ['法人向け生成AI研修', 'ChatGPT研修', 'Claude研修', 'Gemini活用', 'リスキリング', 'DX人材育成', '人材開発支援助成金', 'プロンプトエンジニアリング', '業務効率化'],
 }
 
 export default function TrainingPage() {
@@ -30,6 +30,21 @@ export default function TrainingPage() {
                 'serviceType': 'AI Training',
             },
             {
+                '@type': 'Course',
+                'name': '法人向け生成AI実務定着研修',
+                'description': 'ChatGPT、Claude、Geminiなどの生成AIを実務に定着させるための実践的プログラム。',
+                'provider': {
+                    '@type': 'Organization',
+                    'name': '株式会社Amber',
+                    'url': siteUrl,
+                },
+                'hasCourseInstance': {
+                    '@type': 'CourseInstance',
+                    'courseMode': 'On-site or Online',
+                    'courseWorkload': 'PT6H'
+                }
+            },
+            {
                 '@type': 'FAQPage',
                 'mainEntity': [
                     {
@@ -37,7 +52,15 @@ export default function TrainingPage() {
                         'name': '助成金の受給対象になりますか？',
                         'acceptedAnswer': {
                             '@type': 'Answer',
-                            'text': '雇用保険を納めている正社員がいらっしゃる企業様であれば、「人材開発支援助成金」の対象となる可能性が高いです。具体的な受給要件については、無料相談にて診断・ご案内いたします。'
+                            'text': '雇用保険を納めている正社員がいらっしゃる企業様であれば、「人材開発支援助成金（リスキリング支援コース）」の対象となる可能性が高いです。最大75%の助成が受けられます。'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        'name': 'ChatGPT以外のAIツールも学べますか？',
+                        'acceptedAnswer': {
+                            '@type': 'Answer',
+                            'text': 'はい、可能です。ChatGPTに加え、最新のClaude 3.5 SonnetやGoogle Gemini、Microsoft Copilotなど、貴社の利用環境や目的に合わせた最適なツールの活用方法を指導します。'
                         }
                     },
                     {
@@ -45,23 +68,7 @@ export default function TrainingPage() {
                         'name': '研修の時間はどのくらいですか？',
                         'acceptedAnswer': {
                             '@type': 'Answer',
-                            'text': '標準的なプログラムは、1回3時間×2回の計6時間、あるいは1日（6時間）完結型ですが、貴社の課題や参加者のスキルレベルに合わせて1時間から数日間のプログラムまで調整可能です。'
-                        }
-                    },
-                    {
-                        '@type': 'Question',
-                        'name': '全くパソコンを使わない部署への研修も可能ですか？',
-                        'acceptedAnswer': {
-                            '@type': 'Answer',
-                            'text': 'はい。現場作業中心の企業様でも、報告書作成や顧客対応の効率化など、スマートフォンからでも使えるAI活用法を提案可能です。'
-                        }
-                    },
-                    {
-                        '@type': 'Question',
-                        'name': 'プロンプト（指示文）が難しそうですが、使いこなせますか？',
-                        'acceptedAnswer': {
-                            '@type': 'Answer',
-                            'text': 'ご安心ください。「プロンプトを作る技術」を学ぶのではなく、あらかじめ用意された高品質な「テンプレート」を選んで使う方法から指導するため、誰でも即座に成果を出せます。'
+                            'text': '標準的なプログラムは、1回3時間×2回の計6時間ですが、最短1時間の講演から数日間のワークショップまで柔軟にカスタマイズ可能です。'
                         }
                     }
                 ]

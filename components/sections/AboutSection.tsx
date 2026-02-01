@@ -82,8 +82,7 @@ export default function AboutSection() {
               className="space-y-6 text-base md:text-lg leading-relaxed text-deep-forest-green"
             >
               <motion.p variants={itemVariants} className="font-bold text-xl mb-4">
-                予約対応、見積作成、請求処理、報告業務。<br />
-                本来、人がやらなくていい仕事に1日3時間も費やしていませんか？
+                「現場の努力が、正当に報われる世界へ」
               </motion.p>
 
               <motion.p variants={itemVariants}>
@@ -92,9 +91,12 @@ export default function AboutSection() {
               </motion.p>
 
               <motion.p variants={itemVariants}>
+                日々の業務に追われ、非効率な作業に時間を奪われ、本来注力すべきことに集中できない。そんな現場の課題を、テクノロジーの力で解決します。
+              </motion.p>
+
+              <motion.p variants={itemVariants}>
                 Amberは、AI顧問サービスとホームサービス事業者向けVertical SaaSを通じて、
                 現場の非効率をなくし、働く人の時間と収益を取り戻すことを使命としています。
-                導入企業の平均で<span className="font-semibold text-deep-forest-green">業務時間50%削減、売上30%向上</span>を実現しています。
               </motion.p>
 
               <motion.p

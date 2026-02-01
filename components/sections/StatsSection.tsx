@@ -70,10 +70,10 @@ export default function StatsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            導入実績
+            数値で見る導入成果
           </h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed opacity-90">
-            数値で見るAmberの実績
+            AI導入によって実現した、確かな変化。
           </p>
         </motion.div>
 
