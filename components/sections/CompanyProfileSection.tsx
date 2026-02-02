@@ -60,7 +60,7 @@ export default function CompanyProfileSection() {
                                     className="w-full md:w-48 h-64 relative rounded-sm overflow-hidden flex-shrink-0 shadow-lg"
                                 >
                                     <Image
-                                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+                                        src="/images/matsui-ayumu.jpg"
                                         alt="松井 歩武"
                                         fill
                                         className="object-cover"
