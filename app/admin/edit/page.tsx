@@ -27,33 +27,33 @@ export default function EditArticlePage() {
   const [previewHtml, setPreviewHtml] = useState('')
 
   useEffect(() => {
+    const fetchArticle = async () => {
+      setIsLoading(true)
+      try {
+        const response = await fetch(`/api/admin/articles/${slug}?category=${category}`)
+        const data = await response.json()
+
+        if (data.article) {
+          setFormData({
+            title: data.article.title,
+            description: data.article.description,
+            date: data.article.date,
+            category: data.article.category,
+            keywords: data.article.keywords || [],
+            content: data.article.content,
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching article:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
     if (slug && category) {
       fetchArticle()
     }
   }, [slug, category])
-
-  const fetchArticle = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetch(`/api/admin/articles/${slug}?category=${category}`)
-      const data = await response.json()
-
-      if (data.article) {
-        setFormData({
-          title: data.article.title,
-          description: data.article.description,
-          date: data.article.date,
-          category: data.article.category,
-          keywords: data.article.keywords || [],
-          content: data.article.content,
-        })
-      }
-    } catch (error) {
-      console.error('Error fetching article:', error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({

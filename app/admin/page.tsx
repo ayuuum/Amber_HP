@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Edit, Trash2, Eye, Plus } from 'lucide-react'
@@ -19,11 +19,7 @@ export default function AdminPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const router = useRouter()
 
-  useEffect(() => {
-    fetchArticles()
-  }, [selectedCategory])
-
-  const fetchArticles = async () => {
+  const fetchArticles = useCallback(async () => {
     setIsLoading(true)
     try {
       const categoryParam = selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''
@@ -35,7 +31,11 @@ export default function AdminPage() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [selectedCategory])
+
+  useEffect(() => {
+    fetchArticles()
+  }, [fetchArticles])
 
   const handleDelete = async (slug: string, category: string) => {
     if (!confirm('この記事を削除しますか？')) return
@@ -86,11 +86,10 @@ export default function AdminPage() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-sm transition-colors ${
-                selectedCategory === cat
+              className={`px-4 py-2 rounded-sm transition-colors ${selectedCategory === cat
                   ? 'bg-deep-forest-green text-white'
                   : 'bg-white/30 text-deep-forest-green hover:bg-white/50'
-              }`}
+                }`}
             >
               {cat === 'all' ? 'すべて' : getCategoryName(cat)}
             </button>

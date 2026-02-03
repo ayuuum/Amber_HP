@@ -1,46 +1,31 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 type MenuItem = {
   label: string
-  href?: string
-  children?: { label: string; href: string }[]
+  href: string
 }
 
 const menuItems: MenuItem[] = [
   {
     label: '私たちについて',
-    children: [
-      { label: 'ミッション・ビジョン', href: '/#about' },
-      { label: 'Amberが選ばれる理由', href: '/#why-amber' },
-    ],
+    href: '/#about',
   },
   {
     label: 'サービス',
-    children: [
-      { label: 'AI顧問サービス', href: '/service/consulting' },
-      { label: '法人向け生成AI研修', href: '/service/training' },
-      { label: 'ホームサービス向けVertical SaaS', href: '/service/saas' },
-    ],
+    href: '/#service',
   },
   {
     label: 'ニュース',
-    children: [
-      { label: 'AI顧問・活用事例', href: '/service/consulting/blog' },
-      { label: '研修・セミナー情報', href: '/service/training/blog' },
-      { label: 'SaaSアップデート', href: '/service/saas/blog' },
-    ],
+    href: '/#blog',
   },
   {
     label: '会社情報',
-    children: [
-      { label: '会社概要', href: '/company' },
-      { label: '採用情報', href: '/recruit' },
-    ],
+    href: '/company',
   },
 ]
 
@@ -48,16 +33,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
-  // Mobile accordion state
-  const [expandedMobileIndex, setExpandedMobileIndex] = useState<number | null>(null)
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
-    setExpandedMobileIndex(null) // Reset accordion on close
-  }
-
-  const toggleMobileAccordion = (index: number) => {
-    setExpandedMobileIndex(expandedMobileIndex === index ? null : index)
   }
 
   return (
@@ -80,44 +57,12 @@ export default function Header() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                {item.children ? (
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-white transition-colors rounded-sm">
-                    {item.label}
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${hoveredIndex === index ? 'rotate-180' : ''}`} />
-                  </button>
-                ) : (
-                  <Link
-                    href={item.href || '#'}
-                    className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-white transition-colors rounded-sm"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-
-                {/* Desktop Dropdown */}
-                <AnimatePresence>
-                  {hoveredIndex === index && item.children && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute top-full left-0 mt-1 w-64 bg-deep-forest-green border border-white/20 rounded-sm shadow-xl overflow-hidden"
-                    >
-                      <div className="py-2">
-                        {item.children.map((child, childIndex) => (
-                          <Link
-                            key={childIndex}
-                            href={child.href}
-                            className="block px-4 py-3 text-sm text-white hover:bg-white/10 hover:text-white transition-colors"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-white transition-colors rounded-sm"
+                >
+                  {item.label}
+                </Link>
               </div>
             ))}
           </nav>
@@ -169,52 +114,13 @@ export default function Header() {
                 <nav className="flex flex-col space-y-2">
                   {menuItems.map((item, index) => (
                     <div key={index} className="border-b border-white/20 last:border-0 pb-2 last:pb-0">
-                      {item.children ? (
-                        <div>
-                          <button
-                            onClick={() => toggleMobileAccordion(index)}
-                            className="flex items-center justify-between w-full py-3 text-left text-white font-medium"
-                          >
-                            {item.label}
-                            <ChevronDown
-                              className={`w-5 h-5 transition-transform duration-300 ${expandedMobileIndex === index ? 'rotate-180' : ''
-                                }`}
-                            />
-                          </button>
-                          <AnimatePresence>
-                            {expandedMobileIndex === index && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                className="overflow-hidden bg-white/10 rounded-sm"
-                              >
-                                <div className="flex flex-col py-2 px-4 space-y-2">
-                                  {item.children.map((child, childIndex) => (
-                                    <Link
-                                      key={childIndex}
-                                      href={child.href}
-                                      className="block py-2 text-sm text-white/80 hover:text-white"
-                                      onClick={toggleMobileMenu}
-                                    >
-                                      {child.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      ) : (
-                        <Link
-                          href={item.href || '#'}
-                          className="block py-3 text-white font-medium hover:text-white"
-                          onClick={toggleMobileMenu}
-                        >
-                          {item.label}
-                        </Link>
-                      )}
+                      <Link
+                        href={item.href}
+                        className="block py-3 text-white font-medium hover:text-white"
+                        onClick={toggleMobileMenu}
+                      >
+                        {item.label}
+                      </Link>
                     </div>
                   ))}
                 </nav>

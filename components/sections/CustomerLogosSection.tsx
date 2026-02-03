@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Building2, Users, TrendingUp } from 'lucide-react'
+import { CountUp } from '@/components/ui/count-up'
 
 const highlights = [
   {
@@ -89,8 +90,11 @@ export default function CustomerLogosSection() {
                 className="flex flex-col items-center justify-center p-8 bg-white rounded-sm border border-deep-forest-green/30 hover:border-deep-forest-green hover:shadow-lg transition-all"
               >
                 <Icon className="w-10 h-10 text-deep-forest-green mb-4" />
-                <span className="text-4xl md:text-5xl font-bold text-deep-forest-green mb-2">
-                  {item.number}
+                <span className="text-4xl md:text-5xl font-bold text-deep-forest-green mb-2 block">
+                  <CountUp
+                    to={parseInt(item.number.replace(/[^0-9]/g, ''))}
+                    suffix={item.number.replace(/[0-9]/g, '')}
+                  />
                 </span>
                 <span className="text-deep-forest-green/80 font-medium">
                   {item.label}

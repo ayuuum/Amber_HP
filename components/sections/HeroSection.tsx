@@ -1,10 +1,30 @@
 'use client'
 
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { GenerativeMountainScene } from '../ui/mountain-scene'
 
 export default function HeroSection() {
+  const [titleNumber, setTitleNumber] = useState(0)
+  const titles = useMemo(
+    () => ['最新の', '現場で役立つ', '導入しやすい', '成果につながる', '時代が求める'],
+    []
+  )
+
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setTitleNumber((prev) => (prev === titles.length - 1 ? 0 : prev + 1))
+    }, 2500)
+    return () => clearTimeout(timeoutId)
+  }, [titleNumber, titles])
+
   return (
     <section className="relative min-h-screen pt-40 md:pt-48 lg:pt-56 pb-20 md:pb-24 px-6 overflow-hidden flex items-center">
       <div className="absolute inset-0 z-0">
@@ -20,13 +40,31 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-6xl mx-auto text-center w-full">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-deep-forest-green mb-8 md:mb-10"
         >
-          <span className="whitespace-nowrap">暮らしを支える人に、</span>
-          <br />
-          <span className="whitespace-nowrap">最新のテクノロジーを。</span>
+          <span className="block mb-4 md:mb-6 text-2xl md:text-4xl lg:text-5xl font-medium opacity-80 font-sans">暮らしを支える人に、</span>
+          <span className="flex flex-wrap items-center justify-center gap-x-2 md:gap-x-4">
+            <span className="relative inline-flex items-center justify-center h-[1.2em] md:h-[1.4em] min-w-[3.5em] md:min-w-[6.5em] overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={titleNumber}
+                  className="whitespace-nowrap"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                >
+                  {titles[titleNumber]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+            <span className="whitespace-nowrap">テクノロジーを。</span>
+          </span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
@@ -46,23 +84,31 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link href="#about">
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green/90 transition-colors inline-flex items-center gap-2 font-semibold shadow-lg"
+              className="bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green/90 transition-colors inline-flex items-center gap-2 font-semibold shadow-lg relative overflow-hidden group cursor-pointer"
             >
-              サービスを見る
-              <span>→</span>
-            </motion.button>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                initial={{ x: '-150%' }}
+                whileHover={{ x: '150%' }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              />
+              <span className="relative z-10 flex items-center gap-2">
+                サービスを見る
+                <span>→</span>
+              </span>
+            </motion.div>
           </Link>
           <Link href="#contact">
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-4 rounded-sm hover:bg-deep-forest-green hover:text-white transition-colors inline-flex items-center gap-2 font-semibold"
+              className="border-2 border-deep-forest-green text-deep-forest-green px-8 py-4 rounded-sm hover:bg-deep-forest-green hover:text-white transition-colors inline-flex items-center gap-2 font-semibold cursor-pointer"
             >
               無料で相談する
-            </motion.button>
+            </motion.div>
           </Link>
         </motion.div>
       </div>

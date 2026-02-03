@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { CountUp } from '@/components/ui/count-up'
 
 const stats = [
   {
@@ -96,8 +97,11 @@ export default function StatsSection() {
             >
               <div className="mb-4">
                 <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-white block">
-                  {stat.number}
-                  <span className="text-2xl md:text-3xl">{stat.suffix}</span>
+                  <CountUp
+                    to={parseInt(stat.number)}
+                    suffix={stat.suffix}
+                    className="inline-block"
+                  />
                 </span>
               </div>
               <h3 className="text-lg md:text-xl font-bold mb-2">{stat.label}</h3>

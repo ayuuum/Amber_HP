@@ -1,21 +1,24 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
 import { useRef } from 'react'
+import { HeartHandshake, TrendingUp, ShieldCheck } from 'lucide-react'
 
 const strengths = [
   {
     title: '徹底した「現場視点」',
     description: '実際に現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。実務の最前線で本当に機能する解決策を提案します。',
+    icon: HeartHandshake,
   },
   {
     title: '長期的な事業成長への伴走',
     description: 'VC・コンサル背景を持つメンバーが、一過性の導入ではなく、長期的な経営インパクトを見据えた支援を行います。',
+    icon: TrendingUp,
   },
   {
     title: 'リスクを抑えた段階的導入',
     description: 'AI顧問サービスから始まり、現場の習熟度に応じてSaaSへと移行。無理のないペースでのDX推進をサポートします。',
+    icon: ShieldCheck,
   },
 ]
 
@@ -34,44 +37,24 @@ export default function WhyAmberSection() {
   }
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 32, scale: 0.98, rotateX: 0, rotateY: 0, rotateZ: 0 },
+    hidden: { opacity: 0, y: 32, scale: 0.98 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      rotateX: 0,
-      rotateY: 0,
-      rotateZ: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       },
     },
   }
 
-  const images = [
-    '/images/why-field-experience.png',
-    '/images/why-long-term-growth.png',
-    '/images/why-gradual-adoption.png',
-  ]
-
   return (
     <section
-      id="why"
+      id="why-amber"
       ref={sectionRef}
       className="py-24 px-6 bg-white/20 relative overflow-hidden"
     >
-      {/* 背景装飾 */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/4 h-full opacity-5 hidden lg:block">
-        <Image
-          src="/images/why-field-experience.png"
-          alt="現場経験の装飾背景"
-          fill
-          className="object-cover"
-          aria-hidden="true"
-        />
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -96,37 +79,31 @@ export default function WhyAmberSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid md:grid-cols-3 gap-8"
         >
-          {strengths.map((strength, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{
-                scale: 1.02,
-                y: -6,
-                rotateX: 0,
-                rotateY: 0,
-                rotateZ: 0,
-                transition: { duration: 0.25 }
-              }}
-              style={{ transformStyle: 'flat' }}
-              className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-lg overflow-hidden"
-            >
-              <div className="relative h-48 mb-6 rounded-sm overflow-hidden">
-                <Image
-                  src={images[index]}
-                  alt={strength.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-deep-forest-green mb-4">
-                {strength.title}
-              </h3>
-              <p className="text-deep-forest-green leading-relaxed">
-                {strength.description}
-              </p>
-            </motion.div>
-          ))}
+          {strengths.map((strength, index) => {
+            const Icon = strength.icon
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{
+                  scale: 1.02,
+                  y: -6,
+                  transition: { duration: 0.25 }
+                }}
+                className="bg-white p-8 rounded-sm border border-deep-forest-green/20 shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-full bg-deep-forest-green/5 text-deep-forest-green">
+                  <Icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-deep-forest-green mb-4">
+                  {strength.title}
+                </h3>
+                <p className="text-deep-forest-green/80 leading-relaxed">
+                  {strength.description}
+                </p>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>

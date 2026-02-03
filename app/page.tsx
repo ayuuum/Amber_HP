@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 import HeroSection from '@/components/sections/HeroSection'
 import AboutSection from '@/components/sections/AboutSection'
-import AIConsultingSection from '@/components/sections/AIConsultingSection'
-import AITrainingSection from '@/components/sections/AITrainingSection'
-import VerticalSaaSSection from '@/components/sections/VerticalSaaSSection'
+import ServiceSection from '@/components/sections/ServiceSection'
 import WhyAmberSection from '@/components/sections/WhyAmberSection'
 import StatsSection from '@/components/sections/StatsSection'
 import CustomerLogosSection from '@/components/sections/CustomerLogosSection'
@@ -58,9 +56,7 @@ export default function Home() {
         <Header />
         <HeroSection />
         <AboutSection />
-        <AIConsultingSection />
-        <AITrainingSection />
-        <VerticalSaaSSection />
+        <ServiceSection />
         <WhyAmberSection />
         <StatsSection />
         <CustomerLogosSection />
