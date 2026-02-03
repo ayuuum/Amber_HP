@@ -123,7 +123,7 @@ npm run dev
 ---
 title: "記事タイトル"
 description: "記事の説明"
-date: "2024-01-15"
+date: "2026-01-15"
 category: "consulting"  # consulting, training, saas のいずれか
 keywords: ["キーワード1", "キーワード2"]
 ---
@@ -148,5 +148,5 @@ keywords: ["キーワード1", "キーワード2"]
 
 ## ライセンス
 
-© 2024 株式会社Amber. All rights reserved.
+© 2026 株式会社Amber. All rights reserved.
 

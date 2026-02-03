@@ -114,6 +114,10 @@ export default function CompanyProfileSection() {
                                 <dd className="sm:col-span-2 text-deep-forest-green">松井 歩武</dd>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-deep-forest-green/30 pb-4">
+                                <dt className="font-bold text-deep-forest-green">設立</dt>
+                                <dd className="sm:col-span-2 text-deep-forest-green">2026年1月</dd>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-deep-forest-green/30 pb-4">
                                 <dt className="font-bold text-deep-forest-green">所在地</dt>
                                 <dd className="sm:col-span-2 text-deep-forest-green">
                                     〒105-0001<br />

@@ -1,7 +1,7 @@
 ---
 title: "ChatGPTを業務で活用するための研修内容と効果"
 description: "法人向けChatGPT研修の内容と、実際の業務での活用方法を解説します。"
-date: "2024-01-20"
+date: "2026-01-20"
 category: "training"
 keywords: ["ChatGPT研修", "生成AI研修", "法人研修", "リスキリング"]
 ---

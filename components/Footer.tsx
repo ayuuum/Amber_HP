@@ -147,7 +147,7 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="border-t border-white/20 pt-8 text-center text-sm text-white"
         >
-          <p>© 2024 株式会社Amber. All rights reserved.</p>
+          <p>© 2026 株式会社Amber. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
