@@ -98,8 +98,8 @@ export default function TermsPage() {
 
             <section>
               <p className="text-sm text-deep-forest-green/70 mt-8">
-                制定日: 2024年1月1日<br />
-                最終更新日: 2024年1月1日
+                制定日: 2026年1月1日<br />
+                最終更新日: 2026年1月1日
               </p>
             </section>
           </div>
