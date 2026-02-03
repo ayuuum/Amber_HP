@@ -118,6 +118,18 @@ export default function CompanyProfileSection() {
                                 <dd className="sm:col-span-2 text-deep-forest-green">
                                     〒105-0001<br />
                                     東京都港区虎ノ門３丁目１−１ 2階
+                                    <div className="mt-4 rounded-sm overflow-hidden border border-deep-forest-green/20 shadow-sm aspect-video w-full">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.272102022718!2d139.74549487532356!3d35.66782333118949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b907611ec51%3A0xc3124847e30773d3!2z44CSMTA1LTAwMDEg5p2x5Lqs6YO95riv5Yy66JmO44OO6ZaA77yT5LiB55uu77yR4oiS77ke!5e0!3m2!1sja!2sjp!4v1714710000000!5m2!1sja!2sjp"
+                                            width="100%"
+                                            height="100%"
+                                            style={{ border: 0 }}
+                                            allowFullScreen
+                                            loading="lazy"
+                                            referrerPolicy="no-referrer-when-downgrade"
+                                            title="株式会社Amber 所在地"
+                                        ></iframe>
+                                    </div>
                                 </dd>
                             </div>
                         </motion.dl>
