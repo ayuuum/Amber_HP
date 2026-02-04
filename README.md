@@ -25,9 +25,12 @@ npm install
 ```env
 NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN=your-service-domain
 NEXT_PUBLIC_MICROCMS_API_KEY=your-api-key
-NEXT_PUBLIC_SITE_URL=https://amber-inc.com
+NEXT_PUBLIC_SITE_URL=https://www.amber-inc.com
 ADMIN_PASSWORD=your-admin-password
+CONTACT_FORM_WEBHOOK_URL=https://script.google.com/macros/s/xxxxx/exec
 ```
+
+**お問い合わせフォーム（Google Sheets + メール通知）** を使う場合は、`CONTACT_FORM_WEBHOOK_URL` に Google Apps Script の Web アプリ URL を設定してください。セットアップ手順は [docs/contact-form-gas-setup.md](docs/contact-form-gas-setup.md) を参照してください。
 
 ### 3. 開発サーバーの起動
 
@@ -47,20 +50,16 @@ npm run dev
    - `NEXT_PUBLIC_MICROCMS_API_KEY`
    - `NEXT_PUBLIC_SITE_URL`
    - `ADMIN_PASSWORD`（管理画面のパスワード）
+   - `CONTACT_FORM_WEBHOOK_URL`（お問い合わせフォーム用・[セットアップ手順](docs/contact-form-gas-setup.md)参照）
 3. デプロイを実行
 
 ## microCMSの設定
 
-### 必要なAPIエンドポイント
+ブログ・コンテンツ用の API エンドポイントを設定してください。
 
-1. **contact** - お問い合わせフォーム用
-   - フィールド：
-     - name (テキスト)
-     - company (テキスト)
-     - email (テキスト)
-     - phone (テキスト)
-     - inquiryType (テキスト)
-     - message (テキスト)
+## お問い合わせフォーム（Google Sheets + メール通知）
+
+お問い合わせは **Google Apps Script** で Google スプレッドシートに保存し、メール通知を受け取る構成です。無料で利用できます。手順は [docs/contact-form-gas-setup.md](docs/contact-form-gas-setup.md) を参照してください。
 
 ## プロジェクト構造
 

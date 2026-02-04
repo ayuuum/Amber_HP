@@ -52,11 +52,11 @@ export default function AboutSection() {
           className="space-y-6 text-base md:text-lg leading-relaxed text-deep-forest-green"
         >
           <motion.p variants={itemVariants} className="font-bold text-2xl mb-8">
-            「現場の努力が、正当に報われる世界へ」
+            「暮らしを支える人に、テクノロジーを。」
           </motion.p>
 
           <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
-            私たちは、現場で働く人々の努力が正当に評価され、報われる世界を目指しています。
+            私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
             実際に現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。
           </motion.p>
 

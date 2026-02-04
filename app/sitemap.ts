@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/markdown'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteUrl

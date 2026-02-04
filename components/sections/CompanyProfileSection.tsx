@@ -34,7 +34,7 @@ export default function CompanyProfileSection() {
                         「暮らしを支える人に、<br className="md:hidden" />最新のテクノロジーを。」
                     </p>
                     <p className="mt-6 text-deep-forest-green/80 leading-relaxed">
-                        私たちは、現場で働く人々の努力が正当に評価され、報われる世界を目指しています。
+                        私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
                         日々の業務上の非効率をテクノロジーで解消し、働く人が本来の価値を発揮できる環境を創造します。
                     </p>
                 </motion.div>

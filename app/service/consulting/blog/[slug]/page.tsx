@@ -6,7 +6,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BlogContent from '@/components/BlogContent'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 type Props = {
   params: { slug: string }

@@ -15,21 +15,21 @@ import FloatingCTA from '@/components/FloatingCTA'
 import StructuredData from '@/components/StructuredData'
 import { getAllPosts } from '@/lib/markdown'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: '株式会社Amber | 現場の努力が、ちゃんと報われる世界へ',
+  title: '株式会社Amber | 暮らしを支える人に、テクノロジーを。',
   description: 'AI顧問サービスとホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
   keywords: ['AI顧問サービス', '生成AI研修', 'Vertical SaaS', 'ホームサービス', '業務効率化', '中小企業', 'AI導入'],
   openGraph: {
-    title: '株式会社Amber | 現場の努力が、ちゃんと報われる世界へ',
+    title: '株式会社Amber | 暮らしを支える人に、テクノロジーを。',
     description: 'AI顧問サービスとホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
     url: siteUrl,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '株式会社Amber | 現場の努力が、ちゃんと報われる世界へ',
+    title: '株式会社Amber | 暮らしを支える人に、テクノロジーを。',
     description: 'AI顧問サービスとホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
   },
   alternates: {

@@ -11,7 +11,7 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

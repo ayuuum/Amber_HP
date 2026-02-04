@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
   title: 'プライバシーポリシー | 株式会社Amber',

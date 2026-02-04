@@ -4,7 +4,7 @@ import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amber-inc.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
   title: 'ブログ | 法人向け生成AI研修 | 株式会社Amber',

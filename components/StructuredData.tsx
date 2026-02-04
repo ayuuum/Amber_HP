@@ -4,8 +4,8 @@ export default function StructuredData() {
     '@type': 'Organization',
     name: '株式会社Amber',
     alternateName: 'Amber Inc.',
-    url: 'https://amber-inc.com',
-    logo: 'https://amber-inc.com/og-image.jpg',
+    url: 'https://www.amber-inc.com',
+    logo: 'https://www.amber-inc.com/og-image.jpg',
     description: 'AI顧問サービス、中小企業向け生成AI研修、ホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
     address: {
       '@type': 'PostalAddress',
@@ -79,10 +79,10 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: '株式会社Amber',
-    url: 'https://amber-inc.com',
+    url: 'https://www.amber-inc.com',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://amber-inc.com/search?q={search_term_string}',
+      target: 'https://www.amber-inc.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   }
@@ -120,9 +120,9 @@ export default function StructuredData() {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             name: '株式会社Amber',
-            image: 'https://amber-inc.com/og-image.jpg',
-            '@id': 'https://amber-inc.com',
-            url: 'https://amber-inc.com',
+            image: 'https://www.amber-inc.com/og-image.jpg',
+            '@id': 'https://www.amber-inc.com',
+            url: 'https://www.amber-inc.com',
             telephone: '+81-80-3814-0263',
             address: {
               '@type': 'PostalAddress',

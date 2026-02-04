@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function SaaSPage() {
     const blogPosts = getAllPosts('saas')
-    const siteUrl = 'https://amber-inc.com'
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
     const jsonLd = {
         '@context': 'https://schema.org',
