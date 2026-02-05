@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'deep-forest-green': '#1F3326',
+        'deep-forest-green': '#203E36',
       },
       fontFamily: {
         sans: ['var(--font-noto-sans)', 'system-ui', 'sans-serif'],

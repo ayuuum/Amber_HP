@@ -9,7 +9,7 @@
     @apply text-deep-forest-green;
     background-color: #ffffff;
     background-image:
-      radial-gradient(circle at 85% 0%, rgba(31, 51, 38, 0.1), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(32, 62, 54, 0.1), transparent 40%),
       linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.75));
     font-family: var(--font-noto-sans), system-ui, sans-serif;
     line-height: 1.8;
