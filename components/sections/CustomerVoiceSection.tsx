@@ -1,19 +1,17 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
 import { useRef } from 'react'
+import { Quote } from 'lucide-react'
 
 const testimonials = [
   {
     text: '「現場の非効率な作業が大幅に減り、本来注力すべき業務に集中できるようになりました。AI顧問サービスの提案が的確で、すぐに効果を実感できました。」',
     author: '- ホームサービス事業者様',
-    image: '/images/field-cleaning.png',
   },
   {
     text: '「予約管理から施工、請求まで、すべてが一つのシステムで完結するようになり、業務効率が格段に向上しました。LINE対応も自動化され、顧客満足度も上がっています。」',
     author: '- ホームサービス事業者様',
-    image: '/images/field-repair.png',
   },
 ]
 
@@ -87,18 +85,17 @@ export default function CustomerVoiceSection() {
               }}
               className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-lg overflow-hidden"
             >
-              <div className="relative h-40 mb-6 rounded-sm overflow-hidden">
-                <Image
-                  src={testimonial.image}
-                  alt={`${testimonial.author}の導入事例`}
-                  fill
-                  className="object-cover opacity-80"
-                />
+              {/* 画像は削り、カードのトーンを統一（より“本物っぽい”見え方に寄せる） */}
+              <div className="mb-6 flex items-center justify-between gap-4">
+                <div className="h-10 w-10 rounded-sm bg-deep-forest-green/10 flex items-center justify-center">
+                  <Quote className="h-5 w-5 text-deep-forest-green" />
+                </div>
+                <div className="h-px flex-1 bg-deep-forest-green/20" />
               </div>
               <p className="text-deep-forest-green leading-relaxed mb-4">
                 {testimonial.text}
               </p>
-              <p className="text-sm text-white">{testimonial.author}</p>
+              <p className="text-sm text-deep-forest-green/70">{testimonial.author}</p>
             </motion.div>
           ))}
         </motion.div>

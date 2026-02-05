@@ -131,11 +131,15 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1"
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop"
+                            src="/images/consulting-meeting.png"
                             alt="業務改善と効率化"
                             fill
-                            className="object-cover"
+                            className="object-cover scale-[1.02]"
+                            priority
                         />
+                        {/* トーン統一（色味の寄せ + 文字が載っても耐える） */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-deep-forest-green/35 via-deep-forest-green/10 to-transparent" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(196,154,108,0.20),transparent_45%)]" />
                     </motion.div>
 
                     <motion.div

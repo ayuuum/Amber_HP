@@ -121,11 +121,15 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                         className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1"
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=800&q=80&auto=format&fit=crop"
+                            src="/images/training-workshop.png"
                             alt="法人向けAI研修"
                             fill
-                            className="object-cover"
+                            className="object-cover scale-[1.02]"
+                            priority
                         />
+                        {/* トーン統一 */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-deep-forest-green/35 via-deep-forest-green/10 to-transparent" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(196,154,108,0.20),transparent_45%)]" />
                         <div className="absolute top-4 left-4 bg-deep-forest-green text-white px-6 py-3 rounded-sm text-lg font-bold shadow-lg">
                             助成金活用で75%OFF
                         </div>

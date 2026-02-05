@@ -186,19 +186,14 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     whileHover={{ scale: 1.01, y: -4 }}
                     className="bg-white p-4 md:p-8 rounded-sm border border-deep-forest-green shadow-xl overflow-hidden mb-24"
                 >
-                    <div className="relative aspect-video rounded-sm overflow-hidden">
+                    <div className="relative aspect-video rounded-sm overflow-hidden bg-white">
                         <Image
-                            src="/images/saas-field-management.png"
-                            alt="AI業務OSによる現場管理イメージ"
+                            src="/images/saas-dashboard.png"
+                            alt="AI業務OSのダッシュボード画面イメージ"
                             fill
-                            className="object-cover"
+                            className="object-contain"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-deep-forest-green/20 to-transparent" />
-                        <div className="absolute bottom-4 left-4 right-4 text-center">
-                            <p className="text-white text-lg font-bold shadow-black drop-shadow-md">
-                                スマホ一つで、仕事の全体を把握
-                            </p>
-                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-deep-forest-green/10 via-transparent to-transparent" />
                     </div>
                 </motion.div>
 
