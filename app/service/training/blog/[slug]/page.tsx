@@ -5,6 +5,7 @@ import { getPostBySlug, getAllPosts, getPostContentHtml, getCategoryName, getCat
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BlogContent from '@/components/BlogContent'
+import JsonLd from '@/components/JsonLd'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
@@ -28,6 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  const imageUrl = '/og-image.jpg'
+
   return {
     title: `${post.title} | ${getCategoryName('training')} ブログ | 株式会社Amber`,
     description: post.description,
@@ -38,11 +41,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${siteUrl}${getCategoryPath('training')}/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: '株式会社Amber',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: [imageUrl],
     },
     alternates: {
       canonical: `${siteUrl}${getCategoryPath('training')}/${post.slug}`,
@@ -58,9 +70,78 @@ export default async function TrainingBlogPostPage({ params }: Props) {
   }
 
   const contentHtml = await getPostContentHtml(post.content)
+  const canonicalUrl = `${siteUrl}${getCategoryPath('training')}/${post.slug}`
+  const blogIndexUrl = `${siteUrl}${getCategoryPath('training')}`
+  const serviceUrl = `${siteUrl}/service/training`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'ホーム',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: '法人向け生成AI研修',
+            item: serviceUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: `${getCategoryName('training')} ブログ`,
+            item: blogIndexUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            name: post.title,
+            item: canonicalUrl,
+          },
+        ],
+      },
+      {
+        '@type': 'BlogPosting',
+        mainEntityOfPage: canonicalUrl,
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        dateModified: post.date,
+        inLanguage: 'ja-JP',
+        keywords: post.keywords,
+        image: [`${siteUrl}/og-image.jpg`],
+        author: {
+          '@type': 'Organization',
+          name: '株式会社Amber',
+          url: siteUrl,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: '株式会社Amber',
+          url: siteUrl,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${siteUrl}/og-image.jpg`,
+          },
+        },
+        isPartOf: {
+          '@type': 'Blog',
+          name: `${getCategoryName('training')} ブログ`,
+          url: blogIndexUrl,
+        },
+      },
+    ],
+  }
 
   return (
     <>
+      <JsonLd id="jsonld-blogposting-training" data={jsonLd} />
       <Header />
       <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">

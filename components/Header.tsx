@@ -17,7 +17,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: 'サービス',
-    href: '/#service',
+    href: '/#services',
   },
   {
     label: 'ニュース',

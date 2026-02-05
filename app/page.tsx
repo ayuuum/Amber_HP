@@ -12,8 +12,9 @@ import ContactSection from '@/components/sections/ContactSection'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
-import StructuredData from '@/components/StructuredData'
+import JsonLd from '@/components/JsonLd'
 import { getAllPosts } from '@/lib/markdown'
+import { topFaqs } from '@/lib/faqs'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
@@ -49,9 +50,22 @@ export default function Home() {
     saas: saasPosts.length > 0 ? saasPosts[0] : undefined,
   }
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: topFaqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+
   return (
     <>
-      <StructuredData />
+      <JsonLd id="jsonld-faq-top" data={faqJsonLd} />
       <main className="min-h-screen">
         <Header />
         <HeroSection />

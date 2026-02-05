@@ -1,0 +1,34 @@
+Amber Inc. (株式会社Amber)
+Site: https://www.amber-inc.com
+Language: Japanese (ja-JP)
+
+## About
+株式会社Amberは、AI顧問サービス・法人向け生成AI研修・ホームサービス事業者向けVertical SaaSを提供しています。
+現場の非効率をAIでなくし、働く人の時間と収益を取り戻すことを目指しています。
+
+## Primary URLs (canonical)
+- Home: https://www.amber-inc.com/
+- Company: https://www.amber-inc.com/company
+- AI顧問サービス: https://www.amber-inc.com/service/consulting
+- 法人向け生成AI研修: https://www.amber-inc.com/service/training
+- ホームサービス向けVertical SaaS: https://www.amber-inc.com/service/saas
+- Recruit: https://www.amber-inc.com/recruit
+
+## Blog indexes
+- AI顧問サービス Blog: https://www.amber-inc.com/service/consulting/blog
+- 法人向け生成AI研修 Blog: https://www.amber-inc.com/service/training/blog
+- ホームサービス向けVertical SaaS Blog: https://www.amber-inc.com/service/saas/blog
+
+## Featured articles
+- AI導入で中小企業の業務効率化を実現する5つの方法: https://www.amber-inc.com/service/consulting/blog/ai-donyu-syogai-bosu
+- ChatGPTを業務で活用するための研修内容と効果: https://www.amber-inc.com/service/training/blog/chatgpt-kenshuu
+- ホームサービス業の予約管理システム選び方と導入事例: https://www.amber-inc.com/service/saas/blog/yoyaku-kanri-system
+
+## Definitions (short)
+- AI顧問サービスとは: ツール導入に限らず、業務のやり方自体をAIで変えるための伴走型支援です。
+- 法人向け生成AI研修とは: 明日から実務で使える形に落とし込む、ワークショップ中心の実践研修です。
+- ホームサービス向けVertical SaaSとは: 予約管理・顧客管理・請求・LINE対応などを一気通貫で支える業務OSです。
+
+## Contact
+- https://www.amber-inc.com/#contact
+

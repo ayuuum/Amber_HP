@@ -1,154 +1,79 @@
-'use client'
-
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 
 export default function Footer() {
-  const footerRef = useRef(null)
-  const isInView = useInView(footerRef, { once: true, margin: '-50px' })
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  }
+  const year = new Date().getFullYear()
 
   return (
-    <footer ref={footerRef} className="bg-deep-forest-green text-white py-12">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8"
-        >
-          <motion.div variants={itemVariants}>
-            <h3 className="text-xl font-bold mb-4">株式会社Amber</h3>
-            <p className="text-white text-sm">
-              暮らしを支える人に、<br />最新のテクノロジーを。
+    <footer className="bg-deep-forest-green/95 text-white backdrop-blur-sm border-t border-white/20">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-10">
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-md">
+            <Link href="/" className="inline-flex items-center" aria-label="株式会社Amber">
+              <span className="text-2xl font-bold font-serif text-white tracking-wide">Amber</span>
+            </Link>
+            <p className="mt-3 text-sm text-white/80 leading-relaxed">
+              暮らしを支える人に、最新のテクノロジーを。
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
-            <h4 className="font-semibold mb-4">サービス</h4>
-            <ul className="space-y-2 text-sm text-white">
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="#ai-consulting" className="hover:text-white transition-colors block">
+          <nav aria-label="フッターナビゲーション" className="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
+            <div className="space-y-3">
+              <p className="text-white/90 font-semibold">サービス</p>
+              <ul className="space-y-2 text-white/80">
+                <li>
+                  <Link href="/service/consulting" className="hover:text-white transition-colors">
                     AI顧問サービス
                   </Link>
-                </motion.div>
-              </li>
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="#vertical-saas" className="hover:text-white transition-colors block">
-                    Vertical SaaS
+                </li>
+                <li>
+                  <Link href="/service/training" className="hover:text-white transition-colors">
+                    法人向け生成AI研修
                   </Link>
-                </motion.div>
-              </li>
-            </ul>
-          </motion.div>
+                </li>
+                <li>
+                  <Link href="/service/saas" className="hover:text-white transition-colors">
+                    ホームサービス向けVertical SaaS
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          <motion.div variants={itemVariants}>
-            <h4 className="font-semibold mb-4">ブログ</h4>
-            <ul className="space-y-2 text-sm text-white">
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="/service/consulting/blog" className="hover:text-white transition-colors block">
-                    AI顧問サービス ブログ
+            <div className="space-y-3">
+              <p className="text-white/90 font-semibold">情報</p>
+              <ul className="space-y-2 text-white/80">
+                <li>
+                  <Link href="/company" className="hover:text-white transition-colors">
+                    会社情報
                   </Link>
-                </motion.div>
-              </li>
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="/service/training/blog" className="hover:text-white transition-colors block">
-                    生成AI研修 ブログ
-                  </Link>
-                </motion.div>
-              </li>
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="/service/saas/blog" className="hover:text-white transition-colors block">
-                    Vertical SaaS ブログ
-                  </Link>
-                </motion.div>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <h4 className="font-semibold mb-4">会社情報</h4>
-            <ul className="space-y-2 text-sm text-white">
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="/company" className="hover:text-white transition-colors block">
-                    会社について
-                  </Link>
-                </motion.div>
-              </li>
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="#contact" className="hover:text-white transition-colors block">
+                </li>
+                <li>
+                  <Link href="/#contact" className="hover:text-white transition-colors">
                     お問い合わせ
                   </Link>
-                </motion.div>
-              </li>
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="/recruit" className="hover:text-white transition-colors block">
-                    採用情報
+                </li>
+                <li>
+                  <Link href="/recruit" className="hover:text-white transition-colors">
+                    採用
                   </Link>
-                </motion.div>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <h4 className="font-semibold mb-4">法的情報</h4>
-            <ul className="space-y-2 text-sm text-white">
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="/privacy" className="hover:text-white transition-colors block">
-                    プライバシーポリシー
+                </li>
+                <li>
+                  <Link href="/privacy" className="hover:text-white transition-colors">
+                    プライバシー
                   </Link>
-                </motion.div>
-              </li>
-              <li>
-                <motion.div whileHover={{ x: 5 }}>
-                  <Link href="/terms" className="hover:text-white transition-colors block">
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-white transition-colors">
                     利用規約
                   </Link>
-                </motion.div>
-              </li>
-            </ul>
-          </motion.div>
-        </motion.div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="border-t border-white/20 pt-8 text-center text-sm text-white"
-        >
-          <p>© 2026 株式会社Amber. All rights reserved.</p>
-        </motion.div>
+        <div className="mt-10 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-white/70">
+          <p>© {year} 株式会社Amber. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   )
