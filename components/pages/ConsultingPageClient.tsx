@@ -128,18 +128,16 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1"
+                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-deep-forest-green"
                     >
                         <Image
-                            src="/images/consulting-meeting.png"
-                            alt="業務改善と効率化"
+                            src="/illustrations/hero-consulting.png"
+                            alt="業務改善のプロセスを示すイラスト"
                             fill
-                            className="object-cover scale-[1.02]"
+                            className="object-contain p-8 md:p-10"
                             priority
                         />
-                        {/* トーン統一（色味の寄せ + 文字が載っても耐える） */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-deep-forest-green/35 via-deep-forest-green/10 to-transparent" />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(196,154,108,0.20),transparent_45%)]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(196,154,108,0.12),transparent_55%)]" />
                     </motion.div>
 
                     <motion.div

@@ -75,30 +75,49 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     </Link>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-center mb-16"
-                >
-                    <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-                        ホームサービス業のための<br />AI業務OS
-                    </h1>
-                    <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-4 font-bold">
-                        「現場の仕事」と「事務作業」を、AIで一つの滑らかな流れに。
-                    </p>
-                    <p className="text-lg text-deep-forest-green max-w-3xl mx-auto leading-relaxed mb-6">
-                        ホームサービス事業者の運営を、インフラから劇的に進化させます。
-                    </p>
-                    <div>
-                        <Link
-                            href="/service/saas/blog"
-                            className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors font-semibold"
-                        >
-                            関連記事を見る →
-                        </Link>
-                    </div>
-                </motion.div>
+                {/* Hero Section（他サービスと同じく、左にイラスト） */}
+                <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, x: -40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-deep-forest-green"
+                    >
+                        <Image
+                            src="/illustrations/hero-saas.png"
+                            alt="ダッシュボードとスマホを示すイラスト"
+                            fill
+                            className="object-contain p-8 md:p-10"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(196,154,108,0.12),transparent_55%)]" />
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-center lg:text-left order-1 lg:order-2"
+                    >
+                        <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
+                            ホームサービス業のための<br />AI業務OS
+                        </h1>
+                        <p className="text-xl text-deep-forest-green leading-relaxed mb-4 font-bold">
+                            「現場の仕事」と「事務作業」を、AIで一つの滑らかな流れに。
+                        </p>
+                        <p className="text-lg text-deep-forest-green leading-relaxed mb-6">
+                            ホームサービス事業者の運営を、インフラから劇的に進化させます。
+                        </p>
+                        <div>
+                            <Link
+                                href="/service/saas/blog"
+                                className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors font-semibold"
+                            >
+                                関連記事を見る →
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
 
                 {/* Target & Problems */}
                 <motion.div

@@ -118,18 +118,16 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1"
+                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-deep-forest-green"
                     >
                         <Image
-                            src="/images/training-workshop.png"
-                            alt="法人向けAI研修"
+                            src="/illustrations/hero-training.png"
+                            alt="研修と学習を示すイラスト"
                             fill
-                            className="object-cover scale-[1.02]"
+                            className="object-contain p-8 md:p-10"
                             priority
                         />
-                        {/* トーン統一 */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-deep-forest-green/35 via-deep-forest-green/10 to-transparent" />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(196,154,108,0.20),transparent_45%)]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(196,154,108,0.12),transparent_55%)]" />
                         <div className="absolute top-4 left-4 bg-deep-forest-green text-white px-6 py-3 rounded-sm text-lg font-bold shadow-lg">
                             助成金活用で75%OFF
                         </div>
