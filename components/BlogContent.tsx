@@ -61,9 +61,9 @@ export default function BlogContent({ html }: BlogContentProps) {
         className="prose prose-lg max-w-none text-deep-forest-green leading-relaxed"
         dangerouslySetInnerHTML={{ __html: html }}
         style={{
-          '--tw-prose-headings': '#1F3326',
-          '--tw-prose-links': '#1F3326',
-          '--tw-prose-bold': '#1F3326',
+          '--tw-prose-headings': '#122828',
+          '--tw-prose-links': '#122828',
+          '--tw-prose-bold': '#122828',
         } as React.CSSProperties}
       />
     )
@@ -73,9 +73,9 @@ export default function BlogContent({ html }: BlogContentProps) {
   return (
     <div
       style={{
-        '--tw-prose-headings': '#1F3326',
-        '--tw-prose-links': '#1F3326',
-        '--tw-prose-bold': '#1F3326',
+        '--tw-prose-headings': '#122828',
+        '--tw-prose-links': '#122828',
+        '--tw-prose-bold': '#122828',
       } as React.CSSProperties}
     >
       {elements.map((part, index) => {

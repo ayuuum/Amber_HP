@@ -140,7 +140,7 @@ keywords: ["キーワード1", "キーワード2"]
 ## カラーパレット
 
 - **Warm Cream**: `#F5EEDF`
-- **Deep Forest Green**: `#1F3326`
+- **Deep Forest Green**: `#122828`
 - **Espresso Brown**: `#3A2A1F`
 - **Warm Amber**: `#C49A6C`
 - **Stone Gray**: `#E3E0D6`
