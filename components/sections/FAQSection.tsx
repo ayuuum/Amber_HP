@@ -85,7 +85,7 @@ export default function FAQSection() {
           className="mt-12 text-center"
         >
           <p className="text-deep-forest-green mb-4">
-            他にご質問がございましたら、お気軽にお問い合わせください。
+            ほかに聞きたいことがあれば、問い合わせください。
           </p>
           <motion.a
             href="#contact"

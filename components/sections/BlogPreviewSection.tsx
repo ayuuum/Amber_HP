@@ -8,9 +8,9 @@ import type { BlogPost } from '@/lib/markdown'
 // クライアントコンポーネントで使用するためのヘルパー関数
 function getCategoryName(category: 'consulting' | 'training' | 'saas'): string {
   const names = {
-    consulting: 'AI顧問サービス',
+    consulting: 'AI導入支援',
     training: '法人向け生成AI研修',
-    saas: 'ホームサービス向けVertical SaaS',
+    saas: 'ホームサービス向け業務システム',
   }
   return names[category]
 }
@@ -74,7 +74,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
           </h2>
           <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
             {getCategoryName(category)}に関する記事を発信しています。<br />
-            現場で9ヶ月間働いた経験から得た実務知見をお届けします。
+            実務に役立つ知見をお届けします。
           </p>
         </motion.div>
 

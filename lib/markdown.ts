@@ -93,9 +93,9 @@ export async function getPostContentHtml(content: string): Promise<string> {
 
 export function getCategoryName(category: 'consulting' | 'training' | 'saas'): string {
   const names = {
-    consulting: 'AI顧問サービス',
+    consulting: 'AI導入支援',
     training: '法人向け生成AI研修',
-    saas: 'ホームサービス向けVertical SaaS',
+    saas: 'ホームサービス向け業務システム',
   }
   return names[category]
 }

@@ -69,11 +69,11 @@ npm run dev
 │   │   └── contact/        # お問い合わせAPI
 │   ├── service/
 │   │   ├── consulting/
-│   │   │   └── blog/       # AI顧問サービス向けブログ
+│   │   │   └── blog/       # AI導入支援向けブログ
 │   │   ├── training/
 │   │   │   └── blog/       # 生成AI研修向けブログ
 │   │   └── saas/
-│   │       └── blog/       # Vertical SaaS向けブログ
+│   │       └── blog/       # ホームサービス向け業務システム向けブログ
 │   ├── globals.css         # グローバルスタイル
 │   ├── layout.tsx          # ルートレイアウト
 │   └── page.tsx            # トップページ
@@ -83,9 +83,9 @@ npm run dev
 │   └── Footer.tsx          # フッター
 ├── content/
 │   └── blog/              # ブログ記事（Markdown）
-│       ├── consulting/    # AI顧問サービス向け記事
+│       ├── consulting/    # AI導入支援向け記事
 │       ├── training/      # 生成AI研修向け記事
-│       └── saas/          # Vertical SaaS向け記事
+│       └── saas/          # ホームサービス向け業務システム向け記事
 ├── lib/
 │   ├── microcms.ts        # microCMSクライアント
 │   └── markdown.ts        # Markdownパース用ユーティリティ
@@ -132,9 +132,9 @@ keywords: ["キーワード1", "キーワード2"]
 
 ### ブログのURL構造
 
-- AI顧問サービス向けブログ一覧: `/service/consulting/blog`
+- AI導入支援向けブログ一覧: `/service/consulting/blog`
 - 生成AI研修向けブログ一覧: `/service/training/blog`
-- Vertical SaaS向けブログ一覧: `/service/saas/blog`
+- ホームサービス向け業務システム向けブログ一覧: `/service/saas/blog`
 - 個別記事: `/service/{category}/blog/{slug}`
 
 ## カラーパレット

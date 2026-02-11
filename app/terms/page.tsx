@@ -42,9 +42,9 @@ export default function TermsPage() {
               <h2 className="text-2xl font-bold text-deep-forest-green mt-8 mb-4">第3条（サービスの内容）</h2>
               <p>本サービスは、以下の内容を提供します：</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>AI顧問サービス</li>
+                <li>AI導入支援</li>
                 <li>法人向け生成AI研修</li>
-                <li>ホームサービス向けVertical SaaS</li>
+                <li>ホームサービス向け業務システム</li>
               </ul>
             </section>
 

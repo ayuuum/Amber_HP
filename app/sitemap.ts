@@ -82,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // AI顧問サービス向けブログ記事
+  // AI導入支援向けブログ記事
   const consultingBlogPosts: MetadataRoute.Sitemap = consultingPosts.map((post) => ({
     url: `${baseUrl}/service/consulting/blog/${post.slug}`,
     lastModified: new Date(post.date),
@@ -98,7 +98,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  // Vertical SaaS向けブログ記事
+  // ホームサービス向け業務システム向けブログ記事
   const saasBlogPosts: MetadataRoute.Sitemap = saasPosts.map((post) => ({
     url: `${baseUrl}/service/saas/blog/${post.slug}`,
     lastModified: new Date(post.date),

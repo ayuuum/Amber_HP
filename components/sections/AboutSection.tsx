@@ -49,35 +49,30 @@ export default function AboutSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="space-y-6 text-base md:text-lg leading-relaxed text-deep-forest-green"
+          className="space-y-10 text-base md:text-lg leading-relaxed text-deep-forest-green"
         >
-          <motion.p variants={itemVariants} className="font-bold text-2xl mb-8">
+          <motion.p variants={itemVariants} className="text-lead font-bold text-2xl md:text-3xl mb-10">
             「暮らしを支える人に、テクノロジーを。」
           </motion.p>
 
-          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
-            私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
-            実際に現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
-            日々の業務に追われ、非効率な作業に時間を奪われ、本来注力すべきことに集中できない。そんな現場の課題を、テクノロジーの力で解決します。
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
-            Amberは、AI顧問サービスとホームサービス事業者向けVertical SaaSを通じて、
-            現場の非効率をなくし、働く人の時間と収益を取り戻すことを使命としています。
-          </motion.p>
+          {/* Amberについて */}
+          <motion.div variants={itemVariants} className="max-w-2xl mx-auto text-left border-l-4 border-deep-forest-green/30 pl-6 pr-2">
+            <h3 className="text-sm font-bold text-deep-forest-green uppercase tracking-wider mb-3">Amberについて</h3>
+            <p className="mb-2">
+              私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
+            </p>
+            <p>
+              Amberは、AI導入支援とホームサービス事業者向け業務システムを通じて、その実現を使命としています。
+            </p>
+          </motion.div>
 
           <motion.div
             variants={itemVariants}
             className="mt-12 pt-8"
           >
-            <div className="bg-white/60 p-8 rounded-sm border border-deep-forest-green/20 max-w-3xl mx-auto">
-              <p className="text-lg">
-                テクノロジーを主張しすぎず、現場の声に耳を傾け、丁寧に伴走する。
-                <br />
-                それが私たちのアプローチです。無理な営業は一切行いません。
+            <div className="bg-white/60 p-8 rounded-sm border border-deep-forest-green/20 max-w-3xl mx-auto text-left">
+              <p className="text-lead">
+                現場の声に耳を傾け、一緒に進める。営業はしません。
               </p>
             </div>
           </motion.div>

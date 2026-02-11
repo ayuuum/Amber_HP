@@ -30,12 +30,11 @@ export default function CompanyProfileSection() {
                     transition={{ duration: 0.8, delay: 0.1 }}
                     className="max-w-3xl mx-auto text-center mb-20"
                 >
-                    <p className="text-xl md:text-2xl font-serif font-bold text-deep-forest-green leading-relaxed">
+                    <p className="text-lead text-xl md:text-2xl font-serif font-bold text-deep-forest-green leading-relaxed">
                         「暮らしを支える人に、<br className="md:hidden" />最新のテクノロジーを。」
                     </p>
-                    <p className="mt-6 text-deep-forest-green/80 leading-relaxed">
-                        私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
-                        日々の業務上の非効率をテクノロジーで解消し、働く人が本来の価値を発揮できる環境を創造します。
+                    <p className="mt-4 text-muted">
+                        現場の手間を減らし、働く人が本来の価値を発揮できる環境をつくります。
                     </p>
                 </motion.div>
 
@@ -78,11 +77,20 @@ export default function CompanyProfileSection() {
                                         <p className="text-2xl font-serif font-bold text-deep-forest-green mt-1">松井 歩武</p>
                                         <p className="text-sm text-deep-forest-green/60 mt-1 font-serif">Ayumu Matsui</p>
                                     </div>
-                                    <p className="text-base leading-relaxed text-deep-forest-green/90">
-                                        慶應義塾大学商学部在学中からベンチャーキャピタルでインターン。<br />
-                                        新卒で戦略コンサルティングファームに入社。その後スタートアップにて経営企画。<br />
-                                        大手IT企業にて法人向け生成AI研修の講師を務める。
-                                    </p>
+                                    <ul className="space-y-3 text-base leading-relaxed text-deep-forest-green/90">
+                                        <li>
+                                            <span className="inline-block text-xs font-bold text-deep-forest-green/70 uppercase tracking-wider mr-2">VC</span>
+                                            慶應義塾大学商学部在学中からベンチャーキャピタルでインターン。
+                                        </li>
+                                        <li>
+                                            <span className="inline-block text-xs font-bold text-deep-forest-green/70 uppercase tracking-wider mr-2">コンサル</span>
+                                            新卒で戦略コンサルティングファームに入社。その後スタートアップにて経営企画。
+                                        </li>
+                                        <li>
+                                            <span className="inline-block text-xs font-bold text-deep-forest-green/70 uppercase tracking-wider mr-2">AI研修</span>
+                                            大手IT企業にて法人向け生成AI研修の講師を務める。
+                                        </li>
+                                    </ul>
                                 </motion.div>
                             </div>
                         </div>

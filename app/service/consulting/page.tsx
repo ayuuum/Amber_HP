@@ -5,9 +5,9 @@ import Footer from '@/components/Footer'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'AI活用支援・AI顧問サービス | 業務改善・DXコンサルティング',
-    description: '企業のAI活用支援なら株式会社Amber。業務フローの抜本的改革から実務定着まで伴走するAI顧問サービス。生産性向上を実現し、「使われないAI」課題を解決します。',
-    keywords: ['AI活用支援', 'AI顧問', '業務効率化', 'DX推進', 'ChatGPT活用コンサル', '中小企業AI導入'],
+    title: 'AI導入支援 | 業務改善・DXコンサルティング',
+    description: '企業のAI導入支援なら株式会社Amber。業務フローの抜本的改革から実務定着まで伴走するAI導入支援サービス。生産性向上を実現し、「使われないAI」課題を解決します。',
+    keywords: ['AI導入支援', 'AI活用支援', '業務効率化', 'DX推進', 'ChatGPT活用コンサル', '中小企業AI導入'],
 }
 
 export default function ConsultingPage() {
@@ -19,8 +19,8 @@ export default function ConsultingPage() {
         '@graph': [
             {
                 '@type': 'Service',
-                'name': 'AI活用支援・AI顧問サービス',
-                'description': '業務フローの抜本的改革から実務定着まで伴走するAI顧問サービス。',
+                'name': 'AI導入支援',
+                'description': '業務フローの抜本的改革から実務定着まで伴走するAI導入支援サービス。',
                 'provider': {
                     '@type': 'Organization',
                     'name': '株式会社Amber',

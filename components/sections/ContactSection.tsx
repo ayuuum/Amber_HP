@@ -115,8 +115,8 @@ export default function ContactSection() {
             お問い合わせ
           </h2>
           <p className="text-xl text-deep-forest-green leading-relaxed mb-4">
-            まずは壁打ち相談としてご利用ください。<br />
-            無理な営業は一切行いませんので、ご安心ください。
+            まずは相談だけでもどうぞ。営業はしません。<br />
+            ご安心ください。
           </p>
         </motion.div>
 

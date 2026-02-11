@@ -7,17 +7,17 @@ import { HeartHandshake, TrendingUp, ShieldCheck } from 'lucide-react'
 const strengths = [
   {
     title: '徹底した「現場視点」',
-    description: '実際に現場で9ヶ月間働いた経験から、現場の課題を深く理解しています。実務の最前線で本当に機能する解決策を提案します。',
+    description: '現場の課題を深く理解し、実務で役立つ解決策を提案します。',
     icon: HeartHandshake,
   },
   {
     title: '長期的な事業成長への伴走',
-    description: 'VC・コンサル背景を持つメンバーが、一過性の導入ではなく、長期的な経営インパクトを見据えた支援を行います。',
+    description: 'VC・コンサル背景を持つメンバーが、売上や利益につながる支援を行います。',
     icon: TrendingUp,
   },
   {
     title: 'リスクを抑えた段階的導入',
-    description: 'AI顧問サービスから始まり、現場の習熟度に応じてSaaSへと移行。無理のないペースでのDX推進をサポートします。',
+    description: 'AI導入支援から始め、使い慣れてから業務システムへ。無理のないペースでサポートします。',
     icon: ShieldCheck,
   },
 ]
@@ -66,10 +66,7 @@ export default function WhyAmberSection() {
             Why Amber
           </h2>
           <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
-            AI × 現場理解 × プロダクト<br />
-            この3つの要素が、Amberの強みです。<br />
-            <span className="text-base">実際に現場で働いた経験と、VC・コンサル背景を持つメンバーが、<br />
-              長期的な事業成長を支援します。</span>
+            AI × 現場理解 × プロダクト。長期的に支援します。
           </p>
         </motion.div>
 

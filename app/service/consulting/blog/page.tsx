@@ -7,12 +7,12 @@ import Footer from '@/components/Footer'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: 'ブログ | AI顧問サービス | 株式会社Amber',
-  description: 'AI顧問サービスに関する記事一覧。AI導入、業務改善、業務自動化などの実務知見を発信しています。',
-  keywords: ['AI顧問サービス', 'AI導入', '業務改善', '業務自動化', '中小企業'],
+  title: 'ブログ | AI導入支援 | 株式会社Amber',
+  description: 'AI導入支援に関する記事一覧。AI導入、業務改善、業務自動化などの実務知見を発信しています。',
+  keywords: ['AI導入支援', 'AI導入', '業務改善', '業務自動化', '中小企業'],
   openGraph: {
-    title: 'ブログ | AI顧問サービス | 株式会社Amber',
-    description: 'AI顧問サービスに関する記事一覧。AI導入、業務改善、業務自動化などの実務知見を発信しています。',
+    title: 'ブログ | AI導入支援 | 株式会社Amber',
+    description: 'AI導入支援に関する記事一覧。AI導入、業務改善、業務自動化などの実務知見を発信しています。',
     url: `${siteUrl}/service/consulting/blog`,
     type: 'website',
   },
@@ -34,7 +34,7 @@ export default function ConsultingBlogPage() {
               href="/service/consulting" 
               className="text-deep-forest-green hover:text-deep-forest-green transition-colors"
             >
-              ← AI顧問サービスに戻る
+              ← AI導入支援に戻る
             </Link>
           </div>
 
@@ -43,8 +43,8 @@ export default function ConsultingBlogPage() {
               {getCategoryName('consulting')} ブログ
             </h1>
             <p className="text-xl text-deep-forest-green leading-relaxed">
-              AI顧問サービスに関する記事を発信しています。<br />
-              現場で9ヶ月間働いた経験から得た実務知見を、記事としてお届けします。
+              AI導入支援に関する記事を発信しています。<br />
+              実務知見を記事としてお届けします。
             </p>
           </div>
 

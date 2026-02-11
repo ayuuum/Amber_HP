@@ -58,9 +58,9 @@ export default function AdminPage() {
 
   const getCategoryName = (category: string) => {
     const names: Record<string, string> = {
-      consulting: 'AI顧問サービス',
+      consulting: 'AI導入支援',
       training: '生成AI研修',
-      saas: 'Vertical SaaS',
+      saas: 'ホームサービス向け業務システム',
     }
     return names[category] || category
   }

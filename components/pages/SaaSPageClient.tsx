@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
+import StatsSection from '@/components/sections/StatsSection'
+import CustomerVoiceSection from '@/components/sections/CustomerVoiceSection'
 import type { BlogPost } from '@/lib/markdown'
 
 const features = [
@@ -25,7 +27,7 @@ const features = [
     },
     {
         title: '口コミ・再来促進の自動化',
-        description: '作業後のお礼メールや口コミ依頼、定期的なメンテナンス案内（リコール）を自動で配信します。',
+        description: '作業後のお礼メールや口コミ依頼、定期的なメンテナンス案内を自動で配信します。',
     },
     {
         title: '会計ソフト連携',
@@ -100,12 +102,13 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         className="text-center lg:text-left order-1 lg:order-2"
                     >
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-                            ホームサービス業のための<br />AI業務OS
+                            ホームサービス業のための<br className="md:hidden" />AI業務OS
                         </h1>
-                        <p className="text-xl text-deep-forest-green leading-relaxed mb-4 font-bold">
-                            「現場の仕事」と「事務作業」を、AIで一つの滑らかな流れに。
+                        <p className="text-lead mb-4">
+                            「現場の仕事」と「事務作業」を、<br className="hidden md:inline" />
+                            AIで一つの滑らかな流れに。
                         </p>
-                        <p className="text-lg text-deep-forest-green leading-relaxed mb-6">
+                        <p className="text-lg text-muted mb-6">
                             ホームサービス事業者の運営を、インフラから劇的に進化させます。
                         </p>
                         <div>
@@ -174,9 +177,10 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     viewport={{ once: true }}
                     className="mb-16"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
+                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
                         Amberのできること
                     </h2>
+                    <p className="text-lead text-center max-w-2xl mx-auto mb-12">予約から請求・口コミまで、現場の業務を一つの基盤で。</p>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((feature, index) => (
                             <motion.div
@@ -225,7 +229,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-6">
+                        <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-4">
                             このサービスが目指す状態
                         </h2>
                         <ul className="space-y-4 text-deep-forest-green text-lg">
@@ -252,21 +256,25 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         transition={{ duration: 0.8 }}
                         className="bg-deep-forest-green text-white p-8 rounded-sm shadow-xl"
                     >
-                        <h2 className="text-2xl font-serif font-bold mb-6 border-b border-deep-forest-green/30 pb-4">
+                        <h2 className="text-2xl font-serif font-bold mb-4 border-b border-white/30 pb-4">
                             Amberが大切にしていること
                         </h2>
-                        <p className="leading-relaxed mb-4 opacity-90">
+                        <p className="leading-relaxed mb-4 text-white/90">
                             Amberは、テクノロジーで仕事を置き換えたいのではなく、
-                            <strong>「現場で働く人の負担を減らしたい」</strong>と考えています。
+                            <span className="font-bold text-white">「現場で働く人の負担を減らしたい」</span>と考えています。
                         </p>
-                        <p className="leading-relaxed text-lg font-medium">
-                            難しい言葉や派手な機能ではなく、<br />
-                            <strong>「ちゃんと使える」</strong><br />
-                            <strong>「ちゃんと楽になる」</strong><br />
-                            ことを何によりも大切にしています。
+                        <p className="leading-relaxed text-white/80">
+                            難しい言葉や派手な機能ではなく、<br className="hidden md:inline" />
+                            <span className="font-bold text-white">「ちゃんと使える」</span>
+                            <span className="hidden md:inline"> </span><br className="md:hidden" />
+                            <span className="font-bold text-white">「ちゃんと楽になる」</span><br className="hidden md:inline" />
+                            ことを何より大切にしています。
                         </p>
                     </motion.div>
                 </div>
+
+                <StatsSection />
+                <CustomerVoiceSection />
 
                 {/* Blog Preview Section */}
                 <BlogPreviewSection posts={blogPosts} category="saas" />

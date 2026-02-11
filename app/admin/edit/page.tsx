@@ -188,9 +188,9 @@ export default function EditArticlePage() {
               onChange={handleChange}
               className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
             >
-              <option value="consulting">AI顧問サービス</option>
+              <option value="consulting">AI導入支援</option>
               <option value="training">生成AI研修</option>
-              <option value="saas">Vertical SaaS</option>
+              <option value="saas">ホームサービス向け業務システム</option>
             </select>
           </div>
         </div>

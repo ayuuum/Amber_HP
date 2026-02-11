@@ -89,7 +89,7 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'AI顧問サービス',
+            name: 'AI導入支援',
             item: serviceUrl,
           },
           {

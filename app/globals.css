@@ -31,6 +31,22 @@
   }
 }
 
+/* テキストの強弱：リード・本文・補足・強調 */
+@layer components {
+  .text-lead {
+    @apply text-lg md:text-xl font-medium text-deep-forest-green leading-relaxed;
+  }
+  .text-muted {
+    @apply text-deep-forest-green/75 leading-relaxed;
+  }
+  .highlight {
+    @apply font-bold text-deep-forest-green;
+  }
+  .highlight-bg {
+    @apply bg-deep-forest-green/10 px-1.5 py-0.5 rounded font-medium text-deep-forest-green;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

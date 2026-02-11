@@ -4,9 +4,11 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
+import StatsSection from '@/components/sections/StatsSection'
+import CustomerVoiceSection from '@/components/sections/CustomerVoiceSection'
 import type { BlogPost } from '@/lib/markdown'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Plus, Minus, Info } from 'lucide-react'
+import { Plus, Minus, Info, HelpCircle, Users, BookOpen } from 'lucide-react'
 import { useState } from 'react'
 
 const curriculum = [
@@ -54,7 +56,7 @@ const features = [
 const faqs = [
     {
         question: '助成金の受給対象になりますか？',
-        answer: '雇用保険を納めている正社員がいらっしゃる企業様であれば、「人材開発支援助成金」の対象となる可能性が高いです。具体的な受給要件については、無料相談にて診断・ご案内いたします。',
+        answer: '正社員がいる企業様であれば、国の助成金（人材開発支援助成金など）の対象になることが多いです。条件の詳細は無料相談でお伝えします。',
     },
     {
         question: '研修の時間はどのくらいですか？',
@@ -65,8 +67,8 @@ const faqs = [
         answer: 'はい。現場作業中心の企業様でも、報告書作成や顧客対応の効率化など、スマートフォンからでも使えるAI活用法を提案可能です。',
     },
     {
-        question: 'プロンプト（指示文）が難しそうですが、使いこなせますか？',
-        answer: 'ご安心ください。「プロンプトを作る技術」を学ぶのではなく、あらかじめ用意された高品質な「テンプレート」を選んで使う方法から指導するため、誰でも即座に成果を出せます。',
+        question: 'AIへの指示文は難しそうですが、使いこなせますか？',
+        answer: '大丈夫です。指示文を一から作るのではなく、用意したテンプレートを選んで使う方法から教えるので、誰でもすぐに成果を出せます。',
     },
 ]
 
@@ -142,17 +144,17 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
                             法人向け生成AI研修
                         </h1>
-                        <p className="text-xl text-deep-forest-green leading-relaxed mb-6 font-medium">
-                            「AIを知る」ことではなく、<br />
+                        <p className="text-lead mb-4">
+                            「AIを知る」ことではなく、<br className="hidden md:inline" />
                             「AIが仕事の一部になる」ことを目的としています。
                         </p>
                         <div className="text-lg text-deep-forest-green leading-relaxed space-y-4">
                             <p>
-                                「明日から仕事のやり方が変わる研修」を設計します。<br />
+                                「明日から仕事のやり方が変わる研修」を設計します。<br className="hidden md:inline" />
                                 一度きりの勉強会で終わらせない、実務定着型の研修です。
                             </p>
                             <p>
-                                リスキリング助成金などの活用により、研修費用の最大75%が補助されます。<br />
+                                リスキリング助成金などの活用により、研修費用の<span className="highlight">最大75%</span>が補助されます。<br className="hidden md:inline" />
                                 煩雑な申請手続きもサポートいたします。
                             </p>
                             <div className="pt-4">
@@ -223,19 +225,25 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                     transition={{ duration: 0.6 }}
                     className="mb-24 bg-white/50 p-8 md:p-12 rounded-sm"
                 >
-                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green mb-8 text-center">
+                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
                         こんな方のための研修です
                     </h2>
                     <div className="flex flex-col md:flex-row gap-6 justify-center">
                         {[
-                            "生成AIが話題だが、業務でどう使えばいいかわからない",
-                            "社員ごとに使い方がバラバラで、効果が出ていない",
-                            "研修をやっても、現場で使われずに終わってしまう"
-                        ].map((text, i) => (
-                            <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-deep-forest-green flex-1">
-                                <p className="text-deep-forest-green font-medium leading-relaxed">{text}</p>
-                            </div>
-                        ))}
+                            { text: "生成AIが話題だが、業務でどう使えばいいかわからない", icon: HelpCircle },
+                            { text: "社員ごとに使い方がバラバラで、効果が出ていない", icon: Users },
+                            { text: "研修をやっても、現場で使われずに終わってしまう", icon: BookOpen },
+                        ].map((item, i) => {
+                            const Icon = item.icon
+                            return (
+                                <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-deep-forest-green flex-1 flex gap-4">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-deep-forest-green/10 flex items-center justify-center text-deep-forest-green">
+                                        <Icon className="w-6 h-6" />
+                                    </div>
+                                    <p className="text-deep-forest-green font-medium leading-relaxed pt-1">{item.text}</p>
+                                </div>
+                            )
+                        })}
                     </div>
                 </motion.div>
 
@@ -247,9 +255,10 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                     transition={{ duration: 0.6 }}
                     className="mb-24"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
+                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
                         実務に直結する<br className="md:hidden" />生成AI研修の4つの特徴
                     </h2>
+                    <p className="text-lead text-center max-w-2xl mx-auto mb-12">明日から使えるスキルと仕組みを、職種に合わせてお届けします。</p>
                     <div className="grid md:grid-cols-2 gap-8">
                         {features.map((feature, index) => (
                             <motion.div
@@ -257,10 +266,10 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                                 whileHover={{ scale: 1.02 }}
                                 className="bg-deep-forest-green text-white p-8 rounded-sm shadow-xl"
                             >
-                                <h3 className="text-xl font-bold mb-4 border-b border-deep-forest-green/50 pb-2 inline-block">
+                                <h3 className="text-xl font-bold mb-4 border-b border-white/30 pb-2 inline-block">
                                     {feature.title}
                                 </h3>
-                                <p className="leading-relaxed opacity-90">
+                                <p className="leading-relaxed text-white/80">
                                     {feature.description}
                                 </p>
                             </motion.div>
@@ -276,13 +285,12 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                     transition={{ duration: 0.8 }}
                     className="mb-16"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
+                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
                         実務で即戦力となる<br className="md:hidden" />研修カリキュラム
                     </h2>
-
                     <div className="mb-12 text-center max-w-3xl mx-auto">
-                        <p className="text-deep-forest-green opacity-80 leading-relaxed">
-                            ChatGPT、Claude 3.5 Sonnet、Google Gemini、Microsoft Copilotなど、<br />
+                        <p className="text-lead">
+                            ChatGPT、Claude 3.5 Sonnet、Google Gemini、Microsoft Copilotなど、<br className="hidden md:inline" />
                             最新のAIツールを実務にどう組み込むかに焦点を当てたカリキュラムをご提供します。
                         </p>
                     </div>
@@ -354,6 +362,9 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                         ))}
                     </div>
                 </motion.div>
+
+                <StatsSection />
+                <CustomerVoiceSection />
 
                 {/* Blog Preview Section */}
                 <BlogPreviewSection posts={blogPosts} category="training" />

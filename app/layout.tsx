@@ -16,11 +16,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: '株式会社Amber | AI顧問サービス・生成AI研修・Vertical SaaS【東京】',
+    default: '株式会社Amber | AI導入支援・生成AI研修・ホームサービス向け業務システム【東京】',
     template: '%s | 株式会社Amber',
   },
-  description: '東京を拠点にAI顧問サービス、中小企業向け生成AI研修、ホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。株式会社Amber公式サイト。',
-  keywords: ['株式会社Amber', '松井歩武', 'AI顧問サービス', '生成AI研修', 'Vertical SaaS', 'ホームサービス', '業務効率化', '中小企業', 'AI導入'],
+  description: '東京を拠点にAI導入支援、中小企業向け生成AI研修、ホームサービス事業者向け業務システムを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。株式会社Amber公式サイト。',
+  keywords: ['株式会社Amber', '松井歩武', 'AI導入支援', '生成AI研修', 'ホームサービス向け業務システム', 'ホームサービス', '業務効率化', '中小企業', 'AI導入'],
   authors: [{ name: '株式会社Amber' }],
   creator: '株式会社Amber',
   publisher: '株式会社Amber',
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     url: siteUrl,
     siteName: '株式会社Amber',
-    title: '株式会社Amber | AI顧問サービス・生成AI研修・Vertical SaaS【東京】',
-    description: '東京を拠点にAI顧問サービス、中小企業向け生成AI研修、ホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。株式会社Amber公式サイト。',
+    title: '株式会社Amber | AI導入支援・生成AI研修・ホームサービス向け業務システム【東京】',
+    description: '東京を拠点にAI導入支援、中小企業向け生成AI研修、ホームサービス事業者向け業務システムを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。株式会社Amber公式サイト。',
     images: [
       {
         url: '/og-image.jpg',
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '株式会社Amber | AI顧問サービス・生成AI研修・Vertical SaaS【東京】',
-    description: '東京を拠点にAI顧問サービス、中小企業向け生成AI研修、ホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。株式会社Amber公式サイト。',
+    title: '株式会社Amber | AI導入支援・生成AI研修・ホームサービス向け業務システム【東京】',
+    description: '東京を拠点にAI導入支援、中小企業向け生成AI研修、ホームサービス事業者向け業務システムを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。株式会社Amber公式サイト。',
     images: ['/og-image.jpg'],
   },
   robots: {

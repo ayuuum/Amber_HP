@@ -89,7 +89,7 @@ export default async function SaaSBlogPostPage({ params }: Props) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'ホームサービス向けVertical SaaS',
+            name: 'ホームサービス向け業務システム',
             item: serviceUrl,
           },
           {

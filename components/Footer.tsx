@@ -22,7 +22,7 @@ export default function Footer() {
               <ul className="space-y-2 text-white/80">
                 <li>
                   <Link href="/service/consulting" className="hover:text-white transition-colors">
-                    AI顧問サービス
+                    AI導入支援
                   </Link>
                 </li>
                 <li>
@@ -32,7 +32,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="/service/saas" className="hover:text-white transition-colors">
-                    ホームサービス向けVertical SaaS
+                    ホームサービス向け業務システム
                   </Link>
                 </li>
               </ul>

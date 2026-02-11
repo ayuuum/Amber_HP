@@ -8,8 +8,8 @@ import { BrainCircuit, GraduationCap, LayoutDashboard, ArrowRight } from 'lucide
 const services = [
     {
         id: 'ai-consulting',
-        title: 'AI顧問サービス',
-        description: '現場の課題を深く理解したプロが、AI導入から定着までを伴走支援。実務で「使える」AI活用を実現します。',
+        title: 'AI導入支援',
+        description: '現場の課題を理解したプロが、AI導入から定着まで一緒に進めます。',
         icon: BrainCircuit,
         href: '/service/consulting',
         features: ['業務改善・自動化支援', '社内研修・勉強会', '伴走型プロジェクト推進'],
@@ -17,15 +17,15 @@ const services = [
     {
         id: 'ai-training',
         title: '法人向け生成AI研修',
-        description: '助成金を活用して実質75%OFFで受講可能。現場ですぐに使えるスキルを1日集中で習得します。',
+        description: '助成金で実質75%OFF。現場で使えるスキルを1日で習得します。',
         icon: GraduationCap,
         href: '/service/training',
         features: ['助成金活用サポート', '実践的カリキュラム', '受講後サポートあり'],
     },
     {
         id: 'vertical-saas',
-        title: 'ホームサービス向けSaaS',
-        description: '予約管理、顧客管理、請求処理を一元化。現場の業務負荷を大幅に削減するオールインワンツール。',
+        title: 'ホームサービス向け業務システム',
+        description: '予約・顧客・請求をひとつのツールで、現場の負荷を削減します。',
         icon: LayoutDashboard,
         href: '/service/saas',
         features: ['予約・顧客一元管理', '自動リマインド通知', '請求書・見積書作成'],
@@ -82,7 +82,7 @@ export default function ServiceSection() {
                     </h2>
                     <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
                         現場の課題をテクノロジーで解決する<br />
-                        3つのソリューション
+                        3つのサービス
                     </p>
                 </motion.div>
 

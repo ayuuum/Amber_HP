@@ -4,9 +4,11 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
+import StatsSection from '@/components/sections/StatsSection'
+import CustomerVoiceSection from '@/components/sections/CustomerVoiceSection'
 import type { BlogPost } from '@/lib/markdown'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Plus, Minus } from 'lucide-react'
+import { Plus, Minus, Cpu, Users, Clock } from 'lucide-react'
 import { useState } from 'react'
 
 const plans = [
@@ -45,30 +47,30 @@ const plans = [
 const serviceSteps = [
     {
         title: '現状整理・課題特定',
-        description: '現在の業務内容をヒアリングし、どこに時間がかかっているか、AIでどこが改善できるかを整理します。',
+        description: '業務をヒアリングし、時間がかかっているところとAIで改善できる点を整理します。',
     },
     {
         title: '実務に合わせたAI活用設計',
-        description: '一般的な使い方ではなく、貴社の実際の業務フローの中にAIをどう組み込むかを具体的に設計します。',
+        description: '貴社の業務フローにAIをどう組み込むか、具体的に設計します。',
     },
     {
         title: '業務フローの簡素化・自動化',
-        description: 'AIツールの導入だけでなく、不要な業務の削減やフロー自体の見直しも含めて効率化します。',
+        description: 'AI導入に加え、不要な業務の削減やフロー見直しで効率化します。',
     },
     {
         title: '社内定着・仕組みづくり',
-        description: '担当者が変わっても誰でも同じ品質で業務が回るよう、マニュアル化や社内ルール作りを支援します。',
+        description: 'マニュアルや社内ルールで、誰がやっても同じ品質で回る仕組みを支援します。',
     },
 ]
 
 const faqs = [
     {
         question: '特定のAIツール（ChatGPTなど）の導入しか支援してもらえませんか？',
-        answer: 'いいえ。ChatGPTだけでなく、Claude、Gemini、GitHub Copilotなどの汎用ツールから、業界特化型のAI、さらには既存のSaaS（Notion, Slack等）に内蔵されたAI機能の活用まで、貴社の課題に最適なツールを選定・支援します。',
+        answer: 'いいえ。いろいろなAIツールから、御社に合うものを一緒に選びます。詳しくは相談時にご説明します。',
     },
     {
         question: 'コンサルプランの期間は決まっていますか？',
-        answer: '標準的には3ヶ月〜6ヶ月を1つのフェーズとしていますが、単発の課題解決から1年以上の長期的な伴走支援まで、企業のフェーズに合わせて柔軟に対応可能です。',
+        answer: '3〜6ヶ月が目安です。単発の課題解決から1年以上の伴走まで、柔軟に対応しています。',
     },
     {
         question: 'ITに詳しくない担当者でも大丈夫でしょうか？',
@@ -117,7 +119,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     <Breadcrumbs
                         items={[
                             { label: 'サービス', href: '/' },
-                            { label: 'AI活用支援・AI顧問サービス' }
+                            { label: 'AI導入支援' }
                         ]}
                     />
                 </div>
@@ -147,15 +149,15 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         className="text-center lg:text-left order-1 lg:order-2"
                     >
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6 leading-tight">
-                            AI活用支援・<br className="md:hidden" />AI顧問サービス
+                            AI導入支援
                         </h1>
-                        <p className="text-xl text-deep-forest-green leading-relaxed mb-6 font-medium">
-                            AIを「導入する」サービスではなく、<br />
+                        <p className="text-lead mb-4">
+                            AIを「導入する」サービスではなく、<br className="hidden md:inline" />
                             AIで「業務のやり方を変える」サービスです。
                         </p>
                         <p className="text-lg text-deep-forest-green leading-relaxed mb-6">
-                            ツール選定から実際の運用まで、<br />
-                            <strong>「横に立って一緒に進める顧問」</strong>として支援します。
+                            ツール選定から実際の運用まで、<br className="hidden md:inline" />
+                            <span className="highlight">「横に立って一緒に進める顧問」</span>として支援します。
                         </p>
                         <div className="mb-8">
                             <Link
@@ -176,19 +178,25 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     transition={{ duration: 0.6 }}
                     className="mb-24 bg-white/50 p-8 md:p-12 rounded-sm"
                 >
-                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green mb-8 text-center">
+                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
                         こんな課題を抱える企業へ
                     </h2>
                     <div className="flex flex-col md:flex-row gap-6 justify-center">
                         {[
-                            "AIツールを導入したが、使われなくなっている",
-                            "業務が属人化しており、人に依存している",
-                            "手作業が多く、本来やるべき仕事に時間が割けない"
-                        ].map((text, i) => (
-                            <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-deep-forest-green flex-1">
-                                <p className="text-deep-forest-green font-medium leading-relaxed">{text}</p>
-                            </div>
-                        ))}
+                            { text: "AIツールを導入したが、使われなくなっている", icon: Cpu },
+                            { text: "業務が属人化しており、人に依存している", icon: Users },
+                            { text: "手作業が多く、本来やるべき仕事に時間が割けない", icon: Clock },
+                        ].map((item, i) => {
+                            const Icon = item.icon
+                            return (
+                                <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-deep-forest-green flex-1 flex gap-4">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-deep-forest-green/10 flex items-center justify-center text-deep-forest-green">
+                                        <Icon className="w-6 h-6" />
+                                    </div>
+                                    <p className="text-deep-forest-green font-medium leading-relaxed pt-1">{item.text}</p>
+                                </div>
+                            )
+                        })}
                     </div>
                 </motion.div>
 
@@ -200,9 +208,10 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     transition={{ duration: 0.8 }}
                     className="mb-24"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
+                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
                         サービス内容
                     </h2>
+                    <p className="text-lead text-center max-w-2xl mx-auto mb-12">現状整理から社内定着まで、一貫して伴走します。</p>
                     <div className="grid md:grid-cols-2 gap-8">
                         {serviceSteps.map((step, index) => (
                             <motion.div
@@ -230,19 +239,19 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     viewport={{ once: true }}
                     className="mb-24 bg-deep-forest-green text-white p-12 text-center rounded-sm shadow-2xl"
                 >
-                    <h2 className="text-3xl font-serif font-bold mb-8">このサービスで目指すこと</h2>
+                    <h2 className="text-3xl font-serif font-bold mb-4">このサービスで目指すこと</h2>
                     <div className="grid md:grid-cols-3 gap-8">
-                        <div className="p-4 border border-deep-forest-green/30 rounded-sm">
-                            <h3 className="text-xl font-bold mb-4 text-deep-forest-green">本来の仕事へ集中</h3>
-                            <p className="opacity-90">作業時間を減らし、創造的な業務や顧客対応など、人間など本来やるべき価値ある仕事に集中できる状態を作ります。</p>
+                        <div className="p-4 border border-white/30 rounded-sm text-left">
+                            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">本来の仕事へ集中</h3>
+                            <p className="text-white/80 leading-relaxed">手作業を減らし、お客様対応や企画など、本来やりたい仕事に時間を使える状態を作ります。</p>
                         </div>
-                        <div className="p-4 border border-deep-forest-green/30 rounded-sm">
-                            <h3 className="text-xl font-bold mb-4 text-deep-forest-green">業務の標準化</h3>
-                            <p className="opacity-90">特定の人しかできない仕事をなくし、誰がやっても同じ品質で業務が回る、標準化された組織を作ります。</p>
+                        <div className="p-4 border border-white/30 rounded-sm text-left">
+                            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">業務の標準化</h3>
+                            <p className="text-white/80 leading-relaxed">特定の人しかできない仕事をなくし、誰がやっても同じ品質で業務が回る、標準化された組織を作ります。</p>
                         </div>
-                        <div className="p-4 border border-deep-forest-green/30 rounded-sm">
-                            <h3 className="text-xl font-bold mb-4 text-deep-forest-green">AIの日常化</h3>
-                            <p className="opacity-90">AIが「特別な新しい技術」ではなく、文房具のように当たり前に使われる状態を目指します。</p>
+                        <div className="p-4 border border-white/30 rounded-sm text-left">
+                            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">AIの日常化</h3>
+                            <p className="text-white/80 leading-relaxed">AIが「特別な新しい技術」ではなく、文房具のように当たり前に使われる状態を目指します。</p>
                         </div>
                     </div>
                 </motion.div>
@@ -355,6 +364,9 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         ))}
                     </motion.div>
                 </motion.div>
+
+                <StatsSection />
+                <CustomerVoiceSection />
 
                 {/* Blog Preview Section */}
                 <BlogPreviewSection posts={blogPosts} category="consulting" />

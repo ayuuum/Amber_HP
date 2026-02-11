@@ -12,7 +12,7 @@ export default function StructuredData() {
     url: 'https://www.amber-inc.com',
     logo: 'https://www.amber-inc.com/og-image.jpg',
     description:
-      'AI顧問サービス、中小企業向け生成AI研修、ホームサービス事業者向けVertical SaaSを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
+      'AI導入支援、中小企業向け生成AI研修、ホームサービス事業者向け業務システムを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'JP',
