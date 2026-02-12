@@ -6,7 +6,6 @@ import ContactSection from '@/components/sections/ContactSection'
 import FAQSection from '@/components/sections/FAQSection'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import FloatingCTA from '@/components/FloatingCTA'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
@@ -40,7 +39,6 @@ export default function Home() {
       <FAQSection />
       <ContactSection />
       <Footer />
-      <FloatingCTA />
     </main>
   )
 }

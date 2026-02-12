@@ -111,16 +111,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block ml-4">
-            <Link
-              href="/#contact"
-              className="bg-white text-deep-forest-green px-6 py-3 rounded-sm font-bold text-sm hover:bg-white transition-colors shadow-md"
-            >
-              無料で相談する
-            </Link>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
@@ -209,16 +199,6 @@ export default function Header() {
                     </div>
                   ))}
                 </nav>
-
-                <div className="pt-4 mt-auto">
-                  <Link
-                    href="/#contact"
-                    className="block w-full bg-white text-deep-forest-green px-6 py-4 rounded-sm font-bold text-center hover:bg-white transition-colors shadow-md"
-                    onClick={toggleMobileMenu}
-                  >
-                    無料で相談する
-                  </Link>
-                </div>
               </div>
             </motion.div>
           </>
