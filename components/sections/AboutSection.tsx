@@ -42,7 +42,7 @@ export default function AboutSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-deep-forest-green mb-12"
         >
-          About Amber
+          私たちについて
         </motion.h2>
 
         <motion.div
@@ -55,9 +55,9 @@ export default function AboutSection() {
             「暮らしを支える人に、テクノロジーを。」
           </motion.p>
 
-          {/* Amberについて */}
+          {/* 会社概要 */}
           <motion.div variants={itemVariants} className="max-w-2xl mx-auto text-left border-l-4 border-deep-forest-green/30 pl-6 pr-2">
-            <h3 className="text-sm font-bold text-deep-forest-green uppercase tracking-wider mb-3">Amberについて</h3>
+            <h3 className="text-sm font-bold text-deep-forest-green uppercase tracking-wider mb-3">会社概要</h3>
             <p className="mb-2">
               私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
             </p>

@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/HeroSection'
 import AboutSection from '@/components/sections/AboutSection'
 import WhyAmberSection from '@/components/sections/WhyAmberSection'
 import ContactSection from '@/components/sections/ContactSection'
+import FAQSection from '@/components/sections/FAQSection'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
@@ -36,6 +37,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <WhyAmberSection />
+      <FAQSection />
       <ContactSection />
       <Footer />
       <FloatingCTA />

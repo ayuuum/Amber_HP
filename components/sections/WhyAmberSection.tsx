@@ -12,7 +12,7 @@ const strengths = [
   },
   {
     title: '長期的な事業成長への伴走',
-    description: 'VC・コンサル背景を持つメンバーが、売上や利益につながる支援を行います。',
+    description: '売上や利益につながる支援を行います。',
     icon: TrendingUp,
   },
   {
@@ -63,7 +63,7 @@ export default function WhyAmberSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-            Why Amber
+            選ばれる理由
           </h2>
           <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
             AI × 現場理解 × プロダクト。長期的に支援します。

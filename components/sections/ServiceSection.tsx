@@ -78,7 +78,7 @@ export default function ServiceSection() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-                        Our Services
+                        サービス
                     </h2>
                     <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
                         現場の課題をテクノロジーで解決する<br />
