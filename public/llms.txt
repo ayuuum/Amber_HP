@@ -12,8 +12,6 @@ Language: Japanese (ja-JP)
 - AI導入支援: https://www.amber-inc.com/service/consulting
 - 法人向け生成AI研修: https://www.amber-inc.com/service/training
 - ホームサービス向け業務システム: https://www.amber-inc.com/service/saas
-- Recruit: https://www.amber-inc.com/recruit
-
 ## Blog indexes
 - AI導入支援 Blog: https://www.amber-inc.com/service/consulting/blog
 - 法人向け生成AI研修 Blog: https://www.amber-inc.com/service/training/blog

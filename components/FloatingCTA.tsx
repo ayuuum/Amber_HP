@@ -58,7 +58,7 @@ export default function FloatingCTA() {
             <div className="flex items-center gap-3 px-6 py-4">
               <MessageCircle className="w-5 h-5 flex-shrink-0" />
               <Link
-                href="#contact"
+                href="/#contact"
                 className="font-bold text-sm md:text-base hover:text-white transition-colors"
               >
                 無料で相談する

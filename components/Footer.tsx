@@ -52,11 +52,6 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/recruit" className="hover:text-white transition-colors">
-                    採用
-                  </Link>
-                </li>
-                <li>
                   <Link href="/privacy" className="hover:text-white transition-colors">
                     プライバシー
                   </Link>

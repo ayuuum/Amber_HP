@@ -74,12 +74,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
-    {
-      url: `${baseUrl}/recruit`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
   ]
 
   // AI導入支援向けブログ記事

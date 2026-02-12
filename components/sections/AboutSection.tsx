@@ -65,17 +65,6 @@ export default function AboutSection() {
               Amberは、AI導入支援とホームサービス事業者向け業務システムを通じて、その実現を使命としています。
             </p>
           </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 pt-8"
-          >
-            <div className="bg-white/60 p-8 rounded-sm border border-deep-forest-green/20 max-w-3xl mx-auto text-left">
-              <p className="text-lead">
-                現場の声に耳を傾け、一緒に進める。営業はしません。
-              </p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

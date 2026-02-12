@@ -130,7 +130,7 @@ export default function HeroSection() {
           働く人の時間と収益を取り戻します。
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -150,25 +150,8 @@ export default function HeroSection() {
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
               />
               <span className="relative z-10 flex items-center gap-2">
-                サービスを見る
+                私たちについて
                 <span>→</span>
-              </span>
-            </motion.div>
-          </Link>
-          <Link href="#contact">
-            <motion.div
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group border-2 border-deep-forest-green text-deep-forest-green px-8 py-4 rounded-sm inline-flex items-center gap-2 font-semibold cursor-pointer relative overflow-hidden"
-            >
-              <motion.div
-                className="absolute inset-0 bg-deep-forest-green origin-left"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
-              />
-              <span className="relative z-10 flex items-center gap-2 text-deep-forest-green group-hover:text-white transition-colors">
-                無料で相談する
               </span>
             </motion.div>
           </Link>
