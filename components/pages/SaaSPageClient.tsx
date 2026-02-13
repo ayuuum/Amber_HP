@@ -101,6 +101,9 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="text-center lg:text-left order-1 lg:order-2"
                     >
+                        <div className="inline-block bg-deep-forest-green text-white text-xs px-3 py-1 rounded-full mb-4 font-bold">
+                            開発中
+                        </div>
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
                             ホームサービス業のための<br className="md:hidden" />AI業務OS
                         </h1>

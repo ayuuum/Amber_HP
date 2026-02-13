@@ -61,6 +61,11 @@ export default function Footer() {
                     利用規約
                   </Link>
                 </li>
+                <li>
+                  <Link href="/faq" className="hover:text-white transition-colors">
+                    よくある質問
+                  </Link>
+                </li>
               </ul>
             </div>
           </nav>

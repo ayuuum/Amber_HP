@@ -55,10 +55,7 @@ const features = [
 
 const faqs = [
     {
-        question: '助成金の受給対象になりますか？',
-        answer: '正社員がいる企業様であれば、国の助成金（人材開発支援助成金など）の対象になることが多いです。条件の詳細は無料相談でお伝えします。',
-    },
-    {
+
         question: '研修の時間はどのくらいですか？',
         answer: '標準的なプログラムは、1回3時間×2回の計6時間、あるいは1日（6時間）完結型ですが、貴社の課題や参加者のスキルレベルに合わせて1時間から数日間のプログラムまで調整可能です。',
     },
@@ -130,9 +127,6 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             priority
                         />
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(196,154,108,0.12),transparent_55%)]" />
-                        <div className="absolute top-4 left-4 bg-deep-forest-green text-white px-6 py-3 rounded-sm text-lg font-bold shadow-lg">
-                            助成金活用で75%OFF
-                        </div>
                     </motion.div>
 
                     <motion.div
@@ -153,10 +147,7 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                                 「明日から仕事のやり方が変わる研修」を設計します。<br className="hidden md:inline" />
                                 一度きりの勉強会で終わらせない、実務定着型の研修です。
                             </p>
-                            <p>
-                                リスキリング助成金などの活用により、研修費用の<span className="highlight">最大75%</span>が補助されます。<br className="hidden md:inline" />
-                                煩雑な申請手続きもサポートいたします。
-                            </p>
+
                             <div className="pt-4">
                                 <Link
                                     href="/service/training/blog"
@@ -165,61 +156,14 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                                     関連記事を見る →
                                 </Link>
                             </div>
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Grant Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-24 bg-deep-forest-green/5 p-8 md:p-12 rounded-sm border border-deep-forest-green/20"
-                >
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                        <div className="flex-1">
-                            <h2 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green mb-6">
-                                人材開発支援助成金の活用で<br />
-                                研修費用の最大75%が補助されます
-                            </h2>
-                            <p className="text-lg text-deep-forest-green mb-6 leading-relaxed">
-                                「AI研修をやりたいが予算が…」という企業様も、国の助成金制度を活用することで大幅にコストを抑えた導入が可能です。
-                            </p>
-                            <ul className="space-y-3 mb-8">
-                                <li className="flex items-center gap-2 text-deep-forest-green font-medium">
-                                    <Info className="w-5 h-5" />
-                                    <span>リスキリング支援コースの活用</span>
-                                </li>
-                                <li className="flex items-center gap-2 text-deep-forest-green font-medium">
-                                    <Info className="w-5 h-5" />
-                                    <span>1人あたり最大10万円以上の補助</span>
-                                </li>
-                                <li className="flex items-center gap-2 text-deep-forest-green font-medium">
-                                    <Info className="w-5 h-5" />
-                                    <span>煩雑な申請書類の作成も無料サポート</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="bg-white p-6 rounded-sm shadow-xl border border-deep-forest-green text-center min-w-[280px]">
-                            <p className="text-sm font-bold text-deep-forest-green mb-2">実質負担額のイメージ</p>
-                            <div className="text-3xl font-bold text-deep-forest-green mb-1">
-                                ¥50,000<span className="text-sm">〜</span>
-                            </div>
-                            <p className="text-xs text-deep-forest-green/60 mb-4">（1名あたりの想定）</p>
-                            <div className="text-sm text-deep-forest-green font-bold bg-deep-forest-green/10 py-2 rounded-sm mb-4">
-                                助成金で最大75%削減
-                            </div>
-                            <p className="text-xs text-left leading-relaxed text-deep-forest-green/70">
-                                ※受給には一定の要件があります。詳細はお問い合わせください。
-                            </p>
-                        </div>
-                    </div>
-                </motion.div>
+                        </div >
+                    </motion.div >
+                </div >
 
                 {/* Target Audience */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                < motion.div
+                    initial={{ opacity: 0, y: 20 }
+                    }
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
@@ -245,10 +189,10 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             )
                         })}
                     </div>
-                </motion.div>
+                </motion.div >
 
                 {/* Features */}
-                <motion.div
+                < motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -275,10 +219,10 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             </motion.div>
                         ))}
                     </div>
-                </motion.div>
+                </motion.div >
 
                 {/* Curriculum */}
-                <motion.div
+                < motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -320,10 +264,10 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             </motion.div>
                         ))}
                     </motion.div>
-                </motion.div>
+                </motion.div >
 
                 {/* FAQ Section */}
-                <motion.div
+                < motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -361,15 +305,15 @@ export default function TrainingPageClient({ blogPosts }: TrainingPageClientProp
                             </div>
                         ))}
                     </div>
-                </motion.div>
+                </motion.div >
 
                 <StatsSection />
                 <CustomerVoiceSection />
 
                 {/* Blog Preview Section */}
                 <BlogPreviewSection posts={blogPosts} category="training" />
-            </div>
-        </main>
+            </div >
+        </main >
     )
 }
 

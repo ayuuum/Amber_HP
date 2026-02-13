@@ -77,20 +77,11 @@ export default function CompanyProfileSection() {
                                         <p className="text-2xl font-serif font-bold text-deep-forest-green mt-1">松井 歩武</p>
                                         <p className="text-sm text-deep-forest-green/60 mt-1 font-serif">Ayumu Matsui</p>
                                     </div>
-                                    <ul className="space-y-3 text-base leading-relaxed text-deep-forest-green/90">
-                                        <li>
-                                            <span className="inline-block text-xs font-bold text-deep-forest-green/70 uppercase tracking-wider mr-2">VC</span>
-                                            慶應義塾大学商学部在学中からベンチャーキャピタルでインターン。
-                                        </li>
-                                        <li>
-                                            <span className="inline-block text-xs font-bold text-deep-forest-green/70 uppercase tracking-wider mr-2">コンサル</span>
-                                            新卒で戦略コンサルティングファームに入社。その後スタートアップにて経営企画。
-                                        </li>
-                                        <li>
-                                            <span className="inline-block text-xs font-bold text-deep-forest-green/70 uppercase tracking-wider mr-2">AI研修</span>
-                                            大手IT企業にて法人向け生成AI研修の講師を務める。
-                                        </li>
-                                    </ul>
+                                    <p className="text-base leading-relaxed text-deep-forest-green/90">
+                                        慶應義塾大学商学部卒業。在学中からベンチャーキャピタルにて従事。<br />
+                                        新卒で戦略コンサルティングファームに入社し、その後スタートアップにて経営企画業務に携わる。<br />
+                                        大手IT企業など複数社にて法人向け生成AI研修の講師を務める。
+                                    </p>
                                 </motion.div>
                             </div>
                         </div>

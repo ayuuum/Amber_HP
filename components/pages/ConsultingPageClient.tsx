@@ -11,39 +11,6 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import { Plus, Minus, Cpu, Users, Clock } from 'lucide-react'
 import { useState } from 'react'
 
-const plans = [
-    {
-        name: 'ライト',
-        price: '¥50,000/月',
-        features: [
-            '月1回の業務改善相談',
-            '基本的な業務フロー分析',
-            '改善提案レポート',
-        ],
-    },
-    {
-        name: 'スタンダード',
-        price: '¥150,000/月',
-        features: [
-            '月2回の業務改善相談',
-            '詳細な業務分析と改善提案',
-            'テンプレート化支援',
-            '業務自動化の実装支援',
-        ],
-        popular: true,
-    },
-    {
-        name: 'カスタム',
-        price: 'お問い合わせ',
-        features: [
-            '柔軟な相談頻度',
-            '完全カスタマイズ対応',
-            '長期伴走型支援',
-            '専任コンサルタント',
-        ],
-    },
-]
-
 const serviceSteps = [
     {
         title: '現状整理・課題特定',
@@ -297,76 +264,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     </div>
                 </motion.div>
 
-                {/* Plans */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="pb-8"
-                >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
-                        料金ラインナップ
-                    </h2>
-
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="grid md:grid-cols-3 gap-6"
-                    >
-                        {plans.map((plan, index) => (
-                            <motion.div
-                                key={plan.name}
-                                variants={cardVariants}
-                                whileHover={{
-                                    scale: 1.02,
-                                    y: -6,
-                                    transition: { duration: 0.25 }
-                                }}
-                                className={`bg-white p-8 rounded-sm border-2 ${plan.popular
-                                    ? 'border-deep-forest-green shadow-xl'
-                                    : 'border-deep-forest-green shadow-lg'
-                                    } relative`}
-                            >
-                                {plan.popular && (
-                                    <motion.div
-                                        initial={{ scale: 0, opacity: 0 }}
-                                        animate={{ scale: 1, opacity: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.5, type: 'spring' }}
-                                        className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-deep-forest-green text-white px-4 py-1 rounded-sm text-sm font-semibold"
-                                    >
-                                        おすすめ
-                                    </motion.div>
-                                )}
-
-                                <h4 className="text-2xl font-bold text-deep-forest-green mb-2">
-                                    {plan.name}
-                                </h4>
-                                <p className="text-3xl font-bold text-deep-forest-green mb-6">
-                                    {plan.price}
-                                </p>
-
-                                <ul className="space-y-3 text-deep-forest-green">
-                                    {plan.features.map((feature, featureIndex) => (
-                                        <motion.li
-                                            key={featureIndex}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ duration: 0.4, delay: 0.6 + featureIndex * 0.1 }}
-                                            className="flex items-start"
-                                        >
-                                            <span className="text-deep-forest-green mr-2">✓</span>
-                                            <span>{feature}</span>
-                                        </motion.li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </motion.div>
-
-                <StatsSection />
-                <CustomerVoiceSection />
 
                 {/* Blog Preview Section */}
                 <BlogPreviewSection posts={blogPosts} category="consulting" />

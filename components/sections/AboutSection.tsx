@@ -55,15 +55,31 @@ export default function AboutSection() {
             「暮らしを支える人に、テクノロジーを。」
           </motion.p>
 
-          {/* 会社概要 */}
-          <motion.div variants={itemVariants} className="max-w-2xl mx-auto text-left border-l-4 border-deep-forest-green/30 pl-6 pr-2">
-            <h3 className="text-sm font-bold text-deep-forest-green uppercase tracking-wider mb-3">会社概要</h3>
-            <p className="mb-2">
-              私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
-            </p>
-            <p>
-              Amberは、AI導入支援とホームサービス事業者向け業務システムを通じて、その実現を使命としています。
-            </p>
+          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
+            私たちは、現場の非効率をなくし、働く人の時間と収益を取り戻すことを目指しています。
+            実際に現場の最前線に入り込んだ経験から、現場の課題を深く理解しています。
+          </motion.p>
+
+          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
+            日々の業務に追われ、非効率な作業に時間を奪われ、本来注力すべきことに集中できない。そんな現場の課題を、テクノロジーの力で解決します。
+          </motion.p>
+
+          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
+            Amberは、AI顧問サービスとホームサービス事業者向けVertical SaaSを通じて、
+            現場の非効率をなくし、働く人の時間と収益を取り戻すことを使命としています。
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="mt-12 pt-8"
+          >
+            <div className="bg-white/60 p-8 rounded-sm border border-deep-forest-green/20 max-w-3xl mx-auto">
+              <p className="text-lg">
+                テクノロジーを主張しすぎず、現場の声に耳を傾け、丁寧に伴走する。
+                <br />
+                それが私たちのアプローチです。無理な営業は一切行いません。
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

@@ -7,7 +7,7 @@ import { HeartHandshake, TrendingUp, ShieldCheck } from 'lucide-react'
 const strengths = [
   {
     title: '徹底した「現場視点」',
-    description: '現場の課題を深く理解し、実務で役立つ解決策を提案します。',
+    description: '実際に現場の最前線に入り込んだ経験から、現場の課題を深く理解しています。実務の最前線で本当に機能する解決策を提案します。',
     icon: HeartHandshake,
   },
   {

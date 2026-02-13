@@ -24,11 +24,12 @@ const services = [
     },
     {
         id: 'vertical-saas',
-        title: 'ホームサービス向け業務システム',
-        description: '予約・顧客・請求をひとつのツールで、現場の負荷を削減します。',
+        title: 'ホームサービス向けSaaS',
+        description: '予約管理、顧客管理、請求処理を一元化。現場の業務負荷を大幅に削減するオールインワンツール。（開発中）',
         icon: LayoutDashboard,
         href: '/service/saas',
         features: ['予約・顧客一元管理', '自動リマインド通知', '請求書・見積書作成'],
+        badge: '開発中',
     },
 ]
 
@@ -108,8 +109,15 @@ export default function ServiceSection() {
                                     <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-full bg-deep-forest-green/10 text-deep-forest-green group-hover:bg-deep-forest-green group-hover:text-white transition-colors duration-300">
                                         <Icon className="w-7 h-7" />
                                     </div>
-                                    <h3 className="text-2xl font-serif font-bold text-deep-forest-green mb-4">
+                                    <h3 className="text-2xl font-serif font-bold text-deep-forest-green mb-4 flex items-center gap-2">
                                         {service.title}
+                                        {/* @ts-ignore */}
+                                        {service.badge && (
+                                            <span className="text-xs bg-deep-forest-green text-white px-2 py-1 rounded-full font-sans font-normal">
+                                                {/* @ts-ignore */}
+                                                {service.badge}
+                                            </span>
+                                        )}
                                     </h3>
                                     <p className="text-deep-forest-green/80 leading-relaxed mb-6 text-sm lg:text-base">
                                         {service.description}
