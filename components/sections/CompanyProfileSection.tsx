@@ -46,23 +46,23 @@ export default function CompanyProfileSection() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-2xl font-bold text-sequoia-black mb-8 flex items-center gap-4 border-b border-sequoia-black pb-4"
+                                className="text-2xl font-bold text-sequoia-black mb-8 flex items-center gap-4 border-b border-sequoia-black/20 pb-5"
                             >
                                 代表プロフィール
                             </motion.h3>
 
-                            <div className="flex flex-col md:flex-row gap-6 items-start">
+                            <div className="flex flex-row gap-5 md:gap-6 items-start">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.8, delay: 0.3 }}
-                                    className="w-full md:w-40 h-56 relative rounded-sm overflow-hidden flex-shrink-0 shadow-lg"
+                                    className="w-24 md:w-40 aspect-[3/4] relative rounded-sm overflow-hidden flex-shrink-0 shadow-md"
                                 >
                                     <Image
                                         src="/images/matsui-ayumu.jpg"
                                         alt="松井 歩武"
                                         fill
-                                        className="object-cover"
+                                        className="object-cover object-top"
                                     />
                                 </motion.div>
 
@@ -70,18 +70,18 @@ export default function CompanyProfileSection() {
                                     initial={{ opacity: 0 }}
                                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                                     transition={{ duration: 0.8, delay: 0.4 }}
-                                    className="space-y-4"
+                                    className="min-w-0 flex-1 space-y-4"
                                 >
                                     <div>
                                         <p className="text-sm text-sequoia-black font-bold">代表取締役</p>
                                         <p className="text-2xl font-serif font-bold text-sequoia-black mt-1">松井 歩武</p>
                                         <p className="text-sm text-sequoia-black/80 mt-1 font-serif">Ayumu Matsui</p>
                                     </div>
-                                    <p className="text-base leading-relaxed text-sequoia-black/90">
-                                        慶應義塾大学商学部卒業。在学中からベンチャーキャピタルにて従事。<br />
-                                        新卒で戦略コンサルティングファームに入社し、その後スタートアップにて経営企画業務に携わる。<br />
-                                        大手IT企業など複数社にて、AI導入支援の伴走を行ってきました。
-                                    </p>
+                                    <div className="space-y-3 text-base leading-loose text-sequoia-black/90">
+                                        <p>慶應義塾大学商学部卒業。在学中からベンチャーキャピタルにて従事。</p>
+                                        <p>新卒で戦略コンサルティングファームに入社し、その後スタートアップにて経営企画業務に携わる。</p>
+                                        <p>大手IT企業など複数社にて、AI導入支援の伴走を行ってきました。</p>
+                                    </div>
                                 </motion.div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ export default function CompanyProfileSection() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
-                            className="text-2xl font-bold text-sequoia-black mb-8 flex items-center gap-4 border-b border-sequoia-black pb-4"
+                            className="text-2xl font-bold text-sequoia-black mb-8 flex items-center gap-4 border-b border-sequoia-black/20 pb-5"
                         >
                             会社概要
                         </motion.h3>

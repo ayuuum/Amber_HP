@@ -1,14 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
-import StatsSection from '@/components/sections/StatsSection'
-import CustomerVoiceSection from '@/components/sections/CustomerVoiceSection'
+import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import type { BlogPost } from '@/lib/markdown'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Plus, Minus, Cpu, Users, Clock } from 'lucide-react'
+import { Plus, Minus, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 
 const serviceSteps = [
@@ -92,28 +90,11 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                 </div>
 
                 {/* Hero Section */}
-                <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
-                    <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-sequoia-black"
-                    >
-                        <Image
-                            src="/illustrations/hero-consulting.png"
-                            alt="業務改善のプロセスを示すイラスト"
-                            fill
-                            className="object-contain p-8 md:p-10"
-                            priority
-                        />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(196,154,108,0.12),transparent_55%)]" />
-                    </motion.div>
-
+                <div className="max-w-2xl mx-auto text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-center lg:text-left order-1 lg:order-2"
                     >
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6 leading-tight">
                             AI導入支援
@@ -122,63 +103,71 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                             AIを「導入する」サービスではなく、<br className="hidden md:inline" />
                             AIで「業務のやり方を変える」サービスです。
                         </p>
-                        <p className="text-lg text-sequoia-black leading-relaxed mb-6">
+                        <p className="text-lg text-sequoia-black leading-relaxed mb-8">
                             ツール選定から実際の運用まで、<br className="hidden md:inline" />
                             <span className="highlight">「横に立って一緒に進める顧問」</span>として支援します。
                         </p>
-                        <div className="mb-8">
+                        <div className="flex flex-col gap-5 items-center">
+                            <Link
+                                href="/company#contact"
+                                className="btn-primary w-full sm:w-auto sm:max-w-[280px] inline-flex items-center justify-center gap-2"
+                            >
+                                お問い合わせ
+                                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                            </Link>
                             <Link
                                 href="/service/consulting/blog"
-                                className="text-link"
+                                className="text-link inline-flex items-center gap-1.5 text-[15px]"
                             >
                                 関連記事を見る
+                                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                             </Link>
                         </div>
                     </motion.div>
                 </div>
 
                 {/* Target Audience */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-24 bg-white/50 p-8 md:p-12 rounded-sm"
-                >
-                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-sequoia-black mb-4 text-center">
-                        こんな課題を抱える企業へ
-                    </h2>
-                    <div className="flex flex-col md:flex-row gap-6 justify-center">
+                <section className="py-24">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="section-heading mb-6">こんな課題を抱える企業へ</h2>
+                        <p className="section-subheading">
+                            AIの活用や業務効率化でお困りの企業様に向けた伴走支援です。
+                        </p>
+                    </motion.div>
+                    <div className="flex flex-col md:flex-row gap-5 justify-center">
                         {[
-                            { text: "AIツールを導入したが、使われなくなっている", icon: Cpu },
-                            { text: "業務が属人化しており、人に依存している", icon: Users },
-                            { text: "手作業が多く、本来やるべき仕事に時間が割けない", icon: Clock },
-                        ].map((item, i) => {
-                            const Icon = item.icon
-                            return (
-                                <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-sequoia-black flex-1 flex gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-sequoia-black/10 flex items-center justify-center text-sequoia-black">
-                                        <Icon className="w-6 h-6" />
-                                    </div>
-                                    <p className="text-sequoia-black font-medium leading-relaxed pt-1">{item.text}</p>
-                                </div>
-                            )
-                        })}
+                            "AIツールを導入したが、使われなくなっている",
+                            "業務が属人化しており、人に依存している",
+                            "手作業が多く、本来やるべき仕事に時間が割けない",
+                        ].map((text, i) => (
+                            <div
+                                key={i}
+                                className="flex-1 min-w-0 py-5 px-6 rounded-sm border border-sequoia-black/10 bg-white/80 text-sequoia-black/90 text-center md:text-left text-[15px] leading-relaxed"
+                            >
+                                {text}
+                            </div>
+                        ))}
                     </div>
-                </motion.div>
+                </section>
 
                 {/* Service Contents */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-24"
-                >
-                    <h2 className="text-3xl font-serif font-bold text-sequoia-black mb-4 text-center">
-                        サービス内容
-                    </h2>
-                    <p className="text-lead text-center max-w-2xl mx-auto mb-12">現状整理から社内定着まで、一貫して伴走します。</p>
+                <section className="py-24">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="section-heading mb-6">サービス内容</h2>
+                        <p className="section-subheading">現状整理から社内定着まで、一貫して伴走します。</p>
+                    </motion.div>
                     <div className="grid md:grid-cols-2 gap-8">
                         {serviceSteps.map((step, index) => (
                             <motion.div
@@ -187,67 +176,71 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}
-                                className="bg-white p-8 rounded-sm border border-sequoia-black shadow-lg flex flex-col"
+                                className="rounded-sm border border-sequoia-black/10 bg-white p-8 flex flex-col shadow-sm"
                             >
-                                <div className="text-4xl text-sequoia-black font-bold mb-4">0{index + 1}</div>
+                                <span className="text-2xl font-semibold text-sequoia-black/70 mb-3 tabular-nums">0{index + 1}</span>
                                 <h3 className="text-xl font-semibold text-sequoia-black mb-4">{step.title}</h3>
-                                <p className="text-sequoia-black leading-relaxed flex-grow">
+                                <p className="text-sequoia-black/90 leading-relaxed flex-grow text-[15px]">
                                     {step.description}
                                 </p>
                             </motion.div>
                         ))}
                     </div>
-                </motion.div>
+                </section>
 
                 {/* Goal Section */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="mb-24 bg-green-dark text-white p-12 text-center rounded-sm shadow-2xl"
-                >
-                    <h2 className="text-3xl font-serif font-bold mb-4">このサービスで目指すこと</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="p-4 border border-white/30 rounded-sm text-left">
-                            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">本来の仕事へ集中</h3>
-                            <p className="text-white/80 leading-relaxed">手作業を減らし、お客様対応や企画など、本来やりたい仕事に時間を使える状態を作ります。</p>
+                <section className="py-24">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="bg-green-dark text-white p-12 text-center rounded-sm shadow-2xl"
+                    >
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">このサービスで目指すこと</h2>
                         </div>
-                        <div className="p-4 border border-white/30 rounded-sm text-left">
-                            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">業務の標準化</h3>
-                            <p className="text-white/80 leading-relaxed">特定の人しかできない仕事をなくし、誰がやっても同じ品質で業務が回る、標準化された組織を作ります。</p>
+                        <div className="grid md:grid-cols-3 gap-8">
+                            <div className="p-6 border border-white/30 rounded-sm text-left">
+                                <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">本来の仕事へ集中</h3>
+                                <p className="text-white/80 leading-relaxed">手作業を減らし、お客様対応や企画など、本来やりたい仕事に時間を使える状態を作ります。</p>
+                            </div>
+                            <div className="p-6 border border-white/30 rounded-sm text-left">
+                                <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">業務の標準化</h3>
+                                <p className="text-white/80 leading-relaxed">特定の人しかできない仕事をなくし、誰がやっても同じ品質で業務が回る、標準化された組織を作ります。</p>
+                            </div>
+                            <div className="p-6 border border-white/30 rounded-sm text-left">
+                                <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">AIの日常化</h3>
+                                <p className="text-white/80 leading-relaxed">AIが「特別な新しい技術」ではなく、文房具のように当たり前に使われる状態を目指します。</p>
+                            </div>
                         </div>
-                        <div className="p-4 border border-white/30 rounded-sm text-left">
-                            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">AIの日常化</h3>
-                            <p className="text-white/80 leading-relaxed">AIが「特別な新しい技術」ではなく、文房具のように当たり前に使われる状態を目指します。</p>
-                        </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </section>
 
                 {/* FAQ Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-24"
-                >
-                    <h2 className="text-3xl font-serif font-bold text-sequoia-black mb-12 text-center">
-                        よくあるご質問
-                    </h2>
+                <section className="py-24">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="section-heading mb-6">よくあるご質問</h2>
+                    </motion.div>
                     <div className="max-w-3xl mx-auto space-y-4">
                         {faqs.map((faq, index) => (
                             <div key={index} className="border-b border-sequoia-black/20">
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                                    className="w-full py-4 flex items-center justify-between text-left transition-colors hover:text-sequoia-black"
+                                    className="w-full py-4 flex items-center justify-between text-left transition-colors hover:text-sequoia-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green focus-visible:ring-offset-2 focus-visible:rounded-sm"
                                 >
-                                    <span className="text-lg font-bold text-sequoia-black pr-8">
+                                    <span className={`text-lg font-bold pr-8 ${openFaq === index ? 'text-sequoia-black' : 'text-sequoia-black/90'}`}>
                                         Q. {faq.question}
                                     </span>
                                     {openFaq === index ? (
-                                        <Minus className="w-5 h-5 flex-shrink-0" />
+                                        <Minus className="w-5 h-5 flex-shrink-0 text-sequoia-black" />
                                     ) : (
-                                        <Plus className="w-5 h-5 flex-shrink-0" />
+                                        <Plus className="w-5 h-5 flex-shrink-0 text-sequoia-black/90" />
                                     )}
                                 </button>
                                 <motion.div
@@ -255,15 +248,17 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                                     animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
                                     className="overflow-hidden"
                                 >
-                                    <p className="pb-6 text-sequoia-black/90 leading-relaxed leading-relaxed">
+                                    <p className="pb-6 text-sequoia-black/90 leading-relaxed">
                                         {faq.answer}
                                     </p>
                                 </motion.div>
                             </div>
                         ))}
                     </div>
-                </motion.div>
+                </section>
 
+                {/* CTA */}
+                <TopCtaBlock />
 
                 {/* Blog Preview Section */}
                 <BlogPreviewSection posts={blogPosts} category="consulting" />
