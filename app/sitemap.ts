@@ -8,7 +8,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ブログ記事を取得
   const consultingPosts = getAllPosts('consulting')
-  const trainingPosts = getAllPosts('training')
   const saasPosts = getAllPosts('saas')
 
   // 基本ページ
@@ -31,27 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/service/training`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/service/saas`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
     // ブログ一覧ページ
     {
       url: `${baseUrl}/service/consulting/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/service/training/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -84,14 +65,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  // 生成AI研修向けブログ記事
-  const trainingBlogPosts: MetadataRoute.Sitemap = trainingPosts.map((post) => ({
-    url: `${baseUrl}/service/training/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-
   // ホームサービス向け業務システム向けブログ記事
   const saasBlogPosts: MetadataRoute.Sitemap = saasPosts.map((post) => ({
     url: `${baseUrl}/service/saas/blog/${post.slug}`,
@@ -103,7 +76,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...pages,
     ...consultingBlogPosts,
-    ...trainingBlogPosts,
     ...saasBlogPosts,
   ]
 }

@@ -58,7 +58,7 @@ export default function BlogContent({ html }: BlogContentProps) {
   if (!elements) {
     return (
       <div
-        className="prose prose-lg max-w-none text-deep-forest-green leading-relaxed"
+        className="prose prose-lg max-w-none text-sequoia-black leading-relaxed"
         dangerouslySetInnerHTML={{ __html: html }}
         style={{
           '--tw-prose-headings': '#122828',
@@ -83,7 +83,7 @@ export default function BlogContent({ html }: BlogContentProps) {
           return (
             <div
               key={`html-${index}`}
-              className="prose prose-lg max-w-none text-deep-forest-green leading-relaxed"
+              className="prose prose-lg max-w-none text-sequoia-black leading-relaxed"
               dangerouslySetInnerHTML={{ __html: part.content }}
             />
           )

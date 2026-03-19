@@ -12,13 +12,13 @@ export type BlogPost = {
   title: string
   description: string
   date: string
-  category: 'consulting' | 'training' | 'saas'
+  category: 'consulting' | 'saas'
   keywords: string[]
   content: string
   excerpt?: string
 }
 
-export function getAllPosts(category?: 'consulting' | 'training' | 'saas'): BlogPost[] {
+export function getAllPosts(category?: 'consulting' | 'saas'): BlogPost[] {
   const categoryDir = category 
     ? path.join(postsDirectory, category)
     : postsDirectory
@@ -58,7 +58,7 @@ export function getAllPosts(category?: 'consulting' | 'training' | 'saas'): Blog
 }
 
 export function getPostBySlug(
-  category: 'consulting' | 'training' | 'saas',
+  category: 'consulting' | 'saas',
   slug: string
 ): BlogPost | null {
   const fullPath = path.join(postsDirectory, category, `${slug}.md`)
@@ -91,16 +91,15 @@ export async function getPostContentHtml(content: string): Promise<string> {
   return processedContent.toString()
 }
 
-export function getCategoryName(category: 'consulting' | 'training' | 'saas'): string {
+export function getCategoryName(category: 'consulting' | 'saas'): string {
   const names = {
     consulting: 'AI導入支援',
-    training: '法人向け生成AI研修',
     saas: 'ホームサービス向け業務システム',
   }
   return names[category]
 }
 
-export function getCategoryPath(category: 'consulting' | 'training' | 'saas'): string {
+export function getCategoryPath(category: 'consulting' | 'saas'): string {
   return `/service/${category}/blog`
 }
 

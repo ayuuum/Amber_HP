@@ -20,9 +20,9 @@ export async function GET(request: NextRequest) {
   }
 
   const { searchParams } = new URL(request.url)
-  const category = searchParams.get('category') as 'consulting' | 'training' | 'saas' | null
+  const category = searchParams.get('category') as 'consulting' | 'saas' | null
 
-  const categories = category ? [category] : ['consulting', 'training', 'saas']
+  const categories = category ? [category] : ['consulting', 'saas']
   const articles: Array<{
     slug: string
     title: string
@@ -158,7 +158,7 @@ export async function DELETE(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const slug = searchParams.get('slug')
-    const category = searchParams.get('category') as 'consulting' | 'training' | 'saas'
+    const category = searchParams.get('category') as 'consulting' | 'saas'
 
     if (!slug || !category) {
       return NextResponse.json({ error: 'Missing slug or category' }, { status: 400 })

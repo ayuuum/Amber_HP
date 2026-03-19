@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-color-bg">
       <Header />
       <div className="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center px-4 pt-20">
         <div className="max-w-md text-center">
@@ -17,7 +17,7 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
-            className="inline-block rounded-lg bg-deep-forest-green px-6 py-3 font-semibold text-white transition-colors hover:bg-deep-forest-green/90"
+            className="inline-block rounded-lg bg-sequoia-black px-6 py-3 font-semibold text-white transition-colors hover:bg-sequoia-black/90"
           >
             ホームに戻る
           </Link>

@@ -148,31 +148,31 @@ export default async function SaaSBlogPostPage({ params }: Props) {
           <div className="mb-8">
             <Link 
               href={getCategoryPath('saas')}
-              className="text-deep-forest-green hover:text-deep-forest-green transition-colors"
+              className="text-sequoia-black hover:text-sequoia-black transition-colors"
             >
               ← ブログ一覧に戻る
             </Link>
           </div>
 
-          <article className="bg-white p-8 md:p-12 rounded-sm border border-deep-forest-green">
+          <article className="bg-white p-8 md:p-12 rounded-sm border border-sequoia-black">
             <header className="mb-8">
               <div className="mb-4">
-                <span className="text-sm text-deep-forest-green font-semibold">
+                <span className="text-sm text-sequoia-black font-semibold">
                   {new Date(post.date).toLocaleDateString('ja-JP', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                   })}
                 </span>
-                <span className="text-sm text-deep-forest-green ml-4">
+                <span className="text-sm text-sequoia-black ml-4">
                   {getCategoryName('saas')}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-serif font-bold text-deep-forest-green mb-4">
+              <h1 className="text-3xl md:text-4xl font-serif font-bold text-sequoia-black mb-4">
                 {post.title}
               </h1>
               {post.description && (
-                <p className="text-xl text-deep-forest-green leading-relaxed">
+                <p className="text-xl text-sequoia-black leading-relaxed">
                   {post.description}
                 </p>
               )}
@@ -181,7 +181,7 @@ export default async function SaaSBlogPostPage({ params }: Props) {
                   {post.keywords.map((keyword, index) => (
                     <span
                       key={index}
-                      className="text-xs bg-white/30 text-deep-forest-green px-3 py-1 rounded-sm"
+                      className="text-xs bg-white/30 text-sequoia-black px-3 py-1 rounded-sm"
                     >
                       {keyword}
                     </span>
@@ -196,7 +196,7 @@ export default async function SaaSBlogPostPage({ params }: Props) {
           <div className="mt-12 text-center">
             <Link
               href={getCategoryPath('saas')}
-              className="inline-block bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold"
+              className="inline-block bg-sequoia-green text-white px-8 py-4 rounded-sm hover:bg-sequoia-green/90 transition-colors font-semibold"
             >
               ブログ一覧に戻る
             </Link>

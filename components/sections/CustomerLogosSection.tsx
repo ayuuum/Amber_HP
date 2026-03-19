@@ -14,7 +14,7 @@ const highlights = [
   {
     icon: Users,
     number: '500+',
-    label: '研修受講者',
+    label: '支援実績',
   },
   {
     icon: TrendingUp,
@@ -62,10 +62,10 @@ export default function CustomerLogosSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm text-deep-forest-green/70 uppercase tracking-wide font-semibold mb-4">
+          <p className="text-sm text-sequoia-black/80 uppercase tracking-wide font-semibold mb-4">
             導入実績
           </p>
-          <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green">
+          <h3 className="section-heading text-2xl md:text-3xl">
             多くの企業様にご利用いただいています
           </h3>
         </motion.div>
@@ -83,20 +83,20 @@ export default function CustomerLogosSection() {
                 key={index}
                 variants={itemVariants}
                 whileHover={{
-                  scale: 1.03,
+                  scale: 1.01,
                   y: -4,
                   transition: { duration: 0.2 }
                 }}
-                className="flex flex-col items-center justify-center p-8 bg-white rounded-sm border border-deep-forest-green/30 hover:border-deep-forest-green hover:shadow-lg transition-all"
+                className="surface-card interactive-card flex flex-col items-center justify-center p-8"
               >
-                <Icon className="w-10 h-10 text-deep-forest-green mb-4" />
-                <span className="text-4xl md:text-5xl font-bold text-deep-forest-green mb-2 block">
+                <Icon className="mb-4 w-10 h-10 text-sequoia-black" aria-hidden="true" />
+                <span className="text-4xl md:text-5xl font-bold text-sequoia-black mb-2 block">
                   <CountUp
                     to={parseInt(item.number.replace(/[^0-9]/g, ''))}
                     suffix={item.number.replace(/[0-9]/g, '')}
                   />
                 </span>
-                <span className="text-deep-forest-green/80 font-medium">
+                <span className="text-sequoia-black/90 font-medium">
                   {item.label}
                 </span>
               </motion.div>

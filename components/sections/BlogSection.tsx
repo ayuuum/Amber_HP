@@ -6,23 +6,21 @@ import { useRef } from 'react'
 import type { BlogPost } from '@/lib/markdown'
 
 // クライアントコンポーネントで使用するためのヘルパー関数
-function getCategoryName(category: 'consulting' | 'training' | 'saas'): string {
+function getCategoryName(category: 'consulting' | 'saas'): string {
   const names = {
     consulting: 'AI導入支援',
-    training: '法人向け生成AI研修',
     saas: 'ホームサービス向け業務システム',
   }
   return names[category]
 }
 
-function getCategoryPath(category: 'consulting' | 'training' | 'saas'): string {
+function getCategoryPath(category: 'consulting' | 'saas'): string {
   return `/service/${category}/blog`
 }
 
 type BlogSectionProps = {
   latestPosts: {
     consulting?: BlogPost
-    training?: BlogPost
     saas?: BlogPost
   }
 }
@@ -54,7 +52,7 @@ export default function BlogSection({ latestPosts }: BlogSectionProps) {
     },
   }
 
-  const categories: Array<'consulting' | 'training' | 'saas'> = ['consulting', 'training', 'saas']
+  const categories: Array<'consulting' | 'saas'> = ['consulting', 'saas']
   const posts = categories.map(cat => ({
     category: cat,
     post: latestPosts[cat],
@@ -68,7 +66,7 @@ export default function BlogSection({ latestPosts }: BlogSectionProps) {
     <section
       id="blog"
       ref={sectionRef}
-      className="py-24 px-6 bg-white relative overflow-hidden"
+      className="py-24 px-6 bg-sequoia-green/5 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -77,9 +75,7 @@ export default function BlogSection({ latestPosts }: BlogSectionProps) {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-            最新記事
-          </h2>
+          <h2 className="section-heading mb-6">最新記事</h2>
         </motion.div>
 
         <motion.div
@@ -96,14 +92,14 @@ export default function BlogSection({ latestPosts }: BlogSectionProps) {
                 key={category}
                 variants={cardVariants}
                 whileHover={{
-                  scale: 1.02,
-                  y: -6,
+                  scale: 1.01,
+                  y: -4,
                   transition: { duration: 0.25 }
                 }}
-                className="bg-white p-6 rounded-sm border border-deep-forest-green shadow-lg hover:shadow-xl transition-shadow h-full flex flex-col"
+                className="surface-card interactive-card group h-full bg-sequoia-white p-6 flex flex-col"
               >
                 <div className="mb-4">
-                  <span className="text-xs text-deep-forest-green font-semibold uppercase tracking-wide">
+                  <span className="text-xs text-sequoia-black font-semibold uppercase tracking-wide">
                     {getCategoryName(category)}
                   </span>
                 </div>
@@ -111,16 +107,16 @@ export default function BlogSection({ latestPosts }: BlogSectionProps) {
                   href={`${getCategoryPath(category)}/${post.slug}`}
                   className="block flex-grow"
                 >
-                  <h3 className="text-xl font-bold text-deep-forest-green mb-3 line-clamp-2 hover:text-deep-forest-green transition-colors">
+                  <h3 className="mb-3 line-clamp-2 text-xl font-bold text-sequoia-black transition-colors duration-200 group-hover:text-sequoia-green">
                     {post.title}
                   </h3>
-                  <p className="text-deep-forest-green text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-sequoia-black text-sm leading-relaxed mb-4 line-clamp-3">
                     {post.excerpt || post.description}
                   </p>
                 </Link>
                 <div className="mt-auto">
                   <div className="mb-4">
-                    <span className="text-xs text-deep-forest-green/70">
+                    <span className="text-xs text-sequoia-black/90">
                       {new Date(post.date).toLocaleDateString('ja-JP', {
                         year: 'numeric',
                         month: 'long',
@@ -133,7 +129,7 @@ export default function BlogSection({ latestPosts }: BlogSectionProps) {
                       {post.keywords.slice(0, 3).map((keyword, idx) => (
                         <span
                           key={idx}
-                          className="text-xs bg-white/30 text-deep-forest-green px-2 py-1 rounded-sm"
+                          className="text-xs bg-sequoia-green/10 text-sequoia-black px-2 py-1 rounded-sm"
                         >
                           {keyword}
                         </span>
@@ -142,9 +138,9 @@ export default function BlogSection({ latestPosts }: BlogSectionProps) {
                   )}
                   <Link
                     href={getCategoryPath(category)}
-                    className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors text-sm font-semibold"
+                    className="text-link text-sm"
                   >
-                    すべての記事を見る →
+                    記事一覧
                   </Link>
                 </div>
               </motion.div>

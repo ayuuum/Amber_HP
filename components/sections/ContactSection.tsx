@@ -111,12 +111,9 @@ export default function ContactSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-            お問い合わせ
-          </h2>
-          <p className="text-xl text-deep-forest-green leading-relaxed mb-4">
-            まずは相談だけでもどうぞ。営業はしません。<br />
-            ご安心ください。
+          <h2 className="section-heading mb-6">お問い合わせ</h2>
+          <p className="section-subheading mb-4">
+            相談だけでも歓迎です。状況に合わせて、無理のない進め方をご提案します。
           </p>
         </motion.div>
 
@@ -128,15 +125,15 @@ export default function ContactSection() {
           className="mb-8"
         >
           <div className="flex items-center justify-center gap-4">
-            <div className={`flex items-center gap-2 ${step >= 1 ? 'text-deep-forest-green' : 'text-white'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${step >= 1 ? 'border-deep-forest-green bg-deep-forest-green text-white' : 'border-deep-forest-green'}`}>
+            <div className={`flex items-center gap-2 ${step >= 1 ? 'text-sequoia-green' : 'text-sequoia-black'}`}>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${step >= 1 ? 'border-sequoia-green bg-sequoia-green text-white' : 'border-sequoia-black bg-transparent'}`}>
                 {step > 1 ? <CheckCircle2 className="w-5 h-5" /> : '1'}
               </div>
               <span className="text-sm font-semibold hidden sm:inline">基本情報</span>
             </div>
-            <div className={`w-12 h-0.5 ${step >= 2 ? 'bg-deep-forest-green' : 'bg-white'}`} />
-            <div className={`flex items-center gap-2 ${step >= 2 ? 'text-deep-forest-green' : 'text-white'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${step >= 2 ? 'border-deep-forest-green bg-deep-forest-green text-white' : 'border-deep-forest-green'}`}>
+            <div className={`w-12 h-0.5 ${step >= 2 ? 'bg-sequoia-green' : 'bg-sequoia-black/20'}`} />
+            <div className={`flex items-center gap-2 ${step >= 2 ? 'text-sequoia-green' : 'text-sequoia-black'}`}>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${step >= 2 ? 'border-sequoia-green bg-sequoia-green text-white' : 'border-sequoia-black bg-transparent'}`}>
                 2
               </div>
               <span className="text-sm font-semibold hidden sm:inline">詳細情報</span>
@@ -149,7 +146,7 @@ export default function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 32, scale: 0.98 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-xl"
+          className="surface-card-strong p-8"
         >
           <AnimatePresence mode="wait">
             {step === 1 ? (
@@ -161,25 +158,26 @@ export default function ContactSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-deep-forest-green mb-6">基本情報</h3>
+                <h3 className="text-2xl font-bold text-sequoia-black mb-6">基本情報</h3>
                 
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <label htmlFor="name" className="block text-deep-forest-green font-semibold mb-2">
-                    お名前 <span className="text-deep-forest-green">*</span>
+                  <label htmlFor="name" className="block text-sequoia-black font-semibold mb-2">
+                    お名前 <span className="text-sequoia-black">*</span>
                   </label>
                   <motion.input
                     whileFocus={{ scale: 1.01 }}
                     type="text"
                     id="name"
                     name="name"
+                    autoComplete="name"
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
+                    className="field-base"
                   />
                 </motion.div>
 
@@ -188,18 +186,20 @@ export default function ContactSection() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <label htmlFor="email" className="block text-deep-forest-green font-semibold mb-2">
-                    メールアドレス <span className="text-deep-forest-green">*</span>
+                  <label htmlFor="email" className="block text-sequoia-black font-semibold mb-2">
+                    メールアドレス <span className="text-sequoia-black">*</span>
                   </label>
                   <motion.input
                     whileFocus={{ scale: 1.01 }}
                     type="email"
                     id="email"
                     name="email"
+                    autoComplete="email"
+                    spellCheck={false}
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
+                    className="field-base"
                   />
                 </motion.div>
 
@@ -208,17 +208,18 @@ export default function ContactSection() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <label htmlFor="inquiryType" className="block text-deep-forest-green font-semibold mb-2">
-                    お問い合わせ種別 <span className="text-deep-forest-green">*</span>
+                  <label htmlFor="inquiryType" className="block text-sequoia-black font-semibold mb-2">
+                    お問い合わせ種別 <span className="text-sequoia-black">*</span>
                   </label>
                   <motion.select
                     whileFocus={{ scale: 1.01 }}
                     id="inquiryType"
                     name="inquiryType"
+                    autoComplete="off"
                     required
                     value={formData.inquiryType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
+                    className="field-base"
                   >
                     <option value="general">一般的なお問い合わせ</option>
                     <option value="demo">デモ依頼</option>
@@ -239,10 +240,10 @@ export default function ContactSection() {
                     disabled={!isStep1Valid}
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed shadow-lg flex items-center justify-center gap-2"
+                    className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                   >
                     次へ進む
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </motion.button>
                 </motion.div>
               </motion.div>
@@ -255,14 +256,14 @@ export default function ContactSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-deep-forest-green mb-6">詳細情報</h3>
+                <h3 className="text-2xl font-bold text-sequoia-black mb-6">詳細情報</h3>
 
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <label htmlFor="company" className="block text-deep-forest-green font-semibold mb-2">
+                  <label htmlFor="company" className="block text-sequoia-black font-semibold mb-2">
                     会社名
                   </label>
                   <motion.input
@@ -270,9 +271,10 @@ export default function ContactSection() {
                     type="text"
                     id="company"
                     name="company"
+                    autoComplete="organization"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
+                    className="field-base"
                   />
                 </motion.div>
 
@@ -281,7 +283,7 @@ export default function ContactSection() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <label htmlFor="phone" className="block text-deep-forest-green font-semibold mb-2">
+                  <label htmlFor="phone" className="block text-sequoia-black font-semibold mb-2">
                     電話番号
                   </label>
                   <motion.input
@@ -289,9 +291,11 @@ export default function ContactSection() {
                     type="tel"
                     id="phone"
                     name="phone"
+                    autoComplete="tel"
+                    inputMode="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
+                    className="field-base"
                   />
                 </motion.div>
 
@@ -300,19 +304,20 @@ export default function ContactSection() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <label htmlFor="message" className="block text-deep-forest-green font-semibold mb-2">
-                    メッセージ <span className="text-deep-forest-green">*</span>
+                  <label htmlFor="message" className="block text-sequoia-black font-semibold mb-2">
+                    メッセージ <span className="text-sequoia-black">*</span>
                   </label>
                   <motion.textarea
                     whileFocus={{ scale: 1.01 }}
                     id="message"
                     name="message"
+                    autoComplete="off"
                     required
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green resize-none"
-                    placeholder="お問い合わせ内容をご記入ください"
+                    className="field-base resize-none"
+                    placeholder="お問い合わせ内容をご記入ください…"
                   />
                 </motion.div>
 
@@ -322,6 +327,7 @@ export default function ContactSection() {
                   transition={{ duration: 0.5, delay: 0.4 }}
                   className="pt-4 space-y-4"
                 >
+                  <div aria-live="polite">
                   {submitStatus === 'success' && (
                     <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
@@ -358,15 +364,16 @@ export default function ContactSection() {
                       送信に失敗しました。もう一度お試しください。
                     </motion.div>
                   )}
+                  </div>
                   <div className="flex gap-4">
                     <motion.button
                       type="button"
                       onClick={prevStep}
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex-1 border-2 border-deep-forest-green text-deep-forest-green px-6 py-3 rounded-sm hover:bg-deep-forest-green hover:text-white transition-colors font-semibold flex items-center justify-center gap-2"
+                      className="btn-secondary flex-1"
                     >
-                      <ArrowLeft className="w-5 h-5" />
+                      <ArrowLeft className="w-5 h-5" aria-hidden="true" />
                       戻る
                     </motion.button>
                     <motion.button
@@ -374,9 +381,9 @@ export default function ContactSection() {
                       disabled={isSubmitting || !formData.message}
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex-1 bg-deep-forest-green text-white px-8 py-3 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                      className="btn-primary flex-1 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                     >
-                      {isSubmitting ? '送信中...' : '送信する'}
+                      {isSubmitting ? '送信中…' : '送信する'}
                     </motion.button>
                   </div>
                 </motion.div>

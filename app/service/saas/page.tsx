@@ -1,8 +1,5 @@
-import SaaSPageClient from '@/components/pages/SaaSPageClient'
-import { getAllPosts } from '@/lib/markdown'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
     title: 'ホームサービス事業者向けAI業務OS（開発中） | Vertical SaaS | 株式会社Amber',
@@ -11,33 +8,6 @@ export const metadata: Metadata = {
 }
 
 export default function SaaSPage() {
-    const blogPosts = getAllPosts('saas')
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
-
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': ['Service', 'SoftwareApplication'],
-        'name': 'ホームサービス向けAI業務OS',
-        'description': '予約管理から施工、請求までをAIで一気通貫する次世代の業務システム。',
-        'applicationCategory': 'BusinessApplication',
-        'operatingSystem': 'Web',
-        'provider': {
-            '@type': 'Organization',
-            'name': '株式会社Amber',
-            'url': siteUrl,
-        },
-        'areaServed': 'JP',
-    }
-
-    return (
-        <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
-            <Header />
-            <SaaSPageClient blogPosts={blogPosts} />
-            <Footer />
-        </>
-    )
+    // Pine への導線を優先するため、Amber側の `service/saas` は外部へリダイレクトします。
+    redirect('https://pine-home.com/')
 }

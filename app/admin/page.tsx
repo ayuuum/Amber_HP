@@ -59,7 +59,6 @@ export default function AdminPage() {
   const getCategoryName = (category: string) => {
     const names: Record<string, string> = {
       consulting: 'AI導入支援',
-      training: '生成AI研修',
       saas: 'ホームサービス向け業務システム',
     }
     return names[category] || category
@@ -68,12 +67,12 @@ export default function AdminPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-4xl font-serif font-bold text-deep-forest-green">
+        <h1 className="text-4xl font-serif font-bold text-sequoia-black">
           記事一覧
         </h1>
         <Link
           href="/admin/new"
-          className="bg-deep-forest-green text-white px-6 py-3 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold inline-flex items-center gap-2"
+          className="bg-sequoia-green text-white px-6 py-3 rounded-sm hover:bg-sequoia-green/90 transition-colors font-semibold inline-flex items-center gap-2"
         >
           <Plus className="w-5 h-5" />
           新規作成
@@ -82,13 +81,13 @@ export default function AdminPage() {
 
       <div className="mb-6">
         <div className="flex gap-2">
-          {['all', 'consulting', 'training', 'saas'].map((cat) => (
+          {['all', 'consulting', 'saas'].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-sm transition-colors ${selectedCategory === cat
-                  ? 'bg-deep-forest-green text-white'
-                  : 'bg-white/30 text-deep-forest-green hover:bg-white/50'
+                  ? 'bg-sequoia-green text-white'
+                  : 'bg-white/30 text-sequoia-black hover:bg-white/50'
                 }`}
             >
               {cat === 'all' ? 'すべて' : getCategoryName(cat)}
@@ -98,13 +97,13 @@ export default function AdminPage() {
       </div>
 
       {isLoading ? (
-        <div className="text-center py-12 text-deep-forest-green">読み込み中...</div>
+        <div className="text-center py-12 text-sequoia-black">読み込み中...</div>
       ) : articles.length === 0 ? (
-        <div className="text-center py-12 text-deep-forest-green">
+        <div className="text-center py-12 text-sequoia-black">
           <p className="mb-4">記事がありません</p>
           <Link
             href="/admin/new"
-            className="inline-block bg-deep-forest-green text-white px-6 py-3 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold"
+            className="inline-block bg-sequoia-green text-white px-6 py-3 rounded-sm hover:bg-sequoia-green/90 transition-colors font-semibold"
           >
             最初の記事を作成
           </Link>
@@ -117,22 +116,22 @@ export default function AdminPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="bg-white p-6 rounded-sm border border-deep-forest-green shadow-md"
+              className="bg-white p-6 rounded-sm border border-sequoia-black shadow-md"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs bg-deep-forest-green text-white px-2 py-1 rounded-sm font-semibold">
+                    <span className="text-xs bg-sequoia-black text-white px-2 py-1 rounded-sm font-semibold">
                       {getCategoryName(article.category)}
                     </span>
-                    <span className="text-sm text-deep-forest-green/70">
+                    <span className="text-sm text-sequoia-black/80">
                       {new Date(article.date).toLocaleDateString('ja-JP')}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-deep-forest-green mb-2">
+                  <h3 className="text-xl font-bold text-sequoia-black mb-2">
                     {article.title}
                   </h3>
-                  <p className="text-sm text-deep-forest-green">
+                  <p className="text-sm text-sequoia-black">
                     /service/{article.category}/blog/{article.slug}
                   </p>
                 </div>
@@ -140,14 +139,14 @@ export default function AdminPage() {
                   <Link
                     href={`/service/${article.category}/blog/${article.slug}`}
                     target="_blank"
-                    className="p-2 bg-white/30 text-deep-forest-green rounded-sm hover:bg-white/50 transition-colors"
+                    className="p-2 bg-white/30 text-sequoia-black rounded-sm hover:bg-white/50 transition-colors"
                     title="プレビュー"
                   >
                     <Eye className="w-5 h-5" />
                   </Link>
                   <Link
                     href={`/admin/edit?slug=${article.slug}&category=${article.category}`}
-                    className="p-2 bg-deep-forest-green text-white rounded-sm hover:bg-deep-forest-green transition-colors"
+                    className="p-2 bg-sequoia-green text-white rounded-sm hover:bg-sequoia-green/90 transition-colors"
                     title="編集"
                   >
                     <Edit className="w-5 h-5" />

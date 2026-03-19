@@ -1,149 +1,123 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
-import { useRef } from 'react'
-import { BrainCircuit, GraduationCap, LayoutDashboard, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 const services = [
-    {
-        id: 'ai-consulting',
-        title: 'AI導入支援',
-        description: '現場の課題を理解したプロが、AI導入から定着まで一緒に進めます。',
-        icon: BrainCircuit,
-        href: '/service/consulting',
-        features: ['業務改善・自動化支援', '社内研修・勉強会', '伴走型プロジェクト推進'],
-    },
-    {
-        id: 'ai-training',
-        title: '法人向け生成AI研修',
-        description: '助成金で実質75%OFF。現場で使えるスキルを1日で習得します。',
-        icon: GraduationCap,
-        href: '/service/training',
-        features: ['助成金活用サポート', '実践的カリキュラム', '受講後サポートあり'],
-    },
-    {
-        id: 'vertical-saas',
-        title: 'ホームサービス向けSaaS',
-        description: '予約管理、顧客管理、請求処理を一元化。現場の業務負荷を大幅に削減するオールインワンツール。（開発中）',
-        icon: LayoutDashboard,
-        href: '/service/saas',
-        features: ['予約・顧客一元管理', '自動リマインド通知', '請求書・見積書作成'],
-        badge: '開発中',
-    },
+  {
+    id: 'ai-consulting',
+    title: 'AI導入支援',
+    description: 'AI導入から定着まで、一緒に進めます。',
+    href: '/service/consulting',
+    features: ['業務改善・自動化', '社内研修', '伴走支援'],
+  },
+  {
+    id: 'vertical-saas',
+    title: 'ホームサービス向けSaaS',
+    description: '予約・顧客・請求を一元化。（開発中）',
+    href: '/service/saas',
+    features: ['予約・顧客管理', 'リマインド', '請求・見積'],
+    badge: '開発中',
+  },
 ]
 
 export default function ServiceSection() {
-    const sectionRef = useRef(null)
-    const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-            },
-        },
-    }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
 
-    const [isMounted, setIsMounted] = (require('react').useState)(false)
-    require('react').useEffect(() => {
-        setIsMounted(true)
-    }, [])
+  const [isMounted, setIsMounted] = useState(false)
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 32, scale: 0.98 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                duration: 0.5,
-                ease: [0.22, 1, 0.36, 1],
-            },
-        },
-    }
+  const cardVariants = {
+    hidden: { opacity: 0, y: 32, scale: 0.98 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  }
 
-    return (
-        <section
-            id="services"
-            ref={sectionRef}
-            className="py-24 px-6 bg-deep-forest-green/5 relative overflow-hidden"
+  return (
+    <section
+      id="services"
+      ref={sectionRef}
+      className="py-32 px-6 bg-sequoia-green/[0.04] relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
         >
-            <div className="max-w-7xl mx-auto relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-                        サービス
-                    </h2>
-                    <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
-                        現場の課題をテクノロジーで解決する<br />
-                        3つのサービス
-                    </p>
-                </motion.div>
+          <h2 className="section-heading mb-6">サービス</h2>
+          <p className="section-subheading">導入支援とプロダクト提供の両面から、現場の業務改善を支えます。</p>
+        </motion.div>
 
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isMounted && isInView ? 'visible' : (isMounted ? 'visible' : 'hidden')}
-                    className="grid md:grid-cols-3 gap-8"
-                >
-                    {services.map((service, index) => {
-                        const Icon = service.icon
-                        return (
-                            <motion.div
-                                key={index}
-                                variants={cardVariants}
-                                whileHover={{
-                                    y: -8,
-                                    transition: { duration: 0.3 }
-                                }}
-                                className="bg-white rounded-sm border border-deep-forest-green/10 shadow-lg overflow-hidden flex flex-col h-full group"
-                            >
-                                <div className="p-8 flex-grow">
-                                    <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-full bg-deep-forest-green/10 text-deep-forest-green group-hover:bg-deep-forest-green group-hover:text-white transition-colors duration-300">
-                                        <Icon className="w-7 h-7" />
-                                    </div>
-                                    <h3 className="text-2xl font-serif font-bold text-deep-forest-green mb-4 flex items-center gap-2">
-                                        {service.title}
-                                        {/* @ts-ignore */}
-                                        {service.badge && (
-                                            <span className="text-xs bg-deep-forest-green text-white px-2 py-1 rounded-full font-sans font-normal">
-                                                {/* @ts-ignore */}
-                                                {service.badge}
-                                            </span>
-                                        )}
-                                    </h3>
-                                    <p className="text-deep-forest-green/80 leading-relaxed mb-6 text-sm lg:text-base">
-                                        {service.description}
-                                    </p>
-                                    <ul className="space-y-2 mb-8">
-                                        {service.features.map((feature, i) => (
-                                            <li key={i} className="flex items-center text-sm text-deep-forest-green/70">
-                                                <span className="w-1.5 h-1.5 bg-deep-forest-green/60 rounded-full mr-2" />
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="p-6 pt-0 mt-auto">
-                                    <Link href={service.href} className="w-full">
-                                        <div className="w-full py-3 px-4 border border-deep-forest-green text-deep-forest-green rounded-sm hover:bg-deep-forest-green hover:text-white transition-all duration-300 flex items-center justify-center gap-2 font-medium group-hover:shadow-md">
-                                            詳しく見る
-                                            <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
-                                        </div>
-                                    </Link>
-                                </div>
-                            </motion.div>
-                        )
-                    })}
-                </motion.div>
-            </div>
-        </section>
-    )
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isMounted && isInView ? 'visible' : (isMounted ? 'visible' : 'hidden')}
+          className="grid md:grid-cols-2 gap-8"
+        >
+          {services.map((service, index) => {
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className="surface-card interactive-card overflow-hidden flex h-full flex-col group bg-[#F9F6F1]"
+              >
+                <div className="p-8 flex-grow">
+                  <h3 className="text-2xl font-serif font-bold text-sequoia-black mb-4 flex items-center gap-2">
+                    {service.title}
+                    {/* @ts-ignore */}
+                    {service.badge && (
+                      <span className="text-xs text-sequoia-black/60 font-sans font-normal">
+                        {/* @ts-ignore */}
+                        {service.badge}
+                      </span>
+                    )}
+                  </h3>
+                  <p className="text-sequoia-black/90 leading-relaxed mb-6 text-sm lg:text-base">{service.description}</p>
+                  <ul className="space-y-2 mb-8">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-center text-sm text-sequoia-black/90">
+                        <span className="w-1.5 h-1.5 bg-sequoia-black/50 rounded-full mr-2" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-6 pt-0 mt-auto">
+                  <Link href={service.href} className="btn-secondary w-full">
+                    詳しく見る
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+      </div>
+    </section>
+  )
 }
+

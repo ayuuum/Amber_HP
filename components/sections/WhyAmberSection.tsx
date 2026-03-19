@@ -6,18 +6,18 @@ import { HeartHandshake, TrendingUp, ShieldCheck } from 'lucide-react'
 
 const strengths = [
   {
-    title: '徹底した「現場視点」',
-    description: '実際に現場の最前線に入り込んだ経験から、現場の課題を深く理解しています。実務の最前線で本当に機能する解決策を提案します。',
+    title: '現場視点',
+    description: '現場の経験をもとに、使える解決策を提案します。',
     icon: HeartHandshake,
   },
   {
-    title: '長期的な事業成長への伴走',
-    description: '売上や利益につながる支援を行います。',
+    title: '成果まで伴走',
+    description: '導入で終わりにせず、成果が出るまで伴走します。',
     icon: TrendingUp,
   },
   {
-    title: 'リスクを抑えた段階的導入',
-    description: 'AI導入支援から始め、使い慣れてから業務システムへ。無理のないペースでサポートします。',
+    title: '段階的導入',
+    description: '一気に変えず、ペースを守ります。',
     icon: ShieldCheck,
   },
 ]
@@ -53,7 +53,7 @@ export default function WhyAmberSection() {
     <section
       id="why-amber"
       ref={sectionRef}
-      className="py-24 px-6 bg-white/20 relative overflow-hidden"
+      className="py-24 px-6 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -62,12 +62,8 @@ export default function WhyAmberSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-            選ばれる理由
-          </h2>
-          <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
-            AI × 現場理解 × プロダクト。長期的に支援します。
-          </p>
+          <h2 className="section-heading mb-6">選ばれる理由</h2>
+          <p className="section-subheading">現場を理解したうえで、無理のない導入と定着まで伴走します。</p>
         </motion.div>
 
         <motion.div
@@ -83,19 +79,19 @@ export default function WhyAmberSection() {
                 key={index}
                 variants={cardVariants}
                 whileHover={{
-                  scale: 1.02,
-                  y: -6,
+                  scale: 1.01,
+                  y: -4,
                   transition: { duration: 0.25 }
                 }}
-                className="bg-white p-8 rounded-sm border border-deep-forest-green/20 shadow-lg hover:shadow-xl transition-all"
+                className="surface-card interactive-card bg-sequoia-white p-8"
               >
-                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-full bg-deep-forest-green/5 text-deep-forest-green">
-                  <Icon className="w-8 h-8" />
+                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-sequoia-green/10 text-sequoia-green">
+                  <Icon className="w-8 h-8" aria-hidden="true" />
                 </div>
-                <h3 className="text-2xl font-bold text-deep-forest-green mb-4">
+                <h3 className="text-2xl font-bold text-sequoia-black mb-4">
                   {strength.title}
                 </h3>
-                <p className="text-deep-forest-green/80 leading-relaxed">
+                <p className="text-sequoia-black/90 leading-relaxed">
                   {strength.description}
                 </p>
               </motion.div>

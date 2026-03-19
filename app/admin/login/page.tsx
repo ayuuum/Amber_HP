@@ -47,7 +47,7 @@ export default function AdminLoginPage() {
         initial={{ opacity: 0, y: 20, rotateX: -10 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-xl max-w-md w-full"
+        className="bg-white p-8 rounded-sm border border-sequoia-black shadow-xl max-w-md w-full"
         style={{ perspective: 1000 }}
       >
         <div className="text-center mb-8">
@@ -55,21 +55,21 @@ export default function AdminLoginPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring' }}
-            className="inline-block p-4 bg-deep-forest-green rounded-full mb-4"
+            className="inline-block p-4 bg-sequoia-green rounded-full mb-4"
           >
             <Lock className="w-8 h-8 text-white" />
           </motion.div>
-          <h1 className="text-3xl font-serif font-bold text-deep-forest-green mb-2">
+          <h1 className="text-3xl font-serif font-bold text-sequoia-black mb-2">
             管理画面ログイン
           </h1>
-          <p className="text-deep-forest-green">
+          <p className="text-sequoia-black">
             ブログ記事の管理画面にアクセスします
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="password" className="block text-deep-forest-green font-semibold mb-2">
+            <label htmlFor="password" className="block text-sequoia-black font-semibold mb-2">
               パスワード
             </label>
             <motion.input
@@ -78,7 +78,7 @@ export default function AdminLoginPage() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-deep-forest-green rounded-sm bg-white text-deep-forest-green focus:outline-none focus:border-deep-forest-green"
+              className="w-full px-4 py-3 border border-sequoia-black rounded-sm bg-white text-sequoia-black focus:outline-none focus:border-sequoia-black"
               required
             />
           </div>
@@ -98,7 +98,7 @@ export default function AdminLoginPage() {
             disabled={isLoading}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-sequoia-green text-white px-8 py-4 rounded-sm hover:bg-sequoia-green/90 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'ログイン中...' : 'ログイン'}
           </motion.button>

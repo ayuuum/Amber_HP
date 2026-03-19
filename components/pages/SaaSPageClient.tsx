@@ -69,11 +69,11 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
     }
 
     return (
-        <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
+        <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-12">
-                    <Link href="/#vertical-saas" className="text-deep-forest-green hover:text-deep-forest-green transition-colors">
-                        ← Back to Home
+                    <Link href="/#vertical-saas" className="text-link text-sm">
+                        トップに戻る
                     </Link>
                 </div>
 
@@ -83,7 +83,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-deep-forest-green"
+                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-sequoia-black"
                     >
                         <Image
                             src="/illustrations/hero-saas.png"
@@ -101,10 +101,10 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="text-center lg:text-left order-1 lg:order-2"
                     >
-                        <div className="inline-block bg-deep-forest-green text-white text-xs px-3 py-1 rounded-full mb-4 font-bold">
+                        <div className="inline-block bg-sequoia-green text-white text-xs px-3 py-1 rounded-full mb-4 font-bold">
                             開発中
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
+                        <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6">
                             ホームサービス業のための<br className="md:hidden" />AI業務OS
                         </h1>
                         <p className="text-lead mb-4">
@@ -117,9 +117,9 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         <div>
                             <Link
                                 href="/service/saas/blog"
-                                className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors font-semibold"
+                                className="text-link"
                             >
-                                関連記事を見る →
+                                関連記事を見る
                             </Link>
                         </div>
                     </motion.div>
@@ -134,24 +134,24 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     className="mb-24 grid md:grid-cols-2 gap-12"
                 >
                     <div className="bg-white/50 p-8 rounded-sm">
-                        <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-6">
+                        <h2 className="text-2xl font-serif font-bold text-sequoia-black mb-6">
                             対象となる事業者様
                         </h2>
-                        <ul className="space-y-3 text-deep-forest-green font-medium">
-                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>ハウスクリーニング</li>
-                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>不用品回収</li>
-                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>リフォーム・修理</li>
-                            <li className="flex items-center"><span className="text-deep-forest-green mr-2">●</span>害虫駆除・引越し など</li>
+                        <ul className="space-y-3 text-sequoia-black font-medium">
+                            <li className="flex items-center"><span className="text-sequoia-black mr-2">●</span>ハウスクリーニング</li>
+                            <li className="flex items-center"><span className="text-sequoia-black mr-2">●</span>不用品回収</li>
+                            <li className="flex items-center"><span className="text-sequoia-black mr-2">●</span>リフォーム・修理</li>
+                            <li className="flex items-center"><span className="text-sequoia-black mr-2">●</span>害虫駆除・引越し など</li>
                         </ul>
-                        <p className="mt-4 text-sm text-deep-forest-green opacity-80">
+                        <p className="mt-4 text-sm text-sequoia-black opacity-80">
                             ※個人のお客様から直接依頼を受けるホームサービス事業者向け
                         </p>
                     </div>
                     <div className="bg-white/50 p-8 rounded-sm">
-                        <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-6">
+                        <h2 className="text-2xl font-serif font-bold text-sequoia-black mb-6">
                             よくあるお悩み
                         </h2>
-                        <ul className="space-y-3 text-deep-forest-green">
+                        <ul className="space-y-3 text-sequoia-black">
                             <li className="flex items-start">
                                 <span className="text-red-400 mr-2 font-bold">✕</span>
                                 予約・見積・請求がバラバラで管理が大変
@@ -180,7 +180,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     viewport={{ once: true }}
                     className="mb-16"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
+                    <h2 className="text-3xl font-serif font-bold text-sequoia-black mb-4 text-center">
                         Amberのできること
                     </h2>
                     <p className="text-lead text-center max-w-2xl mx-auto mb-12">予約から請求・口コミまで、現場の業務を一つの基盤で。</p>
@@ -190,12 +190,12 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                                 key={index}
                                 variants={cardVariants}
                                 whileHover="hover"
-                                className="bg-white p-6 rounded-sm border border-deep-forest-green shadow-lg"
+                                className="bg-white p-6 rounded-sm border border-sequoia-black shadow-lg"
                             >
-                                <h3 className="text-xl font-semibold text-deep-forest-green mb-3">
+                                <h3 className="text-xl font-semibold text-sequoia-black mb-3">
                                     {feature.title}
                                 </h3>
-                                <p className="text-deep-forest-green leading-relaxed text-sm">
+                                <p className="text-sequoia-black leading-relaxed text-sm">
                                     {feature.description}
                                 </p>
                             </motion.div>
@@ -210,7 +210,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={{ scale: 1.01, y: -4 }}
-                    className="bg-white p-4 md:p-8 rounded-sm border border-deep-forest-green shadow-xl overflow-hidden mb-24"
+                    className="bg-white p-4 md:p-8 rounded-sm border border-sequoia-black shadow-xl overflow-hidden mb-24"
                 >
                     <div className="relative aspect-video rounded-sm overflow-hidden bg-white">
                         <Image
@@ -219,7 +219,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                             fill
                             className="object-contain"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-deep-forest-green/10 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-sequoia-black/10 via-transparent to-transparent" />
                     </div>
                 </motion.div>
 
@@ -232,20 +232,20 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-2xl font-serif font-bold text-deep-forest-green mb-4">
+                        <h2 className="text-2xl font-serif font-bold text-sequoia-black mb-4">
                             このサービスが目指す状態
                         </h2>
-                        <ul className="space-y-4 text-deep-forest-green text-lg">
+                        <ul className="space-y-4 text-sequoia-black text-lg">
                             <li className="flex items-center">
-                                <span className="text-deep-forest-green text-2xl mr-3">◎</span>
+                                <span className="text-sequoia-black text-2xl mr-3">◎</span>
                                 事務作業に追われず、現場と顧客対応に集中できる
                             </li>
                             <li className="flex items-center">
-                                <span className="text-deep-forest-green text-2xl mr-3">◎</span>
+                                <span className="text-sequoia-black text-2xl mr-3">◎</span>
                                 自社で予約が回り、プラットフォーム手数料に依存しない
                             </li>
                             <li className="flex items-center">
-                                <span className="text-deep-forest-green text-2xl mr-3">◎</span>
+                                <span className="text-sequoia-black text-2xl mr-3">◎</span>
                                 スマホ一つで、仕事の全体が把握できる
                             </li>
                         </ul>
@@ -257,7 +257,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="bg-deep-forest-green text-white p-8 rounded-sm shadow-xl"
+                        className="bg-sequoia-green text-white p-8 rounded-sm shadow-xl"
                     >
                         <h2 className="text-2xl font-serif font-bold mb-4 border-b border-white/30 pb-4">
                             Amberが大切にしていること

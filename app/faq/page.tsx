@@ -27,7 +27,7 @@ export default function FAQPage() {
     return (
         <>
             <JsonLd id="jsonld-faq" data={faqJsonLd} />
-            <main className="min-h-screen bg-white">
+            <main className="min-h-screen bg-color-bg">
                 <Header />
                 <div className="pt-20">
                     <FAQSection />

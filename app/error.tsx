@@ -18,7 +18,7 @@ export default function Error({
   }, [error])
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-color-bg">
       <Header />
       <div className="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center px-4 pt-20">
         <div className="max-w-md text-center">

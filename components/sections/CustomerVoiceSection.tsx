@@ -55,14 +55,14 @@ export default function CustomerVoiceSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6">
             支援事例・お客様の声
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl text-deep-forest-green font-bold mb-8"
+            className="text-2xl text-sequoia-black font-bold mb-8"
           >
             70店舗導入予定
           </motion.p>
@@ -83,19 +83,19 @@ export default function CustomerVoiceSection() {
                 y: -6,
                 transition: { duration: 0.25 }
               }}
-              className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-lg overflow-hidden"
+              className="bg-white p-8 rounded-sm border border-sequoia-black shadow-lg overflow-hidden"
             >
               {/* 画像は削り、カードのトーンを統一（より“本物っぽい”見え方に寄せる） */}
               <div className="mb-6 flex items-center justify-between gap-4">
-                <div className="h-10 w-10 rounded-sm bg-deep-forest-green/10 flex items-center justify-center">
-                  <Quote className="h-5 w-5 text-deep-forest-green" />
+                <div className="h-10 w-10 rounded-sm bg-sequoia-black/10 flex items-center justify-center">
+                  <Quote className="h-5 w-5 text-sequoia-black" />
                 </div>
-                <div className="h-px flex-1 bg-deep-forest-green/20" />
+                <div className="h-px flex-1 bg-sequoia-black/20" />
               </div>
-              <p className="text-deep-forest-green leading-relaxed mb-4">
+              <p className="text-sequoia-black leading-relaxed mb-4">
                 {testimonial.text}
               </p>
-              <p className="text-sm text-deep-forest-green/70">{testimonial.author}</p>
+              <p className="text-sm text-sequoia-black/80">{testimonial.author}</p>
             </motion.div>
           ))}
         </motion.div>

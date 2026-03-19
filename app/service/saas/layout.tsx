@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
+const pineUrl = 'https://pine-home.com/'
 
 export const metadata: Metadata = {
   title: 'ホームサービス業のためのAIエージェント | 株式会社Amber',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ホームサービス業のためのAIエージェント | 株式会社Amber',
     description: 'ホームサービス事業者の業務を包括的にサポートするAIエージェント。予約管理から請求まで、すべてが一つのシステムで完結します。',
-    url: `${siteUrl}/service/saas`,
+    url: pineUrl,
     type: 'website',
   },
   twitter: {
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     description: 'ホームサービス事業者の業務を包括的にサポートするAIエージェント。',
   },
   alternates: {
-    canonical: `${siteUrl}/service/saas`,
+    canonical: pineUrl,
   },
 }
 

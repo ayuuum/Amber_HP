@@ -80,7 +80,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
     }
 
     return (
-        <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
+        <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-8">
                     <Breadcrumbs
@@ -97,7 +97,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-deep-forest-green"
+                        className="relative h-64 lg:h-96 rounded-sm overflow-hidden shadow-xl order-2 lg:order-1 bg-sequoia-black"
                     >
                         <Image
                             src="/illustrations/hero-consulting.png"
@@ -115,23 +115,23 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="text-center lg:text-left order-1 lg:order-2"
                     >
-                        <h1 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6 leading-tight">
+                        <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6 leading-tight">
                             AI導入支援
                         </h1>
                         <p className="text-lead mb-4">
                             AIを「導入する」サービスではなく、<br className="hidden md:inline" />
                             AIで「業務のやり方を変える」サービスです。
                         </p>
-                        <p className="text-lg text-deep-forest-green leading-relaxed mb-6">
+                        <p className="text-lg text-sequoia-black leading-relaxed mb-6">
                             ツール選定から実際の運用まで、<br className="hidden md:inline" />
                             <span className="highlight">「横に立って一緒に進める顧問」</span>として支援します。
                         </p>
                         <div className="mb-8">
                             <Link
                                 href="/service/consulting/blog"
-                                className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors font-semibold"
+                                className="text-link"
                             >
-                                関連記事を見る →
+                                関連記事を見る
                             </Link>
                         </div>
                     </motion.div>
@@ -145,7 +145,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     transition={{ duration: 0.6 }}
                     className="mb-24 bg-white/50 p-8 md:p-12 rounded-sm"
                 >
-                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
+                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-sequoia-black mb-4 text-center">
                         こんな課題を抱える企業へ
                     </h2>
                     <div className="flex flex-col md:flex-row gap-6 justify-center">
@@ -156,11 +156,11 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         ].map((item, i) => {
                             const Icon = item.icon
                             return (
-                                <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-deep-forest-green flex-1 flex gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-deep-forest-green/10 flex items-center justify-center text-deep-forest-green">
+                                <div key={i} className="bg-white p-6 rounded-sm shadow-md border-l-4 border-sequoia-black flex-1 flex gap-4">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-sequoia-black/10 flex items-center justify-center text-sequoia-black">
                                         <Icon className="w-6 h-6" />
                                     </div>
-                                    <p className="text-deep-forest-green font-medium leading-relaxed pt-1">{item.text}</p>
+                                    <p className="text-sequoia-black font-medium leading-relaxed pt-1">{item.text}</p>
                                 </div>
                             )
                         })}
@@ -175,7 +175,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     transition={{ duration: 0.8 }}
                     className="mb-24"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-4 text-center">
+                    <h2 className="text-3xl font-serif font-bold text-sequoia-black mb-4 text-center">
                         サービス内容
                     </h2>
                     <p className="text-lead text-center max-w-2xl mx-auto mb-12">現状整理から社内定着まで、一貫して伴走します。</p>
@@ -187,11 +187,11 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}
-                                className="bg-white p-8 rounded-sm border border-deep-forest-green shadow-lg flex flex-col"
+                                className="bg-white p-8 rounded-sm border border-sequoia-black shadow-lg flex flex-col"
                             >
-                                <div className="text-4xl text-deep-forest-green font-bold mb-4">0{index + 1}</div>
-                                <h3 className="text-xl font-semibold text-deep-forest-green mb-4">{step.title}</h3>
-                                <p className="text-deep-forest-green leading-relaxed flex-grow">
+                                <div className="text-4xl text-sequoia-black font-bold mb-4">0{index + 1}</div>
+                                <h3 className="text-xl font-semibold text-sequoia-black mb-4">{step.title}</h3>
+                                <p className="text-sequoia-black leading-relaxed flex-grow">
                                     {step.description}
                                 </p>
                             </motion.div>
@@ -204,7 +204,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="mb-24 bg-deep-forest-green text-white p-12 text-center rounded-sm shadow-2xl"
+                    className="mb-24 bg-green-dark text-white p-12 text-center rounded-sm shadow-2xl"
                 >
                     <h2 className="text-3xl font-serif font-bold mb-4">このサービスで目指すこと</h2>
                     <div className="grid md:grid-cols-3 gap-8">
@@ -231,17 +231,17 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     transition={{ duration: 0.8 }}
                     className="mb-24"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-deep-forest-green mb-12 text-center">
+                    <h2 className="text-3xl font-serif font-bold text-sequoia-black mb-12 text-center">
                         よくあるご質問
                     </h2>
                     <div className="max-w-3xl mx-auto space-y-4">
                         {faqs.map((faq, index) => (
-                            <div key={index} className="border-b border-deep-forest-green/20">
+                            <div key={index} className="border-b border-sequoia-black/20">
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                                    className="w-full py-4 flex items-center justify-between text-left transition-colors hover:text-deep-forest-green"
+                                    className="w-full py-4 flex items-center justify-between text-left transition-colors hover:text-sequoia-black"
                                 >
-                                    <span className="text-lg font-bold text-deep-forest-green pr-8">
+                                    <span className="text-lg font-bold text-sequoia-black pr-8">
                                         Q. {faq.question}
                                     </span>
                                     {openFaq === index ? (
@@ -255,7 +255,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                                     animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
                                     className="overflow-hidden"
                                 >
-                                    <p className="pb-6 text-deep-forest-green/80 leading-relaxed leading-relaxed">
+                                    <p className="pb-6 text-sequoia-black/90 leading-relaxed leading-relaxed">
                                         {faq.answer}
                                     </p>
                                 </motion.div>

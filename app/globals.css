@@ -2,16 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   Amber Corporation — Brand Color Palette
+   Sequoia Capital ベース / Version 1.0 / 2026
+   ========================================================================== */
+:root {
+  /* Brand Colors (Main) */
+  --color-green: #00A071;        /* Sequoia Green: CTA・ハイライト・アイコン */
+  --color-green-dark: #007354;   /* Dark Green: フッター・ダークセクション */
+  --color-black: #1B1916;        /* Sequoia Black: 本文・見出し・ダークUI */
+  --color-white: #F3F3F2;        /* Sequoia White: カード・モーダル・明るいUI */
 
+  /* Background & Text */
+  --color-bg: #FBF7F0;           /* ページ背景（クリーム/オフホワイト） */
+  --color-text: #1B1917;         /* メインテキスト（ダークブラウン系） */
+  --color-text-inverse: rgba(255, 255, 255, 0.8);  /* 白テキスト（フッター等） */
+
+  /* Accent Colors (Category / Badge) */
+  --color-blue-bright: #1F8AC4;
+  --color-blue-dark: #006D96;
+  --color-purple: #8B4C9E;
+  --color-pink: #E8599E;
+  --color-orange: #F5571C;
+  --color-yellow: #FAB23A;
+  --color-yellow-dark: #B06300;
+  --color-red: #EB2926;
+}
 
 @layer base {
+  html {
+    color-scheme: light;
+  }
+
   body {
-    @apply text-deep-forest-green;
-    background-color: #ffffff;
-    background-image:
-      radial-gradient(circle at 85% 0%, rgba(18, 40, 40, 0.1), transparent 40%),
-      linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.75));
-    font-family: var(--font-noto-sans), system-ui, sans-serif;
+    @apply text-sequoia-black;
+    background-color: var(--color-bg);
+    font-family: var(--font-noto-serif), Georgia, serif;
     line-height: 1.8;
   }
 
@@ -21,7 +47,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-noto-sans), system-ui, sans-serif;
+    font-family: var(--font-noto-serif), Georgia, serif;
     line-height: 1.6;
     letter-spacing: 0.02em;
   }
@@ -29,21 +55,72 @@
   p {
     letter-spacing: 0.01em;
   }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* テキストの強弱：リード・本文・補足・強調 */
 @layer components {
   .text-lead {
-    @apply text-lg md:text-xl font-medium text-deep-forest-green leading-relaxed;
+    @apply text-lg md:text-xl font-medium text-sequoia-black leading-relaxed;
   }
   .text-muted {
-    @apply text-deep-forest-green/75 leading-relaxed;
+    color: rgb(27 25 22 / 0.75);
+    @apply leading-relaxed;
+  }
+  .font-logo {
+    font-family: var(--font-logo), 'Times New Roman', serif;
+    letter-spacing: 0.01em;
+    font-weight: 600;
   }
   .highlight {
-    @apply font-bold text-deep-forest-green;
+    @apply font-bold text-sequoia-green;
   }
   .highlight-bg {
-    @apply bg-deep-forest-green/10 px-1.5 py-0.5 rounded font-medium text-deep-forest-green;
+    background-color: rgb(0 160 113 / 0.1);
+    @apply px-1.5 py-0.5 rounded font-medium text-sequoia-green;
+  }
+
+  .section-heading {
+    @apply text-4xl md:text-5xl font-serif font-bold text-sequoia-black text-balance;
+  }
+
+  .section-subheading {
+    @apply text-lg md:text-xl text-sequoia-black/80 leading-relaxed max-w-3xl mx-auto text-balance;
+  }
+
+  .surface-card {
+    @apply rounded-sm border border-sequoia-black/10 bg-white shadow-sm;
+  }
+
+  .surface-card-strong {
+    @apply rounded-sm border border-sequoia-green/20 bg-white shadow-lg;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-sequoia-green px-6 py-3.5 font-semibold text-white shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:bg-green-dark hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_rgba(0,160,113,0.25)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-sequoia-black/20 bg-transparent px-6 py-3.5 font-medium text-sequoia-black transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-sequoia-green/40 hover:bg-sequoia-green/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_rgba(0,160,113,0.22)];
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-2 font-semibold text-sequoia-black decoration-sequoia-green/40 underline-offset-4 transition-[color,text-decoration-color,transform] duration-200 hover:text-sequoia-green hover:decoration-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/30 focus-visible:ring-offset-2 focus-visible:rounded-sm;
+  }
+
+  .interactive-card {
+    @apply transition-[background-color,border-color,box-shadow,transform] duration-200 hover:-translate-y-1 hover:border-sequoia-green/30 hover:shadow-md;
+  }
+
+  .field-base {
+    @apply w-full rounded-sm border border-sequoia-black/20 bg-white px-4 py-3 text-sequoia-black shadow-sm transition-[border-color,box-shadow] duration-200 placeholder:text-sequoia-black/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/30 focus-visible:ring-offset-2 focus-visible:border-sequoia-green;
   }
 }
 
@@ -70,19 +147,19 @@
 
   /* ブログ記事用のスタイル */
   .prose {
-    @apply text-deep-forest-green;
+    @apply text-sequoia-black;
   }
 
   .prose h2 {
-    @apply text-2xl font-bold text-deep-forest-green mt-8 mb-4;
+    @apply text-2xl font-bold text-sequoia-black mt-8 mb-4;
   }
 
   .prose h3 {
-    @apply text-xl font-bold text-deep-forest-green mt-6 mb-3;
+    @apply text-xl font-bold text-sequoia-black mt-6 mb-3;
   }
 
   .prose h4 {
-    @apply text-lg font-semibold text-deep-forest-green mt-4 mb-2;
+    @apply text-lg font-semibold text-sequoia-black mt-4 mb-2;
   }
 
   .prose p {
@@ -107,23 +184,23 @@
   }
 
   .prose a {
-    @apply text-deep-forest-green hover:text-deep-forest-green underline;
+    @apply text-sequoia-green hover:text-green-dark underline;
   }
 
   .prose strong {
-    @apply font-bold text-deep-forest-green;
+    @apply font-bold text-sequoia-black;
   }
 
   .prose code {
-    @apply bg-white/30 px-1 py-0.5 rounded text-sm;
+    @apply bg-sequoia-white px-1 py-0.5 rounded text-sm;
   }
 
   .prose pre {
-    @apply bg-white/30 p-4 rounded-sm overflow-x-auto mb-4;
+    @apply bg-sequoia-white p-4 rounded-sm overflow-x-auto mb-4;
   }
 
   .prose blockquote {
-    @apply border-l-4 border-deep-forest-green pl-4 italic my-4;
+    @apply border-l-4 border-sequoia-green pl-4 italic my-4;
   }
 
   .prose img {
@@ -136,10 +213,16 @@
 
   .prose th,
   .prose td {
-    @apply border border-deep-forest-green px-4 py-2;
+    @apply border px-4 py-2;
+    border-color: rgb(27 25 22 / 0.2);
   }
 
   .prose th {
-    @apply bg-white/20 font-semibold;
+    @apply bg-sequoia-white font-semibold;
   }
+}
+
+/* 外側キャンバスの統一：main が bg-white を持っていてもクリーム背景に寄せる */
+main.bg-white {
+  background-color: var(--color-bg) !important;
 }

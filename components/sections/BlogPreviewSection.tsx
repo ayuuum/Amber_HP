@@ -6,22 +6,21 @@ import { useRef } from 'react'
 import type { BlogPost } from '@/lib/markdown'
 
 // クライアントコンポーネントで使用するためのヘルパー関数
-function getCategoryName(category: 'consulting' | 'training' | 'saas'): string {
+function getCategoryName(category: 'consulting' | 'saas'): string {
   const names = {
     consulting: 'AI導入支援',
-    training: '法人向け生成AI研修',
     saas: 'ホームサービス向け業務システム',
   }
   return names[category]
 }
 
-function getCategoryPath(category: 'consulting' | 'training' | 'saas'): string {
+function getCategoryPath(category: 'consulting' | 'saas'): string {
   return `/service/${category}/blog`
 }
 
 type BlogPreviewSectionProps = {
   posts: BlogPost[]
-  category: 'consulting' | 'training' | 'saas'
+  category: 'consulting' | 'saas'
 }
 
 export default function BlogPreviewSection({ posts, category }: BlogPreviewSectionProps) {
@@ -69,10 +68,8 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-forest-green mb-6">
-            関連記事
-          </h2>
-          <p className="text-xl text-deep-forest-green max-w-3xl mx-auto leading-relaxed">
+          <h2 className="section-heading mb-6">関連記事</h2>
+          <p className="section-subheading">
             {getCategoryName(category)}に関する記事を発信しています。<br />
             実務に役立つ知見をお届けします。
           </p>
@@ -89,14 +86,14 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
               key={post.slug}
               variants={cardVariants}
               whileHover={{
-                scale: 1.02,
-                y: -6,
+                scale: 1.01,
+                y: -4,
                 transition: { duration: 0.25 }
               }}
-              className="bg-white p-6 rounded-sm border border-deep-forest-green shadow-lg hover:shadow-xl transition-shadow h-full flex flex-col"
+              className="surface-card interactive-card group flex h-full flex-col p-6"
             >
               <div className="mb-4">
-                <span className="text-xs text-deep-forest-green font-semibold">
+                <span className="text-xs text-sequoia-black font-semibold">
                   {new Date(post.date).toLocaleDateString('ja-JP', {
                     year: 'numeric',
                     month: 'long',
@@ -108,10 +105,10 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                 href={`${getCategoryPath(category)}/${post.slug}`}
                 className="block flex-grow"
               >
-                <h3 className="text-xl font-bold text-deep-forest-green mb-3 line-clamp-2 hover:text-deep-forest-green transition-colors">
+                <h3 className="mb-3 line-clamp-2 text-xl font-bold text-sequoia-black transition-colors duration-200 group-hover:text-sequoia-green">
                   {post.title}
                 </h3>
-                <p className="text-deep-forest-green text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-sequoia-black text-sm leading-relaxed mb-4 line-clamp-3">
                   {post.excerpt || post.description}
                 </p>
               </Link>
@@ -121,7 +118,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                     {post.keywords.slice(0, 3).map((keyword, idx) => (
                       <span
                         key={idx}
-                        className="text-xs bg-white/30 text-deep-forest-green px-2 py-1 rounded-sm"
+                        className="text-xs bg-white/30 text-sequoia-black px-2 py-1 rounded-sm"
                       >
                         {keyword}
                       </span>
@@ -130,9 +127,9 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                 )}
                 <Link
                   href={`${getCategoryPath(category)}/${post.slug}`}
-                  className="inline-block text-deep-forest-green hover:text-deep-forest-green transition-colors text-sm font-semibold"
+                  className="text-link text-sm"
                 >
-                  続きを読む →
+                  続きを読む
                 </Link>
               </div>
             </motion.div>
@@ -147,7 +144,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
         >
           <Link
             href={getCategoryPath(category)}
-            className="inline-block bg-deep-forest-green text-white px-8 py-4 rounded-sm hover:bg-deep-forest-green transition-colors font-semibold"
+            className="btn-primary"
           >
             すべての記事を見る
           </Link>
