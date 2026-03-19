@@ -100,7 +100,7 @@
   }
 
   .surface-card-strong {
-    @apply rounded-sm border border-sequoia-green/20 bg-white shadow-lg;
+    @apply rounded-sm border border-sequoia-green/15 bg-[rgba(251,247,240,0.95)] shadow-md;
   }
 
   .btn-primary {
