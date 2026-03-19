@@ -17,7 +17,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         <nav className="mb-8 flex items-center space-x-2 text-sm text-sequoia-black/65" aria-label="Breadcrumb">
             <Link
                 href="/"
-                className="rounded-sm p-1.5 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/30"
+                className="rounded-sm p-1.5 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
             >
                 <Home className="w-4 h-4" aria-hidden="true" />
                 <span className="sr-only">Home</span>
@@ -29,7 +29,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                     {item.href ? (
                         <Link
                             href={item.href}
-                            className="rounded-sm px-1.5 py-1 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/30"
+                            className="rounded-sm px-1.5 py-1 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                         >
                             {item.label}
                         </Link>

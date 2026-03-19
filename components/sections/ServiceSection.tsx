@@ -59,7 +59,7 @@ export default function ServiceSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="py-32 px-6 bg-sequoia-green/[0.04] relative overflow-hidden"
+      className="py-32 px-6 bg-color-bg relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div

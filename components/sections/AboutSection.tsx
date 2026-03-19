@@ -66,17 +66,6 @@ export default function AboutSection() {
           <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
             現場が楽になる仕組みを、一緒につくります。
           </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 pt-8"
-          >
-            <div className="bg-sequoia-white p-8 rounded-sm border border-sequoia-green/30 max-w-3xl mx-auto">
-              <p className="text-lg text-sequoia-black">
-                現場の声を聞き、丁寧に伴走。押し付けません。
-              </p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

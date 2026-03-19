@@ -67,7 +67,7 @@ export default function Header() {
                 {item.children ? (
                   <>
                     <span
-                      className="flex cursor-default items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium text-sequoia-black/80 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/25"
+                      className="flex cursor-default items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium text-sequoia-black/80 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                       aria-haspopup="true"
                       aria-expanded={hoveredIndex === index}
                     >
@@ -88,7 +88,7 @@ export default function Header() {
                               <Link
                                 key={childIndex}
                                 href={child.href}
-                                className="mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/25"
+                                className="mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                               >
                                 {child.label}
                               </Link>
@@ -101,7 +101,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium text-sequoia-black/80 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/25"
+                    className="flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium text-sequoia-black/80 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                   >
                     {item.label}
                   </Link>
@@ -113,7 +113,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="relative z-50 rounded-sm p-2 text-sequoia-black transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/25 lg:hidden"
+            className="relative z-50 rounded-sm p-2 text-sequoia-black transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 lg:hidden"
             aria-label="メニュー"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -152,7 +152,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setMobileServiceOpen(!mobileServiceOpen)}
-                            className="flex w-full items-center justify-between rounded-sm py-3 text-left font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/25"
+                            className="flex w-full items-center justify-between rounded-sm py-3 text-left font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                             aria-expanded={mobileServiceOpen}
                             aria-haspopup="true"
                           >
@@ -175,7 +175,7 @@ export default function Header() {
                                     <Link
                                       key={childIndex}
                                       href={child.href}
-                                      className="block rounded-sm py-2 text-sm font-medium text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/25"
+                                      className="block rounded-sm py-2 text-sm font-medium text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                                       onClick={toggleMobileMenu}
                                     >
                                       {child.label}
@@ -189,7 +189,7 @@ export default function Header() {
                       ) : (
                         <Link
                           href={item.href}
-                          className="block rounded-sm py-3 font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/25"
+                          className="block rounded-sm py-3 font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                           onClick={toggleMobileMenu}
                         >
                           {item.label}

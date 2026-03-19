@@ -32,7 +32,7 @@ export default function HeroSection() {
       {/* 1. 動く背景グラデーション（控えめな opacity） */}
       <div className="absolute inset-0 z-0">
         <motion.div
-          className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,_rgba(0,160,113,0.08)_0,_rgba(0,160,113,0)_65%)] blur-3xl"
+          className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,_rgba(196,154,108,0.08)_0,_rgba(196,154,108,0)_65%)] blur-3xl"
           animate={
             prefersReducedMotion
               ? { opacity: 1 }
@@ -42,7 +42,7 @@ export default function HeroSection() {
           aria-hidden
         />
         <motion.div
-          className="absolute top-1/4 left-0 h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,_rgba(0,160,113,0.05)_0,_rgba(0,160,113,0)_60%)] blur-3xl"
+          className="absolute top-1/4 left-0 h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,_rgba(196,154,108,0.06)_0,_rgba(196,154,108,0)_60%)] blur-3xl"
           animate={
             prefersReducedMotion
               ? { opacity: 1 }
@@ -52,7 +52,7 @@ export default function HeroSection() {
           aria-hidden
         />
         <motion.div
-          className="absolute bottom-1/3 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(0,115,84,0.04)_0,_rgba(0,115,84,0)_55%)] blur-3xl"
+          className="absolute bottom-1/3 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(196,154,108,0.04)_0,_rgba(196,154,108,0)_55%)] blur-3xl"
           animate={
             prefersReducedMotion
               ? { opacity: 1 }
@@ -64,8 +64,8 @@ export default function HeroSection() {
       </div>
 
       {/* 2. 山シーン（薄めの opacity） */}
-      <div className="absolute inset-0 z-0 opacity-[0.14]" aria-hidden>
-        <GenerativeMountainScene color="#00A071" />
+      <div className="absolute inset-0 z-0 opacity-[0.10]" aria-hidden>
+        <GenerativeMountainScene color="#C49A6C" />
       </div>
 
       {/* テキスト視認性のオーバーレイ */}

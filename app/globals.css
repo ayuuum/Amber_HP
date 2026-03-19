@@ -112,7 +112,7 @@
   }
 
   .text-link {
-    @apply inline-flex items-center gap-2 font-semibold text-sequoia-black decoration-sequoia-green/40 underline-offset-4 transition-[color,text-decoration-color,transform] duration-200 hover:text-sequoia-green hover:decoration-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/30 focus-visible:ring-offset-2 focus-visible:rounded-sm;
+    @apply inline-flex items-center gap-2 font-semibold text-sequoia-black decoration-sequoia-green/40 underline-offset-4 transition-[color,text-decoration-color,transform] duration-200 hover:text-sequoia-green hover:decoration-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 focus-visible:rounded-sm;
   }
 
   .interactive-card {
@@ -120,7 +120,7 @@
   }
 
   .field-base {
-    @apply w-full rounded-sm border border-sequoia-black/20 bg-white px-4 py-3 text-sequoia-black shadow-sm transition-[border-color,box-shadow] duration-200 placeholder:text-sequoia-black/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/30 focus-visible:ring-offset-2 focus-visible:border-sequoia-green;
+    @apply w-full rounded-sm border border-sequoia-black/20 bg-white px-4 py-3 text-sequoia-black shadow-sm transition-[border-color,box-shadow] duration-200 placeholder:text-sequoia-black/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 focus-visible:border-sequoia-black/50;
   }
 }
 
