@@ -9,7 +9,7 @@
 :root {
   /* Brand Colors (Main) */
   --color-green: #0F2A1E;        /* Sequoia Green: CTA・ハイライト・アイコン */
-  --color-green-dark: #0F2A1E;   /* Dark Green: フッター・ダークセクション */
+  --color-green-dark: #0A1C14;   /* Dark Green: フッター・ダークセクション用（より暗め） */
   --color-black: #1B1916;        /* Sequoia Black: 本文・見出し・ダークUI */
   --color-white: #F3F3F2;        /* Sequoia White: カード・モーダル・明るいUI */
 

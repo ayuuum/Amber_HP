@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         /* Amber Corporation Brand（/75, /10 等の opacity 修飾子を使うため rgb で定義） */
-        'sequoia-green': 'rgb(0 160 113 / <alpha-value>)',
-        'green-dark': 'rgb(0 115 84 / <alpha-value>)',
+        'sequoia-green': 'rgb(15 42 30 / <alpha-value>)',
+        'green-dark': 'rgb(10 28 20 / <alpha-value>)',
         'sequoia-black': 'rgb(27 25 22 / <alpha-value>)',
         'sequoia-white': 'var(--color-white)',
         'color-bg': 'var(--color-bg)',
