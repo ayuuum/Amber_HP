@@ -31,7 +31,7 @@ const serviceSteps = [
 const faqs = [
     {
         question: '特定のAIツール（ChatGPTなど）の導入しか支援してもらえませんか？',
-        answer: 'いいえ。いろいろなAIツールから、御社に合うものを一緒に選びます。詳しくは相談時にご説明します。',
+        answer: 'いいえ。ChatGPTだけでなく、Claude、Gemini、GitHub Copilot などの汎用ツールから、既存SaaSのAI機能まで、御社の課題に合わせて選定・導入・定着を支援します。',
     },
     {
         question: 'コンサルプランの期間は決まっていますか？',
@@ -100,8 +100,8 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                             AI導入支援
                         </h1>
                         <p className="text-lead mb-4">
-                            AIを「導入する」サービスではなく、<br className="hidden md:inline" />
-                            AIで「業務のやり方を変える」サービスです。
+                            Claude、ChatGPT、Gemini などの生成AIを、<br className="hidden md:inline" />
+                            現場の業務に定着するまで伴走支援します。
                         </p>
                         <p className="text-lg text-sequoia-black leading-relaxed mb-8">
                             ツール選定から実際の運用まで、<br className="hidden md:inline" />

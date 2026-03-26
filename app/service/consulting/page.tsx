@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
     title: 'AI導入支援 | 業務改善・DXコンサルティング',
     description: '企業のAI導入支援なら株式会社Amber。業務フローの抜本的改革から実務定着まで伴走するAI導入支援サービス。生産性向上を実現し、「使われないAI」課題を解決します。',
-    keywords: ['AI導入支援', 'AI活用支援', '業務効率化', 'DX推進', 'ChatGPT活用コンサル', '中小企業AI導入'],
+    keywords: ['AI導入支援', 'AI活用支援', '業務効率化', 'DX推進', 'ChatGPT活用コンサル', 'Claude活用支援', '中小企業AI導入'],
 }
 
 export default function ConsultingPage() {
