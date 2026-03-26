@@ -8,8 +8,8 @@
    ========================================================================== */
 :root {
   /* Brand Colors (Main) */
-  --color-green: #00A071;        /* Sequoia Green: CTA・ハイライト・アイコン */
-  --color-green-dark: #007354;   /* Dark Green: フッター・ダークセクション */
+  --color-green: #0F2A1E;        /* Sequoia Green: CTA・ハイライト・アイコン */
+  --color-green-dark: #0F2A1E;   /* Dark Green: フッター・ダークセクション */
   --color-black: #1B1916;        /* Sequoia Black: 本文・見出し・ダークUI */
   --color-white: #F3F3F2;        /* Sequoia White: カード・モーダル・明るいUI */
 
