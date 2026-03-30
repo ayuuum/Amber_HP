@@ -49,7 +49,7 @@ export default function SaaSBlogPage() {
           </div>
 
           {posts.length === 0 ? (
-            <div className="bg-white p-12 rounded-sm border border-sequoia-black text-center">
+            <div className="bg-color-bg p-12 rounded-sm border border-sequoia-black/10 text-center">
               <p className="text-sequoia-black text-lg">
                 記事の準備中です。近日公開予定です。
               </p>
@@ -60,7 +60,7 @@ export default function SaaSBlogPage() {
                 <Link
                   key={post.slug}
                   href={`${getCategoryPath('saas')}/${post.slug}`}
-                  className="bg-white p-6 rounded-sm border border-sequoia-black hover:shadow-lg transition-shadow block"
+                  className="bg-color-bg p-6 rounded-sm border border-sequoia-black/10 hover:shadow-lg transition-shadow block"
                 >
                   <div className="mb-4">
                     <span className="text-sm text-sequoia-black font-semibold">

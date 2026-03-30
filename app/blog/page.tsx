@@ -55,7 +55,7 @@ export default function BlogPage() {
           </div>
 
           {postsWithCategory.length === 0 ? (
-            <div className="bg-white p-12 rounded-sm border border-sequoia-black text-center">
+            <div className="bg-color-bg p-12 rounded-sm border border-sequoia-black/10 text-center">
               <p className="text-sequoia-black text-lg">
                 記事の準備中です。近日公開予定です。
               </p>
@@ -66,7 +66,7 @@ export default function BlogPage() {
                 <Link
                   key={`${category}-${post.slug}`}
                   href={`${getCategoryPath(category)}/${post.slug}`}
-                  className="surface-card interactive-card block p-6"
+                  className="rounded-sm border border-sequoia-black/10 bg-color-bg shadow-sm interactive-card block p-6"
                 >
                   <div className="mb-2">
                     <span className="text-xs text-sequoia-black/90 font-medium">

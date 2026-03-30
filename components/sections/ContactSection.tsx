@@ -177,7 +177,7 @@ export default function ContactSection() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="field-base"
+                    className="field-base bg-color-bg"
                   />
                 </motion.div>
 
@@ -199,7 +199,7 @@ export default function ContactSection() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="field-base"
+                    className="field-base bg-color-bg"
                   />
                 </motion.div>
 
@@ -219,7 +219,7 @@ export default function ContactSection() {
                     required
                     value={formData.inquiryType}
                     onChange={handleChange}
-                    className="field-base"
+                    className="field-base bg-color-bg"
                   >
                     <option value="general">一般的なお問い合わせ</option>
                     <option value="demo">デモ依頼</option>
@@ -274,7 +274,7 @@ export default function ContactSection() {
                     autoComplete="organization"
                     value={formData.company}
                     onChange={handleChange}
-                    className="field-base"
+                    className="field-base bg-color-bg"
                   />
                 </motion.div>
 
@@ -295,7 +295,7 @@ export default function ContactSection() {
                     inputMode="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="field-base"
+                    className="field-base bg-color-bg"
                   />
                 </motion.div>
 
@@ -316,7 +316,7 @@ export default function ContactSection() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="field-base resize-none"
+                    className="field-base bg-color-bg resize-none"
                     placeholder="お問い合わせ内容をご記入ください…"
                   />
                 </motion.div>

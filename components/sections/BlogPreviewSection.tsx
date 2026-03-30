@@ -90,7 +90,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                 y: -4,
                 transition: { duration: 0.25 }
               }}
-              className="surface-card interactive-card group flex h-full flex-col p-6"
+              className="rounded-sm border border-sequoia-black/10 bg-color-bg shadow-sm interactive-card group flex h-full flex-col p-6"
             >
               <div className="mb-4">
                 <span className="text-xs text-sequoia-black font-semibold">

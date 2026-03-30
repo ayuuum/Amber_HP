@@ -1,7 +1,6 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
 import { useRef } from 'react'
 
 export default function CompanyProfileSection() {
@@ -52,20 +51,6 @@ export default function CompanyProfileSection() {
                             </motion.h3>
 
                             <div className="flex flex-row gap-5 md:gap-6 items-start">
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.8, delay: 0.3 }}
-                                    className="w-24 md:w-40 aspect-[3/4] relative rounded-sm overflow-hidden flex-shrink-0 shadow-md"
-                                >
-                                    <Image
-                                        src="/images/matsui-ayumu.jpg"
-                                        alt="松井 歩武"
-                                        fill
-                                        className="object-cover object-top"
-                                    />
-                                </motion.div>
-
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}

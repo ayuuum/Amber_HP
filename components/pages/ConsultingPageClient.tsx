@@ -83,7 +83,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         </p>
                         <p className="text-lg text-sequoia-black leading-relaxed mb-8">
                             ツール選定から実際の運用まで、<br className="hidden md:inline" />
-                            <span className="highlight">「横に立って一緒に進める顧問」</span>として支援します。
+                                <span className="highlight">「パートナー」</span>として支援します。
                         </p>
                         <div className="flex flex-col gap-5 items-center">
                             <Link
@@ -126,7 +126,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         ].map((text, i) => (
                             <div
                                 key={i}
-                                className="flex-1 min-w-0 py-5 px-6 rounded-sm border border-sequoia-black/10 bg-white/80 text-sequoia-black/90 text-center md:text-left text-[15px] leading-relaxed"
+                                className="flex-1 min-w-0 py-5 px-6 rounded-sm border border-sequoia-black/10 bg-color-bg text-sequoia-black/90 text-center md:text-left text-[15px] leading-relaxed"
                             >
                                 {text}
                             </div>
@@ -154,7 +154,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}
-                                className="rounded-sm border border-sequoia-black/10 bg-white p-8 flex flex-col shadow-sm"
+                                className="rounded-sm border border-sequoia-black/10 bg-color-bg p-8 flex flex-col shadow-sm"
                             >
                                 <span className="text-2xl font-semibold text-sequoia-black/70 mb-3 tabular-nums">0{index + 1}</span>
                                 <h3 className="text-xl font-semibold text-sequoia-black mb-4">{step.title}</h3>

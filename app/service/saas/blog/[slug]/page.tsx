@@ -151,7 +151,7 @@ export default async function SaaSBlogPostPage({ params }: Props) {
             </Link>
           </div>
 
-          <article className="bg-white p-8 md:p-12 rounded-sm border border-sequoia-black/10 shadow-sm">
+          <article className="bg-color-bg p-8 md:p-12 rounded-sm border border-sequoia-black/10 shadow-sm">
             <header className="mb-8">
               <div className="mb-4">
                 <span className="text-sm text-sequoia-black font-semibold">
