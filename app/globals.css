@@ -221,8 +221,3 @@
     @apply bg-sequoia-white font-semibold;
   }
 }
-
-/* 外側キャンバスの統一：main が bg-white を持っていてもクリーム背景に寄せる */
-main.bg-white {
-  background-color: var(--color-bg) !important;
-}

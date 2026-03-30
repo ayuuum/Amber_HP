@@ -143,18 +143,15 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
     <>
       <JsonLd id="jsonld-blogposting-consulting" data={jsonLd} />
       <Header />
-      <main className="min-h-screen pt-24 pb-24 px-6 bg-white">
+      <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <Link 
-              href={getCategoryPath('consulting')}
-              className="text-sequoia-black hover:text-sequoia-black transition-colors"
-            >
+            <Link href={getCategoryPath('consulting')} className="text-link text-sm">
               ← ブログ一覧に戻る
             </Link>
           </div>
 
-          <article className="bg-white p-8 md:p-12 rounded-sm border border-sequoia-black">
+          <article className="bg-white p-8 md:p-12 rounded-sm border border-sequoia-black/10 shadow-sm">
             <header className="mb-8">
               <div className="mb-4">
                 <span className="text-sm text-sequoia-black font-semibold">
@@ -181,7 +178,7 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
                   {post.keywords.map((keyword, index) => (
                     <span
                       key={index}
-                      className="text-xs bg-white/30 text-sequoia-black px-3 py-1 rounded-sm"
+                      className="text-xs bg-sequoia-black/10 text-sequoia-black px-3 py-1 rounded-sm"
                     >
                       {keyword}
                     </span>

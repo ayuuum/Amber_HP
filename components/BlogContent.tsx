@@ -60,24 +60,13 @@ export default function BlogContent({ html }: BlogContentProps) {
       <div
         className="prose prose-lg max-w-none text-sequoia-black leading-relaxed"
         dangerouslySetInnerHTML={{ __html: html }}
-        style={{
-          '--tw-prose-headings': '#122828',
-          '--tw-prose-links': '#122828',
-          '--tw-prose-bold': '#122828',
-        } as React.CSSProperties}
       />
     )
   }
 
   // 画像が含まれている場合は分割して表示
   return (
-    <div
-      style={{
-        '--tw-prose-headings': '#122828',
-        '--tw-prose-links': '#122828',
-        '--tw-prose-bold': '#122828',
-      } as React.CSSProperties}
-    >
+    <div>
       {elements.map((part, index) => {
         if (part.type === 'html') {
           return (
@@ -107,7 +96,7 @@ export default function BlogContent({ html }: BlogContentProps) {
             return (
               <div
                 key={`img-${index}`}
-                className="prose prose-lg max-w-none"
+                className="prose prose-lg max-w-none text-sequoia-black leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: part.content }}
               />
             )

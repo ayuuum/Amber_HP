@@ -58,11 +58,6 @@ export default function Footer() {
                     利用規約
                   </Link>
                 </li>
-                <li>
-                  <Link href="/faq" className={footerLinkClass}>
-                    よくある質問
-                  </Link>
-                </li>
               </ul>
             </div>
           </nav>

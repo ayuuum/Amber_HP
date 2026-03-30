@@ -6,8 +6,7 @@ import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
 import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import type { BlogPost } from '@/lib/markdown'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Plus, Minus, ArrowRight } from 'lucide-react'
-import { useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 
 const serviceSteps = [
     {
@@ -28,32 +27,11 @@ const serviceSteps = [
     },
 ]
 
-const faqs = [
-    {
-        question: '特定のAIツール（ChatGPTなど）の導入しか支援してもらえませんか？',
-        answer: 'いいえ。ChatGPTだけでなく、Claude、Gemini、GitHub Copilot などの汎用ツールから、既存SaaSのAI機能まで、御社の課題に合わせて選定・導入・定着を支援します。',
-    },
-    {
-        question: 'コンサルプランの期間は決まっていますか？',
-        answer: '3〜6ヶ月が目安です。単発の課題解決から1年以上の伴走まで、柔軟に対応しています。',
-    },
-    {
-        question: 'ITに詳しくない担当者でも大丈夫でしょうか？',
-        answer: '全く問題ありません。むしろITに詳しくない現場の方が「AIで何ができるか」がクリアになった時のインパクトが大きいです。専門用語を使わず、実務ベースで分かりやすく支援します。',
-    },
-    {
-        question: 'AIを導入して本当に収益は上がりますか？',
-        answer: 'はい。単なる作業時間の削減（コストカット）だけでなく、削減した時間で「より付加価値の高い業務（顧客対応や新規提案）」に集中できる体制を作ることで、結果として売上・収益の向上を目指します。',
-    },
-]
-
 type ConsultingPageClientProps = {
     blogPosts: BlogPost[]
 }
 
 export default function ConsultingPageClient({ blogPosts }: ConsultingPageClientProps) {
-    const [openFaq, setOpenFaq] = useState<number | null>(null)
-
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -214,47 +192,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                             </div>
                         </div>
                     </motion.div>
-                </section>
-
-                {/* FAQ Section */}
-                <section className="py-24">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="section-heading mb-6">よくあるご質問</h2>
-                    </motion.div>
-                    <div className="max-w-3xl mx-auto space-y-4">
-                        {faqs.map((faq, index) => (
-                            <div key={index} className="border-b border-sequoia-black/20">
-                                <button
-                                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                                    className="w-full py-4 flex items-center justify-between text-left transition-colors hover:text-sequoia-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green focus-visible:ring-offset-2 focus-visible:rounded-sm"
-                                >
-                                    <span className={`text-lg font-bold pr-8 ${openFaq === index ? 'text-sequoia-black' : 'text-sequoia-black/90'}`}>
-                                        Q. {faq.question}
-                                    </span>
-                                    {openFaq === index ? (
-                                        <Minus className="w-5 h-5 flex-shrink-0 text-sequoia-black" />
-                                    ) : (
-                                        <Plus className="w-5 h-5 flex-shrink-0 text-sequoia-black/90" />
-                                    )}
-                                </button>
-                                <motion.div
-                                    initial={false}
-                                    animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
-                                    className="overflow-hidden"
-                                >
-                                    <p className="pb-6 text-sequoia-black/90 leading-relaxed">
-                                        {faq.answer}
-                                    </p>
-                                </motion.div>
-                            </div>
-                        ))}
-                    </div>
                 </section>
 
                 {/* CTA */}

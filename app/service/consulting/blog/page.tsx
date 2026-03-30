@@ -81,7 +81,7 @@ export default function ConsultingBlogPage() {
                     {post.keywords.slice(0, 3).map((keyword, index) => (
                       <span
                         key={index}
-                        className="text-xs bg-white/30 text-sequoia-black px-2 py-1 rounded-sm"
+                        className="text-xs bg-sequoia-black/10 text-sequoia-black px-2 py-1 rounded-sm"
                       >
                         {keyword}
                       </span>
