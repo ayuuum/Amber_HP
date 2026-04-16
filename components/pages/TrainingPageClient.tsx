@@ -8,7 +8,6 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import {
   placeholders,
-  PLACEHOLDER_CAPTION_LONG,
 } from '@/lib/placeholder-images'
 
 const targetChallenges = [
@@ -111,10 +110,6 @@ export default function TrainingPageClient() {
             </Link>
           </motion.div>
         </div>
-        <p className="text-center text-xs text-sequoia-black/50 mb-16 max-w-3xl mx-auto">
-          {PLACEHOLDER_CAPTION_LONG}
-        </p>
-
         <section className="py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

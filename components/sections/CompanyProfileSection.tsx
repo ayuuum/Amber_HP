@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
+import { placeholders } from '@/lib/placeholder-images'
 
 export default function CompanyProfileSection() {
     const sectionRef = useRef(null)
@@ -68,9 +68,6 @@ export default function CompanyProfileSection() {
                                             sizes="176px"
                                         />
                                     </div>
-                                    <p className="text-center sm:text-left text-[11px] text-sequoia-black/50 mt-2 max-w-[11rem] mx-auto sm:mx-0">
-                                        {PLACEHOLDER_CAPTION_SHORT}
-                                    </p>
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0 }}

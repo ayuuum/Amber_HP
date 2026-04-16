@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
+import { placeholders } from '@/lib/placeholder-images'
 
 const strengths = [
   {
@@ -74,7 +74,6 @@ export default function WhyAmberSection() {
               sizes="(max-width: 896px) 100vw, 896px"
             />
           </div>
-          <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
         </div>
 
         <motion.div

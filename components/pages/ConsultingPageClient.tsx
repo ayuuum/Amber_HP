@@ -8,7 +8,7 @@ import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import type { BlogPost } from '@/lib/markdown'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { ArrowRight } from 'lucide-react'
-import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
+import { placeholders } from '@/lib/placeholder-images'
 
 const serviceSteps = [
     {
@@ -122,10 +122,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         </div>
                     </motion.div>
                 </div>
-                <p className="text-center text-xs text-sequoia-black/50 mb-12 max-w-3xl mx-auto">
-                    {PLACEHOLDER_CAPTION_SHORT}
-                </p>
-
                 {/* Target Audience */}
                 <section className="py-24">
                     <motion.div
@@ -166,7 +162,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                             sizes="(max-width: 896px) 100vw, 896px"
                         />
                     </div>
-                    <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
                 </div>
 
                 {/* Service Contents */}

@@ -5,7 +5,7 @@ import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
 import type { BlogPost } from '@/lib/markdown'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
+import { placeholders } from '@/lib/placeholder-images'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
@@ -66,7 +66,6 @@ export default function BlogPage() {
                 sizes="(max-width: 896px) 100vw, 896px"
               />
             </div>
-            <p className="text-center sm:text-left text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
           </div>
 
           {postsWithCategory.length === 0 ? (

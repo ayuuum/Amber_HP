@@ -1,11 +1,7 @@
 /**
- * サイト全体の仮置き画像（差し替え予定）。
+ * サイト全体の仮置き画像。
  * next.config.mjs の images: images.unsplash.com を利用。
  */
-export const PLACEHOLDER_CAPTION_LONG =
-  '※掲載画像はイメージです。正式版では差し替えます。'
-
-export const PLACEHOLDER_CAPTION_SHORT = '※画像はイメージです（差し替え予定）'
 
 export const placeholders = {
   /** 集合研修・講義 */

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
+import { placeholders } from '@/lib/placeholder-images'
 
 export default function HomeImageStrip() {
   return (
@@ -16,7 +16,6 @@ export default function HomeImageStrip() {
             sizes="(max-width: 1024px) 100vw, 1024px"
           />
         </div>
-        <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
       </div>
     </section>
   )

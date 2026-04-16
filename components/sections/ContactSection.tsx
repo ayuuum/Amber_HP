@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef } from 'react'
 import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react'
-import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
+import { placeholders } from '@/lib/placeholder-images'
 
 export default function ContactSection() {
   const [step, setStep] = useState(1)
@@ -129,7 +129,6 @@ export default function ContactSection() {
               sizes="(max-width: 768px) 100vw, 768px"
             />
           </div>
-          <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
         </div>
 
         {/* 進捗インジケーター */}
