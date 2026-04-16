@@ -1,7 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
 
 const strengths = [
   {
@@ -61,6 +63,19 @@ export default function WhyAmberSection() {
           <h2 className="section-heading mb-6">選ばれる理由</h2>
           <p className="section-subheading">現場を理解したうえで、無理のない導入と定着まで伴走します。</p>
         </motion.div>
+
+        <div className="mb-12 max-w-4xl mx-auto">
+          <div className="relative aspect-[21/9] max-h-44 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
+            <Image
+              src={placeholders.team}
+              alt="チームで取り組むイメージ（仮の写真）"
+              fill
+              className="object-cover"
+              sizes="(max-width: 896px) 100vw, 896px"
+            />
+          </div>
+          <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
+        </div>
 
         <motion.div
           variants={containerVariants}

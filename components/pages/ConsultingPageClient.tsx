@@ -1,12 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
 import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import type { BlogPost } from '@/lib/markdown'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { ArrowRight } from 'lucide-react'
+import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
 
 const serviceSteps = [
     {
@@ -61,18 +63,35 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                 <div className="mb-8">
                     <Breadcrumbs
                         items={[
-                            { label: 'サービス', href: '/' },
+                            { label: 'サービス', href: '/#services' },
                             { label: 'AI導入支援' }
                         ]}
                     />
                 </div>
 
                 {/* Hero Section */}
-                <div className="max-w-2xl mx-auto text-center">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-4 max-w-5xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative order-1 lg:order-none aspect-[4/3] w-full max-w-xl mx-auto lg:max-w-none rounded-sm overflow-hidden border border-sequoia-black/10 shadow-md bg-sequoia-black/5"
+                    >
+                        <Image
+                            src={placeholders.laptop}
+                            alt="AI・業務改善のイメージ（仮の写真）"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(196,154,108,0.08),transparent_55%)] pointer-events-none" />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+                        className="text-center lg:text-left order-2 lg:order-none"
                     >
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6 leading-tight">
                             AI導入支援
@@ -85,7 +104,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                             ツール選定から実際の運用まで、<br className="hidden md:inline" />
                                 <span className="highlight">「パートナー」</span>として支援します。
                         </p>
-                        <div className="flex flex-col gap-5 items-center">
+                        <div className="flex flex-col gap-5 items-center lg:items-start">
                             <Link
                                 href="/company#contact"
                                 className="btn-primary w-full sm:w-auto sm:max-w-[280px] inline-flex items-center justify-center gap-2"
@@ -103,6 +122,9 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         </div>
                     </motion.div>
                 </div>
+                <p className="text-center text-xs text-sequoia-black/50 mb-12 max-w-3xl mx-auto">
+                    {PLACEHOLDER_CAPTION_SHORT}
+                </p>
 
                 {/* Target Audience */}
                 <section className="py-24">
@@ -133,6 +155,19 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         ))}
                     </div>
                 </section>
+
+                <div className="max-w-4xl mx-auto mb-8">
+                    <div className="relative aspect-[21/9] max-h-48 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
+                        <Image
+                            src={placeholders.meeting}
+                            alt="ヒアリング・伴走のイメージ（仮の写真）"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 896px) 100vw, 896px"
+                        />
+                    </div>
+                    <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
+                </div>
 
                 {/* Service Contents */}
                 <section className="py-24">
@@ -166,29 +201,39 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     </div>
                 </section>
 
-                {/* Goal Section */}
+                {/* Goal Section（周辺セクションと同じクリーム系トーンに統一） */}
                 <section className="py-24">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-green-dark text-white p-12 text-center rounded-sm shadow-2xl"
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        className="rounded-sm border border-sequoia-green/15 bg-[rgba(251,247,240,0.95)] p-8 md:p-10 shadow-sm"
                     >
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">このサービスで目指すこと</h2>
+                        <div className="text-center mb-10 md:mb-12">
+                            <h2 className="section-heading mb-4">このサービスで目指すこと</h2>
+                            <p className="section-subheading">
+                                導入だけで終わらず、現場に根ざした変化として定着させます。
+                            </p>
                         </div>
                         <div className="grid md:grid-cols-3 gap-8">
-                            <div className="p-6 border border-white/30 rounded-sm text-left">
-                                <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">本来の仕事へ集中</h3>
-                                <p className="text-white/80 leading-relaxed">手作業を減らし、お客様対応や企画など、本来やりたい仕事に時間を使える状態を作ります。</p>
+                            <div className="rounded-sm border border-sequoia-black/10 bg-color-bg p-6 text-left shadow-sm">
+                                <h3 className="text-lg md:text-xl font-bold text-sequoia-black mb-3">本来の仕事へ集中</h3>
+                                <p className="text-sequoia-black/90 leading-relaxed text-[15px]">
+                                    手作業を減らし、お客様対応や企画など、本来やりたい仕事に時間を使える状態を作ります。
+                                </p>
                             </div>
-                            <div className="p-6 border border-white/30 rounded-sm text-left">
-                                <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">業務の標準化</h3>
-                                <p className="text-white/80 leading-relaxed">特定の人しかできない仕事をなくし、誰がやっても同じ品質で業務が回る、標準化された組織を作ります。</p>
+                            <div className="rounded-sm border border-sequoia-black/10 bg-color-bg p-6 text-left shadow-sm">
+                                <h3 className="text-lg md:text-xl font-bold text-sequoia-black mb-3">業務の標準化</h3>
+                                <p className="text-sequoia-black/90 leading-relaxed text-[15px]">
+                                    特定の人しかできない仕事をなくし、誰がやっても同じ品質で業務が回る、標準化された組織を作ります。
+                                </p>
                             </div>
-                            <div className="p-6 border border-white/30 rounded-sm text-left">
-                                <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">AIの日常化</h3>
-                                <p className="text-white/80 leading-relaxed">AIが「特別な新しい技術」ではなく、文房具のように当たり前に使われる状態を目指します。</p>
+                            <div className="rounded-sm border border-sequoia-black/10 bg-color-bg p-6 text-left shadow-sm">
+                                <h3 className="text-lg md:text-xl font-bold text-sequoia-black mb-3">AIの日常化</h3>
+                                <p className="text-sequoia-black/90 leading-relaxed text-[15px]">
+                                    AIが「特別な新しい技術」ではなく、文房具のように当たり前に使われる状態を目指します。
+                                </p>
                             </div>
                         </div>
                     </motion.div>

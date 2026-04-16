@@ -3,12 +3,20 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
+
+const PINE_HOME_URL = 'https://pine-home.com/'
+
+type MenuChild = {
+  label: string
+  href: string
+  external?: boolean
+}
 
 type MenuItem = {
   label: string
   href: string
-  children?: { label: string; href: string }[]
+  children?: MenuChild[]
 }
 
 const menuItems: MenuItem[] = [
@@ -18,10 +26,11 @@ const menuItems: MenuItem[] = [
   },
   {
     label: 'サービス',
-    href: '/service/consulting',
+    href: '/#services',
     children: [
       { label: 'AI導入支援', href: '/service/consulting' },
-      { label: 'ホームサービス向けSaaS', href: '/service/saas' },
+      { label: '生成AI研修', href: '/service/ai-training' },
+      { label: 'ホームサービス向けSaaS', href: PINE_HOME_URL, external: true },
     ],
   },
   {
@@ -84,15 +93,29 @@ export default function Header() {
                           className="absolute top-full left-0 min-w-[220px] pt-2"
                         >
                           <div className="rounded-sm border border-sequoia-black/10 bg-[rgba(251,247,240,0.98)] py-1.5 shadow-xl backdrop-blur-md">
-                            {item.children.map((child, childIndex) => (
-                              <Link
-                                key={childIndex}
-                                href={child.href}
-                                className="mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                              >
-                                {child.label}
-                              </Link>
-                            ))}
+                            {item.children.map((child, childIndex) =>
+                              child.external ? (
+                                <a
+                                  key={childIndex}
+                                  href={child.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="mx-1 flex items-center gap-1.5 rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                >
+                                  {child.label}
+                                  <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                                  <span className="sr-only">（新しいタブで開く）</span>
+                                </a>
+                              ) : (
+                                <Link
+                                  key={childIndex}
+                                  href={child.href}
+                                  className="mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                >
+                                  {child.label}
+                                </Link>
+                              ),
+                            )}
                           </div>
                         </motion.div>
                       )}
@@ -171,16 +194,31 @@ export default function Header() {
                                 className="overflow-hidden"
                               >
                                 <div className="pl-3 pb-2 flex flex-col space-y-1">
-                                  {item.children.map((child, childIndex) => (
-                                    <Link
-                                      key={childIndex}
-                                      href={child.href}
-                                      className="block rounded-sm py-2 text-sm font-medium text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                                      onClick={toggleMobileMenu}
-                                    >
-                                      {child.label}
-                                    </Link>
-                                  ))}
+                                  {item.children.map((child, childIndex) =>
+                                    child.external ? (
+                                      <a
+                                        key={childIndex}
+                                        href={child.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                        onClick={toggleMobileMenu}
+                                      >
+                                        {child.label}
+                                        <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                                        <span className="sr-only">（新しいタブで開く）</span>
+                                      </a>
+                                    ) : (
+                                      <Link
+                                        key={childIndex}
+                                        href={child.href}
+                                        className="block rounded-sm py-2 text-sm font-medium text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                        onClick={toggleMobileMenu}
+                                      >
+                                        {child.label}
+                                      </Link>
+                                    ),
+                                  )}
                                 </div>
                               </motion.div>
                             )}

@@ -3,9 +3,19 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 
-const services = [
+type ServiceCard = {
+  id: string
+  title: string
+  description: string
+  href: string
+  features: string[]
+  badge?: string
+  external?: boolean
+}
+
+const services: ServiceCard[] = [
   {
     id: 'ai-consulting',
     title: 'AI導入支援',
@@ -14,10 +24,18 @@ const services = [
     features: ['業務改善・自動化', '社内研修', '伴走支援'],
   },
   {
+    id: 'ai-training',
+    title: '生成AI研修',
+    description: 'OFF-JT形式で現場で使える生成AIスキルを体系的に習得。',
+    href: '/service/ai-training',
+    features: ['全12回・計24時間', '座学＋実習', '助成金対象（条件あり）'],
+  },
+  {
     id: 'vertical-saas',
     title: 'ホームサービス向けSaaS',
     description: '予約・顧客・請求を一元化。（開発中）',
-    href: '/service/saas',
+    href: 'https://pine-home.com/',
+    external: true,
     features: ['予約・顧客管理', 'リマインド', '請求・見積'],
     badge: '開発中',
   },
@@ -76,7 +94,7 @@ export default function ServiceSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isMounted && isInView ? 'visible' : (isMounted ? 'visible' : 'hidden')}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {services.map((service, index) => {
             return (
@@ -86,15 +104,11 @@ export default function ServiceSection() {
                 className="surface-card interactive-card overflow-hidden flex h-full flex-col group bg-[#F9F6F1]"
               >
                 <div className="p-8 flex-grow">
-                  <h3 className="text-2xl font-serif font-bold text-sequoia-black mb-4 flex items-center gap-2">
+                  <h3 className="text-2xl font-serif font-bold text-sequoia-black mb-4 flex items-center gap-2 flex-wrap">
                     {service.title}
-                    {/* @ts-ignore */}
-                    {service.badge && (
-                      <span className="text-xs text-sequoia-black/60 font-sans font-normal">
-                        {/* @ts-ignore */}
-                        {service.badge}
-                      </span>
-                    )}
+                    {service.badge ? (
+                      <span className="text-xs text-sequoia-black/60 font-sans font-normal">{service.badge}</span>
+                    ) : null}
                   </h3>
                   <p className="text-sequoia-black/90 leading-relaxed mb-6 text-sm lg:text-base">{service.description}</p>
                   <ul className="space-y-2 mb-8">
@@ -107,10 +121,23 @@ export default function ServiceSection() {
                   </ul>
                 </div>
                 <div className="p-6 pt-0 mt-auto">
-                  <Link href={service.href} className="btn-secondary w-full">
-                    詳しく見る
-                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </Link>
+                  {service.external ? (
+                    <a
+                      href={service.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary w-full"
+                    >
+                      詳しく見る
+                      <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                      <span className="sr-only">（新しいタブで開く）</span>
+                    </a>
+                  ) : (
+                    <Link href={service.href} className="btn-secondary w-full">
+                      詳しく見る
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             )

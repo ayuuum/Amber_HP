@@ -1,7 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
 
 export default function AboutSection() {
   const sectionRef = useRef(null)
@@ -44,6 +46,24 @@ export default function AboutSection() {
         >
           私たちについて
         </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="mb-12 max-w-3xl mx-auto"
+        >
+          <div className="relative aspect-[16/9] w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
+            <Image
+              src={placeholders.handshake}
+              alt="パートナーシップ・ビジネスのイメージ（仮の写真）"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+          <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}

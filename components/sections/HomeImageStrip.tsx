@@ -1,0 +1,23 @@
+'use client'
+
+import Image from 'next/image'
+import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
+
+export default function HomeImageStrip() {
+  return (
+    <section className="px-6 -mt-8 pb-8 md:-mt-12 md:pb-12" aria-label="イメージ写真">
+      <div className="max-w-5xl mx-auto">
+        <div className="relative aspect-[21/9] max-h-48 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
+          <Image
+            src={placeholders.office}
+            alt="オフィス・ビジネスシーンのイメージ（仮の写真）"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+          />
+        </div>
+        <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
+      </div>
+    </section>
+  )
+}

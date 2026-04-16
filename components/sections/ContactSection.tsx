@@ -1,9 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef } from 'react'
 import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react'
+import { placeholders, PLACEHOLDER_CAPTION_SHORT } from '@/lib/placeholder-images'
 
 export default function ContactSection() {
   const [step, setStep] = useState(1)
@@ -116,6 +118,19 @@ export default function ContactSection() {
             相談だけでも歓迎です。状況に合わせて、無理のない進め方をご提案します。
           </p>
         </motion.div>
+
+        <div className="mb-10 max-w-3xl mx-auto">
+          <div className="relative aspect-[16/7] max-h-40 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
+            <Image
+              src={placeholders.office}
+              alt="お問い合わせ・ビジネスコミュニケーションのイメージ（仮の写真）"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+          <p className="text-center text-xs text-sequoia-black/50 mt-3">{PLACEHOLDER_CAPTION_SHORT}</p>
+        </div>
 
         {/* 進捗インジケーター */}
         <motion.div

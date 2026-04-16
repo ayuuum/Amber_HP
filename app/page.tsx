@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import HeroSection from '@/components/sections/HeroSection'
+import HomeImageStrip from '@/components/sections/HomeImageStrip'
 import ServiceSection from '@/components/sections/ServiceSection'
 import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import Header from '@/components/Header'
@@ -33,6 +34,7 @@ export default function Home() {
       <main className="min-h-screen">
         <Header />
         <HeroSection />
+        <HomeImageStrip />
         <ServiceSection />
         <TopCtaBlock />
         <Footer />

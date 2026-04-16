@@ -28,9 +28,20 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/service/saas" className={footerLinkClass}>
-                    ホームサービス向けSaaS
+                  <Link href="/service/ai-training" className={footerLinkClass}>
+                    生成AI研修
                   </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://pine-home.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={footerLinkClass}
+                  >
+                    ホームサービス向けSaaS
+                    <span className="sr-only">（新しいタブで開く）</span>
+                  </a>
                 </li>
               </ul>
             </div>
