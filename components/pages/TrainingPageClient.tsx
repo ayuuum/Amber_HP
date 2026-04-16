@@ -138,6 +138,108 @@ export default function TrainingPageClient() {
           </div>
         </section>
 
+        <section id="pricing" className="py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="surface-card-strong p-8 md:p-10"
+          >
+            <div className="mb-10">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-sequoia-black mb-4">
+                受講料・受講案内
+              </h2>
+              <p className="text-sequoia-black/80 leading-relaxed">
+                人材開発支援助成金の計画届添付資料としても活用できるよう、受講条件と申込方法をまとめています。
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="surface-card p-6 md:p-7">
+                <h3 className="text-xl md:text-2xl font-bold text-sequoia-black mb-5">研修概要</h3>
+                <dl className="space-y-4 text-sequoia-black/90">
+                  <div>
+                    <dt className="text-sm font-semibold text-sequoia-black/70 mb-1">研修名</dt>
+                    <dd className="leading-relaxed">
+                      生成AI実践研修（事業展開等リスキリング支援コース対応）
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-semibold text-sequoia-black/70 mb-1">訓練の実施目的</dt>
+                    <dd className="leading-relaxed">
+                      現場で使える生成AIスキルを体系的に習得し、業務改善・情報整理・資料作成などの実務に定着させることを目的とします。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-semibold text-sequoia-black/70 mb-1">実施形式</dt>
+                    <dd className="leading-relaxed">同時双方向型オンライン研修（Zoom等を使用）</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-semibold text-sequoia-black/70 mb-1">実施日時・回数・実訓練時間数</dt>
+                    <dd className="leading-relaxed">全12回・各2時間・計24時間</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-semibold text-sequoia-black/70 mb-1">実施内容</dt>
+                    <dd className="leading-relaxed">
+                      上記カリキュラム概要の通り、基礎理解から業務別演習、課題解決型ワークショップ、振り返りまでを段階的に実施します。
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div className="surface-card p-6 md:p-7">
+                <h3 className="text-xl md:text-2xl font-bold text-sequoia-black mb-5">受講料</h3>
+                <p className="text-sm font-semibold text-sequoia-black/70 mb-2">受講料（1名あたり）</p>
+                <p className="text-3xl md:text-4xl font-bold text-sequoia-black mb-4 tracking-tight">
+                  280,000円（税込）
+                </p>
+                <p className="text-sm text-sequoia-black/70 leading-relaxed mb-2">
+                  ※ 企業の状況によっては個別見積もりに対応します。お問い合わせください。
+                </p>
+                <p className="text-sm text-sequoia-black/70 leading-relaxed">
+                  ※ 人材開発支援助成金の対象となる場合があります（大企業：経費助成60%）。
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2 mt-6">
+              <div className="surface-card p-6 md:p-7">
+                <h3 className="text-xl md:text-2xl font-bold text-sequoia-black mb-5">申込方法</h3>
+                <ul className="space-y-3 text-sequoia-black/90 leading-relaxed">
+                  <li>お問い合わせフォームよりご連絡ください。</li>
+                  <li>受講案内・カリキュラム詳細の資料請求も承ります。</li>
+                </ul>
+                <div className="mt-6">
+                  <Link
+                    href="/company#contact"
+                    className="btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2"
+                  >
+                    お問い合わせフォームへ
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="surface-card p-6 md:p-7">
+                <h3 className="text-xl md:text-2xl font-bold text-sequoia-black mb-5">連絡先</h3>
+                <div className="space-y-3 text-sequoia-black/90 leading-relaxed">
+                  <p>株式会社Amber</p>
+                  <p>
+                    お問い合わせ：
+                    <Link
+                      href="https://www.amber-inc.com/contact"
+                      className="text-link inline-flex items-center gap-1.5 text-[15px] ml-1"
+                    >
+                      https://www.amber-inc.com/contact
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
         <section className="py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
