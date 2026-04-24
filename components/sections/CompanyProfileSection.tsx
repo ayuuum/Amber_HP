@@ -1,9 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { placeholders } from '@/lib/placeholder-images'
 
 export default function CompanyProfileSection() {
     const sectionRef = useRef(null)
@@ -53,22 +51,6 @@ export default function CompanyProfileSection() {
                             </motion.h3>
 
                             <div className="flex flex-col sm:flex-row gap-6 md:gap-8 items-start">
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.35 }}
-                                    className="shrink-0 w-full sm:w-auto mx-auto sm:mx-0"
-                                >
-                                    <div className="relative w-40 h-48 md:w-44 md:h-52 mx-auto sm:mx-0 rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
-                                        <Image
-                                            src={placeholders.portrait}
-                                            alt="代表写真のイメージ（仮の写真）"
-                                            fill
-                                            className="object-cover"
-                                            sizes="176px"
-                                        />
-                                    </div>
-                                </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}
