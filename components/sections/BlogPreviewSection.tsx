@@ -59,7 +59,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
   return (
     <section
       ref={sectionRef}
-      className="py-24 px-6 bg-white/20 relative overflow-hidden"
+      className="py-24 px-6 bg-color-bg-subtle relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div

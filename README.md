@@ -61,6 +61,10 @@ npm run dev
 
 お問い合わせは **Google Apps Script** で Google スプレッドシートに保存し、メール通知を受け取る構成です。無料で利用できます。手順は [docs/contact-form-gas-setup.md](docs/contact-form-gas-setup.md) を参照してください。
 
+## コーポレート運用（更新ルール・KPI）
+
+ニュース更新頻度、問い合わせ・主要導線の KPI、リリース前の品質チェックの目安は [docs/corporate-ops-kpi.md](docs/corporate-ops-kpi.md) にまとめています。
+
 ## プロジェクト構造
 
 ```

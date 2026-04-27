@@ -21,7 +21,7 @@ export default function CompanyProfileSection() {
                     transition={{ duration: 0.8 }}
                     className="section-heading mb-8 text-center"
                 >
-                    会社情報
+                    企業情報
                 </motion.h2>
 
                 <motion.div
@@ -31,7 +31,7 @@ export default function CompanyProfileSection() {
                     className="max-w-3xl mx-auto text-center mb-20"
                 >
                     <p className="text-lead text-xl md:text-2xl font-serif font-bold text-sequoia-black leading-relaxed">
-                        「暮らしを支える人に、<br className="md:hidden" />最新のテクノロジーを。」
+                        「暮らしを支える産業に、<br className="md:hidden" />最新のテクノロジーを。」
                     </p>
                     <p className="mt-4 text-muted">
                         現場の手間を減らし、働く人が本来の価値を発揮できる環境をつくります。
@@ -80,9 +80,9 @@ export default function CompanyProfileSection() {
                                         <p className="text-sm text-sequoia-black/80 mt-1 font-serif">Ayumu Matsui</p>
                                     </div>
                                     <div className="space-y-3 text-base leading-loose text-sequoia-black/90">
-                                        <p>慶應義塾大学商学部卒業。在学中からベンチャーキャピタルにて従事。</p>
-                                        <p>新卒で戦略コンサルティングファームに入社し、その後スタートアップにて経営企画業務に携わる。</p>
-                                        <p>大手IT企業など複数社にて、AI導入支援の伴走を行ってきました。</p>
+                                        <p>慶應義塾大学商学部卒業。学生時代にベンチャーキャピタルでインターンを経験。</p>
+                                        <p>卒業後はYCP Japan（YCP Solidiance）にてコンサルタントとして従事。その後、エンタメ領域のスタートアップで事業責任者を歴任。</p>
+                                        <p>2026年、株式会社Amberを創業、代表取締役CEOに就任。</p>
                                     </div>
                                 </motion.div>
                             </div>
@@ -116,7 +116,33 @@ export default function CompanyProfileSection() {
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-sequoia-black/30 pb-4">
                                 <dt className="font-bold text-sequoia-black">設立</dt>
-                                <dd className="sm:col-span-2 text-sequoia-black">2026年1月</dd>
+                                <dd className="sm:col-span-2 text-sequoia-black">2026年</dd>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-sequoia-black/30 pb-4">
+                                <dt className="font-bold text-sequoia-black">事業内容</dt>
+                                <dd className="sm:col-span-2 text-sequoia-black leading-relaxed">
+                                    AI Solution 事業（AI導入コンサルティング、AIシステム開発、生成AI活用研修）／AI SaaS 事業（出張訪問サービス業向け予約管理システム「Pine」）
+                                </dd>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-sequoia-black/30 pb-4">
+                                <dt className="font-bold text-sequoia-black">資本・出資</dt>
+                                <dd className="sm:col-span-2 text-sequoia-black leading-relaxed">
+                                    ANOBAKA（ベンチャーキャピタル）、エンジェル投資家より出資。2026年3月、J-KISS型投資契約によるシード資金調達を完了。
+                                </dd>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-sequoia-black/30 pb-4">
+                                <dt className="font-bold text-sequoia-black">取引銀行</dt>
+                                <dd className="sm:col-span-2 text-sequoia-black">GMOあおぞらネット銀行、三井住友銀行</dd>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-sequoia-black/30 pb-4">
+                                <dt className="font-bold text-sequoia-black">沿革</dt>
+                                <dd className="sm:col-span-2 text-sequoia-black">
+                                    <ul className="list-disc space-y-2 pl-5 text-left">
+                                        <li>2026年 — 株式会社Amber 設立</li>
+                                        <li>2026年3月 — J-KISS型投資契約によるシード資金調達完了</li>
+                                        <li>2026年〜 — Pine の運用、生成AI研修・AIシステム開発・AI導入コンサルティングの提供開始</li>
+                                    </ul>
+                                </dd>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 border-b border-sequoia-black/30 pb-4">
                                 <dt className="font-bold text-sequoia-black">所在地</dt>

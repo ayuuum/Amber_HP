@@ -12,20 +12,20 @@ import { placeholders } from '@/lib/placeholder-images'
 
 const serviceSteps = [
     {
-        title: '現状整理・課題特定',
-        description: '業務をヒアリングし、時間がかかっているところとAIで改善できる点を整理します。',
+        title: '業務整理・要件定義',
+        description: '現場の業務フロー、既存ツール、手作業を整理し、開発すべき範囲と優先順位を明確にします。',
     },
     {
-        title: '実務に合わせたAI活用設計',
-        description: '貴社の業務フローにAIをどう組み込むか、具体的に設計します。',
+        title: 'Webシステム設計・開発',
+        description: '予約管理、顧客管理、社内ツール、管理画面など、業務に合わせたWebシステムを設計・実装します。',
     },
     {
-        title: '業務フローの簡素化・自動化',
-        description: 'AI導入に加え、不要な業務の削減やフロー見直しで効率化します。',
+        title: '生成AI連携・自動化',
+        description: '問い合わせ対応、文書作成、情報整理、レポート生成など、AIを組み込むべき箇所を実装します。',
     },
     {
-        title: '社内定着・仕組みづくり',
-        description: 'マニュアルや社内ルールで、誰がやっても同じ品質で回る仕組みを支援します。',
+        title: '運用定着・改善',
+        description: '納品後の使い方、社内ルール、改善サイクルまで支援し、現場で使われ続ける状態を目指します。',
     },
 ]
 
@@ -64,7 +64,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     <Breadcrumbs
                         items={[
                             { label: 'サービス', href: '/#services' },
-                            { label: 'AI導入支援' }
+                            { label: 'AI・Webシステム開発' }
                         ]}
                     />
                 </div>
@@ -78,8 +78,8 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         className="relative order-1 lg:order-none aspect-[4/3] w-full max-w-xl mx-auto lg:max-w-none rounded-sm overflow-hidden border border-sequoia-black/10 shadow-md bg-sequoia-black/5"
                     >
                         <Image
-                            src={placeholders.laptop}
-                            alt="AI・業務改善のイメージ（仮の写真）"
+                            src={placeholders.systemDevelopment}
+                            alt="AI・Webシステム開発と業務フロー設計を表すブランドビジュアル"
                             fill
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -94,22 +94,22 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         className="text-center lg:text-left order-2 lg:order-none"
                     >
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6 leading-tight">
-                            AI導入支援
+                            AI・Webシステム開発
                         </h1>
                         <p className="text-lead mb-4">
-                            Claude、ChatGPT、Gemini などの生成AIを、<br className="hidden md:inline" />
-                            現場の業務に定着するまで伴走支援します。
+                            通常のWeb開発から生成AI連携まで、<br className="hidden md:inline" />
+                            現場の業務に合わせて設計・実装します。
                         </p>
                         <p className="text-lg text-sequoia-black leading-relaxed mb-8">
-                            ツール選定から実際の運用まで、<br className="hidden md:inline" />
-                                <span className="highlight">「パートナー」</span>として支援します。
+                            予約管理、顧客管理、社内ツール、業務自動化など、<br className="hidden md:inline" />
+                            小さな試作から運用定着まで<span className="highlight">「パートナー」</span>として伴走します。
                         </p>
                         <div className="flex flex-col gap-5 items-center lg:items-start">
                             <Link
                                 href="/company#contact"
                                 className="btn-primary w-full sm:w-auto sm:max-w-[280px] inline-flex items-center justify-center gap-2"
                             >
-                                お問い合わせ
+                                開発相談をする
                                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
                             </Link>
                             <Link
@@ -138,9 +138,9 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                     </motion.div>
                     <div className="flex flex-col md:flex-row gap-5 justify-center">
                         {[
-                            "AIツールを導入したが、使われなくなっている",
-                            "業務が属人化しており、人に依存している",
-                            "手作業が多く、本来やるべき仕事に時間が割けない",
+                            "予約・顧客管理・請求などの業務をシステム化したい",
+                            "Excelや紙、複数ツールに散らばった運用を整理したい",
+                            "生成AIを社内業務に組み込みたいが、何から作るべきか分からない",
                         ].map((text, i) => (
                             <div
                                 key={i}
@@ -173,8 +173,8 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="section-heading mb-6">サービス内容</h2>
-                        <p className="section-subheading">現状整理から社内定着まで、一貫して伴走します。</p>
+                        <h2 className="section-heading mb-6">開発・支援内容</h2>
+                        <p className="section-subheading">要件整理から実装、AI連携、運用定着まで、一貫して伴走します。</p>
                     </motion.div>
                     <div className="grid md:grid-cols-2 gap-8">
                         {serviceSteps.map((step, index) => (
@@ -206,7 +206,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                         className="rounded-sm border border-sequoia-green/15 bg-[rgba(251,247,240,0.95)] p-8 md:p-10 shadow-sm"
                     >
                         <div className="text-center mb-10 md:mb-12">
-                            <h2 className="section-heading mb-4">このサービスで目指すこと</h2>
+                            <h2 className="section-heading mb-4">この開発支援で目指すこと</h2>
                             <p className="section-subheading">
                                 導入だけで終わらず、現場に根ざした変化として定着させます。
                             </p>

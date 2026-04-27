@@ -8,18 +8,18 @@ import { CountUp } from '@/components/ui/count-up'
 const highlights = [
   {
     icon: Building2,
-    number: '70+',
-    label: '導入店舗',
+    number: '58',
+    label: 'Pine運用パートナー店舗',
   },
   {
     icon: Users,
-    number: '500+',
-    label: '支援実績',
+    number: '2',
+    label: 'AI Solution / Product の事業軸',
   },
   {
     icon: TrendingUp,
-    number: '95%',
-    label: '継続率',
+    number: '4',
+    label: '相談できる支援メニュー',
   },
 ]
 
@@ -51,23 +51,21 @@ export default function CustomerLogosSection() {
   }
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-16 px-6 bg-white/10"
-    >
-      <div className="max-w-5xl mx-auto">
+    <section ref={sectionRef} className="border-t border-sequoia-black/10 bg-color-bg px-6 py-20 md:py-24">
+      <div className="mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm text-sequoia-black/80 uppercase tracking-wide font-semibold mb-4">
-            導入実績
-          </p>
+          <p className="eyebrow-light mb-4">動いている証拠</p>
           <h3 className="section-heading text-2xl md:text-3xl">
-            多くの企業様にご利用いただいています
+            個社支援とプロダクト運用の両方で、現場に向き合っています。
           </h3>
+          <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-sequoia-black/80 md:text-base">
+            PineはNAGAREBOSHI社（58店舗）を含む出張訪問サービス事業者で運用中。消防設備点検業界向けの業務システム開発など、現場業務に近いプロジェクトにも取り組んでいます。
+          </p>
         </motion.div>
 
         <motion.div
@@ -87,16 +85,16 @@ export default function CustomerLogosSection() {
                   y: -4,
                   transition: { duration: 0.2 }
                 }}
-                className="surface-card interactive-card flex flex-col items-center justify-center p-8"
+                className="interactive-card flex flex-col items-center justify-center rounded-sm border border-sequoia-black/12 bg-[#F6F1E8] p-8 shadow-[0_1px_0_rgba(27,25,22,0.04)]"
               >
-                <Icon className="mb-4 w-10 h-10 text-sequoia-black" aria-hidden="true" />
-                <span className="text-4xl md:text-5xl font-bold text-sequoia-black mb-2 block">
+                <Icon className="mb-3 h-8 w-8 text-sequoia-green" aria-hidden="true" />
+                <span className="mb-2 block text-4xl font-bold tabular-nums text-sequoia-black md:text-5xl">
                   <CountUp
                     to={parseInt(item.number.replace(/[^0-9]/g, ''))}
                     suffix={item.number.replace(/[0-9]/g, '')}
                   />
                 </span>
-                <span className="text-sequoia-black/90 font-medium">
+                <span className="text-center font-medium text-sequoia-black/75">
                   {item.label}
                 </span>
               </motion.div>

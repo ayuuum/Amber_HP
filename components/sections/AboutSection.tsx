@@ -1,11 +1,18 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { placeholders } from '@/lib/placeholder-images'
+import { ArrowRight } from 'lucide-react'
 
-export default function AboutSection() {
+type AboutSectionProps = {
+  /** トップ用の短い要約。企業ページでは省略。 */
+  variant?: 'default' | 'teaser'
+}
+
+export default function AboutSection({ variant = 'default' }: AboutSectionProps) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
@@ -29,6 +36,57 @@ export default function AboutSection() {
         ease: [0.22, 1, 0.36, 1],
       },
     },
+  }
+
+  if (variant === 'teaser') {
+    return (
+      <section
+        id="company-intro"
+        ref={sectionRef}
+        className="relative overflow-hidden px-6 py-20 md:py-24"
+        style={{ backgroundColor: 'var(--color-bg)' }}
+      >
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-6 font-serif text-2xl font-bold text-sequoia-black md:text-3xl"
+          >
+            現場とテクノロジーのあいだに
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="text-lead mb-6 text-xl font-bold text-sequoia-black md:text-2xl"
+          >
+            暮らしを支える産業に、最新のテクノロジーを。
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-8 text-base leading-relaxed text-sequoia-black/85 md:text-lg"
+          >
+            AI Solution（コンサル・開発・研修）と AI SaaS（Pine）で、現場の業務再設計から定着まで伴走します。ミッション・体制・会社概要は企業情報をご覧ください。
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Link
+              href="/company"
+              className="btn-secondary inline-flex min-w-[200px] items-center justify-center gap-2"
+            >
+              企業情報を見る
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -71,7 +129,7 @@ export default function AboutSection() {
           className="space-y-10 text-base md:text-lg leading-relaxed text-sequoia-black"
         >
           <motion.p variants={itemVariants} className="text-lead font-bold text-2xl md:text-3xl mb-10">
-            「暮らしを支える人に、テクノロジーを。」
+            「暮らしを支える産業に、最新のテクノロジーを。」
           </motion.p>
 
           <motion.p variants={itemVariants} className="max-w-2xl mx-auto">

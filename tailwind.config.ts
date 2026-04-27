@@ -15,6 +15,7 @@ const config: Config = {
         'sequoia-black': 'rgb(27 25 22 / <alpha-value>)',
         'sequoia-white': 'var(--color-white)',
         'color-bg': 'var(--color-bg)',
+        'color-bg-subtle': 'var(--color-bg-subtle)',
         'color-text': 'var(--color-text)',
         'color-text-inverse': 'var(--color-text-inverse)',
         'blue-bright': 'var(--color-blue-bright)',

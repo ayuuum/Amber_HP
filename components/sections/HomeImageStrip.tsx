@@ -9,8 +9,8 @@ export default function HomeImageStrip() {
       <div className="max-w-5xl mx-auto">
         <div className="relative aspect-[21/9] max-h-48 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
           <Image
-            src={placeholders.office}
-            alt="オフィス・ビジネスシーンのイメージ（仮の写真）"
+            src={placeholders.systemDevelopment}
+            alt="AI・Webシステム開発と業務フロー設計を表すブランドビジュアル"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 1024px"

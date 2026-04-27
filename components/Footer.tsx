@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="font-logo text-[2rem] leading-none text-white">Amber</span>
             </Link>
             <p className="mt-3 text-sm text-white/80 leading-relaxed">
-              暮らしを支える人に、テクノロジーを。
+              暮らしを支える産業に、最新のテクノロジーを。
             </p>
           </div>
 
@@ -24,7 +24,7 @@ export default function Footer() {
               <ul className="space-y-2 text-white/80">
                 <li>
                   <Link href="/service/consulting" className={footerLinkClass}>
-                    AI導入支援
+                    AI・Webシステム開発
                   </Link>
                 </li>
                 <li>
@@ -51,7 +51,12 @@ export default function Footer() {
               <ul className="space-y-2 text-white/80">
                 <li>
                   <Link href="/company" className={footerLinkClass}>
-                    会社情報
+                    企業情報
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className={footerLinkClass}>
+                    ニュース
                   </Link>
                 </li>
                 <li>

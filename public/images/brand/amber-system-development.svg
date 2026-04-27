@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI and web system development visual</title>
+  <desc id="desc">A warm workspace with abstract workflow interfaces and business process sketches.</desc>
+  <defs>
+    <linearGradient id="desk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFE1CC"/>
+      <stop offset="1" stop-color="#B88755"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A1C14"/>
+      <stop offset="1" stop-color="#133729"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="#FBF7F0"/>
+  <rect x="0" y="530" width="1400" height="370" fill="url(#desk)"/>
+  <rect x="240" y="160" width="625" height="405" rx="18" fill="#1B1916" opacity="0.9"/>
+  <rect x="266" y="186" width="573" height="331" rx="10" fill="url(#screen)"/>
+  <rect x="340" y="560" width="410" height="22" rx="11" fill="#1B1916" opacity="0.35"/>
+  <rect x="300" y="610" width="500" height="28" rx="14" fill="#1B1916" opacity="0.22"/>
+  <rect x="910" y="250" width="220" height="335" rx="28" fill="#1B1916" opacity="0.88"/>
+  <rect x="930" y="282" width="180" height="270" rx="18" fill="#FBF7F0"/>
+  <rect x="810" y="590" width="360" height="220" rx="8" fill="#FBF7F0" stroke="#1B1916" stroke-opacity="0.14"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M340 292 H506 V386 H650" stroke="#C49A6C" stroke-width="5"/>
+    <path d="M340 420 H512 V344 H725" stroke="#FBF7F0" stroke-width="3" opacity="0.42"/>
+    <path d="M392 468 H610" stroke="#FBF7F0" stroke-width="3" opacity="0.36"/>
+    <path d="M952 338 H1086" stroke="#0F2A1E" stroke-width="6"/>
+    <path d="M952 386 H1040" stroke="#C49A6C" stroke-width="6"/>
+    <path d="M952 434 H1070" stroke="#0F2A1E" stroke-width="6"/>
+    <path d="M852 662 C908 622, 954 625, 1004 671 S1098 735, 1142 687" stroke="#0F2A1E" stroke-width="4" opacity="0.62"/>
+    <path d="M858 728 H1112" stroke="#C49A6C" stroke-width="3" opacity="0.72"/>
+    <path d="M858 762 H1030" stroke="#0F2A1E" stroke-width="3" opacity="0.4"/>
+  </g>
+  <g fill="#FBF7F0">
+    <rect x="326" y="266" width="112" height="54" rx="8" opacity="0.9"/>
+    <rect x="588" y="360" width="112" height="54" rx="8" opacity="0.9"/>
+    <rect x="670" y="318" width="112" height="54" rx="8" opacity="0.9"/>
+  </g>
+  <g fill="#C49A6C">
+    <circle cx="506" cy="386" r="8"/>
+    <circle cx="650" cy="386" r="8"/>
+    <circle cx="512" cy="344" r="7"/>
+    <circle cx="725" cy="344" r="7"/>
+  </g>
+  <g opacity="0.34" stroke="#1B1916">
+    <line x1="0" y1="602" x2="1400" y2="560"/>
+    <line x1="0" y1="714" x2="1400" y2="675"/>
+  </g>
+</svg>

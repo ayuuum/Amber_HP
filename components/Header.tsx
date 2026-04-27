@@ -21,14 +21,14 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   {
-    label: '私たちについて',
+    label: '企業情報',
     href: '/company',
   },
   {
     label: 'サービス',
     href: '/#services',
     children: [
-      { label: 'AI導入支援', href: '/service/consulting' },
+      { label: 'AI・Webシステム開発', href: '/service/consulting' },
       { label: '生成AI研修', href: '/service/ai-training' },
       { label: 'ホームサービス向けSaaS', href: PINE_HOME_URL, external: true },
     ],
@@ -38,8 +38,8 @@ const menuItems: MenuItem[] = [
     href: '/blog',
   },
   {
-    label: '会社情報',
-    href: '/company',
+    label: 'お問い合わせ',
+    href: '/company#contact',
   },
 ]
 

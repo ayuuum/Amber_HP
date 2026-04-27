@@ -3,19 +3,19 @@ import type { Metadata } from 'next'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: 'AI導入支援 | 株式会社Amber',
-  description: 'AIを「導入する」サービスではなく、AIで「業務のやり方を変える」サービスです。ツール選定から実際の運用まで、横に立って一緒に進める伴走型の支援を提供します。',
-  keywords: ['AI導入支援', '業務改善', '業務自動化', '中小企業', 'AIコンサルティング'],
+  title: 'AI・Webシステム開発 | 株式会社Amber',
+  description: '業務システム、社内ツール、生成AI連携、AI導入支援まで、現場の運用に合わせて設計・開発します。',
+  keywords: ['AIシステム開発', 'Webシステム開発', '業務システム開発', 'AI導入支援', '業務改善', '業務自動化'],
   openGraph: {
-    title: 'AI導入支援 | 株式会社Amber',
-    description: 'AIを「導入する」サービスではなく、AIで「業務のやり方を変える」サービスです。ツール選定から実際の運用まで、横に立って一緒に進める伴走型の支援を提供します。',
+    title: 'AI・Webシステム開発 | 株式会社Amber',
+    description: '業務システム、社内ツール、生成AI連携、AI導入支援まで、現場の運用に合わせて設計・開発します。',
     url: `${siteUrl}/service/consulting`,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI導入支援 | 株式会社Amber',
-    description: 'AIを「導入する」サービスではなく、AIで「業務のやり方を変える」サービスです。',
+    title: 'AI・Webシステム開発 | 株式会社Amber',
+    description: '業務システム、社内ツール、生成AI連携まで、現場の運用に合わせて設計・開発します。',
   },
   alternates: {
     canonical: `${siteUrl}/service/consulting`,

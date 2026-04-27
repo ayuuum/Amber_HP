@@ -15,8 +15,16 @@
 
   /* Background & Text */
   --color-bg: #FBF7F0;           /* ページ背景（クリーム/オフホワイト） */
+  /* ニュース帯など：クリーム連続のリズム用（わずかに深緑を混ぜた面） */
+  --color-bg-subtle: color-mix(in srgb, var(--color-bg) 94%, rgb(15 42 30) 6%);
   --color-text: #1B1917;         /* メインテキスト（ダークブラウン系） */
   --color-text-inverse: rgba(255, 255, 255, 0.8);  /* 白テキスト（フッター等） */
+  /* 深緑セクション上のタイポ（Treeline系：コントラストはWCAGを意識） */
+  --color-cream: #f0ebe3;
+  --color-cream-muted: rgba(240, 235, 227, 0.78);
+  --color-forest-deep: #0a1c14;
+  --surface-glass: rgba(255, 255, 255, 0.055);
+  --surface-glass-border: rgba(255, 255, 255, 0.12);
 
   /* Accent Colors (Category / Badge) */
   --color-blue-bright: #1F8AC4;
@@ -96,11 +104,99 @@
   }
 
   .surface-card {
-    @apply rounded-sm border border-sequoia-black/10 bg-white shadow-sm;
+    @apply rounded-sm border border-sequoia-black/10 bg-[#F6F1E8] shadow-[0_1px_0_rgba(27,25,22,0.04)];
   }
 
   .surface-card-strong {
     @apply rounded-sm border border-sequoia-green/15 bg-[rgba(251,247,240,0.95)] shadow-md;
+  }
+
+  /* 深緑帯＋クリーム文字（コーポレート / Treeline寄せ） */
+  .section-forest {
+    background: linear-gradient(180deg, rgb(15 42 30) 0%, rgb(10 28 20) 55%, rgb(8 22 16) 100%);
+    color: var(--color-cream);
+  }
+
+  .section-heading-invert {
+    @apply text-4xl md:text-5xl font-serif font-bold text-balance;
+    color: var(--color-cream);
+  }
+
+  .section-subheading-invert {
+    @apply text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-balance;
+    color: var(--color-cream-muted);
+  }
+
+  .eyebrow-forest {
+    @apply text-xs font-semibold uppercase tracking-[0.2em];
+    color: rgb(255 255 255 / 0.55);
+  }
+
+  /* ライト背景セクション用ラベル（eyebrow-forest の対） */
+  .eyebrow-light {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-sequoia-green;
+  }
+
+  .surface-glass {
+    border-radius: 0.125rem;
+    border: 1px solid var(--surface-glass-border);
+    background: var(--surface-glass);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset;
+    @apply backdrop-blur-md;
+  }
+
+  .interactive-glass {
+    @apply transition-[background-color,border-color,transform,box-shadow] duration-200;
+  }
+
+  .interactive-glass:hover {
+    background: rgb(255 255 255 / 0.09);
+    border-color: rgb(255 255 255 / 0.2);
+    @apply -translate-y-0.5;
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.18);
+  }
+
+  .text-link-invert {
+    @apply inline-flex items-center gap-2 font-semibold underline-offset-4 transition-[color,opacity] duration-200;
+    color: var(--color-cream);
+  }
+
+  .text-link-invert:hover {
+    color: #fff;
+  }
+
+  .btn-secondary-hero {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border px-6 py-3.5 font-medium transition-[background-color,border-color,color,transform,box-shadow] duration-200 focus-visible:outline-none;
+    border-color: rgb(255 255 255 / 0.35);
+    background-color: rgb(255 255 255 / 0.06);
+    color: var(--color-cream);
+  }
+
+  .btn-secondary-hero:hover {
+    border-color: rgb(255 255 255 / 0.55);
+    background-color: rgb(255 255 255 / 0.1);
+    @apply -translate-y-0.5;
+  }
+
+  .btn-secondary-hero:focus-visible {
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 0.25);
+  }
+
+  .btn-secondary-on-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border px-6 py-3.5 font-medium transition-[background-color,border-color,color,transform] duration-200 focus-visible:outline-none;
+    border-color: rgb(255 255 255 / 0.28);
+    background-color: transparent;
+    color: var(--color-cream);
+  }
+
+  .btn-secondary-on-dark:hover {
+    border-color: rgb(255 255 255 / 0.45);
+    background-color: rgb(255 255 255 / 0.08);
+    @apply -translate-y-0.5;
+  }
+
+  .btn-secondary-on-dark:focus-visible {
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 0.28);
   }
 
   .btn-primary {
@@ -133,6 +229,17 @@
     animation: fadeIn 1s ease-in-out;
   }
 
+  .animate-hero-drift {
+    animation: heroDrift 24s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-drift {
+      animation: none;
+    }
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -142,6 +249,16 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes heroDrift {
+    from {
+      transform: scale(1.02) translate3d(-0.6%, -0.4%, 0);
+    }
+
+    to {
+      transform: scale(1.08) translate3d(0.8%, 0.5%, 0);
     }
   }
 

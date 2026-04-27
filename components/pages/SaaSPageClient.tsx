@@ -133,7 +133,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     transition={{ duration: 0.6 }}
                     className="mb-24 grid md:grid-cols-2 gap-12"
                 >
-                    <div className="bg-white/50 p-8 rounded-sm">
+                    <div className="rounded-sm border border-sequoia-black/12 bg-[#F6F1E8] p-8 shadow-[0_1px_0_rgba(27,25,22,0.04)]">
                         <h2 className="text-2xl font-serif font-bold text-sequoia-black mb-6">
                             対象となる事業者様
                         </h2>
@@ -147,7 +147,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                             ※個人のお客様から直接依頼を受けるホームサービス事業者向け
                         </p>
                     </div>
-                    <div className="bg-white/50 p-8 rounded-sm">
+                    <div className="rounded-sm border border-sequoia-black/12 bg-[#F6F1E8] p-8 shadow-[0_1px_0_rgba(27,25,22,0.04)]">
                         <h2 className="text-2xl font-serif font-bold text-sequoia-black mb-6">
                             よくあるお悩み
                         </h2>
@@ -190,7 +190,7 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                                 key={index}
                                 variants={cardVariants}
                                 whileHover="hover"
-                                className="bg-white p-6 rounded-sm border border-sequoia-black shadow-lg"
+                                className="bg-[#F6F1E8] p-6 rounded-sm border border-sequoia-black/12 shadow-[0_1px_0_rgba(27,25,22,0.04)]"
                             >
                                 <h3 className="text-xl font-semibold text-sequoia-black mb-3">
                                     {feature.title}
@@ -210,9 +210,9 @@ export default function SaaSPageClient({ blogPosts }: SaaSPageClientProps) {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={{ scale: 1.01, y: -4 }}
-                    className="bg-white p-4 md:p-8 rounded-sm border border-sequoia-black shadow-xl overflow-hidden mb-24"
+                    className="bg-[#F6F1E8] p-4 md:p-8 rounded-sm border border-sequoia-black/12 shadow-[0_1px_0_rgba(27,25,22,0.04)] overflow-hidden mb-24"
                 >
-                    <div className="relative aspect-video rounded-sm overflow-hidden bg-white">
+                    <div className="relative aspect-video rounded-sm overflow-hidden bg-[#F6F1E8]">
                         <Image
                             src="/images/saas-dashboard.png"
                             alt="AI業務OSのダッシュボード画面イメージ"

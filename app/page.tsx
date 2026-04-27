@@ -1,27 +1,28 @@
 import type { Metadata } from 'next'
 import HeroSection from '@/components/sections/HeroSection'
-import HomeImageStrip from '@/components/sections/HomeImageStrip'
+import BusinessPillarsSection from '@/components/sections/BusinessPillarsSection'
 import ServiceSection from '@/components/sections/ServiceSection'
+import EngagementFlowSection from '@/components/sections/EngagementFlowSection'
 import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
+import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: '株式会社Amber | 暮らしを支える人に、テクノロジーを。',
-  description: '暮らしを支える人に、テクノロジーを。AI導入支援とホームサービス向け業務システムを提供しています。',
-  keywords: ['AI導入支援', 'ホームサービス向け業務システム', 'ホームサービス', '業務効率化', '中小企業', 'AI導入'],
+  title: siteMetadata.defaultTitle,
+  description: siteMetadata.description,
+  keywords: [...siteMetadata.keywords],
   openGraph: {
-    title: '株式会社Amber | 暮らしを支える人に、テクノロジーを。',
-    description: '暮らしを支える人に、テクノロジーを。AI導入支援とホームサービス向け業務システムを提供しています。',
+    title: siteMetadata.defaultTitle,
+    description: siteMetadata.description,
     url: siteUrl,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '株式会社Amber | 暮らしを支える人に、テクノロジーを。',
-    description: '暮らしを支える人に、テクノロジーを。AI導入支援とホームサービス向け業務システムを提供しています。',
+    title: siteMetadata.defaultTitle,
+    description: siteMetadata.description,
   },
   alternates: {
     canonical: siteUrl,
@@ -34,8 +35,9 @@ export default function Home() {
       <main className="min-h-screen">
         <Header />
         <HeroSection />
-        <HomeImageStrip />
+        <BusinessPillarsSection />
         <ServiceSection />
+        <EngagementFlowSection />
         <TopCtaBlock />
         <Footer />
       </main>

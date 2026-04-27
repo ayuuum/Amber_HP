@@ -117,6 +117,24 @@ export default function ContactSection() {
           <p className="section-subheading mb-4">
             相談だけでも歓迎です。状況に合わせて、無理のない進め方をご提案します。
           </p>
+          <div className="mx-auto mb-8 max-w-2xl rounded-sm border border-sequoia-black/15 bg-color-bg px-5 py-4 text-left text-sm leading-relaxed text-sequoia-black/90">
+            <p className="mb-3 font-semibold text-sequoia-black">メールでのお問い合わせ</p>
+            <p className="mb-3">
+              <a href="mailto:hello@amber-inc.com" className="text-link break-all">
+                hello@amber-inc.com
+              </a>
+            </p>
+            <p className="mb-2 font-semibold text-sequoia-black">フォーム送信時の種別</p>
+            <ul className="list-disc space-y-1 pl-5 text-sequoia-black/85">
+              <li>サービス導入（コンサルティング・開発・研修・Pine）</li>
+              <li>業務提携・投資・出資のご検討</li>
+              <li>採用・参画のご検討</li>
+              <li>その他</li>
+            </ul>
+            <p className="mt-3 text-muted text-xs">
+              面談はオンラインまたは対面で承ります。まずは30分の情報交換からも可能です。
+            </p>
+          </div>
         </motion.div>
 
         <div className="mb-10 max-w-3xl mx-auto">
@@ -235,10 +253,11 @@ export default function ContactSection() {
                     onChange={handleChange}
                     className="field-base bg-color-bg"
                   >
-                    <option value="general">一般的なお問い合わせ</option>
-                    <option value="demo">デモ依頼</option>
-                    <option value="consulting">顧問相談</option>
-                    <option value="service">サービスについて</option>
+                    <option value="service">サービス導入・お見積り</option>
+                    <option value="partnership">業務提携・投資・出資</option>
+                    <option value="recruiting">採用・参画</option>
+                    <option value="demo">デモ・資料請求</option>
+                    <option value="general">その他・一般的なお問い合わせ</option>
                   </motion.select>
                 </motion.div>
 

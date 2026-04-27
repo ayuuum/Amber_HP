@@ -42,10 +42,12 @@ function doPost(e) {
     sheet.appendRow([timestamp, name, company, email, phone, inquiryType, message]);
 
     const inquiryTypeLabel = {
-      general: '一般的なお問い合わせ',
-      demo: 'デモ依頼',
-      consulting: '顧問相談',
-      service: 'サービスについて'
+      service: 'サービス導入・お見積り',
+      partnership: '業務提携・投資・出資',
+      recruiting: '採用・参画',
+      demo: 'デモ・資料請求',
+      general: 'その他・一般的なお問い合わせ',
+      consulting: '顧問相談（旧フォーム）',
     }[inquiryType] || inquiryType;
 
     const subject = '【お問い合わせ】' + (name ? name + ' 様' : '') + ' - ' + inquiryTypeLabel;

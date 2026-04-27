@@ -29,7 +29,7 @@ export function GenerativeMountainScene({ color = "#C49A6C" }: { color?: string 
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
         currentMount.appendChild(renderer.domElement);
 
         // GEOMETRY

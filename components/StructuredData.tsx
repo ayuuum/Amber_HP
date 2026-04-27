@@ -1,4 +1,5 @@
 import JsonLd from '@/components/JsonLd'
+import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
 export default function StructuredData() {
   // グローバル（サイト共通）: Organization / WebSite / LocalBusiness のみ
@@ -7,12 +8,11 @@ export default function StructuredData() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: '株式会社Amber',
+    name: siteMetadata.name,
     alternateName: 'Amber Inc.',
-    url: 'https://www.amber-inc.com',
-    logo: 'https://www.amber-inc.com/og-image.jpg',
-    description:
-      'AI導入支援、ホームサービス事業者向け業務システムを提供。現場の非効率をAIでなくし、働く人の時間と収益を取り戻します。',
+    url: siteUrl,
+    logo: `${siteUrl}/og-image.jpg`,
+    description: siteMetadata.description,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'JP',
@@ -46,17 +46,17 @@ export default function StructuredData() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: '株式会社Amber',
-    url: 'https://www.amber-inc.com',
+    name: siteMetadata.name,
+    url: siteUrl,
   }
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: '株式会社Amber',
-    image: 'https://www.amber-inc.com/og-image.jpg',
-    '@id': 'https://www.amber-inc.com',
-    url: 'https://www.amber-inc.com',
+    name: siteMetadata.name,
+    image: `${siteUrl}/og-image.jpg`,
+    '@id': siteUrl,
+    url: siteUrl,
     telephone: '+81-80-3814-0263',
     address: {
       '@type': 'PostalAddress',

@@ -9,6 +9,7 @@ export default function CompanyPage() {
     return (
         <main className="min-h-screen" style={{ backgroundColor: 'var(--color-bg)' }}>
             <Header />
+            <h1 className="sr-only">企業情報・会社概要 | 株式会社Amber</h1>
             <div className="pt-20 flex flex-col gap-16">
                 <AboutSection />
                 <WhyAmberSection />

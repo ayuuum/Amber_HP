@@ -4,6 +4,20 @@
  */
 
 export const placeholders = {
+  /** コーポレートHero：緑の山岳・森 */
+  mountainHero:
+    'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=88',
+  /** 2つの事業軸：森の根元・木漏れ日 */
+  forestRoots:
+    'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=85',
+  /** コーポレートHero：森・琥珀・業務基盤（生成画像差し替え用） */
+  brandHero: '/images/brand/amber-hero-forest.svg',
+  /** 2つの事業軸：AI Solution / AI Product（生成画像差し替え用） */
+  businessPillars: '/images/brand/amber-business-pillars.svg',
+  /** AI・Webシステム開発 */
+  systemDevelopment: '/images/brand/amber-system-development.svg',
+  /** Pineプロダクト */
+  pineProduct: '/images/brand/amber-pine-product.svg',
   /** 集合研修・講義 */
   workshop:
     'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1400&q=80',

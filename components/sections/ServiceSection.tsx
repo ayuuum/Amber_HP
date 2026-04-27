@@ -11,17 +11,16 @@ type ServiceCard = {
   description: string
   href: string
   features: string[]
-  badge?: string
   external?: boolean
 }
 
 const services: ServiceCard[] = [
   {
     id: 'ai-consulting',
-    title: 'AI導入支援',
-    description: 'AI導入から定着まで、一緒に進めます。',
+    title: 'AI・Webシステム開発',
+    description: '業務システム、社内ツール、生成AI連携まで、現場の運用に合わせて設計・開発します。',
     href: '/service/consulting',
-    features: ['業務改善・自動化', '社内研修', '伴走支援'],
+    features: ['業務整理・要件定義', 'Webシステム開発', '生成AI連携・自動化'],
   },
   {
     id: 'ai-training',
@@ -32,12 +31,11 @@ const services: ServiceCard[] = [
   },
   {
     id: 'vertical-saas',
-    title: 'ホームサービス向けSaaS',
-    description: '予約・顧客・請求を一元化。（開発中）',
+    title: 'Pine（AIプロダクト）',
+    description: '出張訪問サービス業向けに、予約・顧客・決済を一元化する業務基盤です。',
     href: 'https://pine-home.com/',
     external: true,
-    features: ['予約・顧客管理', 'リマインド', '請求・見積'],
-    badge: '開発中',
+    features: ['LINE / Web予約', '顧客・スケジュール管理', '生成AI機能の拡張予定'],
   },
 ]
 
@@ -77,7 +75,7 @@ export default function ServiceSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="py-32 px-6 bg-color-bg relative overflow-hidden"
+      className="relative overflow-hidden border-t border-sequoia-black/10 bg-color-bg px-6 py-32"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -87,7 +85,9 @@ export default function ServiceSection() {
           className="text-center mb-20"
         >
           <h2 className="section-heading mb-6">サービス</h2>
-          <p className="section-subheading">導入支援とプロダクト提供の両面から、現場の業務改善を支えます。</p>
+          <p className="section-subheading">
+            開発、研修、プロダクト提供を通じて、現場で使える仕組みを整えます。
+          </p>
         </motion.div>
 
         <motion.div
@@ -101,20 +101,19 @@ export default function ServiceSection() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className="surface-card interactive-card overflow-hidden flex h-full flex-col group bg-[#F9F6F1]"
+                className="group flex h-full flex-col overflow-hidden rounded-sm border border-sequoia-black/12 bg-[#F6F1E8] shadow-[0_1px_0_rgba(27,25,22,0.04)] transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-sequoia-green/25 hover:shadow-sm"
               >
                 <div className="p-8 flex-grow">
                   <h3 className="text-2xl font-serif font-bold text-sequoia-black mb-4 flex items-center gap-2 flex-wrap">
                     {service.title}
-                    {service.badge ? (
-                      <span className="text-xs text-sequoia-black/60 font-sans font-normal">{service.badge}</span>
-                    ) : null}
                   </h3>
-                  <p className="text-sequoia-black/90 leading-relaxed mb-6 text-sm lg:text-base">{service.description}</p>
+                  <p className="text-sequoia-black/85 leading-relaxed mb-6 text-sm lg:text-base">
+                    {service.description}
+                  </p>
                   <ul className="space-y-2 mb-8">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-sm text-sequoia-black/90">
-                        <span className="w-1.5 h-1.5 bg-sequoia-black/50 rounded-full mr-2" />
+                      <li key={i} className="flex items-center text-sm text-sequoia-black/80">
+                        <span className="mr-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sequoia-green/50" />
                         {feature}
                       </li>
                     ))}
