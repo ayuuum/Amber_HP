@@ -24,12 +24,12 @@ export default function Footer() {
               <ul className="space-y-2 text-white/80">
                 <li>
                   <Link href="/service/consulting" className={footerLinkClass}>
-                    AI・Webシステム開発
+                    AIシステム開発
                   </Link>
                 </li>
                 <li>
                   <Link href="/service/ai-training" className={footerLinkClass}>
-                    生成AI研修
+                    生成AI活用研修
                   </Link>
                 </li>
                 <li>
@@ -39,7 +39,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className={footerLinkClass}
                   >
-                    ホームサービス向けSaaS
+                    Pine（業務管理SaaS）
                     <span className="sr-only">（新しいタブで開く）</span>
                   </a>
                 </li>

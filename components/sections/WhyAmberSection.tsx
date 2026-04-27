@@ -92,7 +92,7 @@ export default function WhyAmberSection() {
                   y: -4,
                   transition: { duration: 0.25 }
                 }}
-                className="surface-card interactive-card bg-[#F9F6F1] p-8"
+                className="surface-card interactive-card p-8"
               >
                 <h3 className="text-2xl font-bold text-sequoia-black mb-4">
                   {strength.title}

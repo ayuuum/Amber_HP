@@ -28,9 +28,9 @@ const config: Config = {
         'red': 'var(--color-red)',
       },
       fontFamily: {
-        sans: ['var(--font-noto-serif)', 'Georgia', 'serif'],
-        serif: ['var(--font-noto-serif)', 'Georgia', 'serif'],
-        display: ['var(--font-noto-serif)', 'Georgia', 'serif'],
+        sans: ['var(--font-noto-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-noto-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-noto-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
     },
   },

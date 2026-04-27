@@ -1,21 +1,21 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Noto_Serif_JP } from 'next/font/google'
+import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import StructuredData from '@/components/StructuredData'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
-const notoSerifJP = Noto_Serif_JP({
+const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-noto-serif',
+  weight: ['400', '500', '700', '900'],
+  variable: '--font-noto-sans',
   display: 'swap',
 })
 
-const cormorantGaramond = Cormorant_Garamond({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-logo',
+  weight: ['400', '500', '600', '700', '900'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -79,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja" className={`${notoSerifJP.variable} ${cormorantGaramond.variable}`}>
+    <html lang="ja" className={`${notoSansJP.variable} ${inter.variable}`}>
       <head>
         <StructuredData />
       </head>

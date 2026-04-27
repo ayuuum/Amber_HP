@@ -83,7 +83,7 @@ export default function CustomerVoiceSection() {
                 y: -6,
                 transition: { duration: 0.25 }
               }}
-              className="bg-[#F6F1E8] p-8 rounded-sm border border-sequoia-black/12 shadow-[0_1px_0_rgba(27,25,22,0.04)] overflow-hidden"
+              className="bg-white p-8 rounded-sm border border-sequoia-black/12 shadow-[0_1px_0_rgba(27,25,22,0.04)] overflow-hidden"
             >
               {/* 画像は削り、カードのトーンを統一（より“本物っぽい”見え方に寄せる） */}
               <div className="mb-6 flex items-center justify-between gap-4">

@@ -23,18 +23,18 @@ export default function HomeNewsPreview() {
 
   return (
     <section
-      className="border-t border-sequoia-black/10 bg-color-bg-subtle px-6 py-20 md:py-24"
+      className="border-t border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36"
       aria-labelledby="home-news-heading"
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow-light mb-3">ニュース・ブログ</p>
+            <p className="eyebrow-light mb-3">ニュース</p>
             <h2 id="home-news-heading" className="section-heading mb-4">
-              ニュース・ブログ
+              実務に根ざした知見と、お知らせ。
             </h2>
             <p className="max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              実務に役立つ知見やお知らせを発信しています。
+              発信は不定期です。お知らせ・寄稿・記事更新のタイミングで更新します。
             </p>
           </div>
           <Link

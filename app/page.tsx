@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
 import HeroSection from '@/components/sections/HeroSection'
 import BusinessPillarsSection from '@/components/sections/BusinessPillarsSection'
-import ServiceSection from '@/components/sections/ServiceSection'
-import EngagementFlowSection from '@/components/sections/EngagementFlowSection'
-import TopCtaBlock from '@/components/sections/TopCtaBlock'
+import AboutSection from '@/components/sections/AboutSection'
+import HomeNewsPreview from '@/components/sections/HomeNewsPreview'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -36,9 +35,8 @@ export default function Home() {
         <Header />
         <HeroSection />
         <BusinessPillarsSection />
-        <ServiceSection />
-        <EngagementFlowSection />
-        <TopCtaBlock />
+        <AboutSection variant="teaser" />
+        <HomeNewsPreview />
         <Footer />
       </main>
     </>

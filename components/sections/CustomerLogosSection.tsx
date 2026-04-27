@@ -85,7 +85,7 @@ export default function CustomerLogosSection() {
                   y: -4,
                   transition: { duration: 0.2 }
                 }}
-                className="interactive-card flex flex-col items-center justify-center rounded-sm border border-sequoia-black/12 bg-[#F6F1E8] p-8 shadow-[0_1px_0_rgba(27,25,22,0.04)]"
+                className="interactive-card flex flex-col items-center justify-center rounded-sm border border-sequoia-black/12 bg-white p-8 shadow-[0_1px_0_rgba(27,25,22,0.04)]"
               >
                 <Icon className="mb-3 h-8 w-8 text-sequoia-green" aria-hidden="true" />
                 <span className="mb-2 block text-4xl font-bold tabular-nums text-sequoia-black md:text-5xl">

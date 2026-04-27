@@ -101,7 +101,7 @@ export default function ServiceSection() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className="group flex h-full flex-col overflow-hidden rounded-sm border border-sequoia-black/12 bg-[#F6F1E8] shadow-[0_1px_0_rgba(27,25,22,0.04)] transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-sequoia-green/25 hover:shadow-sm"
+                className="group flex h-full flex-col overflow-hidden rounded-sm border border-sequoia-black/12 bg-white shadow-[0_1px_0_rgba(27,25,22,0.04)] transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-sequoia-green/25 hover:shadow-sm"
               >
                 <div className="p-8 flex-grow">
                   <h3 className="text-2xl font-serif font-bold text-sequoia-black mb-4 flex items-center gap-2 flex-wrap">

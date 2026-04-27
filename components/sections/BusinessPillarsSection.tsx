@@ -1,79 +1,155 @@
-import Link from 'next/link'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+'use client'
 
-const pillars = [
+import Link from 'next/link'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import { ArrowRight, ExternalLink, Layers, Package, type LucideIcon } from 'lucide-react'
+
+type Pillar = {
+  num: string
+  label: string
+  title: string
+  description: string
+  items: string[]
+  href: string
+  cta: string
+  external?: boolean
+  icon: LucideIcon
+}
+
+const pillars: Pillar[] = [
   {
-    label: 'AI Solution',
-    title: 'AIソリューション事業',
+    num: '01',
+    label: '事業 01',
+    title: 'AIソリューション',
     description:
-      'AI導入コンサルティング、AI・Webシステム開発、生成AI研修を組み合わせ、現場の業務に馴染む仕組みを設計・実装します。',
-    items: ['業務整理・要件定義', 'AI / Webシステム開発', '研修・運用定着'],
+      'AIシステム開発、生成AI活用研修、導入コンサルティングを組み合わせ、現場の業務に馴染む仕組みを設計・実装します。',
+    items: ['AIシステム開発', '生成AI活用研修', '導入コンサルティング'],
     href: '/service/consulting',
-    cta: '開発・導入支援を見る',
+    cta: '事業の詳細を見る',
+    icon: Layers,
   },
   {
-    label: 'AI Product',
-    title: 'AIプロダクト事業',
+    num: '02',
+    label: '事業 02',
+    title: 'AIプロダクト',
     description:
-      '個社支援で見えた業界共通課題を、出張訪問サービス業向け予約管理システム「Pine」としてプロダクト化しています。',
+      '個社支援で見えた業界共通の課題を、出張訪問サービス向け業務管理SaaS「Pine」としてプロダクト化しています。',
     items: ['予約・顧客管理', 'LINE / Web予約', '生成AI機能の拡張'],
     href: 'https://pine-home.com/',
     cta: 'Pineを見る',
     external: true,
+    icon: Package,
   },
 ]
 
 export default function BusinessPillarsSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-120px' })
+
   return (
     <section
-      className="border-t border-sequoia-black/10 bg-color-bg px-6 pb-16 pt-24 md:pb-20 md:pt-28"
+      ref={ref}
+      className="border-t border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36"
       aria-labelledby="business-pillars-heading"
     >
-      <div className="mx-auto max-w-5xl">
-        <p className="eyebrow-light mb-3 text-center">事業の全体像</p>
-        <h2 id="business-pillars-heading" className="section-heading mb-5 text-center">
-          個社で磨き、仕組みにする。
-        </h2>
-        <p className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-          個別支援で得た知見を整理し、共通する部分をプロダクトに反映します。2つの事業を行き来しながら、現場で使える業務基盤を整えます。
-        </p>
+      <div className="mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="section-header"
+        >
+          <p className="eyebrow-light mb-4">事業の全体像</p>
+          <h2
+            id="business-pillars-heading"
+            className="section-heading mb-6"
+          >
+            現場で磨き、<br />仕組みにする。
+          </h2>
+          <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+            個別支援で得た知見を整理し、共通する部分をプロダクトに反映していきます。2つの事業を行き来しながら、現場で使える業務基盤を整えていきます。
+          </p>
+        </motion.div>
 
-        <div className="grid gap-5 md:grid-cols-2">
-          {pillars.map((pillar) => (
-            <article
-              key={pillar.label}
-              className="interactive-card rounded-sm border border-sequoia-black/12 bg-[#F6F1E8] p-6 shadow-[0_1px_0_rgba(27,25,22,0.04)] md:p-7"
-            >
-              <p className="mb-3 text-xs font-semibold tracking-wide text-sequoia-black/55">{pillar.label}</p>
-              <h3 className="mb-3 text-xl font-bold text-sequoia-black">{pillar.title}</h3>
-              <p className="mb-5 text-sm leading-relaxed text-sequoia-black/75">{pillar.description}</p>
-              <ul className="mb-6 space-y-2 text-sm text-sequoia-black/75">
-                {pillar.items.map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-sequoia-green/45" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              {pillar.external ? (
-                <a
-                  href={pillar.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-link text-sm"
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+          {pillars.map((pillar, idx) => {
+            const Icon = pillar.icon
+            return (
+              <motion.article
+                key={pillar.label}
+                initial={{ opacity: 0, y: 32 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.15 + idx * 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group relative overflow-hidden rounded-sm border border-sequoia-black/10 bg-white p-10 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-sequoia-green/40 hover:shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)] md:p-12"
+              >
+                {/* 背景の巨大番号 */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-8 -top-12 select-none text-[200px] font-black leading-none tracking-tight text-sequoia-green/[0.05] md:text-[240px]"
                 >
-                  {pillar.cta}
-                  <ExternalLink className="size-3.5" aria-hidden="true" />
-                  <span className="sr-only">（新しいタブで開く）</span>
-                </a>
-              ) : (
-                <Link href={pillar.href} className="text-link text-sm">
-                  {pillar.cta}
-                  <ArrowRight className="size-3.5" aria-hidden="true" />
-                </Link>
-              )}
-            </article>
-          ))}
+                  {pillar.num}
+                </span>
+
+                <div className="relative">
+                  <div className="mb-8 flex items-center justify-between">
+                    <Icon
+                      className="h-10 w-10 text-sequoia-green"
+                      aria-hidden="true"
+                      strokeWidth={1.5}
+                    />
+                    <span className="text-xs font-bold tracking-[0.2em] text-sequoia-black/55">
+                      {pillar.label}
+                    </span>
+                  </div>
+
+                  <h3 className="mb-4 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
+                    {pillar.title}
+                  </h3>
+                  <p className="mb-8 text-sm leading-relaxed text-sequoia-black/80 md:text-base">
+                    {pillar.description}
+                  </p>
+
+                  <ul className="mb-10 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
+                    {pillar.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-3 py-3 text-sm text-sequoia-black/85"
+                      >
+                        <span className="h-1 w-3 bg-sequoia-green" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {pillar.external ? (
+                    <a
+                      href={pillar.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-sequoia-black transition-[color,gap] duration-200 group-hover:gap-3 group-hover:text-sequoia-green"
+                    >
+                      {pillar.cta}
+                      <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                      <span className="sr-only">（新しいタブで開く）</span>
+                    </a>
+                  ) : (
+                    <Link
+                      href={pillar.href}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-sequoia-black transition-[color,gap] duration-200 group-hover:gap-3 group-hover:text-sequoia-green"
+                    >
+                      {pillar.cta}
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  )}
+                </div>
+              </motion.article>
+            )
+          })}
         </div>
       </div>
     </section>

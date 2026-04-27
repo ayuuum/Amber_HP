@@ -26,11 +26,11 @@ const menuItems: MenuItem[] = [
   },
   {
     label: 'サービス',
-    href: '/#services',
+    href: '#',
     children: [
-      { label: 'AI・Webシステム開発', href: '/service/consulting' },
-      { label: '生成AI研修', href: '/service/ai-training' },
-      { label: 'ホームサービス向けSaaS', href: PINE_HOME_URL, external: true },
+      { label: 'AIシステム開発', href: '/service/consulting' },
+      { label: '生成AI活用研修', href: '/service/ai-training' },
+      { label: 'Pine（業務管理SaaS）', href: PINE_HOME_URL, external: true },
     ],
   },
   {
@@ -54,7 +54,7 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-sequoia-black/10 bg-[rgba(251,247,240,0.88)] shadow-sm backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-sequoia-black/10 bg-white/90 shadow-sm backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -92,7 +92,7 @@ export default function Header() {
                           transition={{ duration: 0.15 }}
                           className="absolute top-full left-0 min-w-[220px] pt-2"
                         >
-                          <div className="rounded-sm border border-sequoia-black/10 bg-[rgba(251,247,240,0.98)] py-1.5 shadow-xl backdrop-blur-md">
+                          <div className="rounded-sm border border-sequoia-black/10 bg-white/95 py-1.5 shadow-xl backdrop-blur-md">
                             {item.children.map((child, childIndex) =>
                               child.external ? (
                                 <a
@@ -164,7 +164,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-20 right-0 h-[calc(100vh-80px)] w-full overflow-y-auto border-l border-sequoia-black/10 bg-[rgba(251,247,240,0.98)] shadow-2xl md:w-80 lg:hidden"
+              className="fixed top-20 right-0 h-[calc(100vh-80px)] w-full overflow-y-auto border-l border-sequoia-black/10 bg-white/95 shadow-2xl md:w-80 lg:hidden"
             >
               <div className="flex flex-col p-6 space-y-6">
                 <nav className="flex flex-col space-y-2">
