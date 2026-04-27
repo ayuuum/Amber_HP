@@ -11,10 +11,35 @@ import {
   Microscope,
   Globe,
   Layers,
+  AlertTriangle,
+  CircleSlash,
+  PenLine,
   type LucideIcon,
 } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { placeholders } from '@/lib/placeholder-images'
+
+// よくある失敗（顧客課題）
+const failures: { icon: LucideIcon; label: string; title: string; desc: string }[] = [
+  {
+    icon: AlertTriangle,
+    label: 'パターン 01',
+    title: 'ツールを配って終わり',
+    desc: 'ChatGPTのアカウントを配布するだけで運用を始めても、使う人と使わない人で二極化し、組織としての底上げには繋がりません。',
+  },
+  {
+    icon: CircleSlash,
+    label: 'パターン 02',
+    title: '単発研修で終わり',
+    desc: '2時間の集合研修を1回実施するだけでは、翌週には誰もAIを開かなくなり、定着しないまま投資が消えていきます。',
+  },
+  {
+    icon: PenLine,
+    label: 'パターン 03',
+    title: 'いきなりエージェント',
+    desc: '「AIエージェントで業務を自動化したい」と意気込むものの、社員がAIで業務補助すらできていない状態。土台が育っていないため、結局は頓挫します。',
+  },
+]
 
 const stages = [
   {
@@ -29,7 +54,7 @@ const stages = [
   },
   {
     lv: '01',
-    name: 'AI活用(Copilot)',
+    name: 'AI活用（Copilot）',
     desc: 'AIで業務を速く、ラクにする段階です。全社員にとっての出発点となります。',
   },
 ]
@@ -57,7 +82,7 @@ const courses: {
       '主要AIツールの使い分け',
       'プロンプト設計と業務文書への応用',
       '情報収集・分析・データ整理',
-      '個人で作る自社AI(Custom GPTs / Projects / NotebookLM)',
+      '個人で作る自社AI（Custom GPTs / Projects / NotebookLM）',
     ],
     outcome:
       '自社業務向けプロンプトテンプレート集と個人GPT。研修終了時、明日から使える形でお持ち帰りいただきます。',
@@ -141,9 +166,7 @@ const reasons: { num: string; title: string; desc: string; icon: LucideIcon }[] 
   },
 ]
 
-type Comparison = { label: string; existing: string; amber: string }
-
-const comparisons: Comparison[] = [
+const comparisons: { label: string; existing: string; amber: string }[] = [
   { label: 'ゴール', existing: 'AIツールの操作を知る', amber: '自社業務へのAI組み込み' },
   { label: '演習', existing: '汎用例題', amber: '汎用例題＋実際の業務' },
   {
@@ -165,13 +188,11 @@ export default function TrainingPageClient() {
     <main className="min-h-screen bg-color-bg">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-sequoia-black/10 px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-        {/* 背景装飾：左上の薄い深緑halo */}
         <div
           aria-hidden
           className="pointer-events-none absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full"
           style={{
-            background:
-              'radial-gradient(circle, rgba(15,42,30,0.06) 0%, transparent 65%)',
+            background: 'radial-gradient(circle, rgba(15,42,30,0.06) 0%, transparent 65%)',
           }}
         />
         <div className="relative mx-auto max-w-6xl">
@@ -212,8 +233,46 @@ export default function TrainingPageClient() {
         </div>
       </section>
 
-      {/* 3段階のAI活用 */}
+      {/* よくある失敗（課題提起） */}
       <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
+        <div className="mx-auto max-w-6xl">
+          <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-24">
+            <p className="eyebrow-light mb-4">よくある失敗</p>
+            <h2 className="section-heading mb-6">
+              ツール導入だけでは、<br />何も変わりません
+            </h2>
+            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+              生成AIの導入で繰り返される、3つの失敗パターン。共通する原因は、活用の「段階」を設計せずに進めてしまうことです。
+            </p>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+            {failures.map((f, idx) => {
+              const Icon = f.icon
+              return (
+                <motion.div
+                  key={f.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-sm border border-sequoia-black/10 bg-white p-8"
+                >
+                  <Icon className="mb-6 h-8 w-8 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
+                  <p className="mb-3 text-xs font-bold tracking-[0.15em] text-sequoia-black/55">{f.label}</p>
+                  <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
+                    {f.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{f.desc}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 3段階のAI活用 */}
+      <section className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
             <p className="eyebrow-light mb-4">3段階のAI活用</p>
@@ -235,9 +294,9 @@ export default function TrainingPageClient() {
               role="img"
               aria-label="3段階のAI活用ピラミッド"
             >
-              <polygon points="140,20 100,80 180,80" fill="rgb(15 42 30)" />
-              <polygon points="100,80 60,160 220,160 180,80" fill="rgb(15 42 30 / 0.7)" />
-              <polygon points="60,160 20,250 260,250 220,160" fill="rgb(15 42 30 / 0.45)" />
+              <polygon points="140,20 100,80 180,80" fill="rgb(13 92 58)" />
+              <polygon points="100,80 60,160 220,160 180,80" fill="rgb(13 92 58 / 0.7)" />
+              <polygon points="60,160 20,250 260,250 220,160" fill="rgb(13 92 58 / 0.45)" />
               <text x="140" y="58" textAnchor="middle" fontSize="11" fill="white" fontWeight="700" letterSpacing="1">Lv 03</text>
               <text x="140" y="125" textAnchor="middle" fontSize="11" fill="white" fontWeight="700" letterSpacing="1">Lv 02</text>
               <text x="140" y="215" textAnchor="middle" fontSize="11" fill="white" fontWeight="700" letterSpacing="1">Lv 01</text>
@@ -266,7 +325,7 @@ export default function TrainingPageClient() {
       {/* 2コース */}
       <section
         id="courses"
-        className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36"
+        className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36"
       >
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
@@ -345,7 +404,7 @@ export default function TrainingPageClient() {
                       ))}
                     </ul>
 
-                    <div className="rounded-sm bg-color-bg p-5">
+                    <div className="rounded-sm bg-color-bg-subtle p-5">
                       <p className="mb-2 text-xs font-medium tracking-wider text-sequoia-green">成果物</p>
                       <p className="text-xs leading-relaxed text-sequoia-black/85 md:text-sm">{course.outcome}</p>
                     </div>
@@ -362,7 +421,7 @@ export default function TrainingPageClient() {
       </section>
 
       {/* IT環境カスタマイズ */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
+      <section className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
             <p className="eyebrow-light mb-4">カスタマイズ</p>
@@ -400,7 +459,7 @@ export default function TrainingPageClient() {
             })}
           </motion.div>
 
-          <div className="mt-10 rounded-sm bg-color-bg-subtle p-8">
+          <div className="mt-10 rounded-sm bg-white p-8">
             <p className="mb-3 text-xs font-bold tracking-wider text-sequoia-green">共通する設計思想</p>
             <p className="text-sm leading-relaxed text-sequoia-black/85 md:text-base">
               すべてノーコード、GUI完結です。特定ベンダーや専門エンジニアに依存せず、現場社員が継続して運用できる仕組みのみを扱います。
@@ -409,116 +468,70 @@ export default function TrainingPageClient() {
         </div>
       </section>
 
-      {/* Split型：思想 */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg px-0 py-0">
-        <div className="grid md:grid-cols-2 md:items-stretch">
-          <motion.div
-            {...fadeUp}
-            className="flex items-center bg-color-bg-subtle px-6 py-16 md:px-16 md:py-24 md:order-1 order-2"
-          >
-            <div className="max-w-xl">
-              <p className="eyebrow-light mb-6">Amberの姿勢</p>
-              <h2 className="mb-8 text-3xl font-bold leading-[1.25] tracking-tight text-sequoia-black md:text-5xl lg:text-6xl">
-                研修の翌日から、<br />現場が変わる。
-              </h2>
-              <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-                座学で「分かったつもり」になる研修は、翌週には忘れられます。Amberは研修中に、受講者の手元で実際の業務AIが動くところまで作り込みます。明日から使える成果物を、必ず持ち帰っていただきます。
-              </p>
-            </div>
-          </motion.div>
-          <motion.div
-            {...fadeUp}
-            className="relative aspect-[5/4] md:aspect-auto md:order-2 order-1"
-          >
-            <Image
-              src={placeholders.trainingSplit}
-              alt="研修後に現場で動くAIのイメージ"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Amberの3つの理由 — Split型（左：見出しスティッキー / 右：縦リスト） */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 md:grid-cols-[1fr_2fr] md:gap-20">
-            {/* 左カラム：見出しを大きく、スティッキー */}
-            <motion.div {...fadeUp} className="md:sticky md:top-32 md:self-start">
-              <p className="eyebrow-light mb-4">Amberの3つの理由</p>
-              <h2 className="section-heading">
-                研修が<br />「現場に<br className="md:hidden" />根付く」理由
-              </h2>
-            </motion.div>
-
-            {/* 右カラム：3理由を縦に並べ、それぞれ強調 */}
-            <div className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
-              {reasons.map((r, idx) => {
-                const Icon = r.icon
-                return (
-                  <motion.div
-                    key={r.num}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="grid gap-6 py-12 md:grid-cols-[80px_1fr] md:gap-10 md:py-16"
-                  >
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        className="h-7 w-7 shrink-0 text-sequoia-green"
-                        aria-hidden="true"
-                        strokeWidth={1.5}
-                      />
-                      <p className="text-3xl font-black leading-none tracking-tight text-sequoia-green/30">
-                        {r.num}
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="mb-3 text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">
-                        {r.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{r.desc}</p>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 比較表 */}
+      {/* Amberの3つの理由 ＋ 比較表（統合） */}
       <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
-            <p className="eyebrow-light mb-4">既存研修との違い</p>
-            <h2 className="section-heading">
-              「使い方を知る」ではなく、<br />「自社業務に組み込む」
+            <p className="eyebrow-light mb-4">Amberの3つの理由</p>
+            <h2 className="section-heading mb-6">
+              研修が<br />「現場に根付く」理由
             </h2>
+            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+              「使い方を知る」研修ではなく、「自社業務に組み込む」研修。Amberが大切にしている3つの考え方です。
+            </p>
           </motion.div>
 
-          <motion.div {...fadeUp} className="overflow-hidden rounded-sm border border-sequoia-black/10">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-color-bg-subtle">
-                  <th className="border-b border-sequoia-black/10 p-6 text-left text-xs font-bold tracking-wider text-sequoia-black/55"></th>
-                  <th className="border-b border-sequoia-black/10 p-6 text-left text-xs font-bold tracking-wider text-sequoia-black/55">既存のAI研修</th>
-                  <th className="border-b border-sequoia-black/10 bg-sequoia-green/10 p-6 text-left text-xs font-bold tracking-wider text-sequoia-green">Amber研修</th>
-                </tr>
-              </thead>
-              <tbody className="text-sm md:text-base">
-                {comparisons.map((row, idx) => (
-                  <tr key={row.label} className={idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}>
-                    <th className={`bg-color-bg-subtle p-6 text-left font-bold text-sequoia-black/65 ${idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}`}>{row.label}</th>
-                    <td className={`p-6 text-sequoia-black/65 ${idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}`}>{row.existing}</td>
-                    <td className={`bg-sequoia-green/[0.04] p-6 font-medium text-sequoia-black ${idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}`}>{row.amber}</td>
+          {/* 3つの理由 */}
+          <div className="mb-20 grid gap-12 md:mb-24 md:grid-cols-3 md:gap-16">
+            {reasons.map((r, idx) => {
+              const Icon = r.icon
+              return (
+                <motion.div
+                  key={r.num}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="mb-6 flex items-baseline gap-4">
+                    <Icon className="h-9 w-9 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
+                    <p className="text-5xl font-black leading-none tracking-tight text-sequoia-green/30 md:text-6xl">
+                      {r.num}
+                    </p>
+                  </div>
+                  <h3 className="mb-4 text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">{r.title}</h3>
+                  <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{r.desc}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          {/* 比較表（同セクション内） */}
+          <motion.div {...fadeUp}>
+            <p className="eyebrow-light mb-4">既存研修との違い</p>
+            <h3 className="mb-10 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
+              一目で分かる、3つの違い
+            </h3>
+            <div className="overflow-hidden rounded-sm border border-sequoia-black/10">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-color-bg-subtle">
+                    <th className="border-b border-sequoia-black/10 p-6 text-left text-xs font-bold tracking-wider text-sequoia-black/55"></th>
+                    <th className="border-b border-sequoia-black/10 p-6 text-left text-xs font-bold tracking-wider text-sequoia-black/55">既存のAI研修</th>
+                    <th className="border-b border-sequoia-black/10 bg-sequoia-green/10 p-6 text-left text-xs font-bold tracking-wider text-sequoia-green">Amber研修</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="text-sm md:text-base">
+                  {comparisons.map((row, idx) => (
+                    <tr key={row.label} className={idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}>
+                      <th className={`bg-color-bg-subtle p-6 text-left font-bold text-sequoia-black/65 ${idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}`}>{row.label}</th>
+                      <td className={`p-6 text-sequoia-black/65 ${idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}`}>{row.existing}</td>
+                      <td className={`bg-sequoia-green/[0.04] p-6 font-medium text-sequoia-black ${idx === comparisons.length - 1 ? '' : 'border-b border-sequoia-black/10'}`}>{row.amber}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </motion.div>
         </div>
       </section>
