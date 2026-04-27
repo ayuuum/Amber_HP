@@ -122,19 +122,17 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
       className="relative overflow-hidden px-6 pt-32 pb-24 md:pt-40 md:pb-36"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
-        {/* セクションヘッダー */}
+        {/* ページヘッダー */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 max-w-3xl md:mb-24"
         >
-          <p className="eyebrow-light mb-4">私たちについて</p>
-          <h2 className="section-heading mb-6">
-            現場とテクノロジーの<br />あいだに
-          </h2>
+          <p className="eyebrow-light mb-4">企業情報</p>
+          <h2 className="section-heading mb-6">Amberについて</h2>
           <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-            ミッション、向き合っていること、創業の背景を、ひとつのページにまとめています。
+            ミッション、事業、会社概要をまとめています。
           </p>
         </motion.div>
 
@@ -148,7 +146,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]">
             <Image
               src={placeholders.aboutTeaser}
-              alt="現場とテクノロジーをつなぐAmberのイメージ"
+              alt="Amberのミッションを表すイメージ"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 480px"

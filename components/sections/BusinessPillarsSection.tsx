@@ -43,9 +43,24 @@ const pillars: Pillar[] = [
   },
 ]
 
-export default function BusinessPillarsSection() {
+type BusinessPillarsSectionProps = {
+  /** 'top' = トップページ用 / 'company' = 企業情報ページ用 */
+  variant?: 'top' | 'company'
+}
+
+export default function BusinessPillarsSection({ variant = 'top' }: BusinessPillarsSectionProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-120px' })
+
+  const eyebrow = variant === 'company' ? '事業' : '事業の全体像'
+  const heading = variant === 'company' ? (
+    <>2つの事業</>
+  ) : (
+    <>現場で磨き、<br />仕組みにする。</>
+  )
+  const lead = variant === 'company'
+    ? 'AIソリューション事業（受託）とAIプロダクト事業（Pine）の2本柱で、暮らしを支える産業の業務基盤を整えています。'
+    : '個別支援で得た知見を整理し、共通する部分をプロダクトに反映していきます。2つの事業を行き来しながら、現場で使える業務基盤を整えていきます。'
 
   return (
     <section
@@ -60,15 +75,15 @@ export default function BusinessPillarsSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="section-header"
         >
-          <p className="eyebrow-light mb-4">事業の全体像</p>
+          <p className="eyebrow-light mb-4">{eyebrow}</p>
           <h2
             id="business-pillars-heading"
             className="section-heading mb-6"
           >
-            現場で磨き、<br />仕組みにする。
+            {heading}
           </h2>
           <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-            個別支援で得た知見を整理し、共通する部分をプロダクトに反映していきます。2つの事業を行き来しながら、現場で使える業務基盤を整えていきます。
+            {lead}
           </p>
         </motion.div>
 
