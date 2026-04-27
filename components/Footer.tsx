@@ -23,7 +23,7 @@ export default function Footer() {
               <p className="text-white/90 font-semibold">サービス</p>
               <ul className="space-y-2 text-white/80">
                 <li>
-                  <Link href="/service/consulting" className={footerLinkClass}>
+                  <Link href="/service/development" className={footerLinkClass}>
                     AIシステム開発
                   </Link>
                 </li>

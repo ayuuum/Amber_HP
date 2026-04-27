@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/service/consulting`,
+      url: `${baseUrl}/service/development`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // ブログ一覧ページ
     {
-      url: `${baseUrl}/service/consulting/blog`,
+      url: `${baseUrl}/service/development/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -71,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // AI導入支援向けブログ記事
   const consultingBlogPosts: MetadataRoute.Sitemap = consultingPosts.map((post) => ({
-    url: `${baseUrl}/service/consulting/blog/${post.slug}`,
+    url: `${baseUrl}/service/development/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.7,

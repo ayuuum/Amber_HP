@@ -28,7 +28,7 @@ const menuItems: MenuItem[] = [
     label: 'サービス',
     href: '#',
     children: [
-      { label: 'AIシステム開発', href: '/service/consulting' },
+      { label: 'AIシステム開発', href: '/service/development' },
       { label: '生成AI活用研修', href: '/service/ai-training' },
       { label: 'Pine（業務管理SaaS）', href: PINE_HOME_URL, external: true },
     ],

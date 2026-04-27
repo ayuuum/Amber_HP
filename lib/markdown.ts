@@ -100,7 +100,9 @@ export function getCategoryName(category: 'consulting' | 'saas'): string {
 }
 
 export function getCategoryPath(category: 'consulting' | 'saas'): string {
-  return `/service/${category}/blog`
+  // 内部識別子 'consulting' は URL スラッグでは 'development'（slug 変更後）
+  const slug = category === 'consulting' ? 'development' : category
+  return `/service/${slug}/blog`
 }
 
 

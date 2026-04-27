@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ブログ | AI導入支援 | 株式会社Amber',
     description: 'AI導入支援に関する記事一覧。AI導入、業務改善、業務自動化などの実務知見を発信しています。',
-    url: `${siteUrl}/service/consulting/blog`,
+    url: `${siteUrl}/service/development/blog`,
     type: 'website',
   },
   alternates: {
-    canonical: `${siteUrl}/service/consulting/blog`,
+    canonical: `${siteUrl}/service/development/blog`,
   },
 }
 
@@ -31,7 +31,7 @@ export default function ConsultingBlogPage() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <Link 
-              href="/service/consulting" 
+              href="/service/development" 
               className="text-sequoia-black hover:text-sequoia-black transition-colors"
             >
               ← AI導入支援に戻る

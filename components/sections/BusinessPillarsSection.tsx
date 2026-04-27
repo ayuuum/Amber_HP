@@ -25,7 +25,7 @@ const pillars: Pillar[] = [
     description:
       'AIシステム開発、生成AI活用研修、導入コンサルティングを組み合わせ、現場の業務に馴染む仕組みを設計・実装します。',
     items: ['AIシステム開発', '生成AI活用研修', '導入コンサルティング'],
-    href: '/service/consulting',
+    href: '/service/development',
     cta: '事業の詳細を見る',
     icon: Layers,
   },

@@ -183,7 +183,7 @@ export default function TrainingPageClient() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="eyebrow-light mb-6">研修サービス</p>
-              <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-sequoia-black md:text-7xl">
+              <h1 className="hero-heading mb-6">
                 生成AI<br />活用研修
               </h1>
               <p className="mb-3 text-base text-sequoia-green md:text-lg">

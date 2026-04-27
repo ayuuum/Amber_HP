@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI・Webシステム開発 | 株式会社Amber',
     description: '業務システム、社内ツール、生成AI連携、AI導入支援まで、現場の運用に合わせて設計・開発します。',
-    url: `${siteUrl}/service/consulting`,
+    url: `${siteUrl}/service/development`,
     type: 'website',
   },
   twitter: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: '業務システム、社内ツール、生成AI連携まで、現場の運用に合わせて設計・開発します。',
   },
   alternates: {
-    canonical: `${siteUrl}/service/consulting`,
+    canonical: `${siteUrl}/service/development`,
   },
 }
 

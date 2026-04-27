@@ -8,14 +8,15 @@
    ========================================================================== */
 :root {
   /* Brand Colors (Main) */
-  --color-green: #0F2A1E;        /* Sequoia Green: CTA・ハイライト・アイコン */
+  --color-green: #0D5C3A;        /* Sequoia Green: CTA・ハイライト・アイコン */
+  --color-green-accent: #1A8A55; /* Accent Green: 強調・ホバー・差し色 */
   --color-green-dark: #0A1C14;   /* Dark Green: フッター・ダークセクション用（より暗め） */
   --color-black: #1B1916;        /* Sequoia Black: 本文・見出し・ダークUI */
   --color-white: #F3F3F2;        /* Sequoia White: カード・モーダル・明るいUI */
 
   /* Background & Text */
   --color-bg: #FFFFFF;           /* ページ背景（純白） */
-  --color-bg-subtle: #FAFAFA;    /* 帯セクション用、わずかに沈んだ白 */
+  --color-bg-subtle: #F6F5F2;    /* 帯セクション用、温度感のあるオフホワイト */
   --color-text: #1B1917;         /* メインテキスト */
   --color-text-inverse: rgba(255, 255, 255, 0.8);  /* 白テキスト（フッター等） */
   /* 深緑セクション上のタイポ */
@@ -114,7 +115,18 @@
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-sequoia-black text-balance leading-[1.3];
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-sequoia-black text-balance;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  /* ヒーロー専用：超大型タイポ */
+  .hero-heading {
+    @apply text-sequoia-black;
+    font-size: clamp(56px, 10vw, 140px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
   }
 
   /* セクションヘッダーの統一ブロック（eyebrow + title + lead） */

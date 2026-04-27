@@ -12,14 +12,13 @@ export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion()
   useEffect(() => setIsMounted(true), [])
 
-  // 文字の subtle な「呼吸」を、reduced motion 環境では無効化
   const breathAnimation = prefersReducedMotion
     ? undefined
     : { opacity: [1, 0.92, 1] }
 
   return (
     <section className="relative min-h-screen pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-28 px-6 overflow-hidden flex items-center">
-      {/* 背景画像：ゆっくりドリフトする山写真 */}
+      {/* 背景：山写真がゆっくりドリフト */}
       <div className="absolute inset-0 z-0" aria-hidden>
         <Image
           src={placeholders.mountainHero}
@@ -31,7 +30,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* オーバーレイ群（深緑の濃淡で写真を引き締める） */}
+      {/* オーバーレイ：深緑の濃淡で写真を引き締める */}
       <div className="absolute inset-0 z-[5] bg-[rgba(10,28,20,0.45)] pointer-events-none" />
       <div className="absolute inset-0 z-[5] bg-gradient-to-b from-[rgba(15,42,30,0.2)] via-transparent to-[rgba(10,28,20,0.55)] pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 z-[5] h-56 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none" />
@@ -75,7 +74,7 @@ export default function HeroSection() {
         </motion.p>
       </div>
 
-      {/* スクロール促し */}
+      {/* スクロール促し縦線 */}
       {!prefersReducedMotion && (
         <motion.div
           initial={{ opacity: 0 }}

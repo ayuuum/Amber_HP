@@ -19,7 +19,7 @@ const services: ServiceCard[] = [
     id: 'ai-consulting',
     title: 'AI・Webシステム開発',
     description: '業務システム、社内ツール、生成AI連携まで、現場の運用に合わせて設計・開発します。',
-    href: '/service/consulting',
+    href: '/service/development',
     features: ['業務整理・要件定義', 'Webシステム開発', '生成AI連携・自動化'],
   },
   {

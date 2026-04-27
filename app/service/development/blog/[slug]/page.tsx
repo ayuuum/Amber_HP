@@ -72,7 +72,7 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
   const contentHtml = await getPostContentHtml(post.content)
   const canonicalUrl = `${siteUrl}${getCategoryPath('consulting')}/${post.slug}`
   const blogIndexUrl = `${siteUrl}${getCategoryPath('consulting')}`
-  const serviceUrl = `${siteUrl}/service/consulting`
+  const serviceUrl = `${siteUrl}/service/development`
 
   const jsonLd = {
     '@context': 'https://schema.org',
