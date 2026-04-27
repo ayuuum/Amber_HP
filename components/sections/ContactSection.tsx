@@ -104,9 +104,9 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-24 px-6"
+      className="bg-color-bg-subtle px-6 py-24 md:py-36"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -114,40 +114,10 @@ export default function ContactSection() {
           className="text-center mb-12"
         >
           <h2 className="section-heading mb-6">お問い合わせ</h2>
-          <p className="section-subheading mb-4">
+          <p className="section-subheading">
             相談だけでも歓迎です。状況に合わせて、無理のない進め方をご提案します。
           </p>
-          <div className="mx-auto mb-8 max-w-2xl rounded-sm border border-sequoia-black/15 bg-color-bg px-5 py-4 text-left text-sm leading-relaxed text-sequoia-black/90">
-            <p className="mb-3 font-semibold text-sequoia-black">メールでのお問い合わせ</p>
-            <p className="mb-3">
-              <a href="mailto:hello@amber-inc.com" className="text-link break-all">
-                hello@amber-inc.com
-              </a>
-            </p>
-            <p className="mb-2 font-semibold text-sequoia-black">フォーム送信時の種別</p>
-            <ul className="list-disc space-y-1 pl-5 text-sequoia-black/85">
-              <li>サービス導入（コンサルティング・開発・研修・Pine）</li>
-              <li>業務提携・投資・出資のご検討</li>
-              <li>採用・参画のご検討</li>
-              <li>その他</li>
-            </ul>
-            <p className="mt-3 text-muted text-xs">
-              面談はオンラインまたは対面で承ります。まずは30分の情報交換からも可能です。
-            </p>
-          </div>
         </motion.div>
-
-        <div className="mb-10 max-w-3xl mx-auto">
-          <div className="relative aspect-[16/7] max-h-40 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
-            <Image
-              src={placeholders.office}
-              alt="お問い合わせ・ビジネスコミュニケーションのイメージ（仮の写真）"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 768px"
-            />
-          </div>
-        </div>
 
         {/* 進捗インジケーター */}
         <motion.div

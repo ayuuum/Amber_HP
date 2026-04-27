@@ -7,15 +7,13 @@ import ContactSection from '@/components/sections/ContactSection'
 
 export default function CompanyPage() {
     return (
-        <main className="min-h-screen" style={{ backgroundColor: 'var(--color-bg)' }}>
+        <main className="min-h-screen bg-color-bg">
             <Header />
             <h1 className="sr-only">企業情報・会社概要 | 株式会社Amber</h1>
-            <div className="pt-20 flex flex-col gap-16">
-                <AboutSection />
-                <WhyAmberSection />
-                <CompanyProfileSection />
-                <ContactSection />
-            </div>
+            <AboutSection />
+            <WhyAmberSection />
+            <CompanyProfileSection />
+            <ContactSection />
             <Footer />
         </main>
     )

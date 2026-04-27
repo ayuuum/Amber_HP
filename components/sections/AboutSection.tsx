@@ -119,56 +119,58 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
     <section
       id="about"
       ref={sectionRef}
-      className="pt-40 md:pt-48 lg:pt-56 pb-32 px-6 relative overflow-hidden"
+      className="relative overflow-hidden px-6 pt-32 pb-24 md:pt-40 md:pb-36"
     >
-      <div className="max-w-4xl mx-auto relative z-10 text-center">
-        <motion.h2
+      <div className="relative z-10 mx-auto max-w-6xl">
+        {/* セクションヘッダー */}
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-sequoia-black mb-12"
+          className="mb-16 max-w-3xl md:mb-24"
         >
-          私たちについて
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          transition={{ duration: 0.7, delay: 0.05 }}
-          className="mb-12 max-w-3xl mx-auto"
-        >
-          <div className="relative aspect-[16/9] w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
-            <Image
-              src={placeholders.handshake}
-              alt="パートナーシップ・ビジネスのイメージ(仮の写真)"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 768px"
-            />
-          </div>
+          <p className="eyebrow-light mb-4">私たちについて</p>
+          <h2 className="section-heading mb-6">
+            現場とテクノロジーの<br />あいだに
+          </h2>
+          <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+            ミッション、向き合っていること、創業の背景を、ひとつのページにまとめています。
+          </p>
         </motion.div>
 
+        {/* ミッション + 写真 Split型 */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="space-y-10 text-base md:text-lg leading-relaxed text-sequoia-black"
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16"
         >
-          <motion.p variants={itemVariants} className="text-lead font-bold text-2xl md:text-3xl mb-10">
-            「暮らしを支える産業に、最新のテクノロジーを。」
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
-            現場の負担を減らす。AI導入支援とホームサービス向けの業務システムを提供しています。
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
-            手作業や属人化に奪われた時間を、テクノロジーで取り戻します。
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="max-w-2xl mx-auto">
-            現場が楽になる仕組みを、一緒につくります。
-          </motion.p>
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]">
+            <Image
+              src={placeholders.aboutTeaser}
+              alt="現場とテクノロジーをつなぐAmberのイメージ"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 480px"
+            />
+          </div>
+          <div>
+            <p className="mb-4 text-xs font-bold tracking-[0.2em] text-sequoia-green">ミッション</p>
+            <h3 className="mb-8 text-2xl font-bold leading-[1.3] tracking-tight text-sequoia-black md:text-3xl lg:text-4xl">
+              暮らしを支える産業に、<br />最新のテクノロジーを。
+            </h3>
+            <div className="space-y-5 text-sm leading-relaxed text-sequoia-black/85 md:text-base">
+              <p>
+                ハウスクリーニング、物流、介護、建設、製造。暮らしを支える産業の業務には、まだ手作業や属人的な仕組みが多く残っています。
+              </p>
+              <p>
+                Amberは、現場で動く生成AIシステムと業務管理プロダクトを、設計から定着まで一気通貫で届けています。
+              </p>
+              <p>
+                研修して終わりにしない、開発して終わりにしない。現場で使われ続けるところまでが、私たちの仕事です。
+              </p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
