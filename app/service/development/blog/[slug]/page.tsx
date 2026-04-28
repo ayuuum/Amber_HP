@@ -1,11 +1,20 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getPostBySlug, getAllPosts, getPostContentHtml, getCategoryName, getCategoryPath } from '@/lib/markdown'
+import {
+  getPostBySlug,
+  getAllPosts,
+  getPostContentHtml,
+  getCategoryName,
+  getCategoryPath,
+  getRelatedPosts,
+} from '@/lib/markdown'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BlogContent from '@/components/BlogContent'
 import JsonLd from '@/components/JsonLd'
+import RelatedPosts from '@/components/blog/RelatedPosts'
+import InquiryCTA from '@/components/blog/InquiryCTA'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
@@ -14,14 +23,14 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts('consulting')
+  const posts = getAllPosts('development')
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPostBySlug('consulting', params.slug)
+  const post = getPostBySlug('development', params.slug)
 
   if (!post) {
     return {
@@ -32,13 +41,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const imageUrl = '/og-image.jpg'
 
   return {
-    title: `${post.title} | ${getCategoryName('consulting')} ブログ | 株式会社Amber`,
+    title: `${post.title} | ${getCategoryName('development')} ブログ | 株式会社Amber`,
     description: post.description,
     keywords: post.keywords,
     openGraph: {
-      title: `${post.title} | ${getCategoryName('consulting')} ブログ`,
+      title: `${post.title} | ${getCategoryName('development')} ブログ`,
       description: post.description,
-      url: `${siteUrl}${getCategoryPath('consulting')}/${post.slug}`,
+      url: `${siteUrl}${getCategoryPath('development')}/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
       images: [
@@ -57,21 +66,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [imageUrl],
     },
     alternates: {
-      canonical: `${siteUrl}${getCategoryPath('consulting')}/${post.slug}`,
+      canonical: `${siteUrl}${getCategoryPath('development')}/${post.slug}`,
     },
   }
 }
 
-export default async function ConsultingBlogPostPage({ params }: Props) {
-  const post = getPostBySlug('consulting', params.slug)
+export default async function DevelopmentBlogPostPage({ params }: Props) {
+  const post = getPostBySlug('development', params.slug)
 
   if (!post) {
     notFound()
   }
 
   const contentHtml = await getPostContentHtml(post.content)
-  const canonicalUrl = `${siteUrl}${getCategoryPath('consulting')}/${post.slug}`
-  const blogIndexUrl = `${siteUrl}${getCategoryPath('consulting')}`
+  const relatedPosts = getRelatedPosts('development', post.slug, 3)
+  const canonicalUrl = `${siteUrl}${getCategoryPath('development')}/${post.slug}`
+  const blogIndexUrl = `${siteUrl}${getCategoryPath('development')}`
   const serviceUrl = `${siteUrl}/service/development`
 
   const jsonLd = {
@@ -89,13 +99,13 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'AI導入支援',
+            name: getCategoryName('development'),
             item: serviceUrl,
           },
           {
             '@type': 'ListItem',
             position: 3,
-            name: `${getCategoryName('consulting')} ブログ`,
+            name: `${getCategoryName('development')} ブログ`,
             item: blogIndexUrl,
           },
           {
@@ -132,7 +142,7 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
         },
         isPartOf: {
           '@type': 'Blog',
-          name: `${getCategoryName('consulting')} ブログ`,
+          name: `${getCategoryName('development')} ブログ`,
           url: blogIndexUrl,
         },
       },
@@ -141,12 +151,12 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd id="jsonld-blogposting-consulting" data={jsonLd} />
+      <JsonLd id="jsonld-blogposting-development" data={jsonLd} />
       <Header />
       <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <Link href={getCategoryPath('consulting')} className="text-link text-sm">
+            <Link href={getCategoryPath('development')} className="text-link text-sm">
               ← ブログ一覧に戻る
             </Link>
           </div>
@@ -162,14 +172,14 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
                   })}
                 </span>
                 <span className="text-sm text-sequoia-black ml-4">
-                  {getCategoryName('consulting')}
+                  {getCategoryName('development')}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-serif font-bold text-sequoia-black mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-sequoia-black mb-4">
                 {post.title}
               </h1>
               {post.description && (
-                <p className="text-xl text-sequoia-black leading-relaxed">
+                <p className="text-lg leading-relaxed text-sequoia-black/85">
                   {post.description}
                 </p>
               )}
@@ -190,18 +200,12 @@ export default async function ConsultingBlogPostPage({ params }: Props) {
             <BlogContent html={contentHtml} />
           </article>
 
-          <div className="mt-12 text-center">
-            <Link
-              href={getCategoryPath('consulting')}
-              className="inline-block bg-sequoia-green text-white px-8 py-4 rounded-sm hover:bg-sequoia-green/90 transition-colors font-semibold"
-            >
-              ブログ一覧に戻る
-            </Link>
-          </div>
+          <InquiryCTA category="development" />
+
+          <RelatedPosts posts={relatedPosts} />
         </div>
       </main>
       <Footer />
     </>
   )
 }
-

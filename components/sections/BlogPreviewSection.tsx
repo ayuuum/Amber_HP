@@ -3,24 +3,29 @@
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
-import type { BlogPost } from '@/lib/markdown'
+import type { BlogPost, BlogCategory } from '@/lib/markdown'
 
-// クライアントコンポーネントで使用するためのヘルパー関数
-function getCategoryName(category: 'consulting' | 'saas'): string {
-  const names = {
-    consulting: 'AI導入支援',
-    saas: 'ホームサービス向け業務システム',
-  }
-  return names[category]
+const CATEGORY_NAMES: Record<BlogCategory, string> = {
+  development: 'AIシステム開発',
+  training: '生成AI活用研修',
 }
 
-function getCategoryPath(category: 'consulting' | 'saas'): string {
-  return `/service/${category}/blog`
+const CATEGORY_PATHS: Record<BlogCategory, string> = {
+  development: '/service/development/blog',
+  training: '/service/ai-training/blog',
+}
+
+function getCategoryName(category: BlogCategory): string {
+  return CATEGORY_NAMES[category]
+}
+
+function getCategoryPath(category: BlogCategory): string {
+  return CATEGORY_PATHS[category]
 }
 
 type BlogPreviewSectionProps = {
   posts: BlogPost[]
-  category: 'consulting' | 'saas'
+  category: BlogCategory
 }
 
 export default function BlogPreviewSection({ posts, category }: BlogPreviewSectionProps) {

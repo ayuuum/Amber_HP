@@ -12,7 +12,7 @@ export default function NewArticlePage() {
     title: '',
     description: '',
     date: new Date().toISOString().split('T')[0],
-    category: 'consulting' as 'consulting' | 'saas',
+    category: 'development' as 'development' | 'training',
     keywords: [] as string[],
     content: '',
   })
@@ -146,8 +146,8 @@ export default function NewArticlePage() {
               onChange={handleChange}
               className="w-full px-4 py-3 border border-sequoia-black rounded-sm bg-white text-sequoia-black focus:outline-none focus:border-sequoia-black"
             >
-              <option value="consulting">AI導入支援</option>
-              <option value="saas">ホームサービス向け業務システム</option>
+              <option value="development">AIシステム開発</option>
+              <option value="training">生成AI活用研修</option>
             </select>
           </div>
         </div>

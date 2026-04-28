@@ -536,7 +536,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
       </section>
 
       {/* Blog */}
-      <BlogPreviewSection posts={blogPosts} category="consulting" />
+      <BlogPreviewSection posts={blogPosts} category="development" />
     </main>
   )
 }

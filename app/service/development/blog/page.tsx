@@ -7,12 +7,12 @@ import Footer from '@/components/Footer'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: 'ブログ | AI導入支援 | 株式会社Amber',
-  description: 'AI導入支援に関する記事一覧。AI導入、業務改善、業務自動化などの実務知見を発信しています。',
-  keywords: ['AI導入支援', 'AI導入', '業務改善', '業務自動化', '中小企業'],
+  title: 'ブログ | AIシステム開発 | 株式会社Amber',
+  description: 'AIシステム開発に関する記事一覧。業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を発信しています。',
+  keywords: ['AIシステム開発', '業務システム', '生成AI', '業務自動化', 'エージェント開発'],
   openGraph: {
-    title: 'ブログ | AI導入支援 | 株式会社Amber',
-    description: 'AI導入支援に関する記事一覧。AI導入、業務改善、業務自動化などの実務知見を発信しています。',
+    title: 'ブログ | AIシステム開発 | 株式会社Amber',
+    description: 'AIシステム開発に関する記事一覧。業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を発信しています。',
     url: `${siteUrl}/service/development/blog`,
     type: 'website',
   },
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ConsultingBlogPage() {
-  const posts = getAllPosts('consulting')
+export default function DevelopmentBlogPage() {
+  const posts = getAllPosts('development')
 
   return (
     <>
@@ -30,21 +30,20 @@ export default function ConsultingBlogPage() {
       <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <Link 
-              href="/service/development" 
-              className="text-sequoia-black hover:text-sequoia-black transition-colors"
+            <Link
+              href="/service/development"
+              className="text-link text-sm"
             >
-              ← AI導入支援に戻る
+              ← AIシステム開発に戻る
             </Link>
           </div>
 
           <div className="mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6">
-              {getCategoryName('consulting')} ブログ
+            <h1 className="page-heading mb-6">
+              {getCategoryName('development')} ブログ
             </h1>
-            <p className="text-xl text-sequoia-black leading-relaxed">
-              AI導入支援に関する記事を発信しています。<br />
-              実務知見を記事としてお届けします。
+            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+              業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を記事として発信しています。
             </p>
           </div>
 
@@ -59,7 +58,7 @@ export default function ConsultingBlogPage() {
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`${getCategoryPath('consulting')}/${post.slug}`}
+                  href={`${getCategoryPath('development')}/${post.slug}`}
                   className="bg-color-bg p-6 rounded-sm border border-sequoia-black/10 hover:shadow-lg transition-shadow block"
                 >
                   <div className="mb-4">
@@ -97,5 +96,3 @@ export default function ConsultingBlogPage() {
     </>
   )
 }
-
-

@@ -58,8 +58,8 @@ export default function AdminPage() {
 
   const getCategoryName = (category: string) => {
     const names: Record<string, string> = {
-      consulting: 'AI導入支援',
-      saas: 'ホームサービス向け業務システム',
+      development: 'AIシステム開発',
+      training: '生成AI活用研修',
     }
     return names[category] || category
   }
@@ -81,7 +81,7 @@ export default function AdminPage() {
 
       <div className="mb-6">
         <div className="flex gap-2">
-          {['all', 'consulting', 'saas'].map((cat) => (
+          {['all', 'development', 'training'].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}

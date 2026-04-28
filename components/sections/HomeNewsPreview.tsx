@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
-import type { BlogPost } from '@/lib/markdown'
+import type { BlogPost, BlogCategory } from '@/lib/markdown'
 
-function mergeLatestPosts(limit: number): { post: BlogPost; category: 'consulting' | 'saas' }[] {
-  const consulting = getAllPosts('consulting')
-  const saas = getAllPosts('saas')
+function mergeLatestPosts(limit: number): { post: BlogPost; category: BlogCategory }[] {
+  const development = getAllPosts('development')
+  const training = getAllPosts('training')
   const merged = [
-    ...consulting.map((post) => ({ post, category: 'consulting' as const })),
-    ...saas.map((post) => ({ post, category: 'saas' as const })),
+    ...development.map((post) => ({ post, category: 'development' as const })),
+    ...training.map((post) => ({ post, category: 'training' as const })),
   ].sort((a, b) => (a.post.date < b.post.date ? 1 : -1))
   return merged.slice(0, limit)
 }

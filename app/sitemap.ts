@@ -6,11 +6,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteUrl
 
-  // ブログ記事を取得
-  const consultingPosts = getAllPosts('consulting')
-  const saasPosts = getAllPosts('saas')
+  const developmentPosts = getAllPosts('development')
+  const trainingPosts = getAllPosts('training')
 
-  // 基本ページ
   const pages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -42,7 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    // ブログ一覧ページ
     {
       url: `${baseUrl}/service/development/blog`,
       lastModified: new Date(),
@@ -50,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/service/saas/blog`,
+      url: `${baseUrl}/service/ai-training/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -69,17 +66,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // AI導入支援向けブログ記事
-  const consultingBlogPosts: MetadataRoute.Sitemap = consultingPosts.map((post) => ({
+  const developmentBlogPosts: MetadataRoute.Sitemap = developmentPosts.map((post) => ({
     url: `${baseUrl}/service/development/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
-  // ホームサービス向け業務システム向けブログ記事
-  const saasBlogPosts: MetadataRoute.Sitemap = saasPosts.map((post) => ({
-    url: `${baseUrl}/service/saas/blog/${post.slug}`,
+  const trainingBlogPosts: MetadataRoute.Sitemap = trainingPosts.map((post) => ({
+    url: `${baseUrl}/service/ai-training/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
@@ -87,8 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...pages,
-    ...consultingBlogPosts,
-    ...saasBlogPosts,
+    ...developmentBlogPosts,
+    ...trainingBlogPosts,
   ]
 }
-

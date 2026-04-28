@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   const { searchParams } = new URL(request.url)
-  const category = searchParams.get('category') as 'consulting' | 'saas'
+  const category = searchParams.get('category') as 'development' | 'training'
 
   if (!category) {
     return NextResponse.json({ error: 'Category is required' }, { status: 400 })

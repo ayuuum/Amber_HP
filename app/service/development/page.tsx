@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default function ConsultingPage() {
-    const blogPosts = getAllPosts('consulting')
+    const blogPosts = getAllPosts('development')
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
     const jsonLd = {

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
-import type { BlogPost } from '@/lib/markdown'
+import type { BlogPost, BlogCategory } from '@/lib/markdown'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { placeholders } from '@/lib/placeholder-images'
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  const consultingPosts = getAllPosts('consulting')
-  const saasPosts = getAllPosts('saas')
+  const developmentPosts = getAllPosts('development')
+  const trainingPosts = getAllPosts('training')
 
-  const postsWithCategory: { post: BlogPost; category: 'consulting' | 'saas' }[] = [
-    ...consultingPosts.map((post) => ({ post, category: 'consulting' as const })),
-    ...saasPosts.map((post) => ({ post, category: 'saas' as const })),
+  const postsWithCategory: { post: BlogPost; category: BlogCategory }[] = [
+    ...developmentPosts.map((post) => ({ post, category: 'development' as const })),
+    ...trainingPosts.map((post) => ({ post, category: 'training' as const })),
   ].sort((a, b) => (a.post.date < b.post.date ? 1 : -1))
 
   return (

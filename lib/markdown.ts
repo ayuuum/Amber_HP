@@ -7,19 +7,21 @@ import remarkGfm from 'remark-gfm'
 
 const postsDirectory = path.join(process.cwd(), 'content', 'blog')
 
+export type BlogCategory = 'development' | 'training'
+
 export type BlogPost = {
   slug: string
   title: string
   description: string
   date: string
-  category: 'consulting' | 'saas'
+  category: BlogCategory
   keywords: string[]
   content: string
   excerpt?: string
 }
 
-export function getAllPosts(category?: 'consulting' | 'saas'): BlogPost[] {
-  const categoryDir = category 
+export function getAllPosts(category?: BlogCategory): BlogPost[] {
+  const categoryDir = category
     ? path.join(postsDirectory, category)
     : postsDirectory
 
@@ -41,7 +43,7 @@ export function getAllPosts(category?: 'consulting' | 'saas'): BlogPost[] {
         title: data.title || '',
         description: data.description || '',
         date: data.date || '',
-        category: data.category || category || 'consulting',
+        category: data.category || category || 'development',
         keywords: data.keywords || [],
         content,
         excerpt: data.excerpt || content.substring(0, 150) + '...',
@@ -58,7 +60,7 @@ export function getAllPosts(category?: 'consulting' | 'saas'): BlogPost[] {
 }
 
 export function getPostBySlug(
-  category: 'consulting' | 'saas',
+  category: BlogCategory,
   slug: string
 ): BlogPost | null {
   const fullPath = path.join(postsDirectory, category, `${slug}.md`)
@@ -91,18 +93,29 @@ export async function getPostContentHtml(content: string): Promise<string> {
   return processedContent.toString()
 }
 
-export function getCategoryName(category: 'consulting' | 'saas'): string {
-  const names = {
-    consulting: 'AI導入支援',
-    saas: 'ホームサービス向け業務システム',
+export function getCategoryName(category: BlogCategory): string {
+  const names: Record<BlogCategory, string> = {
+    development: 'AIシステム開発',
+    training: '生成AI活用研修',
   }
   return names[category]
 }
 
-export function getCategoryPath(category: 'consulting' | 'saas'): string {
-  // 内部識別子 'consulting' は URL スラッグでは 'development'（slug 変更後）
-  const slug = category === 'consulting' ? 'development' : category
-  return `/service/${slug}/blog`
+export function getCategoryPath(category: BlogCategory): string {
+  const paths: Record<BlogCategory, string> = {
+    development: '/service/development/blog',
+    training: '/service/ai-training/blog',
+  }
+  return paths[category]
 }
 
-
+/** 記事末尾の関連記事用：同カテゴリ最新N件から自分自身を除く */
+export function getRelatedPosts(
+  category: BlogCategory,
+  currentSlug: string,
+  limit = 3
+): BlogPost[] {
+  return getAllPosts(category)
+    .filter((p) => p.slug !== currentSlug)
+    .slice(0, limit)
+}

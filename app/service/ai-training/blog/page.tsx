@@ -7,22 +7,22 @@ import Footer from '@/components/Footer'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: 'ブログ | ホームサービス向け業務システム | 株式会社Amber',
-  description: 'ホームサービス向け業務システムに関する記事一覧。予約管理、業務効率化、LINE連携などの実務知見を発信しています。',
-  keywords: ['ホームサービス', 'ホームサービス向け業務システム', '予約管理システム', 'LINE連携', '業務管理システム'],
+  title: 'ブログ | 生成AI活用研修 | 株式会社Amber',
+  description: '生成AI活用研修に関する記事一覧。人材開発支援助成金、カリキュラム設計、業界別活用、研修の落とし穴などの実務知見を発信しています。',
+  keywords: ['生成AI研修', '人材開発支援助成金', 'AI研修', 'ChatGPT研修', '社員教育'],
   openGraph: {
-    title: 'ブログ | ホームサービス向け業務システム | 株式会社Amber',
-    description: 'ホームサービス向け業務システムに関する記事一覧。予約管理、業務効率化、LINE連携などの実務知見を発信しています。',
-    url: `${siteUrl}/service/saas/blog`,
+    title: 'ブログ | 生成AI活用研修 | 株式会社Amber',
+    description: '生成AI活用研修に関する記事一覧。人材開発支援助成金、カリキュラム設計、業界別活用、研修の落とし穴などの実務知見を発信しています。',
+    url: `${siteUrl}/service/ai-training/blog`,
     type: 'website',
   },
   alternates: {
-    canonical: `${siteUrl}/service/saas/blog`,
+    canonical: `${siteUrl}/service/ai-training/blog`,
   },
 }
 
-export default function SaaSBlogPage() {
-  const posts = getAllPosts('saas')
+export default function TrainingBlogPage() {
+  const posts = getAllPosts('training')
 
   return (
     <>
@@ -30,21 +30,20 @@ export default function SaaSBlogPage() {
       <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <Link 
-              href="/service/saas" 
-              className="text-sequoia-black hover:text-sequoia-black transition-colors"
+            <Link
+              href="/service/ai-training"
+              className="text-link text-sm"
             >
-              ← ホームサービス向け業務システムに戻る
+              ← 生成AI活用研修に戻る
             </Link>
           </div>
 
           <div className="mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6">
-              {getCategoryName('saas')} ブログ
+            <h1 className="page-heading mb-6">
+              {getCategoryName('training')} ブログ
             </h1>
-            <p className="text-xl text-sequoia-black leading-relaxed">
-              ホームサービス向け業務システムに関する記事を発信しています。<br />
-              実務知見を記事としてお届けします。
+            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+              人材開発支援助成金の活用、カリキュラム設計、業界別の研修事例、研修の落とし穴などの実務知見を記事として発信しています。
             </p>
           </div>
 
@@ -59,7 +58,7 @@ export default function SaaSBlogPage() {
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`${getCategoryPath('saas')}/${post.slug}`}
+                  href={`${getCategoryPath('training')}/${post.slug}`}
                   className="bg-color-bg p-6 rounded-sm border border-sequoia-black/10 hover:shadow-lg transition-shadow block"
                 >
                   <div className="mb-4">
@@ -97,5 +96,3 @@ export default function SaaSBlogPage() {
     </>
   )
 }
-
-
