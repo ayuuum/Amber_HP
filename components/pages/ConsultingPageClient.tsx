@@ -261,7 +261,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
           >
             <h1
               className="font-black leading-[0.95] tracking-[-0.04em] text-white"
-              style={{ fontSize: 'clamp(48px, 9vw, 120px)' }}
+              style={{ fontSize: 'clamp(40px, 7.5vw, 96px)' }}
             >
               現場で動く
               <br />

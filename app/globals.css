@@ -120,13 +120,22 @@
     letter-spacing: -0.02em;
   }
 
-  /* ヒーロー専用：超大型タイポ */
+  /* ヒーロー専用：超大型タイポ（トップ／受託のドカン型ヒーロー） */
   .hero-heading {
     @apply text-sequoia-black;
     font-size: clamp(56px, 10vw, 140px);
     font-weight: 900;
     line-height: 0.95;
     letter-spacing: -0.04em;
+  }
+
+  /* 下層ページのヒーロー見出し用（中サイズ） */
+  .page-heading {
+    @apply text-sequoia-black text-balance;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
   }
 
   /* セクションヘッダーの統一ブロック（eyebrow + title + lead） */
