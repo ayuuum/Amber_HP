@@ -1,9 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
+
+// ヒーローがダーク基調のページ。スクロール前はヘッダーを透明＋白文字に切り替える。
+const DARK_HERO_PATHS = ['/service/development']
 
 const PINE_HOME_URL = 'https://pine-home.com/'
 
@@ -47,19 +51,44 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+
+  const isDarkHeroPage = DARK_HERO_PATHS.includes(pathname ?? '')
+  // モバイルメニュー開いている間は読みやすさのため通常モードに戻す
+  const isTransparent = isDarkHeroPage && !scrolled && !isMobileMenuOpen
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
     setMobileServiceOpen(false)
   }
 
+  // テーマに応じた色クラス
+  const headerBg = isTransparent
+    ? 'border-transparent bg-transparent'
+    : 'border-sequoia-black/10 bg-white/90 shadow-sm backdrop-blur-md'
+  const logoColor = isTransparent ? 'text-white' : 'text-sequoia-black'
+  const navItemColor = isTransparent
+    ? 'text-white/85 hover:bg-white/10 hover:text-white'
+    : 'text-sequoia-black/80 hover:bg-sequoia-black/5 hover:text-sequoia-green'
+  const mobileBtnColor = isTransparent
+    ? 'text-white hover:bg-white/10'
+    : 'text-sequoia-black hover:bg-sequoia-black/5 hover:text-sequoia-green'
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-sequoia-black/10 bg-white/90 shadow-sm backdrop-blur-md">
+    <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${headerBg}`}>
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 z-50 relative" aria-label="株式会社Amber">
-            <span className="font-logo text-[2rem] leading-none text-sequoia-black">
+            <span className={`font-logo text-[2rem] leading-none transition-colors duration-300 ${logoColor}`}>
               Amber
             </span>
           </Link>
@@ -76,7 +105,7 @@ export default function Header() {
                 {item.children ? (
                   <>
                     <span
-                      className="flex cursor-default items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium text-sequoia-black/80 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                      className={`flex cursor-default items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
                       aria-haspopup="true"
                       aria-expanded={hoveredIndex === index}
                     >
@@ -124,7 +153,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium text-sequoia-black/80 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                    className={`flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
                   >
                     {item.label}
                   </Link>
@@ -136,7 +165,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="relative z-50 rounded-sm p-2 text-sequoia-black transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 lg:hidden"
+            className={`relative z-50 rounded-sm p-2 transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 lg:hidden ${mobileBtnColor}`}
             aria-label="メニュー"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
