@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 import { placeholders } from '@/lib/placeholder-images'
 import { siteUrl } from '@/lib/site-metadata'
 
-const heroTechModifiers: string[] = ['最新の', '現場に効く', '業務に根づく']
+const heroTechModifiers: string[] = ['最新の', '現場で使える', '業務に根づく']
 
 const contactDisplay = {
   website: siteUrl.replace(/^https?:\/\//, ''),

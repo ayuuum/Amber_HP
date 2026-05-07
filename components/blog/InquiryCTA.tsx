@@ -1,6 +1,16 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { BlogCategory } from '@/lib/markdown'
+import {
+  GlassCard,
+  GlassCardAction,
+  GlassCardContent,
+  GlassCardDescription,
+  GlassCardFooter,
+  GlassCardHeader,
+  GlassCardTitle,
+} from '@/components/ui/glass-card'
+import { Button } from '@/components/ui/button'
 
 type Props = {
   category: BlogCategory
@@ -36,46 +46,41 @@ export default function InquiryCTA({ category }: Props) {
   const c = copy[category]
 
   return (
-    <section
-      className="mt-16 overflow-hidden rounded-sm border border-sequoia-black/10 md:mt-20"
-      style={{
-        background: 'linear-gradient(135deg, #0A1C14 0%, #0F2A1E 60%, #143828 100%)',
-      }}
-    >
-      <div className="px-8 py-12 md:px-12 md:py-16">
-        <p
-          className="mb-4 text-xs font-bold uppercase tracking-[0.3em]"
-          style={{ color: 'rgb(26 138 85)' }}
-        >
-          {c.eyebrow}
-        </p>
-        <h2 className="mb-5 text-2xl font-bold leading-snug tracking-tight text-white md:text-3xl">
-          {c.heading}
-        </h2>
-        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-white/75 md:text-base">
-          {c.body}
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            href={c.primary.href}
-            className="inline-flex items-center gap-2 rounded-sm px-7 py-3 text-sm font-bold text-white transition-[transform,background-color] duration-200 hover:-translate-y-0.5"
-            style={{
-              background: 'rgb(13 92 58)',
-              border: '1px solid rgb(26 138 85 / 0.4)',
-            }}
-          >
-            {c.primary.label}
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-          <Link
-            href={c.secondary.href}
-            className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-7 py-3 text-sm font-bold text-white transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-white/10"
-          >
-            {c.secondary.label}
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
-      </div>
+    <section className="mt-16 overflow-hidden rounded-2xl border border-sequoia-black/10 bg-[url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2670&auto=format&fit=crop)] bg-cover bg-center p-4 md:mt-20 md:p-8">
+      <GlassCard className="mx-auto w-full max-w-3xl">
+        <GlassCardHeader>
+          <GlassCardTitle className="text-2xl leading-snug tracking-tight text-white md:text-3xl">
+            {c.heading}
+          </GlassCardTitle>
+          <GlassCardDescription className="text-xs font-bold uppercase tracking-[0.3em] text-emerald-300">
+            {c.eyebrow}
+          </GlassCardDescription>
+          <GlassCardAction>
+            <Button variant="link" className="p-0 text-white hover:text-white/80" asChild>
+              <Link href={c.secondary.href}>サービス詳細へ</Link>
+            </Button>
+          </GlassCardAction>
+        </GlassCardHeader>
+        <GlassCardContent>
+          <p className="text-sm leading-relaxed text-white/85 md:text-base">
+            {c.body}
+          </p>
+        </GlassCardContent>
+        <GlassCardFooter className="flex-col gap-2 sm:flex-row">
+          <Button className="w-full bg-white text-sequoia-black hover:bg-white/90" asChild>
+            <Link href={c.primary.href}>
+              {c.primary.label}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+          <Button variant="ghost" className="w-full text-white hover:bg-white/15 hover:text-white" asChild>
+            <Link href={c.secondary.href}>
+              {c.secondary.label}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Button>
+        </GlassCardFooter>
+      </GlassCard>
     </section>
   )
 }
