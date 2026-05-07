@@ -63,7 +63,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="text-lead mb-6 text-lg font-bold text-sequoia-black md:text-xl"
               >
-                暮らしを支える産業に、最新のテクノロジーを。
+                現場が回り続ける仕組みを、技術で実装する。
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
@@ -130,7 +130,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
           <div>
             <p className="mb-4 text-xs font-bold tracking-[0.2em] text-sequoia-green">ミッション</p>
             <h3 className="mb-8 text-2xl font-bold leading-[1.3] tracking-tight text-sequoia-black md:text-3xl lg:text-4xl">
-              暮らしを支える産業に、<br />最新のテクノロジーを。
+              現場が回り続ける仕組みを、<br />技術で実装する。
             </h3>
             <div className="space-y-5 text-sm leading-relaxed text-sequoia-black/85 md:text-base">
               <p>

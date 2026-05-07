@@ -72,7 +72,7 @@ export default function HeroSection() {
               className="mb-8 max-w-md text-base leading-relaxed text-sequoia-black/75 md:text-lg"
               variants={fadeUpItem}
             >
-              AIソリューションとAIプロダクトで、産業の業務基盤を。
+              現場観察から設計・実装・定着まで、一気通貫で伴走します。
             </motion.p>
 
             <motion.div

@@ -54,7 +54,7 @@ export default function TopCtaBlock() {
             <GlassCardFooter className="flex-col gap-2 sm:flex-row">
               <Button className="w-full bg-white text-sequoia-black hover:bg-white/90" asChild>
                 <Link href="/company#contact">
-                  無料相談する
+                  30分無料相談を予約
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>

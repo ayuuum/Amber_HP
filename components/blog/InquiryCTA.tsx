@@ -30,14 +30,14 @@ const copy: Record<
     eyebrow: 'AIシステム開発のご相談',
     heading: '現場で動くAIを、設計から定着まで。',
     body: '業務システム、生成AI連携、エージェント開発まで、現場観察から設計・運用までを伴走します。要件が固まっていない段階のご相談から歓迎です。',
-    primary: { label: '無料相談する', href: '/company#contact' },
+    primary: { label: '開発相談をする', href: '/company#contact' },
     secondary: { label: 'AIシステム開発の詳細', href: '/service/development' },
   },
   training: {
     eyebrow: '生成AI活用研修のご相談',
     heading: '研修の翌日から、現場が変わる。',
     body: '人材開発支援助成金を活用した、現場で使える生成AI研修プログラムです。導入規模・カリキュラム・申請サポートまで、お気軽にご相談ください。',
-    primary: { label: '無料相談する', href: '/company#contact' },
+    primary: { label: '研修相談をする', href: '/company#contact' },
     secondary: { label: '生成AI活用研修の詳細', href: '/service/ai-training' },
   },
 }
