@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
 import type { BlogPost, BlogCategory } from '@/lib/markdown'
+import { staggerContainerRelaxed } from '@/lib/motion-safe'
 
 const CATEGORY_PATHS: Record<BlogCategory, string> = {
   development: '/service/development/blog',
@@ -28,16 +29,6 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
   }
 
   const displayPosts = posts.slice(0, 3)
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  }
 
   const cardVariants = {
     hidden: { opacity: 0, y: 32, scale: 0.98 },
@@ -68,7 +59,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerRelaxed}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid md:grid-cols-3 gap-8 mb-12"

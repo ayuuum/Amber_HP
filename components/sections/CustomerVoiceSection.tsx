@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Quote } from 'lucide-react'
+import { staggerContainerLoose } from '@/lib/motion-safe'
 
 const testimonials = [
   {
@@ -18,16 +19,6 @@ const testimonials = [
 export default function CustomerVoiceSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
 
   const cardVariants = {
     hidden: { opacity: 0, y: 32, scale: 0.98 },
@@ -69,7 +60,7 @@ export default function CustomerVoiceSection() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerLoose}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid md:grid-cols-2 gap-8"

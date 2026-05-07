@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { CountUp } from '@/components/ui/count-up'
+import { staggerContainerRelaxed } from '@/lib/motion-safe'
 
 const stats = [
   {
@@ -34,16 +35,6 @@ const stats = [
 export default function StatsSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 32, scale: 0.98 },
@@ -79,7 +70,7 @@ export default function StatsSection() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerRelaxed}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"

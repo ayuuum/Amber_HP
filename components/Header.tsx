@@ -85,16 +85,20 @@ export default function Header() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${headerBg}`}>
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="site-header-toolbar flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 z-50 relative" aria-label="株式会社Amber">
+          <Link
+            href="/"
+            className="relative z-50 flex-shrink-0 no-underline visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/40"
+            aria-label="株式会社Amber"
+          >
             <span className={`font-logo text-[2rem] leading-none transition-colors duration-300 ${logoColor}`}>
               Amber
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="site-nav-desktop items-center gap-1 xl:gap-2" aria-label="主要ナビゲーション">
             {menuItems.map((item, index) => (
               <div
                 key={index}
@@ -153,7 +157,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
+                    className={`flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium no-underline transition-[background-color,color] duration-200 visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
                   >
                     {item.label}
                   </Link>
@@ -164,9 +168,11 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={toggleMobileMenu}
-            className={`relative z-50 rounded-sm p-2 transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 lg:hidden ${mobileBtnColor}`}
+            className={`site-nav-mobile-toggle relative z-50 rounded-sm p-2 transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${mobileBtnColor}`}
             aria-label="メニュー"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -195,16 +201,19 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="fixed top-20 right-0 h-[calc(100vh-80px)] w-full overflow-y-auto border-l border-sequoia-black/10 bg-white/95 shadow-2xl md:w-80 lg:hidden"
             >
-              <div className="flex flex-col p-6 space-y-6">
-                <nav className="flex flex-col space-y-2">
+              <div className="flex flex-col p-6 pt-8">
+                <nav className="flex flex-col gap-0" aria-label="モバイルメニュー">
                   {menuItems.map((item, index) => (
-                    <div key={index} className="border-b border-sequoia-black/10 pb-2 last:border-0 last:pb-0">
+                    <div
+                      key={index}
+                      className="border-b border-sequoia-black/10 py-1 last:border-b-0 last:pb-2"
+                    >
                       {item.children ? (
                         <>
                           <button
                             type="button"
                             onClick={() => setMobileServiceOpen(!mobileServiceOpen)}
-                            className="flex w-full items-center justify-between rounded-sm py-3 text-left font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                            className="flex min-h-12 w-full items-center justify-between rounded-sm py-3 text-left text-base font-medium text-sequoia-black/85 no-underline transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                             aria-expanded={mobileServiceOpen}
                             aria-haspopup="true"
                           >
@@ -230,7 +239,7 @@ export default function Header() {
                                         href={child.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                        className="flex min-h-10 items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                                         onClick={toggleMobileMenu}
                                       >
                                         {child.label}
@@ -241,7 +250,7 @@ export default function Header() {
                                       <Link
                                         key={childIndex}
                                         href={child.href}
-                                        className="block rounded-sm py-2 text-sm font-medium text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                        className="flex min-h-10 items-center rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                                         onClick={toggleMobileMenu}
                                       >
                                         {child.label}
@@ -256,7 +265,7 @@ export default function Header() {
                       ) : (
                         <Link
                           href={item.href}
-                          className="block rounded-sm py-3 font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                          className="flex min-h-12 items-center rounded-sm py-3 text-base font-medium text-sequoia-black/85 no-underline visited:text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                           onClick={toggleMobileMenu}
                         >
                           {item.label}

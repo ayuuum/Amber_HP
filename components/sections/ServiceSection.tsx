@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, ExternalLink } from 'lucide-react'
+import { staggerContainerLoose } from '@/lib/motion-safe'
 
 type ServiceCard = {
   id: string
@@ -43,21 +44,6 @@ export default function ServiceSection() {
   const sectionRef = useRef<HTMLElement | null>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const [isMounted, setIsMounted] = useState(false)
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
   const cardVariants = {
     hidden: { opacity: 0, y: 32, scale: 0.98 },
     visible: {
@@ -88,9 +74,9 @@ export default function ServiceSection() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerLoose}
           initial="hidden"
-          animate={isMounted && isInView ? 'visible' : (isMounted ? 'visible' : 'hidden')}
+          animate={isInView ? 'visible' : 'hidden'}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {services.map((service, index) => {

@@ -1,105 +1,166 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
+import { Globe, MapPin, Phone } from 'lucide-react'
 import AnimatedTextCycle from '@/components/ui/animated-text-cycle'
+import { fadeUpItem, staggerContainer } from '@/lib/motion-safe'
+import { cn } from '@/lib/utils'
 import { placeholders } from '@/lib/placeholder-images'
-
-const ease = [0.22, 1, 0.36, 1] as const
+import { siteUrl } from '@/lib/site-metadata'
 
 const heroTechModifiers: string[] = ['最新の', '現場に効く', '業務に根づく']
 
-export default function HeroSection() {
-  const [isMounted, setIsMounted] = useState(false)
-  const prefersReducedMotion = useReducedMotion()
-  useEffect(() => setIsMounted(true), [])
+const contactDisplay = {
+  website: siteUrl.replace(/^https?:\/\//, ''),
+  phone: '080-3814-0263',
+  address: '〒105-0001 東京都港区虎ノ門3丁目1-1 2階',
+}
 
-  const breathAnimation = prefersReducedMotion
-    ? undefined
-    : { opacity: [1, 0.92, 1] }
+const clipFrom = 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)'
+const clipTo = 'polygon(25% 0, 100% 0, 100% 100%, 0% 100%)'
+
+export default function HeroSection() {
+  const prefersReducedMotion = useReducedMotion()
 
   return (
-    <section className="relative min-h-screen pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-28 px-6 overflow-hidden flex items-center">
-      {/* 背景：山写真がゆっくりドリフト */}
-      <div className="absolute inset-0 z-0" aria-hidden>
+    <section
+      className={cn(
+        'relative flex min-h-screen w-full flex-col bg-color-bg text-sequoia-black md:flex-row md:overflow-hidden',
+        'pt-24 md:pt-20',
+      )}
+      aria-label="トップヒーロー"
+    >
+      {/* 左：コピー・CTA・連絡先 */}
+      <div
+        className={cn(
+          'relative z-20 flex w-full flex-col justify-between bg-color-bg px-6 py-10',
+          'md:w-1/2 md:px-10 md:py-12 lg:w-3/5 lg:px-14 lg:py-16',
+        )}
+      >
+        <div>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.h1
+              className="text-3xl font-bold leading-snug tracking-tight text-sequoia-black text-balance md:text-4xl md:leading-tight lg:text-5xl"
+              variants={fadeUpItem}
+            >
+              <span className="block">暮らしを支える産業に、</span>
+              <span className="mt-2 flex flex-col items-start gap-y-1 sm:mt-3 sm:inline-flex sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-0 sm:gap-y-0">
+                <span className="inline-flex items-baseline sm:mr-0">
+                  <AnimatedTextCycle
+                    words={heroTechModifiers}
+                    interval={3800}
+                    className="text-sequoia-black"
+                  />
+                </span>
+                <span className="font-bold sm:whitespace-nowrap">テクノロジーを。</span>
+              </span>
+            </motion.h1>
+
+            <motion.div
+              className="my-5 h-1 w-20 rounded-sm bg-sequoia-green md:my-6"
+              variants={fadeUpItem}
+              aria-hidden
+            />
+
+            <motion.p
+              className="mb-8 max-w-md text-base leading-relaxed text-sequoia-black/75 md:text-lg"
+              variants={fadeUpItem}
+            >
+              AIソリューションとAIプロダクトで、産業の業務基盤を。
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-3"
+              variants={fadeUpItem}
+            >
+              <Link
+                href="/#services"
+                className="text-base font-bold tracking-wide text-sequoia-green transition-colors hover:text-sequoia-green/85 md:text-lg"
+              >
+                サービスを見る
+              </Link>
+              <Link
+                href="/company#contact"
+                className="text-base font-semibold text-sequoia-black/70 underline-offset-4 transition-colors hover:text-sequoia-green md:text-lg"
+              >
+                お問い合わせ
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <motion.footer
+          className="mt-12 w-full border-t border-sequoia-black/10 pt-8 md:mt-14"
+          initial="hidden"
+          animate="visible"
+          variants={fadeUpItem}
+        >
+          <p className="mb-4 text-xs font-bold tracking-[0.12em] text-sequoia-black/45 md:text-sm">
+            連絡先
+          </p>
+          <ul className="grid grid-cols-1 gap-6 text-xs text-sequoia-black/70 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 lg:grid-cols-3 lg:text-sm">
+            <li className="flex gap-3 lg:col-span-1">
+              <Globe className="mt-0.5 h-5 w-5 shrink-0 text-sequoia-green" aria-hidden />
+              <span className="min-w-0 break-all leading-snug">{contactDisplay.website}</span>
+            </li>
+            <li className="flex gap-3">
+              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-sequoia-green" aria-hidden />
+              <a href="tel:08038140263" className="leading-snug hover:text-sequoia-green">
+                {contactDisplay.phone}
+              </a>
+            </li>
+            <li className="flex gap-3 sm:col-span-2 lg:col-span-1">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sequoia-green" aria-hidden />
+              <span className="leading-snug">{contactDisplay.address}</span>
+            </li>
+          </ul>
+        </motion.footer>
+      </div>
+
+      <div className="relative z-0 h-56 w-full shrink-0 md:hidden">
         <Image
           src={placeholders.mountainHero}
           alt=""
           fill
-          className="animate-hero-drift object-cover"
+          className="object-cover"
           sizes="100vw"
           priority
         />
-      </div>
-
-      {/* オーバーレイ：深緑の濃淡で写真を引き締める */}
-      <div className="absolute inset-0 z-[5] bg-[rgba(10,28,20,0.45)] pointer-events-none" />
-      <div className="absolute inset-0 z-[5] bg-gradient-to-b from-[rgba(15,42,30,0.2)] via-transparent to-[rgba(10,28,20,0.55)] pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 z-[5] h-56 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none" />
-
-      {/* 中央コンテンツ */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 1.0, ease }}
-          className="mb-8 text-4xl font-bold leading-[1.2] tracking-tight text-[var(--color-cream)] drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)] md:mb-10 md:text-6xl lg:text-7xl"
-        >
-          <motion.span
-            className="block mb-2 md:mb-3"
-            animate={breathAnimation}
-            transition={{ duration: 7, ease: 'easeInOut', repeat: Infinity }}
-          >
-            暮らしを支える産業に、
-          </motion.span>
-          <motion.span
-            className="inline-flex flex-wrap items-baseline justify-center"
-            animate={breathAnimation}
-            transition={{
-              duration: 7,
-              ease: 'easeInOut',
-              repeat: Infinity,
-              delay: 0.4,
-            }}
-          >
-            <AnimatedTextCycle
-              words={heroTechModifiers}
-              interval={3800}
-              className="text-[var(--color-cream)] drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)]"
-            />
-            <span className="font-bold text-[var(--color-cream)] drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)]">
-              テクノロジーを。
-            </span>
-          </motion.span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          transition={{ duration: 0.8, delay: 0.3, ease }}
-          className="mx-auto max-w-2xl text-balance text-base leading-relaxed text-[var(--color-cream)] drop-shadow-[0_1px_12px_rgba(0,0,0,0.35)] md:text-lg lg:text-xl"
-        >
-          AIソリューションとAIプロダクトで、産業の業務基盤を。
-        </motion.p>
-      </div>
-
-      {/* スクロール促し縦線 */}
-      {!prefersReducedMotion && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isMounted ? { opacity: 0.6 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.8, ease }}
-          className="absolute bottom-12 left-1/2 z-10 -translate-x-1/2"
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-color-bg via-transparent to-transparent"
           aria-hidden
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2.4, ease: 'easeInOut', repeat: Infinity }}
-            className="h-12 w-px bg-[var(--color-cream-muted)]"
-          />
-        </motion.div>
-      )}
+        />
+      </div>
+
+      <motion.div
+        className="relative z-0 hidden min-h-[calc(100dvh-5rem)] w-full md:block md:w-1/2 lg:w-2/5"
+        initial={prefersReducedMotion ? { clipPath: clipTo } : { clipPath: clipFrom }}
+        animate={{ clipPath: clipTo }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
+        }
+      >
+        <Image
+          src={placeholders.mountainHero}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="50vw"
+          priority
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-color-bg via-color-bg/40 to-transparent"
+          aria-hidden
+        />
+      </motion.div>
     </section>
   )
 }

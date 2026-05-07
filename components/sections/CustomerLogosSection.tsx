@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Building2, Users, TrendingUp } from 'lucide-react'
 import { CountUp } from '@/components/ui/count-up'
+import { staggerContainerRelaxed } from '@/lib/motion-safe'
 
 const highlights = [
   {
@@ -26,16 +27,6 @@ const highlights = [
 export default function CustomerLogosSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  }
 
   const itemVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 20 },
@@ -66,7 +57,7 @@ export default function CustomerLogosSection() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerRelaxed}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"

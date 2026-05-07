@@ -162,6 +162,39 @@
     @apply text-lg md:text-xl text-sequoia-black/80 leading-relaxed max-w-3xl mx-auto text-balance;
   }
 
+  /*
+   * 固定ヘッダー：display のフォールバック（ユーティリティが効かない環境での縦積み・ナビ常時表示を防ぐ）
+   */
+  .site-header-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    min-height: 5rem;
+    column-gap: 1rem;
+  }
+
+  .site-nav-desktop {
+    display: none !important;
+  }
+
+  .site-nav-mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 1024px) {
+    .site-nav-desktop {
+      display: flex !important;
+      align-items: center;
+    }
+
+    .site-nav-mobile-toggle {
+      display: none !important;
+    }
+  }
+
   .surface-card {
     @apply rounded-sm border border-sequoia-black/10 bg-white shadow-[0_1px_0_rgba(27,25,22,0.04)];
   }
