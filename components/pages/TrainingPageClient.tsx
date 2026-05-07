@@ -207,11 +207,11 @@ export default function TrainingPageClient() {
               <h1 className="page-heading mb-6">
                 生成AI<br />活用研修
               </h1>
-              <p className="mb-3 text-base text-sequoia-green md:text-lg">
+              <p className="mb-3 text-base font-medium text-sequoia-green md:text-lg">
                 AI活用 → AI自動化 → AIエージェント
               </p>
               <p className="max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-                「ツールの使い方」で終わらせず、自社業務への組み込みまでを設計します。組織のAI活用度に合わせて橋渡しする、AmberのAI研修プログラムです。
+                業務への組み込みまで支援する研修です。
               </p>
             </motion.div>
             <motion.div
@@ -241,9 +241,6 @@ export default function TrainingPageClient() {
             <h2 className="section-heading mb-6">
               ツール導入だけでは、<br />何も変わりません
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              生成AIの導入で繰り返される、3つの失敗パターン。共通する原因は、活用の「段階」を設計せずに進めてしまうことです。
-            </p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-3 md:gap-8">
@@ -279,9 +276,6 @@ export default function TrainingPageClient() {
             <h2 className="section-heading mb-6">
               レベルに応じた研修と、<br />定着の仕組み
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              生成AI活用は積み上げ式です。Lv1の定着なくしてLv2は機能せず、Lv2の経験なくしてLv3には到達できません。Amberの2コースで、3段階を橋渡しします。
-            </p>
           </motion.div>
 
           <motion.div
@@ -333,9 +327,6 @@ export default function TrainingPageClient() {
             <h2 className="section-heading mb-6">
               3段階を、<br />2コースで橋渡し
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              基礎・応用、いずれも10時間・対面集中です。独立受講も可能です。御社のIT環境に応じて教材をカスタマイズします。
-            </p>
           </motion.div>
 
           <div className="space-y-20 md:space-y-28">
@@ -428,9 +419,6 @@ export default function TrainingPageClient() {
             <h2 className="section-heading mb-6">
               御社のIT環境に応じた、<br />教材設計
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              利用中のITツールに応じて、教材・演習・事例を調整します。受講後すぐに実業務で使える状態を目指します。
-            </p>
           </motion.div>
 
           <motion.div {...fadeUp} className="border-t border-sequoia-black/10">
@@ -476,9 +464,6 @@ export default function TrainingPageClient() {
             <h2 className="section-heading mb-6">
               研修が<br />「現場に根付く」理由
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              「使い方を知る」研修ではなく、「自社業務に組み込む」研修。Amberが大切にしている3つの考え方です。
-            </p>
           </motion.div>
 
           {/* 3つの理由 */}

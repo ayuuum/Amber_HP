@@ -80,10 +80,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={`${notoSansJP.variable} ${inter.variable}`}>
-      <head>
-        <StructuredData />
-      </head>
       <body>
+        <StructuredData />
         {children}
         <Analytics />
       </body>

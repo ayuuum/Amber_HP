@@ -61,11 +61,8 @@ export default function CustomerLogosSection() {
         >
           <p className="eyebrow-light mb-4">動いている証拠</p>
           <h3 className="section-heading text-2xl md:text-3xl">
-            個社支援とプロダクト運用の両方で、現場に向き合っています。
+            個社支援とプロダクト運用
           </h3>
-          <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-sequoia-black/80 md:text-base">
-            PineはNAGAREBOSHI社（58店舗）を含む出張訪問サービス事業者で運用中。消防設備点検業界向けの業務システム開発など、現場業務に近いプロジェクトにも取り組んでいます。
-          </p>
         </motion.div>
 
         <motion.div

@@ -42,9 +42,6 @@ export default function TrainingBlogPage() {
             <h1 className="page-heading mb-6">
               {getCategoryName('training')} ブログ
             </h1>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              人材開発支援助成金の活用、カリキュラム設計、業界別の研修事例、研修の落とし穴などの実務知見を記事として発信しています。
-            </p>
           </div>
 
           {posts.length === 0 ? (

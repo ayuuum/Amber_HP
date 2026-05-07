@@ -58,10 +58,6 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
   ) : (
     <>現場で磨き、<br />仕組みにする。</>
   )
-  const lead = variant === 'company'
-    ? 'AIソリューション事業（受託）とAIプロダクト事業（Pine）の2本柱で、暮らしを支える産業の業務基盤を整えています。'
-    : '個別支援で得た知見を整理し、共通する部分をプロダクトに反映していきます。2つの事業を行き来しながら、現場で使える業務基盤を整えていきます。'
-
   return (
     <section
       ref={ref}
@@ -82,9 +78,6 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
           >
             {heading}
           </h2>
-          <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-            {lead}
-          </p>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">

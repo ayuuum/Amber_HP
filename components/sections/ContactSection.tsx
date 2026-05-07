@@ -114,9 +114,6 @@ export default function ContactSection() {
           className="text-center mb-12"
         >
           <h2 className="section-heading mb-6">お問い合わせ</h2>
-          <p className="section-subheading">
-            相談だけでも歓迎です。状況に合わせて、無理のない進め方をご提案します。
-          </p>
         </motion.div>
 
         {/* 進捗インジケーター */}

@@ -323,9 +323,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
             <h2 className="section-heading mb-6">
               業務AIの導入で、<br />こんな壁にぶつかっていませんか
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              現場で使われ続けるAIシステムを、どう作るか。多くの企業が同じ壁にぶつかっています。
-            </p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-3 md:gap-8">
@@ -360,9 +357,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
             <h2 className="section-heading mb-6">
               業務システムから、<br />AIエージェントまで
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              基幹業務を支えるシステムから、生成AI機能の組み込み、業務の自動化、エージェントの実装まで。御社の段階に合わせて組み合わせます。
-            </p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2 md:gap-8">
@@ -461,9 +455,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
             <h2 className="section-heading mb-6">
               現場に届いた、<br />実際のシステム
             </h2>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              暮らしを支える産業の現場で、Amberが伴走してきた事例の一部です。具体的な企業名は守秘のため伏せています。
-            </p>
           </motion.div>
 
           <div className="space-y-6">
@@ -488,6 +479,9 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
               </motion.div>
             ))}
           </div>
+          <p className="mt-8 text-xs text-sequoia-black/55 md:text-sm">
+            ※企業名は守秘のため非公開です。
+          </p>
         </div>
       </section>
 
@@ -499,9 +493,6 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
             <h2 className="section-heading mx-auto mb-6 max-w-3xl">
               3つのフェーズで、現場に届ける
             </h2>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              小さく始めて、運用に合わせて改善していきます。納品で終わりではなく、現場で動き続ける状態をつくります。
-            </p>
           </motion.div>
 
           <div className="relative">

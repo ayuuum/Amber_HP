@@ -85,9 +85,6 @@ export default function ServiceSection() {
           className="text-center mb-20"
         >
           <h2 className="section-heading mb-6">サービス</h2>
-          <p className="section-subheading">
-            開発、研修、プロダクト提供を通じて、現場で使える仕組みを整えます。
-          </p>
         </motion.div>
 
         <motion.div

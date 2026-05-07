@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
 import type { BlogPost, BlogCategory } from '@/lib/markdown'
+import { excerptPlainText } from '@/lib/plain-text'
 
 function mergeLatestPosts(limit: number): { post: BlogPost; category: BlogCategory }[] {
   const development = getAllPosts('development')
@@ -29,13 +30,10 @@ export default function HomeNewsPreview() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow-light mb-3">ニュース</p>
-            <h2 id="home-news-heading" className="section-heading mb-4">
-              実務に根ざした知見と、お知らせ。
+            <p className="eyebrow-light mb-3">記事</p>
+            <h2 id="home-news-heading" className="section-heading">
+              最新の記事
             </h2>
-            <p className="max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              発信は不定期です。お知らせ・寄稿・記事更新のタイミングで更新します。
-            </p>
           </div>
           <Link
             href="/blog"
@@ -66,7 +64,7 @@ export default function HomeNewsPreview() {
                     {post.title}
                   </span>
                   <span className="line-clamp-1 text-sm leading-relaxed text-sequoia-black/70">
-                    {post.excerpt || post.description}
+                    {excerptPlainText(post.excerpt || post.description || '')}
                   </span>
                 </span>
               </Link>

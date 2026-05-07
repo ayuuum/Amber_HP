@@ -3,9 +3,12 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import AnimatedTextCycle from '@/components/ui/animated-text-cycle'
 import { placeholders } from '@/lib/placeholder-images'
 
 const ease = [0.22, 1, 0.36, 1] as const
+
+const heroTechModifiers: string[] = ['最新の', '現場に効く', '業務に根づく']
 
 export default function HeroSection() {
   const [isMounted, setIsMounted] = useState(false)
@@ -51,7 +54,7 @@ export default function HeroSection() {
             暮らしを支える産業に、
           </motion.span>
           <motion.span
-            className="block"
+            className="inline-flex flex-wrap items-baseline justify-center"
             animate={breathAnimation}
             transition={{
               duration: 7,
@@ -60,7 +63,14 @@ export default function HeroSection() {
               delay: 0.4,
             }}
           >
-            最新のテクノロジーを。
+            <AnimatedTextCycle
+              words={heroTechModifiers}
+              interval={3800}
+              className="text-[var(--color-cream)] drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)]"
+            />
+            <span className="font-bold text-[var(--color-cream)] drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)]">
+              テクノロジーを。
+            </span>
           </motion.span>
         </motion.h1>
 

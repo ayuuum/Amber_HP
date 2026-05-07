@@ -42,9 +42,6 @@ export default function DevelopmentBlogPage() {
             <h1 className="page-heading mb-6">
               {getCategoryName('development')} ブログ
             </h1>
-            <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を記事として発信しています。
-            </p>
           </div>
 
           {posts.length === 0 ? (

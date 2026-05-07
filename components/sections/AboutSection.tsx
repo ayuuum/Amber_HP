@@ -131,9 +131,6 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
         >
           <p className="eyebrow-light mb-4">企業情報</p>
           <h2 className="page-heading mb-6">Amberについて</h2>
-          <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-            ミッション、事業、会社概要をまとめています。
-          </p>
         </motion.div>
 
         {/* ミッション + 写真 Split型 */}

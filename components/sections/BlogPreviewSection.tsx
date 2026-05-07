@@ -5,18 +5,9 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import type { BlogPost, BlogCategory } from '@/lib/markdown'
 
-const CATEGORY_NAMES: Record<BlogCategory, string> = {
-  development: 'AIシステム開発',
-  training: '生成AI活用研修',
-}
-
 const CATEGORY_PATHS: Record<BlogCategory, string> = {
   development: '/service/development/blog',
   training: '/service/ai-training/blog',
-}
-
-function getCategoryName(category: BlogCategory): string {
-  return CATEGORY_NAMES[category]
 }
 
 function getCategoryPath(category: BlogCategory): string {
@@ -74,10 +65,6 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
           className="text-center mb-16"
         >
           <h2 className="section-heading mb-6">関連記事</h2>
-          <p className="section-subheading">
-            {getCategoryName(category)}に関する記事を発信しています。<br />
-            実務に役立つ知見をお届けします。
-          </p>
         </motion.div>
 
         <motion.div

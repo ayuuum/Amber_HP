@@ -29,9 +29,6 @@ export default function EngagementFlowSection() {
           <h2 id="engagement-flow-heading" className="section-heading mb-5">
             小さく始めて、運用に合わせて改善する。
           </h2>
-          <p className="section-subheading">
-            まずは業務の流れを確認し、優先度の高い部分から着手します。開発後は運用を見ながら調整し、使い続けられる状態を目指します。
-          </p>
         </div>
 
         <ol className="mx-auto max-w-2xl divide-y divide-sequoia-black/10">

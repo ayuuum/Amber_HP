@@ -50,9 +50,6 @@ export default function CompanyProfileSection() {
           <h2 className="section-heading mb-6">
             代表プロフィールと<br />会社概要
           </h2>
-          <p className="text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-            創業の背景と、会社の基本情報をまとめています。
-          </p>
         </motion.div>
 
         {/* 代表プロフィール */}
