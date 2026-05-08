@@ -104,16 +104,28 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="bg-color-bg-subtle px-6 py-24 md:py-36"
+      className="relative overflow-hidden px-6 py-24 md:py-32"
     >
-      <div className="mx-auto max-w-4xl">
+      <Image
+        src={placeholders.mountainHero}
+        alt=""
+        fill
+        className="object-cover"
+        sizes="100vw"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-black/55" aria-hidden />
+
+      <div className="relative z-10 mx-auto max-w-[56rem]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-12"
+          className="mb-10 text-center"
         >
-          <h2 className="section-heading mb-6">お問い合わせ</h2>
+          <h2 className="section-heading mb-6 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+            お問い合わせ
+          </h2>
         </motion.div>
 
         {/* 進捗インジケーター */}
@@ -121,21 +133,21 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8"
+          className="mb-7 rounded-sm border border-white/20 bg-white/72 p-4 shadow-[0_20px_48px_-28px_rgba(0,0,0,0.45)] backdrop-blur-md"
         >
           <div className="flex items-center justify-center gap-4">
-            <div className={`flex items-center gap-2 ${step >= 1 ? 'text-sequoia-green' : 'text-sequoia-black'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${step >= 1 ? 'border-sequoia-green bg-sequoia-green text-white' : 'border-sequoia-black bg-transparent'}`}>
+            <div className={`flex items-center gap-2 ${step >= 1 ? 'text-white' : 'text-white/75'}`}>
+              <div className={`flex h-9 w-9 items-center justify-center rounded-full border-2 ${step >= 1 ? 'border-sequoia-green bg-sequoia-green text-white' : 'border-white/50 bg-transparent text-white/75'}`}>
                 {step > 1 ? <CheckCircle2 className="w-5 h-5" /> : '1'}
               </div>
-              <span className="text-sm font-semibold hidden sm:inline">基本情報</span>
+              <span className="hidden text-sm font-semibold sm:inline">基本情報</span>
             </div>
-            <div className={`w-12 h-0.5 ${step >= 2 ? 'bg-sequoia-green' : 'bg-sequoia-black/20'}`} />
-            <div className={`flex items-center gap-2 ${step >= 2 ? 'text-sequoia-green' : 'text-sequoia-black'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${step >= 2 ? 'border-sequoia-green bg-sequoia-green text-white' : 'border-sequoia-black bg-transparent'}`}>
+            <div className={`h-1 w-14 rounded-full ${step >= 2 ? 'bg-sequoia-green' : 'bg-white/30'}`} />
+            <div className={`flex items-center gap-2 ${step >= 2 ? 'text-white' : 'text-white/75'}`}>
+              <div className={`flex h-9 w-9 items-center justify-center rounded-full border-2 ${step >= 2 ? 'border-sequoia-green bg-sequoia-green text-white' : 'border-white/50 bg-transparent text-white/75'}`}>
                 2
               </div>
-              <span className="text-sm font-semibold hidden sm:inline">詳細情報</span>
+              <span className="hidden text-sm font-semibold sm:inline">詳細情報</span>
             </div>
           </div>
         </motion.div>
@@ -145,7 +157,7 @@ export default function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 32, scale: 0.98 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           onSubmit={handleSubmit}
-          className="surface-card-strong p-8"
+          className="surface-card-strong border border-white/20 bg-white/80 p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md md:p-8"
         >
           <AnimatePresence mode="wait">
             {step === 1 ? (
@@ -157,7 +169,7 @@ export default function ContactSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-sequoia-black mb-6">基本情報</h3>
+                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">基本情報</h3>
                 
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -176,7 +188,7 @@ export default function ContactSection() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="field-base bg-color-bg"
+                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
                   />
                 </motion.div>
 
@@ -198,7 +210,7 @@ export default function ContactSection() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="field-base bg-color-bg"
+                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
                   />
                 </motion.div>
 
@@ -218,7 +230,7 @@ export default function ContactSection() {
                     required
                     value={formData.inquiryType}
                     onChange={handleChange}
-                    className="field-base bg-color-bg"
+                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
                   >
                     <option value="service">サービス導入・お見積り</option>
                     <option value="partnership">業務提携・投資・出資</option>
@@ -240,7 +252,7 @@ export default function ContactSection() {
                     disabled={!isStep1Valid}
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
+                    className="btn-primary w-full bg-sequoia-green text-white shadow-[0_14px_32px_-16px_rgba(18,92,70,0.55)] hover:bg-sequoia-green/90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                   >
                     次へ進む
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
@@ -256,7 +268,7 @@ export default function ContactSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-sequoia-black mb-6">詳細情報</h3>
+                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">詳細情報</h3>
 
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -274,7 +286,7 @@ export default function ContactSection() {
                     autoComplete="organization"
                     value={formData.company}
                     onChange={handleChange}
-                    className="field-base bg-color-bg"
+                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
                   />
                 </motion.div>
 
@@ -295,7 +307,7 @@ export default function ContactSection() {
                     inputMode="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="field-base bg-color-bg"
+                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
                   />
                 </motion.div>
 
@@ -316,7 +328,7 @@ export default function ContactSection() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="field-base bg-color-bg resize-none"
+                    className="field-base bg-white/85 resize-none focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
                     placeholder="お問い合わせ内容をご記入ください…"
                   />
                 </motion.div>
@@ -381,7 +393,7 @@ export default function ContactSection() {
                       disabled={isSubmitting || !formData.message}
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="btn-primary flex-1 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
+                      className="btn-primary flex-1 bg-sequoia-green text-white shadow-[0_14px_32px_-16px_rgba(18,92,70,0.55)] hover:bg-sequoia-green/90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                     >
                       {isSubmitting ? '送信中…' : '送信する'}
                     </motion.button>

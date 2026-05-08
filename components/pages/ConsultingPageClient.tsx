@@ -22,7 +22,6 @@ import {
 } from 'lucide-react'
 import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
 import type { BlogPost } from '@/lib/markdown'
-import Breadcrumbs from '@/components/Breadcrumbs'
 
 // 山のSVG（Hero ダーク用、Sequoia/Treeline 稜線）
 function MountainSVG() {
@@ -231,24 +230,32 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
             backgroundSize: '64px 64px',
           }}
         />
-        <div
+        <motion.div
           aria-hidden
           className="pointer-events-none absolute -right-64 -top-64 h-[600px] w-[600px] rounded-full"
           style={{ background: 'radial-gradient(circle, rgb(26 138 85 / 0.08) 0%, transparent 65%)' }}
+          animate={
+            prefersReducedMotion
+              ? { opacity: 1 }
+              : { x: [0, -24, 0], y: [0, 20, 0], scale: [1, 1.05, 1] }
+          }
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 18, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <MountainSVG />
+        <motion.div
+          aria-hidden
+          animate={prefersReducedMotion ? { opacity: 1 } : { y: [0, -12, 0], scale: [1.02, 1.06, 1.02] }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+          className="pointer-events-none absolute inset-0"
+        >
+          <MountainSVG />
+        </motion.div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-32 pb-32 md:pt-40 md:pb-40">
-          <div className="mb-12 [&_a]:text-white/55 [&_a:hover]:text-white [&_span[aria-current]]:text-white [&_svg]:text-white/30">
-            <Breadcrumbs items={[{ label: 'AIシステム開発' }]} />
-          </div>
-
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 text-xs font-bold uppercase tracking-[0.3em]"
-            style={{ color: 'rgb(26 138 85)' }}
+            className="mb-6 text-sm font-bold uppercase tracking-[0.16em] text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] md:mb-8"
           >
             受託開発サービス
           </motion.p>
@@ -260,7 +267,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
             className="mb-10"
           >
             <h1
-              className="font-black leading-[0.95] tracking-[-0.04em] text-white"
+              className="font-black leading-[1.08] tracking-[-0.04em] text-white md:leading-[1.02]"
               style={{ fontSize: 'clamp(40px, 7.5vw, 96px)' }}
             >
               現場で動く
@@ -279,7 +286,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                 />
               </span>
               <br />
-              を、設計から定着まで
+              を設計から定着まで
             </h1>
           </motion.div>
 
@@ -290,9 +297,9 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
             className="mb-12 max-w-xl text-base leading-relaxed md:text-lg"
             style={{ color: 'rgb(245 245 244 / 0.7)' }}
           >
-            業務管理システムから、生成AI機能・自動化・エージェントまで。
+            業務管理システムから生成AI機能 自動化 エージェントまで
             <br />
-            現場観察から定着まで、一気通貫で伴走します。
+            現場観察から定着まで一気通貫で伴走します。
           </motion.p>
 
           <motion.div
@@ -321,7 +328,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
           <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-24">
             <p className="eyebrow-light mb-4">よくある課題</p>
             <h2 className="section-heading mb-6">
-              業務AIの導入で、<br />こんな壁にぶつかっていませんか
+              業務AI導入で<br />こんな壁にぶつかっていませんか
             </h2>
           </motion.div>
 
@@ -453,7 +460,7 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
           <motion.div {...fadeUp} className="section-header">
             <p className="eyebrow-light mb-4">過去の支援事例</p>
             <h2 className="section-heading mb-6">
-              現場に届いた、<br />実際のシステム
+              現場に届いた<br />実際のシステム
             </h2>
           </motion.div>
 

@@ -25,7 +25,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
         style={{ backgroundColor: 'var(--color-bg)' }}
       >
         <div className="relative z-10 mx-auto max-w-5xl">
-          <div className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16">
+          <div className="grid gap-12 rounded-sm border border-sequoia-black/10 bg-color-bg-subtle/70 p-4 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.12)] md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16 md:p-6">
             <motion.div
               initial={{ opacity: 0, x: -16 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
@@ -39,8 +39,12 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 480px"
               />
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-sequoia-black/20 via-transparent to-transparent"
+                aria-hidden
+              />
             </motion.div>
-            <div>
+            <div className="rounded-sm border border-sequoia-black/10 bg-white/70 p-5 backdrop-blur-[1px] md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-0">
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
@@ -49,14 +53,6 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
               >
                 私たちについて
               </motion.p>
-              <motion.h2
-                initial={{ opacity: 0, y: 16 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-6 text-3xl font-bold tracking-tight text-sequoia-black md:text-4xl lg:text-5xl"
-              >
-                現場とテクノロジーの<br />あいだに
-              </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
@@ -71,7 +67,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
                 transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="mb-8 text-sm leading-relaxed text-sequoia-black/85 md:text-base"
               >
-                AIソリューション（開発・研修・導入支援）とAIプロダクト（Pine）で、現場の業務再設計から定着までを伴走します。ミッション・体制・会社概要は企業情報をご覧ください。
+                AIソリューションと「Pine」で、現場の定着まで伴走します。
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -118,9 +114,9 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16"
         >
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)] md:aspect-[4/5]">
             <Image
-              src={placeholders.aboutTeaser}
+              src="/images/about-mission-mountain.png"
               alt="Amberのミッションを表すイメージ"
               fill
               className="object-cover"

@@ -17,20 +17,20 @@ import { Input } from '@/components/ui/input'
 
 export default function TopCtaBlock() {
   return (
-    <section className="border-t border-sequoia-black/10 bg-color-bg-subtle px-6 py-20 md:py-24">
+    <section className="border-t border-sequoia-black/10 bg-color-bg px-6 py-20 md:py-24">
       <div className="mx-auto max-w-5xl">
-        <div className="rounded-2xl bg-[url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2670&auto=format&fit=crop)] bg-cover bg-center p-4 sm:p-8">
-          <GlassCard className="mx-auto w-full max-w-xl">
+        <div className="rounded-sm border border-sequoia-black/10 bg-[url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2670&auto=format&fit=crop)] bg-cover bg-center p-4 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)] sm:p-8">
+          <GlassCard className="mx-auto w-full max-w-xl rounded-sm border-white/20">
             <GlassCardHeader>
               <GlassCardTitle className="text-xl md:text-2xl">
-                まずは30分、無料でご相談ください
+                まずは30分、無料相談
               </GlassCardTitle>
               <GlassCardDescription className="text-white/85">
-                現場課題の整理から、AI導入の優先順位まで一緒に整理します。
+                現場課題を整理し、AI導入の優先順位を確認します。
               </GlassCardDescription>
               <GlassCardAction>
                 <Button variant="link" className="p-0 text-white hover:text-white/80" asChild>
-                  <Link href="/company#contact">お問い合わせへ</Link>
+                  <Link href="/company#contact">相談する</Link>
                 </Button>
               </GlassCardAction>
             </GlassCardHeader>
@@ -54,7 +54,7 @@ export default function TopCtaBlock() {
             <GlassCardFooter className="flex-col gap-2 sm:flex-row">
               <Button className="w-full bg-white text-sequoia-black hover:bg-white/90" asChild>
                 <Link href="/company#contact">
-                  30分無料相談を予約
+                  無料相談を予約
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>

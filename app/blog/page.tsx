@@ -51,9 +51,6 @@ export default function BlogPage() {
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6">
               ニュース・ブログ
             </h1>
-            <p className="text-xl text-sequoia-black leading-relaxed">
-              AI導入支援やホームサービス向け業務システムなど、実務に役立つ知見をお届けします。
-            </p>
           </div>
 
           <div className="mb-14 max-w-4xl">

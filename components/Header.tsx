@@ -74,12 +74,12 @@ export default function Header() {
   const headerBg = isTransparent
     ? 'border-transparent bg-transparent'
     : 'border-sequoia-black/10 bg-white/90 shadow-sm backdrop-blur-md'
-  const logoColor = isTransparent ? 'text-white' : 'text-sequoia-black'
+  const logoColor = isTransparent ? 'text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]' : 'text-sequoia-black'
   const navItemColor = isTransparent
-    ? 'text-white/85 hover:bg-white/10 hover:text-white'
+    ? 'text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:bg-white/10 hover:text-white'
     : 'text-sequoia-black/80 hover:bg-sequoia-black/5 hover:text-sequoia-green'
   const mobileBtnColor = isTransparent
-    ? 'text-white hover:bg-white/10'
+    ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:bg-white/10'
     : 'text-sequoia-black hover:bg-sequoia-black/5 hover:text-sequoia-green'
 
   return (

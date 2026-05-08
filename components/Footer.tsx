@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="font-logo text-[2rem] leading-none text-white">Amber</span>
             </Link>
             <p className="mt-3 text-sm text-white/80 leading-relaxed">
-              現場の業務を、使われ続ける仕組みに。
+              暮らしを支える産業に、最新のテクノロジーを。
             </p>
           </div>
 
