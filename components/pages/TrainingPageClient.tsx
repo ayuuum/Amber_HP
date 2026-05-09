@@ -16,7 +16,6 @@ import {
   PenLine,
   type LucideIcon,
 } from 'lucide-react'
-import Breadcrumbs from '@/components/Breadcrumbs'
 import { placeholders } from '@/lib/placeholder-images'
 
 // よくある失敗（顧客課題）
@@ -196,8 +195,7 @@ export default function TrainingPageClient() {
           }}
         />
         <div className="relative mx-auto max-w-6xl">
-          <Breadcrumbs items={[{ label: '生成AI活用研修' }]} />
-          <div className="mt-8 grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-center md:gap-16">
+          <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-center md:gap-16">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -531,27 +529,13 @@ export default function TrainingPageClient() {
             </h2>
           </motion.div>
 
-          <motion.div {...fadeUp} className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
-            <div>
-              <p className="mb-5 text-sm leading-relaxed text-sequoia-black/85 md:text-base">
-                人材開発支援助成金は、企業が従業員に職業訓練を実施する際の費用を国が補助する制度です。Amberの研修プログラムは、要件を満たすことで本助成金の対象となる可能性があります。
-              </p>
-              <p className="mb-5 text-sm leading-relaxed text-sequoia-black/85 md:text-base">
-                主な要件は「10時間以上の研修プログラム」と「事前の計画届提出」です。Amberの「1コース10時間」設計は、この要件を標準でクリアしています。
-              </p>
-              <p className="text-xs leading-relaxed text-sequoia-black/55">
-                ※補助率・補助額は企業規模や訓練内容によって異なります。申請手続きは提携社労士をご紹介します。
-              </p>
-            </div>
-            <div className="rounded-sm bg-white p-10 text-center md:p-12">
-              <p className="mb-5 text-xs font-bold tracking-wider text-sequoia-green">標準クリアの要件</p>
-              <p className="mb-6 text-3xl font-black leading-tight tracking-tight text-sequoia-black md:text-4xl">
-                10時間 <span className="text-sequoia-green">×</span> 計画届
-              </p>
-              <p className="border-t border-sequoia-black/10 pt-5 text-xs leading-relaxed text-sequoia-black/75">
-                「10時間以上」「事前計画届」の主要件を、Amberの1コース10時間設計が標準でクリアします。詳細は個別にご相談ください。
-              </p>
-            </div>
+          <motion.div {...fadeUp} className="max-w-3xl">
+            <p className="mb-5 text-sm leading-relaxed text-sequoia-black/85 md:text-base">
+              人材開発支援助成金は、企業が従業員に職業訓練を実施する際の費用を国が補助する制度です。Amberの研修プログラムは、要件を満たすことで本助成金の対象となる可能性があります。
+            </p>
+            <p className="text-xs leading-relaxed text-sequoia-black/55">
+              ※補助率・補助額は企業規模や訓練内容によって異なります。申請手続きは提携社労士をご紹介します。
+            </p>
           </motion.div>
         </div>
       </section>
