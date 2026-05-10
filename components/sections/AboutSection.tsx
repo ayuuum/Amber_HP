@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { placeholders } from '@/lib/placeholder-images'
 import { ArrowRight } from 'lucide-react'
 
 type AboutSectionProps = {
@@ -33,8 +32,8 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
               className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]"
             >
               <Image
-                src={placeholders.aboutTeaser}
-                alt="現場とテクノロジーをつなぐAmberのイメージ"
+                src="/images/about-mission-mountain.png"
+                alt="Amberのミッションを表すイメージ"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 480px"
