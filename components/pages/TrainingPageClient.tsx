@@ -519,6 +519,69 @@ export default function TrainingPageClient() {
         </div>
       </section>
 
+      {/* ツール別LP誘導カード */}
+      <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
+        <div className="mx-auto max-w-6xl">
+          <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-20">
+            <p className="eyebrow-light mb-4">ツール別・職種別で選ぶ</p>
+            <h2 className="section-heading mb-6">
+              御社のツールと用途に<br />特化した研修ページへ
+            </h2>
+          </motion.div>
+
+          <div className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+            {[
+              {
+                href: '/service/ai-training/copilot',
+                badge: 'Microsoft 環境',
+                name: 'Microsoft 365 Copilot',
+                desc: 'Word・Excel・Teams・Outlook + Copilot Studio',
+              },
+              {
+                href: '/service/ai-training/chatgpt',
+                badge: 'OpenAI',
+                name: 'ChatGPT',
+                desc: 'Custom GPTs構築・ChatGPT Agent・全社定着',
+              },
+              {
+                href: '/service/ai-training/claude-code',
+                badge: 'Anthropic',
+                name: 'Claude Code',
+                desc: 'CLAUDE.md設計・Agent SDK・MCP サーバー構築',
+              },
+              {
+                href: '/service/ai-training/github-copilot',
+                badge: 'GitHub / Microsoft',
+                name: 'GitHub Copilot',
+                desc: 'Copilot Chat・Workspace・開発チーム全体展開',
+              },
+            ].map((tool, idx) => (
+              <motion.a
+                key={tool.href}
+                href={tool.href}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-6 transition-shadow hover:shadow-lg md:p-8"
+              >
+                <span className="mb-4 text-xs font-medium tracking-wider text-sequoia-black/50">{tool.badge}</span>
+                <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black group-hover:text-sequoia-green transition-colors md:text-xl">
+                  {tool.name}
+                </h3>
+                <p className="mb-6 text-sm leading-relaxed text-sequoia-black/70">{tool.desc}</p>
+                <span className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-sequoia-green">
+                  詳細を見る
+                  <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 助成金 */}
       <section id="subsidy" className="bg-color-bg-subtle px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
