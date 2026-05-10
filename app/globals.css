@@ -26,6 +26,9 @@
   --surface-glass: rgba(255, 255, 255, 0.055);
   --surface-glass-border: rgba(255, 255, 255, 0.12);
 
+  /* LP Tool Accent (overridden per-page via inline style) */
+  --lp-accent: 13 92 58; /* default = sequoia-green */
+
   /* Accent Colors (Category / Badge) */
   --color-blue-bright: #1F8AC4;
   --color-blue-dark: #006D96;

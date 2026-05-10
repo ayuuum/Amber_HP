@@ -32,4 +32,5 @@ export type ToolLPData = {
   metaTitle: string
   metaDescription: string
   metaKeywords: string[]
+  accentRgb: string
 }

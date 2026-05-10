@@ -16,7 +16,7 @@ const fadeUp = {
 
 export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
   return (
-    <main className="min-h-screen bg-color-bg">
+    <main className="min-h-screen bg-color-bg" style={{'--lp-accent': data.accentRgb} as React.CSSProperties}>
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-sequoia-black/10 px-6 pt-32 pb-20 md:pt-40 md:pb-28">
@@ -28,9 +28,9 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         <div className="relative mx-auto max-w-6xl">
           {/* パンくず */}
           <nav className="mb-8 flex items-center gap-2 text-xs text-sequoia-black/50" aria-label="パンくずリスト">
-            <Link href="/" className="hover:text-sequoia-green transition-colors">ホーム</Link>
+            <Link href="/" className="hover:text-accent transition-colors">ホーム</Link>
             <span>/</span>
-            <Link href="/service/ai-training" className="hover:text-sequoia-green transition-colors">生成AI活用研修</Link>
+            <Link href="/service/ai-training" className="hover:text-accent transition-colors">生成AI活用研修</Link>
             <span>/</span>
             <span className="text-sequoia-black/80">{data.toolName} 法人研修</span>
           </nav>
@@ -42,7 +42,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             className="max-w-3xl"
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-sequoia-green/30 bg-sequoia-green/8 px-3 py-1 text-xs font-medium tracking-wider text-sequoia-green">
+              <span className="rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-medium tracking-wider text-accent">
                 研修サービス
               </span>
               <span className="rounded-full border border-sequoia-black/15 px-3 py-1 text-xs font-medium tracking-wider text-sequoia-black/60">
@@ -52,10 +52,10 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
 
             <h1 className="page-heading mb-4">
               {data.toolName}<br />
-              <span className="text-sequoia-green">法人研修</span>
+              <span className="text-accent">法人研修</span>
             </h1>
 
-            <p className="mb-3 text-base font-semibold text-sequoia-green md:text-lg">
+            <p className="mb-3 text-base font-semibold text-accent md:text-lg">
               {data.tagline}
             </p>
             <p className="max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
@@ -65,14 +65,14 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/company#contact"
-                className="inline-flex items-center gap-2 rounded-sm bg-sequoia-green px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
               >
                 無料相談・資料請求
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
                 href="/service/ai-training"
-                className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/20 px-6 py-3 text-sm font-semibold text-sequoia-black/80 transition-colors hover:border-sequoia-green hover:text-sequoia-green"
+                className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/20 px-6 py-3 text-sm font-semibold text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
               >
                 研修の全体像を見る
               </Link>
@@ -103,7 +103,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="rounded-sm border border-sequoia-black/10 bg-white p-8"
                 >
-                  <Icon className="mb-6 h-8 w-8 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
+                  <Icon className="mb-6 h-8 w-8 text-accent" aria-hidden="true" strokeWidth={1.5} />
                   <p className="mb-3 text-xs font-bold tracking-[0.15em] text-sequoia-black/55">{problem.label}</p>
                   <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
                     {problem.title}
@@ -133,16 +133,16 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               className="flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-8 md:p-10"
             >
               <div className="mb-6 flex items-center gap-4">
-                <GraduationCap className="h-9 w-9 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
-                <span className="rounded-full bg-sequoia-green/10 px-3 py-1 text-xs font-medium tracking-wider text-sequoia-green">
+                <GraduationCap className="h-9 w-9 text-accent" aria-hidden="true" strokeWidth={1.5} />
+                <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent">
                   基礎 / Lv1 をカバー
                 </span>
               </div>
-              <p className="mb-2 text-4xl font-black leading-none tracking-tight text-sequoia-green/20">01</p>
+              <p className="mb-2 text-4xl font-black leading-none tracking-tight text-accent/20">01</p>
               <h3 className="mb-2 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
                 AI業務活用コース
               </h3>
-              <p className="mb-6 text-sm font-medium text-sequoia-green">
+              <p className="mb-6 text-sm font-medium text-accent">
                 {data.toolName} を全社員が使いこなす
               </p>
 
@@ -161,14 +161,14 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               <ul className="mb-6 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
                 {data.basicCourse.items.map((item) => (
                   <li key={item} className="flex items-center gap-3 py-3 text-sm text-sequoia-black/85">
-                    <span className="h-1 w-3 shrink-0 bg-sequoia-green" aria-hidden="true" />
+                    <span className="h-1 w-3 shrink-0 bg-accent" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
               <div className="mt-auto rounded-sm bg-color-bg-subtle p-5">
-                <p className="mb-2 text-xs font-medium tracking-wider text-sequoia-green">成果物</p>
+                <p className="mb-2 text-xs font-medium tracking-wider text-accent">成果物</p>
                 <p className="text-xs leading-relaxed text-sequoia-black/85 md:text-sm">
                   {data.basicCourse.outcome}
                 </p>
@@ -184,16 +184,16 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               className="flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-8 md:p-10"
             >
               <div className="mb-6 flex items-center gap-4">
-                <Cog className="h-9 w-9 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
-                <span className="rounded-full bg-sequoia-green/10 px-3 py-1 text-xs font-medium tracking-wider text-sequoia-green">
+                <Cog className="h-9 w-9 text-accent" aria-hidden="true" strokeWidth={1.5} />
+                <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent">
                   応用 / Lv2・Lv3 をカバー
                 </span>
               </div>
-              <p className="mb-2 text-4xl font-black leading-none tracking-tight text-sequoia-green/20">02</p>
+              <p className="mb-2 text-4xl font-black leading-none tracking-tight text-accent/20">02</p>
               <h3 className="mb-2 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
                 AI業務実装コース
               </h3>
-              <p className="mb-6 text-sm font-medium text-sequoia-green">
+              <p className="mb-6 text-sm font-medium text-accent">
                 {data.toolName} で業務プロセスを再設計する
               </p>
 
@@ -212,14 +212,14 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               <ul className="mb-6 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
                 {data.advancedCourse.items.map((item) => (
                   <li key={item} className="flex items-center gap-3 py-3 text-sm text-sequoia-black/85">
-                    <span className="h-1 w-3 shrink-0 bg-sequoia-green" aria-hidden="true" />
+                    <span className="h-1 w-3 shrink-0 bg-accent" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
               <div className="mt-auto rounded-sm bg-color-bg-subtle p-5">
-                <p className="mb-2 text-xs font-medium tracking-wider text-sequoia-green">成果物</p>
+                <p className="mb-2 text-xs font-medium tracking-wider text-accent">成果物</p>
                 <p className="text-xs leading-relaxed text-sequoia-black/85 md:text-sm">
                   {data.advancedCourse.outcome}
                 </p>
@@ -269,7 +269,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="rounded-sm border border-sequoia-black/10 bg-white p-8"
               >
-                <p className="mb-4 text-5xl font-black leading-none tracking-tight text-sequoia-green/20">
+                <p className="mb-4 text-5xl font-black leading-none tracking-tight text-accent/20">
                   {reason.num}
                 </p>
                 <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
@@ -287,11 +287,11 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         <div className="mx-auto max-w-6xl">
           <motion.div
             {...fadeUp}
-            className="flex flex-col items-start gap-6 rounded-sm border border-sequoia-green/20 bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10"
+            className="flex flex-col items-start gap-6 rounded-sm border border-accent/20 bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10"
           >
-            <BadgeCheck className="h-10 w-10 shrink-0 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
+            <BadgeCheck className="h-10 w-10 shrink-0 text-accent" aria-hidden="true" strokeWidth={1.5} />
             <div className="flex-1">
-              <p className="mb-2 text-xs font-bold tracking-wider text-sequoia-green">助成金対応</p>
+              <p className="mb-2 text-xs font-bold tracking-wider text-accent">助成金対応</p>
               <h3 className="mb-2 text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">
                 人材開発支援助成金の対象となり得ます
               </h3>
@@ -301,7 +301,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             </div>
             <Link
               href="/company#contact"
-              className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-sequoia-green px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               助成金について相談する
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -321,7 +321,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   <Link
                     key={tool.href}
                     href={tool.href}
-                    className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/15 px-5 py-3 text-sm font-medium text-sequoia-black/80 transition-colors hover:border-sequoia-green hover:text-sequoia-green"
+                    className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/15 px-5 py-3 text-sm font-medium text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
                   >
                     {tool.label}
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -329,7 +329,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 ))}
                 <Link
                   href="/service/ai-training"
-                  className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/15 px-5 py-3 text-sm font-medium text-sequoia-black/80 transition-colors hover:border-sequoia-green hover:text-sequoia-green"
+                  className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/15 px-5 py-3 text-sm font-medium text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
                 >
                   研修の全体像を見る
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -341,7 +341,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       )}
 
       {/* CTA */}
-      <section className="bg-sequoia-green px-6 py-24 md:py-32">
+      <section className="bg-accent px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl text-center">
           <motion.div {...fadeUp}>
             <p className="mb-4 text-sm font-medium tracking-wider text-white/70">まずは無料でご相談ください</p>
@@ -353,7 +353,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             </p>
             <Link
               href="/company#contact"
-              className="inline-flex items-center gap-2 rounded-sm bg-white px-8 py-4 text-sm font-bold text-sequoia-green shadow-lg transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-sm bg-white px-8 py-4 text-sm font-bold text-accent shadow-lg transition-opacity hover:opacity-90"
             >
               無料相談・資料請求
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

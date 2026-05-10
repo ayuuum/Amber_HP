@@ -536,24 +536,28 @@ export default function TrainingPageClient() {
                 badge: 'Microsoft 環境',
                 name: 'Microsoft 365 Copilot',
                 desc: 'Word・Excel・Teams・Outlook + Copilot Studio',
+                accentRgb: '31 111 168',
               },
               {
                 href: '/service/ai-training/chatgpt',
                 badge: 'OpenAI',
                 name: 'ChatGPT',
                 desc: 'Custom GPTs構築・ChatGPT Agent・全社定着',
+                accentRgb: '22 135 107',
               },
               {
                 href: '/service/ai-training/gemini',
                 badge: 'Google',
                 name: 'Gemini for Workspace',
                 desc: 'Docs/Sheets/Gmail・NotebookLM・Gems・Deep Research',
+                accentRgb: '61 107 171',
               },
               {
                 href: '/service/ai-training/claude-code',
                 badge: 'Anthropic',
                 name: 'Claude Code',
                 desc: 'CLAUDE.md設計・Agent SDK・MCP サーバー構築',
+                accentRgb: '192 106 79',
               },
             ].map((tool, idx) => (
               <motion.a
@@ -564,13 +568,14 @@ export default function TrainingPageClient() {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="group flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-6 transition-shadow hover:shadow-lg md:p-8"
+                style={{'--lp-accent': tool.accentRgb} as React.CSSProperties}
               >
                 <span className="mb-4 text-xs font-medium tracking-wider text-sequoia-black/50">{tool.badge}</span>
-                <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black group-hover:text-sequoia-green transition-colors md:text-xl">
+                <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black group-hover:text-accent transition-colors md:text-xl">
                   {tool.name}
                 </h3>
                 <p className="mb-6 text-sm leading-relaxed text-sequoia-black/70">{tool.desc}</p>
-                <span className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-sequoia-green">
+                <span className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-accent">
                   詳細を見る
                   <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

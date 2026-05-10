@@ -70,4 +70,5 @@ export const chatgptData: ToolLPData = {
     'ChatGPT Enterprise 研修',
     '生成AI 法人研修',
   ],
+  accentRgb: '22 135 107',
 }
