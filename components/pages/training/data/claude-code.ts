@@ -4,72 +4,72 @@ export const claudeCodeData: ToolLPData = {
   slug: 'claude-code',
   toolName: 'Claude Code',
   toolBadge: 'Anthropic',
-  tagline: 'エンジニア組織の開発生産性を、AI前提で再設計する',
+  tagline: 'コードを書かなくても、業務をAIエージェントに任せる',
   heroDescription:
-    'ClaudeをCLIで直接操作するAIコーディングエージェント「Claude Code」を、開発組織全体に定着させる法人研修です。個人利用から組織運用まで、2コース×10時間で対応します。',
+    'AIエージェント「Claude Code」をビジネス職が業務で活用できる法人研修です。提案書・調査レポート・データ整理・社内ツール作成まで、プログラミング不要で自動化できる状態を2コース×10時間で実現します。',
   envLabel: 'Claude Code / Anthropic',
 
   problems: [
     {
       label: 'パターン 01',
-      title: '個人が使い始めたが、組織ルールが整っていない',
-      desc: '意識の高いエンジニアが個人で Claude Code を使い始めても、CLAUDE.md の設計・セキュリティポリシー・機密情報の取り扱いルールが整っておらず、組織展開できていません。',
+      title: 'ChatGPTの「貼り付け→コピー」作業に限界を感じている',
+      desc: 'ChatGPT でテキストを生成しても、ファイルの読み込み・保存・繰り返し処理は手作業のまま。Claude Code はファイル操作からタスク実行まで一気通貫で動くため、手作業を大幅に減らせます。',
     },
     {
       label: 'パターン 02',
-      title: 'コードレビュー・ドキュメント生成の品質がばらつく',
-      desc: '使い方が属人化すると、Claude Code で生成するコードやドキュメントの品質が個人差で大きくぶれます。組織として水準を揃える仕組みが必要です。',
+      title: '自動化したいが、プログラミングを覚える時間がない',
+      desc: '「Excel マクロや Python を学べば楽になる」と分かっていても、習得コストが高くて手が出せません。Claude Code なら自然言語の指示だけで処理を組み立てられます。',
     },
     {
       label: 'パターン 03',
-      title: 'エージェント化・MCP連携のノウハウがない',
-      desc: 'Claude Agent SDK や MCP サーバーを活用したカスタムエージェント構築に興味はあるが、実践的なノウハウを持つ人材がいません。',
+      title: 'IT部門に頼まずに部門専用の仕組みを作れない',
+      desc: '社内申請・レポート集計・議事録整理など、IT部門に依頼するほどではないが地味に時間がかかる作業が積み上がっています。ビジネス職自身が自動化できれば、待ち時間ゼロで解決できます。',
     },
   ],
 
   basicCourse: {
-    target: '全エンジニア・テックリード',
+    target: '全ビジネス職（営業・マーケ・企画・管理部門）',
     items: [
-      'Claude Code のインストール・基本操作',
-      'CLAUDE.md の設計とリポジトリへの組み込み',
-      'コードレビュー・リファクタリング・バグ修正への活用',
-      'テスト生成・ドキュメント自動化',
-      '組織セキュリティポリシーと Claude Code の両立',
+      'Claude Code のセットアップと基本操作（コマンドライン不要）',
+      '提案書・調査レポート・議事録の自動生成',
+      'CSV・Excel データの整理・集計・可視化',
+      'Web 検索・情報収集・要約の自動化',
+      '繰り返し業務をファイルごと一括処理する方法',
     ],
     outcome:
-      '自社リポジトリ用 CLAUDE.md と Claude Code 運用ルールセット。研修終了時にチーム全体で使える状態でお渡しします。',
+      '自分の業務フローに合わせた Claude Code 操作手順書と、すぐ使えるプロンプトテンプレート集。研修終了時に各自の手元で動く状態でお渡しします。',
   },
 
   advancedCourse: {
-    target: 'テックリード・エンジニアリングマネージャー',
+    target: 'DX推進・部門リーダー・業務改善担当',
     items: [
-      'Claude Agent SDK を使ったカスタムエージェント構築',
-      'MCP（Model Context Protocol）サーバーの設計と実装',
-      'CI/CD パイプラインへの Claude Code 組み込み',
-      'サブエージェントを使った並列タスク自動化',
-      '組織向け Claude Code 運用・ガバナンス設計',
+      '複数ファイル・複数ステップの業務フロー自動化',
+      '社内データ（議事録・報告書・顧客情報）の構造化と活用',
+      'Slack・Google Drive・Notion などの外部ツールと連携',
+      'IT部門不要の「部門専用 AI ワークフロー」設計',
+      '全社展開に向けたルール整備とナレッジ共有の仕組み',
     ],
     outcome:
-      '自社業務で動くカスタムエージェントと MCP サーバー。研修終了時に組織で即運用できる状態でお渡しします。',
+      '部門の実業務で動く AI ワークフロー。研修終了時に「明日から使える」状態でお渡しします。',
   },
 
   relatedTools: [
+    { label: 'ChatGPT 法人研修', href: '/service/ai-training/chatgpt' },
     { label: 'Microsoft 365 Copilot 法人研修', href: '/service/ai-training/copilot' },
-    { label: 'Cursor 法人研修', href: '/service/ai-training#courses' },
-    { label: 'AIエージェント構築研修', href: '/service/ai-training#courses' },
+    { label: 'Gemini for Workspace 法人研修', href: '/service/ai-training/gemini' },
   ],
 
-  metaTitle: 'Claude Code 法人研修 | エンジニア組織のAI活用を組織化 | 株式会社Amber',
+  metaTitle: 'Claude Code 法人研修（ビジネス職向け）| コードなしで業務を自動化 | 株式会社Amber',
   metaDescription:
-    'Claude Code を開発組織全体に定着させる法人研修。CLAUDE.md 設計から Claude Agent SDK・MCP サーバー構築まで、2コース×10時間で対応。人材開発支援助成金の対象となり得ます。',
+    'プログラミング不要でAIエージェントを業務に活用するClaude Code法人研修。提案書・データ整理・レポート自動化から部門ワークフロー構築まで、2コース×10時間で対応。人材開発支援助成金の対象となり得ます。',
   metaKeywords: [
     'Claude Code 法人研修',
-    'Claude Code 研修',
-    'Anthropic 研修',
-    'AIコーディング研修',
-    'エンジニア AI研修',
-    'Claude Agent SDK 研修',
-    'MCP サーバー研修',
+    'Claude Code ビジネス活用',
+    'AIエージェント 業務自動化 研修',
+    'Anthropic Claude 研修',
+    'ノーコード AI 業務効率化',
+    '生成AI 法人研修 ビジネス職',
+    'AI 業務改善 研修',
   ],
   accentRgb: '192 106 79',
 }

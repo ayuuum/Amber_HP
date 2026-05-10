@@ -556,7 +556,7 @@ export default function TrainingPageClient() {
                 href: '/service/ai-training/claude-code',
                 badge: 'Anthropic',
                 name: 'Claude Code',
-                desc: 'CLAUDE.md設計・Agent SDK・MCP サーバー構築',
+                desc: 'コードなし業務自動化・レポート生成・部門ワークフロー構築',
                 accentRgb: '192 106 79',
               },
             ].map((tool, idx) => (
