@@ -15,6 +15,7 @@ type MenuChild = {
   label: string
   href: string
   external?: boolean
+  group?: string
 }
 
 type MenuItem = {
@@ -33,7 +34,11 @@ const menuItems: MenuItem[] = [
     href: '#',
     children: [
       { label: 'AIシステム開発', href: '/service/development' },
-      { label: '生成AI活用研修', href: '/service/ai-training' },
+      { label: '生成AI活用研修（概要）', href: '/service/ai-training' },
+      { label: 'Microsoft 365 Copilot 研修', href: '/service/ai-training/copilot', group: 'ツール別' },
+      { label: 'ChatGPT 研修', href: '/service/ai-training/chatgpt', group: 'ツール別' },
+      { label: 'Claude Code 研修', href: '/service/ai-training/claude-code', group: 'ツール別' },
+      { label: 'GitHub Copilot 研修', href: '/service/ai-training/github-copilot', group: 'ツール別' },
       { label: 'Pine（業務管理SaaS）', href: PINE_HOME_URL, external: true },
     ],
   },
@@ -126,29 +131,38 @@ export default function Header() {
                           className="absolute top-full left-0 min-w-[220px] pt-2"
                         >
                           <div className="rounded-sm border border-sequoia-black/10 bg-white/95 py-1.5 shadow-xl backdrop-blur-md">
-                            {item.children.map((child, childIndex) =>
-                              child.external ? (
-                                <a
-                                  key={childIndex}
-                                  href={child.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="mx-1 flex items-center gap-1.5 rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                                >
-                                  {child.label}
-                                  <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
-                                  <span className="sr-only">（新しいタブで開く）</span>
-                                </a>
-                              ) : (
-                                <Link
-                                  key={childIndex}
-                                  href={child.href}
-                                  className="mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                                >
-                                  {child.label}
-                                </Link>
-                              ),
-                            )}
+                            {item.children.map((child, childIndex) => {
+                              const prevChild = item.children?.[childIndex - 1]
+                              const isNewGroup = child.group && child.group !== prevChild?.group
+                              return (
+                                <div key={childIndex}>
+                                  {isNewGroup && (
+                                    <p className="mx-4 mt-2 mb-1 text-[10px] font-bold tracking-[0.12em] text-sequoia-black/40 uppercase">
+                                      {child.group}
+                                    </p>
+                                  )}
+                                  {child.external ? (
+                                    <a
+                                      href={child.href}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="mx-1 flex items-center gap-1.5 rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                    >
+                                      {child.label}
+                                      <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                                      <span className="sr-only">（新しいタブで開く）</span>
+                                    </a>
+                                  ) : (
+                                    <Link
+                                      href={child.href}
+                                      className={`mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-6 text-sequoia-black/70' : 'text-sequoia-black/85'}`}
+                                    >
+                                      {child.label}
+                                    </Link>
+                                  )}
+                                </div>
+                              )
+                            })}
                           </div>
                         </motion.div>
                       )}
@@ -231,32 +245,41 @@ export default function Header() {
                                 transition={{ duration: 0.2 }}
                                 className="overflow-hidden"
                               >
-                                <div className="pl-3 pb-2 flex flex-col space-y-1">
-                                  {item.children.map((child, childIndex) =>
-                                    child.external ? (
-                                      <a
-                                        key={childIndex}
-                                        href={child.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex min-h-10 items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                                        onClick={toggleMobileMenu}
-                                      >
-                                        {child.label}
-                                        <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
-                                        <span className="sr-only">（新しいタブで開く）</span>
-                                      </a>
-                                    ) : (
-                                      <Link
-                                        key={childIndex}
-                                        href={child.href}
-                                        className="flex min-h-10 items-center rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                                        onClick={toggleMobileMenu}
-                                      >
-                                        {child.label}
-                                      </Link>
-                                    ),
-                                  )}
+                                <div className="pl-3 pb-2 flex flex-col space-y-0.5">
+                                  {item.children.map((child, childIndex) => {
+                                    const prevChild = item.children?.[childIndex - 1]
+                                    const isNewGroup = child.group && child.group !== prevChild?.group
+                                    return (
+                                      <div key={childIndex}>
+                                        {isNewGroup && (
+                                          <p className="px-2 pt-2 pb-0.5 text-[10px] font-bold tracking-[0.12em] text-sequoia-black/40 uppercase">
+                                            {child.group}
+                                          </p>
+                                        )}
+                                        {child.external ? (
+                                          <a
+                                            href={child.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex min-h-10 items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                            onClick={toggleMobileMenu}
+                                          >
+                                            {child.label}
+                                            <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                                            <span className="sr-only">（新しいタブで開く）</span>
+                                          </a>
+                                        ) : (
+                                          <Link
+                                            href={child.href}
+                                            className={`flex min-h-10 items-center rounded-sm py-2 text-sm font-medium no-underline transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-2 text-sequoia-black/60 visited:text-sequoia-black/60' : 'text-sequoia-black/70 visited:text-sequoia-black/70'}`}
+                                            onClick={toggleMobileMenu}
+                                          >
+                                            {child.label}
+                                          </Link>
+                                        )}
+                                      </div>
+                                    )
+                                  })}
                                 </div>
                               </motion.div>
                             )}
