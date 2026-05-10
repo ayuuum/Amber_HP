@@ -55,8 +55,8 @@ export const chatgptData: ToolLPData = {
 
   relatedTools: [
     { label: 'Microsoft 365 Copilot 法人研修', href: '/service/ai-training/copilot' },
+    { label: 'Gemini for Workspace 法人研修', href: '/service/ai-training/gemini' },
     { label: 'Claude Code 法人研修', href: '/service/ai-training/claude-code' },
-    { label: 'Gemini for Workspace 法人研修', href: '/service/ai-training#courses' },
   ],
 
   metaTitle: 'ChatGPT 法人研修 | 配って終わりにしない、全社定着型 | 株式会社Amber',
