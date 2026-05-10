@@ -544,16 +544,16 @@ export default function TrainingPageClient() {
                 desc: 'Custom GPTs構築・ChatGPT Agent・全社定着',
               },
               {
+                href: '/service/ai-training/gemini',
+                badge: 'Google',
+                name: 'Gemini for Workspace',
+                desc: 'Docs/Sheets/Gmail・NotebookLM・Gems・Deep Research',
+              },
+              {
                 href: '/service/ai-training/claude-code',
                 badge: 'Anthropic',
                 name: 'Claude Code',
                 desc: 'CLAUDE.md設計・Agent SDK・MCP サーバー構築',
-              },
-              {
-                href: '/service/ai-training/github-copilot',
-                badge: 'GitHub / Microsoft',
-                name: 'GitHub Copilot',
-                desc: 'Copilot Chat・Workspace・開発チーム全体展開',
               },
             ].map((tool, idx) => (
               <motion.a

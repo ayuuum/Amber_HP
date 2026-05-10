@@ -54,7 +54,7 @@ export const claudeCodeData: ToolLPData = {
   },
 
   relatedTools: [
-    { label: 'GitHub Copilot 法人研修', href: '/service/ai-training/github-copilot' },
+    { label: 'Microsoft 365 Copilot 法人研修', href: '/service/ai-training/copilot' },
     { label: 'Cursor 法人研修', href: '/service/ai-training#courses' },
     { label: 'AIエージェント構築研修', href: '/service/ai-training#courses' },
   ],

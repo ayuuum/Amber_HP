@@ -55,7 +55,7 @@ export const copilotData: ToolLPData = {
 
   relatedTools: [
     { label: 'ChatGPT 法人研修', href: '/service/ai-training/chatgpt' },
-    { label: 'GitHub Copilot 法人研修', href: '/service/ai-training/github-copilot' },
+    { label: 'Gemini for Workspace 法人研修', href: '/service/ai-training/gemini' },
     { label: 'AIエージェント構築研修', href: '/service/ai-training#courses' },
   ],
 

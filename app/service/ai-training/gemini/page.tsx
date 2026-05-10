@@ -2,36 +2,36 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import TrainingLPTemplate from '@/components/pages/training/TrainingLPTemplate'
-import { githubCopilotData } from '@/components/pages/training/data/github-copilot'
+import { geminiData } from '@/components/pages/training/data/gemini'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: githubCopilotData.metaTitle,
-  description: githubCopilotData.metaDescription,
-  keywords: githubCopilotData.metaKeywords,
+  title: geminiData.metaTitle,
+  description: geminiData.metaDescription,
+  keywords: geminiData.metaKeywords,
   openGraph: {
-    title: githubCopilotData.metaTitle,
-    description: githubCopilotData.metaDescription,
-    url: `${siteUrl}/service/ai-training/github-copilot`,
+    title: geminiData.metaTitle,
+    description: geminiData.metaDescription,
+    url: `${siteUrl}/service/ai-training/gemini`,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: githubCopilotData.metaTitle,
-    description: githubCopilotData.metaDescription,
+    title: geminiData.metaTitle,
+    description: geminiData.metaDescription,
   },
   alternates: {
-    canonical: `${siteUrl}/service/ai-training/github-copilot`,
+    canonical: `${siteUrl}/service/ai-training/gemini`,
   },
 }
 
-export default function GitHubCopilotTrainingPage() {
+export default function GeminiTrainingPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Course',
-    name: 'GitHub Copilot 法人研修',
-    description: githubCopilotData.metaDescription,
+    name: 'Gemini for Workspace 法人研修',
+    description: geminiData.metaDescription,
     provider: {
       '@type': 'Organization',
       name: '株式会社Amber',
@@ -47,7 +47,7 @@ export default function GitHubCopilotTrainingPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
-      <TrainingLPTemplate data={githubCopilotData} />
+      <TrainingLPTemplate data={geminiData} />
       <Footer />
     </>
   )
