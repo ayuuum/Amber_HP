@@ -71,4 +71,5 @@ export const claudeCodeData: ToolLPData = {
     'Claude Agent SDK 研修',
     'MCP サーバー研修',
   ],
+  accentRgb: '192 106 79',
 }

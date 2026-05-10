@@ -70,4 +70,5 @@ export const copilotData: ToolLPData = {
     '生成AI研修 Microsoft',
     '法人研修 AI',
   ],
+  accentRgb: '31 111 168',
 }

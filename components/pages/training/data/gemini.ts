@@ -71,4 +71,5 @@ export const geminiData: ToolLPData = {
     'Vertex AI Agent Builder 研修',
     '法人研修 AI Google',
   ],
+  accentRgb: '61 107 171',
 }
