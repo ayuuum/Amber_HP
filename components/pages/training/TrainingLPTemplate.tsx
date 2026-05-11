@@ -3,17 +3,42 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight, BadgeCheck } from 'lucide-react'
+import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight, BadgeCheck, Sparkles, Package, Users } from 'lucide-react'
 import { placeholders } from '@/lib/placeholder-images'
 import type { ToolLPData } from './types'
 
 const problemIcons = [AlertTriangle, CircleSlash, PenLine]
+const reasonIcons = [Sparkles, Package, Users]
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-100px' },
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+}
+
+function MountainSilhouette() {
+  return (
+    <svg
+      viewBox="0 0 1440 320"
+      preserveAspectRatio="xMidYMax slice"
+      className="absolute inset-x-0 bottom-0 h-[60%] w-full pointer-events-none select-none"
+      aria-hidden
+    >
+      <path
+        d="M0,260 L160,140 L300,210 L460,100 L620,180 L760,80 L900,170 L1040,90 L1180,170 L1320,110 L1440,160 L1440,320 L0,320 Z"
+        fill="rgba(255,255,255,0.07)"
+      />
+      <path
+        d="M0,290 L120,200 L260,260 L420,160 L560,230 L700,140 L840,210 L980,130 L1120,200 L1260,150 L1380,210 L1440,180 L1440,320 L0,320 Z"
+        fill="rgba(255,255,255,0.05)"
+      />
+      <path
+        d="M0,320 L180,240 L320,290 L480,200 L640,260 L780,180 L920,240 L1080,160 L1220,220 L1360,180 L1440,210 L1440,320 L0,320 Z"
+        fill="rgba(0,0,0,0.12)"
+      />
+    </svg>
+  )
 }
 
 export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
@@ -301,24 +326,32 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 title: '対面で、できるところまで個別フォロー',
                 desc: '研修中、講師が各受講者の手元を見ながら「実際に業務で動かせる状態」になるまで個別に対応します。「分かったつもり」では終わらせません。',
               },
-            ].map((reason, idx) => (
-              <motion.div
-                key={reason.num}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="rounded-sm border border-sequoia-black/10 bg-white p-8"
-              >
-                <p className="mb-4 text-5xl font-black leading-none tracking-tight text-accent/20">
-                  {reason.num}
-                </p>
-                <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
-                  {reason.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{reason.desc}</p>
-              </motion.div>
-            ))}
+            ].map((reason, idx) => {
+              const Icon = reasonIcons[idx] ?? Sparkles
+              return (
+                <motion.div
+                  key={reason.num}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="group rounded-sm border border-sequoia-black/10 bg-white p-8 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-accent/40"
+                >
+                  <div className="mb-5 flex items-baseline gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                      <Icon className="h-6 w-6 text-accent" aria-hidden="true" strokeWidth={1.5} />
+                    </div>
+                    <p className="text-5xl font-black leading-none tracking-tight text-accent/20">
+                      {reason.num}
+                    </p>
+                  </div>
+                  <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
+                    {reason.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{reason.desc}</p>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -328,25 +361,40 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         <div className="mx-auto max-w-6xl">
           <motion.div
             {...fadeUp}
-            className="flex flex-col items-start gap-6 rounded-sm border border-accent/20 bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10"
+            className="relative overflow-hidden rounded-sm border border-accent/20 bg-white p-8 md:p-10"
           >
-            <BadgeCheck className="h-10 w-10 shrink-0 text-accent" aria-hidden="true" strokeWidth={1.5} />
-            <div className="flex-1">
-              <p className="mb-2 text-xs font-bold tracking-wider text-accent">助成金対応</p>
-              <h3 className="mb-2 text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">
-                人材開発支援助成金の対象となり得ます
-              </h3>
-              <p className="text-sm leading-relaxed text-sequoia-black/80">
-                当研修は、厚生労働省「人材開発支援助成金（人への投資促進コース）」の対象となり得ます。受講料の最大75%が助成される場合があります。詳細はお問い合わせください。
-              </p>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full"
+              style={{ background: 'radial-gradient(circle, rgb(var(--lp-accent) / 0.08) 0%, transparent 70%)' }}
+            />
+            <div className="relative grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10">
+              <div className="flex items-center gap-5 md:flex-col md:items-start md:gap-2">
+                <BadgeCheck className="h-10 w-10 shrink-0 text-accent" aria-hidden="true" strokeWidth={1.5} />
+                <div className="flex items-baseline gap-1">
+                  <span className="text-xs font-bold tracking-wider text-sequoia-black/55">最大</span>
+                  <span className="text-5xl font-black leading-none tracking-tight text-accent md:text-6xl">75</span>
+                  <span className="text-2xl font-black leading-none text-accent">%</span>
+                </div>
+                <p className="text-[10px] font-bold tracking-[0.2em] text-sequoia-black/55">助成対象</p>
+              </div>
+              <div className="border-sequoia-black/10 md:border-l md:pl-10">
+                <p className="mb-2 text-xs font-bold tracking-wider text-accent">助成金対応</p>
+                <h3 className="mb-2 text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">
+                  人材開発支援助成金の対象となり得ます
+                </h3>
+                <p className="text-sm leading-relaxed text-sequoia-black/80">
+                  当研修は、厚生労働省「人材開発支援助成金（人への投資促進コース）」の対象となり得ます。受講料の最大75%が助成される場合があります。詳細はお問い合わせください。
+                </p>
+              </div>
+              <Link
+                href="/company#contact"
+                className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              >
+                助成金について相談する
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
-            <Link
-              href="/company#contact"
-              className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            >
-              助成金について相談する
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
           </motion.div>
         </div>
       </section>
@@ -382,8 +430,20 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       )}
 
       {/* CTA */}
-      <section className="bg-accent px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl text-center">
+      <section className="relative overflow-hidden bg-accent px-6 py-24 md:py-32">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-90"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)
+            `,
+            backgroundSize: '56px 56px',
+          }}
+        />
+        <MountainSilhouette />
+        <div className="relative mx-auto max-w-6xl text-center">
           <motion.div {...fadeUp}>
             <p className="mb-4 text-sm font-medium tracking-wider text-white/70">まずは無料でご相談ください</p>
             <h2 className="mb-6 text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
