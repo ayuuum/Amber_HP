@@ -88,6 +88,38 @@ export default function CompanyProfileSection() {
           </div>
         </motion.div>
 
+        {/* チーム */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-20 grid gap-12 border-t border-sequoia-black/10 pt-16 md:mb-28 md:grid-cols-[1fr_1.2fr] md:items-center md:gap-16 md:pt-20"
+        >
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]">
+            <Image
+              src="/images/about-team.png"
+              alt="Amberのチーム"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 480px"
+            />
+          </div>
+          <div>
+            <p className="mb-4 text-xs font-bold tracking-[0.2em] text-sequoia-green">チーム</p>
+            <h3 className="mb-6 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
+              現場で動くものを、最後まで届けるチーム
+            </h3>
+            <div className="space-y-5 text-sm leading-relaxed text-sequoia-black/85 md:text-base">
+              <p>
+                AIシステム開発・生成AI研修・プロダクト開発を、設計から定着まで一気通貫で担当するメンバーで構成しています。
+              </p>
+              <p>
+                「使われ続けるものを作る」を共通言語に、業界の業務構造に深く入り込みながらプロジェクトを進めています。
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* 会社概要 + 沿革 */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}

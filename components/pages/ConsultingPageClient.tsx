@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
@@ -132,21 +133,27 @@ const strengths: { num: string; title: string; desc: string; icon: LucideIcon }[
 ]
 
 // 事例（社名は出さない、業界・業務内容で抽象化）
-const cases: { industry: string; title: string; desc: string }[] = [
+const cases: { industry: string; title: string; desc: string; image: string; alt: string }[] = [
   {
     industry: 'ハウスクリーニング業',
     title: '店舗分断された予約・配車・顧客管理を、業務管理SaaSへ統合',
     desc: '店舗ごとに分かれていた予約・配車・顧客台帳を1つの業務管理SaaSに集約しました。繁忙期の機会損失を低減し、店舗運営の標準化を進めています。',
+    image: '/images/field-cleaning.png',
+    alt: 'ハウスクリーニング現場の業務イメージ',
   },
   {
     industry: '消防設備点検業',
     title: '紙ベースの点検報告とスケジュール管理を、業務システムへ移行',
     desc: '紙で運用されていた点検報告と顧客台帳を業務システムに置き換えました。点検結果の検索性と顧客対応の精度を向上させています。',
+    image: '/images/field-repair.png',
+    alt: '点検作業の現場イメージ',
   },
   {
     industry: '素材・化学',
     title: '研究・現場部門の生成AI活用度のばらつきを、内製化プログラムで解消',
     desc: '業務棚卸しから始める生成AI内製化プログラムを設計しました。受講後の業務適用までを伴走し、組織全体のAI活用度を引き上げています。',
+    image: '/images/consulting-meeting.png',
+    alt: 'コンサルティング・打ち合わせの様子',
   },
 ]
 
@@ -472,16 +479,27 @@ export default function ConsultingPageClient({ blogPosts }: ConsultingPageClient
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="grid gap-4 rounded-sm border border-sequoia-black/10 bg-white p-8 md:grid-cols-[200px_1fr] md:items-baseline md:gap-10 md:p-10"
+                className="overflow-hidden rounded-sm border border-sequoia-black/10 bg-white md:grid md:grid-cols-[280px_1fr]"
               >
-                <p className="text-xs font-bold tracking-[0.15em] text-sequoia-green md:text-sm">
-                  {c.industry}
-                </p>
-                <div>
-                  <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
-                    {c.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{c.desc}</p>
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-color-bg-subtle md:aspect-auto md:h-full">
+                  <Image
+                    src={c.image}
+                    alt={c.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 280px"
+                  />
+                </div>
+                <div className="grid gap-4 p-8 md:grid-cols-[160px_1fr] md:items-baseline md:gap-8 md:p-10">
+                  <p className="text-xs font-bold tracking-[0.15em] text-sequoia-green md:text-sm">
+                    {c.industry}
+                  </p>
+                  <div>
+                    <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
+                      {c.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{c.desc}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}

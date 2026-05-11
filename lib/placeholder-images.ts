@@ -17,15 +17,15 @@ export const placeholders = {
   consultingSplit: '/images/brand/consulting-split.png',
   /** TrainingPageClient Split型：研修終了直後の手元 */
   trainingSplit: '/images/brand/training-split.png',
-  /** AboutSection teaser：暮らしを支える産業の手元（ビリング限界で生成失敗、後日再生成） */
-  aboutTeaser: '/images/brand/training-split.png',
-  /** Consulting 2サービス：AI業務システム開発（ビリング限界で生成失敗、後日再生成） */
-  serviceSystemDev: '/images/brand/training-split.png',
-  /** Consulting 2サービス：AIエージェント開発（ビリング限界で生成失敗、後日再生成） */
-  serviceAgent: '/images/brand/consulting-split.png',
-  /** Training 2コース：基礎10時間（ビリング限界で生成失敗、後日再生成） */
-  courseBasic: '/images/brand/training-hero.png',
-  /** Training 2コース：応用10時間（ビリング限界で生成失敗、後日再生成） */
+  /** AboutSection teaser：チーム */
+  aboutTeaser: '/images/about-team.png',
+  /** Consulting 2サービス：AI業務システム開発（実際のSaaS管理画面） */
+  serviceSystemDev: '/images/saas-dashboard.png',
+  /** Consulting 2サービス：AIエージェント開発（実際の現場管理画面） */
+  serviceAgent: '/images/saas-field-management.png',
+  /** Training 2コース：基礎10時間（研修風景） */
+  courseBasic: '/images/training-workshop.png',
+  /** Training 2コース：応用10時間（研修終了直後の手元） */
   courseAdvanced: '/images/brand/training-split.png',
 
   /** 旧キー（互換用、新規実装では使わない） */

@@ -1,8 +1,10 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight, BadgeCheck } from 'lucide-react'
+import { placeholders } from '@/lib/placeholder-images'
 import type { ToolLPData } from './types'
 
 const problemIcons = [AlertTriangle, CircleSlash, PenLine]
@@ -35,49 +37,66 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             <span className="text-sequoia-black/80">{data.toolName} 法人研修</span>
           </nav>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-3xl"
-          >
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-medium tracking-wider text-accent">
-                研修サービス
-              </span>
-              <span className="rounded-full border border-sequoia-black/15 px-3 py-1 text-xs font-medium tracking-wider text-sequoia-black/60">
-                {data.toolBadge}
-              </span>
-            </div>
+          <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-center md:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="mb-6 flex flex-wrap items-center gap-3">
+                <span className="rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-medium tracking-wider text-accent">
+                  研修サービス
+                </span>
+                <span className="rounded-full border border-sequoia-black/15 px-3 py-1 text-xs font-medium tracking-wider text-sequoia-black/60">
+                  {data.toolBadge}
+                </span>
+              </div>
 
-            <h1 className="page-heading mb-4">
-              {data.toolName}<br />
-              <span className="text-accent">法人研修</span>
-            </h1>
+              <h1 className="page-heading mb-4">
+                {data.toolName}<br />
+                <span className="text-accent">法人研修</span>
+              </h1>
 
-            <p className="mb-3 text-base font-semibold text-accent md:text-lg">
-              {data.tagline}
-            </p>
-            <p className="max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
-              {data.heroDescription}
-            </p>
+              <p className="mb-3 text-base font-semibold text-accent md:text-lg">
+                {data.tagline}
+              </p>
+              <p className="max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+                {data.heroDescription}
+              </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/company#contact"
-                className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
-              >
-                無料相談・資料請求
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link
-                href="/service/ai-training"
-                className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/20 px-6 py-3 text-sm font-semibold text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
-              >
-                研修の全体像を見る
-              </Link>
-            </div>
-          </motion.div>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/company#contact"
+                  className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
+                >
+                  無料相談・資料請求
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link
+                  href="/service/ai-training"
+                  className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/20 px-6 py-3 text-sm font-semibold text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
+                >
+                  研修の全体像を見る
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]"
+            >
+              <Image
+                src={placeholders.trainingHero}
+                alt={`${data.toolName} 法人研修の様子`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 480px"
+                priority
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -130,8 +149,18 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             {/* 基礎コース */}
             <motion.div
               {...fadeUp}
-              className="flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-8 md:p-10"
+              className="flex flex-col overflow-hidden rounded-sm border border-sequoia-black/10 bg-white"
             >
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-color-bg-subtle">
+                <Image
+                  src={placeholders.courseBasic}
+                  alt={`${data.toolName} 基礎コース：研修の様子`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 480px"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-8 md:p-10">
               <div className="mb-6 flex items-center gap-4">
                 <GraduationCap className="h-9 w-9 text-accent" aria-hidden="true" strokeWidth={1.5} />
                 <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent">
@@ -173,6 +202,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   {data.basicCourse.outcome}
                 </p>
               </div>
+              </div>
             </motion.div>
 
             {/* 応用コース */}
@@ -181,8 +211,18 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-8 md:p-10"
+              className="flex flex-col overflow-hidden rounded-sm border border-sequoia-black/10 bg-white"
             >
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-color-bg-subtle">
+                <Image
+                  src={placeholders.courseAdvanced}
+                  alt={`${data.toolName} 応用コース：研修終了時の成果物`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 480px"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-8 md:p-10">
               <div className="mb-6 flex items-center gap-4">
                 <Cog className="h-9 w-9 text-accent" aria-hidden="true" strokeWidth={1.5} />
                 <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent">
@@ -223,6 +263,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 <p className="text-xs leading-relaxed text-sequoia-black/85 md:text-sm">
                   {data.advancedCourse.outcome}
                 </p>
+              </div>
               </div>
             </motion.div>
           </div>
