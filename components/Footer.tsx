@@ -81,6 +81,12 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-white/70">
           <p>© {year} 株式会社Amber. All rights reserved.</p>
+          <a
+            href="mailto:ayumu.matsui@amber-inc.com"
+            className="hover:text-white transition-colors duration-200"
+          >
+            ayumu.matsui@amber-inc.com
+          </a>
         </div>
       </div>
     </footer>

@@ -126,6 +126,15 @@ export default function ContactSection() {
           <h2 className="section-heading mb-6 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
             お問い合わせ
           </h2>
+          <p className="text-white/80 text-sm">
+            メールでのお問い合わせ：{' '}
+            <a
+              href="mailto:ayumu.matsui@amber-inc.com"
+              className="text-white underline underline-offset-2 hover:text-white/90 transition-colors"
+            >
+              ayumu.matsui@amber-inc.com
+            </a>
+          </p>
         </motion.div>
 
         {/* 進捗インジケーター */}
