@@ -39,7 +39,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className={footerLinkClass}
                   >
-                    Pine（業務管理SaaS）
+                    Pine（出張訪問サービス向けソフトウェア）
                     <span className="sr-only">（新しいタブで開く）</span>
                   </a>
                 </li>
