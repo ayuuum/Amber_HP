@@ -135,8 +135,8 @@ const strengths: { num: string; title: string; desc: string; icon: LucideIcon }[
 const cases: { industry: string; title: string; desc: string }[] = [
   {
     industry: 'ハウスクリーニング業',
-    title: '店舗分断された予約・配車・顧客管理を、業務管理SaaSへ統合',
-    desc: '店舗ごとに分かれていた予約・配車・顧客台帳を1つの業務管理SaaSに集約しました。繁忙期の機会損失を低減し、店舗運営の標準化を進めています。',
+    title: '店舗分断された予約・配車・顧客管理を、出張訪問サービス向けソフトウェアへ統合',
+    desc: '店舗ごとに分かれていた予約・配車・顧客台帳を1つの出張訪問サービス向けソフトウェアに集約しました。繁忙期の機会損失を低減し、店舗運営の標準化を進めています。',
   },
   {
     industry: '消防設備点検業',

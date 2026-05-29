@@ -39,7 +39,7 @@ const menuItems: MenuItem[] = [
       { label: 'ChatGPT 研修', href: '/service/ai-training/chatgpt', group: 'ツール別' },
       { label: 'Gemini for Workspace 研修', href: '/service/ai-training/gemini', group: 'ツール別' },
       { label: 'Claude Code 研修', href: '/service/ai-training/claude-code', group: 'ツール別' },
-      { label: 'Pine（業務管理SaaS）', href: PINE_HOME_URL, external: true },
+      { label: 'Pine（出張訪問サービス向けソフトウェア）', href: PINE_HOME_URL, external: true },
     ],
   },
   {

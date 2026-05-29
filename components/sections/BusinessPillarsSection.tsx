@@ -35,9 +35,9 @@ const pillars: Pillar[] = [
     num: '02',
     label: '事業 02',
     title: 'AIプロダクト',
-    topDescription: '個社支援で見えた共通課題を、業務管理SaaS「Pine」として提供しています。',
+    topDescription: '個社支援で見えた共通課題を、出張訪問サービス向けソフトウェア「Pine」として提供しています。',
     companyDescription:
-      '現場支援で蓄積した知見を、出張訪問サービス向け業務管理SaaS「Pine」に実装。予約・顧客管理を軸に、継続的に機能を拡張しています。',
+      '現場支援で蓄積した知見を、出張訪問サービス向け出張訪問サービス向けソフトウェア「Pine」に実装。予約・顧客管理を軸に、継続的に機能を拡張しています。',
     items: ['予約・顧客管理', 'LINE / Web予約', '生成AI機能の拡張'],
     href: 'https://pine-home.com/',
     cta: 'Pineを見る',
