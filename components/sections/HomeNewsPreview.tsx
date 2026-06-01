@@ -24,7 +24,7 @@ export default function HomeNewsPreview() {
 
   return (
     <section
-      className="border-t border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-32"
+      className="section-pad border-t border-sequoia-black/10 bg-color-bg"
       aria-labelledby="home-news-heading"
     >
       <div className="mx-auto max-w-6xl">

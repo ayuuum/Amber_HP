@@ -93,15 +93,15 @@ export default function HeroSection() {
             >
               <Link
                 href="/#services"
-                className="text-base font-bold tracking-wide text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] transition-colors hover:text-sequoia-green md:text-lg md:text-sequoia-green md:drop-shadow-none md:hover:text-sequoia-green/85"
+                className="btn-primary"
               >
                 サービスを見る
               </Link>
               <Link
                 href="/company#contact"
-                className="text-base font-semibold text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] underline-offset-4 transition-colors hover:text-sequoia-green md:text-lg md:text-sequoia-black/70 md:drop-shadow-none"
+                className="text-base font-semibold text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] underline underline-offset-4 transition-colors hover:text-sequoia-green md:text-sequoia-black/70 md:drop-shadow-none md:no-underline md:hover:text-sequoia-green"
               >
-                相談する
+                無料相談する
               </Link>
             </motion.div>
           </motion.div>
