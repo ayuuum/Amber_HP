@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input'
 
 export default function TopCtaBlock() {
   return (
-    <section className="border-t border-sequoia-black/10 bg-color-bg px-6 py-20 md:py-24">
+    <section className="section-pad border-t border-sequoia-black/10 bg-color-bg">
       <div className="mx-auto max-w-5xl">
         <div className="rounded-sm border border-sequoia-black/10 bg-[url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2670&auto=format&fit=crop)] bg-cover bg-center p-4 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)] sm:p-8">
           <GlassCard className="mx-auto w-full max-w-xl rounded-sm border-white/20">

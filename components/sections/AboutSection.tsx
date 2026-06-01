@@ -20,7 +20,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
       <section
         id="company-intro"
         ref={sectionRef}
-        className="relative overflow-hidden px-6 py-24 md:py-32"
+        className="section-pad relative overflow-hidden"
         style={{ backgroundColor: 'var(--color-bg)' }}
       >
         <div className="relative z-10 mx-auto max-w-5xl">

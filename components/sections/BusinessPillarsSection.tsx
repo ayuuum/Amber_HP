@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight, ExternalLink, Layers, Package, type LucideIcon } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 type Pillar = {
   num: string
@@ -91,6 +92,8 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon
+            // SaaSプロダクト（Pine）は深緑塗りで受託カードと対比させる
+            const isDark = pillar.external
             return (
               <motion.article
                 key={pillar.label}
@@ -101,12 +104,31 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
                   delay: 0.15 + idx * 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group relative overflow-hidden rounded-sm border border-sequoia-black/10 bg-white p-10 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-sequoia-green/40 hover:shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)] md:p-12"
+                className={cn(
+                  'group relative overflow-hidden rounded-sm border p-10 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_70px_-24px_rgba(15,42,30,0.32)] md:p-12',
+                  isDark
+                    ? 'border-white/10 bg-green-dark text-white hover:border-sequoia-green/60'
+                    : 'border-sequoia-black/10 bg-white hover:border-sequoia-green/40',
+                )}
               >
+                {/* ホバーで立ち上がる緑グラデの艶 */}
+                <span
+                  aria-hidden
+                  className={cn(
+                    'pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100',
+                    isDark
+                      ? 'bg-[radial-gradient(120%_120%_at_100%_0%,rgba(26,138,85,0.35),transparent_60%)]'
+                      : 'bg-[radial-gradient(120%_120%_at_100%_0%,rgba(13,92,58,0.07),transparent_60%)]',
+                  )}
+                />
+
                 {/* 背景の巨大番号 */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -right-8 -top-12 select-none text-[200px] font-black leading-none tracking-tight text-sequoia-green/[0.05] md:text-[240px]"
+                  className={cn(
+                    'pointer-events-none absolute -right-8 -top-12 select-none text-[200px] font-black leading-none tracking-tight md:text-[240px]',
+                    isDark ? 'text-white/[0.06]' : 'text-sequoia-green/[0.05]',
+                  )}
                 >
                   {pillar.num}
                 </span>
@@ -114,29 +136,55 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
                 <div className="relative">
                   <div className="mb-8 flex items-center justify-between">
                     <Icon
-                      className="h-10 w-10 text-sequoia-green"
+                      className={cn('h-10 w-10', isDark ? 'text-sequoia-green-accent' : 'text-sequoia-green')}
                       aria-hidden="true"
                       strokeWidth={1.5}
                     />
-                    <span className="text-xs font-bold tracking-[0.2em] text-sequoia-black/55">
+                    <span
+                      className={cn(
+                        'text-xs font-bold tracking-[0.2em]',
+                        isDark ? 'text-white/55' : 'text-sequoia-black/55',
+                      )}
+                    >
                       {pillar.label}
                     </span>
                   </div>
 
-                  <h3 className="mb-4 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
+                  <h3
+                    className={cn(
+                      'mb-4 text-2xl font-bold tracking-tight md:text-3xl',
+                      isDark ? 'text-white' : 'text-sequoia-black',
+                    )}
+                  >
                     {pillar.title}
                   </h3>
-                  <p className="mb-8 text-sm leading-relaxed text-sequoia-black/80 md:text-base">
+                  <p
+                    className={cn(
+                      'mb-8 text-sm leading-relaxed md:text-base',
+                      isDark ? 'text-white/80' : 'text-sequoia-black/80',
+                    )}
+                  >
                     {variant === 'company' ? pillar.detail : pillar.summary}
                   </p>
 
-                  <ul className="mb-10 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
+                  <ul
+                    className={cn(
+                      'mb-10 divide-y border-y',
+                      isDark ? 'divide-white/10 border-white/10' : 'divide-sequoia-black/10 border-sequoia-black/10',
+                    )}
+                  >
                     {pillar.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-center gap-3 py-3 text-sm text-sequoia-black/85"
+                        className={cn(
+                          'flex items-center gap-3 py-3 text-sm',
+                          isDark ? 'text-white/85' : 'text-sequoia-black/85',
+                        )}
                       >
-                        <span className="h-1 w-3 bg-sequoia-green" aria-hidden="true" />
+                        <span
+                          className={cn('h-1 w-3', isDark ? 'bg-sequoia-green-accent' : 'bg-sequoia-green')}
+                          aria-hidden="true"
+                        />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -147,7 +195,12 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
                       href={pillar.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-bold text-sequoia-black transition-[color,gap] duration-200 group-hover:gap-3 group-hover:text-sequoia-green"
+                      className={cn(
+                        'inline-flex items-center gap-2 text-sm font-bold transition-[color,gap] duration-200 group-hover:gap-3',
+                        isDark
+                          ? 'text-white group-hover:text-sequoia-green-accent'
+                          : 'text-sequoia-black group-hover:text-sequoia-green',
+                      )}
                     >
                       {pillar.cta}
                       <ExternalLink className="h-4 w-4" aria-hidden="true" />
