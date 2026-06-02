@@ -30,7 +30,7 @@ export default function ContactSection() {
         const parsed = JSON.parse(savedData)
         setFormData(parsed)
       } catch (e) {
-        console.error('Failed to parse saved form data', e)
+        void e
       }
     }
   }, [])
@@ -74,7 +74,7 @@ export default function ContactSection() {
         setSubmitStatus('error')
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
+      void error
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -367,7 +367,7 @@ export default function ContactSection() {
                             <p className="text-green-800 text-sm font-semibold mb-2">次のステップ：</p>
                             <ul className="text-green-700 text-sm space-y-1 list-disc list-inside">
                               <li>担当者よりメールまたは電話でご連絡</li>
-                              <li>30分の無料相談（営業なし）</li>
+                              <li>ご状況の確認・ヒアリング</li>
                               <li>ご要望に合わせた提案</li>
                             </ul>
                           </div>

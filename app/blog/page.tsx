@@ -57,7 +57,7 @@ export default function BlogPage() {
             <div className="relative aspect-[21/9] max-h-48 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
               <Image
                 src={placeholders.writing}
-                alt="記事・ナレッジのイメージ（仮の写真）"
+                alt=""
                 fill
                 className="object-cover"
                 sizes="(max-width: 896px) 100vw, 896px"
@@ -68,7 +68,7 @@ export default function BlogPage() {
           {postsWithCategory.length === 0 ? (
             <div className="bg-color-bg p-12 rounded-sm border border-sequoia-black/10 text-center">
               <p className="text-sequoia-black text-lg">
-                記事の準備中です。近日公開予定です。
+                現在、記事を執筆中です。
               </p>
             </div>
           ) : (

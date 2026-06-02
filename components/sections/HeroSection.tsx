@@ -101,7 +101,7 @@ export default function HeroSection() {
                 href="/company#contact"
                 className="text-base font-semibold text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] underline underline-offset-4 transition-colors hover:text-sequoia-green md:text-sequoia-black/70 md:drop-shadow-none md:no-underline md:hover:text-sequoia-green"
               >
-                無料相談する
+                お問い合わせ
               </Link>
             </motion.div>
           </motion.div>

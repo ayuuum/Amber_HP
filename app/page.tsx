@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import HeroSection from '@/components/sections/HeroSection'
 import BusinessPillarsSection from '@/components/sections/BusinessPillarsSection'
 import AboutSection from '@/components/sections/AboutSection'
-import StatsSection from '@/components/sections/StatsSection'
 import HomeNewsPreview from '@/components/sections/HomeNewsPreview'
 import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import Header from '@/components/Header'
@@ -38,7 +37,6 @@ export default function Home() {
         <HeroSection />
         <BusinessPillarsSection />
         <AboutSection variant="teaser" />
-        <StatsSection />
         <HomeNewsPreview />
         <TopCtaBlock />
         <Footer />
