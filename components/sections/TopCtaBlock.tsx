@@ -50,7 +50,7 @@ export default function TopCtaBlock() {
                 className="mb-5 text-3xl font-bold leading-[1.15] tracking-[-0.02em] text-white md:text-4xl lg:text-5xl"
                 delay={0.05}
               >
-                まずは30分、無料相談
+                お気軽にご相談ください。
               </SplitHeading>
               <motion.p
                 className="text-sm leading-relaxed text-white/75 md:text-base"
@@ -58,9 +58,7 @@ export default function TopCtaBlock() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
-                現場課題を整理し、AI導入の優先順位を一緒に確認します。
-                <br className="hidden md:inline" />
-                営業は一切しません。
+                現場の課題を整理し、AI導入の優先順位を確認します。
               </motion.p>
             </div>
 
@@ -76,7 +74,7 @@ export default function TopCtaBlock() {
                 className="inline-flex items-center justify-center gap-2 rounded-sm bg-white px-8 py-4 text-sm font-bold text-green-dark shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-sequoia-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               >
                 <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                無料相談を予約する
+                お問い合わせ
               </Link>
               <Link
                 href="/#services"
