@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description: siteMetadata.description,
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: '株式会社Amber',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteMetadata.defaultTitle,
     description: siteMetadata.description,
-    images: ['/og-image.jpg'],
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,

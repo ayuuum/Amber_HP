@@ -67,7 +67,7 @@ export default function HeroSection() {
             variants={staggerContainer}
           >
             <motion.h1
-              className="flex flex-col gap-y-2 text-3xl font-bold leading-snug tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] md:text-4xl md:leading-tight md:text-sequoia-black md:drop-shadow-none lg:text-5xl"
+              className="flex flex-col gap-y-1 text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] md:text-5xl md:leading-[1.08] md:text-sequoia-black md:drop-shadow-none lg:text-[64px] xl:text-7xl"
               variants={fadeUpItem}
             >
               <span className="block whitespace-nowrap">暮らしを支える産業に、</span>
@@ -93,15 +93,15 @@ export default function HeroSection() {
             >
               <Link
                 href="/#services"
-                className="text-base font-bold tracking-wide text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] transition-colors hover:text-sequoia-green md:text-lg md:text-sequoia-green md:drop-shadow-none md:hover:text-sequoia-green/85"
+                className="btn-primary"
               >
                 サービスを見る
               </Link>
               <Link
                 href="/company#contact"
-                className="text-base font-semibold text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] underline-offset-4 transition-colors hover:text-sequoia-green md:text-lg md:text-sequoia-black/70 md:drop-shadow-none"
+                className="text-base font-semibold text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] underline underline-offset-4 transition-colors hover:text-sequoia-green md:text-sequoia-black/70 md:drop-shadow-none md:no-underline md:hover:text-sequoia-green"
               >
-                相談する
+                お問い合わせ
               </Link>
             </motion.div>
           </motion.div>
@@ -144,6 +144,28 @@ export default function HeroSection() {
           className="pointer-events-none absolute inset-0 bg-gradient-to-r from-color-bg/95 via-color-bg/75 to-transparent"
           aria-hidden
         />
+      </motion.div>
+
+      {/* スクロールインジケーター */}
+      <motion.div
+        className="pointer-events-none absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        aria-hidden
+      >
+        <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-sequoia-black/45">
+          Scroll
+        </span>
+        <span className="relative flex h-9 w-[1px] overflow-hidden bg-sequoia-black/15">
+          {!prefersReducedMotion && (
+            <motion.span
+              className="absolute inset-x-0 top-0 h-3 bg-sequoia-green"
+              animate={{ y: ['-100%', '300%'] }}
+              transition={{ duration: 1.8, ease: 'easeInOut', repeat: Infinity }}
+            />
+          )}
+        </span>
       </motion.div>
     </section>
   )

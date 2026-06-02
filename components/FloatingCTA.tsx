@@ -12,14 +12,15 @@ export default function FloatingCTA() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 520 && !isDismissed) {
+      const threshold = window.innerHeight * 0.9
+      if (window.scrollY > threshold && !isDismissed) {
         setIsVisible(true)
-      } else if (window.scrollY <= 520) {
+      } else if (window.scrollY <= threshold) {
         setIsVisible(false)
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isDismissed])
 

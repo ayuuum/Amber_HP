@@ -20,7 +20,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
       <section
         id="company-intro"
         ref={sectionRef}
-        className="relative overflow-hidden px-6 py-24 md:py-32"
+        className="section-pad relative overflow-hidden"
         style={{ backgroundColor: 'var(--color-bg)' }}
       >
         <div className="relative z-10 mx-auto max-w-5xl">
@@ -66,7 +66,7 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
                 transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="mb-8 text-sm leading-relaxed text-sequoia-black/85 md:text-base"
               >
-                AIソリューションと「Pine」で、現場の定着まで伴走します。
+                暮らしを支える産業に特化し、設計から定着まで一気通貫で届けます。
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}

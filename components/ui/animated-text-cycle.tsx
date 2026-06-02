@@ -85,7 +85,7 @@ export default function AnimatedTextCycle({
   }
 
   return (
-    <span className="relative inline-block align-baseline">
+    <span className="relative inline-block align-baseline" aria-live="polite" aria-atomic="true">
       <div
         ref={measureRef}
         aria-hidden="true"
