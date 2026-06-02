@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight, ExternalLink, Layers, Package, type LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import SplitHeading from '@/components/ui/split-heading'
 
 type Pillar = {
   num: string
@@ -57,11 +58,7 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
   const isInView = useInView(ref, { once: true, margin: '-120px' })
 
   const eyebrow = variant === 'company' ? '事業' : null
-  const heading = variant === 'company' ? (
-    <>2つの事業</>
-  ) : (
-    <>事業内容</>
-  )
+  const headingText = variant === 'company' ? '2つの事業' : '事業内容'
   const lead =
     variant === 'company'
       ? '個社支援で磨いた実装力と、SaaSとして届ける再現性。この2つを軸に、現場が回り続ける仕組みを提供しています。'
@@ -73,21 +70,36 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
       aria-labelledby="business-pillars-heading"
     >
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="section-header"
-        >
-          {eyebrow && <p className="eyebrow-light mb-4">{eyebrow}</p>}
-          <h2
+        <div className="section-header">
+          {eyebrow && (
+            <motion.p
+              className="eyebrow-light mb-4"
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {eyebrow}
+            </motion.p>
+          )}
+          <SplitHeading
+            as="h2"
             id="business-pillars-heading"
             className="section-heading mb-6"
+            delay={0.05}
           >
-            {heading}
-          </h2>
-          {lead && <p className="max-w-3xl text-sm leading-relaxed text-sequoia-black/80 md:text-base">{lead}</p>}
-        </motion.div>
+            {headingText}
+          </SplitHeading>
+          {lead && (
+            <motion.p
+              className="max-w-3xl text-sm leading-relaxed text-sequoia-black/80 md:text-base"
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {lead}
+            </motion.p>
+          )}
+        </div>
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
           {pillars.map((pillar, idx) => {
