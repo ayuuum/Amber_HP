@@ -3,6 +3,8 @@ import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import StructuredData from '@/components/StructuredData'
+import CustomCursor from '@/components/ui/custom-cursor'
+import PageTransitionWrapper from '@/components/PageTransitionWrapper'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
 const notoSansJP = Noto_Sans_JP({
@@ -82,7 +84,10 @@ export default function RootLayout({
     <html lang="ja" className={`${notoSansJP.variable} ${inter.variable}`}>
       <body>
         <StructuredData />
-        {children}
+        <CustomCursor />
+        <PageTransitionWrapper>
+          {children}
+        </PageTransitionWrapper>
         <Analytics />
       </body>
     </html>
