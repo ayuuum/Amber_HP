@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import AnimatedTextCycle from '@/components/ui/animated-text-cycle'
+import MagneticWrapper from '@/components/ui/magnetic-wrapper'
 import { fadeUpItem, staggerContainer } from '@/lib/motion-safe'
 import { cn } from '@/lib/utils'
 import { placeholders } from '@/lib/placeholder-images'
@@ -16,6 +17,9 @@ const clipTo = 'polygon(25% 0, 100% 0, 100% 100%, 0% 100%)'
 
 export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion()
+  const { scrollY } = useScroll()
+  const videoY = useTransform(scrollY, [0, 600], prefersReducedMotion ? [0, 0] : [0, 60])
+  const textY = useTransform(scrollY, [0, 600], prefersReducedMotion ? [0, 0] : [0, -20])
 
   return (
     <section
@@ -25,7 +29,7 @@ export default function HeroSection() {
       )}
       aria-label="トップヒーロー"
     >
-      <div className="pointer-events-none absolute inset-0 z-0 md:hidden" aria-hidden>
+      <motion.div className="pointer-events-none absolute inset-0 z-0 md:hidden" style={{ y: videoY }} aria-hidden>
         {prefersReducedMotion ? (
           <Image
             src={placeholders.mountainHero}
@@ -49,10 +53,11 @@ export default function HeroSection() {
           </video>
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/65" />
-      </div>
+      </motion.div>
 
       {/* 左：コピー・CTA */}
-      <div
+      <motion.div
+        style={{ y: textY }}
         className={cn(
           'relative z-20 flex w-full flex-col justify-start bg-color-bg/35 px-6 py-10 backdrop-blur-[1px]',
           'md:w-1/2 md:justify-center md:px-10 md:py-12 lg:w-3/5 lg:px-14 lg:py-16',
@@ -91,12 +96,14 @@ export default function HeroSection() {
               className="mt-2 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-3"
               variants={fadeUpItem}
             >
-              <Link
-                href="/#services"
-                className="btn-primary"
-              >
-                サービスを見る
-              </Link>
+              <MagneticWrapper>
+                <Link
+                  href="/#services"
+                  className="btn-primary"
+                >
+                  サービスを見る
+                </Link>
+              </MagneticWrapper>
               <Link
                 href="/company#contact"
                 className="text-base font-semibold text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] underline underline-offset-4 transition-colors hover:text-sequoia-green md:text-sequoia-black/70 md:drop-shadow-none md:no-underline md:hover:text-sequoia-green"
@@ -106,12 +113,13 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <motion.div
         className="relative z-0 hidden min-h-[calc(100dvh-5rem)] w-full md:block md:w-1/2 lg:w-2/5"
         initial={prefersReducedMotion ? { clipPath: clipTo } : { clipPath: clipFrom }}
         animate={{ clipPath: clipTo }}
+        style={{ y: videoY }}
         transition={
           prefersReducedMotion
             ? { duration: 0 }

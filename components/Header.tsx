@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion'
 import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
 
 // ヒーローがダーク基調のページ。スクロール前はヘッダーを透明＋白文字に切り替える。
@@ -58,6 +58,9 @@ export default function Header() {
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+
+  const { scrollYProgress } = useScroll()
+  const prefersReducedMotion = useReducedMotion()
 
   const isDarkHeroPage = DARK_HERO_PATHS.includes(pathname ?? '')
   // モバイルメニュー開いている間は読みやすさのため通常モードに戻す
@@ -302,6 +305,14 @@ export default function Header() {
           </>
         )}
       </AnimatePresence>
+
+      {/* スクロール進行バー */}
+      {!prefersReducedMotion && (
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-sequoia-green"
+          style={{ scaleX: scrollYProgress }}
+        />
+      )}
     </header>
   )
 }
