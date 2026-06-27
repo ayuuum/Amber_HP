@@ -1,11 +1,15 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import AnimatedTextCycle from '@/components/ui/animated-text-cycle'
-import MagneticWrapper from '@/components/ui/magnetic-wrapper'
-import { fadeUpItem, staggerContainer } from '@/lib/motion-safe'
+import {
+  fadeUpEditorialItem,
+  MOTION_EASE,
+  MOTION_HERO_VIDEO,
+  MOTION_HERO_VIDEO_DELAY,
+  staggerContainerEditorial,
+} from '@/lib/motion-safe'
 import { cn } from '@/lib/utils'
 import { placeholders } from '@/lib/placeholder-images'
 
@@ -17,9 +21,6 @@ const clipTo = 'polygon(25% 0, 100% 0, 100% 100%, 0% 100%)'
 
 export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion()
-  const { scrollY } = useScroll()
-  const videoY = useTransform(scrollY, [0, 600], prefersReducedMotion ? [0, 0] : [0, 60])
-  const textY = useTransform(scrollY, [0, 600], prefersReducedMotion ? [0, 0] : [0, -20])
 
   return (
     <section
@@ -29,7 +30,7 @@ export default function HeroSection() {
       )}
       aria-label="トップヒーロー"
     >
-      <motion.div className="pointer-events-none absolute inset-0 z-0 md:hidden" style={{ y: videoY }} aria-hidden>
+      <div className="pointer-events-none absolute inset-0 z-0 md:hidden" aria-hidden>
         {prefersReducedMotion ? (
           <Image
             src={placeholders.mountainHero}
@@ -52,78 +53,41 @@ export default function HeroSection() {
             <source src={heroVideoSrc} type="video/mp4" />
           </video>
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/65" />
-      </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      </div>
 
-      {/* 左：コピー・CTA */}
-      <motion.div
-        style={{ y: textY }}
+      <div
         className={cn(
-          'relative z-20 flex w-full flex-col justify-start bg-color-bg/35 px-6 py-10 backdrop-blur-[1px]',
-          'md:w-1/2 md:justify-center md:px-10 md:py-12 lg:w-3/5 lg:px-14 lg:py-16',
-          'md:bg-color-bg md:backdrop-blur-0',
+          'relative z-20 flex w-full min-h-[calc(100dvh-5rem)] flex-col justify-end bg-transparent px-6 pb-12',
+          'md:w-1/2 md:min-h-0 md:justify-center md:px-10 md:py-10 lg:w-3/5 lg:px-14 lg:py-12',
+          'md:bg-color-bg',
         )}
       >
-        <div>
-          <motion.div
-            className="md:border-0 md:bg-transparent md:p-0 md:shadow-none"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.h1
-              className="flex flex-col gap-y-1 text-4xl font-bold leading-[1.12] tracking-[-0.02em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] md:text-5xl md:leading-[1.08] md:text-sequoia-black md:drop-shadow-none lg:text-[64px] xl:text-7xl"
-              variants={fadeUpItem}
-            >
-              <span className="block whitespace-nowrap">暮らしを支える産業に、</span>
-              <span className="block whitespace-nowrap">
+        <div className="max-w-3xl">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainerEditorial}>
+            <motion.h1 className="hero-heading flex flex-col gap-y-2 text-white md:text-sequoia-black" variants={fadeUpEditorialItem}>
+              <span>暮らしを支える産業に、</span>
+              <span>
                 <AnimatedTextCycle
                   words={heroTechModifiers}
                   interval={3800}
-                  className="whitespace-nowrap text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] md:text-sequoia-black md:drop-shadow-none"
+                  className="text-white md:text-sequoia-green"
                 />
               </span>
-              <span className="block whitespace-nowrap">テクノロジーを。</span>
+              <span>テクノロジーを。</span>
             </motion.h1>
-
-            <motion.div
-              className="my-5 h-1 w-20 rounded-sm bg-sequoia-green md:my-6"
-              variants={fadeUpItem}
-              aria-hidden
-            />
-
-            <motion.div
-              className="mt-2 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-3"
-              variants={fadeUpItem}
-            >
-              <MagneticWrapper>
-                <Link
-                  href="/#services"
-                  className="btn-primary"
-                >
-                  サービスを見る
-                </Link>
-              </MagneticWrapper>
-              <Link
-                href="/company#contact"
-                className="text-base font-semibold text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] underline underline-offset-4 transition-colors hover:text-sequoia-green md:text-sequoia-black/70 md:drop-shadow-none md:no-underline md:hover:text-sequoia-green"
-              >
-                お問い合わせ
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
         className="relative z-0 hidden min-h-[calc(100dvh-5rem)] w-full md:block md:w-1/2 lg:w-2/5"
         initial={prefersReducedMotion ? { clipPath: clipTo } : { clipPath: clipFrom }}
         animate={{ clipPath: clipTo }}
-        style={{ y: videoY }}
         transition={
           prefersReducedMotion
             ? { duration: 0 }
-            : { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
+            : { duration: MOTION_HERO_VIDEO, delay: MOTION_HERO_VIDEO_DELAY, ease: MOTION_EASE }
         }
       >
         {prefersReducedMotion ? (
@@ -152,28 +116,6 @@ export default function HeroSection() {
           className="pointer-events-none absolute inset-0 bg-gradient-to-r from-color-bg/95 via-color-bg/75 to-transparent"
           aria-hidden
         />
-      </motion.div>
-
-      {/* スクロールインジケーター */}
-      <motion.div
-        className="pointer-events-none absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        aria-hidden
-      >
-        <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-sequoia-black/45">
-          Scroll
-        </span>
-        <span className="relative flex h-9 w-[1px] overflow-hidden bg-sequoia-black/15">
-          {!prefersReducedMotion && (
-            <motion.span
-              className="absolute inset-x-0 top-0 h-3 bg-sequoia-green"
-              animate={{ y: ['-100%', '300%'] }}
-              transition={{ duration: 1.8, ease: 'easeInOut', repeat: Infinity }}
-            />
-          )}
-        </span>
       </motion.div>
     </section>
   )

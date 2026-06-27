@@ -18,7 +18,7 @@ export default function TermsPage() {
       <Header />
       <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-8">
+          <h1 className="page-heading mb-8">
             利用規約
           </h1>
           <div className="prose prose-lg max-w-none text-sequoia-black leading-relaxed space-y-6">

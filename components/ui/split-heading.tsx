@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { cn } from '@/lib/utils'
+import { MOTION_EDITORIAL, STAGGER_EDITORIAL, MOTION_EASE } from '@/lib/motion-safe'
 
 interface SplitHeadingProps {
   children: string
@@ -12,10 +13,6 @@ interface SplitHeadingProps {
   id?: string
 }
 
-/**
- * テキストを行（改行 or スペース区切り）に分割し、1行ずつ下から立ち上げる。
- * "プロが作った" と感じさせるタイポグラフィモーション。
- */
 export default function SplitHeading({
   children,
   as: Tag = 'h2',
@@ -26,7 +23,6 @@ export default function SplitHeading({
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
-  // 「、」「。」「，」を区切りに行分割
   const lines = children.split(/(?<=。|、|，|\n)/).filter(Boolean)
 
   return (
@@ -39,9 +35,9 @@ export default function SplitHeading({
             initial={{ y: '110%', opacity: 0 }}
             animate={isInView ? { y: '0%', opacity: 1 } : { y: '110%', opacity: 0 }}
             transition={{
-              duration: 0.75,
-              delay: delay + i * 0.1,
-              ease: [0.22, 1, 0.36, 1],
+              duration: MOTION_EDITORIAL,
+              delay: delay + i * STAGGER_EDITORIAL,
+              ease: MOTION_EASE,
             }}
           >
             {line}

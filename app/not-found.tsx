@@ -8,17 +8,14 @@ export default function NotFound() {
       <Header />
       <div className="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center px-4 pt-20">
         <div className="max-w-md text-center">
-          <h1 className="mb-4 text-6xl font-bold text-gray-900">404</h1>
-          <h2 className="mb-4 text-2xl font-semibold text-gray-800">
-            ページが見つかりません
-          </h2>
-          <p className="mb-8 text-lg text-gray-600">
+          <p className="text-caption mb-2 font-semibold uppercase tracking-[0.2em] text-sequoia-green">
+            404
+          </p>
+          <h1 className="heading-h3 mb-4">ページが見つかりません</h1>
+          <p className="text-body mb-8 text-sequoia-black/80">
             お探しのページは存在しないか、移動または削除された可能性があります。
           </p>
-          <Link
-            href="/"
-            className="inline-block rounded-lg bg-sequoia-black px-6 py-3 font-semibold text-white transition-colors hover:bg-sequoia-black/90"
-          >
+          <Link href="/" className="btn-primary inline-flex">
             ホームに戻る
           </Link>
         </div>
@@ -27,5 +24,3 @@ export default function NotFound() {
     </main>
   )
 }
-
-

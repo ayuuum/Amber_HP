@@ -5,9 +5,18 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion'
 import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
+import { buildContactHref } from '@/lib/contact'
+import {
+  MOTION_BASE,
+  MOTION_FAST,
+  motionTransition,
+  panelTransition,
+} from '@/lib/motion-safe'
 
 // ヒーローがダーク基調のページ。スクロール前はヘッダーを透明＋白文字に切り替える。
-const DARK_HERO_PATHS = ['/service/development']
+const DARK_HERO_PATHS: string[] = []
+/** モバイルのみ映画的ヒーロー（デスクトップは白背景カラムがあるため除外） */
+const MOBILE_DARK_HERO_PATHS = ['/']
 
 const PINE_HOME_URL = 'https://pine-home.com/'
 
@@ -33,13 +42,9 @@ const menuItems: MenuItem[] = [
     label: 'サービス',
     href: '#',
     children: [
-      { label: 'AIシステム開発', href: '/service/development' },
-      { label: '生成AI活用研修（概要）', href: '/service/ai-training' },
-      { label: 'Microsoft 365 Copilot 研修', href: '/service/ai-training/copilot', group: 'ツール別' },
-      { label: 'ChatGPT 研修', href: '/service/ai-training/chatgpt', group: 'ツール別' },
-      { label: 'Gemini for Workspace 研修', href: '/service/ai-training/gemini', group: 'ツール別' },
-      { label: 'Claude Code 研修', href: '/service/ai-training/claude-code', group: 'ツール別' },
-      { label: 'Pine（出張訪問サービス向けソフトウェア）', href: PINE_HOME_URL, external: true },
+      { label: 'AIシステム開発・業務改善', href: '/service/development', group: 'AIソリューション' },
+      { label: '生成AI活用研修', href: '/service/ai-training', group: 'AIソリューション' },
+      { label: 'Pine（出張訪問サービス向けAI SaaS）', href: PINE_HOME_URL, external: true, group: 'AI SaaS' },
     ],
   },
   {
@@ -48,7 +53,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: 'お問い合わせ',
-    href: '/company#contact',
+    href: buildContactHref('header'),
   },
 ]
 
@@ -57,14 +62,25 @@ export default function Header() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
   const pathname = usePathname()
 
   const { scrollYProgress } = useScroll()
   const prefersReducedMotion = useReducedMotion()
 
-  const isDarkHeroPage = DARK_HERO_PATHS.includes(pathname ?? '')
+  const isDarkHeroPage =
+    DARK_HERO_PATHS.includes(pathname ?? '') ||
+    (isMobileViewport && MOBILE_DARK_HERO_PATHS.includes(pathname ?? ''))
   // モバイルメニュー開いている間は読みやすさのため通常モードに戻す
   const isTransparent = isDarkHeroPage && !scrolled && !isMobileMenuOpen
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const update = () => setIsMobileViewport(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
@@ -81,7 +97,7 @@ export default function Header() {
   // テーマに応じた色クラス
   const headerBg = isTransparent
     ? 'border-transparent bg-transparent'
-    : 'border-sequoia-black/10 bg-white/90 shadow-sm backdrop-blur-md'
+    : 'border-white/45 bg-white/[0.72] shadow-sm backdrop-blur-xl'
   const logoColor = isTransparent ? 'text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]' : 'text-sequoia-black'
   const navItemColor = isTransparent
     ? 'text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:bg-white/10 hover:text-white'
@@ -91,8 +107,8 @@ export default function Header() {
     : 'text-sequoia-black hover:bg-sequoia-black/5 hover:text-sequoia-green'
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${headerBg}`}>
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-brand ${headerBg}`}>
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="site-header-toolbar flex h-20 items-center justify-between">
           {/* Logo */}
           <Link
@@ -100,7 +116,7 @@ export default function Header() {
             className="relative z-50 flex-shrink-0 no-underline visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/40"
             aria-label="株式会社Amber"
           >
-            <span className={`font-logo text-[2rem] leading-none transition-colors duration-300 ${logoColor}`}>
+            <span className={`font-logo text-[2rem] leading-none transition-colors duration-brand ${logoColor}`}>
               Amber
             </span>
           </Link>
@@ -117,7 +133,7 @@ export default function Header() {
                 {item.children ? (
                   <>
                     <span
-                      className={`flex cursor-default items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
+                      className={`flex cursor-default items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium transition-[background-color,color] duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
                       aria-haspopup="true"
                       aria-expanded={hoveredIndex === index}
                     >
@@ -130,10 +146,10 @@ export default function Header() {
                           initial={{ opacity: 0, y: -4 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -4 }}
-                          transition={{ duration: 0.15 }}
+                          transition={motionTransition(MOTION_FAST)}
                           className="absolute top-full left-0 min-w-[220px] pt-2"
                         >
-                          <div className="rounded-sm border border-sequoia-black/10 bg-white/95 py-1.5 shadow-xl backdrop-blur-md">
+                          <div className="rounded-sm border border-white/55 bg-white/[0.78] py-1.5 shadow-[0_24px_64px_-28px_rgba(27,58,45,0.28)] backdrop-blur-2xl">
                             {item.children.map((child, childIndex) => {
                               const prevChild = item.children?.[childIndex - 1]
                               const isNewGroup = child.group && child.group !== prevChild?.group
@@ -149,7 +165,7 @@ export default function Header() {
                                       href={child.href}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="mx-1 flex items-center gap-1.5 rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                      className="mx-1 flex items-center gap-1.5 rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-brand hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                                     >
                                       {child.label}
                                       <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
@@ -158,7 +174,7 @@ export default function Header() {
                                   ) : (
                                     <Link
                                       href={child.href}
-                                      className={`mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium transition-[background-color,color] duration-200 hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-6 text-sequoia-black/70' : 'text-sequoia-black/85'}`}
+                                      className={`mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium transition-[background-color,color] duration-brand hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-6 text-sequoia-black/70' : 'text-sequoia-black/85'}`}
                                     >
                                       {child.label}
                                     </Link>
@@ -174,7 +190,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium no-underline transition-[background-color,color] duration-200 visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
+                    className={`flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium no-underline transition-[background-color,color] duration-brand visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
                   >
                     {item.label}
                   </Link>
@@ -187,7 +203,7 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleMobileMenu}
-            className={`site-nav-mobile-toggle relative z-50 rounded-sm p-2 transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${mobileBtnColor}`}
+            className={`site-nav-mobile-toggle relative z-50 rounded-sm p-2 transition-[background-color,color] duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${mobileBtnColor}`}
             aria-label="メニュー"
             aria-expanded={isMobileMenuOpen}
           >
@@ -205,6 +221,7 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
+              transition={motionTransition(MOTION_BASE)}
               onClick={toggleMobileMenu}
               className="fixed inset-0 bg-sequoia-black/25 lg:hidden"
               style={{ top: '80px', height: 'calc(100vh - 80px)' }}
@@ -215,8 +232,8 @@ export default function Header() {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-20 right-0 h-[calc(100vh-80px)] w-full overflow-y-auto border-l border-sequoia-black/10 bg-white/95 shadow-2xl md:w-80 lg:hidden"
+              transition={panelTransition()}
+              className="fixed top-20 right-0 h-[calc(100vh-80px)] w-full overflow-y-auto border-l border-white/55 bg-white/[0.82] shadow-2xl backdrop-blur-2xl md:w-80 lg:hidden"
             >
               <div className="flex flex-col p-6 pt-8">
                 <nav className="flex flex-col gap-0" aria-label="モバイルメニュー">
@@ -230,13 +247,13 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setMobileServiceOpen(!mobileServiceOpen)}
-                            className="flex min-h-12 w-full items-center justify-between rounded-sm py-3 text-left text-base font-medium text-sequoia-black/85 no-underline transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                            className="flex min-h-12 w-full items-center justify-between rounded-sm py-3 text-left text-base font-medium text-sequoia-black/85 no-underline transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                             aria-expanded={mobileServiceOpen}
                             aria-haspopup="true"
                           >
                             {item.label}
                             <ChevronDown
-                              className={`w-5 h-5 transition-transform ${mobileServiceOpen ? 'rotate-180' : ''}`}
+                              className={`w-5 h-5 transition-transform duration-brand ${mobileServiceOpen ? 'rotate-180' : ''}`}
                             />
                           </button>
                           <AnimatePresence>
@@ -245,7 +262,7 @@ export default function Header() {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
+                                transition={motionTransition(MOTION_BASE)}
                                 className="overflow-hidden"
                               >
                                 <div className="pl-3 pb-2 flex flex-col space-y-0.5">
@@ -264,7 +281,7 @@ export default function Header() {
                                             href={child.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex min-h-10 items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                                            className="flex min-h-10 items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                                             onClick={toggleMobileMenu}
                                           >
                                             {child.label}
@@ -274,7 +291,7 @@ export default function Header() {
                                         ) : (
                                           <Link
                                             href={child.href}
-                                            className={`flex min-h-10 items-center rounded-sm py-2 text-sm font-medium no-underline transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-2 text-sequoia-black/60 visited:text-sequoia-black/60' : 'text-sequoia-black/70 visited:text-sequoia-black/70'}`}
+                                            className={`flex min-h-10 items-center rounded-sm py-2 text-sm font-medium no-underline transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-2 text-sequoia-black/60 visited:text-sequoia-black/60' : 'text-sequoia-black/70 visited:text-sequoia-black/70'}`}
                                             onClick={toggleMobileMenu}
                                           >
                                             {child.label}
@@ -291,7 +308,7 @@ export default function Header() {
                       ) : (
                         <Link
                           href={item.href}
-                          className="flex min-h-12 items-center rounded-sm py-3 text-base font-medium text-sequoia-black/85 no-underline visited:text-sequoia-black/85 transition-[background-color,color] duration-200 hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
+                          className="flex min-h-12 items-center rounded-sm py-3 text-base font-medium text-sequoia-black/85 no-underline visited:text-sequoia-black/85 transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                           onClick={toggleMobileMenu}
                         >
                           {item.label}

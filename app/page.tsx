@@ -3,7 +3,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import BusinessPillarsSection from '@/components/sections/BusinessPillarsSection'
 import AboutSection from '@/components/sections/AboutSection'
 import HomeNewsPreview from '@/components/sections/HomeNewsPreview'
-import TopCtaBlock from '@/components/sections/TopCtaBlock'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -38,7 +37,6 @@ export default function Home() {
         <BusinessPillarsSection />
         <AboutSection variant="teaser" />
         <HomeNewsPreview />
-        <TopCtaBlock />
         <Footer />
       </main>
     </>

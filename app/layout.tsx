@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
+import HashScrollHandler from '@/components/HashScrollHandler'
 import StructuredData from '@/components/StructuredData'
 import CustomCursor from '@/components/ui/custom-cursor'
 import PageTransitionWrapper from '@/components/PageTransitionWrapper'
@@ -85,6 +86,7 @@ export default function RootLayout({
       <body>
         <StructuredData />
         <CustomCursor />
+        <HashScrollHandler />
         <PageTransitionWrapper>
           {children}
         </PageTransitionWrapper>

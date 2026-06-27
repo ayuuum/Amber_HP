@@ -36,25 +36,20 @@ export default function BlogPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
-        <div className="max-w-7xl mx-auto">
+      <main className="min-h-screen bg-color-bg px-6 pb-24 pt-24">
+        <div className="mx-auto max-w-6xl">
           <div className="mb-12">
-            <Link
-              href="/"
-              className="text-link text-sm"
-            >
+            <Link href="/" className="text-link text-sm">
               トップに戻る
             </Link>
           </div>
 
-          <div className="mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-sequoia-black mb-6">
-              ニュース・ブログ
-            </h1>
+          <div className="section-header mb-16">
+            <h1 className="page-heading mb-6">ニュース・ブログ</h1>
           </div>
 
           <div className="mb-14 max-w-4xl">
-            <div className="relative aspect-[21/9] max-h-48 w-full rounded-sm overflow-hidden border border-sequoia-black/10 shadow-sm bg-sequoia-black/5">
+            <div className="surface-card relative aspect-[21/9] max-h-48 w-full overflow-hidden bg-sequoia-black/5">
               <Image
                 src={placeholders.writing}
                 alt=""
@@ -66,10 +61,8 @@ export default function BlogPage() {
           </div>
 
           {postsWithCategory.length === 0 ? (
-            <div className="bg-color-bg p-12 rounded-sm border border-sequoia-black/10 text-center">
-              <p className="text-sequoia-black text-lg">
-                現在、記事を執筆中です。
-              </p>
+            <div className="surface-card p-12 text-center">
+              <p className="text-body text-lg">現在、記事を執筆中です。</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -77,15 +70,13 @@ export default function BlogPage() {
                 <Link
                   key={`${category}-${post.slug}`}
                   href={`${getCategoryPath(category)}/${post.slug}`}
-                  className="rounded-sm border border-sequoia-black/10 bg-color-bg shadow-sm interactive-card block p-6"
+                  className="surface-card interactive-card block p-6"
                 >
                   <div className="mb-2">
-                    <span className="text-xs text-sequoia-black/90 font-medium">
-                      {getCategoryName(category)}
-                    </span>
+                    <span className="text-caption font-medium">{getCategoryName(category)}</span>
                   </div>
                   <div className="mb-4">
-                    <span className="text-sm text-sequoia-black font-semibold">
+                    <span className="text-caption font-semibold">
                       {new Date(post.date).toLocaleDateString('ja-JP', {
                         year: 'numeric',
                         month: 'long',
@@ -93,10 +84,10 @@ export default function BlogPage() {
                       })}
                     </span>
                   </div>
-                  <h2 className="text-xl font-bold text-sequoia-black mb-3 line-clamp-2">
+                  <h2 className="heading-h3 mb-3 line-clamp-2 text-xl">
                     {post.title}
                   </h2>
-                  <p className="text-sequoia-black text-sm leading-relaxed line-clamp-3">
+                  <p className="text-body line-clamp-3 text-sequoia-black/80">
                     {post.excerpt}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">

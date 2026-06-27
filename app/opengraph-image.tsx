@@ -8,6 +8,8 @@ export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default function OgImage() {
+  const [taglineLead, taglineRest] = siteMetadata.tagline.split('、')
+
   return new ImageResponse(
     (
       <div
@@ -31,7 +33,7 @@ export default function OgImage() {
             right: 0,
             width: '480px',
             height: '100%',
-            background: 'linear-gradient(135deg, #0D5C3A 0%, #0A1C14 100%)',
+            background: '#1B3A2D',
             opacity: 0.06,
           }}
         />
@@ -52,7 +54,7 @@ export default function OgImage() {
               width: '36px',
               height: '36px',
               borderRadius: '4px',
-              backgroundColor: '#0D5C3A',
+              backgroundColor: '#1B3A2D',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -67,7 +69,7 @@ export default function OgImage() {
             style={{
               fontSize: '20px',
               fontWeight: 700,
-              color: '#1B1916',
+              color: '#152828',
               letterSpacing: '-0.01em',
             }}
           >
@@ -80,7 +82,7 @@ export default function OgImage() {
           style={{
             width: '56px',
             height: '4px',
-            backgroundColor: '#0D5C3A',
+            backgroundColor: '#1B3A2D',
             borderRadius: '2px',
             marginBottom: '24px',
           }}
@@ -91,23 +93,23 @@ export default function OgImage() {
           style={{
             fontSize: '52px',
             fontWeight: 900,
-            color: '#1B1916',
+            color: '#152828',
             lineHeight: 1.1,
             letterSpacing: '-0.03em',
             marginBottom: '20px',
             maxWidth: '780px',
           }}
         >
-          暮らしを支える産業に、
+          {taglineLead}、
           <br />
-          最新のテクノロジーを。
+          {taglineRest}
         </div>
 
         {/* サブコピー */}
         <div
           style={{
             fontSize: '22px',
-            color: 'rgba(27, 25, 22, 0.65)',
+            color: 'rgba(21, 40, 40, 0.65)',
             lineHeight: 1.6,
             maxWidth: '680px',
           }}

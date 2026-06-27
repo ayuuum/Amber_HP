@@ -13,7 +13,6 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    // エラーをログに記録
     console.error(error)
   }, [error])
 
@@ -22,23 +21,15 @@ export default function Error({
       <Header />
       <div className="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center px-4 pt-20">
         <div className="max-w-md text-center">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900">
-            エラーが発生しました
-          </h1>
-          <p className="mb-8 text-lg text-gray-600">
+          <h1 className="heading-h3 mb-4">エラーが発生しました</h1>
+          <p className="text-body mb-8 text-sequoia-black/80">
             申し訳ございませんが、予期しないエラーが発生しました。
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <button
-              onClick={reset}
-              className="rounded-lg bg-amber-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-amber-700"
-            >
+            <button onClick={reset} className="btn-primary">
               もう一度試す
             </button>
-            <Link
-              href="/"
-              className="rounded-lg border-2 border-gray-300 px-6 py-3 font-semibold text-gray-700 transition-colors hover:border-gray-400"
-            >
+            <Link href="/" className="btn-secondary">
               ホームに戻る
             </Link>
           </div>
@@ -48,5 +39,3 @@ export default function Error({
     </main>
   )
 }
-
-

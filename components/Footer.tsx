@@ -1,30 +1,31 @@
 import Link from 'next/link'
+import { buildContactHref } from '@/lib/contact'
 
 export default function Footer() {
   const year = new Date().getFullYear()
   const footerLinkClass =
-    'rounded-sm transition-[color,background-color] duration-200 hover:bg-white/8 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35'
+    'rounded-sm text-on-dark-muted transition-[color,background-color] duration-brand hover:bg-white/8 hover:text-[color:var(--color-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35'
 
   return (
-    <footer className="bg-green-dark text-white backdrop-blur-sm border-t border-white/20">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-10">
+    <footer className="border-t border-white/15 bg-sequoia-black text-[color:var(--color-cream)]">
+      <div className="section-pad mx-auto max-w-6xl !py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="max-w-md">
             <Link href="/" className="inline-flex items-center" aria-label="株式会社Amber">
-              <span className="font-logo text-[2rem] leading-none text-white">Amber</span>
+              <span className="font-logo text-[2rem] leading-none text-[color:var(--color-cream)]">Amber</span>
             </Link>
-            <p className="mt-3 text-sm text-white/80 leading-relaxed">
-              暮らしを支える産業に、最新のテクノロジーを。
+            <p className="text-body mt-3 text-on-dark-muted">
+              暮らしを支える産業に、テクノロジーを。
             </p>
           </div>
 
           <nav aria-label="フッターナビゲーション" className="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
             <div className="space-y-3">
-              <p className="text-white/90 font-semibold">サービス</p>
-              <ul className="space-y-2 text-white/80">
+              <p className="font-semibold text-[color:var(--color-cream)]">サービス</p>
+              <ul className="space-y-2">
                 <li>
                   <Link href="/service/development" className={footerLinkClass}>
-                    AIシステム開発
+                    AIシステム開発・業務改善
                   </Link>
                 </li>
                 <li>
@@ -39,7 +40,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className={footerLinkClass}
                   >
-                    Pine（出張訪問サービス向けソフトウェア）
+                    AI SaaS（Pine）
                     <span className="sr-only">（新しいタブで開く）</span>
                   </a>
                 </li>
@@ -47,8 +48,8 @@ export default function Footer() {
             </div>
 
             <div className="space-y-3">
-              <p className="text-white/90 font-semibold">情報</p>
-              <ul className="space-y-2 text-white/80">
+              <p className="font-semibold text-[color:var(--color-cream)]">情報</p>
+              <ul className="space-y-2">
                 <li>
                   <Link href="/company" className={footerLinkClass}>
                     企業情報
@@ -60,7 +61,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/company#contact" className={footerLinkClass}>
+                  <Link href={buildContactHref('footer')} className={footerLinkClass}>
                     お問い合わせ
                   </Link>
                 </li>
@@ -79,11 +80,11 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-white/70">
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/15 pt-6 text-caption text-on-dark-subtle md:flex-row md:items-center md:justify-between">
           <p>© {year} 株式会社Amber. All rights reserved.</p>
           <a
             href="mailto:ayumu.matsui@amber-inc.com"
-            className="hover:text-white transition-colors duration-200"
+            className="transition-colors duration-brand hover:text-[color:var(--color-cream)]"
           >
             ayumu.matsui@amber-inc.com
           </a>

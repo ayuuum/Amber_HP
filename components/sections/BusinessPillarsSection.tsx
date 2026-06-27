@@ -1,11 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight, ExternalLink, Layers, Package, type LucideIcon } from 'lucide-react'
+import { MOTION_BASE, MOTION_EASE } from '@/lib/motion-safe'
 import { cn } from '@/lib/utils'
 import SplitHeading from '@/components/ui/split-heading'
+import { buildContactHref } from '@/lib/contact'
 
 type Pillar = {
   num: string
@@ -18,6 +20,7 @@ type Pillar = {
   cta: string
   external?: boolean
   icon: LucideIcon
+  links?: { label: string; href: string; external?: boolean }[]
 }
 
 const pillars: Pillar[] = [
@@ -32,11 +35,16 @@ const pillars: Pillar[] = [
     href: '/service/development',
     cta: '詳細を見る',
     icon: Layers,
+    links: [
+      { label: 'AIシステム開発', href: '/service/development' },
+      { label: '生成AI活用研修', href: '/service/ai-training' },
+      { label: '導入相談', href: buildContactHref('development', 'development') },
+    ],
   },
   {
     num: '02',
     label: '事業 02',
-    title: 'AIプロダクト',
+    title: 'AI SaaS',
     summary: '個社支援で見えた共通課題を、出張訪問サービス向けソフトウェア「Pine」として提供しています。',
     detail:
       '現場支援で蓄積した知見を、出張訪問サービス向けソフトウェア「Pine」に実装。予約・顧客管理を軸に、継続的に機能を拡張しています。',
@@ -45,6 +53,10 @@ const pillars: Pillar[] = [
     cta: 'Pineを見る',
     external: true,
     icon: Package,
+    links: [
+      { label: 'Pine公式サイト', href: 'https://pine-home.com/', external: true },
+      { label: '導入相談', href: buildContactHref('pine', 'pine') },
+    ],
   },
 ]
 
@@ -55,7 +67,6 @@ type BusinessPillarsSectionProps = {
 
 export default function BusinessPillarsSection({ variant = 'top' }: BusinessPillarsSectionProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-120px' })
 
   const eyebrow = variant === 'company' ? '事業' : null
   const headingText = variant === 'company' ? '2つの事業' : '事業内容'
@@ -65,8 +76,12 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
       : null
   return (
     <section
+      id="services"
       ref={ref}
-      className="section-pad border-t border-sequoia-black/10 bg-color-bg"
+      className={cn(
+        'section-pad border-t border-sequoia-black/10',
+        variant === 'company' ? 'bg-color-bg-subtle' : 'bg-color-bg',
+      )}
       aria-labelledby="business-pillars-heading"
     >
       <div className="mx-auto max-w-6xl">
@@ -74,9 +89,9 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
           {eyebrow && (
             <motion.p
               className="eyebrow-light mb-4"
-              initial={{ opacity: 0, y: 12 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
             >
               {eyebrow}
             </motion.p>
@@ -92,9 +107,9 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
           {lead && (
             <motion.p
               className="max-w-3xl text-sm leading-relaxed text-sequoia-black/80 md:text-base"
-              initial={{ opacity: 0, y: 12 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: MOTION_BASE, delay: 0.04, ease: MOTION_EASE }}
             >
               {lead}
             </motion.p>
@@ -104,42 +119,42 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon
-            // SaaSプロダクト（Pine）は深緑塗りで受託カードと対比させる
+            // AI SaaS（Pine）は深緑塗りでソリューションカードと対比させる
             const isDark = pillar.external
             return (
               <motion.article
                 key={pillar.label}
-                initial={{ opacity: 0, y: 32 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+                initial={false}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.8,
-                  delay: 0.15 + idx * 0.1,
-                  ease: [0.22, 1, 0.36, 1],
+                  duration: MOTION_BASE,
+                  delay: 0.04 + idx * 0.04,
+                  ease: MOTION_EASE,
                 }}
                 className={cn(
-                  'group relative overflow-hidden rounded-sm border p-10 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_70px_-24px_rgba(15,42,30,0.32)] md:p-12',
+                  'group relative overflow-hidden p-10 interactive-card md:p-12',
                   isDark
-                    ? 'border-white/10 bg-green-dark text-white hover:border-sequoia-green/60'
-                    : 'border-sequoia-black/10 bg-white hover:border-sequoia-green/40',
+                    ? 'surface-dark-card hover:border-white/30'
+                    : 'surface-card hover:border-sequoia-green/40',
                 )}
               >
-                {/* ホバーで立ち上がる緑グラデの艶 */}
-                <span
-                  aria-hidden
-                  className={cn(
-                    'pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100',
-                    isDark
-                      ? 'bg-[radial-gradient(120%_120%_at_100%_0%,rgba(26,138,85,0.35),transparent_60%)]'
-                      : 'bg-[radial-gradient(120%_120%_at_100%_0%,rgba(13,92,58,0.07),transparent_60%)]',
-                  )}
-                />
+                {isDark ? (
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_100%_0%,rgba(27,58,45,0.18),transparent_62%)] opacity-0 transition-opacity duration-brand group-hover:opacity-100"
+                  />
+                ) : (
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_100%_0%,rgba(27,58,45,0.07),transparent_60%)] opacity-0 transition-opacity duration-brand group-hover:opacity-100"
+                  />
+                )}
 
-                {/* 背景の巨大番号 */}
                 <span
                   aria-hidden
                   className={cn(
-                    'pointer-events-none absolute -right-8 -top-12 select-none text-[200px] font-black leading-none tracking-tight md:text-[240px]',
-                    isDark ? 'text-white/[0.06]' : 'text-sequoia-green/[0.05]',
+                    'num-badge pointer-events-none absolute -right-4 -top-6 select-none opacity-40 md:-right-6 md:-top-8',
+                    isDark ? 'text-white/10' : 'text-sequoia-green/[0.08]',
                   )}
                 >
                   {pillar.num}
@@ -148,14 +163,14 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
                 <div className="relative">
                   <div className="mb-8 flex items-center justify-between">
                     <Icon
-                      className={cn('h-10 w-10', isDark ? 'text-sequoia-green-accent' : 'text-sequoia-green')}
+                      className={cn('h-10 w-10', isDark ? 'text-[color:var(--color-cream)]' : 'text-sequoia-green')}
                       aria-hidden="true"
                       strokeWidth={1.5}
                     />
                     <span
                       className={cn(
                         'text-xs font-bold tracking-[0.2em]',
-                        isDark ? 'text-white/55' : 'text-sequoia-black/55',
+                        isDark ? 'text-on-dark-subtle' : 'text-sequoia-black/55',
                       )}
                     >
                       {pillar.label}
@@ -164,8 +179,8 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
 
                   <h3
                     className={cn(
-                      'mb-4 text-2xl font-bold tracking-tight md:text-3xl',
-                      isDark ? 'text-white' : 'text-sequoia-black',
+                      'heading-h3 mb-4',
+                      isDark ? 'text-[color:var(--color-cream)]' : 'text-sequoia-black',
                     )}
                   >
                     {pillar.title}
@@ -173,7 +188,7 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
                   <p
                     className={cn(
                       'mb-8 text-sm leading-relaxed md:text-base',
-                      isDark ? 'text-white/80' : 'text-sequoia-black/80',
+                      isDark ? 'text-on-dark-muted' : 'text-sequoia-black/80',
                     )}
                   >
                     {variant === 'company' ? pillar.detail : pillar.summary}
@@ -190,17 +205,66 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
                         key={item}
                         className={cn(
                           'flex items-center gap-3 py-3 text-sm',
-                          isDark ? 'text-white/85' : 'text-sequoia-black/85',
+                          isDark ? 'text-on-dark-muted' : 'text-sequoia-black/85',
                         )}
                       >
                         <span
-                          className={cn('h-1 w-3', isDark ? 'bg-sequoia-green-accent' : 'bg-sequoia-green')}
+                          className={cn('h-1 w-4', isDark ? 'bg-sequoia-green-accent' : 'bg-sequoia-green')}
                           aria-hidden="true"
                         />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
+
+                  {(() => {
+                    const visibleLinks = pillar.links?.filter(
+                      (link) => variant === 'company' || link.label !== '導入相談',
+                    )
+                    if (!visibleLinks?.length) return null
+                    return (
+                    <div
+                      className={cn(
+                        'mb-8 flex flex-wrap gap-2',
+                        isDark ? 'text-[color:var(--color-cream)]' : 'text-sequoia-black',
+                      )}
+                    >
+                      {visibleLinks.map((link) =>
+                        link.external ? (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cn(
+                              'inline-flex items-center gap-1 rounded-sm border px-3 py-2 text-xs font-bold transition-[border-color,color,background-color]',
+                              isDark
+                                ? 'border-white/[0.18] text-on-dark-muted hover:border-white/40 hover:text-[color:var(--color-cream)]'
+                                : 'border-sequoia-black/15 text-sequoia-black/75 hover:border-sequoia-green hover:text-sequoia-green',
+                            )}
+                          >
+                            {link.label}
+                            <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                            <span className="sr-only">（新しいタブで開く）</span>
+                          </a>
+                        ) : (
+                          <Link
+                            key={link.label}
+                            href={link.href}
+                            className={cn(
+                              'inline-flex items-center rounded-sm border px-3 py-2 text-xs font-bold transition-[border-color,color,background-color]',
+                              isDark
+                                ? 'border-white/[0.18] text-on-dark-muted hover:border-white/40 hover:text-[color:var(--color-cream)]'
+                                : 'border-sequoia-black/15 text-sequoia-black/75 hover:border-sequoia-green hover:text-sequoia-green',
+                            )}
+                          >
+                            {link.label}
+                          </Link>
+                        ),
+                      )}
+                    </div>
+                    )
+                  })()}
 
                   {pillar.external ? (
                     <a
@@ -210,7 +274,7 @@ export default function BusinessPillarsSection({ variant = 'top' }: BusinessPill
                       className={cn(
                         'inline-flex items-center gap-2 text-sm font-bold transition-[color,gap] duration-200 group-hover:gap-3',
                         isDark
-                          ? 'text-white group-hover:text-sequoia-green-accent'
+                          ? 'text-[color:var(--color-cream)] group-hover:text-white'
                           : 'text-sequoia-black group-hover:text-sequoia-green',
                       )}
                     >

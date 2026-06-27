@@ -2,50 +2,106 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useRef } from 'react'
 import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react'
 import { placeholders } from '@/lib/placeholder-images'
+import { MOTION_EDITORIAL, STAGGER_EDITORIAL, MOTION_EASE, editorialTransition } from '@/lib/motion-safe'
+import { contactInquiryLabels, getContactPreset, type ContactInquiryType } from '@/lib/contact'
+
+type ContactFormData = {
+  name: string
+  company: string
+  email: string
+  phone: string
+  inquiryType: ContactInquiryType
+  message: string
+  sourcePage: string
+  referrerPath: string
+  website: string
+}
+
+const initialFormData: ContactFormData = {
+  name: '',
+  company: '',
+  email: '',
+  phone: '',
+  inquiryType: 'general',
+  message: '',
+  sourcePage: '',
+  referrerPath: '',
+  website: '',
+}
+
+const fieldReveal = (idx: number) => ({
+  duration: MOTION_EDITORIAL,
+  delay: idx * STAGGER_EDITORIAL,
+  ease: MOTION_EASE,
+})
+
+const stepSlide = {
+  duration: MOTION_EDITORIAL,
+  ease: MOTION_EASE,
+}
 
 export default function ContactSection() {
   const [step, setStep] = useState(1)
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    inquiryType: 'general',
-    message: '',
-  })
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [isDryRun, setIsDryRun] = useState(false)
+  const [messagePlaceholder, setMessagePlaceholder] = useState('お問い合わせ内容をご記入ください')
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const formRef = useRef<HTMLFormElement>(null)
 
-  // localStorageから自動保存データを読み込む
+  // Apply URL context without pre-filling the message body.
   useEffect(() => {
-    const savedData = localStorage.getItem('contactFormData')
-    if (savedData) {
-      try {
-        const parsed = JSON.parse(savedData)
-        setFormData(parsed)
-      } catch (e) {
-        void e
-      }
-    }
+    const params = new URLSearchParams(window.location.search)
+    const preset = getContactPreset(params.get('source'), params.get('inquiry'))
+    setFormData({
+      ...initialFormData,
+      inquiryType: preset.inquiryType,
+      sourcePage: params.get('source') ?? '',
+      referrerPath: document.referrer || window.location.pathname,
+    })
+    setMessagePlaceholder(preset.message || 'お問い合わせ内容をご記入ください')
   }, [])
 
-  // フォームデータを自動保存
-  useEffect(() => {
-    if (formData.name || formData.email || formData.message) {
-      localStorage.setItem('contactFormData', JSON.stringify(formData))
+  const readCurrentFormData = (): ContactFormData => {
+    const form = formRef.current
+    if (!form) return formData
+
+    const fieldValue = (name: keyof ContactFormData) => {
+      const field = form.elements.namedItem(name)
+      if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+        return field.value
+      }
+      return String(formData[name] ?? '')
     }
-  }, [formData])
+
+    return {
+      ...formData,
+      name: fieldValue('name'),
+      company: fieldValue('company'),
+      email: fieldValue('email'),
+      phone: fieldValue('phone'),
+      inquiryType: fieldValue('inquiryType') as ContactInquiryType,
+      message: fieldValue('message'),
+      website: fieldValue('website'),
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    const currentData = readCurrentFormData()
+    if (!currentData.name.trim() || !currentData.email.trim() || !currentData.message.trim()) {
+      setSubmitStatus('error')
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setIsDryRun(false)
 
     try {
       const response = await fetch('/api/contact', {
@@ -53,23 +109,14 @@ export default function ContactSection() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(currentData),
       })
 
       const data = await response.json()
 
       if (data.success) {
+        setIsDryRun(Boolean(data.dryRun))
         setSubmitStatus('success')
-        setFormData({
-          name: '',
-          company: '',
-          email: '',
-          phone: '',
-          inquiryType: 'general',
-          message: '',
-        })
-        // 送信成功後は保存データを削除
-        localStorage.removeItem('contactFormData')
       } else {
         setSubmitStatus('error')
       }
@@ -81,24 +128,39 @@ export default function ContactSection() {
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.currentTarget
+    if (name === 'inquiryType') {
+      setFormData({
+        ...formData,
+        inquiryType: value as ContactInquiryType,
+      })
+      return
+    }
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     })
   }
 
   const nextStep = () => {
-    if (step === 1 && formData.name && formData.email && formData.inquiryType) {
+    const currentData = readCurrentFormData()
+    if (step === 1 && currentData.name.trim() && currentData.email.trim() && currentData.inquiryType) {
+      setFormData(currentData)
+      setSubmitStatus('idle')
       setStep(2)
+      return
     }
+
+    setSubmitStatus('error')
   }
 
   const prevStep = () => {
     setStep(1)
   }
-
-  const isStep1Valid = formData.name && formData.email && formData.inquiryType
 
   return (
     <section
@@ -119,11 +181,11 @@ export default function ContactSection() {
       <div className="relative z-10 mx-auto max-w-[56rem]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={editorialTransition()}
           className="mb-10 text-center"
         >
-          <h2 className="section-heading mb-6 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+          <h2 className="section-heading mb-6 text-white ">
             お問い合わせ
           </h2>
           <p className="text-white/80 text-sm">
@@ -140,9 +202,9 @@ export default function ContactSection() {
         {/* 進捗インジケーター */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-7 rounded-sm border border-white/20 bg-white/72 p-4 shadow-[0_20px_48px_-28px_rgba(0,0,0,0.45)] backdrop-blur-md"
+          animate={{ opacity: 1, y: 0 }}
+          transition={editorialTransition(STAGGER_EDITORIAL * 2)}
+          className="mb-7 rounded-sm border border-white/35 bg-white/24 p-4 shadow-[0_8px_24px_-16px_rgba(27,58,45,0.2)] backdrop-blur-2xl"
         >
           <div className="flex items-center justify-center gap-4">
             <div className={`flex items-center gap-2 ${step >= 1 ? 'text-white' : 'text-white/75'}`}>
@@ -163,33 +225,33 @@ export default function ContactSection() {
 
         <motion.form
           initial={{ opacity: 0, y: 32, scale: 0.98 }}
-          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 32, scale: 0.98 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={editorialTransition(STAGGER_EDITORIAL * 2)}
           onSubmit={handleSubmit}
-          className="surface-card-strong border border-white/20 bg-white/80 p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md md:p-8"
+          ref={formRef}
+          className="rounded-sm border border-white/40 bg-white/[0.34] p-6 shadow-[0_8px_24px_-16px_rgba(27,58,45,0.25)] backdrop-blur-2xl md:p-8"
         >
           <AnimatePresence mode="wait">
             {step === 1 ? (
               <motion.div
                 key="step1"
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, x: 12 }}
+                transition={stepSlide}
                 className="space-y-6"
               >
-                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">基本情報</h3>
+                <h3 className="mb-5 text-xl font-bold text-white md:text-2xl">基本情報</h3>
                 
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
+                  transition={fieldReveal(1)}
                 >
-                  <label htmlFor="name" className="block text-sequoia-black font-semibold mb-2">
-                    お名前 <span className="text-sequoia-black">*</span>
+                  <label htmlFor="name" className="mb-2 block font-semibold text-white">
+                    お名前 <span className="text-white/85">*</span>
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.01 }}
                     type="text"
                     id="name"
                     name="name"
@@ -197,20 +259,20 @@ export default function ContactSection() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
+                    onInput={handleChange}
+                    className="field-base field-glass h-12"
                   />
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  transition={fieldReveal(2)}
                 >
-                  <label htmlFor="email" className="block text-sequoia-black font-semibold mb-2">
-                    メールアドレス <span className="text-sequoia-black">*</span>
+                  <label htmlFor="email" className="mb-2 block font-semibold text-white">
+                    メールアドレス <span className="text-white/85">*</span>
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.01 }}
                     type="email"
                     id="email"
                     name="email"
@@ -219,49 +281,48 @@ export default function ContactSection() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
+                    onInput={handleChange}
+                    className="field-base field-glass h-12"
                   />
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  transition={fieldReveal(3)}
                 >
-                  <label htmlFor="inquiryType" className="block text-sequoia-black font-semibold mb-2">
-                    お問い合わせ種別 <span className="text-sequoia-black">*</span>
+                  <label htmlFor="inquiryType" className="mb-2 block font-semibold text-white">
+                    お問い合わせ種別 <span className="text-white/85">*</span>
                   </label>
                   <motion.select
-                    whileFocus={{ scale: 1.01 }}
                     id="inquiryType"
                     name="inquiryType"
                     autoComplete="off"
                     required
                     value={formData.inquiryType}
                     onChange={handleChange}
-                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
+                    className="field-base field-glass h-12"
                   >
-                    <option value="service">サービス導入・お見積り</option>
-                    <option value="partnership">業務提携・投資・出資</option>
-                    <option value="recruiting">採用・参画</option>
-                    <option value="demo">デモ・資料請求</option>
-                    <option value="general">その他・一般的なお問い合わせ</option>
+                    {Object.entries(contactInquiryLabels).map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
                   </motion.select>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
+                  transition={fieldReveal(4)}
                   className="pt-4"
                 >
                   <motion.button
                     type="button"
                     onClick={nextStep}
-                    disabled={!isStep1Valid}
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="btn-primary w-full bg-sequoia-green text-white shadow-[0_14px_32px_-16px_rgba(18,92,70,0.55)] hover:bg-sequoia-green/90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
+                    className="btn-primary w-full "
                   >
                     次へ進む
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
@@ -271,44 +332,55 @@ export default function ContactSection() {
             ) : (
               <motion.div
                 key="step2"
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 12 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, x: -12 }}
+                transition={stepSlide}
                 className="space-y-6"
               >
-                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">詳細情報</h3>
+                <h3 className="mb-5 text-xl font-bold text-white md:text-2xl">詳細情報</h3>
 
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
+                  transition={fieldReveal(1)}
                 >
-                  <label htmlFor="company" className="block text-sequoia-black font-semibold mb-2">
+                  <label htmlFor="company" className="mb-2 block font-semibold text-white">
                     会社名
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.01 }}
                     type="text"
                     id="company"
                     name="company"
                     autoComplete="organization"
                     value={formData.company}
                     onChange={handleChange}
-                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
+                    onInput={handleChange}
+                    className="field-base field-glass h-12"
                   />
                 </motion.div>
 
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  onInput={handleChange}
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  transition={fieldReveal(2)}
                 >
-                  <label htmlFor="phone" className="block text-sequoia-black font-semibold mb-2">
+                  <label htmlFor="phone" className="mb-2 block font-semibold text-white">
                     電話番号
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.01 }}
                     type="tel"
                     id="phone"
                     name="phone"
@@ -316,20 +388,20 @@ export default function ContactSection() {
                     inputMode="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="field-base h-12 bg-white/85 focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
+                    onInput={handleChange}
+                    className="field-base field-glass h-12"
                   />
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  transition={fieldReveal(3)}
                 >
-                  <label htmlFor="message" className="block text-sequoia-black font-semibold mb-2">
-                    メッセージ <span className="text-sequoia-black">*</span>
+                  <label htmlFor="message" className="mb-2 block font-semibold text-white">
+                    メッセージ <span className="text-white/85">*</span>
                   </label>
                   <motion.textarea
-                    whileFocus={{ scale: 1.01 }}
                     id="message"
                     name="message"
                     autoComplete="off"
@@ -337,40 +409,47 @@ export default function ContactSection() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="field-base bg-white/85 resize-none focus:border-sequoia-green/60 focus:ring-2 focus:ring-sequoia-green/20"
-                    placeholder="お問い合わせ内容をご記入ください…"
+                    onInput={handleChange}
+                    className="field-base field-glass resize-none"
+                    placeholder={messagePlaceholder}
                   />
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
+                  transition={fieldReveal(4)}
                   className="pt-4 space-y-4"
                 >
                   <div aria-live="polite">
                   {submitStatus === 'success' && (
                     <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ type: 'spring', stiffness: 200 }}
-                      className="p-6 bg-green-50 border-2 border-green-200 rounded-sm"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={editorialTransition()}
+                      className="rounded-sm border border-white/45 bg-white/16 p-5 shadow-[0_8px_24px_-16px_rgba(27,58,45,0.25)] backdrop-blur-2xl"
                     >
                       <div className="flex items-start gap-3">
-                        <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/45 bg-sequoia-green/90 text-white shadow-sm backdrop-blur-md">
+                          <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+                        </span>
                         <div>
-                          <h4 className="font-bold text-green-800 mb-2">お問い合わせありがとうございます</h4>
-                          <p className="text-green-700 text-sm mb-4">
-                            担当者より24時間以内にご連絡いたします。
+                          <h4 className="mb-1 text-base font-bold text-white">お問い合わせありがとうございます</h4>
+                          <p className="text-sm leading-relaxed text-white/80">
+                            {isDryRun
+                              ? 'ローカル開発環境のため、実際の外部送信は行わずに送信フローを確認しました。'
+                              : '担当者より24時間以内にご連絡いたします。'}
                           </p>
-                          <div className="bg-green-100 p-4 rounded-sm">
-                            <p className="text-green-800 text-sm font-semibold mb-2">次のステップ：</p>
-                            <ul className="text-green-700 text-sm space-y-1 list-disc list-inside">
-                              <li>担当者よりメールまたは電話でご連絡</li>
-                              <li>ご状況の確認・ヒアリング</li>
-                              <li>ご要望に合わせた提案</li>
-                            </ul>
-                          </div>
+                          {!isDryRun && (
+                            <div className="mt-4 rounded-sm border border-white/35 bg-white/18 p-4 backdrop-blur-xl">
+                              <p className="mb-2 text-xs font-bold tracking-wider text-white">次のステップ</p>
+                              <ul className="space-y-1 text-sm leading-relaxed text-white/75">
+                                <li>担当者よりメールまたは電話でご連絡</li>
+                                <li>ご状況の確認・ヒアリング</li>
+                                <li>ご要望に合わせた提案</li>
+                              </ul>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </motion.div>
@@ -380,12 +459,13 @@ export default function ContactSection() {
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ type: 'spring', stiffness: 200 }}
-                      className="p-4 bg-red-100 text-red-800 rounded-sm text-center"
+                      className="rounded-sm border border-red-200/70 bg-white/[0.42] p-4 text-center text-sm font-medium text-red-800 shadow-sm backdrop-blur-xl"
                     >
-                      送信に失敗しました。もう一度お試しください。
+                      必須項目を確認して、もう一度お試しください。
                     </motion.div>
                   )}
                   </div>
+                  {submitStatus !== 'success' && (
                   <div className="flex gap-4">
                     <motion.button
                       type="button"
@@ -399,14 +479,15 @@ export default function ContactSection() {
                     </motion.button>
                     <motion.button
                       type="submit"
-                      disabled={isSubmitting || !formData.message}
+                      disabled={isSubmitting}
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="btn-primary flex-1 bg-sequoia-green text-white shadow-[0_14px_32px_-16px_rgba(18,92,70,0.55)] hover:bg-sequoia-green/90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
+                      className="btn-primary flex-1  disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                     >
                       {isSubmitting ? '送信中…' : '送信する'}
                     </motion.button>
                   </div>
+                  )}
                 </motion.div>
               </motion.div>
             )}

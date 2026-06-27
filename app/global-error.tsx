@@ -19,7 +19,7 @@ export default function GlobalError({
           padding: '2rem',
           fontFamily: 'system-ui, sans-serif',
           background: '#ffffff',
-          color: '#1b1916',
+          color: '#152828',
           lineHeight: 1.6,
         }}
       >
@@ -41,7 +41,7 @@ export default function GlobalError({
               fontWeight: 600,
               border: 'none',
               borderRadius: '4px',
-              background: '#0d5c3a',
+              background: '#1B3A2D',
               color: '#fff',
               cursor: 'pointer',
             }}
@@ -57,7 +57,7 @@ export default function GlobalError({
               fontWeight: 600,
               borderRadius: '4px',
               border: '1px solid #ccc',
-              color: '#1b1916',
+              color: '#152828',
               textDecoration: 'none',
             }}
           >

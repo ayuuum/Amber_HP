@@ -28,7 +28,7 @@ export default function DevelopmentBlogPage() {
     <>
       <Header />
       <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <Link
               href="/service/development"
@@ -45,7 +45,7 @@ export default function DevelopmentBlogPage() {
           </div>
 
           {posts.length === 0 ? (
-            <div className="bg-color-bg p-12 rounded-sm border border-sequoia-black/10 text-center">
+            <div className="surface-card p-12 text-center">
               <p className="text-sequoia-black text-lg">
                 記事の準備中です。近日公開予定です。
               </p>
@@ -56,7 +56,7 @@ export default function DevelopmentBlogPage() {
                 <Link
                   key={post.slug}
                   href={`${getCategoryPath('development')}/${post.slug}`}
-                  className="bg-color-bg p-6 rounded-sm border border-sequoia-black/10 hover:shadow-lg transition-shadow block"
+                  className="surface-card interactive-card block p-6"
                 >
                   <div className="mb-4">
                     <span className="text-sm text-sequoia-black font-semibold">

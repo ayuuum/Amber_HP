@@ -2,9 +2,10 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { MOTION_BASE, MOTION_EASE } from '@/lib/motion-safe'
 
 type AboutSectionProps = {
   /** トップ用の短い要約。企業ページでは省略。 */
@@ -13,23 +14,21 @@ type AboutSectionProps = {
 
 export default function AboutSection({ variant = 'default' }: AboutSectionProps) {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   if (variant === 'teaser') {
     return (
       <section
         id="company-intro"
         ref={sectionRef}
-        className="section-pad relative overflow-hidden"
-        style={{ backgroundColor: 'var(--color-bg)' }}
+        className="section-pad relative overflow-hidden border-t border-sequoia-black/10 bg-color-bg"
       >
         <div className="relative z-10 mx-auto max-w-5xl">
-          <div className="grid gap-12 rounded-sm border border-sequoia-black/10 bg-color-bg-subtle/70 p-4 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.12)] md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16 md:p-6">
+          <div className="surface-card grid gap-12 bg-color-bg-subtle/70 p-4 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16 md:p-6">
             <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]"
+              initial={false}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10"
             >
               <Image
                 src="/images/about-mission-mountain.png"
@@ -43,40 +42,31 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
                 aria-hidden
               />
             </motion.div>
-            <div className="rounded-sm border border-sequoia-black/10 bg-white/70 p-5 backdrop-blur-[1px] md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-0">
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="eyebrow-light mb-4"
-              >
-                私たちについて
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-                transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-lead mb-6 text-lg font-bold text-sequoia-black md:text-xl"
-              >
-                現場が回り続ける仕組みを、技術で実装する。
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-                transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-8 text-sm leading-relaxed text-sequoia-black/85 md:text-base"
-              >
-                暮らしを支える産業に特化し、設計から定着まで一気通貫で届けます。
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Link
-                  href="/company"
-                  className="btn-secondary inline-flex min-w-[200px] items-center justify-center gap-2"
+            <div className="md:p-0">
+              <div className="section-header mb-0">
+                <motion.h2
+                  initial={false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
+                  className="heading-h3 mb-4"
                 >
+                  暮らしを支える産業に特化し、設計から定着まで一気通貫で届けます。
+                </motion.h2>
+                <motion.p
+                  initial={false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: MOTION_BASE, delay: 0.04, ease: MOTION_EASE }}
+                  className="text-body mb-8 text-sequoia-black/85"
+                >
+                  現場が回り続ける仕組みを、技術で実装する。
+                </motion.p>
+              </div>
+              <motion.div
+                initial={false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: MOTION_BASE, delay: 0.08, ease: MOTION_EASE }}
+              >
+                <Link href="/company" className="text-link">
                   企業情報を見る
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
@@ -92,28 +82,26 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
     <section
       id="about"
       ref={sectionRef}
-      className="relative overflow-hidden px-6 pt-32 pb-24 md:pt-40 md:pb-36"
+      className="relative overflow-hidden bg-color-bg-subtle px-6 pt-32 pb-24 md:pt-40 md:pb-36"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
-        {/* ページヘッダー */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 max-w-3xl md:mb-24"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
+          className="section-header mb-0 md:mb-24"
         >
           <p className="eyebrow-light mb-4">企業情報</p>
           <h2 className="page-heading mb-6">Amberについて</h2>
         </motion.div>
 
-        {/* ミッション + 写真 Split型 */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: MOTION_BASE, delay: 0.04, ease: MOTION_EASE }}
           className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16"
         >
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)] md:aspect-[4/5]">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm border border-sequoia-black/10 md:aspect-[4/5]">
             <Image
               src="/images/about-mission-mountain.png"
               alt="Amberのミッションを表すイメージ"
@@ -122,12 +110,16 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
               sizes="(max-width: 1024px) 100vw, 480px"
             />
           </div>
-          <div>
-            <p className="mb-4 text-xs font-bold tracking-[0.2em] text-sequoia-green">ミッション</p>
-            <h3 className="mb-8 text-2xl font-bold leading-[1.3] tracking-tight text-sequoia-black md:text-3xl lg:text-4xl">
-              現場が回り続ける仕組みを、<br />技術で実装する。
+          <div className="surface-card rounded-sm p-6 md:p-8">
+            <p className="text-caption mb-4 font-semibold uppercase tracking-[0.2em] text-sequoia-green">
+              ミッション
+            </p>
+            <h3 className="heading-h3 mb-8">
+              現場が回り続ける仕組みを、
+              <br className="hidden md:inline" />
+              技術で実装する。
             </h3>
-            <div className="space-y-5 text-sm leading-relaxed text-sequoia-black/85 md:text-base">
+            <div className="space-y-5 text-body text-sequoia-black/85">
               <p>
                 ハウスクリーニング、物流、介護、建設、製造。暮らしを支える産業の業務には、まだ手作業や属人的な仕組みが多く残っています。
               </p>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { MOTION_EDITORIAL } from '@/lib/motion-safe'
 
 interface AnimatedTextCycleProps {
   words: string[]
@@ -18,16 +19,25 @@ export default function AnimatedTextCycle({
   const [ready, setReady] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [measuredWidth, setMeasuredWidth] = useState<number | null>(null)
+  const [allowWidthAnim, setAllowWidthAnim] = useState(false)
   const measureRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
     setReady(true)
   }, [])
 
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    const update = () => setAllowWidthAnim(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
   const staticMode = !ready || reducedMotion === true
 
   useLayoutEffect(() => {
-    if (staticMode || words.length === 0) return
+    if (staticMode || !allowWidthAnim || words.length === 0) return
     const root = measureRef.current
     if (!root) return
     const els = root.children
@@ -36,7 +46,7 @@ export default function AnimatedTextCycle({
     if (w > 0) {
       setMeasuredWidth(Math.ceil(w))
     }
-  }, [staticMode, currentIndex, words.length])
+  }, [staticMode, allowWidthAnim, currentIndex, words.length])
 
   useEffect(() => {
     if (staticMode || words.length === 0) return
@@ -52,40 +62,38 @@ export default function AnimatedTextCycle({
 
   if (staticMode) {
     return (
-      <span className={`inline-block font-bold ${className}`}>{words[0]}</span>
+      <span className={`inline font-bold ${className}`}>{words[0]}</span>
     )
   }
 
-  const widthStyle = measuredWidth != null ? (`${measuredWidth}px` as const) : 'auto'
+  const widthStyle =
+    allowWidthAnim && measuredWidth != null ? (`${measuredWidth}px` as const) : 'auto'
 
   const containerVariants = {
     hidden: {
-      y: -20,
+      y: -6,
       opacity: 0,
-      filter: 'blur(8px)',
     },
     visible: {
       y: 0,
       opacity: 1,
-      filter: 'blur(0px)',
       transition: {
-        duration: 0.4,
-        ease: 'easeOut',
+        duration: MOTION_EDITORIAL,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
     exit: {
-      y: 20,
+      y: 6,
       opacity: 0,
-      filter: 'blur(8px)',
       transition: {
-        duration: 0.3,
-        ease: 'easeIn',
+        duration: MOTION_EDITORIAL,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   }
 
   return (
-    <span className="relative inline-block align-baseline" aria-live="polite" aria-atomic="true">
+    <span className="relative inline align-baseline" aria-live="polite" aria-atomic="true">
       <div
         ref={measureRef}
         aria-hidden="true"
@@ -103,26 +111,27 @@ export default function AnimatedTextCycle({
       </div>
 
       <motion.span
-        className="relative inline-block align-baseline"
+        className="relative inline align-baseline"
         animate={{
           width: widthStyle,
-          transition: {
-            type: 'spring',
-            stiffness: 150,
-            damping: 15,
-            mass: 1.2,
-          },
+          transition: allowWidthAnim
+            ? {
+                type: 'spring',
+                stiffness: 150,
+                damping: 15,
+                mass: 1.2,
+              }
+            : { duration: 0 },
         }}
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
             key={currentIndex}
-            className={`inline-block font-bold ${className}`}
+            className={`inline font-bold ${className}`}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            style={{ whiteSpace: 'nowrap' }}
           >
             {words[currentIndex]}
           </motion.span>

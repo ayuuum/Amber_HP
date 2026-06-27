@@ -17,6 +17,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { placeholders } from '@/lib/placeholder-images'
+import { editorialTransition, scrollRevealTransition, STAGGER_EDITORIAL } from '@/lib/motion-safe'
 
 // よくある失敗（顧客課題）
 const failures: { icon: LucideIcon; label: string; title: string; desc: string }[] = [
@@ -179,7 +180,7 @@ const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-100px' },
-  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  transition: editorialTransition(),
 }
 
 export default function TrainingPageClient() {
@@ -191,18 +192,18 @@ export default function TrainingPageClient() {
           aria-hidden
           className="pointer-events-none absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(15,42,30,0.06) 0%, transparent 65%)',
+            background: 'radial-gradient(circle, rgba(27,58,45,0.06) 0%, transparent 65%)',
           }}
         />
         <div className="relative mx-auto max-w-6xl">
-          <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-center md:gap-16">
+          <div className="grid grid-cols-[1.15fr_0.85fr] items-start gap-4 sm:gap-6 md:items-center md:gap-16 lg:grid-cols-[1.2fr_1fr]">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              transition={editorialTransition()}
             >
-              <p className="eyebrow-light mb-6">研修サービス</p>
-              <h1 className="page-heading mb-6">
+              <p className="eyebrow-light mb-4 md:mb-6">研修サービス</p>
+              <h1 className="page-heading mb-4 text-[clamp(1.375rem,4.5vw,2.25rem)] md:mb-6 md:text-[clamp(2.25rem,5vw,4.5rem)]">
                 生成AI<br />活用研修
               </h1>
               <p className="mb-3 text-base font-medium text-sequoia-green md:text-lg">
@@ -215,15 +216,15 @@ export default function TrainingPageClient() {
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.0, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]"
+              transition={editorialTransition(STAGGER_EDITORIAL)}
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10 sm:aspect-[4/3]"
             >
               <Image
                 src={placeholders.trainingHero}
                 alt="生成AI活用研修のイメージ"
                 fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 480px"
+                className="flex flex-wrap bg-[unset] object-cover"
+                sizes="(max-width: 768px) 42vw, 480px"
                 priority
               />
             </motion.div>
@@ -232,7 +233,7 @@ export default function TrainingPageClient() {
       </section>
 
       {/* よくある失敗（課題提起） */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
+      <section className="section-pad border-b border-sequoia-black/10 bg-color-bg">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-24">
             <p className="eyebrow-light mb-4">よくある失敗</p>
@@ -250,12 +251,12 @@ export default function TrainingPageClient() {
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="rounded-sm border border-sequoia-black/10 bg-white p-8"
+                  transition={scrollRevealTransition(idx)}
+                  className="surface-card p-8"
                 >
                   <Icon className="mb-6 h-8 w-8 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
                   <p className="mb-3 text-xs font-bold tracking-[0.15em] text-sequoia-black/55">{f.label}</p>
-                  <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
+                  <h3 className="heading-h3 mb-3 text-xl">
                     {f.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{f.desc}</p>
@@ -267,7 +268,7 @@ export default function TrainingPageClient() {
       </section>
 
       {/* 3段階のAI活用 */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36">
+      <section className="section-pad border-b border-sequoia-black/10 bg-color-bg-subtle">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
             <p className="eyebrow-light mb-4">3段階のAI活用</p>
@@ -286,9 +287,9 @@ export default function TrainingPageClient() {
               role="img"
               aria-label="3段階のAI活用ピラミッド"
             >
-              <polygon points="140,20 100,80 180,80" fill="rgb(13 92 58)" />
-              <polygon points="100,80 60,160 220,160 180,80" fill="rgb(13 92 58 / 0.7)" />
-              <polygon points="60,160 20,250 260,250 220,160" fill="rgb(13 92 58 / 0.45)" />
+              <polygon points="140,20 100,80 180,80" fill="rgb(27 58 45)" />
+              <polygon points="100,80 60,160 220,160 180,80" fill="rgb(27 58 45 / 0.7)" />
+              <polygon points="60,160 20,250 260,250 220,160" fill="rgb(27 58 45 / 0.45)" />
               <text x="140" y="58" textAnchor="middle" fontSize="11" fill="white" fontWeight="700" letterSpacing="1">Lv 03</text>
               <text x="140" y="125" textAnchor="middle" fontSize="11" fill="white" fontWeight="700" letterSpacing="1">Lv 02</text>
               <text x="140" y="215" textAnchor="middle" fontSize="11" fill="white" fontWeight="700" letterSpacing="1">Lv 01</text>
@@ -301,11 +302,11 @@ export default function TrainingPageClient() {
                 >
                   <div className="flex items-baseline gap-2">
                     <span className="text-xs font-bold tracking-wider text-sequoia-green md:text-sm">Lv</span>
-                    <span className="text-5xl font-black leading-none tracking-tight text-sequoia-green md:text-6xl">
+                    <span className="num-badge text-4xl md:text-5xl">
                       {stage.lv}
                     </span>
                   </div>
-                  <p className="text-lg font-bold tracking-tight text-sequoia-black md:text-xl">{stage.name}</p>
+                  <p className="heading-h3">{stage.name}</p>
                   <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{stage.desc}</p>
                 </div>
               ))}
@@ -317,7 +318,7 @@ export default function TrainingPageClient() {
       {/* 2コース */}
       <section
         id="courses"
-        className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36"
+        className="section-pad border-b border-sequoia-black/10 bg-color-bg"
       >
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
@@ -337,12 +338,12 @@ export default function TrainingPageClient() {
                   initial={{ opacity: 0, y: 32 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  transition={scrollRevealTransition(idx)}
                   className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16"
                 >
                   {/* 画像 */}
                   <div className={isReversed ? 'md:order-2' : ''}>
-                    <div className="relative aspect-[5/4] w-full overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]">
+                    <div className="relative aspect-[5/4] w-full overflow-hidden rounded-sm border border-sequoia-black/10 ">
                       <Image
                         src={course.image}
                         alt={course.title}
@@ -361,10 +362,10 @@ export default function TrainingPageClient() {
                         {course.badge}
                       </span>
                     </div>
-                    <p className="mb-3 text-5xl font-black leading-none tracking-tight text-sequoia-green/25 md:text-6xl">
+                    <p className="num-badge mb-3 opacity-25">
                       {course.num}
                     </p>
-                    <h3 className="mb-3 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl lg:text-4xl">
+                    <h3 className="heading-h3 mb-3">
                       {course.title}
                     </h3>
                     <p className="mb-6 text-sm font-medium text-sequoia-green md:text-base">{course.subtitle}</p>
@@ -410,7 +411,7 @@ export default function TrainingPageClient() {
       </section>
 
       {/* IT環境カスタマイズ */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36">
+      <section className="section-pad border-b border-sequoia-black/10 bg-color-bg-subtle">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
             <p className="eyebrow-light mb-4">カスタマイズ</p>
@@ -430,7 +431,7 @@ export default function TrainingPageClient() {
                   <div className="flex flex-col gap-3">
                     <Icon className="h-8 w-8 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
                     <p className="text-xs font-bold tracking-wider text-sequoia-green">{env.tag}</p>
-                    <h3 className="text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">{env.name}</h3>
+                    <h3 className="heading-h3">{env.name}</h3>
                   </div>
                   <div>
                     <p className="mb-2 text-xs font-bold tracking-wider text-sequoia-black/55">基礎コース</p>
@@ -455,7 +456,7 @@ export default function TrainingPageClient() {
       </section>
 
       {/* Amberの3つの理由 ＋ 比較表（統合） */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
+      <section className="section-pad border-b border-sequoia-black/10 bg-color-bg">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
             <p className="eyebrow-light mb-4">Amberの3つの理由</p>
@@ -474,15 +475,15 @@ export default function TrainingPageClient() {
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  transition={scrollRevealTransition(idx)}
                 >
                   <div className="mb-6 flex items-baseline gap-4">
                     <Icon className="h-9 w-9 text-sequoia-green" aria-hidden="true" strokeWidth={1.5} />
-                    <p className="text-5xl font-black leading-none tracking-tight text-sequoia-green/30 md:text-6xl">
+                    <p className="num-badge opacity-30">
                       {r.num}
                     </p>
                   </div>
-                  <h3 className="mb-4 text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">{r.title}</h3>
+                  <h3 className="heading-h3 mb-4">{r.title}</h3>
                   <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{r.desc}</p>
                 </motion.div>
               )
@@ -520,12 +521,12 @@ export default function TrainingPageClient() {
       </section>
 
       {/* ツール別LP誘導カード */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
+      <section className="section-pad border-b border-sequoia-black/10 bg-color-bg">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-20">
             <p className="eyebrow-light mb-4">ツール別・職種別で選ぶ</p>
             <h2 className="section-heading mb-6">
-              御社のツールと用途に<br />特化した研修ページへ
+              御社のツールに合わせた研修を提供
             </h2>
           </motion.div>
 
@@ -566,7 +567,7 @@ export default function TrainingPageClient() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                transition={scrollRevealTransition(idx)}
                 className="group flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-6 transition-shadow hover:shadow-lg md:p-8"
                 style={{'--lp-accent': tool.accentRgb} as React.CSSProperties}
               >
@@ -591,10 +592,7 @@ export default function TrainingPageClient() {
       <section id="subsidy" className="bg-color-bg-subtle px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
-            <p className="eyebrow-light mb-4">人材開発支援助成金</p>
-            <h2 className="section-heading">
-              企業向け職業訓練の<br />助成金対象となる可能性
-            </h2>
+            <p className="eyebrow-light mb-4 text-[30px]">人材開発支援助成金</p>
           </motion.div>
 
           <motion.div {...fadeUp} className="max-w-3xl">

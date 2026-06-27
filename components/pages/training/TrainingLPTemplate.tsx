@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight, BadgeCheck } from 'lucide-react'
 import type { ToolLPData } from './types'
+import { buildContactHref } from '@/lib/contact'
+import { editorialTransition, scrollRevealTransition, STAGGER_EDITORIAL } from '@/lib/motion-safe'
 
 const problemIcons = [AlertTriangle, CircleSlash, PenLine]
 
@@ -11,10 +13,13 @@ const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-100px' },
-  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  transition: editorialTransition(),
 }
 
 export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
+  const contactHref = buildContactHref(data.slug, 'training')
+  const practicalScenes = data.basicCourse.items.slice(0, 4)
+
   return (
     <main className="min-h-screen bg-color-bg" style={{'--lp-accent': data.accentRgb} as React.CSSProperties}>
 
@@ -23,7 +28,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         <div
           aria-hidden
           className="pointer-events-none absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(15,42,30,0.06) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(27,58,45,0.06) 0%, transparent 65%)' }}
         />
         <div className="relative mx-auto max-w-6xl">
           {/* パンくず */}
@@ -38,7 +43,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={editorialTransition()}
             className="max-w-3xl"
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
@@ -64,7 +69,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/company#contact"
+                href={contactHref}
                 className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
               >
                 無料相談・資料請求
@@ -76,6 +81,22 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               >
                 研修の全体像を見る
               </Link>
+            </div>
+
+            <div className="mt-10 max-w-3xl border-t border-sequoia-black/10 pt-6">
+              <p className="mb-3 text-xs font-bold tracking-wider text-sequoia-black/55">
+                相談しやすいテーマ
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {practicalScenes.map((scene) => (
+                  <span
+                    key={scene}
+                    className="rounded-sm border border-accent/20 bg-accent/6 px-3 py-2 text-xs font-medium text-sequoia-black/75"
+                  >
+                    {scene}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -100,7 +121,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  transition={scrollRevealTransition(idx)}
                   className="rounded-sm border border-sequoia-black/10 bg-white p-8"
                 >
                   <Icon className="mb-6 h-8 w-8 text-accent" aria-hidden="true" strokeWidth={1.5} />
@@ -138,7 +159,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   基礎 / Lv1 をカバー
                 </span>
               </div>
-              <p className="mb-2 text-4xl font-black leading-none tracking-tight text-accent/20">01</p>
+              <p className="mb-2 num-badge text-3xl opacity-40">01</p>
               <h3 className="mb-2 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
                 AI業務活用コース
               </h3>
@@ -180,7 +201,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={editorialTransition(STAGGER_EDITORIAL)}
               className="flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-8 md:p-10"
             >
               <div className="mb-6 flex items-center gap-4">
@@ -189,7 +210,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   応用 / Lv2・Lv3 をカバー
                 </span>
               </div>
-              <p className="mb-2 text-4xl font-black leading-none tracking-tight text-accent/20">02</p>
+              <p className="mb-2 num-badge text-3xl opacity-40">02</p>
               <h3 className="mb-2 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
                 AI業務実装コース
               </h3>
@@ -266,10 +287,10 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                transition={scrollRevealTransition(idx)}
                 className="rounded-sm border border-sequoia-black/10 bg-white p-8"
               >
-                <p className="mb-4 text-5xl font-black leading-none tracking-tight text-accent/20">
+                <p className="mb-4 num-badge text-4xl opacity-40">
                   {reason.num}
                 </p>
                 <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
@@ -300,7 +321,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               </p>
             </div>
             <Link
-              href="/company#contact"
+              href={contactHref}
               className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               助成金について相談する
@@ -340,27 +361,6 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         </section>
       )}
 
-      {/* CTA */}
-      <section className="bg-accent px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl text-center">
-          <motion.div {...fadeUp}>
-            <p className="mb-4 text-sm font-medium tracking-wider text-white/70">まずは無料でご相談ください</p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
-              {data.toolName}研修、<br className="md:hidden" />どこから始めればいいか、<br />一緒に考えます。
-            </h2>
-            <p className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-white/80 md:text-base">
-              貴社の規模・IT環境・現在の活用状況をお聞きした上で、最適なコース・スケジュール・費用の目安をご提案します。
-            </p>
-            <Link
-              href="/company#contact"
-              className="inline-flex items-center gap-2 rounded-sm bg-white px-8 py-4 text-sm font-bold text-accent shadow-lg transition-opacity hover:opacity-90"
-            >
-              無料相談・資料請求
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
     </main>
   )
 }

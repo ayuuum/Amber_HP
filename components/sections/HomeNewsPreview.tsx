@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
 import type { BlogPost, BlogCategory } from '@/lib/markdown'
 import { excerptPlainText } from '@/lib/plain-text'
@@ -28,20 +29,18 @@ export default function HomeNewsPreview() {
       aria-labelledby="home-news-heading"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="section-header mb-12 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 id="home-news-heading" className="section-heading">
               最新記事
             </h2>
-            <p className="mt-3 text-sm text-sequoia-black/70 md:text-base">
+            <p className="section-subheading mt-3 !mx-0 !max-w-none text-left">
               知見とアップデートを公開しています。
             </p>
           </div>
-          <Link
-            href="/blog"
-            className="btn-secondary inline-flex min-w-[180px] items-center justify-center self-start md:self-auto"
-          >
+          <Link href="/blog" className="text-link self-start md:self-auto">
             記事一覧を見る
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
         <ul className="grid gap-4 md:gap-5">
@@ -49,9 +48,9 @@ export default function HomeNewsPreview() {
             <li key={`${category}-${post.slug}`}>
               <Link
                 href={`${getCategoryPath(category)}/${post.slug}`}
-                className="group grid gap-4 rounded-sm border border-sequoia-black/10 bg-white/65 px-5 py-5 transition-[border-color,transform,box-shadow,color] duration-250 hover:-translate-y-0.5 hover:border-sequoia-green/35 hover:shadow-[0_18px_40px_-24px_rgba(15,42,30,0.2)] md:grid-cols-[180px_1fr] md:px-6"
+                className="group surface-card interactive-card grid gap-4 px-5 py-5 md:grid-cols-[180px_1fr] md:px-6"
               >
-                <span className="flex flex-col gap-1 text-xs font-medium text-sequoia-black/60">
+                <span className="text-caption flex flex-col gap-1 font-medium">
                   <span>{getCategoryName(category)}</span>
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString('ja-JP', {
@@ -62,10 +61,10 @@ export default function HomeNewsPreview() {
                   </time>
                 </span>
                 <span className="flex min-w-0 flex-col gap-2">
-                  <span className="line-clamp-2 text-lg font-bold text-sequoia-black transition-colors group-hover:text-sequoia-green">
+                  <span className="heading-h3 line-clamp-2 transition-colors group-hover:text-sequoia-green">
                     {post.title}
                   </span>
-                  <span className="line-clamp-1 text-sm leading-relaxed text-sequoia-black/75">
+                  <span className="text-body line-clamp-1 text-sequoia-black/75">
                     {excerptPlainText(post.excerpt || post.description || '')}
                   </span>
                 </span>

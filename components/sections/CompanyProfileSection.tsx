@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRef } from 'react'
+import { MOTION_BASE, MOTION_EASE } from '@/lib/motion-safe'
 
 const profile = [
   {
@@ -30,20 +31,19 @@ const profile = [
 
 export default function CompanyProfileSection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
     <section
       id="company"
       ref={sectionRef}
-      className="bg-color-bg px-6 py-24 md:py-36"
+      className="section-pad bg-color-bg-subtle"
     >
       <div className="mx-auto max-w-6xl">
         {/* セクションヘッダー */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
           className="mb-16 max-w-3xl md:mb-24"
         >
           <p className="eyebrow-light mb-4">企業情報</p>
@@ -54,14 +54,14 @@ export default function CompanyProfileSection() {
 
         {/* 代表プロフィール */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-20 grid gap-12 border-t border-sequoia-black/10 pt-16 md:mb-28 md:grid-cols-[280px_1fr] md:gap-16 md:pt-20"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: MOTION_BASE, delay: 0.1, ease: MOTION_EASE }}
+          className="surface-card mb-20 grid gap-12 rounded-sm p-6 md:mb-28 md:grid-cols-[280px_1fr] md:gap-16 md:p-8"
         >
           <div>
             <p className="mb-4 text-xs font-bold tracking-[0.2em] text-sequoia-green">代表取締役</p>
-            <div className="relative aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-sm border border-sequoia-black/10 shadow-[0_24px_60px_-20px_rgba(15,42,30,0.18)]">
+            <div className="relative aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-sm border border-sequoia-black/10 ">
               <Image
                 src="/images/ceo-photo.png"
                 alt="代表取締役 松井歩武の写真"
@@ -70,7 +70,7 @@ export default function CompanyProfileSection() {
                 sizes="280px"
               />
             </div>
-            <p className="mt-6 text-2xl font-bold tracking-tight text-sequoia-black">松井 歩武</p>
+            <p className="mt-6 heading-h3 text-sequoia-black">松井 歩武</p>
             <p className="mt-1 text-sm text-sequoia-black/70">Ayumu Matsui</p>
           </div>
 
@@ -90,21 +90,21 @@ export default function CompanyProfileSection() {
 
         {/* 会社概要 + 沿革 */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="grid gap-12 border-t border-sequoia-black/10 pt-16 md:grid-cols-[1fr_2fr] md:gap-16 md:pt-20"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: MOTION_BASE, delay: 0.15, ease: MOTION_EASE }}
+          className="surface-card grid gap-12 rounded-sm p-6 md:grid-cols-[1fr_2fr] md:gap-16 md:p-8"
         >
           <div>
             <p className="mb-4 text-xs font-bold tracking-[0.2em] text-sequoia-green">会社概要</p>
-            <h3 className="text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
+            <h3 className="heading-h3">
               基本情報・沿革
             </h3>
           </div>
 
           <div>
             {/* 会社概要 dl */}
-            <dl className="mb-12 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
+            <dl className="mb-12 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10 bg-white/18">
               {profile.map((row) => (
                 <div
                   key={row.label}
@@ -129,7 +129,7 @@ export default function CompanyProfileSection() {
                 〒105-0001<br />
                 東京都港区虎ノ門３丁目１−１ 2階
               </p>
-              <div className="aspect-video w-full overflow-hidden rounded-sm border border-sequoia-black/10">
+              <div className="aspect-video w-full overflow-hidden rounded-sm border border-white/70 bg-white/25 p-1  backdrop-blur-md">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.272102022718!2d139.74549487532356!3d35.66782333118949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b907611ec51%3A0xc3124847e30773d3!2z44CSMTA1LTAwMDEg5p2x5Lqs6YO95riv5Yy66JmO44OO6ZaA77yT5LiB55uu77yR4oiS77ke!5e0!3m2!1sja!2sjp!4v1714710000000!5m2!1sja!2sjp"
                   width="100%"

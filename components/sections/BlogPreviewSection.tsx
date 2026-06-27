@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
 import type { BlogPost, BlogCategory } from '@/lib/markdown'
-import { staggerContainerRelaxed } from '@/lib/motion-safe'
+import { staggerContainerRelaxed, MOTION_BASE, MOTION_EASE } from '@/lib/motion-safe'
 
 const CATEGORY_PATHS: Record<BlogCategory, string> = {
   development: '/service/development/blog',
@@ -31,29 +31,25 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
   const displayPosts = posts.slice(0, 3)
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 32, scale: 0.98 },
+    hidden: { opacity: 0, y: 16 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        duration: MOTION_BASE,
+        ease: MOTION_EASE,
       },
     },
   }
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-24 px-6 bg-color-bg-subtle relative overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section ref={sectionRef} className="section-pad relative overflow-hidden bg-color-bg-subtle">
+      <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
+          className="section-header mb-0 text-center"
         >
           <h2 className="section-heading mb-6">関連記事</h2>
         </motion.div>
@@ -62,21 +58,16 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
           variants={staggerContainerRelaxed}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid md:grid-cols-3 gap-8 mb-12"
+          className="mt-12 grid gap-8 md:grid-cols-3"
         >
-          {displayPosts.map((post, index) => (
+          {displayPosts.map((post) => (
             <motion.div
               key={post.slug}
               variants={cardVariants}
-              whileHover={{
-                scale: 1.01,
-                y: -4,
-                transition: { duration: 0.25 }
-              }}
-              className="rounded-sm border border-sequoia-black/10 bg-color-bg shadow-sm interactive-card group flex h-full flex-col p-6"
+              className="surface-card interactive-card group flex h-full flex-col p-6"
             >
               <div className="mb-4">
-                <span className="text-xs text-sequoia-black font-semibold">
+                <span className="text-caption font-semibold">
                   {new Date(post.date).toLocaleDateString('ja-JP', {
                     year: 'numeric',
                     month: 'long',
@@ -84,34 +75,25 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                   })}
                 </span>
               </div>
-              <Link
-                href={`${getCategoryPath(category)}/${post.slug}`}
-                className="block flex-grow"
-              >
-                <h3 className="mb-3 line-clamp-2 text-xl font-bold text-sequoia-black transition-colors duration-200 group-hover:text-sequoia-green">
+              <Link href={`${getCategoryPath(category)}/${post.slug}`} className="block flex-grow">
+                <h3 className="heading-h3 mb-3 line-clamp-2 text-xl transition-colors duration-brand group-hover:text-sequoia-green">
                   {post.title}
                 </h3>
-                <p className="text-sequoia-black text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-body mb-4 line-clamp-3 text-sequoia-black/80">
                   {post.excerpt || post.description}
                 </p>
               </Link>
               <div className="mt-auto">
                 {post.keywords.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="mb-4 flex flex-wrap gap-2">
                     {post.keywords.slice(0, 3).map((keyword, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs bg-sequoia-black/10 text-sequoia-black px-2 py-1 rounded-sm"
-                      >
+                      <span key={idx} className="text-caption rounded-sm bg-sequoia-black/10 px-2 py-1">
                         {keyword}
                       </span>
                     ))}
                   </div>
                 )}
-                <Link
-                  href={`${getCategoryPath(category)}/${post.slug}`}
-                  className="text-link text-sm"
-                >
+                <Link href={`${getCategoryPath(category)}/${post.slug}`} className="text-link text-sm">
                   続きを読む
                 </Link>
               </div>
@@ -120,15 +102,12 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center"
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: MOTION_BASE, delay: 0.08, ease: MOTION_EASE }}
+          className="mt-12 text-center"
         >
-          <Link
-            href={getCategoryPath(category)}
-            className="btn-primary"
-          >
+          <Link href={getCategoryPath(category)} className="btn-primary">
             すべての記事を見る
           </Link>
         </motion.div>
