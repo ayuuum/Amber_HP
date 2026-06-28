@@ -88,12 +88,6 @@
     z-index: 2;
   }
 
-@media (pointer: fine) {
-  *, *::before, *::after {
-    cursor: none !important;
-  }
-}
-
   h1,
   h2,
   h3,
@@ -156,7 +150,7 @@
 
   /* H2 — 48px / Bold */
   .section-heading {
-    @apply text-[2rem] md:text-[3rem] font-bold text-sequoia-black text-balance;
+    @apply break-keep text-[2rem] font-bold text-sequoia-black md:text-[3rem];
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
@@ -170,7 +164,7 @@
 
   /* H1 — 72px / Bold */
   .hero-heading {
-    @apply text-sequoia-black font-bold text-balance;
+    @apply break-keep font-bold text-sequoia-black;
     font-size: clamp(2.25rem, 5vw, 4.5rem);
     line-height: 1.1;
     letter-spacing: -0.02em;

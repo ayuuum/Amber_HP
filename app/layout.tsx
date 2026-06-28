@@ -4,7 +4,6 @@ import './globals.css'
 import Analytics from '@/components/Analytics'
 import HashScrollHandler from '@/components/HashScrollHandler'
 import StructuredData from '@/components/StructuredData'
-import CustomCursor from '@/components/ui/custom-cursor'
 import PageTransitionWrapper from '@/components/PageTransitionWrapper'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
@@ -85,7 +84,6 @@ export default function RootLayout({
     <html lang="ja" className={`${notoSansJP.variable} ${inter.variable}`}>
       <body>
         <StructuredData />
-        <CustomCursor />
         <HashScrollHandler />
         <PageTransitionWrapper>
           {children}

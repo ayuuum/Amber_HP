@@ -223,7 +223,7 @@ export default function TrainingPageClient() {
                 src={placeholders.trainingHero}
                 alt="生成AI活用研修のイメージ"
                 fill
-                className="flex flex-wrap bg-[unset] object-cover"
+                className="object-cover"
                 sizes="(max-width: 768px) 42vw, 480px"
                 priority
               />
@@ -592,7 +592,7 @@ export default function TrainingPageClient() {
       <section id="subsidy" className="bg-color-bg-subtle px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="section-header">
-            <p className="eyebrow-light mb-4 text-[30px]">人材開発支援助成金</p>
+            <h2 className="section-heading">人材開発支援助成金</h2>
           </motion.div>
 
           <motion.div {...fadeUp} className="max-w-3xl">

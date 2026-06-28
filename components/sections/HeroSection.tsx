@@ -65,16 +65,16 @@ export default function HeroSection() {
       >
         <div className="max-w-3xl">
           <motion.div initial="hidden" animate="visible" variants={staggerContainerEditorial}>
-            <motion.h1 className="hero-heading flex flex-col gap-y-2 text-white md:text-sequoia-black" variants={fadeUpEditorialItem}>
-              <span>暮らしを支える産業に、</span>
-              <span>
+            <motion.h1 className="hero-heading flex flex-col gap-y-1 text-white md:gap-y-2 md:text-sequoia-black" variants={fadeUpEditorialItem}>
+              <span className="block break-keep md:whitespace-nowrap">暮らしを支える産業に、</span>
+              <span className="block md:whitespace-nowrap">
                 <AnimatedTextCycle
                   words={heroTechModifiers}
                   interval={3800}
                   className="text-white md:text-sequoia-green"
                 />
               </span>
-              <span>テクノロジーを。</span>
+              <span className="block md:whitespace-nowrap">テクノロジーを。</span>
             </motion.h1>
           </motion.div>
         </div>
