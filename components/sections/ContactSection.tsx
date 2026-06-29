@@ -7,7 +7,7 @@ import { useRef } from 'react'
 import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react'
 import { placeholders } from '@/lib/placeholder-images'
 import { MOTION_EDITORIAL, STAGGER_EDITORIAL, MOTION_EASE, editorialTransition } from '@/lib/motion-safe'
-import { contactInquiryLabels, getContactPreset, type ContactInquiryType } from '@/lib/contact'
+import { contactFormInquiryTypes, contactInquiryLabels, getContactPreset, type ContactInquiryType } from '@/lib/contact'
 
 type ContactFormData = {
   name: string
@@ -303,9 +303,9 @@ export default function ContactSection() {
                     onChange={handleChange}
                     className="field-base field-glass h-12"
                   >
-                    {Object.entries(contactInquiryLabels).map(([value, label]) => (
+                    {contactFormInquiryTypes.map((value) => (
                       <option key={value} value={value}>
-                        {label}
+                        {contactInquiryLabels[value]}
                       </option>
                     ))}
                   </motion.select>

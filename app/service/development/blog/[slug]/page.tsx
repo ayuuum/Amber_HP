@@ -82,7 +82,7 @@ export default async function DevelopmentBlogPostPage({ params }: Props) {
   const relatedPosts = getRelatedPosts('development', post.slug, 3)
   const canonicalUrl = `${siteUrl}${getCategoryPath('development')}/${post.slug}`
   const blogIndexUrl = `${siteUrl}${getCategoryPath('development')}`
-  const serviceUrl = `${siteUrl}/service/development`
+  const serviceUrl = `${siteUrl}/service/ai-solution`
 
   const jsonLd = {
     '@context': 'https://schema.org',

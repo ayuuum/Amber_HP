@@ -42,8 +42,7 @@ const menuItems: MenuItem[] = [
     label: 'サービス',
     href: '#',
     children: [
-      { label: 'AIシステム開発・業務改善', href: '/service/development', group: 'AIソリューション' },
-      { label: '生成AI活用研修', href: '/service/ai-training', group: 'AIソリューション' },
+      { label: 'AIソリューション', href: '/service/ai-solution', group: 'AIソリューション' },
       { label: 'Pine（出張訪問サービス向けAI SaaS）', href: PINE_HOME_URL, external: true, group: 'AI SaaS' },
     ],
   },
@@ -197,6 +196,16 @@ export default function Header() {
                 )}
               </div>
             ))}
+            <Link
+              href={buildContactHref('header-cta')}
+              className={`ml-2 hidden shrink-0 rounded-sm px-4 py-2.5 text-sm font-semibold transition-[background-color,color,transform,box-shadow] duration-brand hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 xl:inline-flex ${
+                isTransparent
+                  ? 'bg-white text-sequoia-green shadow-sm hover:bg-white/95 focus-visible:ring-white/40'
+                  : 'btn-primary !px-4 !py-2.5'
+              }`}
+            >
+              相談する
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -317,6 +326,13 @@ export default function Header() {
                     </div>
                   ))}
                 </nav>
+                <Link
+                  href={buildContactHref('header-cta')}
+                  className="btn-primary mt-6 w-full"
+                  onClick={toggleMobileMenu}
+                >
+                  相談する
+                </Link>
               </div>
             </motion.div>
           </>

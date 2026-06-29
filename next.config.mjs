@@ -9,7 +9,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/service/development',
+        destination: '/service/ai-solution',
+        permanent: true,
+      },
+      {
+        source: '/service/ai-training',
+        destination: '/service/ai-solution',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig
-

@@ -24,13 +24,8 @@ export default function Footer() {
               <p className="font-semibold text-[color:var(--color-cream)]">サービス</p>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/service/development" className={footerLinkClass}>
-                    AIシステム開発・業務改善
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/service/ai-training" className={footerLinkClass}>
-                    生成AI活用研修
+                  <Link href="/service/ai-solution" className={footerLinkClass}>
+                    AIソリューション
                   </Link>
                 </li>
                 <li>
@@ -58,6 +53,11 @@ export default function Footer() {
                 <li>
                   <Link href="/blog" className={footerLinkClass}>
                     ニュース
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faq" className={footerLinkClass}>
+                    よくある質問
                   </Link>
                 </li>
                 <li>

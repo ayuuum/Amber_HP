@@ -17,7 +17,7 @@ const fadeUp = {
 }
 
 export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
-  const contactHref = buildContactHref(data.slug, 'training')
+  const contactHref = buildContactHref(data.slug, 'ai-solution')
   const practicalScenes = data.basicCourse.items.slice(0, 4)
 
   return (
@@ -35,7 +35,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
           <nav className="mb-8 flex items-center gap-2 text-xs text-sequoia-black/50" aria-label="パンくずリスト">
             <Link href="/" className="hover:text-accent transition-colors">ホーム</Link>
             <span>/</span>
-            <Link href="/service/ai-training" className="hover:text-accent transition-colors">生成AI活用研修</Link>
+            <Link href="/service/ai-solution" className="hover:text-accent transition-colors">AIソリューション</Link>
             <span>/</span>
             <span className="text-sequoia-black/80">{data.toolName} 法人研修</span>
           </nav>
@@ -76,7 +76,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
-                href="/service/ai-training"
+                href="/service/ai-solution"
                 className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/20 px-6 py-3 text-sm font-semibold text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
               >
                 研修の全体像を見る
@@ -349,7 +349,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   </Link>
                 ))}
                 <Link
-                  href="/service/ai-training"
+                  href="/service/ai-solution"
                   className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/15 px-5 py-3 text-sm font-medium text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
                 >
                   研修の全体像を見る

@@ -20,58 +20,56 @@ export default function AboutSection({ variant = 'default' }: AboutSectionProps)
       <section
         id="company-intro"
         ref={sectionRef}
-        className="section-pad relative overflow-hidden border-t border-sequoia-black/10 bg-color-bg"
+        className="relative overflow-hidden border-t border-sequoia-black/10 bg-color-bg-subtle"
       >
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <div className="surface-card grid gap-12 bg-color-bg-subtle/70 p-4 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16 md:p-6">
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
-              className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-sequoia-black/10"
-            >
-              <Image
-                src="/images/about-mission-mountain.png"
-                alt="Amberのミッションを表すイメージ"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 480px"
-              />
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-sequoia-black/20 via-transparent to-transparent"
-                aria-hidden
-              />
-            </motion.div>
-            <div className="md:p-0">
-              <div className="section-header mb-0">
-                <motion.h2
-                  initial={false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
-                  className="heading-h3 mb-4"
-                >
-                  暮らしを支える産業に特化し、設計から定着まで一気通貫で届けます。
-                </motion.h2>
-                <motion.p
-                  initial={false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: MOTION_BASE, delay: 0.04, ease: MOTION_EASE }}
-                  className="text-body mb-8 text-sequoia-black/85"
-                >
-                  現場が回り続ける仕組みを、技術で実装する。
-                </motion.p>
-              </div>
-              <motion.div
+        <div className="grid md:grid-cols-2 md:items-stretch">
+          <motion.div
+            initial={false}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
+            className="relative min-h-[320px] md:min-h-[480px]"
+          >
+            <Image
+              src="/images/about-mission-mountain.png"
+              alt="Amberのミッションを表すイメージ"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-sequoia-black/25 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-color-bg-subtle/20"
+              aria-hidden
+            />
+          </motion.div>
+          <div className="flex flex-col justify-center px-6 py-12 md:px-12 md:py-16 lg:px-16">
+            <div className="section-header mb-0 max-w-xl">
+              <motion.h2
                 initial={false}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: MOTION_BASE, delay: 0.08, ease: MOTION_EASE }}
+                transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
+                className="heading-h3 mb-4"
               >
-                <Link href="/company" className="text-link">
-                  企業情報を見る
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </motion.div>
+                暮らしを支える産業に特化し、設計から定着まで一気通貫で届けます。
+              </motion.h2>
+              <motion.p
+                initial={false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: MOTION_BASE, delay: 0.04, ease: MOTION_EASE }}
+                className="text-body mb-8 text-sequoia-black/85"
+              >
+                現場が回り続ける仕組みを、技術で実装する。
+              </motion.p>
             </div>
+            <motion.div
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: MOTION_BASE, delay: 0.08, ease: MOTION_EASE }}
+            >
+              <Link href="/company" className="text-link">
+                企業情報を見る
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>

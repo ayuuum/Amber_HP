@@ -56,7 +56,7 @@ export const copilotData: ToolLPData = {
   relatedTools: [
     { label: 'ChatGPT 法人研修', href: '/service/ai-training/chatgpt' },
     { label: 'Gemini for Workspace 法人研修', href: '/service/ai-training/gemini' },
-    { label: 'AIエージェント構築研修', href: '/service/ai-training#courses' },
+    { label: 'AIエージェント構築', href: '/service/ai-solution#stages' },
   ],
 
   metaTitle: 'Microsoft 365 Copilot 法人研修 | ライセンスを現場の生産性に変える | 株式会社Amber',

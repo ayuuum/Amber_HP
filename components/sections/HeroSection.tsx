@@ -1,14 +1,16 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
+import { buildContactHref } from '@/lib/contact'
 import AnimatedTextCycle from '@/components/ui/animated-text-cycle'
 import {
   fadeUpEditorialItem,
   MOTION_EASE,
   MOTION_HERO_VIDEO,
   MOTION_HERO_VIDEO_DELAY,
-  staggerContainerEditorial,
+  staggerContainerHero,
 } from '@/lib/motion-safe'
 import { cn } from '@/lib/utils'
 import { placeholders } from '@/lib/placeholder-images'
@@ -64,7 +66,7 @@ export default function HeroSection() {
         )}
       >
         <div className="max-w-3xl">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainerEditorial}>
+          <motion.div initial="hidden" animate="visible" variants={staggerContainerHero}>
             <motion.h1 className="hero-heading flex flex-col gap-y-1 text-white md:gap-y-2 md:text-sequoia-black" variants={fadeUpEditorialItem}>
               <span className="block break-keep md:whitespace-nowrap">暮らしを支える産業に、</span>
               <span className="block md:whitespace-nowrap">
@@ -76,18 +78,41 @@ export default function HeroSection() {
               </span>
               <span className="block md:whitespace-nowrap">テクノロジーを。</span>
             </motion.h1>
+            <motion.div
+              className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+              variants={fadeUpEditorialItem}
+            >
+              <Link
+                href={buildContactHref('hero')}
+                className="inline-flex min-w-[160px] items-center justify-center gap-2 rounded-sm px-6 py-3.5 font-semibold shadow-sm transition-[background-color,transform,box-shadow] duration-brand hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_rgb(255_255_255_/_0.28)] max-md:bg-[var(--color-cream)] max-md:text-[var(--color-green-dark)] max-md:hover:bg-white md:btn-primary"
+              >
+                相談する
+              </Link>
+              <Link href="/#lineup" className="btn-hero-outline min-w-[160px]">
+                サービスを見る
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
       <motion.div
         className="relative z-0 hidden min-h-[calc(100dvh-5rem)] w-full md:block md:w-1/2 lg:w-2/5"
-        initial={prefersReducedMotion ? { clipPath: clipTo } : { clipPath: clipFrom }}
-        animate={{ clipPath: clipTo }}
+        initial={
+          prefersReducedMotion
+            ? { clipPath: clipTo, opacity: 1 }
+            : { clipPath: clipFrom, opacity: 0 }
+        }
+        animate={{ clipPath: clipTo, opacity: 1 }}
         transition={
           prefersReducedMotion
             ? { duration: 0 }
-            : { duration: MOTION_HERO_VIDEO, delay: MOTION_HERO_VIDEO_DELAY, ease: MOTION_EASE }
+            : {
+                duration: MOTION_HERO_VIDEO,
+                delay: MOTION_HERO_VIDEO_DELAY,
+                ease: MOTION_EASE,
+                opacity: { duration: MOTION_HERO_VIDEO * 0.85, delay: MOTION_HERO_VIDEO_DELAY + 0.15 },
+              }
         }
       >
         {prefersReducedMotion ? (

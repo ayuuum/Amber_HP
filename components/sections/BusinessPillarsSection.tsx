@@ -28,17 +28,16 @@ const pillars: Pillar[] = [
     num: '01',
     label: '事業 01',
     title: 'AIソリューション',
-    summary: '開発・研修・導入支援を組み合わせ、現場に定着する仕組みを実装します。',
+    summary: 'AIで業務を変える。使える・回る・残る、現場から一気通貫で伴走します。',
     detail:
-      'AIシステム開発、生成AI活用研修、導入コンサルティングを一体で提供。現場観察から業務設計、実装、運用定着までを一気通貫で伴走します。',
-    items: ['AIシステム開発', '生成AI活用研修', '導入コンサルティング'],
-    href: '/service/development',
+      'ツール導入でも単発研修でもない。現場観察から業務再設計、実装、定着まで一気通貫で、組織の働き方を変えます。',
+    items: ['全社員のAI定着', '業務プロセスの再設計', 'システム・エージェント構築'],
+    href: '/service/ai-solution',
     cta: '詳細を見る',
     icon: Layers,
     links: [
-      { label: 'AIシステム開発', href: '/service/development' },
-      { label: '生成AI活用研修', href: '/service/ai-training' },
-      { label: '導入相談', href: buildContactHref('development', 'development') },
+      { label: '詳細を見る', href: '/service/ai-solution' },
+      { label: '導入相談', href: buildContactHref('ai-solution', 'ai-solution') },
     ],
   },
   {

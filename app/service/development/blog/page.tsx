@@ -31,10 +31,10 @@ export default function DevelopmentBlogPage() {
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <Link
-              href="/service/development"
+              href="/service/ai-solution"
               className="text-link text-sm"
             >
-              ← AIシステム開発に戻る
+              ← AIソリューションに戻る
             </Link>
           </div>
 

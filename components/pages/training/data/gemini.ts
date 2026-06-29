@@ -56,7 +56,7 @@ export const geminiData: ToolLPData = {
   relatedTools: [
     { label: 'Microsoft 365 Copilot 法人研修', href: '/service/ai-training/copilot' },
     { label: 'ChatGPT 法人研修', href: '/service/ai-training/chatgpt' },
-    { label: 'AIエージェント構築研修', href: '/service/ai-training#courses' },
+    { label: 'AIエージェント構築', href: '/service/ai-solution#stages' },
   ],
 
   metaTitle: 'Gemini for Workspace 法人研修 | Workspaceの情報資産をGeminiで使い切る | 株式会社Amber',

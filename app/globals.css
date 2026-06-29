@@ -547,4 +547,36 @@
   .prose th {
     @apply bg-sequoia-white font-semibold;
   }
+
+  .lineup-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(27 58 45 / 0.2) transparent;
+  }
+
+  .lineup-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .lineup-scroll::-webkit-scrollbar-thumb {
+    background: rgb(27 58 45 / 0.2);
+    border-radius: 9999px;
+  }
+
+  .stories-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(27 58 45 / 0.2) transparent;
+  }
+
+  .stories-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .stories-scroll::-webkit-scrollbar-thumb {
+    background: rgb(27 58 45 / 0.2);
+    border-radius: 9999px;
+  }
+
+  .stories-card {
+    @apply transition-[border-color,box-shadow,transform] duration-brand hover:-translate-y-0.5 hover:border-sequoia-green/25 hover:shadow-md;
+  }
 }

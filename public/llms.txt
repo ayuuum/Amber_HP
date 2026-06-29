@@ -3,30 +3,28 @@ Site: https://www.amber-inc.com
 Language: Japanese (ja-JP)
 
 ## About
-株式会社Amberは、AI導入支援・法人向け生成AI研修・ホームサービス事業者向け業務システムを提供しています。
+株式会社Amberは、AIソリューション（生成AI研修・AIシステム開発）・ホームサービス事業者向け業務システムを提供しています。
 現場の非効率をAIでなくし、働く人の時間と収益を取り戻すことを目指しています。
 
 ## Primary URLs (canonical)
 - Home: https://www.amber-inc.com/
 - Company: https://www.amber-inc.com/company
-- AI導入支援: https://www.amber-inc.com/service/consulting
-- 法人向け生成AI研修: https://www.amber-inc.com/service/training
-- ホームサービス向け業務システム: https://www.amber-inc.com/service/saas
+- AIソリューション: https://www.amber-inc.com/service/ai-solution
+- 法人向け生成AI研修（ツール別）: https://www.amber-inc.com/service/ai-training/copilot
+- ホームサービス向け業務システム（Pine）: https://pine-home.com/
+
 ## Blog indexes
-- AI導入支援 Blog: https://www.amber-inc.com/service/consulting/blog
-- 法人向け生成AI研修 Blog: https://www.amber-inc.com/service/training/blog
-- ホームサービス向け業務システム Blog: https://www.amber-inc.com/service/saas/blog
+- AIシステム開発 Blog: https://www.amber-inc.com/service/development/blog
+- 生成AI活用研修 Blog: https://www.amber-inc.com/service/ai-training/blog
 
 ## Featured articles
-- AI導入で中小企業の業務効率化を実現する5つの方法: https://www.amber-inc.com/service/consulting/blog/ai-donyu-syogai-bosu
-- ChatGPTを業務で活用するための研修内容と効果: https://www.amber-inc.com/service/training/blog/chatgpt-kenshuu
-- ホームサービス業の予約管理システム選び方と導入事例: https://www.amber-inc.com/service/saas/blog/yoyaku-kanri-system
+- AI導入で中小企業の業務効率化を実現する5つの方法: https://www.amber-inc.com/service/development/blog/ai-donyu-syogai-bosu
+- ChatGPTを業務で活用するための研修内容と効果: https://www.amber-inc.com/service/ai-training/blog/chatgpt-kenshuu
 
 ## Definitions (short)
-- AI導入支援とは: ツール導入に限らず、業務のやり方自体をAIで変えるための伴走型支援です。
-- 法人向け生成AI研修とは: 明日から実務で使える形に落とし込む、ワークショップ中心の実践研修です。
-- ホームサービス向け業務システムとは: 予約管理・顧客管理・請求・LINE対応などを一気通貫で支える業務OSです。
+- AIソリューションとは: ツール導入に限らず、現場の働き方を変える伴走型支援です。使える・回る・残る、設計から定着まで一気通貫で提供します。
+- 法人向け生成AI研修とは: 明日から実務で使える形に落とし込む、ワークショップ中心の実践プログラムです。
+- Pineとは: 予約管理・顧客管理・請求・LINE対応などを一気通貫で支える出張訪問サービス向け業務OSです。
 
 ## Contact
-- https://www.amber-inc.com/#contact
-
+- https://www.amber-inc.com/company#contact

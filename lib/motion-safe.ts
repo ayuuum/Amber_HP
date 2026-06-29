@@ -7,8 +7,11 @@ export const MOTION_BASE = 0.3
 export const MOTION_PANEL = 0.35
 export const MOTION_HERO = 0.4
 /** Hero 右カラム動画 clip-path reveal */
-export const MOTION_HERO_VIDEO = 0.75
-export const MOTION_HERO_VIDEO_DELAY = 0.55
+export const MOTION_HERO_VIDEO = 1.4
+export const MOTION_HERO_VIDEO_DELAY = 1.05
+/** Hero 見出しは動画より先に、ゆっくり登場 */
+export const MOTION_HERO_TEXT_DELAY = 0.15
+export const STAGGER_HERO_TEXT = 0.18
 /** 見出し・スクロール登場・フォームステップなど編集演出向け */
 export const MOTION_EDITORIAL = 0.58
 export const STAGGER_EDITORIAL = 0.1
@@ -101,6 +104,16 @@ export const staggerContainerEditorial: Variants = {
     transition: {
       staggerChildren: STAGGER_EDITORIAL,
       delayChildren: 0.08,
+    },
+  },
+}
+
+export const staggerContainerHero: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: STAGGER_HERO_TEXT,
+      delayChildren: MOTION_HERO_TEXT_DELAY,
     },
   },
 }

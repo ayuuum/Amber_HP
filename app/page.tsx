@@ -1,10 +1,14 @@
 import type { Metadata } from 'next'
 import HeroSection from '@/components/sections/HeroSection'
-import BusinessPillarsSection from '@/components/sections/BusinessPillarsSection'
+import ServiceLineupSection from '@/components/sections/ServiceLineupSection'
+import FeaturesSection from '@/components/sections/FeaturesSection'
 import AboutSection from '@/components/sections/AboutSection'
+import StoriesSection from '@/components/sections/StoriesSection'
 import HomeNewsPreview from '@/components/sections/HomeNewsPreview'
+import ForestCtaSection from '@/components/sections/ForestCtaSection'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { buildContactHref } from '@/lib/contact'
 
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
@@ -34,9 +38,15 @@ export default function Home() {
       <main className="min-h-screen">
         <Header />
         <HeroSection />
-        <BusinessPillarsSection />
+        <ServiceLineupSection />
+        <FeaturesSection />
         <AboutSection variant="teaser" />
+        <StoriesSection />
         <HomeNewsPreview />
+        <ForestCtaSection
+          primaryLabel="相談する"
+          primaryHref={buildContactHref('home-forest-cta')}
+        />
         <Footer />
       </main>
     </>

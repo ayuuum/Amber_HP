@@ -17,10 +17,11 @@ function getCategoryPath(category: BlogCategory): string {
 
 type BlogPreviewSectionProps = {
   posts: BlogPost[]
-  category: BlogCategory
+  category?: BlogCategory
+  categories?: BlogCategory[]
 }
 
-export default function BlogPreviewSection({ posts, category }: BlogPreviewSectionProps) {
+export default function BlogPreviewSection({ posts, category, categories }: BlogPreviewSectionProps) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
@@ -42,6 +43,8 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
     },
   }
 
+  const listHref = categories && categories.length > 1 ? '/blog' : category ? getCategoryPath(category) : '/blog'
+
   return (
     <section ref={sectionRef} className="section-pad relative overflow-hidden bg-color-bg-subtle">
       <div className="relative z-10 mx-auto max-w-6xl">
@@ -62,7 +65,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
         >
           {displayPosts.map((post) => (
             <motion.div
-              key={post.slug}
+              key={`${post.category}-${post.slug}`}
               variants={cardVariants}
               className="surface-card interactive-card group flex h-full flex-col p-6"
             >
@@ -75,7 +78,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                   })}
                 </span>
               </div>
-              <Link href={`${getCategoryPath(category)}/${post.slug}`} className="block flex-grow">
+              <Link href={`${getCategoryPath(post.category)}/${post.slug}`} className="block flex-grow">
                 <h3 className="heading-h3 mb-3 line-clamp-2 text-xl transition-colors duration-brand group-hover:text-sequoia-green">
                   {post.title}
                 </h3>
@@ -93,7 +96,10 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
                     ))}
                   </div>
                 )}
-                <Link href={`${getCategoryPath(category)}/${post.slug}`} className="text-link text-sm">
+                <Link
+                  href={`${getCategoryPath(post.category)}/${post.slug}`}
+                  className="text-link text-sm"
+                >
                   続きを読む
                 </Link>
               </div>
@@ -107,7 +113,7 @@ export default function BlogPreviewSection({ posts, category }: BlogPreviewSecti
           transition={{ duration: MOTION_BASE, delay: 0.08, ease: MOTION_EASE }}
           className="mt-12 text-center"
         >
-          <Link href={getCategoryPath(category)} className="btn-primary">
+          <Link href={listHref} className="btn-primary">
             すべての記事を見る
           </Link>
         </motion.div>

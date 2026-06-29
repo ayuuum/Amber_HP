@@ -19,14 +19,14 @@ const copy: Record<
   development: {
     heading: '現場で動くAIを、設計から定着まで。',
     body: '業務システム、生成AI連携、エージェント開発まで、現場観察から設計・運用までを伴走します。',
-    primary: { label: '開発相談をする', href: buildContactHref('development', 'development') },
-    secondary: { label: 'AIシステム開発の詳細', href: '/service/development' },
+    primary: { label: '相談する', href: buildContactHref('development', 'ai-solution') },
+    secondary: { label: 'AIソリューションの詳細', href: '/service/ai-solution' },
   },
   training: {
     heading: '研修の翌日から、現場が変わる。',
-    body: '人材開発支援助成金を活用した、現場で使える生成AI研修プログラムです。',
-    primary: { label: '研修相談をする', href: buildContactHref('training', 'training') },
-    secondary: { label: '生成AI活用研修の詳細', href: '/service/ai-training' },
+    body: '人材開発支援助成金を活用した、現場で使える生成AIプログラムです。',
+    primary: { label: '相談する', href: buildContactHref('training', 'ai-solution') },
+    secondary: { label: 'AIソリューションの詳細', href: '/service/ai-solution' },
   },
 }
 
