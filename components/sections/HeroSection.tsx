@@ -44,7 +44,7 @@ export default function HeroSection() {
           />
         ) : (
           <video
-            className="h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full max-w-full object-cover"
             autoPlay
             muted
             loop
@@ -126,7 +126,7 @@ export default function HeroSection() {
           />
         ) : (
           <video
-            className="h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full max-w-full object-cover"
             autoPlay
             muted
             loop

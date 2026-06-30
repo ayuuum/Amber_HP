@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
 import { buildContactHref } from '@/lib/contact'
 import {
@@ -63,9 +63,6 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [isMobileViewport, setIsMobileViewport] = useState(false)
   const pathname = usePathname()
-
-  const { scrollYProgress } = useScroll()
-  const prefersReducedMotion = useReducedMotion()
 
   const isDarkHeroPage =
     DARK_HERO_PATHS.includes(pathname ?? '') ||
@@ -338,14 +335,6 @@ export default function Header() {
           </>
         )}
       </AnimatePresence>
-
-      {/* スクロール進行バー */}
-      {!prefersReducedMotion && (
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-sequoia-green"
-          style={{ scaleX: scrollYProgress }}
-        />
-      )}
     </header>
   )
 }

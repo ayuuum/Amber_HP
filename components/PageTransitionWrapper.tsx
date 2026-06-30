@@ -8,9 +8,9 @@ export default function PageTransitionWrapper({ children }: { children: ReactNod
 
   return (
     <motion.div
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>

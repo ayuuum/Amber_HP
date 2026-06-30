@@ -1,8 +1,7 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRef } from 'react'
 import type { BlogPost, BlogCategory } from '@/lib/markdown'
 import { staggerContainerRelaxed, MOTION_BASE, MOTION_EASE } from '@/lib/motion-safe'
 
@@ -21,10 +20,15 @@ type BlogPreviewSectionProps = {
   categories?: BlogCategory[]
 }
 
-export default function BlogPreviewSection({ posts, category, categories }: BlogPreviewSectionProps) {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+function plainExcerpt(text: string): string {
+  return text
+    .replace(/^#+\s*/gm, '')
+    .replace(/\*\*/g, '')
+    .replace(/\n+/g, ' ')
+    .trim()
+}
 
+export default function BlogPreviewSection({ posts, category, categories }: BlogPreviewSectionProps) {
   if (posts.length === 0) {
     return null
   }
@@ -46,11 +50,12 @@ export default function BlogPreviewSection({ posts, category, categories }: Blog
   const listHref = categories && categories.length > 1 ? '/blog' : category ? getCategoryPath(category) : '/blog'
 
   return (
-    <section ref={sectionRef} className="section-pad relative overflow-hidden bg-color-bg-subtle">
+    <section className="section-pad relative overflow-hidden bg-color-bg-subtle">
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          initial={false}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: MOTION_BASE, ease: MOTION_EASE }}
           className="section-header mb-0 text-center"
         >
@@ -59,8 +64,9 @@ export default function BlogPreviewSection({ posts, category, categories }: Blog
 
         <motion.div
           variants={staggerContainerRelaxed}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          initial={false}
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
           className="mt-12 grid gap-8 md:grid-cols-3"
         >
           {displayPosts.map((post) => (
@@ -83,7 +89,7 @@ export default function BlogPreviewSection({ posts, category, categories }: Blog
                   {post.title}
                 </h3>
                 <p className="text-body mb-4 line-clamp-3 text-sequoia-black/80">
-                  {post.excerpt || post.description}
+                  {plainExcerpt(post.excerpt || post.description)}
                 </p>
               </Link>
               <div className="mt-auto">
@@ -108,8 +114,9 @@ export default function BlogPreviewSection({ posts, category, categories }: Blog
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          initial={false}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: MOTION_BASE, delay: 0.08, ease: MOTION_EASE }}
           className="mt-12 text-center"
         >
