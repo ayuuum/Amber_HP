@@ -1,16 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import ForestCtaSection from '@/components/sections/ForestCtaSection'
-import BlogPreviewSection from '@/components/sections/BlogPreviewSection'
+import Link from 'next/link'
 import StoriesSection from '@/components/sections/StoriesSection'
 import type { BlogPost } from '@/lib/markdown'
-import { buildContactHref } from '@/lib/contact'
 import AiSolutionHero from './sections/AiSolutionHero'
 import AiSolutionStagesSection from './sections/AiSolutionStagesSection'
 import AiSolutionMethodSection from './sections/AiSolutionMethodSection'
 import AiSolutionContrastSection from './sections/AiSolutionContrastSection'
 import AiSolutionToolsSection from './sections/AiSolutionToolsSection'
+import AiSolutionSubsidySection from './sections/AiSolutionSubsidySection'
+import AiSolutionInlineFormSection from './sections/AiSolutionInlineFormSection'
 import { gaps } from './data'
 import { fadeUp, itemMotion } from './motion'
 
@@ -19,6 +19,8 @@ type AiSolutionPageClientProps = {
 }
 
 export default function AiSolutionPageClient({ blogPosts }: AiSolutionPageClientProps) {
+  void blogPosts
+
   return (
     <main className="min-h-screen bg-color-bg">
       <AiSolutionHero />
@@ -68,8 +70,22 @@ export default function AiSolutionPageClient({ blogPosts }: AiSolutionPageClient
       </section>
 
       <AiSolutionStagesSection />
+      <section className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-14">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="eyebrow-light mb-3">Next step</p>
+            <h2 className="text-2xl font-bold leading-snug text-sequoia-black md:text-3xl">
+              自社ではどこから始めるべきか、30分で整理します。
+            </h2>
+          </div>
+          <Link href="#ai-solution-form" className="btn-primary shrink-0">
+            無料相談を予約する
+          </Link>
+        </div>
+      </section>
       <AiSolutionMethodSection />
       <AiSolutionContrastSection />
+      <AiSolutionSubsidySection />
       <StoriesSection
         sectionId="proof"
         headingId="proof-heading"
@@ -77,17 +93,7 @@ export default function AiSolutionPageClient({ blogPosts }: AiSolutionPageClient
         showMetrics={false}
       />
       <AiSolutionToolsSection />
-
-      <BlogPreviewSection posts={blogPosts} categories={['development', 'training']} />
-
-      <div id="contact">
-        <ForestCtaSection
-          headline="AI活用を相談"
-          subheadline="使える・回る・残るまで、現場から一緒に進めます。"
-          primaryLabel="AI活用を相談"
-          primaryHref={buildContactHref('ai-solution', 'ai-solution')}
-        />
-      </div>
+      <AiSolutionInlineFormSection />
     </main>
   )
 }

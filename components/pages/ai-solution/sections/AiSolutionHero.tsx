@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { buildContactHref } from '@/lib/contact'
 import { aiSolutionAssets } from '@/lib/ai-solution-assets'
 import {
   fadeUpEditorialItem,
@@ -67,30 +66,30 @@ export default function AiSolutionHero() {
               className="mb-6 text-base font-medium text-white/85 md:text-lg md:text-sequoia-green"
               variants={fadeUpEditorialItem}
             >
-              使える → 回る → 残る
+              人材開発支援助成金 対象 | 上場企業への研修実績あり
             </motion.p>
             <motion.p
               className="text-body mb-8 max-w-xl text-white/85 md:text-sequoia-black/80"
               variants={fadeUpEditorialItem}
             >
-              使える人を増やし、業務に組み込み、仕組みとして残す。そこまでを一緒に進めます。
+              導入して終わりにしない。従業員10〜300名の企業向けに、業務に根づく生成AI研修と開発を提供します。
             </motion.p>
             <motion.div
               className="flex flex-col gap-3 lg:flex-row lg:items-center"
               variants={fadeUpEditorialItem}
             >
               <Link
-                href={buildContactHref('ai-solution', 'ai-solution')}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm px-5 text-sm font-semibold shadow-sm transition-[background-color,transform,box-shadow] duration-brand hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none lg:w-[180px] max-md:bg-[var(--color-cream)] max-md:text-[var(--color-green-dark)] max-md:hover:bg-white md:bg-green-dark md:text-white md:hover:bg-green-dark/85 md:focus-visible:shadow-[0_0_0_3px_rgba(27,58,45,0.25)]"
+                href="#ai-solution-form"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm px-5 text-sm font-semibold shadow-sm transition-[background-color,transform,box-shadow] duration-brand hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none lg:w-[200px] max-md:bg-[var(--color-cream)] max-md:text-[var(--color-green-dark)] max-md:hover:bg-white md:bg-green-dark md:text-white md:hover:bg-green-dark/85 md:focus-visible:shadow-[0_0_0_3px_rgba(27,58,45,0.25)]"
               >
-                <span className="whitespace-nowrap">AI活用を相談</span>
+                <span className="whitespace-nowrap">無料相談を予約する</span>
                 <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </Link>
               <Link
-                href="#stages"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-sm border px-5 text-sm font-semibold transition-[border-color,color,background-color] duration-brand focus-visible:outline-none focus-visible:ring-2 lg:w-[180px] max-md:border-white/60 max-md:bg-black/10 max-md:text-white max-md:drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] max-md:hover:border-white md:border-sequoia-black/20 md:text-sequoia-black md:hover:border-green-dark md:hover:bg-green-dark/5 md:hover:text-green-dark md:focus-visible:ring-green-dark/30"
+                href="#ai-solution-form"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-sm border px-5 text-sm font-semibold transition-[border-color,color,background-color] duration-brand focus-visible:outline-none focus-visible:ring-2 lg:w-[200px] max-md:border-white/60 max-md:bg-black/10 max-md:text-white max-md:drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] max-md:hover:border-white md:border-sequoia-black/20 md:text-sequoia-black md:hover:border-green-dark md:hover:bg-green-dark/5 md:hover:text-green-dark md:focus-visible:ring-green-dark/30"
               >
-                <span className="whitespace-nowrap">支援内容を見る</span>
+                <span className="whitespace-nowrap">資料をダウンロード</span>
               </Link>
             </motion.div>
           </motion.div>

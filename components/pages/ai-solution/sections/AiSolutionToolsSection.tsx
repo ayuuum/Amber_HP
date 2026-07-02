@@ -69,20 +69,6 @@ export default function AiSolutionToolsSection() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          {...fadeUp}
-          className="mt-8 grid gap-4 border-t border-sequoia-black/10 pt-6 md:grid-cols-[220px_1fr_auto] md:items-center"
-        >
-          <h3 className="text-lg font-bold text-sequoia-black">人材開発支援助成金</h3>
-          <p className="text-sm leading-relaxed text-sequoia-black/85 md:text-base">
-            Amberのプログラムは、要件を満たす場合に人材開発支援助成金の対象となる可能性があります。
-          </p>
-          <Link href="/faq" className="text-link text-sm">
-            助成金について詳しく見る
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
-        </motion.div>
       </div>
     </section>
   )
