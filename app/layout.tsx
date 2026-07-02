@@ -82,8 +82,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={`${notoSansJP.variable} ${inter.variable}`}>
-      <body>
-        <StructuredData />
+      <head>
         <script
           id="openai-ads-pixel"
           dangerouslySetInnerHTML={{
@@ -99,10 +98,13 @@ export default function RootLayout({
                 var f=d.getElementsByTagName(s)[0];
                 f.parentNode.insertBefore(j,f);
               }(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
-              oaiq("init",{pixelId:"DxKRxLW79W4U85HLS6RrSZ",debug:true});
+              oaiq("init",{pixelId:"DxKRxLW79W4U85HLS6RrSZ"});
             `,
           }}
         />
+      </head>
+      <body>
+        <StructuredData />
         <HashScrollHandler />
         <PageTransitionWrapper>
           {children}
