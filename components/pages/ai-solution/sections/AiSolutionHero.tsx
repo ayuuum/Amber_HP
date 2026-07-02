@@ -64,13 +64,13 @@ export default function AiSolutionHero() {
               使えるように
             </motion.h1>
             <motion.p
-              className="mb-6 inline-flex w-fit rounded-sm bg-white/92 px-3 py-2 text-xs font-semibold leading-relaxed text-green-dark shadow-[0_8px_30px_-18px_rgba(0,0,0,0.6)] md:bg-transparent md:px-0 md:py-0 md:text-lg md:text-sequoia-green md:shadow-none"
+              className="mb-6 inline-flex w-fit rounded-sm bg-white/95 px-3 py-2 text-xs font-semibold leading-relaxed text-[var(--color-green-dark)] shadow-[0_8px_30px_-18px_rgba(0,0,0,0.6)] md:bg-transparent md:px-0 md:py-0 md:text-lg md:text-sequoia-green md:shadow-none"
               variants={fadeUpEditorialItem}
             >
               人材開発支援助成金 対象 | 上場企業への研修実績あり
             </motion.p>
             <motion.p
-              className="mb-8 max-w-xl text-[1rem] font-medium leading-[1.95] text-white/92 md:text-lg md:font-normal md:leading-relaxed md:text-sequoia-black/80"
+              className="mb-8 max-w-xl text-[1rem] font-medium leading-[1.95] text-white/90 md:text-lg md:font-normal md:leading-relaxed md:text-sequoia-black/80"
               variants={fadeUpEditorialItem}
             >
               生成AI研修、業務プロセス設計、AIシステム開発を一気通貫で提供します。
