@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import OpenAIAdsConversion from '@/components/OpenAIAdsConversion'
 
 export const metadata: Metadata = {
   title: '送信ありがとうございます | AIソリューション',
@@ -16,19 +17,7 @@ export default function AiSolutionThanksPage() {
     <>
       <Header />
       <main className="min-h-screen overflow-x-hidden bg-color-bg pt-28">
-        <script
-          id="ai-solution-lead-conversion"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: 'ai_solution_lead',
-              conversion_location: 'ai_solution_thanks'
-            });
-            document.documentElement.dataset.aiSolutionLead = '1';
-          `,
-          }}
-        />
+        <OpenAIAdsConversion />
         <section className="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
           <p className="eyebrow-light mb-5">Thank you</p>
           <h1 className="section-heading mb-6">
