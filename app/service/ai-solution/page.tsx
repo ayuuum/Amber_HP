@@ -7,7 +7,7 @@ import { getAllPosts } from '@/lib/markdown'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: 'AIソリューション | AIを、現場の仕事にする',
+  title: 'AIソリューション | AIを実務で使えるように',
   description:
     '使える人を増やし、業務に組み込み、仕組みとして残す。全社員のAI定着から業務システム構築まで、現場から定着まで一気通貫で伴走します。',
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AIソリューション | 株式会社Amber',
     description:
-      'AIを、現場の仕事にする。使える・回る・残るまで、現場から一気通貫で伴走するAIソリューション。',
+      'AIを実務で使えるように。使える・回る・残るまで、現場から一気通貫で伴走するAIソリューション。',
     url: `${siteUrl}/service/ai-solution`,
     type: 'website',
   },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AIソリューション | 株式会社Amber',
     description:
-      'AIを、現場の仕事にする。使える・回る・残るまで、現場から一気通貫で伴走するAIソリューション。',
+      'AIを実務で使えるように。使える・回る・残るまで、現場から一気通貫で伴走するAIソリューション。',
   },
   alternates: {
     canonical: `${siteUrl}/service/ai-solution`,

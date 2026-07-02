@@ -5,6 +5,7 @@ import Link from 'next/link'
 import StoriesSection from '@/components/sections/StoriesSection'
 import type { BlogPost } from '@/lib/markdown'
 import AiSolutionHero from './sections/AiSolutionHero'
+import AiSolutionServicesSection from './sections/AiSolutionServicesSection'
 import AiSolutionStagesSection from './sections/AiSolutionStagesSection'
 import AiSolutionMethodSection from './sections/AiSolutionMethodSection'
 import AiSolutionContrastSection from './sections/AiSolutionContrastSection'
@@ -24,6 +25,7 @@ export default function AiSolutionPageClient({ blogPosts }: AiSolutionPageClient
   return (
     <main className="min-h-screen bg-color-bg">
       <AiSolutionHero />
+      <AiSolutionServicesSection />
 
       <section
         id="gap"
@@ -79,7 +81,7 @@ export default function AiSolutionPageClient({ blogPosts }: AiSolutionPageClient
             </h2>
           </div>
           <Link href="#ai-solution-form" className="btn-primary shrink-0">
-            無料相談を予約する
+            無料相談する
           </Link>
         </div>
       </section>

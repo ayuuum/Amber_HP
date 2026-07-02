@@ -64,7 +64,7 @@ export default function AiSolutionMethodSection() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-sequoia-black/70 via-sequoia-black/10 to-transparent" />
           <p className="absolute bottom-6 left-6 right-6 max-w-md text-lg font-semibold leading-relaxed text-white md:bottom-8 md:left-8">
-            見て、設計して、動かして、残す。
+            見て、決めて、動かして、残す。
           </p>
         </motion.div>
       </div>

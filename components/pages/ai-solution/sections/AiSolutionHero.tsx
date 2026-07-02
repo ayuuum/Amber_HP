@@ -33,46 +33,48 @@ export default function AiSolutionHero() {
           src={aiSolutionAssets.stages.flow}
           alt=""
           fill
-          className="object-cover"
+          className="object-cover object-[58%_center] brightness-[0.68] saturate-[0.82]"
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/55 to-black/20" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,21,17,0.55)_0%,rgba(8,21,17,0.78)_42%,rgba(8,21,17,0.96)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_62%,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.42)_42%,rgba(0,0,0,0)_72%)]" />
       </div>
 
       <div
         className={cn(
-          'relative z-20 flex w-full flex-col justify-end px-6 pb-12 md:w-[46%] md:justify-center md:px-10 md:py-16 lg:w-[44%] lg:px-14',
+          'relative z-20 flex w-full flex-col justify-end px-6 pb-10 md:w-[46%] md:justify-center md:px-10 md:py-16 lg:w-[44%] lg:px-14',
           'min-h-[calc(100dvh-5rem)] md:min-h-0 md:bg-color-bg',
         )}
       >
-        <div className="max-w-2xl">
+        <div className="max-w-2xl drop-shadow-[0_2px_16px_rgba(0,0,0,0.42)] md:drop-shadow-none">
           <motion.div initial={false} animate="visible" variants={staggerContainerHero}>
             <motion.p
-              className="eyebrow-light mb-4 text-white/85 md:text-sequoia-black/70"
+              className="eyebrow-light mb-4 text-white/90 md:text-sequoia-black/70"
               variants={fadeUpEditorialItem}
             >
               AIソリューション
             </motion.p>
             <motion.h1
-              className="page-heading mb-4 text-[clamp(2rem,9vw,3.6rem)] text-white md:mb-6 md:text-[clamp(2.75rem,5.1vw,4.6rem)] md:text-sequoia-black"
+              className="page-heading mb-5 text-[clamp(2.25rem,7.8vw,3.85rem)] leading-[1.1] text-white md:mb-6 md:text-[clamp(2.8rem,5vw,4.4rem)] md:text-sequoia-black"
               variants={fadeUpEditorialItem}
             >
-              AIを、
+              AIを実務で
               <br />
-              現場の仕事にする
+              使えるように
             </motion.h1>
             <motion.p
-              className="mb-6 text-base font-medium text-white/85 md:text-lg md:text-sequoia-green"
+              className="mb-6 inline-flex w-fit rounded-sm bg-white/92 px-3 py-2 text-xs font-semibold leading-relaxed text-green-dark shadow-[0_8px_30px_-18px_rgba(0,0,0,0.6)] md:bg-transparent md:px-0 md:py-0 md:text-lg md:text-sequoia-green md:shadow-none"
               variants={fadeUpEditorialItem}
             >
               人材開発支援助成金 対象 | 上場企業への研修実績あり
             </motion.p>
             <motion.p
-              className="text-body mb-8 max-w-xl text-white/85 md:text-sequoia-black/80"
+              className="mb-8 max-w-xl text-[1rem] font-medium leading-[1.95] text-white/92 md:text-lg md:font-normal md:leading-relaxed md:text-sequoia-black/80"
               variants={fadeUpEditorialItem}
             >
-              導入して終わりにしない。従業員10〜300名の企業向けに、業務に根づく生成AI研修と開発を提供します。
+              生成AI研修、業務プロセス設計、AIシステム開発を一気通貫で提供します。
+              従業員10〜300名の企業向けに、AIが日々の業務で使われる状態まで伴走します。
             </motion.p>
             <motion.div
               className="flex flex-col gap-3 lg:flex-row lg:items-center"
@@ -82,14 +84,14 @@ export default function AiSolutionHero() {
                 href="#ai-solution-form"
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm px-5 text-sm font-semibold shadow-sm transition-[background-color,transform,box-shadow] duration-brand hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none lg:w-[200px] max-md:bg-[var(--color-cream)] max-md:text-[var(--color-green-dark)] max-md:hover:bg-white md:bg-green-dark md:text-white md:hover:bg-green-dark/85 md:focus-visible:shadow-[0_0_0_3px_rgba(27,58,45,0.25)]"
               >
-                <span className="whitespace-nowrap">無料相談を予約する</span>
+                <span className="whitespace-nowrap">無料相談する</span>
                 <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </Link>
               <Link
-                href="#ai-solution-form"
+                href="#services"
                 className="inline-flex min-h-12 w-full items-center justify-center rounded-sm border px-5 text-sm font-semibold transition-[border-color,color,background-color] duration-brand focus-visible:outline-none focus-visible:ring-2 lg:w-[200px] max-md:border-white/60 max-md:bg-black/10 max-md:text-white max-md:drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] max-md:hover:border-white md:border-sequoia-black/20 md:text-sequoia-black md:hover:border-green-dark md:hover:bg-green-dark/5 md:hover:text-green-dark md:focus-visible:ring-green-dark/30"
               >
-                <span className="whitespace-nowrap">資料をダウンロード</span>
+                <span className="whitespace-nowrap">提供サービスを見る</span>
               </Link>
             </motion.div>
           </motion.div>

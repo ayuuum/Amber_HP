@@ -15,10 +15,11 @@ export default function AiSolutionContrastSection() {
           <h2 className="section-heading mb-6">
             片方だけでは、
             <br />
-            終わらない
+            終わらない。
           </h2>
           <p className="text-body max-w-2xl text-sequoia-black/85">
-            研修会社でもSIerでも片方だけでは終わらない。現場から一気通貫で伴走する、それがAmberです。
+            研修会社でも、SIerでも、片方だけでは終わりません。
+            Amberは現場から入り、研修、業務設計、開発、定着まで一気通貫で伴走します。
           </p>
         </motion.div>
 

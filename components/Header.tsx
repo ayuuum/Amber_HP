@@ -63,6 +63,9 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [isMobileViewport, setIsMobileViewport] = useState(false)
   const pathname = usePathname()
+  const isAiSolutionPage = pathname === '/service/ai-solution'
+  const contactHref = isAiSolutionPage ? '#ai-solution-form' : buildContactHref('header')
+  const contactCtaHref = isAiSolutionPage ? '#ai-solution-form' : buildContactHref('header-cta')
 
   const isDarkHeroPage =
     DARK_HERO_PATHS.includes(pathname ?? '') ||
@@ -185,7 +188,7 @@ export default function Header() {
                   </>
                 ) : (
                   <Link
-                    href={item.href}
+                    href={item.label === 'お問い合わせ' ? contactHref : item.href}
                     className={`flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium no-underline transition-[background-color,color] duration-brand visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
                   >
                     {item.label}
@@ -194,7 +197,7 @@ export default function Header() {
               </div>
             ))}
             <Link
-              href={buildContactHref('header-cta')}
+              href={contactCtaHref}
               className={`ml-2 hidden shrink-0 rounded-sm px-4 py-2.5 text-sm font-semibold transition-[background-color,color,transform,box-shadow] duration-brand hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 xl:inline-flex ${
                 isTransparent
                   ? 'bg-white text-sequoia-green shadow-sm hover:bg-white/95 focus-visible:ring-white/40'
@@ -313,7 +316,7 @@ export default function Header() {
                         </>
                       ) : (
                         <Link
-                          href={item.href}
+                          href={item.label === 'お問い合わせ' ? contactHref : item.href}
                           className="flex min-h-12 items-center rounded-sm py-3 text-base font-medium text-sequoia-black/85 no-underline visited:text-sequoia-black/85 transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
                           onClick={toggleMobileMenu}
                         >
@@ -324,7 +327,7 @@ export default function Header() {
                   ))}
                 </nav>
                 <Link
-                  href={buildContactHref('header-cta')}
+                  href={contactCtaHref}
                   className="btn-primary mt-6 w-full"
                   onClick={toggleMobileMenu}
                 >

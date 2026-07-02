@@ -1,8 +1,14 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { buildContactHref } from '@/lib/contact'
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const pathname = usePathname()
+  const isAiSolutionPage = pathname === '/service/ai-solution'
+  const contactHref = isAiSolutionPage ? '#ai-solution-form' : buildContactHref('footer')
   const footerLinkClass =
     'rounded-sm text-on-dark-muted transition-[color,background-color] duration-brand hover:bg-white/8 hover:text-[color:var(--color-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35'
 
@@ -61,7 +67,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href={buildContactHref('footer')} className={footerLinkClass}>
+                  <Link href={contactHref} className={footerLinkClass}>
                     お問い合わせ
                   </Link>
                 </li>
@@ -82,12 +88,9 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/15 pt-6 text-caption text-on-dark-subtle md:flex-row md:items-center md:justify-between">
           <p>© {year} 株式会社Amber. All rights reserved.</p>
-          <a
-            href="mailto:ayumu.matsui@amber-inc.com"
-            className="transition-colors duration-brand hover:text-[color:var(--color-cream)]"
-          >
-            ayumu.matsui@amber-inc.com
-          </a>
+          <Link href={contactHref} className="transition-colors duration-brand hover:text-[color:var(--color-cream)]">
+            お問い合わせフォーム
+          </Link>
         </div>
       </div>
     </footer>

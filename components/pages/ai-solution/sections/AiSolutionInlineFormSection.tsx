@@ -200,7 +200,7 @@ export default function AiSolutionInlineFormSection() {
             disabled={isSubmitting}
             className="btn-primary mt-7 w-full disabled:cursor-not-allowed disabled:opacity-55"
           >
-            {isSubmitting ? '送信中...' : '無料相談を予約する'}
+            {isSubmitting ? '送信中...' : '無料相談する'}
             <ArrowRight className="h-4 w-4" aria-hidden />
           </button>
 
