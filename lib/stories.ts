@@ -14,10 +14,10 @@ export type StoryCase = {
 export const storyCases: StoryCase[] = [
   {
     industry: 'ハウスクリーニング業',
-    title: '複数店舗を1つの業務OSに',
+    title: '複数店舗の横断管理',
     quote: '店舗ごとにバラバラだった予約・配車・顧客管理を、1台帳で横断できるようにしました。',
     before: '店舗ごとにバラバラだった予約・配車・顧客管理',
-    after: '1つの業務OSで全店舗を横断管理',
+    after: '複数店舗の横断管理',
     image: aiSolutionAssets.cases.cleaning,
     imageAlt: 'ハウスクリーニング業の導入イメージ',
     metrics: [

@@ -8,6 +8,7 @@ type ContactCTAProps = {
   ctaLabel?: string
   source?: string
   className?: string
+  note?: string
 }
 
 export default function ContactCTA({
@@ -16,6 +17,7 @@ export default function ContactCTA({
   ctaLabel = 'AI活用の進め方を相談する',
   source = 'contact-cta',
   className = '',
+  note,
 }: ContactCTAProps) {
   return (
     <section className={`home-section bg-white ${className}`}>
@@ -23,6 +25,7 @@ export default function ContactCTA({
         <div className="mx-auto max-w-2xl text-center">
           <SectionHeader heading={headingLines} lead={body} align="center" className="mb-10 md:mb-10" />
           <PrimaryButton href={buildContactHref(source, 'ai-solution')}>{ctaLabel}</PrimaryButton>
+          {note ? <p className="mt-5 text-sm text-secondary">{note}</p> : null}
         </div>
       </div>
     </section>

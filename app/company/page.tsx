@@ -13,7 +13,7 @@ import { siteUrl } from '@/lib/site-metadata'
 import FadeUp from '@/components/home/FadeUp'
 
 export const metadata: Metadata = {
-  title: '会社情報 | 株式会社Amber',
+  title: '会社情報',
   description: '現場が回り続ける仕組みを、技術で実装する。株式会社Amberのミッション、原則、代表、会社概要。',
   alternates: { canonical: `${siteUrl}/company` },
 }

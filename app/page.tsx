@@ -7,6 +7,7 @@ import ValueBento from '@/components/home/ValueBento'
 import CaseStudies from '@/components/home/CaseStudies'
 import AxProcess from '@/components/home/AxProcess'
 import Capabilities from '@/components/home/Capabilities'
+import FdeStyle from '@/components/home/FdeStyle'
 import TrustPrinciples from '@/components/home/TrustPrinciples'
 import LatestInsights from '@/components/home/LatestInsights'
 import FinalCta from '@/components/home/FinalCta'
@@ -42,6 +43,7 @@ export default function Home() {
       <CaseStudies />
       <AxProcess />
       <Capabilities />
+      <FdeStyle />
       <TrustPrinciples />
       <LatestInsights />
       <FinalCta />

@@ -27,7 +27,7 @@ export type ContactPreset = {
 }
 
 export const contactInquiryLabels: Record<ContactInquiryType, string> = {
-  'ai-solution': 'AIソリューション',
+  'ai-solution': 'AI活用・実装支援',
   development: 'AIシステム開発・業務改善',
   training: '生成AI活用研修',
   pine: 'Pine導入相談',
@@ -69,6 +69,11 @@ const sourceMessages: Record<string, ContactPreset> = {
     message:
       'AI活用の進め方について相談したいです。\n\n現在の課題：\n対象部署：\n希望時期：\n',
   },
+  roadmap: {
+    inquiryType: 'ai-solution',
+    message:
+      'AI活用実行ロードマップについて相談したいです。\n\n現在の課題：\n対象部署・業務：\n利用中のAIツール：\n希望時期：\n',
+  },
   company: {
     inquiryType: 'general',
     message: 'Amberへの相談・協業について連絡したいです。\n\n内容：\n',
@@ -80,16 +85,16 @@ const sourceMessages: Record<string, ContactPreset> = {
   'ai-solution': {
     inquiryType: 'ai-solution',
     message:
-      'AIソリューションについて相談したいです。\n\n現在の課題：\n対象人数・部署：\n利用中のAIツール：\n希望時期：\n',
+      'AI活用・実装支援について相談したいです。\n\n現在の課題：\n対象人数・部署：\n利用中のAIツール：\n希望時期：\n',
   },
   development: {
     inquiryType: 'ai-solution',
-    message: 'AIソリューションについて相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
+    message: 'AI活用・実装支援について相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
   },
   training: {
     inquiryType: 'ai-solution',
     message:
-      'AIソリューションについて相談したいです。\n\n対象人数：\n利用中のAIツール：\n相談したい内容：\n',
+      'AI人材育成・業務定着について相談したいです。\n\n対象人数：\n利用中のAIツール：\n相談したい内容：\n',
   },
   pine: {
     inquiryType: 'pine',

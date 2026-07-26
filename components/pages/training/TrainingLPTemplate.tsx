@@ -31,7 +31,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
           <PageBreadcrumbs
             items={[
               { label: 'トップ', href: '/' },
-              { label: 'AIソリューション', href: '/service/ai-solution' },
+              { label: 'AI活用・実装支援', href: '/service/ai-solution' },
               { label: `${data.toolName} 法人研修` },
             ]}
           />

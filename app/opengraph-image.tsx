@@ -114,7 +114,7 @@ export default function OgImage() {
             maxWidth: '680px',
           }}
         >
-          株式会社Amber — AIソリューション & AIプロダクト「Pine」
+          株式会社Amber — AI活用・実装支援 & AIプロダクト「Pine」
         </div>
       </div>
     ),

@@ -60,7 +60,7 @@ export default function AxProcess() {
                   }`}
                 >
                   <p className={`mb-3 text-xs font-medium tracking-[0.12em] ${isActive ? 'text-brand-green' : 'text-secondary'}`}>
-                    {String(index + 1).padStart(2, '0')} · {stage.label}
+                    {String(index + 1).padStart(2, '0')}
                   </p>
                   <h3 className="mb-5 text-xl font-medium text-sequoia-black">{stage.title}</h3>
                   <ul className="space-y-2.5">
@@ -91,7 +91,7 @@ export default function AxProcess() {
                 >
                   <span>
                     <span className="mb-1 block text-[11px] font-medium tracking-[0.1em] text-brand-green">
-                      {String(index + 1).padStart(2, '0')} · {stage.label}
+                      {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="text-base font-medium text-sequoia-black">{stage.title}</span>
                   </span>

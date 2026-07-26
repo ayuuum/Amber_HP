@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode, type CSSProperties } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { MOTION_EDITORIAL, MOTION_EASE } from '@/lib/motion-safe'
 
@@ -16,8 +16,13 @@ export default function FadeUp({ children, className = '', delay = 0 }: FadeUpPr
 
   useEffect(() => setMounted(true), [])
 
+  // JS 未実行・マウント前・モーション削減時は常に表示（永続非表示を防ぐ）
   if (!mounted || prefersReducedMotion) {
-    return <div className={className}>{children}</div>
+    return (
+      <div className={className} style={{ opacity: 1, transform: 'none' } satisfies CSSProperties}>
+        {children}
+      </div>
+    )
   }
 
   return (
@@ -25,7 +30,7 @@ export default function FadeUp({ children, className = '', delay = 0 }: FadeUpPr
       className={className}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: MOTION_EDITORIAL, delay, ease: MOTION_EASE }}
     >
       {children}

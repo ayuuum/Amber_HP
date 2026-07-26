@@ -4,7 +4,21 @@ import { ArrowRight } from 'lucide-react'
 import type { CaseItem } from '@/data/cases'
 
 type Props = {
-  item: Pick<CaseItem, 'slug' | 'industry' | 'theme' | 'challenge' | 'change' | 'before' | 'after' | 'image' | 'imageAlt' | 'anonymous'>
+  item: Pick<
+    CaseItem,
+    | 'slug'
+    | 'industry'
+    | 'theme'
+    | 'status'
+    | 'challenge'
+    | 'support'
+    | 'change'
+    | 'before'
+    | 'after'
+    | 'image'
+    | 'imageAlt'
+    | 'anonymous'
+  >
 }
 
 export default function CaseStudyCard({ item }: Props) {
@@ -20,10 +34,28 @@ export default function CaseStudyCard({ item }: Props) {
         />
       </div>
       <div className="flex flex-1 flex-col p-6 md:p-7">
-        <p className="home-label mb-2 text-brand-green">{item.industry}</p>
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <p className="home-label text-brand-green">{item.industry}</p>
+          <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2 py-0.5 text-[11px] text-secondary">
+            {item.status}
+          </span>
+        </div>
         {item.anonymous ? <p className="mb-2 text-[11px] text-secondary">匿名事例</p> : null}
         <h3 className="mb-3 text-lg font-medium leading-snug text-sequoia-black">{item.theme}</h3>
-        <p className="mb-4 text-sm leading-relaxed text-secondary line-clamp-3">{item.change}</p>
+        <dl className="mb-4 space-y-3 text-sm leading-relaxed">
+          <div>
+            <dt className="mb-1 text-xs text-secondary">支援前の課題</dt>
+            <dd className="line-clamp-2 text-sequoia-black/80">{item.challenge}</dd>
+          </div>
+          <div>
+            <dt className="mb-1 text-xs text-secondary">Amberが実施したこと</dt>
+            <dd className="line-clamp-2 text-sequoia-black/80">{item.support}</dd>
+          </div>
+          <div>
+            <dt className="mb-1 text-xs text-secondary">導入後の変化</dt>
+            <dd className="line-clamp-2 text-sequoia-black/80">{item.change}</dd>
+          </div>
+        </dl>
         <div className="mt-auto grid grid-cols-2 gap-3 border-t border-sequoia-black/8 pt-4 text-xs">
           <div>
             <p className="mb-1 text-secondary">Before</p>

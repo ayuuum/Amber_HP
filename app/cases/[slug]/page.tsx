@@ -42,9 +42,14 @@ export default function CaseDetailPage({ params }: Props) {
             ]}
           />
           <p className="home-label mb-3 text-brand-green">{item.industry}</p>
-          {item.anonymous ? (
-            <p className="mb-4 text-sm text-secondary">本事例は守秘義務のため、企業名を伏せて掲載しています。</p>
-          ) : null}
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
+              {item.status}
+            </span>
+            {item.anonymous ? (
+              <span className="text-sm text-secondary">本事例は守秘義務のため、企業名を伏せて掲載しています。</span>
+            ) : null}
+          </div>
           <h1 className="home-h2 mb-8 max-w-3xl">{item.theme}</h1>
 
           <div className="relative mb-12 aspect-[21/9] max-h-80 overflow-hidden rounded-2xl bg-sequoia-black/5">
@@ -53,7 +58,15 @@ export default function CaseDetailPage({ params }: Props) {
 
           <div className="mx-auto grid max-w-3xl gap-10">
             <section>
-              <h2 className="mb-3 text-lg font-medium text-sequoia-black">顧客課題</h2>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">業界</h2>
+              <p className="leading-relaxed text-secondary">{item.industry}</p>
+            </section>
+            <section>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援テーマ</h2>
+              <p className="leading-relaxed text-secondary">{item.theme}</p>
+            </section>
+            <section>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援前の課題</h2>
               <p className="leading-relaxed text-secondary">{item.challenge}</p>
             </section>
             <section>
@@ -65,7 +78,15 @@ export default function CaseDetailPage({ params }: Props) {
               <p className="leading-relaxed text-secondary">{item.support}</p>
             </section>
             <section>
-              <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援後の変化</h2>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">成果物</h2>
+              <ul className="list-disc space-y-1 pl-5 text-secondary">
+                {item.deliverables.map((d) => (
+                  <li key={d}>{d}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">導入後の変化</h2>
               <p className="leading-relaxed text-secondary">{item.change}</p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="home-card border border-sequoia-black/8 bg-off-white p-5">
@@ -77,14 +98,6 @@ export default function CaseDetailPage({ params }: Props) {
                   <p className="text-sm text-sequoia-black">{item.after}</p>
                 </div>
               </div>
-            </section>
-            <section>
-              <h2 className="mb-3 text-lg font-medium text-sequoia-black">成果物</h2>
-              <ul className="list-disc space-y-1 pl-5 text-secondary">
-                {item.deliverables.map((d) => (
-                  <li key={d}>{d}</li>
-                ))}
-              </ul>
             </section>
             <section>
               <h2 className="mb-3 text-lg font-medium text-sequoia-black">今後の展開</h2>

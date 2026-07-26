@@ -5,7 +5,7 @@ import OpenAIAdsConversion from '@/components/OpenAIAdsConversion'
 import { PrimaryButton, SecondaryButton } from '@/components/ui/PrimaryButton'
 
 export const metadata: Metadata = {
-  title: '送信ありがとうございます | AIソリューション',
+  title: '送信ありがとうございます | AI活用・実装支援',
   robots: {
     index: false,
     follow: false,
@@ -25,7 +25,7 @@ export default function AiSolutionThanksPage() {
             内容を確認し、担当者よりご連絡します。構想・研修・開発・定着の進め方を、現在の状況に合わせて整理します。
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-            <PrimaryButton href="/service/ai-solution">AIソリューションへ戻る</PrimaryButton>
+            <PrimaryButton href="/service/ai-solution">AI活用・実装支援へ戻る</PrimaryButton>
             <SecondaryButton href="/">トップへ戻る</SecondaryButton>
           </div>
         </div>

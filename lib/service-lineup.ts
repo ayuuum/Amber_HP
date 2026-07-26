@@ -9,8 +9,8 @@ export type ServiceLineupItem = {
 
 export const serviceLineupItems: ServiceLineupItem[] = [
   {
-    title: 'AIソリューション',
-    summary: '使える・回る・残る。現場から定着まで伴走します。',
+    title: 'AI活用・実装支援',
+    summary: '実行ロードマップから人材育成・開発・定着まで伴走します。',
     image: '/images/brand/consulting-hero.png',
     href: '/service/ai-solution',
   },

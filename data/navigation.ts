@@ -5,23 +5,23 @@ export const siteShell = {
 
 export const serviceMegaMenu = [
   {
-    title: 'AI活用ロードマップ',
-    description: '経営・業務課題からAI活用の優先順位を設計',
-    href: '/service/ai-solution#services',
+    title: 'AI活用戦略・ロードマップ',
+    description: '優先順位と実行方法を明確にする入口',
+    href: '/service/ai-solution#roadmap',
   },
   {
-    title: '生成AI研修・内製化支援',
-    description: '自社業務を題材に、現場で使える状態をつくる',
-    href: '/service/ai-solution#services',
+    title: 'AI人材育成・業務定着',
+    description: '研修から実務利用・継続活用まで',
+    href: '/service/ai-solution#training',
   },
   {
     title: 'AIエージェント・システム開発',
-    description: '個社業務に合わせたAIと業務システムを実装',
-    href: '/service/ai-solution#services',
+    description: '個社業務に合わせた仕組みを実装',
+    href: '/service/ai-solution#build',
   },
   {
-    title: 'FDE・継続改善',
-    description: '現場に入り、利用定着と改善を継続支援',
-    href: '/service/ai-solution#process',
+    title: '現場伴走・継続改善（FDE）',
+    description: '3領域を横断する現場伴走型の支援スタイル',
+    href: '/#fde',
   },
 ] as const

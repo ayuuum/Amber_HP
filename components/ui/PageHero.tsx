@@ -42,7 +42,7 @@ export default function PageHero({
               {eyebrow}
             </p>
           ) : null}
-          <h1 className={cn('home-h2 mb-6', isDark ? 'text-white' : 'text-sequoia-black')}>
+          <h1 className={cn('home-h2 mb-6', isDark ? '!text-white' : 'text-sequoia-black')}>
             {headingLines.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -50,7 +50,7 @@ export default function PageHero({
             ))}
           </h1>
           {body ? (
-            <p className={cn('mb-8 max-w-xl text-base leading-[1.8]', isDark ? 'text-white/85' : 'text-secondary')}>
+            <p className={cn('mb-8 max-w-xl text-base leading-[1.8]', isDark ? '!text-white/90' : 'text-secondary')}>
               {body}
             </p>
           ) : null}
