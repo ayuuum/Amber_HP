@@ -1,341 +1,264 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useId, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { buildContactHref } from '@/lib/contact'
-import {
-  MOTION_BASE,
-  MOTION_FAST,
-  motionTransition,
-  panelTransition,
-} from '@/lib/motion-safe'
+import { serviceMegaMenu } from '@/data/home'
+import { panelTransition } from '@/lib/motion-safe'
 
-// ヒーローがダーク基調のページ。スクロール前はヘッダーを透明＋白文字に切り替える。
-const DARK_HERO_PATHS: string[] = []
-/** モバイルのみ映画的ヒーロー（デスクトップは白背景カラムがあるため除外） */
-const MOBILE_DARK_HERO_PATHS = ['/']
-
-const PINE_HOME_URL = 'https://pine-home.com/'
-
-type MenuChild = {
-  label: string
-  href: string
-  external?: boolean
-  group?: string
-}
-
-type MenuItem = {
-  label: string
-  href: string
-  children?: MenuChild[]
-}
-
-const menuItems: MenuItem[] = [
-  {
-    label: '企業情報',
-    href: '/company',
-  },
-  {
-    label: 'サービス',
-    href: '#',
-    children: [
-      { label: 'AIソリューション', href: '/service/ai-solution', group: 'AIソリューション' },
-      { label: 'Pine（出張訪問サービス向けAI SaaS）', href: PINE_HOME_URL, external: true, group: 'AI SaaS' },
-    ],
-  },
-  {
-    label: 'ニュース',
-    href: '/blog',
-  },
-  {
-    label: 'お問い合わせ',
-    href: buildContactHref('header'),
-  },
-]
+const DARK_HERO_PATHS = ['/']
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [serviceOpen, setServiceOpen] = useState(false)
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [isMobileViewport, setIsMobileViewport] = useState(false)
   const pathname = usePathname()
   const isAiSolutionPage = pathname === '/service/ai-solution'
   const contactHref = isAiSolutionPage ? '#ai-solution-form' : buildContactHref('header')
   const contactCtaHref = isAiSolutionPage ? '#ai-solution-form' : buildContactHref('header-cta')
+  const megaId = useId()
+  const mobileNavId = useId()
+  const megaRef = useRef<HTMLDivElement>(null)
 
-  const isDarkHeroPage =
-    DARK_HERO_PATHS.includes(pathname ?? '') ||
-    (isMobileViewport && MOBILE_DARK_HERO_PATHS.includes(pathname ?? ''))
-  // モバイルメニュー開いている間は読みやすさのため通常モードに戻す
-  const isTransparent = isDarkHeroPage && !scrolled && !isMobileMenuOpen
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px)')
-    const update = () => setIsMobileViewport(mq.matches)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
+  const isDarkHero = DARK_HERO_PATHS.includes(pathname ?? '')
+  const isTransparent = isDarkHero && !scrolled && !isMobileMenuOpen
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32)
+    const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+    setServiceOpen(false)
     setMobileServiceOpen(false)
-  }
+  }, [pathname])
 
-  // テーマに応じた色クラス
+  useEffect(() => {
+    if (!serviceOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setServiceOpen(false)
+    }
+    const onClick = (e: MouseEvent) => {
+      if (megaRef.current && !megaRef.current.contains(e.target as Node)) {
+        setServiceOpen(false)
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    document.addEventListener('mousedown', onClick)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('mousedown', onClick)
+    }
+  }, [serviceOpen])
+
   const headerBg = isTransparent
     ? 'border-transparent bg-transparent'
-    : 'border-white/45 bg-white/[0.72] shadow-sm backdrop-blur-xl'
-  const logoColor = isTransparent ? 'text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]' : 'text-sequoia-black'
-  const navItemColor = isTransparent
-    ? 'text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:bg-white/10 hover:text-white'
-    : 'text-sequoia-black/80 hover:bg-sequoia-black/5 hover:text-sequoia-green'
+    : 'border-sequoia-black/8 bg-white/85 shadow-sm backdrop-blur-xl'
+  const logoColor = isTransparent ? 'text-white' : 'text-brand-green'
+  const navColor = isTransparent
+    ? 'text-white/90 hover:bg-white/10 hover:text-white'
+    : 'text-sequoia-black/75 hover:bg-sequoia-black/5 hover:text-brand-green'
   const mobileBtnColor = isTransparent
-    ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:bg-white/10'
-    : 'text-sequoia-black hover:bg-sequoia-black/5 hover:text-sequoia-green'
+    ? 'text-white hover:bg-white/10'
+    : 'text-sequoia-black hover:bg-sequoia-black/5'
+
+  const resolveHref = (href: string) => {
+    if (href.startsWith('/#')) {
+      return pathname === '/' ? href.slice(1) : href
+    }
+    return href
+  }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-brand ${headerBg}`}>
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow,color] duration-[400ms] ${headerBg}`}
+    >
+      <div className="home-container">
         <div className="site-header-toolbar flex h-20 items-center justify-between">
-          {/* Logo */}
           <Link
             href="/"
-            className="relative z-50 flex-shrink-0 no-underline visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-green/40"
+            className="relative z-50 shrink-0 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40"
             aria-label="株式会社Amber"
           >
-            <span className={`font-logo text-[2rem] leading-none transition-colors duration-brand ${logoColor}`}>
+            <span className={`font-logo text-[1.75rem] leading-none transition-colors duration-[400ms] ${logoColor}`}>
               Amber
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="site-nav-desktop items-center gap-1 xl:gap-2" aria-label="主要ナビゲーション">
-            {menuItems.map((item, index) => (
-              <div
-                key={index}
-                className="relative"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
+          <nav className="site-nav-desktop ml-auto mr-3 gap-0.5" aria-label="メインナビゲーション">
+            <div className="relative" ref={megaRef}>
+              <button
+                type="button"
+                className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}
+                aria-expanded={serviceOpen}
+                aria-controls={megaId}
+                onClick={() => setServiceOpen((v) => !v)}
+                onMouseEnter={() => setServiceOpen(true)}
               >
-                {item.children ? (
-                  <>
-                    <span
-                      className={`flex cursor-default items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium transition-[background-color,color] duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
-                      aria-haspopup="true"
-                      aria-expanded={hoveredIndex === index}
-                    >
-                      {item.label}
-                      <ChevronDown className="w-4 h-4" aria-hidden="true" />
-                    </span>
-                    <AnimatePresence>
-                      {hoveredIndex === index && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -4 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -4 }}
-                          transition={motionTransition(MOTION_FAST)}
-                          className="absolute top-full left-0 min-w-[220px] pt-2"
-                        >
-                          <div className="rounded-sm border border-white/55 bg-white/[0.78] py-1.5 shadow-[0_24px_64px_-28px_rgba(27,58,45,0.28)] backdrop-blur-2xl">
-                            {item.children.map((child, childIndex) => {
-                              const prevChild = item.children?.[childIndex - 1]
-                              const isNewGroup = child.group && child.group !== prevChild?.group
-                              return (
-                                <div key={childIndex}>
-                                  {isNewGroup && (
-                                    <p className="mx-4 mt-2 mb-1 text-[10px] font-bold tracking-[0.12em] text-sequoia-black/40 uppercase">
-                                      {child.group}
-                                    </p>
-                                  )}
-                                  {child.external ? (
-                                    <a
-                                      href={child.href}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="mx-1 flex items-center gap-1.5 rounded-sm px-4 py-2.5 text-sm font-medium text-sequoia-black/85 transition-[background-color,color] duration-brand hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                                    >
-                                      {child.label}
-                                      <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
-                                      <span className="sr-only">（新しいタブで開く）</span>
-                                    </a>
-                                  ) : (
-                                    <Link
-                                      href={child.href}
-                                      className={`mx-1 block rounded-sm px-4 py-2.5 text-sm font-medium transition-[background-color,color] duration-brand hover:bg-sequoia-green/6 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-6 text-sequoia-black/70' : 'text-sequoia-black/85'}`}
-                                    >
-                                      {child.label}
-                                    </Link>
-                                  )}
-                                </div>
-                              )
-                            })}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </>
-                ) : (
-                  <Link
-                    href={item.label === 'お問い合わせ' ? contactHref : item.href}
-                    className={`flex items-center gap-1 rounded-sm px-3 py-2 text-sm font-medium no-underline transition-[background-color,color] duration-brand visited:text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${navItemColor}`}
+                サービス
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${serviceOpen ? 'rotate-180' : ''}`} aria-hidden />
+              </button>
+              <AnimatePresence>
+                {serviceOpen && (
+                  <motion.div
+                    id={megaId}
+                    role="menu"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={panelTransition()}
+                    className="absolute left-0 top-full z-50 mt-3 w-[min(92vw,520px)] rounded-2xl border border-sequoia-black/8 bg-white p-3 shadow-lg"
+                    onMouseLeave={() => setServiceOpen(false)}
                   >
-                    {item.label}
-                  </Link>
+                    <ul className="grid gap-1 sm:grid-cols-2">
+                      {serviceMegaMenu.map((item) => (
+                        <li key={item.title}>
+                          <Link
+                            href={resolveHref(item.href)}
+                            role="menuitem"
+                            className="block rounded-xl px-4 py-3 transition-colors hover:bg-light-green/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30"
+                            onClick={() => setServiceOpen(false)}
+                          >
+                            <span className="block text-sm font-medium text-sequoia-black">{item.title}</span>
+                            <span className="mt-1 block text-xs leading-relaxed text-secondary">{item.description}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
                 )}
-              </div>
-            ))}
+              </AnimatePresence>
+            </div>
+
             <Link
-              href={contactCtaHref}
-              className={`ml-2 hidden shrink-0 rounded-sm px-4 py-2.5 text-sm font-semibold transition-[background-color,color,transform,box-shadow] duration-brand hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 xl:inline-flex ${
-                isTransparent
-                  ? 'bg-white text-sequoia-green shadow-sm hover:bg-white/95 focus-visible:ring-white/40'
-                  : 'btn-primary !px-4 !py-2.5'
-              }`}
+              href={resolveHref('/#cases')}
+              className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}
             >
-              相談する
+              支援事例
+            </Link>
+            <Link
+              href="/company"
+              className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}
+            >
+              会社情報
+            </Link>
+            <Link
+              href="/blog"
+              className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}
+            >
+              知見
             </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
+          <Link
+            href={contactCtaHref}
+            className={`site-nav-desktop ml-2 hidden shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-[background-color,color] duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40 xl:inline-flex ${
+              isTransparent
+                ? 'bg-white text-dark-green hover:bg-white/90'
+                : 'bg-brand-green text-white hover:bg-dark-green'
+            }`}
+          >
+            AI活用を相談する
+          </Link>
+
           <button
             type="button"
-            onClick={toggleMobileMenu}
-            className={`site-nav-mobile-toggle relative z-50 rounded-sm p-2 transition-[background-color,color] duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${mobileBtnColor}`}
-            aria-label="メニュー"
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
+            className={`site-nav-mobile-toggle relative z-50 rounded-full p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40 ${mobileBtnColor}`}
             aria-expanded={isMobileMenuOpen}
+            aria-controls={mobileNavId}
+            aria-label={isMobileMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation & Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
-              transition={motionTransition(MOTION_BASE)}
-              onClick={toggleMobileMenu}
-              className="fixed inset-0 bg-sequoia-black/25 lg:hidden"
-              style={{ top: '80px', height: 'calc(100vh - 80px)' }}
-            />
-
-            {/* Menu Content */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={panelTransition()}
-              className="fixed top-20 right-0 h-[calc(100vh-80px)] w-full overflow-y-auto border-l border-white/55 bg-white/[0.82] shadow-2xl backdrop-blur-2xl md:w-80 lg:hidden"
-            >
-              <div className="flex flex-col p-6 pt-8">
-                <nav className="flex flex-col gap-0" aria-label="モバイルメニュー">
-                  {menuItems.map((item, index) => (
-                    <div
-                      key={index}
-                      className="border-b border-sequoia-black/10 py-1 last:border-b-0 last:pb-2"
-                    >
-                      {item.children ? (
-                        <>
-                          <button
-                            type="button"
-                            onClick={() => setMobileServiceOpen(!mobileServiceOpen)}
-                            className="flex min-h-12 w-full items-center justify-between rounded-sm py-3 text-left text-base font-medium text-sequoia-black/85 no-underline transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                            aria-expanded={mobileServiceOpen}
-                            aria-haspopup="true"
+          <motion.div
+            id={mobileNavId}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={panelTransition()}
+            className="border-t border-sequoia-black/8 bg-white lg:hidden"
+          >
+            <nav className="home-container py-4" aria-label="モバイルナビゲーション">
+              <ul className="space-y-1">
+                <li>
+                  <button
+                    type="button"
+                    className="flex min-h-12 w-full items-center justify-between rounded-xl px-3 py-3 text-left text-base font-medium text-sequoia-black"
+                    aria-expanded={mobileServiceOpen}
+                    onClick={() => setMobileServiceOpen((v) => !v)}
+                  >
+                    サービス
+                    <ChevronDown className={`h-4 w-4 transition-transform ${mobileServiceOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {mobileServiceOpen && (
+                    <ul className="mb-2 space-y-1 pl-3">
+                      {serviceMegaMenu.map((item) => (
+                        <li key={item.title}>
+                          <Link
+                            href={resolveHref(item.href)}
+                            className="block rounded-xl px-3 py-3 text-sm text-sequoia-black/80 hover:bg-light-green/60"
+                            onClick={() => setIsMobileMenuOpen(false)}
                           >
-                            {item.label}
-                            <ChevronDown
-                              className={`w-5 h-5 transition-transform duration-brand ${mobileServiceOpen ? 'rotate-180' : ''}`}
-                            />
-                          </button>
-                          <AnimatePresence>
-                            {mobileServiceOpen && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={motionTransition(MOTION_BASE)}
-                                className="overflow-hidden"
-                              >
-                                <div className="pl-3 pb-2 flex flex-col space-y-0.5">
-                                  {item.children.map((child, childIndex) => {
-                                    const prevChild = item.children?.[childIndex - 1]
-                                    const isNewGroup = child.group && child.group !== prevChild?.group
-                                    return (
-                                      <div key={childIndex}>
-                                        {isNewGroup && (
-                                          <p className="px-2 pt-2 pb-0.5 text-[10px] font-bold tracking-[0.12em] text-sequoia-black/40 uppercase">
-                                            {child.group}
-                                          </p>
-                                        )}
-                                        {child.external ? (
-                                          <a
-                                            href={child.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex min-h-10 items-center gap-1.5 rounded-sm py-2 text-sm font-medium text-sequoia-black/70 no-underline visited:text-sequoia-black/70 transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                                            onClick={toggleMobileMenu}
-                                          >
-                                            {child.label}
-                                            <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
-                                            <span className="sr-only">（新しいタブで開く）</span>
-                                          </a>
-                                        ) : (
-                                          <Link
-                                            href={child.href}
-                                            className={`flex min-h-10 items-center rounded-sm py-2 text-sm font-medium no-underline transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 ${child.group ? 'pl-2 text-sequoia-black/60 visited:text-sequoia-black/60' : 'text-sequoia-black/70 visited:text-sequoia-black/70'}`}
-                                            onClick={toggleMobileMenu}
-                                          >
-                                            {child.label}
-                                          </Link>
-                                        )}
-                                      </div>
-                                    )
-                                  })}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </>
-                      ) : (
-                        <Link
-                          href={item.label === 'お問い合わせ' ? contactHref : item.href}
-                          className="flex min-h-12 items-center rounded-sm py-3 text-base font-medium text-sequoia-black/85 no-underline visited:text-sequoia-black/85 transition-[background-color,color] duration-brand hover:bg-sequoia-black/5 hover:text-sequoia-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25"
-                          onClick={toggleMobileMenu}
-                        >
-                          {item.label}
-                        </Link>
-                      )}
-                    </div>
-                  ))}
-                </nav>
-                <Link
-                  href={contactCtaHref}
-                  className="btn-primary mt-6 w-full"
-                  onClick={toggleMobileMenu}
-                >
-                  相談する
-                </Link>
-              </div>
-            </motion.div>
-          </>
+                            <span className="font-medium text-sequoia-black">{item.title}</span>
+                            <span className="mt-0.5 block text-xs text-secondary">{item.description}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+                <li>
+                  <Link
+                    href={resolveHref('/#cases')}
+                    className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    支援事例
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/company"
+                    className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    会社情報
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    知見
+                  </Link>
+                </li>
+                <li className="pt-2">
+                  <Link
+                    href={contactHref}
+                    className="btn-pill-primary-solid flex w-full"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    AI活用を相談する
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>

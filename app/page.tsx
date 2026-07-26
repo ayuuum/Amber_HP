@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
-import HeroSection from '@/components/sections/HeroSection'
-import ServiceLineupSection from '@/components/sections/ServiceLineupSection'
-import FeaturesSection from '@/components/sections/FeaturesSection'
-import AboutSection from '@/components/sections/AboutSection'
-import StoriesSection from '@/components/sections/StoriesSection'
-import HomeNewsPreview from '@/components/sections/HomeNewsPreview'
-import ForestCtaSection from '@/components/sections/ForestCtaSection'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { buildContactHref } from '@/lib/contact'
-
+import HomeHero from '@/components/home/HomeHero'
+import ProofStrip from '@/components/home/ProofStrip'
+import ValueBento from '@/components/home/ValueBento'
+import CaseStudies from '@/components/home/CaseStudies'
+import AxProcess from '@/components/home/AxProcess'
+import Capabilities from '@/components/home/Capabilities'
+import TrustPrinciples from '@/components/home/TrustPrinciples'
+import LatestInsights from '@/components/home/LatestInsights'
+import FinalCta from '@/components/home/FinalCta'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
@@ -34,21 +34,18 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <main className="min-h-screen">
-        <Header />
-        <HeroSection />
-        <ServiceLineupSection />
-        <FeaturesSection />
-        <AboutSection variant="teaser" />
-        <StoriesSection />
-        <HomeNewsPreview />
-        <ForestCtaSection
-          primaryLabel="相談する"
-          primaryHref={buildContactHref('home-forest-cta')}
-        />
-        <Footer />
-      </main>
-    </>
+    <main className="min-h-screen bg-white">
+      <Header />
+      <HomeHero />
+      <ProofStrip />
+      <ValueBento />
+      <CaseStudies />
+      <AxProcess />
+      <Capabilities />
+      <TrustPrinciples />
+      <LatestInsights />
+      <FinalCta />
+      <Footer />
+    </main>
   )
 }

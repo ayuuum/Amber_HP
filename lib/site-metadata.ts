@@ -7,21 +7,21 @@ export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-in
 export const siteMetadata = {
   name: '株式会社Amber',
   /** ミッション（短いタグライン） */
-  tagline: '暮らしを支える産業に、テクノロジーを。',
-  /** 検索・OG 用の説明文（デッキの事業定義と整合） */
+  tagline: 'AI活用を、現場の成果に。',
+  /** 検索・OG 用の説明文 */
   description:
-    '東京都を拠点に、AIソリューション（生成AI研修・AIシステム開発）とAI SaaS（出張訪問向け予約管理「Pine」）を提供。現場の業務再設計から定着まで伴走します。株式会社Amber公式サイト。',
+    '企業のAI活用を、構想・業務設計・研修・開発・定着まで一気通貫で支援するAXパートナー。株式会社Amber公式サイト。',
   /** ルート相当のデフォルト title */
-  defaultTitle: '株式会社Amber | 暮らしを支える産業に、テクノロジーを。',
+  defaultTitle: '株式会社Amber | AI活用を、現場の成果に。',
   keywords: [
     '株式会社Amber',
     '松井歩武',
-    'AI導入コンサルティング',
-    'AIシステム開発',
+    'AI活用支援',
     '生成AI研修',
-    'Pine',
-    'ホームサービス',
-    '業務効率化',
-    '中小企業',
+    'AIエージェント',
+    '業務システム開発',
+    'AI導入コンサルティング',
+    'FDE',
+    '内製化',
   ] as const,
 } as const

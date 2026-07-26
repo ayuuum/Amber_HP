@@ -50,6 +50,16 @@ const sourceMessages: Record<string, ContactPreset> = {
     inquiryType: 'general',
     message: 'Amberのサービスについて相談したいです。\n\n相談したい内容：\n',
   },
+  'home-hero': {
+    inquiryType: 'ai-solution',
+    message:
+      'AI活用について相談したいです。\n\n現在の課題：\n対象部署・人数：\n利用中のAIツール：\n希望時期：\n',
+  },
+  'home-final-cta': {
+    inquiryType: 'ai-solution',
+    message:
+      '自社のAI活用の進め方について相談したいです。\n\n現在の取り組み：\n相談したい業務課題：\n希望時期：\n',
+  },
   'ai-solution': {
     inquiryType: 'ai-solution',
     message:

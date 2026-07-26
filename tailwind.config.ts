@@ -10,11 +10,18 @@ const config: Config = {
     extend: {
       colors: {
         /* Amber Brand Design System v3.0 */
-        'sequoia-green': 'rgb(27 58 45 / <alpha-value>)',
-        'sequoia-green-accent': 'rgb(27 58 45 / <alpha-value>)',
+        'sequoia-green': 'rgb(11 90 70 / <alpha-value>)',
+        'sequoia-green-accent': 'rgb(11 90 70 / <alpha-value>)',
         accent: 'rgb(var(--lp-accent) / <alpha-value>)',
-        'green-dark': 'rgb(27 58 45 / <alpha-value>)',
+        'green-dark': 'rgb(16 51 45 / <alpha-value>)',
         'sequoia-black': 'rgb(21 40 40 / <alpha-value>)',
+        'brand-green': '#0B5A46',
+        'dark-green': '#10332D',
+        'light-green': '#E9F1EC',
+        'light-blue': '#F2F7FA',
+        'off-white': '#F6F7F5',
+        secondary: '#697573',
+        'amber-soft': '#C58A2A',
         'sequoia-white': 'var(--color-white)',
         'color-bg': 'var(--color-bg)',
         'color-bg-subtle': 'var(--color-bg-subtle)',

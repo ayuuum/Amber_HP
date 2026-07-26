@@ -1,94 +1,94 @@
-'use client'
-
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { buildContactHref } from '@/lib/contact'
+import { brandTagline, serviceMegaMenu } from '@/data/home'
+
+const PINE_HOME_URL = 'https://pine-home.com/'
 
 export default function Footer() {
   const year = new Date().getFullYear()
-  const pathname = usePathname()
-  const isAiSolutionPage = pathname === '/service/ai-solution'
-  const contactHref = isAiSolutionPage ? '#ai-solution-form' : buildContactHref('footer')
-  const footerLinkClass =
-    'rounded-sm text-on-dark-muted transition-[color,background-color] duration-brand hover:bg-white/8 hover:text-[color:var(--color-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35'
+  const contactHref = buildContactHref('footer')
+  const linkClass =
+    'text-sm text-secondary transition-colors hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30 rounded-sm'
 
   return (
-    <footer className="border-t border-white/15 bg-sequoia-black text-[color:var(--color-cream)]">
-      <div className="section-pad mx-auto max-w-6xl !py-10">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-md">
-            <Link href="/" className="inline-flex items-center" aria-label="株式会社Amber">
-              <span className="font-logo text-[2rem] leading-none text-[color:var(--color-cream)]">Amber</span>
+    <footer className="border-t border-sequoia-black/8 bg-off-white">
+      <div className="home-container py-14 md:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="inline-flex" aria-label="株式会社Amber">
+              <span className="font-logo text-[1.75rem] leading-none text-brand-green">Amber</span>
             </Link>
-            <p className="text-body mt-3 text-on-dark-muted">
-              暮らしを支える産業に、テクノロジーを。
-            </p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">{brandTagline}</p>
           </div>
 
-          <nav aria-label="フッターナビゲーション" className="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
-            <div className="space-y-3">
-              <p className="font-semibold text-[color:var(--color-cream)]">サービス</p>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/service/ai-solution" className={footerLinkClass}>
-                    AIソリューション
+          <div>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">サービス</p>
+            <ul className="space-y-2.5">
+              {serviceMegaMenu.map((item) => (
+                <li key={item.title}>
+                  <Link href={item.href.startsWith('/#') ? item.href : item.href} className={linkClass}>
+                    {item.title}
                   </Link>
                 </li>
-                <li>
-                  <a
-                    href="https://pine-home.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={footerLinkClass}
-                  >
-                    AI SaaS（Pine）
-                    <span className="sr-only">（新しいタブで開く）</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            <div className="space-y-3">
-              <p className="font-semibold text-[color:var(--color-cream)]">情報</p>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/company" className={footerLinkClass}>
-                    企業情報
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className={footerLinkClass}>
-                    ニュース
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/faq" className={footerLinkClass}>
-                    よくある質問
-                  </Link>
-                </li>
-                <li>
-                  <Link href={contactHref} className={footerLinkClass}>
-                    お問い合わせ
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/privacy" className={footerLinkClass}>
-                    プライバシー
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms" className={footerLinkClass}>
-                    利用規約
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <div>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">情報</p>
+            <ul className="space-y-2.5">
+              <li>
+                <Link href="/#cases" className={linkClass}>
+                  支援事例
+                </Link>
+              </li>
+              <li>
+                <Link href="/company" className={linkClass}>
+                  会社情報
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className={linkClass}>
+                  知見
+                </Link>
+              </li>
+              <li>
+                <Link href={contactHref} className={linkClass}>
+                  お問い合わせ
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">プロダクト</p>
+            <ul className="space-y-2.5">
+              <li>
+                <a href={PINE_HOME_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  Pine
+                  <span className="sr-only">（新しいタブで開く）</span>
+                </a>
+              </li>
+            </ul>
+            <p className="mb-4 mt-8 text-sm font-medium text-sequoia-black">法務</p>
+            <ul className="space-y-2.5">
+              <li>
+                <Link href="/privacy" className={linkClass}>
+                  プライバシーポリシー
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className={linkClass}>
+                  利用規約
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/15 pt-6 text-caption text-on-dark-subtle md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-sequoia-black/8 pt-6 text-xs text-secondary md:flex-row md:items-center md:justify-between">
           <p>© {year} 株式会社Amber. All rights reserved.</p>
-          <Link href={contactHref} className="transition-colors duration-brand hover:text-[color:var(--color-cream)]">
+          <Link href={contactHref} className="hover:text-brand-green">
             お問い合わせフォーム
           </Link>
         </div>
