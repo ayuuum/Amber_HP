@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import { buildContactHref } from '@/lib/contact'
-import { brandTagline, serviceMegaMenu } from '@/data/home'
-
-const PINE_HOME_URL = 'https://pine-home.com/'
+import { serviceMegaMenu, siteShell } from '@/data/navigation'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -18,7 +16,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex" aria-label="株式会社Amber">
               <span className="font-logo text-[1.75rem] leading-none text-brand-green">Amber</span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">{brandTagline}</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">{siteShell.brandTagline}</p>
           </div>
 
           <div>
@@ -26,7 +24,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {serviceMegaMenu.map((item) => (
                 <li key={item.title}>
-                  <Link href={item.href.startsWith('/#') ? item.href : item.href} className={linkClass}>
+                  <Link href={item.href} className={linkClass}>
                     {item.title}
                   </Link>
                 </li>
@@ -38,7 +36,7 @@ export default function Footer() {
             <p className="mb-4 text-sm font-medium text-sequoia-black">情報</p>
             <ul className="space-y-2.5">
               <li>
-                <Link href="/#cases" className={linkClass}>
+                <Link href="/cases" className={linkClass}>
                   支援事例
                 </Link>
               </li>
@@ -49,7 +47,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/blog" className={linkClass}>
-                  知見
+                  AI活用の知見
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className={linkClass}>
+                  よくあるご質問
                 </Link>
               </li>
               <li>
@@ -64,7 +67,7 @@ export default function Footer() {
             <p className="mb-4 text-sm font-medium text-sequoia-black">プロダクト</p>
             <ul className="space-y-2.5">
               <li>
-                <a href={PINE_HOME_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                <a href={siteShell.pineUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
                   Pine
                   <span className="sr-only">（新しいタブで開く）</span>
                 </a>

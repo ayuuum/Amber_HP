@@ -12,7 +12,7 @@ export type FaqCategory = {
 export const faqCategories: FaqCategory[] = [
   {
     id: 'general',
-    title: 'サービス全般',
+    title: '支援全般',
     items: [
       {
         question: 'Amberはどのような企業向けのサービスですか？',
@@ -20,9 +20,9 @@ export const faqCategories: FaqCategory[] = [
           '暮らしを支える産業（ハウスクリーニング、消防設備点検、素材・化学など）の中小〜中堅企業を主な対象としています。現場の業務を理解した上で、AI導入から定着まで伴走します。',
       },
       {
-        question: '研修だけ、開発だけの依頼も可能ですか？',
+        question: '何から相談すればよいですか？',
         answer:
-          '可能です。ただしAmberは「使える・回る・残る」の3段階で業務全体を見ることを推奨しています。単発のご相談もお気軽にどうぞ。',
+          '具体的な計画が決まっていなくても構いません。現在の課題や取り組み状況を伺い、最初に検討すべきテーマを一緒に整理します。',
       },
       {
         question: '対応エリアはどこですか？',
@@ -32,13 +32,29 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
-    id: 'ai-solution',
-    title: 'AIソリューション',
+    id: 'training',
+    title: 'AI研修',
     items: [
       {
-        question: 'AIソリューションには何が含まれますか？',
+        question: '研修だけでも依頼できますか？',
         answer:
-          '全社員向けのAI定着プログラム、業務プロセスの再設計・実装、業務システム・AIエージェント構築まで、一気通貫で提供します。詳細はサービスページをご覧ください。',
+          '可能です。ただしAmberは実務利用につながる設計を推奨しています。単発のご相談もお気軽にどうぞ。',
+      },
+      {
+        question: 'Microsoft 365 CopilotやGeminiにも対応できますか？',
+        answer:
+          '対応できます。利用中の環境や業務に合わせて、研修・実装・定着を設計します。',
+      },
+    ],
+  },
+  {
+    id: 'development',
+    title: 'システム開発',
+    items: [
+      {
+        question: '開発だけでも依頼できますか？',
+        answer:
+          '可能です。一方で、現場で使われ続ける状態まで見据えた業務設計・定着支援との組み合わせを推奨しています。',
       },
       {
         question: '導入までの期間の目安は？',
@@ -48,9 +64,14 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
-    id: 'subsidy',
-    title: '助成金',
+    id: 'pricing',
+    title: '契約・費用',
     items: [
+      {
+        question: '費用はどのように決まりますか？',
+        answer:
+          '内容と支援範囲に応じて個別見積となります。まずは課題と希望範囲を伺い、進め方とあわせてご案内します。',
+      },
       {
         question: '人材開発支援助成金は使えますか？',
         answer:
@@ -64,13 +85,29 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: 'security',
+    title: 'セキュリティ',
+    items: [
+      {
+        question: '情報システム部門との調整も支援できますか？',
+        answer:
+          '可能です。既存のIT環境・権限・運用ルールを前提に、現場と情報システム部門の双方が進めやすい形で設計します。',
+      },
+      {
+        question: '機密情報の扱いはどうなりますか？',
+        answer:
+          '扱う情報の範囲と権限を整理し、既存のルールを前提に安全に使える形で進めます。詳細は個別にご相談ください。',
+      },
+    ],
+  },
+  {
     id: 'pine',
-    title: 'Pine（AI SaaS）',
+    title: 'プロダクト（Pine）',
     items: [
       {
         question: 'Pineとは何ですか？',
         answer:
-          '出張訪問サービス向けの予約・顧客管理ソフトウェアです。個社支援で見えた共通課題をSaaSとして提供しています。',
+          '出張訪問サービス向けの予約・顧客管理ソフトウェアです。詳細はPine公式サイト（pine-home.com）をご覧ください。',
       },
       {
         question: 'Pineの詳細はどこで確認できますか？',

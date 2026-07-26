@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const imageUrl = '/og-image.jpg'
+  const imageUrl = '/opengraph-image'
 
   return {
     title: `${post.title} | ${getCategoryName('development')} ブログ | 株式会社Amber`,
@@ -125,7 +125,7 @@ export default async function DevelopmentBlogPostPage({ params }: Props) {
         dateModified: post.date,
         inLanguage: 'ja-JP',
         keywords: post.keywords,
-        image: [`${siteUrl}/og-image.jpg`],
+        image: [`${siteUrl}/opengraph-image`],
         author: {
           '@type': 'Organization',
           name: '株式会社Amber',
@@ -137,7 +137,7 @@ export default async function DevelopmentBlogPostPage({ params }: Props) {
           url: siteUrl,
           logo: {
             '@type': 'ImageObject',
-            url: `${siteUrl}/og-image.jpg`,
+            url: `${siteUrl}/opengraph-image`,
           },
         },
         isPartOf: {
@@ -153,47 +153,29 @@ export default async function DevelopmentBlogPostPage({ params }: Props) {
     <>
       <JsonLd id="jsonld-blogposting-development" data={jsonLd} />
       <Header />
-      <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
-        <div className="max-w-4xl mx-auto">
+      <main className="min-h-screen bg-white px-5 pb-24 pt-28 md:px-8">
+        <div className="mx-auto max-w-[800px]">
           <div className="mb-8">
-            <Link href={getCategoryPath('development')} className="text-link text-sm">
-              ← ブログ一覧に戻る
+            <Link href="/blog" className="text-sm text-brand-green hover:underline">
+              ← AI活用の知見に戻る
             </Link>
           </div>
 
-          <article className="bg-color-bg p-8 md:p-12 rounded-sm border border-sequoia-black/10 shadow-sm">
-            <header className="mb-8">
-              <div className="mb-4">
-                <span className="text-sm text-sequoia-black font-semibold">
+          <article>
+            <header className="mb-10 border-b border-sequoia-black/8 pb-8">
+              <div className="mb-4 flex flex-wrap gap-3 text-sm text-secondary">
+                <span>{getCategoryName('development')}</span>
+                <time dateTime={post.date}>
                   {new Date(post.date).toLocaleDateString('ja-JP', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                   })}
-                </span>
-                <span className="text-sm text-sequoia-black ml-4">
-                  {getCategoryName('development')}
-                </span>
+                </time>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-sequoia-black mb-4">
-                {post.title}
-              </h1>
+              <h1 className="home-h2 mb-4 text-[1.75rem] md:text-[2.25rem]">{post.title}</h1>
               {post.description && (
-                <p className="text-lg leading-relaxed text-sequoia-black/85">
-                  {post.description}
-                </p>
-              )}
-              {post.keywords.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {post.keywords.map((keyword, index) => (
-                    <span
-                      key={index}
-                      className="text-xs bg-sequoia-black/10 text-sequoia-black px-3 py-1 rounded-sm"
-                    >
-                      {keyword}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-base leading-relaxed text-secondary md:text-lg">{post.description}</p>
               )}
             </header>
 

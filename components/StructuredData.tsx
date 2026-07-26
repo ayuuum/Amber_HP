@@ -11,7 +11,7 @@ export default function StructuredData() {
     name: siteMetadata.name,
     alternateName: 'Amber Inc.',
     url: siteUrl,
-    logo: `${siteUrl}/og-image.jpg`,
+    logo: `${siteUrl}/opengraph-image`,
     description: siteMetadata.description,
     address: {
       '@type': 'PostalAddress',
@@ -54,7 +54,7 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: siteMetadata.name,
-    image: `${siteUrl}/og-image.jpg`,
+    image: `${siteUrl}/opengraph-image`,
     '@id': siteUrl,
     url: siteUrl,
     telephone: '+81-80-3814-0263',

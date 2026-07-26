@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import OpenAIAdsConversion from '@/components/OpenAIAdsConversion'
+import { PrimaryButton, SecondaryButton } from '@/components/ui/PrimaryButton'
 
 export const metadata: Metadata = {
   title: '送信ありがとうございます | AIソリューション',
@@ -14,29 +14,23 @@ export const metadata: Metadata = {
 
 export default function AiSolutionThanksPage() {
   return (
-    <>
+    <main className="min-h-screen bg-white">
       <Header />
-      <main className="min-h-screen overflow-x-hidden bg-color-bg pt-28">
-        <OpenAIAdsConversion />
-        <section className="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
-          <p className="eyebrow-light mb-5">Thank you</p>
-          <h1 className="section-heading mb-6">
-            送信ありがとうございます。
-          </h1>
-          <p className="text-body mx-auto max-w-2xl text-sequoia-black/80">
-            内容を確認し、担当者よりご連絡します。研修・開発・助成金活用の進め方を、現在の状況に合わせて整理します。
+      <OpenAIAdsConversion />
+      <section className="home-section bg-off-white pt-28 md:pt-32">
+        <div className="home-container max-w-3xl text-center">
+          <p className="home-label mb-4 text-brand-green">Thank you</p>
+          <h1 className="home-h2 mb-6">送信ありがとうございます。</h1>
+          <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-secondary">
+            内容を確認し、担当者よりご連絡します。構想・研修・開発・定着の進め方を、現在の状況に合わせて整理します。
           </p>
-          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/service/ai-solution" className="btn-secondary">
-              AIソリューションへ戻る
-            </Link>
-            <Link href="/" className="btn-primary">
-              トップへ戻る
-            </Link>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+            <PrimaryButton href="/service/ai-solution">AIソリューションへ戻る</PrimaryButton>
+            <SecondaryButton href="/">トップへ戻る</SecondaryButton>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
       <Footer />
-    </>
+    </main>
   )
 }

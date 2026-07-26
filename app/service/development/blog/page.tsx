@@ -1,18 +1,22 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
+import PageHero from '@/components/ui/PageHero'
+import ArticleCard from '@/components/ui/ArticleCard'
+import ContactCTA from '@/components/ui/ContactCTA'
+import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
+import { getAllPosts, getCategoryName } from '@/lib/markdown'
+import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
   title: 'ブログ | AIシステム開発 | 株式会社Amber',
-  description: 'AIシステム開発に関する記事一覧。業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を発信しています。',
+  description:
+    'AIシステム開発に関する記事一覧。業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を発信しています。',
   keywords: ['AIシステム開発', '業務システム', '生成AI', '業務自動化', 'エージェント開発'],
   openGraph: {
     title: 'ブログ | AIシステム開発 | 株式会社Amber',
-    description: 'AIシステム開発に関する記事一覧。業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を発信しています。',
+    description:
+      'AIシステム開発に関する記事一覧。業務システム、生成AI活用、業務自動化、エージェント開発などの実務知見を発信しています。',
     url: `${siteUrl}/service/development/blog`,
     type: 'website',
   },
@@ -25,71 +29,39 @@ export default function DevelopmentBlogPage() {
   const posts = getAllPosts('development')
 
   return (
-    <>
+    <main className="min-h-screen bg-white">
       <Header />
-      <main className="min-h-screen pt-24 pb-24 px-6 bg-color-bg">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <Link
-              href="/service/ai-solution"
-              className="text-link text-sm"
-            >
-              ← AIソリューションに戻る
-            </Link>
-          </div>
-
-          <div className="mb-16">
-            <h1 className="page-heading mb-6">
-              {getCategoryName('development')} ブログ
-            </h1>
-          </div>
+      <PageHero
+        tone="blue"
+        eyebrow="Development"
+        headingLines={[`${getCategoryName('development')}`, 'の実務知見。']}
+        body="業務システム、生成AI連携、業務自動化など、実装の現場から得た知見を公開しています。"
+      />
+      <section className="home-section bg-white pt-0 md:pt-0">
+        <div className="home-container">
+          <PageBreadcrumbs
+            items={[
+              { label: 'トップ', href: '/' },
+              { label: 'AI活用の知見', href: '/blog' },
+              { label: getCategoryName('development') },
+            ]}
+          />
 
           {posts.length === 0 ? (
-            <div className="surface-card p-12 text-center">
-              <p className="text-sequoia-black text-lg">
-                記事の準備中です。近日公開予定です。
-              </p>
-            </div>
+            <p className="text-secondary">記事の準備中です。近日公開予定です。</p>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`${getCategoryPath('development')}/${post.slug}`}
-                  className="surface-card interactive-card block p-6"
-                >
-                  <div className="mb-4">
-                    <span className="text-sm text-sequoia-black font-semibold">
-                      {new Date(post.date).toLocaleDateString('ja-JP', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </span>
-                  </div>
-                  <h2 className="text-xl font-bold text-sequoia-black mb-3 line-clamp-2">
-                    {post.title}
-                  </h2>
-                  <p className="text-sequoia-black text-sm leading-relaxed line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {post.keywords.slice(0, 3).map((keyword, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-sequoia-black/10 text-sequoia-black px-2 py-1 rounded-sm"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
-                </Link>
+                <li key={post.slug}>
+                  <ArticleCard post={post} category="development" />
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
-      </main>
+      </section>
+      <ContactCTA source="blog" ctaLabel="自社業務へのAI活用について相談する" />
       <Footer />
-    </>
+    </main>
   )
 }

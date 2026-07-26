@@ -60,6 +60,23 @@ const sourceMessages: Record<string, ContactPreset> = {
     message:
       '自社のAI活用の進め方について相談したいです。\n\n現在の取り組み：\n相談したい業務課題：\n希望時期：\n',
   },
+  'contact-cta': {
+    inquiryType: 'ai-solution',
+    message: 'AI活用について相談したいです。\n\n現在の課題：\n相談したい内容：\n',
+  },
+  'ai-solution-final': {
+    inquiryType: 'ai-solution',
+    message:
+      'AI活用の進め方について相談したいです。\n\n現在の課題：\n対象部署：\n希望時期：\n',
+  },
+  company: {
+    inquiryType: 'general',
+    message: 'Amberへの相談・協業について連絡したいです。\n\n内容：\n',
+  },
+  blog: {
+    inquiryType: 'ai-solution',
+    message: '自社業務へのAI活用について相談したいです。\n\n相談したい内容：\n',
+  },
   'ai-solution': {
     inquiryType: 'ai-solution',
     message:
@@ -106,7 +123,7 @@ export function buildContactHref(source: string, inquiry?: ContactInquiryType) {
   }
 
   const query = params.toString()
-  return `/company${query ? `?${query}` : ''}#contact`
+  return `/contact${query ? `?${query}` : ''}`
 }
 
 export function getContactPreset(source: string | null, inquiry: string | null): ContactPreset {

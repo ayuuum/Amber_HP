@@ -1,112 +1,74 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
-import type { BlogPost, BlogCategory } from '@/lib/markdown'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { placeholders } from '@/lib/placeholder-images'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
+import PageHero from '@/components/ui/PageHero'
+import ArticleCard from '@/components/ui/ArticleCard'
+import ContactCTA from '@/components/ui/ContactCTA'
+import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
+import { getAllPosts } from '@/lib/markdown'
+import type { BlogPost, BlogCategory } from '@/lib/markdown'
+import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: 'ニュース・ブログ | 株式会社Amber',
-  description: 'AI導入支援、ホームサービス向け業務システムなど、Amberの実務知見やニュースをお届けします。',
-  keywords: ['Amber', 'ブログ', 'AI導入支援', '業務システム', '業務効率化'],
+  title: 'AI活用の知見',
+  description: 'AI活用を実務に落とし込むための知見とアップデートをお届けします。',
+  alternates: { canonical: `${siteUrl}/blog` },
   openGraph: {
-    title: 'ニュース・ブログ | 株式会社Amber',
-    description: 'AI導入支援、ホームサービス向け業務システムなど、Amberの実務知見やニュースをお届けします。',
+    title: 'AI活用の知見 | 株式会社Amber',
+    description: 'AI活用を実務に落とし込むための知見とアップデート。',
     url: `${siteUrl}/blog`,
     type: 'website',
-  },
-  alternates: {
-    canonical: `${siteUrl}/blog`,
   },
 }
 
 export default function BlogPage() {
   const developmentPosts = getAllPosts('development')
   const trainingPosts = getAllPosts('training')
-
-  const postsWithCategory: { post: BlogPost; category: BlogCategory }[] = [
+  const posts: { post: BlogPost; category: BlogCategory }[] = [
     ...developmentPosts.map((post) => ({ post, category: 'development' as const })),
     ...trainingPosts.map((post) => ({ post, category: 'training' as const })),
   ].sort((a, b) => (a.post.date < b.post.date ? 1 : -1))
 
+  const featured = posts[0]
+  const rest = posts.slice(1)
+
   return (
-    <>
+    <main className="min-h-screen bg-white">
       <Header />
-      <main className="min-h-screen bg-color-bg px-6 pb-24 pt-24">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12">
-            <Link href="/" className="text-link text-sm">
-              トップに戻る
-            </Link>
-          </div>
+      <PageHero
+        tone="offwhite"
+        eyebrow="Insights"
+        headingLines={['AI活用を、', '実務に落とし込むための知見。']}
+        body="現場で使えるAI活用の考え方、研修、実装の知見を公開しています。"
+      />
+      <section className="home-section bg-white pt-0 md:pt-0">
+        <div className="home-container">
+          <PageBreadcrumbs items={[{ label: 'トップ', href: '/' }, { label: 'AI活用の知見' }]} />
 
-          <div className="section-header mb-16">
-            <h1 className="page-heading mb-6">ニュース・ブログ</h1>
-          </div>
-
-          <div className="mb-14 max-w-4xl">
-            <div className="surface-card relative aspect-[21/9] max-h-48 w-full overflow-hidden bg-sequoia-black/5">
-              <Image
-                src={placeholders.writing}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="(max-width: 896px) 100vw, 896px"
-              />
-            </div>
-          </div>
-
-          {postsWithCategory.length === 0 ? (
-            <div className="surface-card p-12 text-center">
-              <p className="text-body text-lg">現在、記事を執筆中です。</p>
-            </div>
+          {posts.length === 0 ? (
+            <p className="text-secondary">現在、記事を準備中です。</p>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {postsWithCategory.map(({ post, category }) => (
-                <Link
-                  key={`${category}-${post.slug}`}
-                  href={`${getCategoryPath(category)}/${post.slug}`}
-                  className="surface-card interactive-card block p-6"
-                >
-                  <div className="mb-2">
-                    <span className="text-caption font-medium">{getCategoryName(category)}</span>
-                  </div>
-                  <div className="mb-4">
-                    <span className="text-caption font-semibold">
-                      {new Date(post.date).toLocaleDateString('ja-JP', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </span>
-                  </div>
-                  <h2 className="heading-h3 mb-3 line-clamp-2 text-xl">
-                    {post.title}
-                  </h2>
-                  <p className="text-body line-clamp-3 text-sequoia-black/80">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {post.keywords.slice(0, 3).map((keyword, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-sequoia-black/10 text-sequoia-black px-2 py-1 rounded-sm"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <>
+              {featured ? (
+                <div className="mb-10">
+                  <ArticleCard post={featured.post} category={featured.category} featured />
+                </div>
+              ) : null}
+              {rest.length > 0 ? (
+                <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {rest.map(({ post, category }) => (
+                    <li key={`${category}-${post.slug}`}>
+                      <ArticleCard post={post} category={category} />
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </>
           )}
         </div>
-      </main>
+      </section>
+      <ContactCTA source="blog" ctaLabel="自社業務へのAI活用について相談する" />
       <Footer />
-    </>
+    </main>
   )
 }

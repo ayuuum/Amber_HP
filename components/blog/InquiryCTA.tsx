@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import type { BlogCategory } from '@/lib/markdown'
 import { buildContactHref } from '@/lib/contact'
 
@@ -7,50 +6,20 @@ type Props = {
   category: BlogCategory
 }
 
-const copy: Record<
-  BlogCategory,
-  {
-    heading: string
-    body: string
-    primary: { label: string; href: string }
-    secondary: { label: string; href: string }
-  }
-> = {
-  development: {
-    heading: '現場で動くAIを、設計から定着まで。',
-    body: '業務システム、生成AI連携、エージェント開発まで、現場観察から設計・運用までを伴走します。',
-    primary: { label: '相談する', href: buildContactHref('development', 'ai-solution') },
-    secondary: { label: 'AIソリューションの詳細', href: '/service/ai-solution' },
-  },
-  training: {
-    heading: '研修の翌日から、現場が変わる。',
-    body: '人材開発支援助成金を活用した、現場で使える生成AIプログラムです。',
-    primary: { label: '相談する', href: buildContactHref('training', 'ai-solution') },
-    secondary: { label: 'AIソリューションの詳細', href: '/service/ai-solution' },
-  },
-}
-
 export default function InquiryCTA({ category }: Props) {
-  const c = copy[category]
+  const href = buildContactHref('blog', 'ai-solution')
 
   return (
-    <section className="section-forest relative mt-16 overflow-hidden rounded-sm border border-sequoia-black/10 md:mt-20">
-      <div className="px-6 py-12 md:px-10 md:py-14">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="section-heading-invert mb-4 text-2xl md:text-3xl">{c.heading}</h2>
-          <p className="section-subheading-invert mb-8">{c.body}</p>
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href={c.primary.href} className="btn-primary-on-dark inline-flex min-w-[200px] items-center justify-center gap-2">
-              {c.primary.label}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link href={c.secondary.href} className="btn-secondary-on-dark inline-flex min-w-[200px] items-center justify-center gap-2">
-              {c.secondary.label}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </div>
+    <section className="mt-16 rounded-2xl border border-sequoia-black/8 bg-off-white px-6 py-12 text-center md:mt-20 md:px-10 md:py-14">
+      <h2 className="home-h3 mb-4">自社業務へのAI活用について相談する</h2>
+      <p className="home-body mx-auto mb-8 max-w-xl">
+        {category === 'training'
+          ? '研修や内製化を含め、現場で使える進め方を一緒に整理します。'
+          : '業務システム、生成AI連携、定着支援まで、課題の整理からご相談ください。'}
+      </p>
+      <Link href={href} className="btn-pill-primary-solid inline-flex">
+        AI活用について相談する
+      </Link>
     </section>
   )
 }

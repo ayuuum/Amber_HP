@@ -6,6 +6,8 @@ import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight, Ba
 import type { ToolLPData } from './types'
 import { buildContactHref } from '@/lib/contact'
 import { editorialTransition, scrollRevealTransition, STAGGER_EDITORIAL } from '@/lib/motion-safe'
+import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
+import ContactCTA from '@/components/ui/ContactCTA'
 
 const problemIcons = [AlertTriangle, CircleSlash, PenLine]
 
@@ -21,24 +23,18 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
   const practicalScenes = data.basicCourse.items.slice(0, 4)
 
   return (
-    <main className="min-h-screen bg-color-bg" style={{'--lp-accent': data.accentRgb} as React.CSSProperties}>
+    <main className="min-h-screen bg-white" style={{'--lp-accent': data.accentRgb} as React.CSSProperties}>
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-sequoia-black/10 px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(27,58,45,0.06) 0%, transparent 65%)' }}
-        />
-        <div className="relative mx-auto max-w-6xl">
-          {/* パンくず */}
-          <nav className="mb-8 flex items-center gap-2 text-xs text-sequoia-black/50" aria-label="パンくずリスト">
-            <Link href="/" className="hover:text-accent transition-colors">ホーム</Link>
-            <span>/</span>
-            <Link href="/service/ai-solution" className="hover:text-accent transition-colors">AIソリューション</Link>
-            <span>/</span>
-            <span className="text-sequoia-black/80">{data.toolName} 法人研修</span>
-          </nav>
+      <section className="relative overflow-hidden bg-off-white pt-28 pb-16 md:pt-32 md:pb-20">
+        <div className="home-container">
+          <PageBreadcrumbs
+            items={[
+              { label: 'トップ', href: '/' },
+              { label: 'AIソリューション', href: '/service/ai-solution' },
+              { label: `${data.toolName} 法人研修` },
+            ]}
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -46,52 +42,41 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             transition={editorialTransition()}
             className="max-w-3xl"
           >
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-accent/30 bg-accent/8 px-3 py-1 text-xs font-medium tracking-wider text-accent">
-                研修サービス
-              </span>
-              <span className="rounded-full border border-sequoia-black/15 px-3 py-1 text-xs font-medium tracking-wider text-sequoia-black/60">
-                {data.toolBadge}
-              </span>
-            </div>
+            <p className="home-label mb-4 text-brand-green">
+              研修サービス · {data.toolBadge}
+            </p>
 
-            <h1 className="page-heading mb-4">
-              {data.toolName}<br />
-              <span className="text-accent">法人研修</span>
+            <h1 className="home-h2 mb-4">
+              {data.toolName}
+              <span className="mt-1 block text-brand-green">法人研修</span>
             </h1>
 
-            <p className="mb-3 text-base font-semibold text-accent md:text-lg">
+            <p className="mb-3 text-base font-medium text-brand-green md:text-lg">
               {data.tagline}
             </p>
-            <p className="max-w-2xl text-base leading-relaxed text-sequoia-black/80 md:text-lg">
+            <p className="max-w-2xl text-base leading-relaxed text-secondary md:text-lg">
               {data.heroDescription}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href={contactHref}
-                className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
-              >
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <Link href={contactHref} className="btn-pill-primary-solid inline-flex items-center gap-2">
                 無料相談・資料請求
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link
-                href="/service/ai-solution"
-                className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/20 px-6 py-3 text-sm font-semibold text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
-              >
+              <Link href="/service/ai-solution" className="btn-pill-outline inline-flex items-center gap-2">
                 研修の全体像を見る
               </Link>
             </div>
 
-            <div className="mt-10 max-w-3xl border-t border-sequoia-black/10 pt-6">
-              <p className="mb-3 text-xs font-bold tracking-wider text-sequoia-black/55">
+            <div className="mt-10 max-w-3xl border-t border-sequoia-black/8 pt-6">
+              <p className="mb-3 text-xs tracking-wider text-secondary">
                 相談しやすいテーマ
               </p>
               <div className="flex flex-wrap gap-2">
                 {practicalScenes.map((scene) => (
                   <span
                     key={scene}
-                    className="rounded-sm border border-accent/20 bg-accent/6 px-3 py-2 text-xs font-medium text-sequoia-black/75"
+                    className="rounded-full border border-brand-green/20 bg-light-green px-3 py-1.5 text-xs text-sequoia-black/80"
                   >
                     {scene}
                   </span>
@@ -103,16 +88,16 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       </section>
 
       {/* よくある失敗 */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
-        <div className="mx-auto max-w-6xl">
-          <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-24">
-            <p className="eyebrow-light mb-4">よくある課題</p>
-            <h2 className="section-heading mb-6">
+      <section className="home-section border-b border-sequoia-black/8 bg-white">
+        <div className="home-container">
+          <motion.div {...fadeUp} className="mb-12 max-w-3xl md:mb-16">
+            <p className="home-label mb-3 text-brand-green">よくある課題</p>
+            <h2 className="home-h2">
               {data.toolName}の導入後、<br />こんな状態になっていませんか？
             </h2>
           </motion.div>
 
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid gap-5 md:grid-cols-3">
             {data.problems.map((problem, idx) => {
               const Icon = problemIcons[idx] ?? AlertTriangle
               return (
@@ -122,14 +107,14 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={scrollRevealTransition(idx)}
-                  className="rounded-sm border border-sequoia-black/10 bg-white p-8"
+                  className="home-card border border-sequoia-black/8 bg-off-white p-7"
                 >
-                  <Icon className="mb-6 h-8 w-8 text-accent" aria-hidden="true" strokeWidth={1.5} />
-                  <p className="mb-3 text-xs font-bold tracking-[0.15em] text-sequoia-black/55">{problem.label}</p>
-                  <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
+                  <Icon className="mb-5 h-7 w-7 text-brand-green" aria-hidden="true" strokeWidth={1.5} />
+                  <p className="mb-2 text-xs tracking-[0.12em] text-secondary">{problem.label}</p>
+                  <h3 className="mb-3 text-lg font-medium tracking-tight text-sequoia-black md:text-xl">
                     {problem.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{problem.desc}</p>
+                  <p className="text-sm leading-relaxed text-secondary md:text-base">{problem.desc}</p>
                 </motion.div>
               )
             })}
@@ -138,59 +123,57 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       </section>
 
       {/* 2コース構成 */}
-      <section id="courses" className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-24 md:py-36">
-        <div className="mx-auto max-w-6xl">
-          <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-24">
-            <p className="eyebrow-light mb-4">カリキュラム</p>
-            <h2 className="section-heading mb-6">
+      <section id="courses" className="home-section border-b border-sequoia-black/8 bg-off-white">
+        <div className="home-container">
+          <motion.div {...fadeUp} className="mb-12 max-w-3xl md:mb-16">
+            <p className="home-label mb-3 text-brand-green">カリキュラム</p>
+            <h2 className="home-h2">
               2コース × 10時間で、<br />定着まで設計する
             </h2>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {/* 基礎コース */}
             <motion.div
               {...fadeUp}
-              className="flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-8 md:p-10"
+              className="home-card flex flex-col border border-sequoia-black/8 bg-white p-8 md:p-10"
             >
               <div className="mb-6 flex items-center gap-4">
-                <GraduationCap className="h-9 w-9 text-accent" aria-hidden="true" strokeWidth={1.5} />
-                <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent">
+                <GraduationCap className="h-8 w-8 text-brand-green" aria-hidden="true" strokeWidth={1.5} />
+                <span className="rounded-full bg-light-green px-3 py-1 text-xs tracking-wider text-brand-green">
                   基礎 / Lv1 をカバー
                 </span>
               </div>
-              <p className="mb-2 num-badge text-3xl opacity-40">01</p>
-              <h3 className="mb-2 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
-                AI業務活用コース
-              </h3>
-              <p className="mb-6 text-sm font-medium text-accent">
+              <p className="mb-2 text-3xl text-sequoia-black/25">01</p>
+              <h3 className="home-h3 mb-2">AI業務活用コース</h3>
+              <p className="mb-6 text-sm font-medium text-brand-green">
                 {data.toolName} を全社員が使いこなす
               </p>
 
-              <div className="mb-6 grid grid-cols-2 gap-6 border-y border-sequoia-black/10 py-5">
+              <div className="mb-6 grid grid-cols-2 gap-6 border-y border-sequoia-black/8 py-5">
                 <div>
-                  <p className="mb-1 text-xs font-medium tracking-wider text-sequoia-black/55">対象</p>
-                  <p className="text-sm font-semibold text-sequoia-black">{data.basicCourse.target}</p>
+                  <p className="mb-1 text-xs tracking-wider text-secondary">対象</p>
+                  <p className="text-sm font-medium text-sequoia-black">{data.basicCourse.target}</p>
                 </div>
                 <div>
-                  <p className="mb-1 text-xs font-medium tracking-wider text-sequoia-black/55">時間</p>
-                  <p className="text-sm font-semibold text-sequoia-black">10時間・対面</p>
+                  <p className="mb-1 text-xs tracking-wider text-secondary">時間</p>
+                  <p className="text-sm font-medium text-sequoia-black">10時間・対面</p>
                 </div>
               </div>
 
-              <p className="mb-3 text-xs font-medium tracking-wider text-sequoia-black/55">学ぶこと</p>
-              <ul className="mb-6 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
+              <p className="mb-3 text-xs tracking-wider text-secondary">学ぶこと</p>
+              <ul className="mb-6 divide-y divide-sequoia-black/8 border-y border-sequoia-black/8">
                 {data.basicCourse.items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 py-3 text-sm text-sequoia-black/85">
-                    <span className="h-1 w-3 shrink-0 bg-accent" aria-hidden="true" />
+                  <li key={item} className="flex items-center gap-3 py-3 text-sm text-secondary">
+                    <span className="h-1 w-3 shrink-0 bg-brand-green" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto rounded-sm bg-color-bg-subtle p-5">
-                <p className="mb-2 text-xs font-medium tracking-wider text-accent">成果物</p>
-                <p className="text-xs leading-relaxed text-sequoia-black/85 md:text-sm">
+              <div className="mt-auto rounded-2xl bg-off-white p-5">
+                <p className="mb-2 text-xs tracking-wider text-brand-green">成果物</p>
+                <p className="text-xs leading-relaxed text-secondary md:text-sm">
                   {data.basicCourse.outcome}
                 </p>
               </div>
@@ -202,69 +185,65 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={editorialTransition(STAGGER_EDITORIAL)}
-              className="flex flex-col rounded-sm border border-sequoia-black/10 bg-white p-8 md:p-10"
+              className="home-card flex flex-col border border-sequoia-black/8 bg-white p-8 md:p-10"
             >
               <div className="mb-6 flex items-center gap-4">
-                <Cog className="h-9 w-9 text-accent" aria-hidden="true" strokeWidth={1.5} />
-                <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent">
+                <Cog className="h-8 w-8 text-brand-green" aria-hidden="true" strokeWidth={1.5} />
+                <span className="rounded-full bg-light-green px-3 py-1 text-xs tracking-wider text-brand-green">
                   応用 / Lv2・Lv3 をカバー
                 </span>
               </div>
-              <p className="mb-2 num-badge text-3xl opacity-40">02</p>
-              <h3 className="mb-2 text-2xl font-bold tracking-tight text-sequoia-black md:text-3xl">
-                AI業務実装コース
-              </h3>
-              <p className="mb-6 text-sm font-medium text-accent">
+              <p className="mb-2 text-3xl text-sequoia-black/25">02</p>
+              <h3 className="home-h3 mb-2">AI業務実装コース</h3>
+              <p className="mb-6 text-sm font-medium text-brand-green">
                 {data.toolName} で業務プロセスを再設計する
               </p>
 
-              <div className="mb-6 grid grid-cols-2 gap-6 border-y border-sequoia-black/10 py-5">
+              <div className="mb-6 grid grid-cols-2 gap-6 border-y border-sequoia-black/8 py-5">
                 <div>
-                  <p className="mb-1 text-xs font-medium tracking-wider text-sequoia-black/55">対象</p>
-                  <p className="text-sm font-semibold text-sequoia-black">{data.advancedCourse.target}</p>
+                  <p className="mb-1 text-xs tracking-wider text-secondary">対象</p>
+                  <p className="text-sm font-medium text-sequoia-black">{data.advancedCourse.target}</p>
                 </div>
                 <div>
-                  <p className="mb-1 text-xs font-medium tracking-wider text-sequoia-black/55">時間</p>
-                  <p className="text-sm font-semibold text-sequoia-black">10時間・対面</p>
+                  <p className="mb-1 text-xs tracking-wider text-secondary">時間</p>
+                  <p className="text-sm font-medium text-sequoia-black">10時間・対面</p>
                 </div>
               </div>
 
-              <p className="mb-3 text-xs font-medium tracking-wider text-sequoia-black/55">学ぶこと</p>
-              <ul className="mb-6 divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
+              <p className="mb-3 text-xs tracking-wider text-secondary">学ぶこと</p>
+              <ul className="mb-6 divide-y divide-sequoia-black/8 border-y border-sequoia-black/8">
                 {data.advancedCourse.items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 py-3 text-sm text-sequoia-black/85">
-                    <span className="h-1 w-3 shrink-0 bg-accent" aria-hidden="true" />
+                  <li key={item} className="flex items-center gap-3 py-3 text-sm text-secondary">
+                    <span className="h-1 w-3 shrink-0 bg-brand-green" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto rounded-sm bg-color-bg-subtle p-5">
-                <p className="mb-2 text-xs font-medium tracking-wider text-accent">成果物</p>
-                <p className="text-xs leading-relaxed text-sequoia-black/85 md:text-sm">
+              <div className="mt-auto rounded-2xl bg-off-white p-5">
+                <p className="mb-2 text-xs tracking-wider text-brand-green">成果物</p>
+                <p className="text-xs leading-relaxed text-secondary md:text-sm">
                   {data.advancedCourse.outcome}
                 </p>
               </div>
             </motion.div>
           </div>
 
-          <p className="mt-8 text-center text-sm text-sequoia-black/60">
+          <p className="mt-8 text-center text-sm text-secondary">
             ※どちらからでも独立して受講いただけます。スケジュールは御社の業務都合に合わせて柔軟に設計します。
           </p>
         </div>
       </section>
 
       {/* Amberが選ばれる3つの理由 */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-24 md:py-36">
-        <div className="mx-auto max-w-6xl">
-          <motion.div {...fadeUp} className="mb-16 max-w-3xl md:mb-24">
-            <p className="eyebrow-light mb-4">Amberの3つの理由</p>
-            <h2 className="section-heading mb-6">
-              研修が「現場に根付く」理由
-            </h2>
+      <section className="home-section border-b border-sequoia-black/8 bg-white">
+        <div className="home-container">
+          <motion.div {...fadeUp} className="mb-12 max-w-3xl md:mb-16">
+            <p className="home-label mb-3 text-brand-green">Amberの3つの理由</p>
+            <h2 className="home-h2">研修が「現場に根付く」理由</h2>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {[
               {
                 num: '01',
@@ -288,15 +267,13 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={scrollRevealTransition(idx)}
-                className="rounded-sm border border-sequoia-black/10 bg-white p-8"
+                className="home-card border border-sequoia-black/8 bg-off-white p-7"
               >
-                <p className="mb-4 num-badge text-4xl opacity-40">
-                  {reason.num}
-                </p>
-                <h3 className="mb-3 text-lg font-bold tracking-tight text-sequoia-black md:text-xl">
+                <p className="mb-4 text-4xl text-sequoia-black/25">{reason.num}</p>
+                <h3 className="mb-3 text-lg font-medium tracking-tight text-sequoia-black md:text-xl">
                   {reason.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-sequoia-black/80 md:text-base">{reason.desc}</p>
+                <p className="text-sm leading-relaxed text-secondary md:text-base">{reason.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -304,26 +281,21 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       </section>
 
       {/* 助成金バナー */}
-      <section className="border-b border-sequoia-black/10 bg-color-bg-subtle px-6 py-16 md:py-20">
-        <div className="mx-auto max-w-6xl">
+      <section className="home-section border-b border-sequoia-black/8 bg-light-green !py-14 md:!py-16">
+        <div className="home-container">
           <motion.div
             {...fadeUp}
-            className="flex flex-col items-start gap-6 rounded-sm border border-accent/20 bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10"
+            className="home-card flex flex-col items-start gap-6 border border-brand-green/15 bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10"
           >
-            <BadgeCheck className="h-10 w-10 shrink-0 text-accent" aria-hidden="true" strokeWidth={1.5} />
+            <BadgeCheck className="h-10 w-10 shrink-0 text-brand-green" aria-hidden="true" strokeWidth={1.5} />
             <div className="flex-1">
-              <p className="mb-2 text-xs font-bold tracking-wider text-accent">助成金対応</p>
-              <h3 className="mb-2 text-xl font-bold tracking-tight text-sequoia-black md:text-2xl">
-                人材開発支援助成金の対象となり得ます
-              </h3>
-              <p className="text-sm leading-relaxed text-sequoia-black/80">
+              <p className="mb-2 text-xs tracking-wider text-brand-green">助成金対応</p>
+              <h3 className="home-h3 mb-2">人材開発支援助成金の対象となり得ます</h3>
+              <p className="text-sm leading-relaxed text-secondary">
                 当研修は、厚生労働省「人材開発支援助成金（人への投資促進コース）」の対象となり得ます。受講料の最大75%が助成される場合があります。詳細はお問い合わせください。
               </p>
             </div>
-            <Link
-              href={contactHref}
-              className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            >
+            <Link href={contactHref} className="btn-pill-primary-solid shrink-0 inline-flex items-center gap-2">
               助成金について相談する
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
@@ -333,16 +305,16 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
 
       {/* 関連研修 */}
       {data.relatedTools.length > 0 && (
-        <section className="border-b border-sequoia-black/10 bg-color-bg px-6 py-16 md:py-20">
-          <div className="mx-auto max-w-6xl">
+        <section className="home-section bg-white !py-14 md:!py-16">
+          <div className="home-container">
             <motion.div {...fadeUp}>
-              <p className="eyebrow-light mb-8">関連する研修</p>
+              <p className="home-label mb-6 text-brand-green">関連する研修</p>
               <div className="flex flex-wrap gap-3">
                 {data.relatedTools.map((tool) => (
                   <Link
                     key={tool.href}
                     href={tool.href}
-                    className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/15 px-5 py-3 text-sm font-medium text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
+                    className="btn-pill-outline inline-flex items-center gap-2 !px-5 !py-2.5 text-sm"
                   >
                     {tool.label}
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -350,7 +322,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
                 ))}
                 <Link
                   href="/service/ai-solution"
-                  className="inline-flex items-center gap-2 rounded-sm border border-sequoia-black/15 px-5 py-3 text-sm font-medium text-sequoia-black/80 transition-colors hover:border-accent hover:text-accent"
+                  className="btn-pill-outline inline-flex items-center gap-2 !px-5 !py-2.5 text-sm"
                 >
                   研修の全体像を見る
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -361,6 +333,12 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         </section>
       )}
 
+      <ContactCTA
+        source={data.slug}
+        headingLines={['研修から定着まで、', '進め方を相談する。']}
+        body={`${data.toolName}研修を含むAI活用の進め方を、現場の状況に合わせて整理します。`}
+        ctaLabel="無料相談・資料請求"
+      />
     </main>
   )
 }
