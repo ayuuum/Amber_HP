@@ -48,10 +48,10 @@ export default function ValueBento() {
             <article
               className={`home-card flex h-full min-h-0 flex-col overflow-hidden p-5 sm:p-6 md:p-8 lg:p-9 ${toneClass[featured.tone]}`}
             >
-              <div className="mb-5 grow basis-0 md:mb-6 lg:min-h-0 lg:flex-[1.15]">
+              <div className="mb-4 grow basis-0 md:mb-5 lg:min-h-0 lg:flex-[1.05]">
                 <CardVisual visual={featured.visual} featured />
               </div>
-              <div className="shrink-0 lg:flex-[0.95] lg:flex lg:flex-col lg:justify-end">
+              <div className="shrink-0 lg:flex lg:flex-[0.95] lg:flex-col lg:justify-end">
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   <p className="home-label text-brand-green">{featured.label}</p>
                   {featured.entryLabel ? (
