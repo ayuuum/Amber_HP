@@ -245,9 +245,10 @@ export default function AiSolutionPage() {
         </div>
       </section>
 
-      {/* 広告CV互換アンカー + 重複CTA統合 */}
-      <div id="ai-solution-form" className="scroll-mt-24">
+      {/* 広告CV互換アンカー + 相談導線 */}
+      <div id="ai-solution-form" className="scroll-mt-24 border-t border-sequoia-black/8 bg-off-white">
         <ContactCTA
+          className="!bg-transparent"
           headingLines={aiSolutionPage.finalCta.headingLines}
           body={aiSolutionPage.finalCta.body}
           ctaLabel={aiSolutionPage.finalCta.cta}

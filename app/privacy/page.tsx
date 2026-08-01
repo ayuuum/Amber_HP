@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
 export const metadata: Metadata = {
-  title: 'プライバシーポリシー | 株式会社Amber',
+  title: 'プライバシーポリシー',
   description: '株式会社Amberのプライバシーポリシーです。',
   alternates: {
     canonical: `${siteUrl}/privacy`,
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       <Header />
       <main className="min-h-screen bg-white pb-24 pt-28">
         <div className="home-container">
-          <p className="home-label mb-3 text-brand-green">Legal</p>
+          <p className="home-label mb-3 text-brand-green">プライバシーポリシー</p>
           <h1 className="home-h2 mb-3">プライバシーポリシー</h1>
           <p className="mb-10 text-sm text-secondary">最終更新日: 2026年1月1日</p>
           <div className="mx-auto max-w-[800px] space-y-6 text-sequoia-black leading-relaxed">

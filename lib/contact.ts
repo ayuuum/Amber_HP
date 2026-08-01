@@ -3,6 +3,7 @@ export const contactInquiryTypes = [
   'development',
   'training',
   'pine',
+  'fire-ops',
   'demo',
   'partnership',
   'recruiting',
@@ -15,6 +16,7 @@ export type ContactInquiryType = (typeof contactInquiryTypes)[number]
 export const contactFormInquiryTypes = [
   'ai-solution',
   'pine',
+  'fire-ops',
   'demo',
   'partnership',
   'recruiting',
@@ -31,6 +33,7 @@ export const contactInquiryLabels: Record<ContactInquiryType, string> = {
   development: 'AIシステム開発・業務改善',
   training: '生成AI活用研修',
   pine: 'Pine導入相談',
+  'fire-ops': '消防設備・点検補修案件管理',
   demo: 'デモ・資料請求',
   partnership: '業務提携・投資・出資',
   recruiting: '採用・参画',
@@ -82,6 +85,20 @@ const sourceMessages: Record<string, ContactPreset> = {
     inquiryType: 'ai-solution',
     message: '自社業務へのAI活用について相談したいです。\n\n相談したい内容：\n',
   },
+  footer: {
+    inquiryType: 'general',
+    message: 'Amberのサービスについて相談したいです。\n\n相談したい内容：\n',
+  },
+  cases: {
+    inquiryType: 'ai-solution',
+    message:
+      '支援事例を拝見し、自社のAI活用について相談したいです。\n\n業界・業務：\n現在の課題：\n相談したい内容：\n',
+  },
+  'case-detail': {
+    inquiryType: 'ai-solution',
+    message:
+      '支援事例を拝見し、同様の課題について相談したいです。\n\n業界・業務：\n現在の課題：\n相談したい内容：\n',
+  },
   'ai-solution': {
     inquiryType: 'ai-solution',
     message:
@@ -99,6 +116,20 @@ const sourceMessages: Record<string, ContactPreset> = {
   pine: {
     inquiryType: 'pine',
     message: 'Pineの導入について相談したいです。\n\n業種：\n店舗数・拠点数：\n現在の予約管理方法：\n',
+  },
+  'fire-ops': {
+    inquiryType: 'fire-ops',
+    message:
+      '消防設備会社向け 点検・補修案件管理について相談したいです。\n\n現在の管理方法：\n止まりやすい工程：\n相談したい内容：\n',
+  },
+  'fire-ops-consultation': {
+    inquiryType: 'fire-ops',
+    message:
+      '消防設備・点検補修案件管理について、30分の相談を希望します。\n\n現在の課題：\n利用中のツール：\n希望時期：\n',
+  },
+  'fire-ops-diagnosis': {
+    inquiryType: 'fire-ops',
+    message: '消防設備・点検補修案件の業務診断を依頼します。\n',
   },
   copilot: {
     inquiryType: 'ai-solution',

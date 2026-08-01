@@ -11,9 +11,10 @@ export type AccordionItem = {
 type Props = {
   items: readonly AccordionItem[] | AccordionItem[]
   className?: string
+  onItemOpen?: (index: number, question: string) => void
 }
 
-export default function FaqAccordion({ items, className }: Props) {
+export default function FaqAccordion({ items, className, onItemOpen }: Props) {
   const baseId = useId()
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
@@ -32,7 +33,14 @@ export default function FaqAccordion({ items, className }: Props) {
                 className="flex min-h-14 w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-medium text-sequoia-black"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
+                onClick={() => {
+                  if (isOpen) {
+                    setOpenIndex(null)
+                    return
+                  }
+                  setOpenIndex(index)
+                  onItemOpen?.(index, item.question)
+                }}
               >
                 <span>{item.question}</span>
                 <span className="shrink-0 text-secondary" aria-hidden>

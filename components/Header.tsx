@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { buildContactHref } from '@/lib/contact'
-import { serviceMegaMenu } from '@/data/navigation'
+import ServiceNavPanel from '@/components/navigation/ServiceNavPanel'
 import { panelTransition } from '@/lib/motion-safe'
 
 const DARK_HERO_PATHS = ['/']
@@ -98,21 +98,7 @@ export default function Header() {
                     className="absolute left-0 top-full z-50 mt-3 w-[min(92vw,520px)] rounded-2xl border border-sequoia-black/8 bg-white p-3 shadow-lg"
                     onMouseLeave={() => setServiceOpen(false)}
                   >
-                    <ul className="grid gap-1 sm:grid-cols-2">
-                      {serviceMegaMenu.map((item) => (
-                        <li key={item.title}>
-                          <Link
-                            href={item.href}
-                            role="menuitem"
-                            className="block rounded-xl px-4 py-3 transition-colors hover:bg-light-green/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30"
-                            onClick={() => setServiceOpen(false)}
-                          >
-                            <span className="block text-sm font-medium text-sequoia-black">{item.title}</span>
-                            <span className="mt-1 block text-xs leading-relaxed text-secondary">{item.description}</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    <ServiceNavPanel onNavigate={() => setServiceOpen(false)} variant="mega" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -173,16 +159,9 @@ export default function Header() {
                     <ChevronDown className={`h-4 w-4 transition-transform ${mobileServiceOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileServiceOpen && (
-                    <ul className="mb-2 space-y-1 pl-3">
-                      {serviceMegaMenu.map((item) => (
-                        <li key={item.title}>
-                          <Link href={item.href} className="block rounded-xl px-3 py-3 text-sm text-sequoia-black/80 hover:bg-light-green/60" onClick={() => setIsMobileMenuOpen(false)}>
-                            <span className="font-medium text-sequoia-black">{item.title}</span>
-                            <span className="mt-0.5 block text-xs text-secondary">{item.description}</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="mb-2 pl-1">
+                      <ServiceNavPanel onNavigate={() => setIsMobileMenuOpen(false)} variant="mobile" />
+                    </div>
                   )}
                 </li>
                 <li>

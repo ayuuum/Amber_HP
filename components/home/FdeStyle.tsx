@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { fdeStyle } from '@/data/home'
 import FadeUp from '@/components/home/FadeUp'
 
@@ -18,7 +20,14 @@ export default function FdeStyle() {
                   {fdeStyle.heading}
                 </h2>
                 <p className="home-body mb-5">{fdeStyle.body}</p>
-                <p className="text-sm text-secondary">{fdeStyle.note}</p>
+                <p className="mb-5 text-sm text-secondary">{fdeStyle.note}</p>
+                <Link
+                  href="/service/ai-solution#fde"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
+                >
+                  サービスページで詳しく見る
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                </Link>
               </div>
 
               <div className="border-t border-sequoia-black/8 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">

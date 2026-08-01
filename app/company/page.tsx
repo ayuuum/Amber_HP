@@ -25,7 +25,7 @@ export default function CompanyPage() {
       <Header />
       <PageHero
         tone="dark"
-        eyebrow="Company"
+        eyebrow="会社情報"
         headingLines={companyPage.hero.headingLines}
         body={companyPage.hero.body}
         image={{ src: '/images/about-mission-mountain.png', alt: 'Amberのミッションを表すイメージ' }}

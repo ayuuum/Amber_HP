@@ -33,7 +33,7 @@ export default function TrainingBlogPage() {
       <Header />
       <PageHero
         tone="green"
-        eyebrow="Training"
+        eyebrow="生成AI活用研修"
         headingLines={[`${getCategoryName('training')}`, 'の実務知見。']}
         body="生成AI研修の設計、助成金活用、現場定着の考え方を公開しています。"
       />

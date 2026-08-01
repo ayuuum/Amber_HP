@@ -33,7 +33,7 @@ export default function DevelopmentBlogPage() {
       <Header />
       <PageHero
         tone="blue"
-        eyebrow="Development"
+        eyebrow="AIシステム開発"
         headingLines={[`${getCategoryName('development')}`, 'の実務知見。']}
         body="業務システム、生成AI連携、業務自動化など、実装の現場から得た知見を公開しています。"
       />

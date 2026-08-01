@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { buildContactHref } from '@/lib/contact'
-import { serviceMegaMenu, siteShell } from '@/data/navigation'
+import { fdeStyleLink, serviceDomains, serviceOverview, siteShell } from '@/data/navigation'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -22,13 +22,26 @@ export default function Footer() {
           <div>
             <p className="mb-4 text-sm font-medium text-sequoia-black">サービス</p>
             <ul className="space-y-2.5">
-              {serviceMegaMenu.map((item) => (
+              <li>
+                <Link href={serviceOverview.href} className={linkClass}>
+                  {serviceOverview.title}
+                </Link>
+              </li>
+              {serviceDomains.map((item) => (
                 <li key={item.title}>
                   <Link href={item.href} className={linkClass}>
                     {item.title}
                   </Link>
                 </li>
               ))}
+            </ul>
+            <p className="mb-3 mt-6 text-sm font-medium text-sequoia-black">支援スタイル</p>
+            <ul className="space-y-2.5">
+              <li>
+                <Link href={fdeStyleLink.href} className={linkClass}>
+                  {fdeStyleLink.title}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -83,6 +96,11 @@ export default function Footer() {
               <li>
                 <Link href="/terms" className={linkClass}>
                   利用規約
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal/tokushoho" className={linkClass}>
+                  特定商取引法に基づく表記
                 </Link>
               </li>
             </ul>

@@ -29,7 +29,7 @@ export default function AxProcess() {
   }, [prefersReducedMotion])
 
   return (
-    <section id="ax-process" className="home-section scroll-mt-24 bg-light-blue" aria-labelledby="ax-heading">
+    <section id="ax-process" className="home-section scroll-mt-24 bg-off-white" aria-labelledby="ax-heading">
       <div className="home-container">
         <FadeUp className="mb-12 max-w-3xl md:mb-16">
           <h2 id="ax-heading" className="home-h2 mb-5">
