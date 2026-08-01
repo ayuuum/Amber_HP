@@ -153,8 +153,8 @@ export const aiSolutionPage = {
   finalCta: {
     headingLines: ['自社のAI活用を、', 'どこから始めるべきか。'] as const,
     body: '業務課題と現在の活用状況を伺い、取り組むべきテーマと進め方を整理します。',
-    cta: 'お問い合わせフォームへ進む',
-    note: '相談内容が整理されていない段階でも構いません。メール（ayumu.matsui@amber-inc.com）でも受け付けています。',
+    cta: 'AI活用について相談する',
+    note: '相談内容が整理されていない段階でも構いません。',
   },
 } as const
 
@@ -212,7 +212,7 @@ export const contactPage = {
     'Copilot・Gemini活用',
     'AIエージェント開発',
     '業務システム開発',
-    '現場伴走型支援（FDE）',
+    '現場伴走・継続改善',
     '協業・紹介',
   ],
   steps: [

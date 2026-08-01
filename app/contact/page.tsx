@@ -9,7 +9,7 @@ import { siteUrl } from '@/lib/site-metadata'
 import FadeUp from '@/components/home/FadeUp'
 
 export const metadata: Metadata = {
-  title: 'お問い合わせ',
+  title: 'お問い合わせ | AI活用の進め方を一緒に整理します',
   description:
     '具体的な計画が決まっていなくても構いません。現在の課題や取り組み状況を伺い、最初に検討すべきテーマを整理します。',
   alternates: { canonical: `${siteUrl}/contact` },
@@ -21,7 +21,7 @@ export default function ContactPage() {
       <Header />
       <PageHero
         tone="blue"
-        eyebrow="お問い合わせ"
+        eyebrow="Contact"
         headingLines={contactPage.hero.headingLines}
         body={contactPage.hero.body}
       />

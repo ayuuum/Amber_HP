@@ -1,3 +1,5 @@
+import { aiSolutionAssets } from '@/lib/ai-solution-assets'
+
 /** ヒーローメディア。動画追加時は src にパスを入れ、poster を指定する */
 export const heroMedia = {
   /** 例: '/videos/amber-hero-01.mp4' — 未配置のため null */
@@ -69,9 +71,57 @@ export const valueBento = {
   ],
 } as const
 
+export type HomeCase = {
+  industry: string
+  challenge: string
+  support: string
+  change: string
+  before: string
+  after: string
+  image: string
+  imageAlt: string
+  href: string
+}
+
+export const homeCases: HomeCase[] = [
+  {
+    industry: '素材・化学',
+    challenge: '研究・現場部門でAI活用度にばらつきがあり、全社で使える状態になっていなかった。',
+    support: '業務棚卸しから内製化プログラムを設計し、部門横断のAI標準化を推進。',
+    change: '研究と現場で、同じAIの使い方が回る状態へ。',
+    before: '部門ごとの活用度にばらつき',
+    after: '部門横断のAI標準化',
+    image: aiSolutionAssets.cases.chemical,
+    imageAlt: '素材・化学業界の支援イメージ',
+    href: '/service/ai-solution',
+  },
+  {
+    industry: '消防設備点検',
+    challenge: '紙の点検報告とスケジュール管理が手戻りを生んでいた。',
+    support: '点検報告とスケジュール管理のデジタル化、業務フローの再設計。',
+    change: '現場の手戻りを減らし、デジタル業務フローへ移行。',
+    before: '紙の帳票・スケジュール',
+    after: 'デジタル業務フロー',
+    image: aiSolutionAssets.cases.fire,
+    imageAlt: '消防設備点検業の支援イメージ',
+    href: '/service/ai-solution',
+  },
+  {
+    industry: 'ハウスクリーニング',
+    challenge: '店舗ごとに予約・配車・顧客管理が分断されていた。',
+    support: '複数店舗を横断できる業務台帳・運用設計を支援。',
+    change: '予約・配車・顧客情報を横断して把握できる状態へ。',
+    before: '店舗ごとに分断された管理',
+    after: '複数店舗の横断管理',
+    image: aiSolutionAssets.cases.cleaning,
+    imageAlt: 'ハウスクリーニング業の支援イメージ',
+    href: '/service/ai-solution',
+  },
+]
+
 export const axProcess = {
-  headingLines: ['小さく始めて、', '定着まで続ける。'] as const,
-  lead: '一度に大きく変えず、優先テーマから試し、使われる状態まで伴走します。',
+  headingLines: ['構想から定着まで、', 'ひとつのチームで。'] as const,
+  lead: '研修、コンサルティング、開発を分断せず、現場で成果が出るまで一貫して支援します。',
   stages: [
     {
       id: 'discover',
@@ -101,8 +151,12 @@ export const axProcess = {
 } as const
 
 export const capabilitiesSection = {
-  headingLines: ['支援の入り口は、', '3つの領域です。'] as const,
-  lead: 'ロードマップ・人材育成・システム開発の3領域を組み合わせ、現場の成果につなげます。',
+  headingLines: ['構想から人材育成、', 'システム実装まで。'] as const,
+  lead: 'AI活用の優先順位を定め、社員が使える状態をつくり、必要な仕組みを実装する。Amberは3つの支援を組み合わせ、AI活用を現場の成果につなげます。',
+  entryHeading: '何から始めるべきか分からない企業へ',
+  entryBody:
+    'まずはAI活用実行ロードマップを通じて、対象業務、期待効果、優先順位、実行方法を整理します。',
+  entryCta: 'AI活用ロードマップについて相談する',
 } as const
 
 export const capabilities = [
@@ -170,3 +224,5 @@ export const finalCta = {
   body: '業務課題や現在の取り組みを伺い、最初に着手すべきテーマと進め方を一緒に整理します。',
   cta: 'AI活用の進め方を相談する',
 } as const
+
+export const brandTagline = '企業のAI活用を、現場の成果に。'

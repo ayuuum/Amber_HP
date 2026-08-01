@@ -37,7 +37,7 @@ export default function BlogPage() {
       <Header />
       <PageHero
         tone="offwhite"
-        eyebrow="AI活用の知見"
+        eyebrow="Insights"
         headingLines={['AI活用を、', '実務に落とし込むための知見。']}
         body="現場で使えるAI活用の考え方、研修、実装の知見を公開しています。"
       />
@@ -62,11 +62,7 @@ export default function BlogPage() {
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <p className="max-w-2xl text-sm leading-relaxed text-secondary">
-                  現在公開中の記事は上記の1本です。現場で使えるAI活用の知見を、今後も追加していきます。
-                </p>
-              )}
+              ) : null}
             </>
           )}
         </div>

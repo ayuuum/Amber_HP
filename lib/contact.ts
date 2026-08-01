@@ -85,20 +85,6 @@ const sourceMessages: Record<string, ContactPreset> = {
     inquiryType: 'ai-solution',
     message: '自社業務へのAI活用について相談したいです。\n\n相談したい内容：\n',
   },
-  footer: {
-    inquiryType: 'general',
-    message: 'Amberのサービスについて相談したいです。\n\n相談したい内容：\n',
-  },
-  cases: {
-    inquiryType: 'ai-solution',
-    message:
-      '支援事例を拝見し、自社のAI活用について相談したいです。\n\n業界・業務：\n現在の課題：\n相談したい内容：\n',
-  },
-  'case-detail': {
-    inquiryType: 'ai-solution',
-    message:
-      '支援事例を拝見し、同様の課題について相談したいです。\n\n業界・業務：\n現在の課題：\n相談したい内容：\n',
-  },
   'ai-solution': {
     inquiryType: 'ai-solution',
     message:
