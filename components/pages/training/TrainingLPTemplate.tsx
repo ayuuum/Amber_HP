@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight, BadgeCheck } from 'lucide-react'
+import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight } from 'lucide-react'
 import type { ToolLPData } from './types'
 import { buildContactHref } from '@/lib/contact'
 import { editorialTransition, scrollRevealTransition, STAGGER_EDITORIAL } from '@/lib/motion-safe'
@@ -280,25 +280,14 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         </div>
       </section>
 
-      {/* 助成金バナー */}
-      <section className="home-section border-b border-sequoia-black/8 bg-light-green !py-14 md:!py-16">
+      {/* 助成金は補助情報（ページ下部） */}
+      <section className="home-section border-b border-sequoia-black/8 bg-white !py-10 md:!py-12">
         <div className="home-container">
-          <motion.div
-            {...fadeUp}
-            className="home-card flex flex-col items-start gap-6 border border-brand-green/15 bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10"
-          >
-            <BadgeCheck className="h-10 w-10 shrink-0 text-brand-green" aria-hidden="true" strokeWidth={1.5} />
-            <div className="flex-1">
-              <p className="mb-2 text-xs tracking-wider text-brand-green">助成金対応</p>
-              <h3 className="home-h3 mb-2">人材開発支援助成金の対象となり得ます</h3>
-              <p className="text-sm leading-relaxed text-secondary">
-                当研修は、厚生労働省「人材開発支援助成金（人への投資促進コース）」の対象となり得ます。受講料の最大75%が助成される場合があります。詳細はお問い合わせください。
-              </p>
-            </div>
-            <Link href={contactHref} className="btn-pill-primary-solid shrink-0 inline-flex items-center gap-2">
-              助成金について相談する
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+          <motion.div {...fadeUp} className="max-w-3xl border-t border-sequoia-black/8 pt-8">
+            <h3 className="mb-2 text-base font-medium text-sequoia-black">人材開発支援助成金について</h3>
+            <p className="text-sm leading-relaxed text-secondary">
+              要件を満たす場合、厚生労働省の人材開発支援助成金の対象となる可能性があります。補助率・補助額は企業規模や訓練内容により異なります。詳細はお問い合わせ時にご案内します。
+            </p>
           </motion.div>
         </div>
       </section>

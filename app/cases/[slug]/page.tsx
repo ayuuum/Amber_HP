@@ -6,7 +6,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
 import ContactCTA from '@/components/ui/ContactCTA'
-import { getAllCaseSlugs, getCaseBySlug } from '@/data/cases'
+import { getAllCaseSlugs, getCaseBySlug, isCompletedCase } from '@/data/cases'
 import { siteUrl } from '@/lib/site-metadata'
 
 type Props = { params: { slug: string } }
@@ -28,6 +28,9 @@ export function generateMetadata({ params }: Props): Metadata {
 export default function CaseDetailPage({ params }: Props) {
   const item = getCaseBySlug(params.slug)
   if (!item) notFound()
+  const completed = isCompletedCase(item.status)
+  const outcomeLabel = completed ? '導入後の変化' : '目指す業務の状態'
+  const afterLabel = completed ? 'After' : '目指す状態'
 
   return (
     <main className="min-h-screen bg-white">
@@ -44,7 +47,10 @@ export default function CaseDetailPage({ params }: Props) {
           <p className="home-label mb-3 text-brand-green">{item.industry}</p>
           <div className="mb-4 flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
-              {item.status}
+              {item.status === '支援実績' ? '取り組み事例' : item.status}
+            </span>
+            <span className="rounded-full border border-brand-green/20 bg-light-green/60 px-2.5 py-0.5 text-xs text-brand-green">
+              {item.serviceLabel}
             </span>
             {item.anonymous ? (
               <span className="text-sm text-secondary">本事例は守秘義務のため、企業名を伏せて掲載しています。</span>
@@ -74,7 +80,7 @@ export default function CaseDetailPage({ params }: Props) {
               <p className="leading-relaxed text-secondary">{item.beforeState}</p>
             </section>
             <section>
-              <h2 className="mb-3 text-lg font-medium text-sequoia-black">Amberが実施したこと</h2>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援内容</h2>
               <p className="leading-relaxed text-secondary">{item.support}</p>
             </section>
             <section>
@@ -86,7 +92,7 @@ export default function CaseDetailPage({ params }: Props) {
               </ul>
             </section>
             <section>
-              <h2 className="mb-3 text-lg font-medium text-sequoia-black">導入後の変化</h2>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">{outcomeLabel}</h2>
               <p className="leading-relaxed text-secondary">{item.change}</p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="home-card border border-sequoia-black/8 bg-off-white p-5">
@@ -94,13 +100,13 @@ export default function CaseDetailPage({ params }: Props) {
                   <p className="text-sm text-sequoia-black">{item.before}</p>
                 </div>
                 <div className="home-card border border-brand-green/15 bg-light-green p-5">
-                  <p className="mb-2 text-xs text-brand-green">After</p>
+                  <p className="mb-2 text-xs text-brand-green">{afterLabel}</p>
                   <p className="text-sm text-sequoia-black">{item.after}</p>
                 </div>
               </div>
             </section>
             <section>
-              <h2 className="mb-3 text-lg font-medium text-sequoia-black">今後の展開</h2>
+              <h2 className="mb-3 text-lg font-medium text-sequoia-black">現在進めていること</h2>
               <p className="leading-relaxed text-secondary">{item.nextSteps}</p>
             </section>
             <section>

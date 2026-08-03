@@ -9,7 +9,7 @@ import { cases } from '@/data/cases'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: '支援事例 | 現場から始まるAIと業務変革',
+  title: '支援事例 | 生成AI導入・活用の取り組み',
   description: '守秘義務により企業名は非公開の、Amberの支援事例・支援テーマをご紹介します。',
   alternates: { canonical: `${siteUrl}/cases` },
 }
@@ -20,9 +20,9 @@ export default function CasesPage() {
       <Header />
       <PageHero
         tone="offwhite"
-        eyebrow="Cases"
-        headingLines={['現場から始まる、', 'AIと業務変革の事例。']}
-        body="守秘義務により企業名は非公開です。業界と支援内容をもとに、現場で起きた変化をご紹介します。"
+        eyebrow="支援事例"
+        headingLines={['生成AI活用の、', '取り組み事例。']}
+        body="守秘義務により企業名は非公開です。業界と支援内容をもとに、取り組みの一例をご紹介します。未完了の案件では成果を断定せず、支援内容と目指す状態を記載しています。"
       />
       <section className="home-section bg-white pt-0 md:pt-0">
         <div className="home-container">

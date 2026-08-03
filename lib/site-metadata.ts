@@ -10,19 +10,18 @@ export const siteMetadata = {
   tagline: 'AI活用を、現場の成果に。',
   /** 検索・OG 用の説明文 */
   description:
-    '企業のAI活用を、構想・業務設計・研修・開発・定着まで一気通貫で支援するAXパートナー。株式会社Amber公式サイト。',
+    '企業の生成AI活用を、導入から業務実装・運用改善まで支援。Microsoft 365 Copilot・Google Workspace with Gemini対応、AIエージェント・業務システム開発まで。株式会社Amber公式サイト。',
   /** ルート相当のデフォルト title */
   defaultTitle: '株式会社Amber | AI活用を、現場の成果に。',
   keywords: [
     '株式会社Amber',
     '松井歩武',
-    'AI活用・実装支援',
-    'AI活用実行ロードマップ',
+    '生成AI導入・活用支援',
+    'AIエージェント・業務システム開発',
+    'AI定着・運用改善',
+    'Microsoft 365 Copilot',
+    'Google Workspace Gemini',
     '生成AI研修',
-    'AIエージェント',
-    '業務システム開発',
     '現場伴走',
-    'FDE',
-    '内製化',
   ] as const,
 } as const

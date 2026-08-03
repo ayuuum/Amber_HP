@@ -8,6 +8,7 @@ import CaseStudyCard from '@/components/ui/CaseStudyCard'
 import ContactCTA from '@/components/ui/ContactCTA'
 import FaqAccordion from '@/components/ui/FaqAccordion'
 import { aiSolutionPage } from '@/data/services'
+import { environments } from '@/data/offerings'
 import { cases } from '@/data/cases'
 import { buildContactHref } from '@/lib/contact'
 import { siteUrl } from '@/lib/site-metadata'
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function AiSolutionPage() {
   const contactHref = buildContactHref('ai-solution', 'ai-solution')
-  const { journey, scope, fde } = aiSolutionPage
+  const { services, method, process } = aiSolutionPage
 
   return (
     <main className="min-h-screen bg-white">
@@ -62,139 +63,92 @@ export default function AiSolutionPage() {
       <section id="services" className="home-section scroll-mt-24 bg-off-white">
         <div className="home-container">
           <FadeUp>
-            <SectionHeader heading={journey.headingLines} lead={journey.lead} />
+            <SectionHeader heading={services.headingLines} lead={services.lead} />
           </FadeUp>
 
-          {/* STEP 1 — 入口 */}
-          <FadeUp>
-            <article
-              id={journey.step1.id}
-              className="home-card scroll-mt-28 mb-5 border border-brand-green/20 bg-light-green p-6 md:p-10"
-            >
-              <div className="mb-4 flex flex-wrap items-center gap-3">
-                <p className="text-xs font-medium tracking-[0.12em] text-brand-green">{journey.step1.step}</p>
-                <span className="rounded-full border border-brand-green/25 bg-white/70 px-2.5 py-0.5 text-[11px] font-medium text-brand-green">
-                  まずはこちらから
-                </span>
-              </div>
-              <h3 className="home-h3 mb-3">{journey.step1.title}</h3>
-              <p className="mb-6 max-w-3xl text-sm leading-relaxed text-sequoia-black/75 md:text-base">
-                {journey.step1.description}
-              </p>
-              <p className="mb-3 text-xs font-medium tracking-wide text-secondary">成果物</p>
-              <ul className="mb-6 flex flex-wrap gap-2">
-                {journey.step1.outcomes.map((o) => (
-                  <li key={o} className="rounded-full bg-white/80 px-3 py-1 text-xs text-sequoia-black/80">
-                    {o}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-secondary">このような企業に向いています：{journey.step1.fit}</p>
-            </article>
-          </FadeUp>
-
-          {/* STEP 2 — 並列の実行選択肢 */}
-          <div className="mb-5">
-            <FadeUp className="mb-4 md:mb-5">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                <p className="text-xs font-medium tracking-[0.12em] text-brand-green">{journey.step2Label}</p>
-                <p className="max-w-xl text-sm text-secondary">{journey.step2Lead}</p>
-              </div>
-            </FadeUp>
-            <div className="grid gap-5 md:grid-cols-2">
-              {[journey.step2a, journey.step2b].map((step, i) => (
-                <FadeUp key={step.id} delay={0.05 * i}>
-                  <article
-                    id={step.id}
-                    className="home-card flex h-full scroll-mt-28 flex-col border border-sequoia-black/8 bg-white p-6 md:p-8"
-                  >
-                    <h3 className="home-h3 mb-3">{step.title}</h3>
-                    <p className="mb-6 text-sm leading-relaxed text-sequoia-black/75 md:text-base">{step.description}</p>
-                    <ul className="mb-6 flex flex-wrap gap-2">
-                      {step.outcomes.map((o) => (
-                        <li key={o} className="rounded-full bg-off-white px-3 py-1 text-xs text-sequoia-black/80">
-                          {o}
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="mt-auto text-sm text-secondary">このような企業に向いています：{step.fit}</p>
-                  </article>
-                </FadeUp>
+          <FadeUp className="mb-8">
+            <ol className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+              {services.items.map((item, index) => (
+                <li key={item.id} className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-sequoia-black/10 bg-white px-3.5 py-2 text-sm text-sequoia-black">
+                    <span className="text-xs font-medium tracking-wide text-brand-green">{item.number}</span>
+                    <span className="font-medium">{item.shortTitle}</span>
+                  </span>
+                  {index < services.items.length - 1 ? (
+                    <span className="hidden text-brand-green/50 sm:inline" aria-hidden>
+                      →
+                    </span>
+                  ) : null}
+                </li>
               ))}
-            </div>
+            </ol>
+          </FadeUp>
+
+          <div className="space-y-5">
+            {services.items.map((item, i) => (
+              <FadeUp key={item.id} delay={0.04 * i}>
+                <article
+                  id={item.id}
+                  className="home-card relative scroll-mt-28 border border-sequoia-black/8 bg-white p-6 md:p-8"
+                >
+                  {/* 旧アンカー互換 */}
+                  {item.legacyIds.map((legacyId) => (
+                    <span key={legacyId} id={legacyId} className="absolute -top-24" aria-hidden />
+                  ))}
+                  <p className="mb-3 text-xs font-medium tracking-[0.12em] text-brand-green">{item.number}</p>
+                  <h3 className="home-h3 mb-3">{item.title}</h3>
+                  <p className="mb-6 max-w-3xl text-sm leading-relaxed text-sequoia-black/75 md:text-base">
+                    {item.description}
+                  </p>
+                  <ul className="flex flex-wrap gap-2">
+                    {item.points.map((point) => (
+                      <li key={point} className="rounded-full bg-off-white px-3 py-1.5 text-xs text-sequoia-black/80 md:text-sm">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </FadeUp>
+            ))}
           </div>
-
-          {/* STEP 3 */}
-          <FadeUp>
-            <article
-              id={journey.step3.id}
-              className="home-card scroll-mt-28 border border-sequoia-black/8 bg-light-blue p-6 md:p-8"
-            >
-              <p className="mb-3 text-xs font-medium tracking-[0.12em] text-brand-green">{journey.step3.step}</p>
-              <h3 className="home-h3 mb-3">{journey.step3.title}</h3>
-              <p className="mb-6 max-w-3xl text-sm leading-relaxed text-sequoia-black/75 md:text-base">
-                {journey.step3.description}
-              </p>
-              <ul className="mb-6 flex flex-wrap gap-2">
-                {journey.step3.outcomes.map((o) => (
-                  <li key={o} className="rounded-full bg-white/80 px-3 py-1 text-xs text-sequoia-black/80">
-                    {o}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-secondary">このような企業に向いています：{journey.step3.fit}</p>
-            </article>
-          </FadeUp>
-
-          {/* FDE — 横断スタイル（STEPではない） */}
-          <FadeUp className="mt-8">
-            <aside
-              id="fde"
-              className="relative overflow-hidden rounded-2xl border border-dashed border-brand-green/30 bg-white px-6 py-8 md:px-10"
-            >
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-green/40 to-transparent" aria-hidden />
-              <p className="home-label mb-3 text-brand-green">{fde.label}</p>
-              <h3 className="mb-3 text-lg font-medium text-sequoia-black md:text-xl">{fde.heading}</h3>
-              <p className="max-w-3xl text-sm leading-relaxed text-secondary md:text-base">{fde.body}</p>
-            </aside>
-          </FadeUp>
         </div>
       </section>
 
-      <section className="home-section bg-white">
+      <section id="environments" className="home-section scroll-mt-24 bg-white">
         <div className="home-container">
           <FadeUp>
-            <SectionHeader heading={scope.headingLines} lead={scope.lead} />
+            <SectionHeader
+              heading={aiSolutionPage.environments.heading}
+              lead={aiSolutionPage.environments.lead}
+            />
           </FadeUp>
-          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {scope.phases.map((phase, index) => (
-              <FadeUp key={phase.title} delay={0.04 * index}>
-                <li className="home-card relative h-full border border-sequoia-black/8 bg-off-white p-5">
-                  <p className="mb-3 text-xs font-medium tracking-[0.12em] text-brand-green">
-                    {String(index + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="mb-2 text-base font-medium text-sequoia-black">{phase.title}</h3>
-                  <p className="text-sm text-secondary">{phase.description}</p>
-                  {index < scope.phases.length - 1 ? (
-                    <span
-                      className="pointer-events-none absolute -right-2 top-1/2 hidden h-px w-4 -translate-y-1/2 bg-brand-green/30 lg:block"
-                      aria-hidden
-                    />
-                  ) : null}
+          <ul className="grid gap-5 md:grid-cols-3">
+            {environments.map((env, i) => (
+              <FadeUp key={env.id} delay={0.04 * i}>
+                <li className="home-card h-full border border-sequoia-black/8 bg-off-white p-6">
+                  <h3 className="home-h3 mb-4 break-keep text-balance">{env.title}</h3>
+                  <ul className="space-y-2">
+                    {env.items.map((item) => (
+                      <li key={item} className="flex gap-2 text-sm leading-relaxed text-sequoia-black/75">
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-green/60" aria-hidden />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               </FadeUp>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
       <section id="process" className="home-section scroll-mt-24 bg-light-blue">
         <div className="home-container">
           <FadeUp>
-            <SectionHeader heading={aiSolutionPage.process.headingLines} />
+            <SectionHeader heading={process.headingLines} lead={process.lead} />
           </FadeUp>
           <ol className="grid gap-4 md:grid-cols-5">
-            {aiSolutionPage.process.stages.map((stage, index) => (
+            {process.stages.map((stage, index) => (
               <FadeUp key={stage.title} delay={0.04 * index}>
                 <li className="home-card h-full border border-sequoia-black/6 bg-white p-5">
                   <p className="mb-2 text-xs font-medium tracking-[0.1em] text-brand-green">
@@ -215,6 +169,30 @@ export default function AiSolutionPage() {
               </FadeUp>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section id="method" className="home-section scroll-mt-24 bg-white">
+        <div className="home-container">
+          <FadeUp>
+            <div className="home-card border border-sequoia-black/8 bg-off-white p-6 md:p-10">
+              <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+                <div>
+                  <h2 className="home-h2 mb-5">{method.heading}</h2>
+                  <p className="home-body mb-4">{method.body}</p>
+                  <p className="text-sm text-secondary">{method.note}</p>
+                </div>
+                <ul className="space-y-3 border-t border-sequoia-black/8 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                  {method.features.map((feature) => (
+                    <li key={feature} className="flex gap-3 text-sm text-sequoia-black/80">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green/70" aria-hidden />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -245,7 +223,6 @@ export default function AiSolutionPage() {
         </div>
       </section>
 
-      {/* 広告CV互換アンカー + 重複CTA統合 */}
       <div id="ai-solution-form" className="scroll-mt-24">
         <ContactCTA
           headingLines={aiSolutionPage.finalCta.headingLines}

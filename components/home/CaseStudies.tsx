@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { cases } from '@/data/cases'
 import CaseStudyCard from '@/components/ui/CaseStudyCard'
 import FadeUp from '@/components/home/FadeUp'
+import { casesSection } from '@/data/home'
 
 export default function HomeCaseStudies() {
   return (
@@ -11,11 +12,9 @@ export default function HomeCaseStudies() {
         <FadeUp className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <h2 id="cases-heading" className="home-h2 mb-4">
-              現場の変化が、成果を証明する
+              {casesSection.heading}
             </h2>
-            <p className="home-body">
-              守秘義務により企業名は非公開です。業界と支援内容をもとに、現場で起きた変化をご紹介します。
-            </p>
+            <p className="home-body">{casesSection.lead}</p>
           </div>
           <Link href="/cases" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-brand-green hover:underline">
             一覧を見る

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { buildContactHref } from '@/lib/contact'
-import { serviceMegaMenu } from '@/data/navigation'
+import { mainNav, serviceMegaMenu } from '@/data/navigation'
 import { panelTransition } from '@/lib/motion-safe'
 
 const DARK_HERO_PATHS = ['/']
@@ -95,10 +95,10 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={panelTransition()}
-                    className="absolute left-0 top-full z-50 mt-3 w-[min(92vw,520px)] rounded-2xl border border-sequoia-black/8 bg-white p-3 shadow-lg"
+                    className="absolute left-0 top-full z-50 mt-3 w-[min(92vw,420px)] rounded-2xl border border-sequoia-black/8 bg-white p-3 shadow-lg"
                     onMouseLeave={() => setServiceOpen(false)}
                   >
-                    <ul className="grid gap-1 sm:grid-cols-2">
+                    <ul className="grid gap-1">
                       {serviceMegaMenu.map((item) => (
                         <li key={item.title}>
                           <Link
@@ -108,7 +108,7 @@ export default function Header() {
                             onClick={() => setServiceOpen(false)}
                           >
                             <span className="block text-sm font-medium text-sequoia-black">{item.title}</span>
-                            <span className="mt-1 block text-xs leading-relaxed text-secondary">{item.description}</span>
+                            <span className="mt-1 block text-xs leading-relaxed text-secondary line-clamp-2">{item.description}</span>
                           </Link>
                         </li>
                       ))}
@@ -117,15 +117,15 @@ export default function Header() {
                 )}
               </AnimatePresence>
             </div>
-            <Link href="/cases" className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}>
-              支援事例
-            </Link>
-            <Link href="/company" className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}>
-              会社情報
-            </Link>
-            <Link href="/blog" className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}>
-              AI活用の知見
-            </Link>
+            {mainNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           <Link
@@ -134,7 +134,7 @@ export default function Header() {
               isTransparent ? 'bg-white text-dark-green hover:bg-white/90' : 'bg-brand-green text-white hover:bg-dark-green'
             }`}
           >
-            AI活用を相談する
+            お問い合わせ
           </Link>
 
           <button
@@ -178,31 +178,26 @@ export default function Header() {
                         <li key={item.title}>
                           <Link href={item.href} className="block rounded-xl px-3 py-3 text-sm text-sequoia-black/80 hover:bg-light-green/60" onClick={() => setIsMobileMenuOpen(false)}>
                             <span className="font-medium text-sequoia-black">{item.title}</span>
-                            <span className="mt-0.5 block text-xs text-secondary">{item.description}</span>
                           </Link>
                         </li>
                       ))}
                     </ul>
                   )}
                 </li>
-                <li>
-                  <Link href="/cases" className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black" onClick={() => setIsMobileMenuOpen(false)}>
-                    支援事例
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/company" className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black" onClick={() => setIsMobileMenuOpen(false)}>
-                    会社情報
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black" onClick={() => setIsMobileMenuOpen(false)}>
-                    AI活用の知見
-                  </Link>
-                </li>
+                {mainNav.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
                 <li className="pt-2">
                   <Link href={contactHref} className="btn-pill-primary-solid flex w-full" onClick={() => setIsMobileMenuOpen(false)}>
-                    AI活用を相談する
+                    お問い合わせ
                   </Link>
                 </li>
               </ul>

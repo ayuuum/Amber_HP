@@ -36,18 +36,18 @@ export default function Footer() {
             <p className="mb-4 text-sm font-medium text-sequoia-black">情報</p>
             <ul className="space-y-2.5">
               <li>
+                <Link href="/#environments" className={linkClass}>
+                  対応環境
+                </Link>
+              </li>
+              <li>
                 <Link href="/cases" className={linkClass}>
                   支援事例
                 </Link>
               </li>
               <li>
                 <Link href="/company" className={linkClass}>
-                  会社情報
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className={linkClass}>
-                  AI活用の知見
+                  Amberについて
                 </Link>
               </li>
               <li>
@@ -64,16 +64,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">プロダクト</p>
-            <ul className="space-y-2.5">
-              <li>
-                <a href={siteShell.pineUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  Pine
-                  <span className="sr-only">（新しいタブで開く）</span>
-                </a>
-              </li>
-            </ul>
-            <p className="mb-4 mt-8 text-sm font-medium text-sequoia-black">法務</p>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">法務</p>
             <ul className="space-y-2.5">
               <li>
                 <Link href="/privacy" className={linkClass}>
@@ -84,6 +75,20 @@ export default function Footer() {
                 <Link href="/terms" className={linkClass}>
                   利用規約
                 </Link>
+              </li>
+              <li>
+                <Link href="/legal/tokushoho" className={linkClass}>
+                  特定商取引法に基づく表記
+                </Link>
+              </li>
+            </ul>
+            <p className="mb-3 mt-8 text-xs font-medium tracking-wide text-secondary">運営プロダクト</p>
+            <ul className="space-y-2.5">
+              <li>
+                <a href={siteShell.pineUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  Pine
+                  <span className="sr-only">（新しいタブで開く）</span>
+                </a>
               </li>
             </ul>
           </div>

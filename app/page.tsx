@@ -3,13 +3,12 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import HomeHero from '@/components/home/HomeHero'
 import ProofStrip from '@/components/home/ProofStrip'
-import ValueBento from '@/components/home/ValueBento'
+import ServicesOverview from '@/components/home/ServicesOverview'
+import EnvironmentsSection from '@/components/home/EnvironmentsSection'
+import DomainsSection from '@/components/home/DomainsSection'
 import CaseStudies from '@/components/home/CaseStudies'
-import AxProcess from '@/components/home/AxProcess'
-import Capabilities from '@/components/home/Capabilities'
-import FdeStyle from '@/components/home/FdeStyle'
-import TrustPrinciples from '@/components/home/TrustPrinciples'
-import LatestInsights from '@/components/home/LatestInsights'
+import MethodSection from '@/components/home/MethodSection'
+import IndustriesSection from '@/components/home/IndustriesSection'
 import FinalCta from '@/components/home/FinalCta'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
@@ -39,13 +38,12 @@ export default function Home() {
       <Header />
       <HomeHero />
       <ProofStrip />
-      <ValueBento />
+      <ServicesOverview />
+      <EnvironmentsSection />
+      <DomainsSection />
       <CaseStudies />
-      <AxProcess />
-      <Capabilities />
-      <FdeStyle />
-      <TrustPrinciples />
-      <LatestInsights />
+      <MethodSection />
+      <IndustriesSection />
       <FinalCta />
       <Footer />
     </main>

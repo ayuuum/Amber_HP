@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
-import type { CaseItem } from '@/data/cases'
+import { isCompletedCase, type CaseItem } from '@/data/cases'
 
 type Props = {
   item: Pick<
@@ -10,6 +10,7 @@ type Props = {
     | 'industry'
     | 'theme'
     | 'status'
+    | 'serviceLabel'
     | 'challenge'
     | 'support'
     | 'change'
@@ -22,6 +23,10 @@ type Props = {
 }
 
 export default function CaseStudyCard({ item }: Props) {
+  const completed = isCompletedCase(item.status)
+  const outcomeLabel = completed ? '導入後の変化' : '目指す業務の状態'
+  const afterLabel = completed ? 'After' : '目指す状態'
+
   return (
     <article className="home-card flex h-full flex-col overflow-hidden border border-sequoia-black/6 bg-white">
       <div className="relative aspect-[16/10] bg-sequoia-black/5">
@@ -37,9 +42,10 @@ export default function CaseStudyCard({ item }: Props) {
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <p className="home-label text-brand-green">{item.industry}</p>
           <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2 py-0.5 text-[11px] text-secondary">
-            {item.status}
+            {item.status === '支援実績' ? '取り組み事例' : item.status}
           </span>
         </div>
+        <p className="mb-2 text-[11px] text-brand-green/90">{item.serviceLabel}</p>
         {item.anonymous ? <p className="mb-2 text-[11px] text-secondary">匿名事例</p> : null}
         <h3 className="mb-3 text-lg font-medium leading-snug text-sequoia-black">{item.theme}</h3>
         <dl className="mb-4 space-y-3 text-sm leading-relaxed">
@@ -48,11 +54,11 @@ export default function CaseStudyCard({ item }: Props) {
             <dd className="line-clamp-2 text-sequoia-black/80">{item.challenge}</dd>
           </div>
           <div>
-            <dt className="mb-1 text-xs text-secondary">Amberが実施したこと</dt>
+            <dt className="mb-1 text-xs text-secondary">支援内容</dt>
             <dd className="line-clamp-2 text-sequoia-black/80">{item.support}</dd>
           </div>
           <div>
-            <dt className="mb-1 text-xs text-secondary">導入後の変化</dt>
+            <dt className="mb-1 text-xs text-secondary">{outcomeLabel}</dt>
             <dd className="line-clamp-2 text-sequoia-black/80">{item.change}</dd>
           </div>
         </dl>
@@ -62,7 +68,7 @@ export default function CaseStudyCard({ item }: Props) {
             <p className="leading-relaxed text-sequoia-black/80">{item.before}</p>
           </div>
           <div>
-            <p className="mb-1 text-secondary">After</p>
+            <p className="mb-1 text-secondary">{afterLabel}</p>
             <p className="leading-relaxed text-sequoia-black/80">{item.after}</p>
           </div>
         </div>

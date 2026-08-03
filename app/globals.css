@@ -604,10 +604,26 @@
     letter-spacing: -0.02em;
   }
 
+  /* Sierra型ヒーロー：太く・広く・純白 */
+  .home-hero-title {
+    @apply break-keep text-white;
+    font-weight: 700;
+    font-size: clamp(2.35rem, 6.5vw, 3.85rem);
+    line-height: 1.18;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
   @media (min-width: 768px) {
     .home-h1 {
       font-size: 2.75rem;
       line-height: 1.15;
+    }
+
+    .home-hero-title {
+      font-size: clamp(3.25rem, 5vw, 4rem);
+      line-height: 1.14;
+      letter-spacing: 0.015em;
     }
   }
 
@@ -658,6 +674,15 @@
     @apply btn-pill border border-sequoia-black/15 bg-white text-sequoia-black hover:border-brand-green/40 hover:text-brand-green;
   }
 
+  /* 暗いヒーロー上：最大コントラストの白CTA */
+  .btn-pill-on-dark {
+    @apply btn-pill bg-white text-dark-green shadow-sm hover:bg-white/90;
+  }
+
+  .btn-pill-ghost-on-dark {
+    @apply btn-pill border border-white/35 bg-transparent text-white hover:border-white/60 hover:bg-white/10;
+  }
+
   .home-card {
     @apply rounded-2xl;
   }
@@ -668,6 +693,16 @@
     border: 1px solid rgba(255, 255, 255, 0.22);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
+  }
+
+  /* 暗い半透明パネル — 中の白文字が読める */
+  .home-glass-dark {
+    border-radius: 18px;
+    background: rgba(12, 22, 18, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(28px) saturate(1.1);
+    -webkit-backdrop-filter: blur(28px) saturate(1.1);
+    box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.55);
   }
 
   .bento-tone-green {

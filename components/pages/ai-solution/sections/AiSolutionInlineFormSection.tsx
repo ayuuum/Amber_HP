@@ -6,9 +6,9 @@ import { ArrowRight } from 'lucide-react'
 import { fadeUp } from '../motion'
 
 const inquiryOptions = [
-  '研修について',
-  '開発について',
-  '助成金について',
+  '生成AI導入・活用支援',
+  'AIエージェント・業務システム開発',
+  'AI定着・運用改善支援',
   'その他',
 ] as const
 
@@ -25,7 +25,7 @@ const initialFormState: FormState = {
   company: '',
   name: '',
   email: '',
-  topic: '研修について',
+  topic: '生成AI導入・活用支援',
 }
 
 export default function AiSolutionInlineFormSection() {
@@ -95,7 +95,7 @@ export default function AiSolutionInlineFormSection() {
             導入の進め方を整理します。
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-on-dark-muted md:text-lg">
-            研修、開発、助成金活用のどこから始めるべきかを、現在の業務と体制に合わせて確認します。
+            研修から始めたい場合も、具体的な業務をAI化したい場合も、現在の状況に合わせて進め方を整理します。
             電話番号は不要です。
           </p>
         </motion.div>

@@ -75,7 +75,7 @@ const sourceMessages: Record<string, ContactPreset> = {
   roadmap: {
     inquiryType: 'ai-solution',
     message:
-      'AI活用実行ロードマップについて相談したいです。\n\n現在の課題：\n対象部署・業務：\n利用中のAIツール：\n希望時期：\n',
+      '生成AI導入・活用支援について相談したいです。\n\n現在の課題：\n対象部署・業務：\n利用中のAIツール：\n希望時期：\n',
   },
   company: {
     inquiryType: 'general',
@@ -83,21 +83,22 @@ const sourceMessages: Record<string, ContactPreset> = {
   },
   blog: {
     inquiryType: 'ai-solution',
-    message: '自社業務へのAI活用について相談したいです。\n\n相談したい内容：\n',
+    message: '自社業務への生成AI活用について相談したいです。\n\n相談したい内容：\n',
   },
   'ai-solution': {
     inquiryType: 'ai-solution',
     message:
-      'AI活用・実装支援について相談したいです。\n\n現在の課題：\n対象人数・部署：\n利用中のAIツール：\n希望時期：\n',
+      '生成AI活用について相談したいです。\n\n現在の課題：\n対象人数・部署：\n利用中のAIツール：\n希望時期：\n',
   },
   development: {
     inquiryType: 'ai-solution',
-    message: 'AI活用・実装支援について相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
+    message:
+      'AIエージェント・業務システム開発について相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
   },
   training: {
     inquiryType: 'ai-solution',
     message:
-      'AI人材育成・業務定着について相談したいです。\n\n対象人数：\n利用中のAIツール：\n相談したい内容：\n',
+      '生成AI導入・活用支援（研修・定着）について相談したいです。\n\n対象人数：\n利用中のAIツール：\n相談したい内容：\n',
   },
   pine: {
     inquiryType: 'pine',
