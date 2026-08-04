@@ -18,6 +18,8 @@ interface ContactPayload {
   inquiryType: string;
   message: string;
   source?: string;
+  sourcePage?: string;
+  referrerPath?: string;
 }
 
 // 事業分類
@@ -176,7 +178,54 @@ async function sendReplyEmail(to: string, name: string, replyText: string): Prom
   });
 }
 
-// AyumuにSlack通知（ボタン付き）
+// Slack section.text は最大3000文字。見出し分を残してチャンク分割する
+const SLACK_SECTION_TEXT_LIMIT = 2900;
+
+function escapeSlackMrkdwn(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function buildSlackTextSections(title: string, body: string): Array<Record<string, unknown>> {
+  const escaped = escapeSlackMrkdwn(body || "(なし)");
+  const chunks: string[] = [];
+
+  for (let i = 0; i < escaped.length; i += SLACK_SECTION_TEXT_LIMIT) {
+    chunks.push(escaped.slice(i, i + SLACK_SECTION_TEXT_LIMIT));
+  }
+
+  if (chunks.length === 0) {
+    chunks.push("(なし)");
+  }
+
+  return chunks.map((chunk, index) => ({
+    type: "section",
+    text: {
+      type: "mrkdwn",
+      text: index === 0 ? `*${title}*\n${chunk}` : chunk,
+    },
+  }));
+}
+
+// Slack button value 上限は2000文字
+function buildReplyButtonValue(leadId: string, email: string, draft: string): string {
+  const full = JSON.stringify({ leadId, email, draft });
+  if (full.length <= 1900) return full;
+
+  // 全文はメッセージ本文側に出す。ボタンには送信に必要な最小限を残す
+  let truncated = draft;
+  while (truncated.length > 0) {
+    const candidate = JSON.stringify({ leadId, email, draft: truncated, truncated: true });
+    if (candidate.length <= 1900) return candidate;
+    truncated = truncated.slice(0, Math.max(0, truncated.length - 200));
+  }
+
+  return JSON.stringify({ leadId, email, draft: "", truncated: true });
+}
+
+// AyumuにSlack通知（ボタン付き・問い合わせ本文は全文）
 async function notifyAyumu(payload: ContactPayload, leadId: string, business: string, aiReply: string): Promise<void> {
   const webhookUrl = Deno.env.get("SLACK_WEBHOOK_URL");
   if (!webhookUrl) return;
@@ -187,59 +236,82 @@ async function notifyAyumu(payload: ContactPayload, leadId: string, business: st
     demo: "デモ依頼",
     consulting: "顧問相談",
     service: "サービスについて",
+    "ai-solution": "AIソリューション",
+    recruiting: "採用",
+    partnership: "提携・協業",
+    training: "研修",
+    development: "開発",
   };
 
-  const buttonValue = JSON.stringify({ leadId, email: payload.email, draft: aiReply });
+  const buttonValue = buildReplyButtonValue(leadId, payload.email, aiReply);
+  const sourcePage = payload.sourcePage;
+  const referrerPath = payload.referrerPath;
+
+  const blocks: Array<Record<string, unknown>> = [
+    {
+      type: "header",
+      text: { type: "plain_text", text: "📬 新規問い合わせ" },
+    },
+    {
+      type: "section",
+      fields: [
+        { type: "mrkdwn", text: `*事業*\n${escapeSlackMrkdwn(businessLabel)}` },
+        {
+          type: "mrkdwn",
+          text: `*種別*\n${escapeSlackMrkdwn(inquiryTypeLabel[payload.inquiryType] || payload.inquiryType)}`,
+        },
+        { type: "mrkdwn", text: `*名前*\n${escapeSlackMrkdwn(payload.name)}` },
+        { type: "mrkdwn", text: `*会社*\n${escapeSlackMrkdwn(payload.company || "未記入")}` },
+        { type: "mrkdwn", text: `*メール*\n${escapeSlackMrkdwn(payload.email)}` },
+        { type: "mrkdwn", text: `*電話*\n${escapeSlackMrkdwn(payload.phone || "未記入")}` },
+      ],
+    },
+  ];
+
+  if (sourcePage || referrerPath) {
+    blocks.push({
+      type: "section",
+      fields: [
+        { type: "mrkdwn", text: `*流入元*\n${escapeSlackMrkdwn(sourcePage || "-")}` },
+        { type: "mrkdwn", text: `*参照元*\n${escapeSlackMrkdwn(referrerPath || "-")}` },
+      ],
+    });
+  }
+
+  blocks.push(...buildSlackTextSections("メッセージ", payload.message));
+  blocks.push({ type: "divider" });
+  blocks.push(...buildSlackTextSections("AI返信ドラフト", aiReply));
+  blocks.push({
+    type: "actions",
+    elements: [
+      {
+        type: "button",
+        text: { type: "plain_text", text: "✅ このまま送信" },
+        style: "primary",
+        action_id: "send_reply",
+        value: buttonValue,
+      },
+      {
+        type: "button",
+        text: { type: "plain_text", text: "⏭️ スキップ" },
+        action_id: "skip_reply",
+        value: leadId || "unknown",
+      },
+    ],
+  });
+
+  // Slack メッセージは最大50ブロック。超過分は末尾のアクションを残して本文を削る
+  const MAX_BLOCKS = 50;
+  let finalBlocks = blocks;
+  if (blocks.length > MAX_BLOCKS) {
+    const actions = blocks[blocks.length - 1];
+    finalBlocks = [...blocks.slice(0, MAX_BLOCKS - 2), { type: "divider" }, actions];
+  }
 
   await fetch(webhookUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      blocks: [
-        {
-          type: "header",
-          text: { type: "plain_text", text: "📬 新規問い合わせ" },
-        },
-        {
-          type: "section",
-          fields: [
-            { type: "mrkdwn", text: `*事業*\n${businessLabel}` },
-            { type: "mrkdwn", text: `*種別*\n${inquiryTypeLabel[payload.inquiryType] || payload.inquiryType}` },
-            { type: "mrkdwn", text: `*名前*\n${payload.name}` },
-            { type: "mrkdwn", text: `*会社*\n${payload.company || "未記入"}` },
-            { type: "mrkdwn", text: `*メール*\n${payload.email}` },
-            { type: "mrkdwn", text: `*電話*\n${payload.phone || "未記入"}` },
-          ],
-        },
-        {
-          type: "section",
-          text: { type: "mrkdwn", text: `*メッセージ*\n${payload.message.substring(0, 200)}${payload.message.length > 200 ? "..." : ""}` },
-        },
-        { type: "divider" },
-        {
-          type: "section",
-          text: { type: "mrkdwn", text: `*AI返信ドラフト*\n${aiReply.substring(0, 300)}${aiReply.length > 300 ? "..." : ""}` },
-        },
-        {
-          type: "actions",
-          elements: [
-            {
-              type: "button",
-              text: { type: "plain_text", text: "✅ このまま送信" },
-              style: "primary",
-              action_id: "send_reply",
-              value: buttonValue,
-            },
-            {
-              type: "button",
-              text: { type: "plain_text", text: "⏭️ スキップ" },
-              action_id: "skip_reply",
-              value: leadId,
-            },
-          ],
-        },
-      ],
-    }),
+    body: JSON.stringify({ blocks: finalBlocks }),
   });
 }
 
