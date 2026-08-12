@@ -24,7 +24,9 @@ export default function ContactCTA({
       <div className="home-container">
         <div className="mx-auto max-w-2xl text-center">
           <SectionHeader heading={headingLines} lead={body} align="center" className="mb-10 md:mb-10" />
-          <PrimaryButton href={buildContactHref(source, 'ai-solution')}>{ctaLabel}</PrimaryButton>
+          <PrimaryButton href={buildContactHref(source, 'ai-solution')} className="w-full sm:w-auto">
+            {ctaLabel}
+          </PrimaryButton>
           {note ? <p className="mt-5 text-sm text-secondary">{note}</p> : null}
         </div>
       </div>

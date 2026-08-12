@@ -34,7 +34,7 @@ export default function PageHero({
 }: PageHeroProps) {
   const isDark = tone === 'dark'
   return (
-    <section className={cn('relative overflow-hidden pt-28 md:min-h-[560px] md:pt-32', toneMap[tone])}>
+    <section className={cn('relative overflow-hidden pt-24 md:min-h-[560px] md:pt-32', toneMap[tone])}>
       <div className="home-container grid items-center gap-10 pb-14 md:grid-cols-[minmax(0,1fr)_minmax(240px,0.9fr)] md:gap-12 md:pb-20 lg:pb-24">
         <div className="max-w-2xl">
           {eyebrow ? (

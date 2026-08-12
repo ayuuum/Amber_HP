@@ -42,7 +42,7 @@ const stepSlide = {
   ease: MOTION_EASE,
 }
 
-export default function ContactSection() {
+export default function ContactSection({ asPage = false }: { asPage?: boolean }) {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState<ContactFormData>(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -164,7 +164,11 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="section-forest relative overflow-hidden border-t border-sequoia-black/10 px-6 py-24 md:py-32"
+      className={
+        asPage
+          ? 'section-forest relative overflow-hidden px-5 pb-14 pt-24 md:px-6 md:pb-20 md:pt-32'
+          : 'section-forest relative overflow-hidden border-t border-sequoia-black/10 px-6 py-24 md:py-32'
+      }
     >
       <div
         aria-hidden
@@ -174,24 +178,31 @@ export default function ContactSection() {
             'linear-gradient(to right, transparent 0%, rgba(245,245,244,0.35) 50%, transparent 100%)',
         }}
       />
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-16">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-16">
         <motion.div
           initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={editorialTransition()}
-          className="lg:sticky lg:top-28"
+          className="order-2 lg:sticky lg:top-28 lg:order-1"
         >
-          <p className="eyebrow-forest mb-5">Contact</p>
-          <h2 className="section-heading-invert mb-6">
-            現場に合う形から、
-            <br />
-            一緒に整理します。
-          </h2>
-          <p className="max-w-xl text-base leading-relaxed text-on-dark-muted md:text-lg">
-            AI活用、Pine、業務提携など、相談内容が固まっていない段階でも問題ありません。
-            いまの業務・体制・困っていることから確認します。
+          <p className="mb-4 text-xs font-medium tracking-[0.12em] text-white/55">お問い合わせ</p>
+          {asPage ? (
+            <h1 className="section-heading-invert mb-5 text-[1.75rem] md:text-[2.75rem]">
+              現場に合う形から、
+              <br />
+              一緒に整理します。
+            </h1>
+          ) : (
+            <h2 className="section-heading-invert mb-5 text-[1.75rem] md:text-[2.75rem]">
+              現場に合う形から、
+              <br />
+              一緒に整理します。
+            </h2>
+          )}
+          <p className="max-w-xl text-sm leading-relaxed text-on-dark-muted md:text-base">
+            相談内容が固まっていない段階でも問題ありません。いまの業務・体制・困っていることから確認します。
           </p>
-          <div className="mt-10 space-y-4 border-t border-white/15 pt-8">
+          <div className="mt-8 space-y-3 border-t border-white/15 pt-6">
             {['AI Solution / 研修・開発・業務実装', 'Pine / 訪問サービス向け予約受付', '業務提携・採用・その他のご相談'].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm font-medium text-on-dark-muted">
                 <span className="h-px w-8 bg-white/30" aria-hidden />
@@ -199,7 +210,7 @@ export default function ContactSection() {
               </div>
             ))}
           </div>
-          <p className="mt-10 text-sm text-white/55">
+          <p className="mt-8 text-sm text-white/55">
             メールでも受け付けています:{' '}
             <a
               href="mailto:ayumu.matsui@amber-inc.com"
@@ -216,11 +227,11 @@ export default function ContactSection() {
           transition={editorialTransition(STAGGER_EDITORIAL * 2)}
           onSubmit={handleSubmit}
           ref={formRef}
-          className="rounded-sm border border-white/10 bg-[var(--color-cream)] p-5 text-sequoia-black shadow-[0_30px_80px_-45px_rgba(0,0,0,0.65)] md:p-8"
+          className={`order-1 rounded-sm border border-white/10 bg-[var(--color-cream)] p-5 text-sequoia-black md:p-8 lg:order-2${asPage ? ' mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none' : ''}`}
         >
           <div className="mb-8 flex items-center justify-between border-b border-sequoia-black/10 pb-5">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sequoia-green">Inquiry</p>
+              <p className="text-sm font-medium text-sequoia-black">相談内容を送る</p>
               <p className="mt-1 text-sm text-sequoia-black/60">通常1営業日以内に確認します。</p>
             </div>
             <div className="flex items-center gap-2 text-xs font-semibold text-sequoia-black/55">

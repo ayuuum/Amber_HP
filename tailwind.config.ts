@@ -51,8 +51,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-noto-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-inter)', 'var(--font-noto-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-noto-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-display)', 'var(--font-noto-sans)', 'system-ui', 'serif'],
+        display: ['var(--font-display)', 'var(--font-noto-sans)', 'system-ui', 'serif'],
       },
       transitionDuration: {
         brand: '280ms',

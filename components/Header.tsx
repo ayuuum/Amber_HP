@@ -41,6 +41,15 @@ export default function Header() {
   }, [pathname])
 
   useEffect(() => {
+    if (!isMobileMenuOpen) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [isMobileMenuOpen])
+
+  useEffect(() => {
     if (!serviceOpen) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setServiceOpen(false)
@@ -140,7 +149,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen((v) => !v)}
-            className={`site-nav-mobile-toggle relative z-50 rounded-full p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40 ${mobileBtnColor}`}
+            className={`site-nav-mobile-toggle relative z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40 ${mobileBtnColor}`}
             aria-expanded={isMobileMenuOpen}
             aria-controls={mobileNavId}
             aria-label={isMobileMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}

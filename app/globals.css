@@ -69,6 +69,7 @@
 @layer base {
   html {
     color-scheme: light;
+    overflow-x: clip;
   }
 
   body {
@@ -388,6 +389,16 @@
     @apply w-full rounded-sm border border-sequoia-black/20 bg-white px-4 py-3 text-sequoia-black shadow-sm transition-[border-color,box-shadow] duration-brand placeholder:text-sequoia-black/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sequoia-black/25 focus-visible:border-sequoia-black/50;
   }
 
+  /* 暗いヒーロー上の問い合わせ入力（レガシー） */
+  .hero-field {
+    @apply w-full rounded-sm border border-white/15 bg-white/[0.06] px-3.5 py-2.5 text-sm text-white shadow-none transition-[border-color,background-color,box-shadow] duration-brand placeholder:text-white/35 focus-visible:border-white/35 focus-visible:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
+  }
+
+  /* ヒーロー上クリームパネル用 */
+  .hero-field-light {
+    @apply w-full rounded-sm border border-sequoia-black/15 bg-white px-3.5 py-2.5 text-base text-sequoia-black shadow-none transition-[border-color,box-shadow] duration-brand placeholder:text-sequoia-black/40 focus-visible:border-brand-green/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/20;
+  }
+
   .field-glass {
     border-color: rgb(255 255 255 / 0.42) !important;
     background-color: rgb(255 255 255 / 0.28) !important;
@@ -604,14 +615,16 @@
     letter-spacing: -0.02em;
   }
 
-  /* Sierra型ヒーロー：太く・広く・純白 */
+  /* 見出し用ディスプレイ書体（Shippori Mincho） */
   .home-hero-title {
-    @apply break-keep text-white;
-    font-weight: 700;
-    font-size: clamp(2.35rem, 6.5vw, 3.85rem);
-    line-height: 1.18;
+    @apply text-white;
+    font-family: var(--font-display), var(--font-noto-sans), system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    line-height: 1.4;
     letter-spacing: 0.01em;
     text-wrap: balance;
+    overflow: visible;
   }
 
   @media (min-width: 768px) {
@@ -621,9 +634,9 @@
     }
 
     .home-hero-title {
-      font-size: clamp(3.25rem, 5vw, 4rem);
-      line-height: 1.14;
-      letter-spacing: 0.015em;
+      font-size: clamp(2.85rem, 4.6vw, 3.75rem);
+      line-height: 1.38;
+      letter-spacing: 0.012em;
     }
   }
 
@@ -635,10 +648,14 @@
   }
 
   .home-h2 {
-    @apply break-keep font-medium text-sequoia-black;
-    font-size: clamp(1.75rem, 3.5vw, 2.875rem);
-    line-height: 1.2;
-    letter-spacing: -0.015em;
+    @apply text-sequoia-black;
+    font-family: var(--font-display), var(--font-noto-sans), system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    overflow: visible;
+    overflow-wrap: anywhere;
   }
 
   .home-h3 {

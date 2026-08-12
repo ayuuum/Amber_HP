@@ -9,8 +9,8 @@ export const heroMedia = {
 
 export const heroCopy = {
   headingLines: ['AI活用を、', '現場の成果に。'] as const,
-  body: 'Copilot・Geminiの導入から、AIエージェント・業務システムの開発、定着まで。企業の業務にAIを実装し、現場で使われ続ける状態をつくります。',
-  primaryCta: '生成AI活用について相談する',
+  body: '導入から実装・定着まで、現場で使われるAI活用を支援します。',
+  primaryCta: '相談する',
   secondaryCta: 'サービスを見る',
   secondaryHref: '#services',
   highlights: [

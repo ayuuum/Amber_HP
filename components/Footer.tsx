@@ -6,7 +6,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
   const contactHref = buildContactHref('footer')
   const linkClass =
-    'text-sm text-secondary transition-colors hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30 rounded-sm'
+    'inline-flex min-h-11 items-center text-sm text-secondary transition-colors hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30 rounded-sm md:min-h-0 md:py-0.5'
 
   return (
     <footer className="border-t border-sequoia-black/8 bg-off-white">
@@ -21,7 +21,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-4 text-sm font-medium text-sequoia-black">サービス</p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0">
               {serviceMegaMenu.map((item) => (
                 <li key={item.title}>
                   <Link href={item.href} className={linkClass}>
@@ -34,7 +34,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-4 text-sm font-medium text-sequoia-black">情報</p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0">
               <li>
                 <Link href="/#environments" className={linkClass}>
                   対応環境
@@ -65,7 +65,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-4 text-sm font-medium text-sequoia-black">法務</p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0">
               <li>
                 <Link href="/privacy" className={linkClass}>
                   プライバシーポリシー
@@ -83,7 +83,7 @@ export default function Footer() {
               </li>
             </ul>
             <p className="mb-3 mt-8 text-xs font-medium tracking-wide text-secondary">運営プロダクト</p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0">
               <li>
                 <a href={siteShell.pineUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
                   Pine

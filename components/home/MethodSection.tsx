@@ -1,37 +1,67 @@
+import Image from 'next/image'
 import { supportMethod } from '@/data/offerings'
-import FadeUp from '@/components/home/FadeUp'
+
+const processSteps = [
+  { title: '現状理解', detail: '課題と業務の整理' },
+  { title: 'テーマ決定', detail: '着手領域の選定' },
+  { title: '研修・試作', detail: '小さく試して検証' },
+  { title: '実装', detail: '業務への組み込み' },
+  { title: '定着', detail: '利用と改善の継続' },
+] as const
+
+const methodHeadingLines = ['現場に入り、', '実装まで進める', '伴走型支援'] as const
 
 export default function MethodSection() {
   return (
     <section id="method" className="home-section scroll-mt-24 bg-off-white" aria-labelledby="method-heading">
-      {/* 旧URL互換 */}
       <span id="fde" className="sr-only" />
       <div className="home-container">
-        <FadeUp>
-          <div className="relative overflow-hidden rounded-2xl border border-sequoia-black/8 bg-white px-6 py-10 md:px-12 md:py-14">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(240px,0.8fr)] lg:items-start">
-              <div className="max-w-2xl">
-                <h2 id="method-heading" className="home-h2 mb-5">
-                  {supportMethod.heading}
-                </h2>
-                <p className="home-body mb-4">{supportMethod.body}</p>
-                <p className="text-sm text-secondary">{supportMethod.note}</p>
-              </div>
+        <div className="grid rounded-2xl border border-sequoia-black/8 bg-white lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.9fr)]">
+          <div className="min-w-0 px-6 py-10 md:px-10 md:py-12 lg:px-12 lg:py-14">
+            <div className="max-w-xl">
+              <h2 id="method-heading" className="home-h2 mb-5">
+                {methodHeadingLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </h2>
+              <p className="home-body mb-4">{supportMethod.body}</p>
+              <p className="mb-8 text-sm text-secondary">{supportMethod.note}</p>
 
-              <div className="border-t border-sequoia-black/8 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                <p className="mb-4 text-xs font-medium tracking-[0.1em] text-secondary">特徴</p>
-                <ul className="space-y-3">
-                  {supportMethod.features.map((label) => (
-                    <li key={label} className="flex items-start gap-3 text-sm text-sequoia-black/80">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green/70" aria-hidden />
-                      <span className="leading-relaxed">{label}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="space-y-3 border-t border-sequoia-black/8 pt-6">
+                {supportMethod.features.map((label) => (
+                  <li key={label} className="flex items-start gap-3 text-sm text-sequoia-black/80">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green/70" aria-hidden />
+                    <span className="leading-relaxed">{label}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            <ol className="mt-10 grid grid-cols-1 gap-4 border-t border-sequoia-black/8 pt-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
+              {processSteps.map((step, index) => (
+                <li key={step.title} className="min-w-0">
+                  <p className="mb-1 text-[11px] font-medium tracking-[0.12em] text-brand-green">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <p className="text-sm font-medium text-sequoia-black">{step.title}</p>
+                  <p className="mt-1 break-words text-xs leading-relaxed text-secondary">{step.detail}</p>
+                </li>
+              ))}
+            </ol>
           </div>
-        </FadeUp>
+
+          <div className="relative min-h-[280px] overflow-hidden rounded-b-2xl border-t border-sequoia-black/8 lg:min-h-full lg:rounded-b-none lg:rounded-r-2xl lg:border-l lg:border-t-0">
+            <Image
+              src="/images/brand/consulting-split.png"
+              alt="整理された現場の作業スペース"
+              fill
+              className="object-cover object-[60%_center]"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+            />
+          </div>
+        </div>
       </div>
     </section>
   )
