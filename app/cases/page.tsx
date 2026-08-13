@@ -22,7 +22,7 @@ export default function CasesPage() {
         tone="offwhite"
         eyebrow="支援事例"
         headingLines={['生成AI活用の、', '取り組み事例。']}
-        body="守秘義務により企業名は非公開です。業界と支援内容をもとに、取り組みの一例をご紹介します。未完了の案件では成果を断定せず、支援内容と目指す状態を記載しています。"
+        body="守秘のため企業名は非公開です。取り組みの一例です。"
       />
       <section className="home-section bg-white pt-0 md:pt-0">
         <div className="home-container">

@@ -188,22 +188,18 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
           <p className="mb-4 text-xs font-medium tracking-[0.12em] text-white/55">お問い合わせ</p>
           {asPage ? (
             <h1 className="section-heading-invert mb-5 text-[1.75rem] md:text-[2.75rem]">
-              現場に合う形から、
-              <br />
               一緒に整理します。
             </h1>
           ) : (
             <h2 className="section-heading-invert mb-5 text-[1.75rem] md:text-[2.75rem]">
-              現場に合う形から、
-              <br />
               一緒に整理します。
             </h2>
           )}
           <p className="max-w-xl text-sm leading-relaxed text-on-dark-muted md:text-base">
-            相談内容が固まっていない段階でも問題ありません。いまの業務・体制・困っていることから確認します。
+            内容が固まっていなくても構いません。
           </p>
           <div className="mt-8 space-y-3 border-t border-white/15 pt-6">
-            {['AI Solution / 研修・開発・業務実装', 'Pine / 訪問サービス向け予約受付', '業務提携・採用・その他のご相談'].map((item) => (
+            {['生成AI導入・活用支援', 'Pine / 訪問サービス', '提携・採用・その他'].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm font-medium text-on-dark-muted">
                 <span className="h-px w-8 bg-white/30" aria-hidden />
                 <span>{item}</span>
@@ -232,7 +228,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
           <div className="mb-8 flex items-center justify-between border-b border-sequoia-black/10 pb-5">
             <div>
               <p className="text-sm font-medium text-sequoia-black">相談内容を送る</p>
-              <p className="mt-1 text-sm text-sequoia-black/60">通常1営業日以内に確認します。</p>
+              <p className="mt-1 text-sm text-sequoia-black/60">通常1営業日以内に返信</p>
             </div>
             <div className="flex items-center gap-2 text-xs font-semibold text-sequoia-black/55">
               <span className={step >= 1 ? 'text-sequoia-green' : undefined}>01</span>
@@ -250,7 +246,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                 transition={stepSlide}
                 className="space-y-6"
               >
-                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">まずは連絡先を教えてください。</h3>
+                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">連絡先</h3>
                 
                 <motion.div
                   initial={false}
@@ -333,7 +329,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                     whileTap={{ scale: 0.98 }}
                     className="btn-primary w-full"
                   >
-                    相談内容を入力する
+                    次へ
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </motion.button>
                 </motion.div>
@@ -347,7 +343,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                 transition={stepSlide}
                 className="space-y-6"
               >
-                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">相談内容を教えてください。</h3>
+                <h3 className="mb-5 text-xl font-bold text-sequoia-black md:text-2xl">相談内容</h3>
 
                 <motion.div
                   initial={false}

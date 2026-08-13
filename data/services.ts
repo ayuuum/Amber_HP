@@ -10,8 +10,8 @@ export const aiSolutionPage = {
   hero: {
     eyebrow: 'AI活用・実装支援',
     headingLines: ['生成AIを、', '業務で使える状態へ。'] as const,
-    body: 'Microsoft 365 CopilotやGoogle Workspace with Geminiの導入・活用支援から、AIエージェント・業務システムの開発、導入後の運用改善まで。企業の業務にAIを実装し、現場で使われ続ける状態をつくります。',
-    primaryCta: '生成AI活用について相談する',
+    body: 'Copilot・Geminiの導入から、AIエージェント・業務システムの開発、定着まで。現場で使われ続ける状態をつくります。',
+    primaryCta: '相談する',
     secondaryCta: '支援事例を見る',
     secondaryHref: '/cases',
   },
@@ -25,17 +25,17 @@ export const aiSolutionPage = {
     ],
   },
   services: {
-    headingLines: ['生成AIの導入から、', '業務実装、運用改善まで'] as const,
-    lead: 'ツールの使い方を教えるだけではなく、活用テーマの発掘、業務への実装、導入後の改善まで一つのチームで進めます。',
+    headingLines: ['導入から、実装、定着まで'] as const,
+    lead: '活用テーマの発掘から実装・改善まで、一つのチームで進めます。',
     items: offerings,
   },
   environments: {
-    heading: 'お客様の業務環境に合わせて支援します',
-    lead: 'CopilotとGeminiは独立した事業ではなく、Amberが対応できる業務環境です。',
+    heading: '対応できる業務環境',
+    lead: 'Copilot、Gemini、独自AIに対応します。',
   },
   process: {
-    headingLines: ['共通の進め方', '業務理解から定着まで'] as const,
-    lead: '業務プロセスの整理は独立サービスではなく、各支援を進める際の共通プロセスです。',
+    headingLines: ['共通の進め方'] as const,
+    lead: '業務理解から定着まで、同じ流れで進めます。',
     stages: [
       {
         title: '現状理解',
@@ -108,17 +108,16 @@ export const aiSolutionPage = {
     },
   ],
   finalCta: {
-    headingLines: ['生成AIを、', '実際の業務で使える状態へ'] as const,
-    body: '研修から始めたい場合も、具体的な業務をAI化したい場合も、現在の状況に合わせて進め方をご提案します。',
-    cta: '生成AI活用について相談する',
-    note: '相談内容が整理されていない段階でも構いません。',
+    headingLines: ['生成AIを、', '業務で使える状態へ'] as const,
+    body: '現状に合わせて、進め方をご提案します。',
+    cta: '相談する',
   },
 } as const
 
 export const companyPage = {
   hero: {
     headingLines: ['現場が回り続ける仕組みを、', '技術で実装する。'] as const,
-    body: 'Amberは、企業の生成AI活用を、導入から業務実装・運用改善まで支援する会社です。製造・化学、建設・設備・保守をはじめ、現場オペレーションを抱える企業に入り、Copilot・Geminiの活用からAIエージェント・業務システムの実装まで伴走します。',
+    body: '企業の生成AI活用を、導入から定着まで支援します。製造・化学、建設・設備・保守など、現場オペレーションを抱える企業に入り、Copilot・GeminiからAI実装まで伴走します。',
   },
   mission: {
     headingLines: ['暮らしを支える産業に、', '最新のテクノロジーを。'] as const,
@@ -160,8 +159,8 @@ export const companyPage = {
 
 export const contactPage = {
   hero: {
-    headingLines: ['生成AI活用の進め方を、', '一緒に整理します。'] as const,
-    body: '具体的な計画が決まっていなくても構いません。現在の課題や取り組み状況を伺い、最初に検討すべきテーマを整理します。',
+    headingLines: ['一緒に整理します。'] as const,
+    body: '内容が固まっていなくても構いません。',
   },
   topics: [
     '生成AI導入・活用支援',
@@ -172,9 +171,9 @@ export const contactPage = {
     '協業・紹介',
   ],
   steps: [
-    { title: 'フォーム送信', description: '相談内容をお送りください。' },
-    { title: 'Amberから連絡', description: '内容を確認のうえご連絡します。' },
-    { title: '30〜60分のヒアリング', description: '課題と現状を伺います。' },
-    { title: '次の進め方を提案', description: '着手テーマと進め方を整理します。' },
+    { title: 'フォーム送信', description: '相談内容を送る' },
+    { title: 'Amberから連絡', description: '内容を確認して返信' },
+    { title: 'ヒアリング', description: '課題と現状を伺う' },
+    { title: '進め方の提案', description: '着手テーマを整理' },
   ],
 } as const

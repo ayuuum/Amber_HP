@@ -12,9 +12,9 @@ type ContactCTAProps = {
 }
 
 export default function ContactCTA({
-  headingLines = ['生成AIを、', '実際の業務で使える状態へ'],
-  body = '研修から始めたい場合も、具体的な業務をAI化したい場合も、現在の状況に合わせて進め方をご提案します。',
-  ctaLabel = '生成AI活用について相談する',
+  headingLines = ['生成AIを、', '業務で使える状態へ'],
+  body = '現状に合わせて、進め方をご提案します。',
+  ctaLabel = '相談する',
   source = 'contact-cta',
   className = '',
   note,

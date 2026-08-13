@@ -6,9 +6,8 @@ import { contactPage } from '@/data/services'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: 'お問い合わせ | AI活用の進め方を一緒に整理します',
-  description:
-    '具体的な計画が決まっていなくても構いません。現在の課題や取り組み状況を伺い、最初に検討すべきテーマを整理します。',
+  title: 'お問い合わせ',
+  description: '内容が固まっていなくても構いません。課題や現状を伺い、進め方を整理します。',
   alternates: { canonical: `${siteUrl}/contact` },
 }
 

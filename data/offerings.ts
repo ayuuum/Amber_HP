@@ -10,7 +10,7 @@ export const offerings = [
     shortTitle: '導入・活用支援',
     navDescription: 'Copilot・Geminiの導入、研修、活用テーマの選定',
     description:
-      'CopilotやGeminiを、実際の業務で活用できる状態へ。研修、業務棚卸し、活用テーマの選定、推進人材の育成まで対応します。',
+      'CopilotやGeminiを、実際の業務で使える状態へ。研修、業務棚卸し、テーマ選定、推進人材の育成まで対応します。',
     points: [
       'Microsoft 365 Copilot活用支援',
       'Google Workspace with Gemini活用支援',
@@ -31,7 +31,7 @@ export const offerings = [
     shortTitle: 'AIエージェント・業務システム開発',
     navDescription: '個社業務に合わせたAI・システムの実装',
     description:
-      'CopilotやGeminiの標準機能だけでは解決できない業務を、AIエージェントや業務システムとして実装します。',
+      '標準機能では足りない業務を、AIエージェントや業務システムとして実装します。',
     points: [
       '文書確認・照合AI',
       '社内ナレッジ検索・RAG',
@@ -51,7 +51,7 @@ export const offerings = [
     shortTitle: '定着・運用改善支援',
     navDescription: '利用状況の確認と、活用範囲の拡大',
     description:
-      '導入したAIが使われなくなることを防ぎ、利用状況や精度を継続的に確認しながら、活用範囲を広げます。',
+      '導入後も利用状況と精度を確認し、活用範囲を広げます。',
     points: [
       '利用状況の分析',
       'AIの回答精度評価',
@@ -139,13 +139,12 @@ export const focusIndustries = [
 
 export const supportMethod = {
   heading: '現場に入り、実装まで進める伴走型支援',
-  body: 'Amberは、提案書を作って終わるコンサルティングでも、システムを作って終わる開発会社でもありません。お客様の業務を理解し、活用テーマの発掘から実装、導入後の改善まで、現場に入りながら一つのチームとして進めます。',
-  note: 'この伴走の考え方は、現場伴走型支援（FDE）とも呼ばれます。',
+  body: '提案や開発だけで終わらず、業務理解から実装・定着まで現場に入って進めます。',
   features: [
     '業務理解から始める',
     '研修と実装を分断しない',
     'AIと業務システムの両方に対応する',
     '導入後も利用状況を確認する',
-    '現場のフィードバックをもとに改善する',
+    'フィードバックをもとに改善する',
   ],
 } as const

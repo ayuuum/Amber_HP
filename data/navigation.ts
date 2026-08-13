@@ -1,7 +1,7 @@
 import { offerings } from '@/data/offerings'
 
 export const siteShell = {
-  brandTagline: '企業の生成AI活用を、導入から業務実装・運用改善まで。',
+  brandTagline: '生成AI活用を、導入から定着まで。',
   pineUrl: 'https://pine-home.com/',
 } as const
 

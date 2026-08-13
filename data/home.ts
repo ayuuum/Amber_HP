@@ -1,15 +1,14 @@
-/** ヒーローメディア。動画追加時は src にパスを入れ、poster を指定する */
+/** ヒーローメディア。動画は muted + playsInline で自動再生。動きを減らす設定時はポスター画像。 */
 export const heroMedia = {
-  /** 例: '/videos/amber-hero-01.mp4' — 未配置のため null */
-  videoSrc: null as string | null,
-  poster: '/images/brand/consulting-split.png',
-  image: '/images/brand/consulting-split.png',
-  imageAlt: '整理された作業現場。窓から光が差し込む倉庫・作業スペース',
+  videoSrc: '/videos/home-hero.mp4',
+  poster: '/images/brand/hero-poster.jpg',
+  image: '/images/brand/hero-poster.jpg',
+  imageAlt: '緑の山並み。光が差し込む稜線',
 } as const
 
 export const heroCopy = {
   headingLines: ['AI活用を、', '現場の成果に。'] as const,
-  body: '導入から実装・定着まで、現場で使われるAI活用を支援します。',
+  body: '導入から定着まで、現場で使えるAI活用を支援します。',
   primaryCta: '相談する',
   secondaryCta: 'サービスを見る',
   secondaryHref: '#services',
@@ -22,40 +21,40 @@ export const heroCopy = {
 } as const
 
 export const proofItems = [
-  { value: '30社以上', label: '法人向け生成AI研修・支援実績' },
+  { value: '30社以上', label: '法人向け生成AI支援' },
   { value: '継続支援', label: '大手企業への複数月の伴走' },
-  { value: '現場業務', label: '製造・化学・設備などへの支援実績' },
+  { value: '現場業務', label: '製造・化学・設備などの支援' },
 ] as const
 
 export const servicesSection = {
-  heading: '生成AIの導入から、業務実装、運用改善まで',
-  lead: 'ツールの使い方を教えるだけではなく、活用テーマの発掘、業務への実装、導入後の改善まで一つのチームで進めます。',
+  heading: '導入から、実装、定着まで',
+  lead: '活用テーマの発掘から実装・改善まで、一つのチームで進めます。',
 } as const
 
 export const environmentsSection = {
-  heading: 'お客様の業務環境に合わせて支援します',
-  lead: 'CopilotとGeminiは独立した事業ではなく、Amberが対応できる業務環境です。',
+  heading: '対応できる業務環境',
+  lead: 'Copilot、Gemini、独自AIに対応します。',
 } as const
 
 export const domainsSection = {
-  heading: 'AIを、具体的な業務へ実装します',
-  lead: '抽象的なAI活用ではなく、文書確認・ナレッジ・現場業務など、成果が見える領域から実装します。',
+  heading: '具体的な業務へ実装します',
+  lead: '文書確認、ナレッジ、現場業務など、成果が見える領域から着手します。',
 } as const
 
 export const casesSection = {
   heading: '支援事例',
-  lead: '守秘義務により企業名は非公開です。業界と支援内容をもとに、取り組みの一例をご紹介します。',
+  lead: '守秘のため企業名は非公開です。取り組みの一例です。',
 } as const
 
 export const industriesSection = {
-  heading: '現場業務を持つ企業を中心に支援しています',
-  lead: 'サービス分類とは別に、特に支援実績のある業界です。',
+  heading: '現場業務を持つ企業を中心に',
+  lead: '製造・化学、建設・設備・保守など。',
 } as const
 
 export const finalCta = {
-  headingLines: ['生成AIを、', '実際の業務で使える状態へ'] as const,
-  body: '研修から始めたい場合も、具体的な業務をAI化したい場合も、現在の状況に合わせて進め方をご提案します。',
-  cta: '生成AI活用について相談する',
+  headingLines: ['生成AIを、', '業務で使える状態へ'] as const,
+  body: '現状に合わせて、進め方をご提案します。',
+  cta: '相談する',
 } as const
 
-export const brandTagline = '企業の生成AI活用を、導入から業務実装・運用改善まで。'
+export const brandTagline = '生成AI活用を、導入から定着まで。'

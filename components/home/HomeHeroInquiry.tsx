@@ -76,9 +76,9 @@ export default function HomeHeroInquiry() {
         <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4" noValidate>
           <div className="border-b border-sequoia-black/10 pb-3 md:pb-4">
             <p className="text-[0.95rem] font-medium leading-snug text-sequoia-black">
-              まずは相談だけでも大丈夫です
+              相談だけでも大丈夫です
             </p>
-            <p className="mt-1.5 text-xs text-secondary">通常1営業日以内に返信します</p>
+            <p className="mt-1.5 text-xs text-secondary">通常1営業日以内に返信</p>
           </div>
 
           <div>

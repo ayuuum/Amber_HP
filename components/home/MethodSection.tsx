@@ -26,8 +26,7 @@ export default function MethodSection() {
                   </span>
                 ))}
               </h2>
-              <p className="home-body mb-4">{supportMethod.body}</p>
-              <p className="mb-8 text-sm text-secondary">{supportMethod.note}</p>
+              <p className="home-body mb-8">{supportMethod.body}</p>
 
               <ul className="space-y-3 border-t border-sequoia-black/8 pt-6">
                 {supportMethod.features.map((label) => (

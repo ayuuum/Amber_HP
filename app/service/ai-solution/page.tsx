@@ -179,8 +179,7 @@ export default function AiSolutionPage() {
               <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
                 <div>
                   <h2 className="home-h2 mb-5">{method.heading}</h2>
-                  <p className="home-body mb-4">{method.body}</p>
-                  <p className="text-sm text-secondary">{method.note}</p>
+                  <p className="home-body">{method.body}</p>
                 </div>
                 <ul className="space-y-3 border-t border-sequoia-black/8 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                   {method.features.map((feature) => (
@@ -229,7 +228,6 @@ export default function AiSolutionPage() {
           body={aiSolutionPage.finalCta.body}
           ctaLabel={aiSolutionPage.finalCta.cta}
           source="ai-solution-final"
-          note={aiSolutionPage.finalCta.note}
         />
       </div>
       <Footer />
