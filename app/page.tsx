@@ -6,7 +6,6 @@ import MissionSection from '@/components/home/MissionSection'
 import IndustriesSection from '@/components/home/IndustriesSection'
 import WhatWeDoSection from '@/components/home/WhatWeDoSection'
 import WhatWeBuildSection from '@/components/home/WhatWeBuildSection'
-import RealOperationsSection from '@/components/home/RealOperationsSection'
 import CaseStudies from '@/components/home/CaseStudies'
 import HowWeWorkSection from '@/components/home/HowWeWorkSection'
 import CompanyTeaserSection from '@/components/home/CompanyTeaserSection'
@@ -42,7 +41,6 @@ export default function Home() {
       <IndustriesSection />
       <WhatWeDoSection />
       <WhatWeBuildSection />
-      <RealOperationsSection />
       <CaseStudies />
       <HowWeWorkSection />
       <CompanyTeaserSection />

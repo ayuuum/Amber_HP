@@ -108,18 +108,6 @@ const ja = {
         data: '分断されたデータ・システムの連携',
       },
     },
-    operations: {
-      heading: 'We Transform Real Operations.',
-      lead: 'Amberが扱うのは、単発のAI活用ではなく、実際の業務プロセス。',
-      closing: 'AI・ソフトウェア・データを組み合わせ、業務全体がつながる仕組みを構築します。',
-      flow: {
-        inspection: '点検',
-        decision: '判断・承認',
-        repair: '修繕',
-        reporting: '報告',
-        billing: '請求',
-      },
-    },
     cases: {
       heading: 'Transforming Essential Operations.',
       lead: 'どの産業の、どの業務を、どう変えたか。取り組みの一例です。',
@@ -277,18 +265,6 @@ const en = {
         knowledge: 'Systems that put institutional knowledge to work',
         workflow: 'Automation for complex operational processes',
         data: 'Integration across fragmented data and systems',
-      },
-    },
-    operations: {
-      heading: 'We Transform Real Operations.',
-      lead: 'Amber works on end-to-end operational processes—not one-off AI experiments.',
-      closing: 'We combine AI, software, and data so entire workflows connect as one system.',
-      flow: {
-        inspection: 'Inspection',
-        decision: 'Decision / approval',
-        repair: 'Repair',
-        reporting: 'Reporting',
-        billing: 'Billing',
       },
     },
     cases: {

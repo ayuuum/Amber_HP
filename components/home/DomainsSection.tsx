@@ -16,7 +16,7 @@ const domainImages: Record<(typeof implementationDomains)[number]['id'], { src: 
   },
 }
 
-/** 下層互換用。TOPでは WhatWeBuild / RealOperations を使用。 */
+/** 下層互換用。TOPでは WhatWeBuild を使用。 */
 export default function DomainsSection() {
   return (
     <section id="domains" className="home-section scroll-mt-24 bg-white" aria-labelledby="domains-heading">

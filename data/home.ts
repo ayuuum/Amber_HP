@@ -40,12 +40,6 @@ export const whatWeBuildSection = {
   lead: '現場の業務に合わせて、必要な仕組みを設計・実装します。',
 } as const
 
-export const realOperationsSection = {
-  heading: 'We Transform Real Operations.',
-  lead: 'Amberが扱うのは、単発のAI活用ではなく、実際の業務プロセス。',
-  closing: 'AI・ソフトウェア・データを組み合わせ、業務全体がつながる仕組みを構築します。',
-} as const
-
 export const casesSection = {
   heading: 'Transforming Essential Operations.',
   lead: 'どの産業の、どの業務を、どう変えたか。取り組みの一例です。',

@@ -178,14 +178,6 @@ export const whatWeBuildItems = [
   },
 ] as const
 
-export const realOperationFlow = [
-  { en: 'Inspection', ja: '点検' },
-  { en: 'Decision', ja: '判断・承認' },
-  { en: 'Repair', ja: '修繕' },
-  { en: 'Reporting', ja: '報告' },
-  { en: 'Billing', ja: '請求' },
-] as const
-
 export const howWeWorkPrinciples = [
   {
     enTitle: 'Start from the Field.',

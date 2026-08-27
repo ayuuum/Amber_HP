@@ -116,24 +116,36 @@ export const aiSolutionPage = {
 
 export const companyPage = {
   hero: {
-    headingLines: ['Technology for Essential Industries.'] as const,
-    body: '暮らしを支える産業に、最新のテクノロジーを。',
+    brand: 'Amber',
+    heading: 'Essential Industries × Technology.',
+    subheading: '暮らしを支える産業に、最新のテクノロジーを。',
+    body: '製造・設備・建設・物流など、社会を支える産業の変革を、AIとソフトウェアで実装しています。',
+    image: '/images/about-mission-mountain.png',
+    imageAlt: '霧に包まれた山並み',
+    primaryCta: 'Talk to Amber',
+    secondaryCta: 'Our Work',
+    secondaryHref: '/cases',
   },
   mission: {
-    headingLines: ['Technology for Essential Industries.'] as const,
+    lead: '暮らしを支える産業を、次の時代へ。',
     paragraphs: [
       '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
       'その現場には、高い専門性と長年蓄積された知識がある一方、紙や表計算、分断されたシステム、属人的な業務も数多く残っています。',
       'Amberは、AIとソフトウェアを現場に実装し、これらの産業を次の時代へ進めます。',
     ],
   },
-  principles: [
-    { title: 'Start from the Field.', description: '現場の業務と制約を起点に、使える形へ落とし込みます。' },
-    { title: 'Build, Don’t Just Advise.', description: '提案だけで終わらせず、実装まで進めます。' },
-    { title: 'Integrate, Don’t Add.', description: 'ツールを増やすのではなく、業務に組み込みます。' },
-    { title: 'Learn and Compound.', description: '現場で得た知見を、次の実装の質向上につなげます。' },
-  ],
+  principles: {
+    heading: 'How we work.',
+    lead: '提案で終わらせず、現場に入り、実装まで進めます。',
+    items: [
+      { title: 'Start from the Field.', description: '現場の業務と制約を起点に、使える形へ落とし込みます。' },
+      { title: 'Build, Don’t Just Advise.', description: '提案だけで終わらせず、実装まで進めます。' },
+      { title: 'Integrate, Don’t Add.', description: 'ツールを増やすのではなく、業務に組み込みます。' },
+      { title: 'Learn and Compound.', description: '現場で得た知見を、次の実装の質向上につなげます。' },
+    ],
+  },
   representative: {
+    heading: 'Representative',
     name: '松井 歩武',
     title: '代表取締役',
     photo: '/images/ceo-photo.png',
@@ -143,18 +155,26 @@ export const companyPage = {
       '2026年、株式会社Amberを創業。製造・設備・現場サービスを中心に、AI・ソフトウェアを活用した企業の業務変革に取り組む。',
     ],
   },
-  profile: [
-    { label: '会社名', value: '株式会社Amber' },
-    { label: '代表取締役', value: '松井 歩武' },
-    { label: '設立', value: '2026年' },
-    {
-      label: '事業内容',
-      value:
-        'Essential Industries向けの業務変革、AI・業務システムの設計開発、データ・既存システム連携／プロダクト事業（訪問サービス向け業務管理「Pine」）',
-    },
-    { label: '取引銀行', value: 'GMOあおぞらネット銀行、三井住友銀行' },
-    { label: '所在地', value: '〒105-0001 東京都港区虎ノ門３丁目１−１ 2階' },
-  ],
+  profile: {
+    heading: 'Company',
+    rows: [
+      { label: '会社名', value: '株式会社Amber' },
+      { label: '代表取締役', value: '松井 歩武' },
+      { label: '設立', value: '2026年' },
+      {
+        label: '事業内容',
+        value:
+          'Essential Industries向けの業務変革、AI・業務システムの設計開発、データ・既存システム連携／プロダクト事業（訪問サービス向け業務管理「Pine」）',
+      },
+      { label: '取引銀行', value: 'GMOあおぞらネット銀行、三井住友銀行' },
+      { label: '所在地', value: '〒105-0001 東京都港区虎ノ門３丁目１−１ 2階' },
+    ],
+  },
+  cta: {
+    heading: 'Technology for Essential Industries.',
+    body: '業務やシステムの課題からご相談ください。',
+    label: 'Talk to Amber',
+  },
 } as const
 
 export const contactPage = {
