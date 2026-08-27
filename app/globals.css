@@ -75,7 +75,7 @@
   body {
     @apply text-body text-sequoia-black;
     background-color: var(--color-bg);
-    font-family: var(--font-noto-sans), var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-noto-sans), system-ui, sans-serif;
     position: relative;
   }
 
@@ -103,7 +103,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-noto-sans), var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-noto-sans), system-ui, sans-serif;
     line-height: 1.6;
     letter-spacing: 0.02em;
   }
@@ -145,8 +145,8 @@
     @apply leading-relaxed;
   }
   .font-logo {
-    font-family: var(--font-inter), var(--font-noto-sans), system-ui, sans-serif;
-    letter-spacing: -0.01em;
+    font-family: var(--font-noto-sans), system-ui, sans-serif;
+    letter-spacing: 0.02em;
     font-weight: 700;
   }
   .highlight {
@@ -615,13 +615,12 @@
     letter-spacing: -0.02em;
   }
 
-  /* 見出し用ディスプレイ書体（Shippori Mincho） */
+  /* ヒーロー見出し */
   .home-hero-title {
     @apply text-white;
-    font-family: var(--font-display), var(--font-noto-sans), system-ui, sans-serif;
     font-weight: 600;
-    font-size: clamp(2.2rem, 6vw, 3.6rem);
-    line-height: 1.4;
+    font-size: clamp(2.35rem, 5.5vw, 3.75rem);
+    line-height: 1.32;
     letter-spacing: 0.01em;
     text-wrap: balance;
     overflow: visible;
@@ -634,8 +633,8 @@
     }
 
     .home-hero-title {
-      font-size: clamp(2.85rem, 4.6vw, 3.75rem);
-      line-height: 1.38;
+      font-size: clamp(2.85rem, 4.8vw, 3.75rem);
+      line-height: 1.28;
       letter-spacing: 0.012em;
     }
   }
@@ -645,21 +644,24 @@
       font-size: clamp(3.5rem, 4.5vw, 4.25rem);
       line-height: 1.1;
     }
+
+    .home-hero-title {
+      font-size: 3.75rem;
+      line-height: 1.25;
+    }
   }
 
   .home-h2 {
-    @apply text-sequoia-black;
-    font-family: var(--font-display), var(--font-noto-sans), system-ui, sans-serif;
+    @apply break-keep text-balance text-sequoia-black;
     font-weight: 600;
-    font-size: clamp(1.5rem, 3vw, 2.4rem);
-    line-height: 1.5;
+    font-size: clamp(1.625rem, 3.2vw, 2.5rem);
+    line-height: 1.45;
     letter-spacing: 0.01em;
     overflow: visible;
-    overflow-wrap: anywhere;
   }
 
   .home-h3 {
-    @apply break-keep text-[1.375rem] font-medium leading-snug text-sequoia-black md:text-[1.5rem];
+    @apply break-keep text-[1.25rem] font-medium leading-snug text-sequoia-black md:text-[1.5rem];
     letter-spacing: -0.01em;
   }
 

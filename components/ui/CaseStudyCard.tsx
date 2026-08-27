@@ -20,12 +20,14 @@ type Props = {
     | 'imageAlt'
     | 'anonymous'
   >
+  /** トップページ向けの簡潔表示 */
+  variant?: 'compact' | 'detailed'
 }
 
-export default function CaseStudyCard({ item }: Props) {
+export default function CaseStudyCard({ item, variant = 'detailed' }: Props) {
   const completed = isCompletedCase(item.status)
-  const outcomeLabel = completed ? '導入後の変化' : '目指す業務の状態'
-  const afterLabel = completed ? 'After' : '目指す状態'
+  const afterColumnLabel = completed ? '導入後' : '目指す状態'
+  const isCompact = variant === 'compact'
 
   return (
     <article className="home-card flex h-full flex-col overflow-hidden border border-sequoia-black/6 bg-white">
@@ -45,30 +47,44 @@ export default function CaseStudyCard({ item }: Props) {
             {item.status === '支援実績' ? '取り組み事例' : item.status}
           </span>
         </div>
-        <p className="mb-2 text-[11px] text-brand-green/90">{item.serviceLabel}</p>
-        {item.anonymous ? <p className="mb-2 text-[11px] text-secondary">匿名事例</p> : null}
-        <h3 className="mb-3 text-lg font-medium leading-snug text-sequoia-black">{item.theme}</h3>
-        <dl className="mb-4 space-y-3 text-sm leading-relaxed">
-          <div>
-            <dt className="mb-1 text-xs text-secondary">支援前の課題</dt>
-            <dd className="line-clamp-2 text-sequoia-black/80">{item.challenge}</dd>
-          </div>
-          <div>
-            <dt className="mb-1 text-xs text-secondary">支援内容</dt>
-            <dd className="line-clamp-2 text-sequoia-black/80">{item.support}</dd>
-          </div>
-          <div>
-            <dt className="mb-1 text-xs text-secondary">{outcomeLabel}</dt>
-            <dd className="line-clamp-2 text-sequoia-black/80">{item.change}</dd>
-          </div>
-        </dl>
+
+        {!isCompact ? (
+          <>
+            <p className="mb-2 text-[11px] text-brand-green/90">{item.serviceLabel}</p>
+            {item.anonymous ? <p className="mb-2 text-[11px] text-secondary">匿名事例</p> : null}
+          </>
+        ) : null}
+
+        <h3 className="home-h3 mb-3">{item.theme}</h3>
+
+        {isCompact ? (
+          <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-sequoia-black/80">{item.challenge}</p>
+        ) : (
+          <dl className="mb-4 space-y-3 text-sm leading-relaxed">
+            <div>
+              <dt className="mb-1 text-xs text-secondary">支援前の課題</dt>
+              <dd className="line-clamp-2 text-sequoia-black/80">{item.challenge}</dd>
+            </div>
+            <div>
+              <dt className="mb-1 text-xs text-secondary">支援内容</dt>
+              <dd className="line-clamp-2 text-sequoia-black/80">{item.support}</dd>
+            </div>
+            <div>
+              <dt className="mb-1 text-xs text-secondary">
+                {completed ? '導入後の変化' : '目指す業務の状態'}
+              </dt>
+              <dd className="line-clamp-2 text-sequoia-black/80">{item.change}</dd>
+            </div>
+          </dl>
+        )}
+
         <div className="mt-auto grid grid-cols-2 gap-3 border-t border-sequoia-black/8 pt-4 text-xs">
           <div>
-            <p className="mb-1 text-secondary">Before</p>
+            <p className="mb-1 text-secondary">導入前</p>
             <p className="leading-relaxed text-sequoia-black/80">{item.before}</p>
           </div>
           <div>
-            <p className="mb-1 text-secondary">{afterLabel}</p>
+            <p className="mb-1 text-secondary">{afterColumnLabel}</p>
             <p className="leading-relaxed text-sequoia-black/80">{item.after}</p>
           </div>
         </div>

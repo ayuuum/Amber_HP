@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Noto_Sans_JP, Shippori_Mincho } from 'next/font/google'
+import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import HashScrollHandler from '@/components/HashScrollHandler'
@@ -11,20 +11,6 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
   weight: ['400', '500', '700', '900'],
   variable: '--font-noto-sans',
-  display: 'swap',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '900'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const shipporiMincho = Shippori_Mincho({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-display',
   display: 'swap',
 })
 
@@ -88,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja" className={`${notoSansJP.variable} ${inter.variable} ${shipporiMincho.variable}`}>
+    <html lang="ja" className={`${notoSansJP.variable} ${notoSansJP.className}`}>
       <head>
         <script
           id="openai-ads-pixel"

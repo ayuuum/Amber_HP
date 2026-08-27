@@ -50,9 +50,9 @@ const config: Config = {
         red: 'var(--color-red)',
       },
       fontFamily: {
-        sans: ['var(--font-noto-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-display)', 'var(--font-noto-sans)', 'system-ui', 'serif'],
-        display: ['var(--font-display)', 'var(--font-noto-sans)', 'system-ui', 'serif'],
+        sans: ['var(--font-noto-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-noto-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-noto-sans)', 'system-ui', 'sans-serif'],
       },
       transitionDuration: {
         brand: '280ms',

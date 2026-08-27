@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import HomeHero from '@/components/home/HomeHero'
-import ProofStrip from '@/components/home/ProofStrip'
 import ServicesOverview from '@/components/home/ServicesOverview'
 import EnvironmentsSection from '@/components/home/EnvironmentsSection'
 import DomainsSection from '@/components/home/DomainsSection'
@@ -37,7 +36,6 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Header />
       <HomeHero />
-      <ProofStrip />
       <ServicesOverview />
       <EnvironmentsSection />
       <DomainsSection />

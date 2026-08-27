@@ -93,7 +93,7 @@ const sourceMessages: Record<string, ContactPreset> = {
   development: {
     inquiryType: 'ai-solution',
     message:
-      'AIエージェント・業務システム開発について相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
+      'AIエージェント開発について相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
   },
   training: {
     inquiryType: 'ai-solution',

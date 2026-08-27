@@ -57,7 +57,7 @@ export default function HomeHeroInquiry() {
   }
 
   return (
-    <div className="w-full max-w-md rounded-sm border border-white/20 bg-[var(--color-cream)] p-4 text-sequoia-black shadow-[0_24px_60px_-40px_rgba(0,0,0,0.55)] md:p-6">
+    <div className="w-full max-w-md rounded-2xl border border-white/20 bg-[var(--color-cream)] p-4 text-sequoia-black shadow-[0_24px_60px_-40px_rgba(0,0,0,0.55)] md:p-6">
       {status === 'success' ? (
         <div aria-live="polite" className="py-2">
           <p className="font-medium text-sequoia-black">送信しました</p>

@@ -27,8 +27,8 @@ export const offerings = [
   {
     id: 'build',
     number: '02',
-    title: 'AIエージェント・業務システム開発',
-    shortTitle: 'AIエージェント・業務システム開発',
+    title: 'AIエージェント開発',
+    shortTitle: 'AIエージェント開発',
     navDescription: '個社業務に合わせたAI・システムの実装',
     description:
       '標準機能では足りない業務を、AIエージェントや業務システムとして実装します。',
@@ -47,8 +47,8 @@ export const offerings = [
   {
     id: 'operation',
     number: '03',
-    title: 'AI定着・運用改善支援',
-    shortTitle: '定着・運用改善支援',
+    title: '定着支援',
+    shortTitle: '定着支援',
     navDescription: '利用状況の確認と、活用範囲の拡大',
     description:
       '導入後も利用状況と精度を確認し、活用範囲を広げます。',
@@ -95,7 +95,7 @@ export const environments = [
   },
   {
     id: 'custom',
-    title: '独自AI・既存システム連携',
+    title: 'オーダーメイド',
     items: [
       '独自AIエージェント',
       'RAG・社内検索',

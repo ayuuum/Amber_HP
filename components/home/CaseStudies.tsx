@@ -28,7 +28,7 @@ export default function HomeCaseStudies() {
           {cases.map((item, i) => (
             <li key={item.slug}>
               <FadeUp delay={0.04 * i}>
-                <CaseStudyCard item={item} />
+                <CaseStudyCard item={item} variant="compact" />
               </FadeUp>
             </li>
           ))}

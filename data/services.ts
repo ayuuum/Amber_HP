@@ -25,7 +25,7 @@ export const aiSolutionPage = {
     ],
   },
   services: {
-    headingLines: ['導入から、実装、定着まで'] as const,
+    headingLines: ['導入から実装〜定着まで'] as const,
     lead: '活用テーマの発掘から実装・改善まで、一つのチームで進めます。',
     items: offerings,
   },
@@ -150,7 +150,7 @@ export const companyPage = {
     {
       label: '事業内容',
       value:
-        '生成AI導入・活用支援、AIエージェント・業務システム開発、AI定着・運用改善支援／プロダクト事業（訪問サービス向け業務管理「Pine」）',
+        '生成AI導入・活用支援、AIエージェント開発、定着支援／プロダクト事業（訪問サービス向け業務管理「Pine」）',
     },
     { label: '取引銀行', value: 'GMOあおぞらネット銀行、三井住友銀行' },
     { label: '所在地', value: '〒105-0001 東京都港区虎ノ門３丁目１−１ 2階' },
@@ -166,8 +166,8 @@ export const contactPage = {
     '生成AI導入・活用支援',
     'Microsoft 365 Copilot活用',
     'Google Workspace with Gemini活用',
-    'AIエージェント・業務システム開発',
-    'AI定着・運用改善支援',
+    'AIエージェント開発',
+    '定着支援',
     '協業・紹介',
   ],
   steps: [

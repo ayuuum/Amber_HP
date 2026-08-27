@@ -4,11 +4,11 @@ import { industriesSection } from '@/data/home'
 
 const industryImages: Record<(typeof focusIndustries)[number]['id'], { src: string; alt: string }> = {
   manufacturing: {
-    src: '/images/ai-solution/cases/case-chemical.jpg',
+    src: '/images/ai-solution/cases/industry-manufacturing.jpg',
     alt: '製造・化学の現場イメージ',
   },
   construction: {
-    src: '/images/ai-solution/cases/case-fire.jpg',
+    src: '/images/ai-solution/cases/industry-construction.jpg',
     alt: '建設・設備・保守の現場イメージ',
   },
 }

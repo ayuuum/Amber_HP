@@ -2,45 +2,25 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useReducedMotion } from 'framer-motion'
 import { heroCopy, heroMedia } from '@/data/home'
 import HomeHeroInquiry from '@/components/home/HomeHeroInquiry'
 
 export default function HomeHero() {
-  const prefersReducedMotion = useReducedMotion()
-  const showVideo = Boolean(heroMedia.videoSrc) && !prefersReducedMotion
-
   return (
-    <section className="relative flex min-h-0 items-start bg-dark-green md:min-h-[92svh] md:items-center">
+    <section className="relative flex min-h-[828px] items-start bg-dark-green md:items-center">
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src={heroMedia.image}
-          alt={showVideo ? '' : heroMedia.imageAlt}
+          alt={heroMedia.imageAlt}
           fill
           priority
           className="object-cover object-center"
           sizes="100vw"
-          aria-hidden={showVideo || undefined}
         />
-        {showVideo ? (
-          <video
-            className="absolute inset-0 h-full w-full object-cover object-center"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={heroMedia.poster}
-            aria-hidden
-          >
-            <source src={heroMedia.videoSrc} type="video/mp4" />
-          </video>
-        ) : null}
         <div
-          className="absolute inset-0 bg-[linear-gradient(100deg,rgba(8,21,17,0.9)_0%,rgba(8,21,17,0.76)_34%,rgba(8,21,17,0.46)_64%,rgba(8,21,17,0.28)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(16,51,45,0.5)_0%,rgba(16,51,45,0)_50%,rgba(16,51,45,0.25)_100%)]"
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-green/50 via-transparent to-dark-green/25" aria-hidden />
       </div>
 
       <div className="home-container relative z-10 w-full pb-10 pt-24 md:pb-16 md:pt-32">
@@ -54,11 +34,11 @@ export default function HomeHero() {
               ))}
             </h1>
 
-            <p className="mb-5 max-w-md text-[0.95rem] font-normal leading-[1.75] text-white/90 md:mb-8 md:max-w-lg md:text-base md:leading-[1.9]">
+            <p className="mb-5 max-w-md text-[0.95rem] font-normal leading-[1.75] text-white/90 md:mb-6 md:max-w-lg md:text-base md:leading-[1.9]">
               {heroCopy.body}
             </p>
 
-            <Link href={heroCopy.secondaryHref} className="btn-pill-ghost-on-dark w-full sm:w-auto">
+            <Link href={heroCopy.secondaryHref} className="btn-pill-ghost-on-dark mb-5 w-full sm:mb-8 sm:w-auto">
               {heroCopy.secondaryCta}
             </Link>
           </div>

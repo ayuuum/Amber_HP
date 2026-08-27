@@ -4,15 +4,15 @@ import { domainsSection } from '@/data/home'
 
 const domainImages: Record<(typeof implementationDomains)[number]['id'], { src: string; alt: string }> = {
   documents: {
-    src: '/images/brand/training-split.png',
+    src: '/images/brand/domain-documents.jpg',
     alt: '文書・確認業務のイメージ',
   },
   knowledge: {
-    src: '/images/brand/training-hero.png',
+    src: '/images/brand/domain-knowledge.jpg',
     alt: 'ナレッジ共有・打合せのイメージ',
   },
   field: {
-    src: '/images/brand/consulting-split.png',
+    src: '/images/brand/domain-field.jpg',
     alt: '現場業務のイメージ',
   },
 }

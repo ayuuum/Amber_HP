@@ -7,8 +7,8 @@ import { fadeUp } from '../motion'
 
 const inquiryOptions = [
   '生成AI導入・活用支援',
-  'AIエージェント・業務システム開発',
-  'AI定着・運用改善支援',
+  'AIエージェント開発',
+  '定着支援',
   'その他',
 ] as const
 

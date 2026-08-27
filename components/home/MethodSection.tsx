@@ -13,7 +13,7 @@ const methodHeadingLines = ['現場に入り、', '実装まで進める', '伴�
 
 export default function MethodSection() {
   return (
-    <section id="method" className="home-section scroll-mt-24 bg-off-white" aria-labelledby="method-heading">
+    <section id="method" className="home-section scroll-mt-24 bg-white" aria-labelledby="method-heading">
       <span id="fde" className="sr-only" />
       <div className="home-container">
         <div className="grid rounded-2xl border border-sequoia-black/8 bg-white lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.9fr)]">
@@ -38,7 +38,7 @@ export default function MethodSection() {
               </ul>
             </div>
 
-            <ol className="mt-10 grid grid-cols-1 gap-4 border-t border-sequoia-black/8 pt-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
+            <ol className="mt-10 grid grid-cols-1 gap-4 border-t border-sequoia-black/8 pt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-3">
               {processSteps.map((step, index) => (
                 <li key={step.title} className="min-w-0">
                   <p className="mb-1 text-[11px] font-medium tracking-[0.12em] text-brand-green">
@@ -53,10 +53,10 @@ export default function MethodSection() {
 
           <div className="relative min-h-[280px] overflow-hidden rounded-b-2xl border-t border-sequoia-black/8 lg:min-h-full lg:rounded-b-none lg:rounded-r-2xl lg:border-l lg:border-t-0">
             <Image
-              src="/images/brand/consulting-split.png"
-              alt="整理された現場の作業スペース"
+              src="/images/brand/method-forest.jpg"
+              alt="森を見上げる風景"
               fill
-              className="object-cover object-[60%_center]"
+              className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
           </div>
