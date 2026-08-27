@@ -56,26 +56,26 @@ const sourceMessages: Record<string, ContactPreset> = {
   'home-hero': {
     inquiryType: 'ai-solution',
     message:
-      'AI活用について相談したいです。\n\n現在の課題：\n対象部署・人数：\n利用中のAIツール：\n希望時期：\n',
+      'Technology for Essential Industries.について相談したいです。\n\n現在の課題：\n対象業界・業務：\n希望時期：\n',
   },
   'home-final-cta': {
     inquiryType: 'ai-solution',
     message:
-      '自社のAI活用の進め方について相談したいです。\n\n現在の取り組み：\n相談したい業務課題：\n希望時期：\n',
+      '業務変革・AI実装の進め方について相談したいです。\n\n現在の取り組み：\n相談したい業務課題：\n希望時期：\n',
   },
   'contact-cta': {
     inquiryType: 'ai-solution',
-    message: 'AI活用について相談したいです。\n\n現在の課題：\n相談したい内容：\n',
+    message: '業務変革・AI実装について相談したいです。\n\n現在の課題：\n相談したい内容：\n',
   },
   'ai-solution-final': {
     inquiryType: 'ai-solution',
     message:
-      'AI活用の進め方について相談したいです。\n\n現在の課題：\n対象部署：\n希望時期：\n',
+      '業務変革・AI実装の進め方について相談したいです。\n\n現在の課題：\n対象部署：\n希望時期：\n',
   },
   roadmap: {
     inquiryType: 'ai-solution',
     message:
-      '生成AI導入・活用支援について相談したいです。\n\n現在の課題：\n対象部署・業務：\n利用中のAIツール：\n希望時期：\n',
+      '業務変革・AI実装について相談したいです。\n\n現在の課題：\n対象部署・業務：\n希望時期：\n',
   },
   company: {
     inquiryType: 'general',
@@ -83,22 +83,22 @@ const sourceMessages: Record<string, ContactPreset> = {
   },
   blog: {
     inquiryType: 'ai-solution',
-    message: '自社業務への生成AI活用について相談したいです。\n\n相談したい内容：\n',
+    message: '自社業務へのテクノロジー実装について相談したいです。\n\n相談したい内容：\n',
   },
   'ai-solution': {
     inquiryType: 'ai-solution',
     message:
-      '生成AI活用について相談したいです。\n\n現在の課題：\n対象人数・部署：\n利用中のAIツール：\n希望時期：\n',
+      '業務変革・AI実装について相談したいです。\n\n現在の課題：\n対象部署・業務：\n希望時期：\n',
   },
   development: {
     inquiryType: 'ai-solution',
     message:
-      'AIエージェント開発について相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
+      'AI & Software / Data & Integration について相談したいです。\n\n現在の課題：\n相談したい業務：\n希望時期：\n',
   },
   training: {
-    inquiryType: 'ai-solution',
+    inquiryType: 'training',
     message:
-      '生成AI導入・活用支援（研修・定着）について相談したいです。\n\n対象人数：\n利用中のAIツール：\n相談したい内容：\n',
+      '生成AI活用研修について相談したいです。\n\n対象人数：\n利用中のAIツール：\n相談したい内容：\n',
   },
   pine: {
     inquiryType: 'pine',

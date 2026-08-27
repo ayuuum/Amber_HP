@@ -199,7 +199,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
             内容が固まっていなくても構いません。
           </p>
           <div className="mt-8 space-y-3 border-t border-white/15 pt-6">
-            {['生成AI導入・活用支援', 'Pine / 訪問サービス', '提携・採用・その他'].map((item) => (
+            {['Business Transformation', 'AI & Software / Data & Integration', '提携・採用・その他'].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm font-medium text-on-dark-muted">
                 <span className="h-px w-8 bg-white/30" aria-hidden />
                 <span>{item}</span>

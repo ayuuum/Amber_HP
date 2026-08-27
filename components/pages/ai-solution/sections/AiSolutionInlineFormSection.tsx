@@ -6,9 +6,9 @@ import { ArrowRight } from 'lucide-react'
 import { fadeUp } from '../motion'
 
 const inquiryOptions = [
-  '生成AI導入・活用支援',
-  'AIエージェント開発',
-  '定着支援',
+  'Business Transformation',
+  'AI & Software',
+  'Data & Integration',
   'その他',
 ] as const
 
@@ -25,7 +25,7 @@ const initialFormState: FormState = {
   company: '',
   name: '',
   email: '',
-  topic: '生成AI導入・活用支援',
+  topic: 'Business Transformation',
 }
 
 export default function AiSolutionInlineFormSection() {

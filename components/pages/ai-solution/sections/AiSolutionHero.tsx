@@ -59,15 +59,15 @@ export default function AiSolutionHero() {
               className="page-heading mb-5 text-[clamp(2.25rem,7.8vw,3.85rem)] leading-[1.1] text-white md:mb-6 md:text-[clamp(2.8rem,5vw,4.4rem)] md:text-sequoia-black"
               variants={fadeUpEditorialItem}
             >
-              AIを実務で
+              Technology for
               <br />
-              使えるように
+              Essential Industries.
             </motion.h1>
             <motion.p
               className="mb-8 max-w-xl text-[1rem] font-medium leading-[1.95] text-white/90 md:text-lg md:font-normal md:leading-relaxed md:text-sequoia-black/80"
               variants={fadeUpEditorialItem}
             >
-              Microsoft 365 CopilotやGoogle Workspace with Geminiの導入・活用支援から、AIエージェント・業務システムの開発、導入後の運用改善まで。企業の業務にAIを実装し、現場で使われ続ける状態をつくります。
+              製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。業務を理解し、再設計し、現場に組み込みます。
             </motion.p>
             <motion.div
               className="flex flex-col gap-3 lg:flex-row lg:items-center"
@@ -77,14 +77,14 @@ export default function AiSolutionHero() {
                 href="#ai-solution-form"
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm px-5 text-sm font-semibold shadow-sm transition-[background-color,transform,box-shadow] duration-brand hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none lg:w-[200px] max-md:bg-[var(--color-cream)] max-md:text-[var(--color-green-dark)] max-md:hover:bg-white md:bg-green-dark md:text-white md:hover:bg-green-dark/85 md:focus-visible:shadow-[0_0_0_3px_rgba(27,58,45,0.25)]"
               >
-                <span className="whitespace-nowrap">無料相談する</span>
+                <span className="whitespace-nowrap">Talk to Amber</span>
                 <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </Link>
               <Link
                 href="#services"
                 className="inline-flex min-h-12 w-full items-center justify-center rounded-sm border px-5 text-sm font-semibold transition-[border-color,color,background-color] duration-brand focus-visible:outline-none focus-visible:ring-2 lg:w-[200px] max-md:border-white/60 max-md:bg-black/10 max-md:text-white max-md:drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] max-md:hover:border-white md:border-sequoia-black/20 md:text-sequoia-black md:hover:border-green-dark md:hover:bg-green-dark/5 md:hover:text-green-dark md:focus-visible:ring-green-dark/30"
               >
-                <span className="whitespace-nowrap">提供サービスを見る</span>
+                <span className="whitespace-nowrap">What we do</span>
               </Link>
             </motion.div>
           </motion.div>

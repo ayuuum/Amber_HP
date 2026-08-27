@@ -15,7 +15,7 @@ export default function InquiryCTA({ category }: Props) {
       <p className="home-body mx-auto mb-8 max-w-xl">
         {category === 'training'
           ? '研修や内製化を含め、現場で使える進め方を一緒に整理します。'
-          : '業務システム、生成AI連携、定着支援まで、課題の整理からご相談ください。'}
+          : '業務変革、AI・ソフトウェア、データ連携まで、課題の整理からご相談ください。'}
       </p>
       <Link href={href} className="btn-pill-primary-solid inline-flex">
         AI活用について相談する

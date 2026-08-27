@@ -21,7 +21,7 @@ const profile = [
   {
     label: '事業内容',
     value:
-      'AIソリューション事業（AIシステム開発、生成AI活用研修、AI導入コンサルティング）／AIプロダクト事業（出張訪問サービス向け予約管理システム「Pine」）',
+      'Business Transformation / AI & Software / Data & Integration（暮らしを支える産業の業務変革・AI・ソフトウェア実装）／AIプロダクト事業（出張訪問サービス向け予約管理システム「Pine」）',
   },
   {
     label: '取引銀行',
