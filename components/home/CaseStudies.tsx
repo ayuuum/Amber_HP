@@ -9,9 +9,9 @@ export default function HomeCaseStudies() {
   return (
     <section id="cases" className="home-section scroll-mt-24 bg-off-white" aria-labelledby="cases-heading">
       <div className="home-container">
-        <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
+        <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <h2 id="cases-heading" className="home-h2 mb-4">
+            <h2 id="cases-heading" className="home-h2 mb-5">
               {casesSection.heading}
             </h2>
             <p className="home-body">{casesSection.lead}</p>

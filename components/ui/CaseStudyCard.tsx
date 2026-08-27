@@ -30,7 +30,7 @@ export default function CaseStudyCard({ item, variant = 'detailed' }: Props) {
   const isCompact = variant === 'compact'
 
   return (
-    <article className="home-card flex h-full flex-col overflow-hidden border border-sequoia-black/6 bg-white">
+    <article className="home-card flex h-full flex-col overflow-hidden border border-sequoia-black/8 bg-white">
       <div className="relative aspect-[16/10] bg-sequoia-black/5">
         <Image
           src={item.image}

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { buildContactHref } from '@/lib/contact'
 import { finalCta } from '@/data/home'
@@ -6,17 +7,29 @@ export default function FinalCta() {
   const href = buildContactHref('home-final-cta', 'ai-solution')
 
   return (
-    <section className="home-section bg-white" aria-labelledby="final-cta-heading">
-      <div className="home-container">
+    <section className="relative overflow-hidden" aria-labelledby="final-cta-heading">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/brand/method-forest.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-dark-green/70" aria-hidden />
+      </div>
+
+      <div className="home-container relative z-10 py-16 md:py-20 lg:py-[7.5rem]">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 id="final-cta-heading" className="home-h2 mb-6">
+          <h2 id="final-cta-heading" className="home-h2 mb-6 text-white">
             {finalCta.headingLines.map((line) => (
               <span key={line} className="block">
                 {line}
               </span>
             ))}
           </h2>
-          <p className="home-body mx-auto mb-10 max-w-xl">{finalCta.body}</p>
+          <p className="mx-auto mb-10 max-w-xl text-base leading-[1.625] text-white/90">{finalCta.body}</p>
           <Link href={href} className="btn-pill-primary-solid inline-flex min-h-12 w-full px-8 sm:w-auto">
             {finalCta.cta}
           </Link>

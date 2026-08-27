@@ -34,11 +34,11 @@ export default function HomeHero() {
               ))}
             </h1>
 
-            <p className="mb-5 max-w-md text-[0.95rem] font-normal leading-[1.75] text-white/90 md:mb-6 md:max-w-lg md:text-base md:leading-[1.9]">
+            <p className="mb-6 max-w-md text-base font-normal leading-[1.9] text-white/90 md:mb-8 md:max-w-lg">
               {heroCopy.body}
             </p>
 
-            <Link href={heroCopy.secondaryHref} className="btn-pill-ghost-on-dark mb-5 w-full sm:mb-8 sm:w-auto">
+            <Link href={heroCopy.secondaryHref} className="btn-pill-ghost-on-dark w-full sm:w-auto">
               {heroCopy.secondaryCta}
             </Link>
           </div>

@@ -24,7 +24,7 @@ export default function EnvironmentsSection() {
   return (
     <section
       id="environments"
-      className="home-section scroll-mt-24 bg-off-white"
+      className="home-section scroll-mt-24 bg-[#F3F4F6]"
       aria-labelledby="environments-heading"
     >
       <div className="home-container">
@@ -35,7 +35,7 @@ export default function EnvironmentsSection() {
           <p className="home-body max-w-2xl">{environmentsSection.lead}</p>
         </div>
 
-        <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10 bg-white">
+        <ul className="space-y-6">
           {environments.map((env) => {
             const logo = environmentLogos[env.id]
             // Figmaどおり: Copilot/Geminiはロゴのみ、オーダーメイドは見出し＋アイコン
@@ -43,14 +43,16 @@ export default function EnvironmentsSection() {
             return (
               <li
                 key={env.id}
-                className="grid gap-6 px-5 py-7 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10 md:px-8 md:py-9"
+                className="grid gap-8 rounded-none bg-white p-6 md:grid-cols-[minmax(0,0.41fr)_minmax(0,0.59fr)] md:items-center md:gap-10 md:p-8"
               >
                 <div
-                  className="flex flex-col items-center justify-center gap-4 text-center md:items-center"
+                  className="flex flex-col items-center justify-center gap-4 text-center"
                   aria-label={env.title}
                 >
                   {showTitle ? (
-                    <h3 className="home-h3 break-keep text-balance">{env.title}</h3>
+                    <h3 className="break-keep text-balance text-2xl font-bold leading-9 text-sequoia-black">
+                      {env.title}
+                    </h3>
                   ) : (
                     <h3 className="sr-only">{env.title}</h3>
                   )}
@@ -64,7 +66,7 @@ export default function EnvironmentsSection() {
                     />
                   ) : null}
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {env.items.map((item) => (
                     <li key={item} className="text-sm leading-relaxed text-sequoia-black/75 md:text-[0.95rem]">
                       {item}

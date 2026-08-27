@@ -7,7 +7,7 @@ export default function ServicesOverview() {
   return (
     <section id="services" className="home-section scroll-mt-24 bg-white" aria-labelledby="services-heading">
       <div className="home-container">
-        <div className="mb-12 max-w-3xl md:mb-16">
+        <div className="mb-10 max-w-3xl md:mb-14">
           <h2 id="services-heading" className="home-h2 mb-5">
             {servicesSection.heading}
           </h2>
@@ -19,7 +19,7 @@ export default function ServicesOverview() {
             <li key={item.id}>
               <Link
                 href={item.href}
-                className="group grid gap-4 py-8 transition-colors md:grid-cols-[4.5rem_minmax(0,1fr)_auto] md:items-start md:gap-8 md:py-10"
+                className="group grid gap-4 py-8 transition-colors md:grid-cols-[4.5rem_minmax(0,1fr)_auto] md:items-start md:gap-8 md:py-9"
               >
                 <span className="text-sm font-medium tracking-[0.14em] text-brand-green">{item.number}</span>
                 <div className="min-w-0">

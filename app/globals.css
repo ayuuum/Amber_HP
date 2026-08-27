@@ -599,13 +599,13 @@
     @apply transition-[border-color,box-shadow,transform] duration-brand hover:-translate-y-0.5 hover:border-sequoia-green/25 hover:shadow-md;
   }
 
-  /* ===== Home (Sierra-inspired) ===== */
+  /* ===== Home (Sierra-inspired) — Figma: 1440 / container 1160 / section pad 120 ===== */
   .home-container {
     @apply mx-auto w-full max-w-[1160px] px-5 md:px-8;
   }
 
   .home-section {
-    @apply py-12 md:py-16 lg:py-24 xl:py-[7.5rem];
+    @apply py-16 md:py-20 lg:py-[7.5rem];
   }
 
   .home-h1 {
@@ -615,13 +615,13 @@
     letter-spacing: -0.02em;
   }
 
-  /* ヒーロー見出し */
+  /* ヒーロー見出し — Figma 60 / Medium / lh 82.8 */
   .home-hero-title {
     @apply text-white;
-    font-weight: 600;
-    font-size: clamp(2.35rem, 5.5vw, 3.75rem);
-    line-height: 1.32;
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.38;
+    letter-spacing: 0.016em;
     text-wrap: balance;
     overflow: visible;
   }
@@ -633,9 +633,9 @@
     }
 
     .home-hero-title {
-      font-size: clamp(2.85rem, 4.8vw, 3.75rem);
-      line-height: 1.28;
-      letter-spacing: 0.012em;
+      font-size: 3.75rem;
+      line-height: 1.38;
+      letter-spacing: 0.016em;
     }
   }
 
@@ -644,25 +644,21 @@
       font-size: clamp(3.5rem, 4.5vw, 4.25rem);
       line-height: 1.1;
     }
-
-    .home-hero-title {
-      font-size: 3.75rem;
-      line-height: 1.25;
-    }
   }
 
+  /* H2 — Figma 38.4 / Medium / lh 57.6 */
   .home-h2 {
     @apply break-keep text-balance text-sequoia-black;
-    font-weight: 600;
-    font-size: clamp(1.625rem, 3.2vw, 2.5rem);
-    line-height: 1.45;
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
     overflow: visible;
   }
 
   .home-h3 {
-    @apply break-keep text-[1.25rem] font-medium leading-snug text-sequoia-black md:text-[1.5rem];
-    letter-spacing: -0.01em;
+    @apply break-keep text-[1.25rem] font-medium leading-snug text-sequoia-black md:text-2xl;
+    letter-spacing: 0;
   }
 
   .home-body {

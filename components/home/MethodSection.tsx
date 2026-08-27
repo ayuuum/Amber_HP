@@ -13,7 +13,7 @@ const methodHeadingLines = ['現場に入り、', '実装まで進める', '伴�
 
 export default function MethodSection() {
   return (
-    <section id="method" className="home-section scroll-mt-24 bg-white" aria-labelledby="method-heading">
+    <section id="method" className="home-section scroll-mt-24 bg-off-white" aria-labelledby="method-heading">
       <span id="fde" className="sr-only" />
       <div className="home-container">
         <div className="grid rounded-2xl border border-sequoia-black/8 bg-white lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.9fr)]">
