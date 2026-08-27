@@ -1,4 +1,4 @@
-/** ヒーローメディア。動画は muted + playsInline で自動再生。動きを減らす設定時はポスター画像。 */
+/** ヒーローメディア */
 export const heroMedia = {
   videoSrc: '',
   poster: '/images/brand/hero-figma.jpg',
@@ -7,42 +7,71 @@ export const heroMedia = {
 } as const
 
 export const heroCopy = {
-  headingLines: ['生成AIを', '現場の成果に。'] as const,
-  body: '導入から定着まで、現場で使えるAI活用を支援します。',
-  primaryCta: '相談する',
-  secondaryCta: 'サービスを見る',
-  secondaryHref: '#services',
+  heading: 'Advancing Essential Industries.',
+  subheading: '暮らしを支える産業に、最新のテクノロジーを。',
+  body: 'Amberは、製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。',
+  primaryCta: 'Our Work',
+  primaryHref: '#cases',
+  secondaryCta: 'Contact',
+  secondaryHref: '/contact',
 } as const
 
-export const servicesSection = {
-  heading: '導入から実装〜定着まで',
-  lead: '活用テーマの発掘から実装・改善まで、一つのチームで進めます。',
-} as const
-
-export const environmentsSection = {
-  heading: '対応できる業務環境',
-  lead: '企業の業務効率化を支援するための、主要なAIプラットフォームと既存システムへの対応をご紹介します。',
-} as const
-
-export const domainsSection = {
-  heading: '具体的な業務へ実装します',
-  lead: '文書確認、ナレッジ、現場業務など、成果が見える領域から着手します。',
-} as const
-
-export const casesSection = {
-  heading: '支援事例',
-  lead: '守秘のため企業名は非公開です。取り組みの一例です。',
+export const missionSection = {
+  heading: 'Technology for the industries that keep society running.',
+  lead: '製造、建設、設備、物流。',
+  paragraphs: [
+    '社会を動かしている産業には、高い専門性と長年蓄積された知識がある一方で、紙や表計算、分断されたシステム、属人的な業務が数多く残っています。',
+    'Amberは、AIとソフトウェアを現場に実装し、暮らしを支える産業の仕組みを次の時代へ進めます。',
+  ],
 } as const
 
 export const industriesSection = {
-  heading: '現場業務を持つ企業を中心に',
-  lead: '製造・化学、建設・設備・保守など。',
+  heading: 'Built for Essential Industries.',
+  lead: 'Amberは、社会や暮らしを支える産業を中心に取り組んでいます。',
+} as const
+
+export const whatWeDoSection = {
+  heading: 'From Operations to Software.',
+  lead: 'Amberは、ツールを導入するだけではなく、業務を理解するところから実装・改善まで一貫して取り組みます。',
+} as const
+
+export const whatWeBuildSection = {
+  heading: 'Technology built around real operations.',
+  lead: '現場の業務に合わせて、必要な仕組みを設計・実装します。',
+} as const
+
+export const realOperationsSection = {
+  heading: 'We Transform Real Operations.',
+  lead: 'Amberが扱うのは、単発のAI活用ではなく、実際の業務プロセス。',
+  closing: 'AI・ソフトウェア・データを組み合わせ、業務全体がつながる仕組みを構築します。',
+} as const
+
+export const casesSection = {
+  heading: 'Transforming Essential Operations.',
+  lead: 'どの産業の、どの業務を、どう変えたか。取り組みの一例です。',
+} as const
+
+export const howWeWorkSection = {
+  heading: 'Built with the Field.',
+  lead: '現場に入り、実装まで進めます。',
+} as const
+
+export const companyTeaserSection = {
+  heading: 'Technology for Essential Industries.',
+  subheading: '暮らしを支える産業に、最新のテクノロジーを。',
+  paragraphs: [
+    '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
+    'その現場には、高い専門性と長年蓄積された知識がある一方、紙や表計算、分断されたシステム、属人的な業務も数多く残っています。',
+    'Amberは、AIとソフトウェアを現場に実装し、これらの産業を次の時代へ進めます。',
+  ],
+  cta: 'Company',
+  ctaHref: '/company',
 } as const
 
 export const finalCta = {
-  headingLines: ['生成AIを、', '業務で使える状態へ'] as const,
-  body: '現状に合わせて、進め方をご提案します。',
-  cta: '相談する',
+  heading: 'Build What’s Next.',
+  body: '業務やシステムの課題からご相談ください。',
+  cta: 'Talk to Amber',
 } as const
 
-export const brandTagline = '生成AI活用を、導入から定着まで。'
+export const brandTagline = 'Technology for Essential Industries.'

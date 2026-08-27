@@ -29,7 +29,7 @@ export type ContactPreset = {
 }
 
 export const contactInquiryLabels: Record<ContactInquiryType, string> = {
-  'ai-solution': 'AI活用・実装支援',
+  'ai-solution': '業務変革・AI実装',
   development: 'AIシステム開発・業務改善',
   training: '生成AI活用研修',
   pine: 'Pine導入相談',

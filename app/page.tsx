@@ -2,12 +2,14 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import HomeHero from '@/components/home/HomeHero'
-import ServicesOverview from '@/components/home/ServicesOverview'
-import EnvironmentsSection from '@/components/home/EnvironmentsSection'
-import DomainsSection from '@/components/home/DomainsSection'
-import CaseStudies from '@/components/home/CaseStudies'
-import MethodSection from '@/components/home/MethodSection'
+import MissionSection from '@/components/home/MissionSection'
 import IndustriesSection from '@/components/home/IndustriesSection'
+import WhatWeDoSection from '@/components/home/WhatWeDoSection'
+import WhatWeBuildSection from '@/components/home/WhatWeBuildSection'
+import RealOperationsSection from '@/components/home/RealOperationsSection'
+import CaseStudies from '@/components/home/CaseStudies'
+import HowWeWorkSection from '@/components/home/HowWeWorkSection'
+import CompanyTeaserSection from '@/components/home/CompanyTeaserSection'
 import FinalCta from '@/components/home/FinalCta'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
@@ -36,12 +38,14 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Header />
       <HomeHero />
-      <ServicesOverview />
-      <EnvironmentsSection />
-      <DomainsSection />
-      <CaseStudies />
-      <MethodSection />
+      <MissionSection />
       <IndustriesSection />
+      <WhatWeDoSection />
+      <WhatWeBuildSection />
+      <RealOperationsSection />
+      <CaseStudies />
+      <HowWeWorkSection />
+      <CompanyTeaserSection />
       <FinalCta />
       <Footer />
     </main>

@@ -20,7 +20,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">サービス</p>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">What we do</p>
             <ul className="space-y-0">
               {serviceMegaMenu.map((item) => (
                 <li key={item.title}>
@@ -36,28 +36,28 @@ export default function Footer() {
             <p className="mb-4 text-sm font-medium text-sequoia-black">情報</p>
             <ul className="space-y-0">
               <li>
-                <Link href="/#environments" className={linkClass}>
-                  対応環境
+                <Link href="/#industries" className={linkClass}>
+                  Industries
                 </Link>
               </li>
               <li>
                 <Link href="/cases" className={linkClass}>
-                  支援事例
+                  Work
                 </Link>
               </li>
               <li>
                 <Link href="/company" className={linkClass}>
-                  Amberについて
+                  Company
                 </Link>
               </li>
               <li>
                 <Link href="/faq" className={linkClass}>
-                  よくあるご質問
+                  FAQ
                 </Link>
               </li>
               <li>
                 <Link href={contactHref} className={linkClass}>
-                  お問い合わせ
+                  Contact
                 </Link>
               </li>
             </ul>

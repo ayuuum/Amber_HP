@@ -92,7 +92,7 @@ export default function Header() {
                 onClick={() => setServiceOpen((v) => !v)}
                 onMouseEnter={() => setServiceOpen(true)}
               >
-                サービス
+                What we do
                 <ChevronDown className={`h-3.5 w-3.5 transition-transform ${serviceOpen ? 'rotate-180' : ''}`} aria-hidden />
               </button>
               <AnimatePresence>
@@ -143,7 +143,7 @@ export default function Header() {
               isTransparent ? 'bg-white text-dark-green hover:bg-white/90' : 'bg-brand-green text-white hover:bg-dark-green'
             }`}
           >
-            お問い合わせ
+            Contact
           </Link>
 
           <button
@@ -178,7 +178,7 @@ export default function Header() {
                     aria-expanded={mobileServiceOpen}
                     onClick={() => setMobileServiceOpen((v) => !v)}
                   >
-                    サービス
+                    What we do
                     <ChevronDown className={`h-4 w-4 transition-transform ${mobileServiceOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileServiceOpen && (
@@ -206,7 +206,7 @@ export default function Header() {
                 ))}
                 <li className="pt-2">
                   <Link href={contactHref} className="btn-pill-primary-solid flex w-full" onClick={() => setIsMobileMenuOpen(false)}>
-                    お問い合わせ
+                    Contact
                   </Link>
                 </li>
               </ul>

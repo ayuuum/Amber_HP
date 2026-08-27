@@ -1,44 +1,41 @@
 /**
  * サイト全体で統一するサービス定義（単一ソース）。
- * 別名で同じ概念を並べないこと。
+ * AI・研修・開発は手段。向き合うのは Essential Industries。
  */
 export const offerings = [
   {
     id: 'adoption',
     number: '01',
-    title: '生成AI導入・活用支援',
-    shortTitle: '導入・活用支援',
-    navDescription: 'Copilot・Geminiの導入、研修、活用テーマの選定',
+    title: 'Business Transformation',
+    shortTitle: '業務変革・業務設計',
+    navDescription: '業務を理解し、AIとソフトウェア前提で再設計する',
     description:
-      'CopilotやGeminiを、実際の業務で使える状態へ。研修、業務棚卸し、テーマ選定、推進人材の育成まで対応します。',
+      '現場の業務、システム、データ、課題を整理し、AIとソフトウェアを前提に業務の流れそのものを再設計します。',
     points: [
-      'Microsoft 365 Copilot活用支援',
-      'Google Workspace with Gemini活用支援',
-      '生成AI研修・実践ワークショップ',
-      '業務棚卸し・活用テーマ発掘',
-      '導入ロードマップ策定',
-      '推進担当者・社内人材の育成',
+      '業務棚卸し・課題整理',
+      '業務フローの再設計',
+      '活用テーマの選定',
+      '推進体制の設計',
+      '組織展開の計画',
     ],
     href: '/service/ai-solution#adoption',
     tone: 'green' as const,
-    /** 旧アンカー互換 */
     legacyIds: ['roadmap', 'training'] as const,
   },
   {
     id: 'build',
     number: '02',
-    title: 'AIエージェント開発',
-    shortTitle: 'AIエージェント開発',
-    navDescription: '個社業務に合わせたAI・システムの実装',
+    title: 'AI & Software',
+    shortTitle: 'AI・業務システムの設計開発',
+    navDescription: 'AIエージェントや業務システムを設計・開発する',
     description:
-      '標準機能では足りない業務を、AIエージェントや業務システムとして実装します。',
+      'AIエージェントや業務システム、既存システム連携を設計・開発し、現場の業務に組み込みます。',
     points: [
-      '文書確認・照合AI',
-      '社内ナレッジ検索・RAG',
-      '技術継承・問い合わせ対応AI',
       'AIエージェント開発',
-      '点検・見積・承認・報告・請求業務のシステム化',
-      '既存システム・社内データとの連携',
+      '業務システム開発',
+      'ナレッジ・検索基盤',
+      'ワークフロー自動化',
+      '既存システム連携',
     ],
     href: '/service/ai-solution#build',
     tone: 'amber' as const,
@@ -47,20 +44,17 @@ export const offerings = [
   {
     id: 'operation',
     number: '03',
-    title: '定着支援',
-    shortTitle: '定着支援',
-    navDescription: '利用状況の確認と、活用範囲の拡大',
+    title: 'Data & Integration',
+    shortTitle: 'データ・既存システム連携',
+    navDescription: '分断されたデータとシステムをつなぐ',
     description:
-      '導入後も利用状況と精度を確認し、活用範囲を広げます。',
+      '分断されたデータ・システムを連携し、業務全体がつながる基盤をつくります。',
     points: [
-      '利用状況の分析',
-      'AIの回答精度評価',
-      'プロンプト・指示文の改善',
-      'ナレッジ・データの更新',
-      '新しい活用テーマの追加',
-      '社内相談会・定例会',
-      '他部門・全社への横展開',
-      'ガバナンス・権限管理の支援',
+      'データ連携設計',
+      'API・既存システム接続',
+      '情報の横断管理',
+      '利用状況の可視化',
+      '改善サイクルの設計',
     ],
     href: '/service/ai-solution#operation',
     tone: 'blue' as const,
@@ -70,6 +64,7 @@ export const offerings = [
 
 export type OfferingId = (typeof offerings)[number]['id']
 
+/** 下層・SEO用。TOPでは前面に出さない。 */
 export const environments = [
   {
     id: 'copilot',
@@ -106,6 +101,118 @@ export const environments = [
   },
 ] as const
 
+export const focusIndustries = [
+  {
+    id: 'manufacturing',
+    enTitle: 'Manufacturing',
+    title: '製造・素材・化学',
+    description: '技術文書、研究開発、ナレッジ、報告・確認業務など。',
+  },
+  {
+    id: 'field-services',
+    enTitle: 'Field Services',
+    title: '設備・保守・点検',
+    description: '点検、修繕、報告、スケジュールなど現場オペレーション。',
+  },
+  {
+    id: 'construction',
+    enTitle: 'Construction',
+    title: '建設・施工',
+    description: '進捗管理、報告、見積、現場と事務の情報連携。',
+  },
+  {
+    id: 'infrastructure',
+    enTitle: 'Infrastructure & Logistics',
+    title: '物流・社会インフラ',
+    description: '分断されたデータと業務をつなぎ、運用の基盤をつくる。',
+  },
+] as const
+
+export const whatWeDoSteps = [
+  {
+    number: '01',
+    enTitle: 'Understand',
+    title: '業務を理解する',
+    body: '現場の業務、システム、データ、課題を整理する。',
+  },
+  {
+    number: '02',
+    enTitle: 'Redesign',
+    title: '業務を再設計する',
+    body: 'AIとソフトウェアを前提に、業務の流れそのものを再設計する。',
+  },
+  {
+    number: '03',
+    enTitle: 'Build',
+    title: '実装する',
+    body: 'AIエージェントや業務システム、既存システム連携を設計・開発する。',
+  },
+  {
+    number: '04',
+    enTitle: 'Scale',
+    title: '定着・展開する',
+    body: '実際の業務に組み込み、改善しながら組織へ展開する。',
+  },
+] as const
+
+export const whatWeBuildItems = [
+  {
+    enTitle: 'AI Agents',
+    title: '業務を実行・支援するAIエージェント',
+  },
+  {
+    enTitle: 'Business Applications',
+    title: '現場に合わせた業務システム',
+  },
+  {
+    enTitle: 'Knowledge Systems',
+    title: '社内の知識・情報を活用する仕組み',
+  },
+  {
+    enTitle: 'Workflow Automation',
+    title: '複雑な業務プロセスの自動化',
+  },
+  {
+    enTitle: 'Data Integration',
+    title: '分断されたデータ・システムの連携',
+  },
+] as const
+
+export const realOperationFlow = [
+  { en: 'Inspection', ja: '点検' },
+  { en: 'Decision', ja: '判断・承認' },
+  { en: 'Repair', ja: '修繕' },
+  { en: 'Reporting', ja: '報告' },
+  { en: 'Billing', ja: '請求' },
+] as const
+
+export const howWeWorkPrinciples = [
+  {
+    enTitle: 'Start from the Field.',
+    title: '現場から始める。',
+  },
+  {
+    enTitle: 'Build, Don’t Just Advise.',
+    title: '提案だけで終わらせない。',
+  },
+  {
+    enTitle: 'Integrate, Don’t Add.',
+    title: 'ツールを増やすのではなく、業務に組み込む。',
+  },
+  {
+    enTitle: 'Learn and Compound.',
+    title: '現場で得た知見を、次の実装へつなげる。',
+  },
+] as const
+
+/** @deprecated TOPでは How we work を使用。下層互換用。 */
+export const supportMethod = {
+  heading: 'Built with the Field.',
+  body: '提案や開発だけで終わらず、業務理解から実装まで現場に入って進めます。',
+  features: howWeWorkPrinciples.map((p) => p.title),
+} as const
+
+/** @deprecated TOPでは What we build を使用。 */
 export const implementationDomains = [
   {
     id: 'documents',
@@ -123,28 +230,3 @@ export const implementationDomains = [
     items: ['点検', '見積', '承認', '修繕管理', '報告', '請求', '進捗・遅延管理'],
   },
 ] as const
-
-export const focusIndustries = [
-  {
-    id: 'manufacturing',
-    title: '製造・化学',
-    items: ['技術文書', '研究開発', '社内ナレッジ', '報告・確認業務', 'Copilot・Geminiの全社活用'],
-  },
-  {
-    id: 'construction',
-    title: '建設・設備・保守',
-    items: ['点検', '見積', '修繕', '報告', '請求', '進捗管理'],
-  },
-] as const
-
-export const supportMethod = {
-  heading: '現場に入り、実装まで進める伴走型支援',
-  body: '提案や開発だけで終わらず、業務理解から実装・定着まで現場に入って進めます。',
-  features: [
-    '業務理解から始める',
-    '研修と実装を分断しない',
-    'AIと業務システムの両方に対応する',
-    '導入後も利用状況を確認する',
-    'フィードバックをもとに改善する',
-  ],
-} as const

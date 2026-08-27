@@ -116,22 +116,22 @@ export const aiSolutionPage = {
 
 export const companyPage = {
   hero: {
-    headingLines: ['現場が回り続ける仕組みを、', '技術で実装する。'] as const,
-    body: '企業の生成AI活用を、導入から定着まで支援します。製造・化学、建設・設備・保守など、現場オペレーションを抱える企業に入り、Copilot・GeminiからAI実装まで伴走します。',
+    headingLines: ['Technology for Essential Industries.'] as const,
+    body: '暮らしを支える産業に、最新のテクノロジーを。',
   },
   mission: {
-    headingLines: ['暮らしを支える産業に、', '最新のテクノロジーを。'] as const,
+    headingLines: ['Technology for Essential Industries.'] as const,
     paragraphs: [
-      '製造・化学をはじめ、複雑な業務や現場オペレーションを抱える企業には、手作業や属人的な仕組みが残っています。',
-      'Amberは、構想だけで終わらせず、導入・活用、実装、定着まで一貫して伴走します。テクノロジーは現場で使われて初めて意味を持ちます。',
-      '研修と開発を分断しないのは、学ぶだけでは業務が変わらず、作るだけでは定着しないからです。現場に入り込み、使われ続けるところまでが私たちの仕事です。',
+      '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
+      'その現場には、高い専門性と長年蓄積された知識がある一方、紙や表計算、分断されたシステム、属人的な業務も数多く残っています。',
+      'Amberは、AIとソフトウェアを現場に実装し、これらの産業を次の時代へ進めます。',
     ],
   },
   principles: [
-    { title: '現場から設計する', description: '現場の業務と制約を起点に、使える形へ落とし込みます。' },
-    { title: '導入と実装を分断しない', description: '活用支援・開発・定着を別々に終わらせず、一つの流れで進めます。' },
-    { title: '使われるところまで進める', description: '導入後の利用定着と改善まで、現場に入り伴走します。' },
-    { title: '個社の学びを次の支援へ活かす', description: '現場で得た知見を、次の企業支援の質向上につなげます。' },
+    { title: 'Start from the Field.', description: '現場の業務と制約を起点に、使える形へ落とし込みます。' },
+    { title: 'Build, Don’t Just Advise.', description: '提案だけで終わらせず、実装まで進めます。' },
+    { title: 'Integrate, Don’t Add.', description: 'ツールを増やすのではなく、業務に組み込みます。' },
+    { title: 'Learn and Compound.', description: '現場で得た知見を、次の実装の質向上につなげます。' },
   ],
   representative: {
     name: '松井 歩武',
@@ -140,7 +140,7 @@ export const companyPage = {
     bio: [
       '慶應義塾大学商学部卒業。学生時代にベンチャーキャピタルでインターンを経験。',
       '卒業後はYCP Japan（YCP Solidiance）にてコンサルタントとして従事。その後、エンタメ領域のスタートアップで事業責任者を歴任。',
-      '2026年、株式会社Amberを創業、代表取締役CEOに就任。法人向け生成AI研修・AI活用支援に従事。',
+      '2026年、株式会社Amberを創業。製造・設備・現場サービスを中心に、AI・ソフトウェアを活用した企業の業務変革に取り組む。',
     ],
   },
   profile: [
@@ -150,7 +150,7 @@ export const companyPage = {
     {
       label: '事業内容',
       value:
-        '生成AI導入・活用支援、AIエージェント開発、定着支援／プロダクト事業（訪問サービス向け業務管理「Pine」）',
+        'Essential Industries向けの業務変革、AI・業務システムの設計開発、データ・既存システム連携／プロダクト事業（訪問サービス向け業務管理「Pine」）',
     },
     { label: '取引銀行', value: 'GMOあおぞらネット銀行、三井住友銀行' },
     { label: '所在地', value: '〒105-0001 東京都港区虎ノ門３丁目１−１ 2階' },
@@ -160,14 +160,13 @@ export const companyPage = {
 export const contactPage = {
   hero: {
     headingLines: ['一緒に整理します。'] as const,
-    body: '内容が固まっていなくても構いません。',
+    body: '内容が固まっていなくても構いません。業務やシステムの課題からご相談ください。',
   },
   topics: [
-    '生成AI導入・活用支援',
-    'Microsoft 365 Copilot活用',
-    'Google Workspace with Gemini活用',
-    'AIエージェント開発',
-    '定着支援',
+    '業務変革・業務設計',
+    'AI・業務システムの設計開発',
+    'データ・既存システム連携',
+    '消防設備・点検業務基盤',
     '協業・紹介',
   ],
   steps: [

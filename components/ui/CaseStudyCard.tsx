@@ -8,6 +8,7 @@ type Props = {
     CaseItem,
     | 'slug'
     | 'industry'
+    | 'enIndustry'
     | 'theme'
     | 'status'
     | 'serviceLabel'
@@ -42,10 +43,7 @@ export default function CaseStudyCard({ item, variant = 'detailed' }: Props) {
       </div>
       <div className="flex flex-1 flex-col p-6 md:p-7">
         <div className="mb-3 flex flex-wrap items-center gap-2">
-          <p className="home-label text-brand-green">{item.industry}</p>
-          <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2 py-0.5 text-[11px] text-secondary">
-            {item.status === '支援実績' ? '取り組み事例' : item.status}
-          </span>
+          <p className="home-label text-brand-green">{item.enIndustry || item.industry}</p>
         </div>
 
         {!isCompact ? (
@@ -58,44 +56,49 @@ export default function CaseStudyCard({ item, variant = 'detailed' }: Props) {
         <h3 className="home-h3 mb-3">{item.theme}</h3>
 
         {isCompact ? (
-          <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-sequoia-black/80">{item.challenge}</p>
+          <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-sequoia-black/80">{item.challenge}</p>
         ) : (
           <dl className="mb-4 space-y-3 text-sm leading-relaxed">
             <div>
-              <dt className="mb-1 text-xs text-secondary">支援前の課題</dt>
+              <dt className="mb-1 text-xs text-secondary">業務の課題</dt>
               <dd className="line-clamp-2 text-sequoia-black/80">{item.challenge}</dd>
             </div>
             <div>
-              <dt className="mb-1 text-xs text-secondary">支援内容</dt>
+              <dt className="mb-1 text-xs text-secondary">取り組み</dt>
               <dd className="line-clamp-2 text-sequoia-black/80">{item.support}</dd>
             </div>
             <div>
               <dt className="mb-1 text-xs text-secondary">
-                {completed ? '導入後の変化' : '目指す業務の状態'}
+                {completed ? '変化' : '目指す状態'}
               </dt>
               <dd className="line-clamp-2 text-sequoia-black/80">{item.change}</dd>
             </div>
           </dl>
         )}
 
-        <div className="mt-auto grid grid-cols-2 gap-3 border-t border-sequoia-black/8 pt-4 text-xs">
-          <div>
-            <p className="mb-1 text-secondary">導入前</p>
-            <p className="leading-relaxed text-sequoia-black/80">{item.before}</p>
+        {!isCompact ? (
+          <div className="mt-auto grid grid-cols-2 gap-3 border-t border-sequoia-black/8 pt-4 text-xs">
+            <div>
+              <p className="mb-1 text-secondary">導入前</p>
+              <p className="leading-relaxed text-sequoia-black/80">{item.before}</p>
+            </div>
+            <div>
+              <p className="mb-1 text-secondary">{afterColumnLabel}</p>
+              <p className="leading-relaxed text-sequoia-black/80">{item.after}</p>
+            </div>
           </div>
-          <div>
-            <p className="mb-1 text-secondary">{afterColumnLabel}</p>
-            <p className="leading-relaxed text-sequoia-black/80">{item.after}</p>
-          </div>
-        </div>
+        ) : (
+          <div className="mt-auto" />
+        )}
         <Link
           href={`/cases/${item.slug}`}
           className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
         >
-          詳しく見る
+          View
           <ArrowRight className="h-3.5 w-3.5" aria-hidden />
         </Link>
       </div>
     </article>
   )
 }
+

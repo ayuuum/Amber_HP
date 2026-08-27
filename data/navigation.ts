@@ -1,18 +1,18 @@
 import { offerings } from '@/data/offerings'
 
 export const siteShell = {
-  brandTagline: '生成AI活用を、導入から定着まで。',
+  brandTagline: 'Technology for Essential Industries.',
   pineUrl: 'https://pine-home.com/',
 } as const
 
 export const mainNav = [
-  { label: '対応環境', href: '/#environments' },
-  { label: '支援事例', href: '/cases' },
-  { label: 'Amberについて', href: '/company' },
+  { label: 'Industries', href: '/#industries' },
+  { label: 'Work', href: '/cases' },
+  { label: 'Company', href: '/company' },
 ] as const
 
 export const serviceMegaMenu = offerings.map((o) => ({
   title: o.title,
-  description: o.navDescription,
+  description: o.shortTitle,
   href: o.href,
 }))

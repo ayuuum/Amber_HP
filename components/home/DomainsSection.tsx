@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { implementationDomains } from '@/data/offerings'
-import { domainsSection } from '@/data/home'
 
 const domainImages: Record<(typeof implementationDomains)[number]['id'], { src: string; alt: string }> = {
   documents: {
@@ -17,15 +16,16 @@ const domainImages: Record<(typeof implementationDomains)[number]['id'], { src: 
   },
 }
 
+/** 下層互換用。TOPでは WhatWeBuild / RealOperations を使用。 */
 export default function DomainsSection() {
   return (
     <section id="domains" className="home-section scroll-mt-24 bg-white" aria-labelledby="domains-heading">
       <div className="home-container">
         <div className="mb-10 max-w-3xl md:mb-14">
           <h2 id="domains-heading" className="home-h2 mb-5">
-            {domainsSection.heading}
+            Technology built around real operations.
           </h2>
-          <p className="home-body max-w-2xl">{domainsSection.lead}</p>
+          <p className="home-body max-w-2xl">文書確認、ナレッジ、現場業務など、成果が見える領域から着手します。</p>
         </div>
 
         <ul className="space-y-5 md:space-y-6">

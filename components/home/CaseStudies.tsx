@@ -20,7 +20,7 @@ export default function HomeCaseStudies() {
             href="/cases"
             className="inline-flex min-h-11 shrink-0 items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
           >
-            一覧を見る
+            All Work
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
         </div>

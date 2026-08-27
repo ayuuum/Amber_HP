@@ -615,13 +615,13 @@
     letter-spacing: -0.02em;
   }
 
-  /* ヒーロー見出し — Figma 60 / Medium / lh 82.8 */
+  /* ヒーロー見出し — 英語メインコピー向け */
   .home-hero-title {
     @apply text-white;
     font-weight: 500;
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
-    line-height: 1.38;
-    letter-spacing: 0.016em;
+    font-size: clamp(2rem, 5.2vw, 3.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
     text-wrap: balance;
     overflow: visible;
   }
@@ -633,9 +633,9 @@
     }
 
     .home-hero-title {
-      font-size: 3.75rem;
-      line-height: 1.38;
-      letter-spacing: 0.016em;
+      font-size: clamp(2.75rem, 4.2vw, 3.5rem);
+      line-height: 1.18;
+      letter-spacing: -0.015em;
     }
   }
 

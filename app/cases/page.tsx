@@ -9,8 +9,8 @@ import { cases } from '@/data/cases'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: '支援事例 | 生成AI導入・活用の取り組み',
-  description: '守秘義務により企業名は非公開の、Amberの支援事例・支援テーマをご紹介します。',
+  title: 'Work | Transforming Essential Operations.',
+  description: 'どの産業の、どの業務を、どう変えたか。守秘のため企業名は非公開の、Amberの取り組み事例です。',
   alternates: { canonical: `${siteUrl}/cases` },
 }
 
@@ -20,13 +20,13 @@ export default function CasesPage() {
       <Header />
       <PageHero
         tone="offwhite"
-        eyebrow="支援事例"
-        headingLines={['生成AI活用の、', '取り組み事例。']}
-        body="守秘のため企業名は非公開です。取り組みの一例です。"
+        eyebrow="Work"
+        headingLines={['Transforming Essential Operations.']}
+        body="どの産業の、どの業務を、どう変えたか。守秘のため企業名は非公開です。"
       />
       <section className="home-section bg-white pt-0 md:pt-0">
         <div className="home-container">
-          <PageBreadcrumbs items={[{ label: 'トップ', href: '/' }, { label: '支援事例' }]} />
+          <PageBreadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Work' }]} />
           <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {cases.map((item) => (
               <li key={item.slug}>

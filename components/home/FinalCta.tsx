@@ -23,11 +23,7 @@ export default function FinalCta() {
       <div className="home-container relative z-10 py-16 md:py-20 lg:py-[7.5rem]">
         <div className="mx-auto max-w-2xl text-center">
           <h2 id="final-cta-heading" className="home-h2 mb-6 text-white">
-            {finalCta.headingLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+            {finalCta.heading}
           </h2>
           <p className="mx-auto mb-10 max-w-xl text-base leading-[1.625] text-white/90">{finalCta.body}</p>
           <Link href={href} className="btn-pill-primary-solid inline-flex min-h-12 w-full px-8 sm:w-auto">
