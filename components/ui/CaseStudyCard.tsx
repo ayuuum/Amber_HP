@@ -23,9 +23,10 @@ type Props = {
   >
   /** トップページ向けの簡潔表示 */
   variant?: 'compact' | 'detailed'
+  viewLabel?: string
 }
 
-export default function CaseStudyCard({ item, variant = 'detailed' }: Props) {
+export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = '詳しく見る' }: Props) {
   const completed = isCompletedCase(item.status)
   const afterColumnLabel = completed ? '導入後' : '目指す状態'
   const isCompact = variant === 'compact'
@@ -94,7 +95,7 @@ export default function CaseStudyCard({ item, variant = 'detailed' }: Props) {
           href={`/cases/${item.slug}`}
           className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
         >
-          View
+          {viewLabel}
           <ArrowRight className="h-3.5 w-3.5" aria-hidden />
         </Link>
       </div>

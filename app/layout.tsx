@@ -5,6 +5,7 @@ import Analytics from '@/components/Analytics'
 import HashScrollHandler from '@/components/HashScrollHandler'
 import StructuredData from '@/components/StructuredData'
 import PageTransitionWrapper from '@/components/PageTransitionWrapper'
+import { LocaleProvider } from '@/components/i18n/LocaleProvider'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
 const notoSansJP = Noto_Sans_JP({
@@ -97,12 +98,14 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <StructuredData />
-        <HashScrollHandler />
-        <PageTransitionWrapper>
-          {children}
-        </PageTransitionWrapper>
-        <Analytics />
+        <LocaleProvider>
+          <StructuredData />
+          <HashScrollHandler />
+          <PageTransitionWrapper>
+            {children}
+          </PageTransitionWrapper>
+          <Analytics />
+        </LocaleProvider>
       </body>
     </html>
   )

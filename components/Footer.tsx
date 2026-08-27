@@ -1,8 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import { buildContactHref } from '@/lib/contact'
-import { serviceMegaMenu, siteShell } from '@/data/navigation'
+import { offerings } from '@/data/offerings'
+import { siteShell } from '@/data/navigation'
+import { useMessages } from '@/components/i18n/LocaleProvider'
+import LanguageSwitcher from '@/components/i18n/LanguageSwitcher'
 
 export default function Footer() {
+  const messages = useMessages()
   const year = new Date().getFullYear()
   const contactHref = buildContactHref('footer')
   const linkClass =
@@ -13,17 +19,20 @@ export default function Footer() {
       <div className="home-container py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex" aria-label="株式会社Amber">
+            <Link href="/" className="inline-flex" aria-label={messages.common.companyName}>
               <span className="font-logo text-[1.75rem] leading-none text-brand-green">Amber</span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">{siteShell.brandTagline}</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">{messages.common.brandTagline}</p>
+            <div className="mt-5">
+              <LanguageSwitcher />
+            </div>
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">What we do</p>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">{messages.common.whatWeDo}</p>
             <ul className="space-y-0">
-              {serviceMegaMenu.map((item) => (
-                <li key={item.title}>
+              {offerings.map((item) => (
+                <li key={item.id}>
                   <Link href={item.href} className={linkClass}>
                     {item.title}
                   </Link>
@@ -33,21 +42,21 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">情報</p>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">{messages.nav.company}</p>
             <ul className="space-y-0">
               <li>
                 <Link href="/#industries" className={linkClass}>
-                  Industries
+                  {messages.nav.industries}
                 </Link>
               </li>
               <li>
                 <Link href="/cases" className={linkClass}>
-                  Work
+                  {messages.nav.work}
                 </Link>
               </li>
               <li>
                 <Link href="/company" className={linkClass}>
-                  Company
+                  {messages.nav.company}
                 </Link>
               </li>
               <li>
@@ -57,37 +66,36 @@ export default function Footer() {
               </li>
               <li>
                 <Link href={contactHref} className={linkClass}>
-                  Contact
+                  {messages.common.contact}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">法務</p>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">{messages.common.legal}</p>
             <ul className="space-y-0">
               <li>
                 <Link href="/privacy" className={linkClass}>
-                  プライバシーポリシー
+                  {messages.common.privacy}
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className={linkClass}>
-                  利用規約
+                  {messages.common.terms}
                 </Link>
               </li>
               <li>
                 <Link href="/legal/tokushoho" className={linkClass}>
-                  特定商取引法に基づく表記
+                  {messages.common.tokushoho}
                 </Link>
               </li>
             </ul>
-            <p className="mb-3 mt-8 text-xs font-medium tracking-wide text-secondary">運営プロダクト</p>
+            <p className="mb-3 mt-8 text-xs font-medium tracking-wide text-secondary">{messages.common.products}</p>
             <ul className="space-y-0">
               <li>
                 <a href={siteShell.pineUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
                   Pine
-                  <span className="sr-only">（新しいタブで開く）</span>
                 </a>
               </li>
             </ul>
@@ -95,9 +103,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-sequoia-black/8 pt-6 text-xs text-secondary md:flex-row md:items-center md:justify-between">
-          <p>© {year} 株式会社Amber. All rights reserved.</p>
+          <p>
+            © {year} {messages.common.companyName}. All rights reserved.
+          </p>
           <Link href={contactHref} className="hover:text-brand-green">
-            お問い合わせフォーム
+            {messages.common.contactForm}
           </Link>
         </div>
       </div>

@@ -6,12 +6,21 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { buildContactHref } from '@/lib/contact'
-import { mainNav, serviceMegaMenu } from '@/data/navigation'
+import { offerings } from '@/data/offerings'
 import { panelTransition } from '@/lib/motion-safe'
+import { useMessages } from '@/components/i18n/LocaleProvider'
+import LanguageSwitcher from '@/components/i18n/LanguageSwitcher'
 
 const DARK_HERO_PATHS = ['/']
 
+const navItems = [
+  { key: 'industries' as const, href: '/#industries' },
+  { key: 'work' as const, href: '/cases' },
+  { key: 'company' as const, href: '/company' },
+]
+
 export default function Header() {
+  const messages = useMessages()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [serviceOpen, setServiceOpen] = useState(false)
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false)
@@ -74,15 +83,25 @@ export default function Header() {
     : 'text-sequoia-black/75 hover:bg-sequoia-black/5 hover:text-brand-green'
   const mobileBtnColor = isTransparent ? 'text-white hover:bg-white/10' : 'text-sequoia-black hover:bg-sequoia-black/5'
 
+  const serviceItems = offerings.map((o) => ({
+    title: o.title,
+    description: messages.offerings[o.id].shortTitle,
+    href: o.href,
+  }))
+
   return (
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow,color] duration-[400ms] ${headerBg}`}>
       <div className="home-container">
         <div className="site-header-toolbar flex h-20 items-center justify-between">
-          <Link href="/" className="relative z-50 shrink-0 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40" aria-label="株式会社Amber">
+          <Link
+            href="/"
+            className="relative z-50 shrink-0 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40"
+            aria-label={messages.common.companyName}
+          >
             <span className={`font-logo text-[1.75rem] leading-none transition-colors duration-[400ms] ${logoColor}`}>Amber</span>
           </Link>
 
-          <nav className="site-nav-desktop ml-auto mr-3 gap-0.5" aria-label="メインナビゲーション">
+          <nav className="site-nav-desktop ml-auto mr-3 gap-0.5" aria-label="Main">
             <div className="relative" ref={megaRef}>
               <button
                 type="button"
@@ -92,7 +111,7 @@ export default function Header() {
                 onClick={() => setServiceOpen((v) => !v)}
                 onMouseEnter={() => setServiceOpen(true)}
               >
-                What we do
+                {messages.common.whatWeDo}
                 <ChevronDown className={`h-3.5 w-3.5 transition-transform ${serviceOpen ? 'rotate-180' : ''}`} aria-hidden />
               </button>
               <AnimatePresence>
@@ -108,7 +127,7 @@ export default function Header() {
                     onMouseLeave={() => setServiceOpen(false)}
                   >
                     <ul className="grid gap-1">
-                      {serviceMegaMenu.map((item) => (
+                      {serviceItems.map((item) => (
                         <li key={item.title}>
                           <Link
                             href={item.href}
@@ -126,24 +145,29 @@ export default function Header() {
                 )}
               </AnimatePresence>
             </div>
-            {mainNav.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/35 ${navColor}`}
               >
-                {item.label}
+                {messages.nav[item.key]}
               </Link>
             ))}
           </nav>
 
+          <LanguageSwitcher
+            className="site-nav-desktop mr-1 hidden lg:inline-flex"
+            tone={isTransparent ? 'dark' : 'light'}
+          />
+
           <Link
             href={contactCtaHref}
-            className={`site-nav-desktop ml-2 hidden shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-[background-color,color] duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40 xl:inline-flex ${
+            className={`site-nav-desktop ml-1 hidden shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-[background-color,color] duration-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40 lg:inline-flex ${
               isTransparent ? 'bg-white text-dark-green hover:bg-white/90' : 'bg-brand-green text-white hover:bg-dark-green'
             }`}
           >
-            Contact
+            {messages.common.contact}
           </Link>
 
           <button
@@ -152,7 +176,7 @@ export default function Header() {
             className={`site-nav-mobile-toggle relative z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40 ${mobileBtnColor}`}
             aria-expanded={isMobileMenuOpen}
             aria-controls={mobileNavId}
-            aria-label={isMobileMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -169,7 +193,7 @@ export default function Header() {
             transition={panelTransition()}
             className="border-t border-sequoia-black/8 bg-white lg:hidden"
           >
-            <nav className="home-container py-4" aria-label="モバイルナビゲーション">
+            <nav className="home-container py-4" aria-label="Mobile">
               <ul className="space-y-1">
                 <li>
                   <button
@@ -178,14 +202,18 @@ export default function Header() {
                     aria-expanded={mobileServiceOpen}
                     onClick={() => setMobileServiceOpen((v) => !v)}
                   >
-                    What we do
+                    {messages.common.whatWeDo}
                     <ChevronDown className={`h-4 w-4 transition-transform ${mobileServiceOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileServiceOpen && (
                     <ul className="mb-2 space-y-1 pl-3">
-                      {serviceMegaMenu.map((item) => (
+                      {serviceItems.map((item) => (
                         <li key={item.title}>
-                          <Link href={item.href} className="block rounded-xl px-3 py-3 text-sm text-sequoia-black/80 hover:bg-light-green/60" onClick={() => setIsMobileMenuOpen(false)}>
+                          <Link
+                            href={item.href}
+                            className="block rounded-xl px-3 py-3 text-sm text-sequoia-black/80 hover:bg-light-green/60"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
                             <span className="font-medium text-sequoia-black">{item.title}</span>
                           </Link>
                         </li>
@@ -193,20 +221,24 @@ export default function Header() {
                     </ul>
                   )}
                 </li>
-                {mainNav.map((item) => (
+                {navItems.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
                       className="flex min-h-12 items-center rounded-xl px-3 py-3 text-base font-medium text-sequoia-black"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {item.label}
+                      {messages.nav[item.key]}
                     </Link>
                   </li>
                 ))}
+                <li className="flex items-center justify-between px-3 py-3">
+                  <span className="text-sm text-secondary">{messages.common.language}</span>
+                  <LanguageSwitcher />
+                </li>
                 <li className="pt-2">
                   <Link href={contactHref} className="btn-pill-primary-solid flex w-full" onClick={() => setIsMobileMenuOpen(false)}>
-                    Contact
+                    {messages.common.contact}
                   </Link>
                 </li>
               </ul>
