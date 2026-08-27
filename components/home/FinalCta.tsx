@@ -25,10 +25,10 @@ export default function FinalCta() {
 
       <div className="home-container relative z-10 py-16 md:py-20 lg:py-[7.5rem]">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 id="final-cta-heading" className="home-h2 mb-6 text-white">
+          <h2 id="final-cta-heading" className="home-h2 mb-6 !text-white">
             {t.heading}
           </h2>
-          <p className="mx-auto mb-10 max-w-xl text-base leading-[1.625] text-white/90">{t.body}</p>
+          <p className="mx-auto mb-10 max-w-xl text-base leading-[1.625] !text-white">{t.body}</p>
           <Link href={href} className="btn-pill-primary-solid inline-flex min-h-12 w-full px-8 sm:w-auto">
             {t.cta}
           </Link>

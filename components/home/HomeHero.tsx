@@ -29,10 +29,10 @@ export default function HomeHero() {
 
       <div className="home-container relative z-10 w-full pb-16 pt-28 md:pb-24 md:pt-32">
         <div className="max-w-3xl">
-          <p className="mb-4 text-sm font-medium tracking-[0.08em] text-white/70 md:text-base">Amber</p>
+          <p className="mb-4 text-sm font-medium tracking-[0.08em] text-white md:text-base">Amber</p>
           <h1 className="home-hero-title mb-5 md:mb-6">{t.heading}</h1>
-          <p className="mb-4 max-w-2xl text-lg font-medium leading-relaxed text-white md:text-xl">{t.subheading}</p>
-          <p className="mb-10 max-w-2xl text-base leading-[1.9] text-white/85">{t.body}</p>
+          <p className="mb-4 max-w-2xl text-lg font-medium leading-relaxed !text-white md:text-xl">{t.subheading}</p>
+          <p className="mb-10 max-w-2xl text-base leading-[1.9] !text-white">{t.body}</p>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link href="#cases" className="btn-pill-on-dark w-full sm:w-auto">
               {t.primaryCta}
