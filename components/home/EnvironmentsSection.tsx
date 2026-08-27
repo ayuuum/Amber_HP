@@ -38,13 +38,22 @@ export default function EnvironmentsSection() {
         <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10 bg-white">
           {environments.map((env) => {
             const logo = environmentLogos[env.id]
+            // Figmaどおり: Copilot/Geminiはロゴのみ、オーダーメイドは見出し＋アイコン
+            const showTitle = env.id === 'custom' || !logo
             return (
               <li
                 key={env.id}
                 className="grid gap-6 px-5 py-7 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10 md:px-8 md:py-9"
               >
-                <div className="flex flex-col items-center justify-center gap-4 text-center md:items-center">
-                  <h3 className="home-h3 break-keep text-balance">{env.title}</h3>
+                <div
+                  className="flex flex-col items-center justify-center gap-4 text-center md:items-center"
+                  aria-label={env.title}
+                >
+                  {showTitle ? (
+                    <h3 className="home-h3 break-keep text-balance">{env.title}</h3>
+                  ) : (
+                    <h3 className="sr-only">{env.title}</h3>
+                  )}
                   {logo ? (
                     <Image
                       src={logo.src}
