@@ -12,7 +12,7 @@ type ContactCTAProps = {
 }
 
 export default function ContactCTA({
-  headingLines = ['Build What’s Next.'],
+  headingLines = ['Technology for Essential Industries.'],
   body = '業務やシステムの課題からご相談ください。',
   ctaLabel = 'Talk to Amber',
   source = 'contact-cta',

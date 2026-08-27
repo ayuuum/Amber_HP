@@ -8,11 +8,11 @@ export const aiSolutionPage = {
     ogTitle: '生成AIの導入から、業務実装、運用改善まで｜株式会社Amber',
   },
   hero: {
-    eyebrow: 'AI活用・実装支援',
-    headingLines: ['生成AIを、', '業務で使える状態へ。'] as const,
-    body: 'Copilot・Geminiの導入から、AIエージェント・業務システムの開発、定着まで。現場で使われ続ける状態をつくります。',
+    eyebrow: 'AI & Software',
+    headingLines: ['Technology for Essential Industries.'] as const,
+    body: '製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。',
     primaryCta: '相談する',
-    secondaryCta: '支援事例を見る',
+    secondaryCta: 'Workを見る',
     secondaryHref: '/cases',
   },
   challenges: {
@@ -108,9 +108,9 @@ export const aiSolutionPage = {
     },
   ],
   finalCta: {
-    headingLines: ['生成AIを、', '業務で使える状態へ'] as const,
-    body: '現状に合わせて、進め方をご提案します。',
-    cta: '相談する',
+    headingLines: ['Technology for Essential Industries.'] as const,
+    body: '業務やシステムの課題からご相談ください。',
+    cta: 'Talk to Amber',
   },
 } as const
 

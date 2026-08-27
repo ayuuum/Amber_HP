@@ -7,7 +7,7 @@ export const heroMedia = {
 } as const
 
 export const heroCopy = {
-  heading: 'Advancing Essential Industries.',
+  heading: 'Technology for Essential Industries.',
   subheading: '暮らしを支える産業に、最新のテクノロジーを。',
   body: 'Amberは、製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。',
   primaryCta: 'Our Work',
@@ -17,7 +17,7 @@ export const heroCopy = {
 } as const
 
 export const missionSection = {
-  heading: 'Technology for the industries that keep society running.',
+  heading: 'Technology for Essential Industries.',
   lead: '製造、建設、設備、物流。',
   paragraphs: [
     '社会を動かしている産業には、高い専門性と長年蓄積された知識がある一方で、紙や表計算、分断されたシステム、属人的な業務が数多く残っています。',
@@ -69,7 +69,7 @@ export const companyTeaserSection = {
 } as const
 
 export const finalCta = {
-  heading: 'Build What’s Next.',
+  heading: 'Technology for Essential Industries.',
   body: '業務やシステムの課題からご相談ください。',
   cta: 'Talk to Amber',
 } as const
