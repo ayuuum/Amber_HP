@@ -112,18 +112,20 @@ const ja = {
       heading: 'Transforming Essential Operations.',
       lead: 'どの産業の、どの業務を、どう変えたか。取り組みの一例です。',
       items: {
-        fire: {
-          theme: '消防設備点検の業務基盤を再構築',
-          challenge:
-            '点検、報告、修繕、スケジュールなど分断された業務を整理し、現場から事務まで一貫して情報が流れる業務基盤へ。',
-        },
         chemical: {
-          theme: '大規模組織におけるAI活用基盤の構築',
-          challenge: '業務課題の整理からAI活用テーマの設計、実装・組織展開までを支援。',
+          industry: 'Manufacturing & Materials',
+          theme: '大規模組織のAI活用基盤を構築',
+          challenge: '業務課題の整理からテーマ設計、実装・組織展開まで一貫して支援。',
         },
         field: {
+          industry: 'Field Services',
           theme: '訪問・現場業務を統合する業務基盤',
-          challenge: '予約、顧客、現場、店舗などに分散していた情報を統合し、業務全体を一つの仕組みへ。',
+          challenge: '分散していた予約・顧客・現場情報を統合し、業務全体を一つの仕組みへ。',
+        },
+        fire: {
+          industry: 'Facilities & Maintenance',
+          theme: '現場オペレーションの業務基盤を再構築',
+          challenge: '分断された現場と事務の業務を整理し、一貫して情報が流れる仕組みへ。',
         },
       },
     },
@@ -271,20 +273,23 @@ const en = {
       heading: 'Transforming Essential Operations.',
       lead: 'Which industry. Which operation. What changed. A few examples.',
       items: {
-        fire: {
-          theme: 'Rebuilding the operating foundation for fire equipment inspection',
-          challenge:
-            'We reorganized fragmented inspection, reporting, repair, and scheduling so information flows from the field to the office as one foundation.',
-        },
         chemical: {
+          industry: 'Manufacturing & Materials',
           theme: 'Building an AI operating foundation for a large organization',
           challenge:
-            'From mapping operational challenges to designing AI use cases, implementation, and organization-wide rollout.',
+            'From mapping operational challenges through theme design, implementation, and organization-wide rollout.',
         },
         field: {
+          industry: 'Field Services',
           theme: 'Unifying field-service operations into one platform',
           challenge:
-            'We brought together booking, customers, field work, and locations so the whole operation runs as one system.',
+            'We brought together booking, customers, and field work so the whole operation runs as one system.',
+        },
+        fire: {
+          industry: 'Facilities & Maintenance',
+          theme: 'Rebuilding field operating foundations',
+          challenge:
+            'We reorganized fragmented field and office workflows so information flows as one connected system.',
         },
       },
     },
