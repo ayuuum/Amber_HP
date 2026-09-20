@@ -33,7 +33,7 @@ export const faqCategories: FaqCategory[] = [
   },
   {
     id: 'training',
-    title: '研修・活用支援',
+    title: 'AI研修・活用支援',
     items: [
       {
         question: '研修だけでも依頼できますか？',

@@ -11,16 +11,18 @@ import { siteUrl } from '@/lib/site-metadata'
 
 type Props = { params: { slug: string } }
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return getAllCaseSlugs().map((slug) => ({ slug }))
 }
 
 export function generateMetadata({ params }: Props): Metadata {
   const item = getCaseBySlug(params.slug)
-  if (!item) return { title: '支援事例' }
+  if (!item) return { title: 'Work | Amber' }
   return {
-    title: `${item.theme} | ${item.industry}`,
-    description: item.change,
+    title: `${item.theme} | ${item.industry}向けAI・業務変革事例`,
+    description: `${item.industry}における取り組み。${item.challenge}`.slice(0, 160),
     alternates: { canonical: `${siteUrl}/cases/${item.slug}` },
   }
 }
@@ -29,8 +31,8 @@ export default function CaseDetailPage({ params }: Props) {
   const item = getCaseBySlug(params.slug)
   if (!item) notFound()
   const completed = isCompletedCase(item.status)
-  const outcomeLabel = completed ? '導入後の変化' : '目指す業務の状態'
-  const afterLabel = completed ? 'After' : '目指す状態'
+  const outcomeLabel = completed ? '導入後の変化' : '実装伴走中に目指す業務の状態'
+  const afterLabel = completed ? 'After' : '実装伴走中の到達目標'
 
   return (
     <main className="min-h-screen bg-white">
@@ -49,6 +51,11 @@ export default function CaseDetailPage({ params }: Props) {
             <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
               {item.status}
             </span>
+            {!completed ? (
+              <span className="rounded-full border border-brand-green/25 bg-light-green/70 px-2.5 py-0.5 text-xs text-brand-green">
+                実装・定着を伴走中
+              </span>
+            ) : null}
             {item.period ? (
               <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
                 {item.period}

@@ -7,7 +7,7 @@ export const siteMetadata = {
   name: '株式会社Amber',
   tagline: 'Technology for Essential Industries.',
   description:
-    '暮らしを支える産業に、最新のテクノロジーを。製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装する株式会社Amber。',
+    'Amberは製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装する会社です。業務理解から実装・定着まで一貫して支援します。',
   defaultTitle: '株式会社Amber | Technology for Essential Industries.',
   keywords: [
     '株式会社Amber',

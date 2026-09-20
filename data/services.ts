@@ -3,10 +3,10 @@ import { companyInfo } from '@/lib/company-info'
 
 export const aiSolutionPage = {
   meta: {
-    title: 'Business Transformation｜AI & Software｜Data & Integration',
+    title: 'AI Solution | Business Transformation & Software',
     description:
-      '暮らしを支える産業の業務変革を、AIとソフトウェアで実装。業務設計、AI・業務システム開発、データ連携まで一つのチームで進めます。',
-    ogTitle: 'Technology for Essential Industries.｜株式会社Amber',
+      '暮らしを支える産業の業務変革を、AIとソフトウェアで実装。業務設計、AIエージェント・業務システム開発、データ連携まで一つのチームで進めます。',
+    ogTitle: 'AI Solution | Technology for Essential Industries.｜株式会社Amber',
   },
   hero: {
     eyebrow: 'What we do',

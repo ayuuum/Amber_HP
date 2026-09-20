@@ -12,7 +12,7 @@ import FadeUp from '@/components/home/FadeUp'
 export const metadata: Metadata = {
   title: 'Company | Essential Industries × Technology',
   description:
-    '暮らしを支える産業に、最新のテクノロジーを。株式会社Amberのミッション、原則、代表、会社概要。',
+    '暮らしを支える産業に、最新のテクノロジーを。株式会社Amberのミッション、原則、代表、会社概要。設立2026年1月。',
   alternates: { canonical: `${siteUrl}/company` },
 }
 

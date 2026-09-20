@@ -50,7 +50,7 @@ const ja = {
       secondaryCta: 'Contact',
     },
     mission: {
-      heading: 'From Operations to Software.',
+      heading: 'Operations still run on paper and tribal knowledge.',
       lead: '製造、建設、設備、物流。',
       paragraphs: [
         '社会を動かしている産業には、高い専門性と長年蓄積された知識がある一方で、紙や表計算、分断されたシステム、属人的な業務が数多く残っています。',
@@ -209,7 +209,7 @@ const en = {
       secondaryCta: 'Contact',
     },
     mission: {
-      heading: 'From Operations to Software.',
+      heading: 'Operations still run on paper and tribal knowledge.',
       lead: 'Manufacturing. Construction. Facilities. Logistics.',
       paragraphs: [
         'Essential industries hold deep expertise and accumulated knowledge—yet paper, spreadsheets, fragmented systems, and tribal processes still shape much of daily work.',

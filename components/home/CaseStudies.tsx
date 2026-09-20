@@ -72,6 +72,11 @@ export default function HomeCaseStudies() {
                         <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
                           {item.status}
                         </span>
+                        {item.status !== '支援実績' ? (
+                          <span className="rounded-full border border-brand-green/25 bg-light-green/60 px-2.5 py-0.5 text-[11px] text-brand-green">
+                            実装伴走中
+                          </span>
+                        ) : null}
                         {item.period ? (
                           <span className="text-[11px] text-secondary">{item.period}</span>
                         ) : null}

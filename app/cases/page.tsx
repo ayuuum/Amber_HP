@@ -11,8 +11,9 @@ import { cases } from '@/data/cases'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: 'Work | Transforming Essential Operations.',
-  description: 'どの産業の、どの業務を、どう変えたか。守秘のため企業名は非公開の、Amberの取り組み事例です。',
+  title: 'Work | 製造・設備・現場向け AI活用・業務変革事例',
+  description:
+    '製造・素材・化学、設備点検、訪問現場サービスなど、暮らしを支える産業でのAI活用・業務基盤の取り組み事例。守秘のため企業名は非公開です。',
   alternates: { canonical: `${siteUrl}/cases` },
 }
 
@@ -49,6 +50,11 @@ export default function CasesPage() {
                       <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
                         {item.status}
                       </span>
+                      {item.status !== '支援実績' ? (
+                        <span className="rounded-full border border-brand-green/25 bg-light-green/60 px-2.5 py-0.5 text-[11px] text-brand-green">
+                          実装伴走中
+                        </span>
+                      ) : null}
                       {item.period ? (
                         <span className="text-[11px] text-secondary">{item.period}</span>
                       ) : null}
@@ -72,7 +78,9 @@ export default function CasesPage() {
                         <p className="text-sm text-sequoia-black">{item.before}</p>
                       </div>
                       <div className="rounded-sm border border-brand-green/15 bg-light-green/50 px-4 py-3">
-                        <p className="mb-1 text-[11px] tracking-wide text-brand-green">After / 目指す状態</p>
+                        <p className="mb-1 text-[11px] tracking-wide text-brand-green">
+                          {item.status === '支援実績' ? 'After' : '実装伴走中の到達目標'}
+                        </p>
                         <p className="text-sm text-sequoia-black">{item.after}</p>
                       </div>
                     </div>
