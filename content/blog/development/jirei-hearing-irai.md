@@ -1,8 +1,8 @@
 ---
 title: "事例ヒアリング依頼の進め方：質問項目と準備物"
 description: "ベンダー事例ヒアリングは成功談を聞く場ではなく、自社前提との照合の場です。依頼メールの型、当日のコア質問10、事前準備物を調達・情シス向けに整理します。"
-date: "2026-03-20"
-dateModified: "2026-03-20"
+date: "2026-09-20"
+dateModified: "2026-09-20"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

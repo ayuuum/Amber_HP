@@ -1,8 +1,8 @@
 ---
 title: "レガシーをクラウドへつなぐ設計ガイド（Microsoft／Google例）"
 description: "レガシーとMicrosoft 365／Google Workspaceをつなぐ際、正本とID統一を誤ると二重管理が固定化します。認証、ファイル、段階移行の三フェーズを、代表的なクラウド構成例に沿って解説します。"
-date: "2026-02-13"
-dateModified: "2026-02-13"
+date: "2026-09-02"
+dateModified: "2026-09-02"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

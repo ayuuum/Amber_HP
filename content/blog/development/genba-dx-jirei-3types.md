@@ -1,8 +1,8 @@
 ---
 title: "現場DX事例3類型：点検・清掃・AI定着の違い"
 description: "現場DX事例は点検型・清掃オペ型・組織AI定着型で設計焦点が異なります。三類型の違いと公開事例リンクから、自社に近い型を見つける読み方を解説します。（現場・情シス向け）"
-date: "2026-03-17"
-dateModified: "2026-03-17"
+date: "2026-09-18"
+dateModified: "2026-09-18"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

@@ -1,8 +1,8 @@
 ---
 title: "調達向け：AI導入事例の比較チェックシート"
 description: "調達がAI・現場システム提案を比較するとき、機能表だけではリスクが見えません。セキュリティ、データ正本、退出条件など調達向けチェックシートの使い方を解説します。"
-date: "2026-03-15"
-dateModified: "2026-03-15"
+date: "2026-09-17"
+dateModified: "2026-09-17"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

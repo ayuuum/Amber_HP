@@ -1,8 +1,8 @@
 ---
 title: "データ連携サービス比較：内製・SIer・実装パートナー"
 description: "データ連携は内製・SIer・実装パートナーのどれに頼むべきか。責任分界、速度、保守性の比較軸と、発注前に揃える成果物を、情シスがRFPを書く前のチェックとして解説します。"
-date: "2026-02-17"
-dateModified: "2026-02-17"
+date: "2026-09-04"
+dateModified: "2026-09-04"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

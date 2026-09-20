@@ -1,8 +1,8 @@
 ---
 title: "AI導入で現場が動かない理由と変化管理の基本"
 description: "AI導入で現場が動かないのは、ツール不足より変化管理の欠如が原因であることが多いです。抵抗の構造と四アクション、導入総論記事へのリンクを通じて、現場リーダー向けに整理します。"
-date: "2026-03-03"
-dateModified: "2026-03-03"
+date: "2026-09-11"
+dateModified: "2026-09-11"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

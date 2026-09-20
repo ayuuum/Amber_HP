@@ -1,8 +1,8 @@
 ---
 title: "AIロールアウト伴走の選び方：研修会社 vs 実装伴走"
 description: "AIロールアウトは研修会社と実装伴走で役割が異なります。目的・成果物・現場接続の比較と、組み合わせパターンを、定着までの空白を埋める視点で整理します。"
-date: "2026-03-09"
-dateModified: "2026-03-09"
+date: "2026-09-14"
+dateModified: "2026-09-14"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

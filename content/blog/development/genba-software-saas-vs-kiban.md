@@ -1,8 +1,8 @@
 ---
 title: "現場向けソフト比較：SaaSと業務基盤の選び方"
 description: "現場向けソフトはSaaS一択ではありません。例外処理の多さ、連携の正本、将来のAI載せ替えを軸に、SaaSと業務基盤を比較する判断フローを、暮らしを支える産業の決裁者・情シス向けに、押し売りなしで整理します。"
-date: "2026-02-05"
-dateModified: "2026-02-05"
+date: "2026-08-29"
+dateModified: "2026-08-29"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

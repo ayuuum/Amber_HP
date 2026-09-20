@@ -1,8 +1,8 @@
 ---
 title: "データ連携パターン入門：API・ETL・RAGの違い"
 description: "API・ETL・RAGはすべて「連携」ですが、解く問題が異なります。リアルタイム業務、夜間集計、社内文書参照の境界を、暮らしを支える産業の情シス・現場責任者が発注前に整理するための入門記事です。"
-date: "2026-02-11"
-dateModified: "2026-02-11"
+date: "2026-09-01"
+dateModified: "2026-09-01"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

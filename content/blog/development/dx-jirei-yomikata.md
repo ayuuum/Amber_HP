@@ -1,8 +1,8 @@
 ---
 title: "デジタル変革事例の読み方：見るべきKPIと落とし穴"
 description: "DX事例は成功ストーリーに偏りがちです。自社転用時に見るKPIの順序、前提条件の落とし穴、ベンダー提供指標の読み方を、調達・現場責任者向けに結論から整理します。"
-date: "2026-03-13"
-dateModified: "2026-03-13"
+date: "2026-09-16"
+dateModified: "2026-09-16"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

@@ -1,8 +1,8 @@
 ---
 title: "消防設備点検の業務基盤再構築：前後KPIの見方"
 description: "消防設備点検のデジタル化では、速度より様式遵守と監査対応がKPIの中心です。業務基盤再構築の前後で比較すべき指標の読み方を、数値の決めつけなしに整理します。"
-date: "2026-03-19"
-dateModified: "2026-03-19"
+date: "2026-09-19"
+dateModified: "2026-09-19"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

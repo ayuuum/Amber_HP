@@ -1,8 +1,8 @@
 ---
 title: "AIエージェント実装パートナーの選び方と比較軸"
 description: "AIエージェント実装パートナーは、デモの巧みさより本番運用の責任分界とツール接続実績で選びます。評価軸とRFP前に揃える三枚の資料を、押し売りなしに整理します。"
-date: "2026-02-27"
-dateModified: "2026-02-27"
+date: "2026-09-09"
+dateModified: "2026-09-09"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"

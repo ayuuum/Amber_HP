@@ -1,8 +1,8 @@
 ---
 title: "RAG連携の実装手順：社内文書を業務に載せる"
 description: "RAG連携は社内文書を業務の文脈で引く仕組みです。文書範囲・権限・更新・評価の順で進める実装手順を、現場アプリやエージェントに載せる前提で、暮らしを支える産業向けに整理します。"
-date: "2026-02-15"
-dateModified: "2026-02-15"
+date: "2026-09-03"
+dateModified: "2026-09-03"
 category: "development"
 author: "松井 歩武"
 authorTitle: "代表取締役"
