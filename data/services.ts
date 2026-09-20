@@ -10,7 +10,8 @@ export const aiSolutionPage = {
   },
   hero: {
     eyebrow: 'What we do',
-    headingLines: ['Technology for Essential Industries.'] as const,
+    headingLines: ['暮らしを支える産業に、', '最新のテクノロジーを。'] as const,
+    subheading: 'Technology for Essential Industries.',
     body: '製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。業務を理解し、再設計し、現場に組み込みます。',
     primaryCta: 'Talk to Amber',
     secondaryCta: 'Our Work',
@@ -118,8 +119,8 @@ export const aiSolutionPage = {
 export const companyPage = {
   hero: {
     brand: 'Amber',
-    heading: 'Technology for Essential Industries.',
-    subheading: '暮らしを支える産業に、最新のテクノロジーを。',
+    heading: '暮らしを支える産業に、最新のテクノロジーを。',
+    subheading: 'Technology for Essential Industries.',
     body: '製造・設備・建設・物流など、社会を支える産業の変革を、AIとソフトウェアで実装しています。',
     image: '/images/about-mission-mountain.png',
     imageAlt: '霧に包まれた山並み',
