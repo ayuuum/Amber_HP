@@ -5,8 +5,7 @@ import PageHero from '@/components/ui/PageHero'
 import ArticleCard from '@/components/ui/ArticleCard'
 import ContactCTA from '@/components/ui/ContactCTA'
 import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
-import { getAllPosts } from '@/lib/markdown'
-import type { BlogPost, BlogCategory } from '@/lib/markdown'
+import { getAllPosts, getCategoryName, type BlogPost, type BlogCategory } from '@/lib/markdown'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
@@ -21,16 +20,30 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BlogPage() {
+function parseCategory(value: string | string[] | undefined): BlogCategory | null {
+  const raw = Array.isArray(value) ? value[0] : value
+  if (raw === 'development' || raw === 'training') return raw
+  return null
+}
+
+export default function BlogPage({
+  searchParams,
+}: {
+  searchParams?: { category?: string | string[] }
+}) {
+  const selectedCategory = parseCategory(searchParams?.category)
   const developmentPosts = getAllPosts('development')
   const trainingPosts = getAllPosts('training')
   const posts: { post: BlogPost; category: BlogCategory }[] = [
     ...developmentPosts.map((post) => ({ post, category: 'development' as const })),
     ...trainingPosts.map((post) => ({ post, category: 'training' as const })),
-  ].sort((a, b) => (a.post.date < b.post.date ? 1 : -1))
+  ]
+    .filter(({ category }) => (selectedCategory ? category === selectedCategory : true))
+    .sort((a, b) => (a.post.date < b.post.date ? 1 : -1))
 
   const featured = posts[0]
   const rest = posts.slice(1)
+  const filterLabel = selectedCategory ? getCategoryName(selectedCategory) : null
 
   return (
     <main className="min-h-screen bg-white">
@@ -43,7 +56,34 @@ export default function BlogPage() {
       />
       <section className="home-section bg-[#F3F4F6] pt-0 md:pt-0">
         <div className="home-container">
-          <PageBreadcrumbs items={[{ label: 'トップ', href: '/' }, { label: 'AI活用の知見' }]} />
+          <PageBreadcrumbs
+            items={[
+              { label: 'トップ', href: '/' },
+              { label: 'AI活用の知見', href: filterLabel ? '/blog' : undefined },
+              ...(filterLabel ? [{ label: filterLabel }] : []),
+            ]}
+          />
+
+          <div className="mb-8 flex flex-wrap gap-3">
+            <a
+              href="/blog"
+              className={`text-sm ${!selectedCategory ? 'font-medium text-brand-green' : 'text-secondary hover:text-sequoia-black'}`}
+            >
+              すべて
+            </a>
+            <a
+              href="/blog?category=development"
+              className={`text-sm ${selectedCategory === 'development' ? 'font-medium text-brand-green' : 'text-secondary hover:text-sequoia-black'}`}
+            >
+              {getCategoryName('development')}
+            </a>
+            <a
+              href="/blog?category=training"
+              className={`text-sm ${selectedCategory === 'training' ? 'font-medium text-brand-green' : 'text-secondary hover:text-sequoia-black'}`}
+            >
+              {getCategoryName('training')}
+            </a>
+          </div>
 
           {posts.length === 0 ? (
             <p className="text-secondary">現在、記事を準備中です。</p>

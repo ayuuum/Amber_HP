@@ -22,15 +22,18 @@ export default function AdminLoginPage() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ password }),
       })
 
       const data = await response.json()
 
       if (data.success) {
-        // セッションに保存
-        sessionStorage.setItem('adminAuthenticated', 'true')
         router.push('/admin')
+      } else if (response.status === 503) {
+        setError('管理パスワードがサーバーに設定されていません')
+      } else if (response.status === 429) {
+        setError('試行回数が多すぎます。しばらく待ってから再試行してください')
       } else {
         setError('パスワードが正しくありません')
       }

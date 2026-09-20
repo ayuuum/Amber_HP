@@ -32,7 +32,13 @@ export default function EditArticlePage() {
     const fetchArticle = async () => {
       setIsLoading(true)
       try {
-        const response = await fetch(`/api/admin/articles/${slug}?category=${category}`)
+        const response = await fetch(`/api/admin/articles/${slug}?category=${category}`, {
+          credentials: 'include',
+        })
+        if (response.status === 401) {
+          router.push('/admin/login')
+          return
+        }
         const data = await response.json()
 
         if (data.article) {
@@ -57,7 +63,7 @@ export default function EditArticlePage() {
     if (slug && category) {
       fetchArticle()
     }
-  }, [slug, category])
+  }, [slug, category, router])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -94,6 +100,7 @@ export default function EditArticlePage() {
     try {
       const response = await fetch('/api/admin/upload', {
         method: 'POST',
+        credentials: 'include',
         body: uploadFormData,
       })
 
@@ -132,6 +139,7 @@ export default function EditArticlePage() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           slug,
           ...formData,
@@ -192,8 +200,8 @@ export default function EditArticlePage() {
               onChange={handleChange}
               className="w-full px-4 py-3 border border-sequoia-black rounded-sm bg-white text-sequoia-black focus:outline-none focus:border-sequoia-black"
             >
-              <option value="development">AIシステム開発</option>
-              <option value="training">生成AI活用研修</option>
+              <option value="development">AI・業務システム</option>
+              <option value="training">生成AI研修</option>
             </select>
           </div>
         </div>

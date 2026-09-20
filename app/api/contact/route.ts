@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { captureError } from '@/lib/capture-error'
 import { parseContactInquiryType } from '@/lib/contact'
 import { deliverContact, type ContactPayload } from '@/lib/contact-delivery'
+import { getClientIp, rateLimit } from '@/lib/rate-limit'
 
 export const maxDuration = 60
 
@@ -23,6 +24,15 @@ export const maxDuration = 60
  */
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request)
+    const limited = rateLimit(`contact:${ip}`, 5, 15 * 60 * 1000)
+    if (!limited.ok) {
+      return NextResponse.json(
+        { success: false, error: '送信回数の上限に達しました。しばらく待ってから再度お試しください。' },
+        { status: 429, headers: { 'Retry-After': String(limited.retryAfterSec) } }
+      )
+    }
+
     const body = await request.json()
 
     if (typeof body.website === 'string' && body.website.trim()) {

@@ -22,7 +22,8 @@ export function verifyAmberSecret(req: Request): boolean {
     Deno.env.get("CSO_AGENT_SECRET"),
   ].filter((v): v is string => typeof v === "string" && v.length > 0);
 
-  if (candidates.length === 0) return true; // dev fallback
+  // Fail closed: unset secrets must not open the endpoint in any environment.
+  if (candidates.length === 0) return false;
   if (!incoming) return false;
   return candidates.includes(incoming);
 }

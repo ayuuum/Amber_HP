@@ -3,26 +3,45 @@
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { FileText, Plus, Image as ImageIcon, LogOut, Home } from 'lucide-react'
+import { FileText, Plus, LogOut, Home } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [checking, setChecking] = useState(true)
 
   useEffect(() => {
-    // 認証チェック
-    const auth = sessionStorage.getItem('adminAuthenticated')
-    if (auth === 'true') {
-      setIsAuthenticated(true)
-    } else if (pathname !== '/admin/login') {
-      router.push('/admin/login')
+    let cancelled = false
+
+    async function verify() {
+      if (pathname === '/admin/login') {
+        setChecking(false)
+        return
+      }
+
+      try {
+        const response = await fetch('/api/admin/articles', { credentials: 'include' })
+        if (!response.ok) {
+          if (!cancelled) router.replace('/admin/login')
+          return
+        }
+        if (!cancelled) setIsAuthenticated(true)
+      } catch {
+        if (!cancelled) router.replace('/admin/login')
+      } finally {
+        if (!cancelled) setChecking(false)
+      }
+    }
+
+    verify()
+    return () => {
+      cancelled = true
     }
   }, [pathname, router])
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('adminAuthenticated')
+  const handleLogout = async () => {
+    await fetch('/api/admin/auth', { method: 'DELETE', credentials: 'include' })
     router.push('/admin/login')
   }
 
@@ -30,7 +49,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return <>{children}</>
   }
 
-  if (!isAuthenticated) {
+  if (checking || !isAuthenticated) {
     return null
   }
 
@@ -83,11 +102,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
         </div>
       </nav>
-      <main className="max-w-7xl mx-auto px-6 py-8">
-        {children}
-      </main>
+      <main className="max-w-7xl mx-auto px-6 py-8">{children}</main>
     </div>
   )
 }
-
-
