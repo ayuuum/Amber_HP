@@ -121,9 +121,10 @@ const ja = {
           challenge: '業務課題の整理からテーマ設計、実装・組織展開まで一貫して支援。',
         },
         field: {
-          industry: 'Field Services',
+          industry: '訪問・現場サービス',
           theme: '訪問・現場業務を統合する業務基盤',
-          challenge: '分散していた予約・顧客・現場情報を統合し、業務全体を一つの仕組みへ。',
+          challenge:
+            '予約・顧客・現場・店舗の情報が分断され、拠点をまたいだ進捗や稼働の把握が難しかった。',
         },
         fire: {
           industry: 'Facilities & Maintenance',
