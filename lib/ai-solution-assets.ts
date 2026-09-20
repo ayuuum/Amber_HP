@@ -11,9 +11,14 @@ export const aiSolutionAssets = {
     remain: '/images/ai-solution/stages/stage-03-remain.jpg',
   },
   cases: {
-    cleaning: '/images/ai-solution/cases/case-cleaning.jpg',
-    fire: '/images/ai-solution/cases/case-fire.jpg',
-    chemical: '/images/ai-solution/cases/case-chemical.jpg',
+    // NOTE(2026-09-21): swapped from the original case-*.jpg placeholders,
+    // which showed content unrelated to the case (a lumber warehouse for
+    // "fire equipment inspection", an empty meeting room for "cleaning
+    // operations", a generic laptop+coffee desk for "chemical AI rollout").
+    // These reuse existing on-brand photos that actually match the work.
+    cleaning: '/images/field-cleaning.png',
+    fire: '/images/brand/domain-field.jpg',
+    chemical: '/images/consulting-meeting.png',
   },
   logos: {
     copilot: '/images/ai-solution/logos/microsoft-copilot.svg',
