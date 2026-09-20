@@ -37,8 +37,8 @@ export default function PageHero({
   return (
     <section
       className={cn(
-        'relative overflow-hidden pt-24 md:min-h-[560px] md:pt-32',
-        hasBackgroundImage ? 'flex items-end md:min-h-[720px] md:items-center' : toneMap[tone]
+        'relative overflow-hidden pt-24 md:min-h-[420px] md:pt-32',
+        hasBackgroundImage ? 'flex items-end md:min-h-[480px] md:items-center' : toneMap[tone]
       )}
     >
       {hasBackgroundImage ? (

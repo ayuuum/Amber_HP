@@ -29,7 +29,7 @@ type Props = {
 
 export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = '詳しく見る' }: Props) {
   const completed = isCompletedCase(item.status)
-  const afterColumnLabel = completed ? '導入後' : '実装伴走中の到達目標'
+  const afterColumnLabel = completed ? 'After' : '進行中'
   const isCompact = variant === 'compact'
 
   return (
@@ -82,7 +82,7 @@ export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = 
             </div>
             <div>
               <dt className="mb-1 text-xs text-secondary">
-                {completed ? '変化' : '実装伴走中の到達目標'}
+                {completed ? '変化' : '進行中の到達点'}
               </dt>
               <dd className="line-clamp-2 text-sequoia-black/80">{item.change}</dd>
             </div>

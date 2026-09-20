@@ -31,8 +31,8 @@ export default function CaseDetailPage({ params }: Props) {
   const item = getCaseBySlug(params.slug)
   if (!item) notFound()
   const completed = isCompletedCase(item.status)
-  const outcomeLabel = completed ? '導入後の変化' : '実装伴走中に目指す業務の状態'
-  const afterLabel = completed ? 'After' : '実装伴走中の到達目標'
+  const outcomeLabel = completed ? '導入後の変化' : '実装伴走中の到達点'
+  const afterLabel = completed ? 'After' : '進行中'
 
   return (
     <main className="min-h-screen bg-white">
