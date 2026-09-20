@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/markdown'
 import { getAllCaseSlugs } from '@/data/cases'
+import { getAllResources } from '@/lib/resources'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
@@ -16,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/company`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/resources`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.75 },
     { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/service/ai-training/copilot`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/service/ai-training/chatgpt`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
@@ -49,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...pages, ...casePages, ...developmentBlogPosts, ...trainingBlogPosts]
+  const resourcePages: MetadataRoute.Sitemap = getAllResources().map((resource) => ({
+    url: `${baseUrl}/resources/${resource.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }))
+
+  return [...pages, ...casePages, ...developmentBlogPosts, ...trainingBlogPosts, ...resourcePages]
 }

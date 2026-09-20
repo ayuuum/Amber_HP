@@ -27,6 +27,13 @@ export type BlogPost = {
   author: string
   authorTitle: string
   dateModified?: string
+  /** 記事末尾CTA（任意） */
+  ctaTitle?: string
+  ctaDescription?: string
+  ctaLabel?: string
+  ctaSource?: string
+  ctaInquiry?: string
+  resourceSlug?: string
 }
 
 function optionalString(value: unknown): string | undefined {
@@ -54,6 +61,12 @@ function toBlogPost(
     author: optionalString(data.author) ?? companyInfo.representativeName,
     authorTitle: optionalString(data.authorTitle) ?? companyInfo.representativeTitle,
     dateModified: optionalString(data.dateModified),
+    ctaTitle: optionalString(data.ctaTitle),
+    ctaDescription: optionalString(data.ctaDescription),
+    ctaLabel: optionalString(data.ctaLabel),
+    ctaSource: optionalString(data.ctaSource),
+    ctaInquiry: optionalString(data.ctaInquiry),
+    resourceSlug: optionalString(data.resourceSlug),
   }
 }
 

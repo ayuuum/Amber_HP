@@ -60,6 +60,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className={linkClass}>
+                  Insights
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources" className={linkClass}>
+                  無料資料
+                </Link>
+              </li>
+              <li>
                 <Link href="/faq" className={linkClass}>
                   FAQ
                 </Link>

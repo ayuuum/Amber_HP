@@ -17,6 +17,7 @@ import RelatedPosts from '@/components/blog/RelatedPosts'
 import InquiryCTA from '@/components/blog/InquiryCTA'
 import BlogArticleHeader, { BlogBackLink } from '@/components/blog/BlogArticleHeader'
 import { siteUrl } from '@/lib/site-metadata'
+import type { ContactInquiryType } from '@/lib/contact'
 
 type Props = {
   params: { slug: string }
@@ -173,7 +174,15 @@ export default async function TrainingBlogPostPage({ params }: Props) {
             <BlogContent html={contentHtml} />
           </article>
 
-          <InquiryCTA category="training" />
+          <InquiryCTA
+            category="training"
+            title={post.ctaTitle}
+            description={post.ctaDescription}
+            label={post.ctaLabel}
+            source={post.ctaSource || 'blog'}
+            inquiry={(post.ctaInquiry as ContactInquiryType | undefined) || 'training'}
+            resourceSlug={post.resourceSlug}
+          />
 
           <RelatedPosts posts={relatedPosts} />
         </div>

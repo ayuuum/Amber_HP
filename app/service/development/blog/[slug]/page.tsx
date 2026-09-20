@@ -16,6 +16,7 @@ import JsonLd from '@/components/JsonLd'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import InquiryCTA from '@/components/blog/InquiryCTA'
 import BlogArticleHeader, { BlogBackLink } from '@/components/blog/BlogArticleHeader'
+import type { ContactInquiryType } from '@/lib/contact'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
 
@@ -174,7 +175,15 @@ export default async function DevelopmentBlogPostPage({ params }: Props) {
             <BlogContent html={contentHtml} />
           </article>
 
-          <InquiryCTA category="development" />
+          <InquiryCTA
+            category="development"
+            title={post.ctaTitle}
+            description={post.ctaDescription}
+            label={post.ctaLabel}
+            source={post.ctaSource || 'blog'}
+            inquiry={(post.ctaInquiry as ContactInquiryType | undefined) || 'ai-solution'}
+            resourceSlug={post.resourceSlug}
+          />
 
           <RelatedPosts posts={relatedPosts} />
         </div>
