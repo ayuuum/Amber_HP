@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { cases } from '@/data/cases'
@@ -45,7 +46,7 @@ export default function HomeCaseStudies() {
           </Link>
         </div>
 
-        <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
+        <ul className="grid gap-6 md:gap-8">
           {homeCases.map((item, i) => {
             const key = caseKeys[item.slug as keyof typeof caseKeys]
             const localized = t.items[key]
@@ -53,31 +54,51 @@ export default function HomeCaseStudies() {
             return (
               <li key={item.slug}>
                 <FadeUp delay={0.04 * i}>
-                  <article className="grid gap-4 py-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-10 md:py-10">
-                    <div>
+                  <article className="overflow-hidden border border-sequoia-black/10 bg-white md:grid md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+                    <div className="relative aspect-[16/10] bg-off-white md:aspect-auto md:min-h-[220px]">
+                      <Image
+                        src={item.image}
+                        alt={item.imageAlt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 36vw"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center p-5 md:p-7">
                       <div className="mb-3 flex flex-wrap items-center gap-2">
                         <p className="home-label text-brand-green">
                           {localized?.industry ?? item.enIndustry}
                         </p>
-                        <span className="rounded-full border border-sequoia-black/10 bg-white px-2.5 py-0.5 text-[11px] text-secondary">
+                        <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
                           {item.status}
                         </span>
                         {item.period ? (
                           <span className="text-[11px] text-secondary">{item.period}</span>
                         ) : null}
                       </div>
+                      <p className="mb-2 text-sm text-sequoia-black/60">{item.scaleLabel}</p>
                       <h3 className="home-h3 mb-3">{localized?.theme ?? item.theme}</h3>
-                      <p className="home-body max-w-2xl text-pretty">
+                      <p className="home-body mb-4 max-w-2xl text-pretty">
                         {localized?.challenge ?? item.challenge}
                       </p>
+                      {item.outcomes && item.outcomes.length > 0 ? (
+                        <ul className="mb-5 space-y-1.5">
+                          {item.outcomes.slice(0, 2).map((outcome) => (
+                            <li key={outcome} className="flex gap-2 text-sm text-sequoia-black/70">
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green/70" aria-hidden />
+                              {outcome}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                      <Link
+                        href={`/cases/${item.slug}`}
+                        className="inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
+                      >
+                        {messages.common.view}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                      </Link>
                     </div>
-                    <Link
-                      href={`/cases/${item.slug}`}
-                      className="inline-flex min-h-11 shrink-0 items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
-                    >
-                      {messages.common.view}
-                      <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                    </Link>
                   </article>
                 </FadeUp>
               </li>

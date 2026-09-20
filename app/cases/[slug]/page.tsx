@@ -61,10 +61,36 @@ export default function CaseDetailPage({ params }: Props) {
               <span className="text-sm text-secondary">本事例は守秘義務のため、企業名を伏せて掲載しています。</span>
             ) : null}
           </div>
+          <p className="mb-4 text-sm font-medium text-sequoia-black/65">{item.scaleLabel}</p>
           <h1 className="home-h2 mb-8 max-w-3xl">{item.theme}</h1>
 
           <div className="relative mb-12 aspect-[21/9] max-h-80 overflow-hidden rounded-2xl bg-sequoia-black/5">
             <Image src={item.image} alt={item.imageAlt} fill className="object-cover brightness-[0.88]" sizes="100vw" priority />
+          </div>
+
+          {item.outcomes && item.outcomes.length > 0 ? (
+            <div className="mx-auto mb-12 max-w-3xl rounded-2xl border border-sequoia-black/8 bg-off-white p-6 md:p-8">
+              <h2 className="mb-4 text-lg font-medium text-sequoia-black">ポイント</h2>
+              <ul className="space-y-3">
+                {item.outcomes.map((outcome) => (
+                  <li key={outcome} className="flex gap-3 text-sm leading-relaxed text-sequoia-black/80 md:text-base">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green/70" aria-hidden />
+                    {outcome}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          <div className="mx-auto mb-12 grid max-w-3xl gap-4 sm:grid-cols-2">
+            <div className="home-card border border-sequoia-black/8 bg-off-white p-5">
+              <p className="mb-2 text-xs text-secondary">Before</p>
+              <p className="text-sm text-sequoia-black md:text-base">{item.before}</p>
+            </div>
+            <div className="home-card border border-brand-green/15 bg-light-green p-5">
+              <p className="mb-2 text-xs text-brand-green">{afterLabel}</p>
+              <p className="text-sm text-sequoia-black md:text-base">{item.after}</p>
+            </div>
           </div>
 
           <div className="mx-auto grid max-w-3xl gap-10">
@@ -99,23 +125,6 @@ export default function CaseDetailPage({ params }: Props) {
             <section>
               <h2 className="mb-3 text-lg font-medium text-sequoia-black">{outcomeLabel}</h2>
               <p className="leading-relaxed text-secondary">{item.change}</p>
-              {item.outcomes && item.outcomes.length > 0 ? (
-                <ul className="mt-4 list-disc space-y-1 pl-5 text-secondary">
-                  {item.outcomes.map((outcome) => (
-                    <li key={outcome}>{outcome}</li>
-                  ))}
-                </ul>
-              ) : null}
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="home-card border border-sequoia-black/8 bg-off-white p-5">
-                  <p className="mb-2 text-xs text-secondary">Before</p>
-                  <p className="text-sm text-sequoia-black">{item.before}</p>
-                </div>
-                <div className="home-card border border-brand-green/15 bg-light-green p-5">
-                  <p className="mb-2 text-xs text-brand-green">{afterLabel}</p>
-                  <p className="text-sm text-sequoia-black">{item.after}</p>
-                </div>
-              </div>
             </section>
             <section>
               <h2 className="mb-3 text-lg font-medium text-sequoia-black">現在進めていること</h2>

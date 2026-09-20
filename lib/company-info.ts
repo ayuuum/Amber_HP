@@ -7,7 +7,7 @@ export const companyInfo = {
   legalNameEn: 'Amber Inc.',
   representativeName: '松井 歩武',
   representativeTitle: '代表取締役',
-  foundedYear: '2026年',
+  foundedYear: '2026年1月',
   email: 'ayumu.matsui@amber-inc.com',
   phone: '080-3814-0263',
   phoneE164: '+81-80-3814-0263',

@@ -50,7 +50,7 @@ const ja = {
       secondaryCta: 'Contact',
     },
     mission: {
-      heading: 'Technology for Essential Industries.',
+      heading: 'From Operations to Software.',
       lead: '製造、建設、設備、物流。',
       paragraphs: [
         '社会を動かしている産業には、高い専門性と長年蓄積された知識がある一方で、紙や表計算、分断されたシステム、属人的な業務が数多く残っています。',
@@ -141,7 +141,7 @@ const ja = {
       },
     },
     company: {
-      heading: 'Technology for Essential Industries.',
+      heading: 'Built with the Field.',
       subheading: '暮らしを支える産業に、最新のテクノロジーを。',
       paragraphs: [
         '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
@@ -151,7 +151,7 @@ const ja = {
       cta: 'Company',
     },
     finalCta: {
-      heading: 'Technology for Essential Industries.',
+      heading: '一緒に整理します。',
       body: '業務やシステムの課題からご相談ください。',
       cta: 'Talk to Amber',
     },
@@ -209,7 +209,7 @@ const en = {
       secondaryCta: 'Contact',
     },
     mission: {
-      heading: 'Technology for Essential Industries.',
+      heading: 'From Operations to Software.',
       lead: 'Manufacturing. Construction. Facilities. Logistics.',
       paragraphs: [
         'Essential industries hold deep expertise and accumulated knowledge—yet paper, spreadsheets, fragmented systems, and tribal processes still shape much of daily work.',
@@ -306,7 +306,7 @@ const en = {
       },
     },
     company: {
-      heading: 'Technology for Essential Industries.',
+      heading: 'Built with the Field.',
       subheading: 'Bringing modern technology to the industries that sustain everyday life.',
       paragraphs: [
         'Manufacturing, construction, facilities, logistics, and many other industries keep daily life in Japan running.',
@@ -316,7 +316,7 @@ const en = {
       cta: 'Company',
     },
     finalCta: {
-      heading: 'Technology for Essential Industries.',
+      heading: 'Let’s sort it out together.',
       body: 'Start with an operational or systems challenge. We’ll help you shape the next step.',
       cta: 'Talk to Amber',
     },

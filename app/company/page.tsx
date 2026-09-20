@@ -173,7 +173,15 @@ export default function CompanyPage() {
                 className="grid gap-2 py-5 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-8 md:py-6"
               >
                 <dt className="text-sm text-secondary">{row.label}</dt>
-                <dd className="text-sm leading-relaxed text-sequoia-black md:text-base">{row.value}</dd>
+                <dd className="text-sm leading-relaxed text-sequoia-black md:text-base">
+                  {'href' in row && row.href ? (
+                    <Link href={row.href} className="text-brand-green underline-offset-2 hover:underline">
+                      {row.value}
+                    </Link>
+                  ) : (
+                    row.value
+                  )}
+                </dd>
               </div>
             ))}
           </dl>

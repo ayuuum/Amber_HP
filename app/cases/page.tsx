@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import Header from '@/components/Header'
@@ -29,11 +30,20 @@ export default function CasesPage() {
       <section className="home-section bg-white pt-0 md:pt-0">
         <div className="home-container">
           <PageBreadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Work' }]} />
-          <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
+          <ul className="grid gap-8 md:gap-10">
             {cases.map((item) => (
               <li key={item.slug}>
-                <article className="grid gap-4 py-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-10 md:py-10">
-                  <div>
+                <article className="overflow-hidden border border-sequoia-black/10 bg-white md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+                  <div className="relative aspect-[16/10] bg-off-white md:aspect-auto md:min-h-[280px]">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center p-6 md:p-8 lg:p-10">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
                       <p className="home-label text-brand-green">{item.enIndustry}</p>
                       <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
@@ -43,16 +53,37 @@ export default function CasesPage() {
                         <span className="text-[11px] text-secondary">{item.period}</span>
                       ) : null}
                     </div>
+                    <p className="mb-2 text-sm text-sequoia-black/60">{item.scaleLabel}</p>
                     <h2 className="home-h3 mb-3">{item.theme}</h2>
-                    <p className="home-body max-w-2xl text-pretty">{item.challenge}</p>
+                    <p className="home-body mb-5 max-w-2xl text-pretty">{item.challenge}</p>
+                    {item.outcomes && item.outcomes.length > 0 ? (
+                      <ul className="mb-6 space-y-2 border-t border-sequoia-black/8 pt-4">
+                        {item.outcomes.slice(0, 2).map((outcome) => (
+                          <li key={outcome} className="flex gap-2 text-sm leading-relaxed text-sequoia-black/75">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green/70" aria-hidden />
+                            {outcome}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    <div className="mb-6 grid gap-3 sm:grid-cols-2">
+                      <div className="rounded-sm border border-sequoia-black/8 bg-off-white px-4 py-3">
+                        <p className="mb-1 text-[11px] tracking-wide text-secondary">Before</p>
+                        <p className="text-sm text-sequoia-black">{item.before}</p>
+                      </div>
+                      <div className="rounded-sm border border-brand-green/15 bg-light-green/50 px-4 py-3">
+                        <p className="mb-1 text-[11px] tracking-wide text-brand-green">After / 目指す状態</p>
+                        <p className="text-sm text-sequoia-black">{item.after}</p>
+                      </div>
+                    </div>
+                    <Link
+                      href={`/cases/${item.slug}`}
+                      className="inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
+                    >
+                      詳細を見る
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                    </Link>
                   </div>
-                  <Link
-                    href={`/cases/${item.slug}`}
-                    className="inline-flex min-h-11 shrink-0 items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
-                  >
-                    詳細を見る
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </Link>
                 </article>
               </li>
             ))}

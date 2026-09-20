@@ -109,7 +109,7 @@ export const aiSolutionPage = {
     },
   ],
   finalCta: {
-    headingLines: ['Technology for Essential Industries.'] as const,
+    headingLines: ['一緒に整理します。'] as const,
     body: '業務やシステムの課題からご相談ください。',
     cta: 'Talk to Amber',
   },
@@ -153,7 +153,7 @@ export const companyPage = {
     bio: [
       '慶應義塾大学商学部卒業。学生時代にベンチャーキャピタルでインターンを経験。',
       '卒業後はYCP Japan（YCP Solidiance）にてコンサルタントとして従事。その後、エンタメ領域のスタートアップで事業責任者を歴任。',
-      '2026年、株式会社Amberを創業。製造・設備・現場サービスを中心に、AI・ソフトウェアを活用した企業の業務変革に取り組む。',
+      '2026年1月、株式会社Amberを創業。製造・設備・現場サービスを中心に、AI・ソフトウェアを活用した企業の業務変革に取り組む。',
     ],
   },
   profile: {
@@ -166,11 +166,15 @@ export const companyPage = {
       { label: '取引銀行', value: companyInfo.banks },
       { label: '所在地', value: companyInfo.fullAddress },
       { label: '電話', value: companyInfo.phone },
-      { label: 'メール', value: companyInfo.email },
+      {
+        label: 'お問い合わせ',
+        value: 'フォームからご連絡ください',
+        href: '/contact?source=company',
+      },
     ],
   },
   cta: {
-    heading: 'Technology for Essential Industries.',
+    heading: '一緒に整理します。',
     body: '業務やシステムの課題からご相談ください。',
     label: 'Talk to Amber',
   },

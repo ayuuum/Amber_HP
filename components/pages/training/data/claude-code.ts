@@ -4,9 +4,9 @@ export const claudeCodeData: ToolLPData = {
   slug: 'claude-code',
   toolName: 'Claude Code',
   toolBadge: 'Anthropic',
-  tagline: 'コードを書かなくても、業務をAIエージェントに任せる',
+  tagline: '自然言語の指示で、ファイル操作から反復処理まで任せる',
   heroDescription:
-    'AIエージェント「Claude Code」をビジネス職が業務で活用できる法人研修です。提案書・調査レポート・データ整理・社内ツール作成まで、プログラミング不要で自動化できる状態を2コース×10時間で実現します。',
+    'AIエージェント「Claude Code」をビジネス職が業務で活用できる法人研修です。提案書・調査レポート・データ整理・社内ツール作成まで、プログラミングの学習やCLI習得を前提にせず、自然言語の指示で進められる状態を2コース×10時間で実現します。',
   envLabel: 'Claude Code / Anthropic',
 
   problems: [
@@ -30,7 +30,7 @@ export const claudeCodeData: ToolLPData = {
   basicCourse: {
     target: '全ビジネス職（営業・マーケ・企画・管理部門）',
     items: [
-      'Claude Code のセットアップと基本操作（コマンドライン不要）',
+      'Claude Code のセットアップと基本操作（CLI習得を前提にしない導入）',
       '提案書・調査レポート・議事録の自動生成',
       'CSV・Excel データの整理・集計・可視化',
       'Web 検索・情報収集・要約の自動化',
@@ -59,15 +59,14 @@ export const claudeCodeData: ToolLPData = {
     { label: 'Gemini for Workspace 法人研修', href: '/service/ai-training/gemini' },
   ],
 
-  metaTitle: 'Claude Code 法人研修（ビジネス職向け）| コードなしで業務を自動化 | 株式会社Amber',
+  metaTitle: 'Claude Code 法人研修（ビジネス職向け）| 自然言語で業務を自動化 | 株式会社Amber',
   metaDescription:
-    'プログラミング不要でAIエージェントを業務に活用するClaude Code法人研修。提案書・データ整理・レポート自動化から部門ワークフロー構築まで、2コース×10時間で対応。人材開発支援助成金の対象となり得ます。',
+    'プログラミング学習やCLI習得を前提にせず、Claude Codeを業務で活用する法人研修。提案書・データ整理・レポート自動化から部門ワークフロー構築まで、2コース×10時間で対応。人材開発支援助成金の対象となり得ます。',
   metaKeywords: [
     'Claude Code 法人研修',
     'Claude Code ビジネス活用',
     'AIエージェント 業務自動化 研修',
     'Anthropic Claude 研修',
-    'ノーコード AI 業務効率化',
     '生成AI 法人研修 ビジネス職',
     'AI 業務改善 研修',
   ],

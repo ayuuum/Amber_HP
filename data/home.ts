@@ -17,7 +17,7 @@ export const heroCopy = {
 } as const
 
 export const missionSection = {
-  heading: 'Technology for Essential Industries.',
+  heading: 'From Operations to Software.',
   lead: '製造、建設、設備、物流。',
   paragraphs: [
     '社会を動かしている産業には、高い専門性と長年蓄積された知識がある一方で、紙や表計算、分断されたシステム、属人的な業務が数多く残っています。',
@@ -51,7 +51,7 @@ export const howWeWorkSection = {
 } as const
 
 export const companyTeaserSection = {
-  heading: 'Technology for Essential Industries.',
+  heading: 'Built with the Field.',
   subheading: '暮らしを支える産業に、最新のテクノロジーを。',
   paragraphs: [
     '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
@@ -63,7 +63,7 @@ export const companyTeaserSection = {
 } as const
 
 export const finalCta = {
-  heading: 'Technology for Essential Industries.',
+  heading: '一緒に整理します。',
   body: '業務やシステムの課題からご相談ください。',
   cta: 'Talk to Amber',
 } as const

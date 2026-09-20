@@ -10,6 +10,8 @@ export type CaseItem = {
   status: CaseStatus
   serviceLabel: string
   tags: string[]
+  /** 匿名のまま示す規模感（数値KPIの捏造はしない） */
+  scaleLabel: string
   challenge: string
   beforeState: string
   support: string
@@ -42,6 +44,7 @@ export const cases: CaseItem[] = [
     status: '開発事例',
     serviceLabel: '業務基盤の再設計・システム化',
     tags: ['設備・保守・点検', 'AI & Software'],
+    scaleLabel: '現場と事務所が分断された点検オペレーション',
     challenge: '点検、報告、修繕、スケジュールなど分断された業務を整理し、現場から事務まで一貫して情報が流れる業務基盤へ。',
     beforeState: '帳票が紙中心で、現場と事務所の情報連携に時間がかかっていた。',
     support: '点検報告とスケジュール管理のデジタル化、業務フローの再設計。',
@@ -71,6 +74,7 @@ export const cases: CaseItem[] = [
     status: '支援実績',
     serviceLabel: '業務変革・活用基盤',
     tags: ['製造・素材・化学', 'Business Transformation'],
+    scaleLabel: '部門横断の大規模組織（研究〜現場）',
     challenge: '業務課題の整理からAI活用テーマの設計、実装・組織展開までを支援。',
     beforeState: '部門ごとにツールや使い方が異なり、推進のノウハウが共有されていなかった。',
     support: '業務棚卸しから内製化プログラムを設計し、部門横断のAI標準化を推進。',
@@ -100,6 +104,7 @@ export const cases: CaseItem[] = [
     status: '開発事例',
     serviceLabel: '業務基盤の統合',
     tags: ['Field Services', 'AI & Software'],
+    scaleLabel: '複数拠点の訪問・現場オペレーション',
     challenge: '予約、顧客、現場、店舗などに分散していた情報を統合し、業務全体を一つの仕組みへ。',
     beforeState: '店舗単位で情報が閉じており、横断での状況把握が難しかった。',
     support: '複数拠点を横断できる業務台帳・運用設計を支援。',
