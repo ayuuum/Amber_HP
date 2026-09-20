@@ -37,6 +37,7 @@ export default function AiSolutionPage() {
         tone="dark"
         eyebrow={aiSolutionPage.hero.eyebrow}
         headingLines={aiSolutionPage.hero.headingLines}
+        subheading={aiSolutionPage.hero.subheading}
         body={aiSolutionPage.hero.body}
         primaryCta={{ label: aiSolutionPage.hero.primaryCta, href: contactHref }}
         secondaryCta={{ label: aiSolutionPage.hero.secondaryCta, href: aiSolutionPage.hero.secondaryHref }}

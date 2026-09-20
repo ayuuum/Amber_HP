@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 
 type PageHeroProps = {
   headingLines: readonly string[]
+  subheading?: string
   body?: string
   eyebrow?: string
   tone?: 'green' | 'blue' | 'amber' | 'dark' | 'offwhite'
@@ -24,6 +25,7 @@ const toneMap = {
 
 export default function PageHero({
   headingLines,
+  subheading,
   body,
   eyebrow,
   tone = 'offwhite',
@@ -74,6 +76,18 @@ export default function PageHero({
               </span>
             ))}
           </h1>
+          {subheading ? (
+            <p
+              className={cn(
+                hasBackgroundImage
+                  ? 'mb-4 max-w-2xl text-lg font-medium leading-relaxed !text-white md:text-xl'
+                  : 'mb-4 max-w-xl text-lg font-medium leading-relaxed',
+                isDark && !hasBackgroundImage ? '!text-white/90' : !hasBackgroundImage ? 'text-sequoia-black' : null
+              )}
+            >
+              {subheading}
+            </p>
+          ) : null}
           {body ? (
             <p
               className={cn(
