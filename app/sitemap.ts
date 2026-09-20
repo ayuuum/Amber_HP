@@ -38,14 +38,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const developmentBlogPosts: MetadataRoute.Sitemap = developmentPosts.map((post) => ({
-    url: `${baseUrl}/service/development/blog/${post.slug}`,
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
   const trainingBlogPosts: MetadataRoute.Sitemap = trainingPosts.map((post) => ({
-    url: `${baseUrl}/service/ai-training/blog/${post.slug}`,
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.6,

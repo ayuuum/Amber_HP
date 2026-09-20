@@ -23,7 +23,13 @@ export default function AdminPage() {
     setIsLoading(true)
     try {
       const categoryParam = selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''
-      const response = await fetch(`/api/admin/articles${categoryParam}`)
+      const response = await fetch(`/api/admin/articles${categoryParam}`, {
+        credentials: 'include',
+      })
+      if (response.status === 401) {
+        router.push('/admin/login')
+        return
+      }
       const data = await response.json()
       setArticles(data.articles || [])
     } catch (error) {
@@ -31,7 +37,7 @@ export default function AdminPage() {
     } finally {
       setIsLoading(false)
     }
-  }, [selectedCategory])
+  }, [selectedCategory, router])
 
   useEffect(() => {
     fetchArticles()
@@ -43,6 +49,7 @@ export default function AdminPage() {
     try {
       const response = await fetch(`/api/admin/articles?slug=${slug}&category=${category}`, {
         method: 'DELETE',
+        credentials: 'include',
       })
 
       if (response.ok) {
@@ -58,8 +65,8 @@ export default function AdminPage() {
 
   const getCategoryName = (category: string) => {
     const names: Record<string, string> = {
-      development: 'AIシステム開発',
-      training: '生成AI活用研修',
+      development: 'AI・業務システム',
+      training: '生成AI研修',
     }
     return names[category] || category
   }
@@ -132,12 +139,12 @@ export default function AdminPage() {
                     {article.title}
                   </h3>
                   <p className="text-sm text-sequoia-black">
-                    /service/{article.category}/blog/{article.slug}
+                    /blog/{article.slug}
                   </p>
                 </div>
                 <div className="flex gap-2 ml-4">
                   <Link
-                    href={`/service/${article.category}/blog/${article.slug}`}
+                    href={`/blog/${article.slug}`}
                     target="_blank"
                     className="p-2 bg-white/30 text-sequoia-black rounded-sm hover:bg-white/50 transition-colors"
                     title="プレビュー"

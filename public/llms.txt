@@ -21,7 +21,7 @@ Tagline: Technology for Essential Industries.
 
 ## Blog
 - Insights index: https://www.amber-inc.com/blog
-- Example article: https://www.amber-inc.com/service/development/blog/ai-donyu-syogai-bosu
+- Example article: https://www.amber-inc.com/blog/ai-change-management-kiso
 - Topics: field service automation, data integration, AI agents, change management, case studies
 
 ## Definitions (short)

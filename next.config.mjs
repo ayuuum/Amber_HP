@@ -22,6 +22,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/industries',
+        destination: '/#industries',
+        permanent: true,
+      },
+      {
+        source: '/insights',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
         source: '/service/development',
         destination: '/service/ai-solution',
         permanent: true,
@@ -39,6 +49,16 @@ const nextConfig = {
       {
         source: '/service/ai-training/blog',
         destination: '/blog?category=training',
+        permanent: true,
+      },
+      {
+        source: '/service/development/blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/service/ai-training/blog/:slug',
+        destination: '/blog/:slug',
         permanent: true,
       },
     ]

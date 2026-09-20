@@ -11,7 +11,7 @@ import { cases, isCompletedCase } from '@/data/cases'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: 'Work | 製造・設備・現場向け AI活用・業務変革事例',
+  title: '製造・設備・現場向け AI活用・業務変革事例',
   description:
     '製造・素材・化学、設備点検、訪問現場サービスなど、暮らしを支える産業でのAI活用・業務基盤の取り組み事例。守秘のため企業名は非公開です。',
   alternates: { canonical: `${siteUrl}/cases` },

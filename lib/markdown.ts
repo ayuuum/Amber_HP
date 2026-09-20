@@ -114,6 +114,17 @@ export function getPostBySlug(
   return toBlogPost(slug, data, content, category)
 }
 
+/** カテゴリ横断で slug から記事を探す（canonical は /blog/[slug]） */
+export function getPostByAnySlug(slug: string): BlogPost | null {
+  return getPostBySlug('development', slug) ?? getPostBySlug('training', slug)
+}
+
+export function getAllPostSlugs(): { slug: string; category: BlogCategory }[] {
+  return (['development', 'training'] as const).flatMap((category) =>
+    getAllPosts(category).map((post) => ({ slug: post.slug, category }))
+  )
+}
+
 export async function getPostContentHtml(content: string): Promise<string> {
   // 記事ヘッダーでタイトルを出すため、本文先頭の H1 は重複表示を避ける
   const withoutLeadingH1 = content.replace(/^\s*#\s+[^\n]+\n+/, '')
@@ -154,13 +165,14 @@ export function getCategoryListPath(category: BlogCategory): string {
   return paths[category]
 }
 
-/** 個別記事のベースパス（末尾スラッシュなし） */
-export function getCategoryPath(category: BlogCategory): string {
-  const paths: Record<BlogCategory, string> = {
-    development: '/service/development/blog',
-    training: '/service/ai-training/blog',
-  }
-  return paths[category]
+/** 個別記事のベースパス（末尾スラッシュなし）。正本は /blog */
+export function getCategoryPath(_category?: BlogCategory): string {
+  return '/blog'
+}
+
+/** 記事の canonical パス */
+export function getPostPath(slug: string, _category?: BlogCategory): string {
+  return `/blog/${slug}`
 }
 
 /** 記事末尾の関連記事用：同カテゴリ最新N件から自分自身を除く */

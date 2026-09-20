@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function AiSolutionPage() {
   const contactHref = buildContactHref('ai-solution', 'ai-solution')
-  const { services, method, process } = aiSolutionPage
+  const { services, process } = aiSolutionPage
 
   return (
     <main className="min-h-screen bg-white">
@@ -161,29 +161,6 @@ export default function AiSolutionPage() {
               </FadeUp>
             ))}
           </ol>
-        </div>
-      </section>
-
-      <section id="method" className="home-section scroll-mt-24 bg-white">
-        <div className="home-container">
-          <FadeUp>
-            <div className="home-card border border-sequoia-black/8 bg-off-white p-6 md:p-10">
-              <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-                <div>
-                  <h2 className="home-h2 mb-5">{method.heading}</h2>
-                  <p className="home-body">{method.body}</p>
-                </div>
-                <ul className="space-y-3 border-t border-sequoia-black/8 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                  {method.features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-sm text-sequoia-black/80">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green/70" aria-hidden />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </FadeUp>
         </div>
       </section>
 

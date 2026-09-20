@@ -23,6 +23,8 @@ const ja = {
     industries: 'Industries',
     work: 'Work',
     company: 'Company',
+    services: 'Services',
+    blog: 'Blog',
   },
   offerings: {
     adoption: {
@@ -43,8 +45,8 @@ const ja = {
   home: {
     hero: {
       imageAlt: '霧に包まれた森と山並み',
-      heading: 'Technology for Essential Industries.',
-      subheading: '暮らしを支える産業に、最新のテクノロジーを。',
+      heading: '暮らしを支える産業に、最新のテクノロジーを。',
+      subheading: 'Technology for Essential Industries.',
       body: 'Amberは、製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。',
       primaryCta: 'Our Work',
       secondaryCta: 'Contact',
@@ -141,8 +143,8 @@ const ja = {
       },
     },
     company: {
-      heading: 'Built with the Field.',
-      subheading: '暮らしを支える産業に、最新のテクノロジーを。',
+      heading: '暮らしを支える産業に、最新のテクノロジーを。',
+      subheading: '製造・設備・建設・物流の現場から、実装まで伴走します。',
       paragraphs: [
         '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
         'その現場には、高い専門性と長年蓄積された知識がある一方、紙や表計算、分断されたシステム、属人的な業務も数多く残っています。',
@@ -181,6 +183,8 @@ const en = {
     industries: 'Industries',
     work: 'Work',
     company: 'Company',
+    services: 'Services',
+    blog: 'Blog',
   },
   offerings: {
     adoption: {
@@ -202,8 +206,8 @@ const en = {
   home: {
     hero: {
       imageAlt: 'Mist over a forested mountain landscape',
-      heading: 'Technology for Essential Industries.',
-      subheading: 'Bringing modern technology to the industries that sustain everyday life.',
+      heading: 'Bringing modern technology to the industries that sustain everyday life.',
+      subheading: 'Technology for Essential Industries.',
       body: 'Amber implements AI and software to transform manufacturing, facilities, construction, logistics, and other industries that keep society running.',
       primaryCta: 'Our Work',
       secondaryCta: 'Contact',
@@ -306,8 +310,8 @@ const en = {
       },
     },
     company: {
-      heading: 'Built with the Field.',
-      subheading: 'Bringing modern technology to the industries that sustain everyday life.',
+      heading: 'Technology for the industries that sustain everyday life.',
+      subheading: 'From the field through implementation—in manufacturing, facilities, construction, and logistics.',
       paragraphs: [
         'Manufacturing, construction, facilities, logistics, and many other industries keep daily life in Japan running.',
         'Those workplaces hold deep expertise and long-accumulated knowledge—yet paper, spreadsheets, fragmented systems, and tribal processes remain common.',

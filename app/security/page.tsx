@@ -78,9 +78,16 @@ export default function SecurityPage() {
               </p>
               <div className="mt-4 rounded-2xl border border-sequoia-black/8 bg-off-white p-6">
                 <p className="mb-2 font-medium">{companyInfo.legalName}</p>
-                <p>{companyInfo.fullAddress}</p>
-                <p>メール: {companyInfo.email}</p>
-                <p>電話: {companyInfo.phone}</p>
+                <p className="mb-4">{companyInfo.fullAddress}</p>
+                <p className="mb-3 text-sm leading-relaxed text-sequoia-black/80">
+                  セキュリティやデータの取り扱いに関するご連絡は、お問い合わせフォームよりお願いいたします。
+                </p>
+                <Link
+                  href="/contact?source=security"
+                  className="inline-flex min-h-11 items-center text-sm font-medium text-brand-green hover:underline"
+                >
+                  お問い合わせフォームへ
+                </Link>
               </div>
               <p className="mt-4 text-sm text-secondary">
                 関連ページ:{' '}

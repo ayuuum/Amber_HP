@@ -165,7 +165,6 @@ export const companyPage = {
       { label: '事業内容', value: companyInfo.businessDescription },
       { label: '取引銀行', value: companyInfo.banks },
       { label: '所在地', value: companyInfo.fullAddress },
-      { label: '電話', value: companyInfo.phone },
       {
         label: 'お問い合わせ',
         value: 'フォームからご連絡ください',

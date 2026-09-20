@@ -11,8 +11,9 @@ import { faqCategories } from '@/lib/faq-data'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
-  title: 'よくあるご質問',
-  description: 'AmberのAI活用支援、研修、開発、契約・費用、セキュリティに関するよくあるご質問。',
+  title: 'よくある質問 | 生成AI導入・業務システム開発',
+  description:
+    'Amberの生成AI導入、業務変革、AI・業務システム開発、データ連携、契約・費用、セキュリティに関するよくある質問。',
   alternates: { canonical: `${siteUrl}/faq` },
 }
 

@@ -2,10 +2,8 @@
 
 import Link from 'next/link'
 import { buildContactHref } from '@/lib/contact'
-import { offerings } from '@/data/offerings'
 import { siteShell } from '@/data/navigation'
 import { useMessages } from '@/components/i18n/LocaleProvider'
-import LanguageSwitcher from '@/components/i18n/LanguageSwitcher'
 
 export default function Footer() {
   const messages = useMessages()
@@ -17,33 +15,33 @@ export default function Footer() {
   return (
     <footer className="border-t border-sequoia-black/8 bg-off-white">
       <div className="home-container py-14 md:py-16">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
             <Link href="/" className="inline-flex" aria-label={messages.common.companyName}>
               <span className="font-logo text-[1.75rem] leading-none text-brand-green">Amber</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">{messages.common.brandTagline}</p>
-            <div className="mt-5">
-              <LanguageSwitcher />
-            </div>
+            <p className="mt-5 text-xs text-secondary">
+              Products:{' '}
+              <a
+                href={siteShell.pineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-green hover:underline"
+              >
+                Pine
+              </a>
+            </p>
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">{messages.common.whatWeDo}</p>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">Explore</p>
             <ul className="space-y-0">
-              {offerings.map((item) => (
-                <li key={item.id}>
-                  <Link href={item.href} className={linkClass}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">{messages.nav.company}</p>
-            <ul className="space-y-0">
+              <li>
+                <Link href="/service/ai-solution" className={linkClass}>
+                  Services
+                </Link>
+              </li>
               <li>
                 <Link href="/#industries" className={linkClass}>
                   {messages.nav.industries}
@@ -55,18 +53,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/company" className={linkClass}>
-                  {messages.nav.company}
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog" className={linkClass}>
-                  Insights
+                  Blog
                 </Link>
               </li>
               <li>
                 <Link href="/resources" className={linkClass}>
-                  無料資料
+                  Free Resources
                 </Link>
               </li>
               <li>
@@ -77,6 +70,22 @@ export default function Footer() {
               <li>
                 <Link href={contactHref} className={linkClass}>
                   {messages.common.contact}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">{messages.nav.company}</p>
+            <ul className="space-y-0">
+              <li>
+                <Link href="/company" className={linkClass}>
+                  {messages.nav.company}
+                </Link>
+              </li>
+              <li>
+                <Link href="/company#representative" className={linkClass}>
+                  Representative
                 </Link>
               </li>
             </ul>
@@ -97,21 +106,13 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/legal/tokushoho" className={linkClass}>
-                  {messages.common.tokushoho}
+                  特定商取引法に基づく表記
                 </Link>
               </li>
               <li>
                 <Link href="/security" className={linkClass}>
                   {messages.common.security}
                 </Link>
-              </li>
-            </ul>
-            <p className="mb-3 mt-8 text-xs font-medium tracking-wide text-secondary">{messages.common.products}</p>
-            <ul className="space-y-0">
-              <li>
-                <a href={siteShell.pineUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  Pine
-                </a>
               </li>
             </ul>
           </div>

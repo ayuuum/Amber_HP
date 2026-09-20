@@ -6,7 +6,7 @@ export const claudeCodeData: ToolLPData = {
   toolBadge: 'Anthropic',
   tagline: '自然言語の指示で、ファイル操作から反復処理まで任せる',
   heroDescription:
-    'AIエージェント「Claude Code」をビジネス職が業務で活用できる法人研修です。提案書・調査レポート・データ整理・社内ツール作成まで、プログラミングの学習やCLI習得を前提にせず、自然言語の指示で進められる状態を2コース×10時間で実現します。',
+    'AIエージェント「Claude Code」をビジネス職が業務で活用できる法人研修です。提案書・調査レポート・データ整理・社内ツール作成まで、プログラミング学習やCLI習得を前提にせず、自然言語で業務フロー設計・エージェント活用を進められる状態を2コース×10時間で実現します。',
   envLabel: 'Claude Code / Anthropic',
 
   problems: [
