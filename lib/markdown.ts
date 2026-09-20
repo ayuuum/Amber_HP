@@ -18,6 +18,33 @@ export type BlogPost = {
   keywords: string[]
   content: string
   excerpt?: string
+  /** カバー画像パス（例: /images/brand/consulting-hero.png） */
+  cover?: string
+  coverAlt?: string
+}
+
+function toBlogPost(
+  slug: string,
+  data: Record<string, unknown>,
+  content: string,
+  fallbackCategory?: BlogCategory
+): BlogPost {
+  const category = (data.category as BlogCategory) || fallbackCategory || 'development'
+  return {
+    slug,
+    title: (data.title as string) || '',
+    description: (data.description as string) || '',
+    date: (data.date as string) || '',
+    category,
+    keywords: (data.keywords as string[]) || [],
+    content,
+    excerpt: (data.excerpt as string) || content.substring(0, 150) + '...',
+    cover: typeof data.cover === 'string' && data.cover.trim() ? data.cover.trim() : undefined,
+    coverAlt:
+      typeof data.coverAlt === 'string' && data.coverAlt.trim()
+        ? data.coverAlt.trim()
+        : undefined,
+  }
 }
 
 export function getAllPosts(category?: BlogCategory): BlogPost[] {
@@ -37,17 +64,7 @@ export function getAllPosts(category?: BlogCategory): BlogPost[] {
       const fullPath = path.join(categoryDir, fileName)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data, content } = matter(fileContents)
-
-      return {
-        slug,
-        title: data.title || '',
-        description: data.description || '',
-        date: data.date || '',
-        category: data.category || category || 'development',
-        keywords: data.keywords || [],
-        content,
-        excerpt: data.excerpt || content.substring(0, 150) + '...',
-      } as BlogPost
+      return toBlogPost(slug, data, content, category)
     })
 
   return allPostsData.sort((a, b) => {
@@ -71,17 +88,7 @@ export function getPostBySlug(
 
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
-
-  return {
-    slug,
-    title: data.title || '',
-    description: data.description || '',
-    date: data.date || '',
-    category: data.category || category,
-    keywords: data.keywords || [],
-    content,
-    excerpt: data.excerpt || content.substring(0, 150) + '...',
-  } as BlogPost
+  return toBlogPost(slug, data, content, category)
 }
 
 export async function getPostContentHtml(content: string): Promise<string> {
@@ -91,6 +98,16 @@ export async function getPostContentHtml(content: string): Promise<string> {
     .process(content)
 
   return processedContent.toString()
+}
+
+/** 日本語記事向けの粗い読了時間（分）。400字/分想定。 */
+export function getReadingTimeMinutes(content: string): number {
+  const text = content
+    .replace(/^---[\s\S]*?---/, '')
+    .replace(/[#>*`\[\]()_-]/g, '')
+    .replace(/\s+/g, '')
+  const chars = text.length
+  return Math.max(1, Math.ceil(chars / 400))
 }
 
 export function getCategoryName(category: BlogCategory): string {

@@ -166,18 +166,10 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
       ref={sectionRef}
       className={
         asPage
-          ? 'section-forest relative overflow-hidden px-5 pb-14 pt-24 md:px-6 md:pb-20 md:pt-32'
-          : 'section-forest relative overflow-hidden border-t border-sequoia-black/10 px-6 py-24 md:py-32'
+          ? 'relative overflow-hidden bg-off-white px-5 pb-14 pt-24 md:px-6 md:pb-20 md:pt-32'
+          : 'relative overflow-hidden border-t border-sequoia-black/10 bg-white px-6 py-24 md:py-32'
       }
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-40"
-        style={{
-          background:
-            'linear-gradient(to right, transparent 0%, rgba(245,245,244,0.35) 50%, transparent 100%)',
-        }}
-      />
       <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-16">
         <motion.div
           initial={false}
@@ -185,32 +177,32 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
           transition={editorialTransition()}
           className="order-2 lg:sticky lg:top-28 lg:order-1"
         >
-          <p className="mb-4 text-xs font-medium tracking-[0.12em] text-white/55">お問い合わせ</p>
+          <p className="home-label mb-4 text-brand-green">お問い合わせ</p>
           {asPage ? (
-            <h1 className="section-heading-invert mb-5 text-[1.75rem] md:text-[2.75rem]">
+            <h1 className="home-h2 mb-5 text-[1.75rem] md:text-[2.75rem]">
               一緒に整理します。
             </h1>
           ) : (
-            <h2 className="section-heading-invert mb-5 text-[1.75rem] md:text-[2.75rem]">
+            <h2 className="home-h2 mb-5 text-[1.75rem] md:text-[2.75rem]">
               一緒に整理します。
             </h2>
           )}
-          <p className="max-w-xl text-sm leading-relaxed text-on-dark-muted md:text-base">
+          <p className="home-body max-w-xl">
             内容が固まっていなくても構いません。
           </p>
-          <div className="mt-8 space-y-3 border-t border-white/15 pt-6">
+          <div className="mt-8 space-y-3 border-t border-sequoia-black/10 pt-6">
             {['Business Transformation', 'AI & Software / Data & Integration', '提携・採用・その他'].map((item) => (
-              <div key={item} className="flex items-center gap-3 text-sm font-medium text-on-dark-muted">
-                <span className="h-px w-8 bg-white/30" aria-hidden />
+              <div key={item} className="flex items-center gap-3 text-sm font-medium text-sequoia-black/75">
+                <span className="h-px w-8 bg-sequoia-black/15" aria-hidden />
                 <span>{item}</span>
               </div>
             ))}
           </div>
-          <p className="mt-8 text-sm text-white/55">
+          <p className="mt-8 text-sm text-secondary">
             メールでも受け付けています:{' '}
             <a
               href="mailto:ayumu.matsui@amber-inc.com"
-              className="text-white underline underline-offset-4 transition-colors hover:text-white/85"
+              className="text-sequoia-black underline underline-offset-4 transition-colors hover:text-brand-green"
             >
               ayumu.matsui@amber-inc.com
             </a>
@@ -223,7 +215,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
           transition={editorialTransition(STAGGER_EDITORIAL * 2)}
           onSubmit={handleSubmit}
           ref={formRef}
-          className={`order-1 rounded-sm border border-white/10 bg-[var(--color-cream)] p-5 text-sequoia-black md:p-8 lg:order-2${asPage ? ' mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none' : ''}`}
+          className={`order-1 home-card border border-sequoia-black/8 bg-white p-5 text-sequoia-black md:p-8 lg:order-2${asPage ? ' mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none' : ''}`}
         >
           <div className="mb-8 flex items-center justify-between border-b border-sequoia-black/10 pb-5">
             <div>
@@ -327,7 +319,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                     onClick={nextStep}
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="btn-primary w-full"
+                    className="btn-pill-primary-solid inline-flex w-full gap-2"
                   >
                     次へ
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
@@ -477,7 +469,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                       onClick={prevStep}
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="btn-secondary flex-1"
+                      className="btn-pill-outline inline-flex flex-1 gap-2"
                     >
                       <ArrowLeft className="w-5 h-5" aria-hidden="true" />
                       戻る
@@ -487,7 +479,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="btn-primary flex-1 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
+                      className="btn-pill-primary-solid inline-flex flex-1 gap-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                     >
                       {isSubmitting ? '送信中…' : '送信する'}
                     </motion.button>

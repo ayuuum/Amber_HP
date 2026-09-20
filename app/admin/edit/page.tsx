@@ -19,6 +19,8 @@ export default function EditArticlePage() {
     category: 'development' as 'development' | 'training',
     keywords: [] as string[],
     content: '',
+    cover: '',
+    coverAlt: '',
   })
   const [keywordInput, setKeywordInput] = useState('')
   const [isLoading, setIsLoading] = useState(true)
@@ -41,6 +43,8 @@ export default function EditArticlePage() {
             category: data.article.category,
             keywords: data.article.keywords || [],
             content: data.article.content,
+            cover: data.article.cover || '',
+            coverAlt: data.article.coverAlt || '',
           })
         }
       } catch (error) {
@@ -206,6 +210,37 @@ export default function EditArticlePage() {
             rows={3}
             className="w-full px-4 py-3 border border-sequoia-black rounded-sm bg-white text-sequoia-black focus:outline-none focus:border-sequoia-black resize-none"
           />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="cover" className="block text-sequoia-black font-semibold mb-2">
+              カバー画像パス
+            </label>
+            <input
+              type="text"
+              id="cover"
+              name="cover"
+              value={formData.cover}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-sequoia-black rounded-sm bg-white text-sequoia-black focus:outline-none focus:border-sequoia-black"
+              placeholder="/images/brand/consulting-hero.png"
+            />
+          </div>
+          <div>
+            <label htmlFor="coverAlt" className="block text-sequoia-black font-semibold mb-2">
+              カバー画像の説明
+            </label>
+            <input
+              type="text"
+              id="coverAlt"
+              name="coverAlt"
+              value={formData.coverAlt}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-sequoia-black rounded-sm bg-white text-sequoia-black focus:outline-none focus:border-sequoia-black"
+              placeholder="何が写っているか"
+            />
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">

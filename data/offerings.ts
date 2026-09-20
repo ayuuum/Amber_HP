@@ -10,13 +10,13 @@ export const offerings = [
     shortTitle: '業務変革・業務設計',
     navDescription: '業務を理解し、AIとソフトウェア前提で再設計する',
     description:
-      '現場の業務、システム、データ、課題を整理し、AIとソフトウェアを前提に業務の流れそのものを再設計します。',
+      '現場の業務・制約を起点に、AIとソフトウェア前提で業務の流れを再設計し、着手テーマと推進体制まで整えます。',
     points: [
-      '業務棚卸し・課題整理',
+      '業務棚卸し・課題の可視化',
       '業務フローの再設計',
-      '活用テーマの選定',
-      '推進体制の設計',
-      '組織展開の計画',
+      '着手テーマの選定',
+      '推進体制・役割の設計',
+      '定着・組織展開の計画',
     ],
     href: '/service/ai-solution#adoption',
     tone: 'green' as const,
@@ -29,13 +29,13 @@ export const offerings = [
     shortTitle: 'AI・業務システムの設計開発',
     navDescription: 'AIエージェントや業務システムを設計・開発する',
     description:
-      'AIエージェントや業務システム、既存システム連携を設計・開発し、現場の業務に組み込みます。',
+      '現場で使われるAIエージェントや業務アプリケーションを設計・開発し、既存の業務フローへ組み込みます。',
     points: [
-      'AIエージェント開発',
-      '業務システム開発',
-      'ナレッジ・検索基盤',
-      'ワークフロー自動化',
-      '既存システム連携',
+      '業務実行を支援するAIエージェント',
+      '現場向け業務アプリケーション',
+      'ナレッジ・検索の仕組み',
+      '業務プロセスの自動化',
+      '既存フローへの組み込み設計',
     ],
     href: '/service/ai-solution#build',
     tone: 'amber' as const,
@@ -48,11 +48,11 @@ export const offerings = [
     shortTitle: 'データ・既存システム連携',
     navDescription: '分断されたデータとシステムをつなぐ',
     description:
-      '分断されたデータ・システムを連携し、業務全体がつながる基盤をつくります。',
+      '分断されたデータとシステムをつなぎ、業務全体がつながる状態と、改善が回る仕組みをつくります。',
     points: [
-      'データ連携設計',
-      'API・既存システム接続',
-      '情報の横断管理',
+      'データ連携の設計・実装',
+      '既存システム・API接続',
+      '情報の横断的な見える化',
       '利用状況の可視化',
       '改善サイクルの設計',
     ],
@@ -64,39 +64,39 @@ export const offerings = [
 
 export type OfferingId = (typeof offerings)[number]['id']
 
-/** 下層・SEO用。TOPでは前面に出さない。 */
+/** 下層・SEO用。TOPでは前面に出さない。実装するプラットフォーム面。 */
 export const environments = [
   {
     id: 'copilot',
-    title: 'Microsoft 365 Copilot',
+    title: 'Microsoft 365',
     items: [
-      'Copilot活用研修',
-      'Copilot Agent構築',
-      'SharePointや社内データの活用',
-      'Power Automate・Power Appsとの連携',
-      '大規模導入・全社展開支援',
+      'Microsoft 365 Copilot',
+      'Copilot Studio / Agent',
+      'SharePoint・社内データ連携',
+      'Power Automate / Power Apps',
+      '権限設計・全社展開',
     ],
   },
   {
     id: 'gemini',
-    title: 'Google Workspace with Gemini',
+    title: 'Google Workspace',
     items: [
-      'Gemini活用研修',
-      'Gmail、Docs、Sheets、Slidesでの業務活用',
-      'NotebookLM活用',
-      'Gems・業務アシスタントの構築',
-      'Apps ScriptやGoogle Cloudとの連携',
+      'Gemini for Google Workspace',
+      'Gmail / Docs / Sheets / Slides',
+      'NotebookLM',
+      'Gems・業務アシスタント',
+      'Apps Script / Google Cloud',
     ],
   },
   {
     id: 'custom',
-    title: 'オーダーメイド',
+    title: 'Custom Stack',
     items: [
-      '独自AIエージェント',
-      'RAG・社内検索',
-      '業務システム開発',
-      'API・既存データとの連携',
-      'MicrosoftとGoogleをまたぐ業務設計',
+      '独自AIエージェント基盤',
+      'RAG・社内検索基盤',
+      '既存業務システムとの接続',
+      '社内API・データ基盤',
+      'Microsoft × Google 横断環境',
     ],
   },
 ] as const

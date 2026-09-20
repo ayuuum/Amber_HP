@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import {
   getPostBySlug,
   getAllPosts,
@@ -15,6 +14,7 @@ import BlogContent from '@/components/BlogContent'
 import JsonLd from '@/components/JsonLd'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import InquiryCTA from '@/components/blog/InquiryCTA'
+import BlogArticleHeader, { BlogBackLink } from '@/components/blog/BlogArticleHeader'
 import { siteUrl } from '@/lib/site-metadata'
 
 type Props = {
@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const imageUrl = '/opengraph-image'
+  const imageUrl = post.cover || '/opengraph-image'
+  const imageAlt = post.coverAlt || post.title
 
   return {
     title: `${post.title} | ${getCategoryName('training')} ブログ | 株式会社Amber`,
@@ -54,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: '株式会社Amber',
+          alt: imageAlt,
         },
       ],
     },
@@ -82,6 +83,11 @@ export default async function TrainingBlogPostPage({ params }: Props) {
   const canonicalUrl = `${siteUrl}${getCategoryPath('training')}/${post.slug}`
   const blogIndexUrl = `${siteUrl}${getCategoryPath('training')}`
   const serviceUrl = `${siteUrl}/service/ai-solution`
+  const ogImage = post.cover
+    ? post.cover.startsWith('http')
+      ? post.cover
+      : `${siteUrl}${post.cover}`
+    : `${siteUrl}/opengraph-image`
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -124,7 +130,7 @@ export default async function TrainingBlogPostPage({ params }: Props) {
         dateModified: post.date,
         inLanguage: 'ja-JP',
         keywords: post.keywords,
-        image: [`${siteUrl}/opengraph-image`],
+        image: [ogImage],
         author: {
           '@type': 'Organization',
           name: '株式会社Amber',
@@ -154,30 +160,9 @@ export default async function TrainingBlogPostPage({ params }: Props) {
       <Header />
       <main className="min-h-screen bg-white px-5 pb-24 pt-28 md:px-8">
         <div className="mx-auto max-w-[800px]">
-          <div className="mb-8">
-            <Link href="/blog" className="text-sm text-brand-green hover:underline">
-              ← AI活用の知見に戻る
-            </Link>
-          </div>
-
+          <BlogBackLink />
           <article>
-            <header className="mb-10 border-b border-sequoia-black/8 pb-8">
-              <div className="mb-4 flex flex-wrap gap-3 text-sm text-secondary">
-                <span>{getCategoryName('training')}</span>
-                <time dateTime={post.date}>
-                  {new Date(post.date).toLocaleDateString('ja-JP', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </time>
-              </div>
-              <h1 className="home-h2 mb-4 text-[1.75rem] md:text-[2.25rem]">{post.title}</h1>
-              {post.description && (
-                <p className="text-base leading-relaxed text-secondary md:text-lg">{post.description}</p>
-              )}
-            </header>
-
+            <BlogArticleHeader post={post} category="training" />
             <BlogContent html={contentHtml} />
           </article>
 

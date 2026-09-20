@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { getAllPosts, getCategoryName, getCategoryPath } from '@/lib/markdown'
+import ArticleCard from '@/components/ui/ArticleCard'
+import { getAllPosts } from '@/lib/markdown'
 import type { BlogPost, BlogCategory } from '@/lib/markdown'
-import { excerptPlainText } from '@/lib/plain-text'
 
 function mergeLatestPosts(limit: number): { post: BlogPost; category: BlogCategory }[] {
   const development = getAllPosts('development')
@@ -23,55 +23,43 @@ export default function HomeNewsPreview() {
     return null
   }
 
+  const [featured, ...rest] = items
+
   return (
     <section
-      className="section-pad border-t border-sequoia-black/10 bg-color-bg"
-      aria-labelledby="home-news-heading"
+      id="insights"
+      className="home-section scroll-mt-24 bg-[#F3F4F6]"
+      aria-labelledby="home-insights-heading"
     >
-      <div className="mx-auto max-w-6xl">
-        <div className="section-header mb-12 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 id="home-news-heading" className="section-heading">
-              最新記事
+      <div className="home-container">
+        <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <h2 id="home-insights-heading" className="home-h2 mb-5">
+              Insights.
             </h2>
-            <p className="section-subheading mt-3 !mx-0 !max-w-none text-left">
-              知見とアップデートを公開しています。
-            </p>
+            <p className="home-body max-w-2xl">現場で使える知見とアップデート。</p>
           </div>
-          <Link href="/blog" className="text-link self-start md:self-auto">
+          <Link
+            href="/blog"
+            className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-brand-green transition-colors hover:underline"
+          >
             記事一覧を見る
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
         </div>
-        <ul className="grid gap-4 md:gap-5">
-          {items.map(({ post, category }) => (
-            <li key={`${category}-${post.slug}`}>
-              <Link
-                href={`${getCategoryPath(category)}/${post.slug}`}
-                className="group surface-card interactive-card grid gap-4 px-5 py-5 md:grid-cols-[180px_1fr] md:px-6"
-              >
-                <span className="text-caption flex flex-col gap-1 font-medium">
-                  <span>{getCategoryName(category)}</span>
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString('ja-JP', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
-                </span>
-                <span className="flex min-w-0 flex-col gap-2">
-                  <span className="heading-h3 line-clamp-2 transition-colors group-hover:text-sequoia-green">
-                    {post.title}
-                  </span>
-                  <span className="text-body line-clamp-1 text-sequoia-black/75">
-                    {excerptPlainText(post.excerpt || post.description || '')}
-                  </span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+
+        <div className="space-y-5 md:space-y-6">
+          <ArticleCard post={featured.post} category={featured.category} featured />
+          {rest.length > 0 ? (
+            <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10 bg-white">
+              {rest.map(({ post, category }) => (
+                <li key={`${category}-${post.slug}`}>
+                  <ArticleCard post={post} category={category} />
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
       </div>
     </section>
   )

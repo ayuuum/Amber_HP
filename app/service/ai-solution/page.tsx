@@ -34,7 +34,7 @@ export default function AiSolutionPage() {
     <main className="min-h-screen bg-white">
       <Header />
       <PageHero
-        tone="green"
+        tone="dark"
         eyebrow={aiSolutionPage.hero.eyebrow}
         headingLines={aiSolutionPage.hero.headingLines}
         body={aiSolutionPage.hero.body}
@@ -60,57 +60,48 @@ export default function AiSolutionPage() {
         </div>
       </section>
 
-      <section id="services" className="home-section scroll-mt-24 bg-off-white">
+      <section id="services" className="home-section scroll-mt-24 bg-[#F3F4F6]">
         <div className="home-container">
           <FadeUp>
             <SectionHeader heading={services.headingLines} lead={services.lead} />
           </FadeUp>
 
-          <FadeUp className="mb-8">
-            <ol className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-              {services.items.map((item, index) => (
-                <li key={item.id} className="flex items-center gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-sequoia-black/10 bg-white px-3.5 py-2 text-sm text-sequoia-black">
-                    <span className="text-xs font-medium tracking-wide text-brand-green">{item.number}</span>
-                    <span className="font-medium">{item.shortTitle}</span>
-                  </span>
-                  {index < services.items.length - 1 ? (
-                    <span className="hidden text-brand-green/50 sm:inline" aria-hidden>
-                      →
-                    </span>
-                  ) : null}
-                </li>
-              ))}
-            </ol>
-          </FadeUp>
-
-          <div className="space-y-5">
+          <ol className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10 bg-white">
             {services.items.map((item, i) => (
-              <FadeUp key={item.id} delay={0.04 * i}>
-                <article
-                  id={item.id}
-                  className="home-card relative scroll-mt-28 border border-sequoia-black/8 bg-white p-6 md:p-8"
-                >
-                  {/* 旧アンカー互換 */}
-                  {item.legacyIds.map((legacyId) => (
-                    <span key={legacyId} id={legacyId} className="absolute -top-24" aria-hidden />
-                  ))}
-                  <p className="mb-3 text-xs font-medium tracking-[0.12em] text-brand-green">{item.number}</p>
-                  <h3 className="home-h3 mb-3">{item.title}</h3>
-                  <p className="mb-6 max-w-3xl text-sm leading-relaxed text-sequoia-black/75 md:text-base">
-                    {item.description}
-                  </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {item.points.map((point) => (
-                      <li key={point} className="rounded-full bg-off-white px-3 py-1.5 text-xs text-sequoia-black/80 md:text-sm">
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </FadeUp>
+              <li key={item.id} id={item.id} className="relative scroll-mt-28">
+                {item.legacyIds.map((legacyId) => (
+                  <span key={legacyId} id={legacyId} className="absolute -top-24" aria-hidden />
+                ))}
+                <FadeUp delay={0.04 * i}>
+                  <div className="grid gap-8 px-5 py-10 md:grid-cols-[minmax(0,0.28fr)_minmax(0,0.72fr)] md:gap-12 md:px-10 md:py-14 lg:gap-16">
+                    <div>
+                      <p className="mb-3 text-[clamp(2.5rem,5vw,3.5rem)] font-medium leading-none tracking-tight text-brand-green/80">
+                        {item.number}
+                      </p>
+                      <p className="text-sm font-medium text-sequoia-black/50">{item.title}</p>
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="mb-4 text-xl font-medium text-sequoia-black md:text-2xl">{item.shortTitle}</h3>
+                      <p className="mb-8 max-w-2xl text-base leading-relaxed text-secondary md:text-lg">
+                        {item.description}
+                      </p>
+                      <ul className="space-y-3 border-t border-sequoia-black/10 pt-6">
+                        {item.points.map((point) => (
+                          <li
+                            key={point}
+                            className="flex gap-3 text-sm leading-relaxed text-sequoia-black/80 md:text-base"
+                          >
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-green" aria-hidden />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </FadeUp>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -122,15 +113,16 @@ export default function AiSolutionPage() {
               lead={aiSolutionPage.environments.lead}
             />
           </FadeUp>
-          <ul className="grid gap-5 md:grid-cols-3">
+          <ul className="grid gap-10 border-t border-sequoia-black/10 pt-10 md:grid-cols-3 md:gap-8">
             {environments.map((env, i) => (
               <FadeUp key={env.id} delay={0.04 * i}>
-                <li className="home-card h-full border border-sequoia-black/8 bg-off-white p-6">
-                  <h3 className="home-h3 mb-4 break-keep text-balance">{env.title}</h3>
-                  <ul className="space-y-2">
+                <li className="min-w-0">
+                  <h3 className="mb-4 break-keep text-balance text-lg font-medium text-sequoia-black">
+                    {env.title}
+                  </h3>
+                  <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10">
                     {env.items.map((item) => (
-                      <li key={item} className="flex gap-2 text-sm leading-relaxed text-sequoia-black/75">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-green/60" aria-hidden />
+                      <li key={item} className="py-3 text-sm leading-relaxed text-sequoia-black/80">
                         {item}
                       </li>
                     ))}

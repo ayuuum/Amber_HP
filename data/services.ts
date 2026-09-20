@@ -30,8 +30,8 @@ export const aiSolutionPage = {
     items: offerings,
   },
   environments: {
-    heading: '対応できる業務環境',
-    lead: '必要に応じて、主要プラットフォームと既存システムへの対応も行います。',
+    heading: 'Platforms we work with.',
+    lead: 'Microsoft、Google、および既存環境に合わせ、業務が動く場所で実装します。',
   },
   process: {
     headingLines: ['共通の進め方'] as const,

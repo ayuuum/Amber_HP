@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { AlertTriangle, CircleSlash, PenLine, GraduationCap, Cog, ArrowRight } from 'lucide-react'
 import type { ToolLPData } from './types'
@@ -10,6 +11,12 @@ import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
 import ContactCTA from '@/components/ui/ContactCTA'
 
 const problemIcons = [AlertTriangle, CircleSlash, PenLine]
+const heroImages: Record<string, string> = {
+  copilot: '/images/brand/consulting-hero.png',
+  chatgpt: '/images/brand/hero-figma.jpg',
+  gemini: '/images/brand/domain-knowledge.jpg',
+  'claude-code': '/images/brand/domain-documents.jpg',
+}
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -26,8 +33,22 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
     <main className="min-h-screen bg-white" style={{'--lp-accent': data.accentRgb} as React.CSSProperties}>
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-off-white pt-28 pb-16 md:pt-32 md:pb-20">
-        <div className="home-container">
+      <section className="relative flex min-h-[70vh] items-end overflow-hidden pt-28 pb-16 md:min-h-[720px] md:items-center md:pb-20 md:pt-32">
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src={heroImages[data.slug] ?? '/images/brand/hero-figma.jpg'}
+            alt={data.toolName}
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0.38)_55%,rgba(0,0,0,0.5)_100%),linear-gradient(0deg,rgba(16,51,45,0.55)_0%,rgba(16,51,45,0.18)_45%,rgba(16,51,45,0.42)_100%)]"
+            aria-hidden
+          />
+        </div>
+        <div className="home-container relative z-10">
           <PageBreadcrumbs
             items={[
               { label: 'トップ', href: '/' },
@@ -42,41 +63,41 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             transition={editorialTransition()}
             className="max-w-3xl"
           >
-            <p className="home-label mb-4 text-brand-green">
+            <p className="mb-4 text-sm font-medium tracking-[0.08em] text-white md:text-base">
               研修サービス · {data.toolBadge}
             </p>
 
-            <h1 className="home-h2 mb-4">
+            <h1 className="home-hero-title mb-5 md:mb-6">
               {data.toolName}
-              <span className="mt-1 block text-brand-green">法人研修</span>
+              <span className="mt-1 block !text-white">法人研修</span>
             </h1>
 
-            <p className="mb-3 text-base font-medium text-brand-green md:text-lg">
+            <p className="mb-4 max-w-2xl text-lg font-medium leading-relaxed !text-white md:text-xl">
               {data.tagline}
             </p>
-            <p className="max-w-2xl text-base leading-relaxed text-secondary md:text-lg">
+            <p className="max-w-2xl text-base leading-[1.9] !text-white md:text-lg">
               {data.heroDescription}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Link href={contactHref} className="btn-pill-primary-solid inline-flex items-center gap-2">
+              <Link href={contactHref} className="btn-pill-on-dark inline-flex items-center gap-2">
                 無料相談・資料請求
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link href="/service/ai-solution" className="btn-pill-outline inline-flex items-center gap-2">
+              <Link href="/service/ai-solution" className="btn-pill-ghost-on-dark inline-flex items-center gap-2">
                 研修の全体像を見る
               </Link>
             </div>
 
-            <div className="mt-10 max-w-3xl border-t border-sequoia-black/8 pt-6">
-              <p className="mb-3 text-xs tracking-wider text-secondary">
+            <div className="mt-10 max-w-3xl border-t border-white/20 pt-6">
+              <p className="mb-3 text-xs tracking-wider text-white/65">
                 相談しやすいテーマ
               </p>
               <div className="flex flex-wrap gap-2">
                 {practicalScenes.map((scene) => (
                   <span
                     key={scene}
-                    className="rounded-full border border-brand-green/20 bg-light-green px-3 py-1.5 text-xs text-sequoia-black/80"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-white/90 backdrop-blur-sm"
                   >
                     {scene}
                   </span>

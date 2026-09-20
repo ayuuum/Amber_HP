@@ -31,7 +31,13 @@ export default function FaqPage() {
     <main className="min-h-screen bg-white">
       <JsonLd data={faqSchema} />
       <Header />
-      <PageHero tone="offwhite" eyebrow="FAQ" headingLines={['よくあるご質問']} body="支援内容、研修、開発、費用、セキュリティについてまとめました。" />
+      <PageHero
+        tone="dark"
+        eyebrow="FAQ"
+        headingLines={['よくあるご質問']}
+        body="支援内容、研修、開発、費用、セキュリティについてまとめました。"
+        image={{ src: '/images/brand/domain-knowledge.jpg', alt: '知識とドキュメントを表すイメージ' }}
+      />
       <section className="home-section bg-white pt-0 md:pt-0">
         <div className="home-container max-w-3xl">
           <PageBreadcrumbs items={[{ label: 'トップ', href: '/' }, { label: 'よくあるご質問' }]} />

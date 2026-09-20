@@ -4,6 +4,8 @@ description: "（記事の要約：120-160文字。検索結果に表示され�
 date: "YYYY-MM-DD"
 category: "development"
 keywords: ["主要キーワード", "サブキーワード1", "サブキーワード2", "サブキーワード3"]
+cover: "/images/brand/consulting-hero.png"
+coverAlt: "（カバー画像の説明：何が写っているか）"
 ---
 
 <!--

@@ -37,7 +37,7 @@ export default function TrainingBlogPage() {
         headingLines={[`${getCategoryName('training')}`, 'の実務知見。']}
         body="生成AI研修の設計、助成金活用、現場定着の考え方を公開しています。"
       />
-      <section className="home-section bg-white pt-0 md:pt-0">
+      <section className="home-section bg-[#F3F4F6] pt-0 md:pt-0">
         <div className="home-container">
           <PageBreadcrumbs
             items={[
@@ -50,13 +50,18 @@ export default function TrainingBlogPage() {
           {posts.length === 0 ? (
             <p className="text-secondary">記事の準備中です。近日公開予定です。</p>
           ) : (
-            <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
-                <li key={post.slug}>
-                  <ArticleCard post={post} category="training" />
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-6 md:space-y-8">
+              <ArticleCard post={posts[0]} category="training" featured />
+              {posts.length > 1 ? (
+                <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10 bg-white">
+                  {posts.slice(1).map((post) => (
+                    <li key={post.slug}>
+                      <ArticleCard post={post} category="training" />
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
           )}
         </div>
       </section>

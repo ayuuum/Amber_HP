@@ -41,21 +41,19 @@ export default function BlogPage() {
         headingLines={['AI活用を、', '実務に落とし込むための知見。']}
         body="現場で使えるAI活用の考え方、研修、実装の知見を公開しています。"
       />
-      <section className="home-section bg-white pt-0 md:pt-0">
+      <section className="home-section bg-[#F3F4F6] pt-0 md:pt-0">
         <div className="home-container">
           <PageBreadcrumbs items={[{ label: 'トップ', href: '/' }, { label: 'AI活用の知見' }]} />
 
           {posts.length === 0 ? (
             <p className="text-secondary">現在、記事を準備中です。</p>
           ) : (
-            <>
+            <div className="space-y-6 md:space-y-8">
               {featured ? (
-                <div className="mb-10">
-                  <ArticleCard post={featured.post} category={featured.category} featured />
-                </div>
+                <ArticleCard post={featured.post} category={featured.category} featured />
               ) : null}
               {rest.length > 0 ? (
-                <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                <ul className="divide-y divide-sequoia-black/10 border-y border-sequoia-black/10 bg-white">
                   {rest.map(({ post, category }) => (
                     <li key={`${category}-${post.slug}`}>
                       <ArticleCard post={post} category={category} />
@@ -63,7 +61,7 @@ export default function BlogPage() {
                   ))}
                 </ul>
               ) : null}
-            </>
+            </div>
           )}
         </div>
       </section>

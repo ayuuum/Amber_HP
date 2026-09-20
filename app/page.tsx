@@ -7,6 +7,7 @@ import IndustriesSection from '@/components/home/IndustriesSection'
 import WhatWeDoSection from '@/components/home/WhatWeDoSection'
 import WhatWeBuildSection from '@/components/home/WhatWeBuildSection'
 import CaseStudies from '@/components/home/CaseStudies'
+import HomeNewsPreview from '@/components/sections/HomeNewsPreview'
 import HowWeWorkSection from '@/components/home/HowWeWorkSection'
 import CompanyTeaserSection from '@/components/home/CompanyTeaserSection'
 import FinalCta from '@/components/home/FinalCta'
@@ -42,6 +43,7 @@ export default function Home() {
       <WhatWeDoSection />
       <WhatWeBuildSection />
       <CaseStudies />
+      <HomeNewsPreview />
       <HowWeWorkSection />
       <CompanyTeaserSection />
       <FinalCta />

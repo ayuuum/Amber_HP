@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { title, description, date, category, keywords, content } = await request.json()
+    const { title, description, date, category, keywords, content, cover, coverAlt } = await request.json()
 
     if (!title || !category || !content) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -88,13 +88,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Article already exists' }, { status: 409 })
     }
 
+    const coverLine = cover ? `\ncover: "${String(cover).replace(/"/g, '\\"')}"` : ''
+    const coverAltLine = coverAlt ? `\ncoverAlt: "${String(coverAlt).replace(/"/g, '\\"')}"` : ''
+
     // フロントマターを生成
     const frontmatter = `---
 title: "${title.replace(/"/g, '\\"')}"
 description: "${description?.replace(/"/g, '\\"') || ''}"
 date: "${date || new Date().toISOString().split('T')[0]}"
 category: "${category}"
-keywords: ${JSON.stringify(keywords || [])}
+keywords: ${JSON.stringify(keywords || [])}${coverLine}${coverAltLine}
 ---
 
 ${content}
@@ -116,7 +119,8 @@ export async function PUT(request: NextRequest) {
   }
 
   try {
-    const { slug, category, title, description, date, keywords, content } = await request.json()
+    const { slug, category, title, description, date, keywords, content, cover, coverAlt } =
+      await request.json()
 
     if (!slug || !category || !title || !content) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -128,13 +132,16 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Article not found' }, { status: 404 })
     }
 
+    const coverLine = cover ? `\ncover: "${String(cover).replace(/"/g, '\\"')}"` : ''
+    const coverAltLine = coverAlt ? `\ncoverAlt: "${String(coverAlt).replace(/"/g, '\\"')}"` : ''
+
     // フロントマターを生成
     const frontmatter = `---
 title: "${title.replace(/"/g, '\\"')}"
 description: "${description?.replace(/"/g, '\\"') || ''}"
 date: "${date || new Date().toISOString().split('T')[0]}"
 category: "${category}"
-keywords: ${JSON.stringify(keywords || [])}
+keywords: ${JSON.stringify(keywords || [])}${coverLine}${coverAltLine}
 ---
 
 ${content}
