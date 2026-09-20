@@ -53,10 +53,10 @@ export default function CaseDetailPage({ params }: Props) {
             </span>
             {!completed ? (
               <span className="rounded-full border border-brand-green/25 bg-light-green/70 px-2.5 py-0.5 text-xs text-brand-green">
-                実装・定着を伴走中
+                実装伴走中
               </span>
             ) : null}
-            {item.period ? (
+            {item.period && item.period !== '進行中' ? (
               <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
                 {item.period}
               </span>
