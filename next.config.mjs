@@ -61,6 +61,16 @@ const nextConfig = {
         destination: '/blog/:slug',
         permanent: true,
       },
+      {
+        source: '/blog/jirei-hearing-irai',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/service/development/blog/jirei-hearing-irai',
+        destination: '/blog',
+        permanent: true,
+      },
     ]
   },
 }
