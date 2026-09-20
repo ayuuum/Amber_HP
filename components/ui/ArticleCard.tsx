@@ -70,7 +70,7 @@ export default function ArticleCard({ post, category, featured = false }: Props)
               </span>
               <time
                 dateTime={post.date}
-                className="font-medium tabular-nums tracking-tight text-sequoia-black/45 text-[clamp(1.5rem,3.5vw,2.25rem)] leading-none"
+                className="text-sm tabular-nums tracking-wide text-sequoia-black/45"
               >
                 {formatDate(post.date)}
               </time>
