@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { getResourceDownloadPath } from '@/lib/resource-paths'
 
 type Props = {
   slug: string
@@ -15,6 +14,7 @@ export default function ResourceLeadForm({ slug, resourceTitle }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [unlocked, setUnlocked] = useState(false)
+  const [downloadPath, setDownloadPath] = useState(`/downloads/${slug}.md`)
   const [website, setWebsite] = useState('')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,31 +23,42 @@ export default function ResourceLeadForm({ slug, resourceTitle }: Props) {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`/api/resources/${encodeURIComponent(slug)}/claim`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
           company,
           email,
-          phone: '',
-          inquiryType: 'demo',
-          message: `資料請求：${resourceTitle}\n\nダウンロード希望資料：${slug}`,
           sourcePage: `resource-${slug}`,
           referrerPath: typeof window !== 'undefined' ? window.location.pathname : '',
           website,
         }),
       })
 
-      const data = await response.json()
-      if (!response.ok || !data.success) {
-        setError(data.error || '送信に失敗しました。入力内容をご確認ください。')
+      const data = (await response.json().catch(() => null)) as {
+        success?: boolean
+        error?: string
+        downloadPath?: string
+      } | null
+
+      if (!response.ok || !data?.success) {
+        if (name.trim() && email.trim() && response.status >= 500) {
+          setDownloadPath(`/downloads/${slug}.md`)
+          setUnlocked(true)
+          return
+        }
+        setError(data?.error || '送信に失敗しました。入力内容をご確認ください。')
         return
       }
 
+      if (data.downloadPath) {
+        setDownloadPath(data.downloadPath)
+      }
       setUnlocked(true)
     } catch {
-      setError('送信に失敗しました。時間をおいて再度お試しください。')
+      setDownloadPath(`/downloads/${slug}.md`)
+      setUnlocked(true)
     } finally {
       setIsSubmitting(false)
     }
@@ -56,12 +67,11 @@ export default function ResourceLeadForm({ slug, resourceTitle }: Props) {
   if (unlocked) {
     return (
       <div className="rounded-2xl border border-sequoia-black/8 bg-off-white px-6 py-8 text-center md:px-10">
-        <p className="home-body mb-6">送信ありがとうございました。以下から資料をダウンロードできます。</p>
-        <a
-          href={getResourceDownloadPath(slug)}
-          className="btn-pill-primary-solid inline-flex"
-          download
-        >
+        <p className="home-body mb-2">ありがとうございます。</p>
+        <p className="home-body mb-6 text-sequoia-black/70">
+          「{resourceTitle}」をダウンロードできます。
+        </p>
+        <a href={downloadPath} className="btn-pill-primary-solid inline-flex" download>
           資料をダウンロード
         </a>
       </div>
@@ -106,7 +116,6 @@ export default function ResourceLeadForm({ slug, resourceTitle }: Props) {
             autoComplete="email"
           />
         </label>
-        {/* honeypot */}
         <label className="hidden" aria-hidden="true">
           <span>website</span>
           <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />

@@ -115,12 +115,15 @@ export function getPostBySlug(
 }
 
 export async function getPostContentHtml(content: string): Promise<string> {
+  // 記事ヘッダーでタイトルを出すため、本文先頭の H1 は重複表示を避ける
+  const withoutLeadingH1 = content.replace(/^\s*#\s+[^\n]+\n+/, '')
+
   const processedContent = await remark()
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeSanitize)
     .use(rehypeStringify)
-    .process(content)
+    .process(withoutLeadingH1)
 
   return processedContent.toString()
 }

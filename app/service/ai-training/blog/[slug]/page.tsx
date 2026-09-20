@@ -15,6 +15,7 @@ import BlogContent from '@/components/BlogContent'
 import JsonLd from '@/components/JsonLd'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import InquiryCTA from '@/components/blog/InquiryCTA'
+import BlogAuthorCard from '@/components/blog/BlogAuthorCard'
 import BlogArticleHeader, { BlogBackLink } from '@/components/blog/BlogArticleHeader'
 import { siteUrl } from '@/lib/site-metadata'
 import type { ContactInquiryType } from '@/lib/contact'
@@ -166,13 +167,15 @@ export default async function TrainingBlogPostPage({ params }: Props) {
     <>
       <JsonLd id="jsonld-blogposting-training" data={jsonLd} />
       <Header />
-      <main className="min-h-screen bg-white px-5 pb-24 pt-28 md:px-8">
-        <div className="mx-auto max-w-[800px]">
+      <main className="min-h-screen bg-gradient-to-b from-off-white/40 via-white to-white px-5 pb-24 pt-28 md:px-8">
+        <div className="mx-auto max-w-[760px]">
           <BlogBackLink />
           <article>
             <BlogArticleHeader post={post} category="training" />
             <BlogContent html={contentHtml} />
           </article>
+
+          <BlogAuthorCard author={post.author} authorTitle={post.authorTitle} />
 
           <InquiryCTA
             category="training"

@@ -61,6 +61,18 @@ export default function BlogArticleHeader({ post, category }: Props) {
       {post.description ? (
         <p className="mb-6 max-w-2xl text-base leading-relaxed text-secondary md:text-lg">{post.description}</p>
       ) : null}
+      {post.keywords.length > 0 ? (
+        <ul className="mb-6 flex flex-wrap gap-2">
+          {post.keywords.slice(0, 6).map((keyword) => (
+            <li
+              key={keyword}
+              className="rounded-full border border-sequoia-black/10 bg-off-white px-3 py-1 text-xs tracking-wide text-sequoia-black/65"
+            >
+              {keyword}
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <p className="text-sm text-secondary">
         <Link
           href="/company#representative"

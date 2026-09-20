@@ -487,28 +487,33 @@
 
   /* ブログ記事用のスタイル */
   .prose {
-    @apply text-sequoia-black;
+    @apply text-sequoia-black text-[1.05rem] md:text-[1.125rem];
+    line-height: 1.9;
+  }
+
+  .prose > *:first-child {
+    margin-top: 0;
   }
 
   .prose h2 {
-    @apply section-heading mt-8 mb-4;
+    @apply mt-12 mb-5 border-l-4 border-brand-green pl-4 text-[1.35rem] font-medium tracking-tight text-sequoia-black md:mt-14 md:text-[1.5rem];
   }
 
   .prose h3 {
-    @apply heading-h3 mt-6 mb-3;
+    @apply mt-8 mb-3 text-lg font-medium text-sequoia-black md:text-xl;
   }
 
   .prose h4 {
-    @apply text-lg font-semibold text-sequoia-black mt-4 mb-2;
+    @apply text-base font-semibold text-sequoia-black mt-6 mb-2;
   }
 
   .prose p {
-    @apply mb-4 leading-relaxed;
+    @apply mb-5 leading-[1.9] text-sequoia-black/90;
   }
 
   .prose ul,
   .prose ol {
-    @apply mb-4 pl-6;
+    @apply mb-6 pl-6;
   }
 
   .prose ul {
@@ -526,45 +531,60 @@
   }
 
   .prose li {
-    @apply mb-2;
+    @apply mb-2.5 leading-relaxed;
+  }
+
+  .prose li::marker {
+    color: rgb(27 58 45 / 0.55);
   }
 
   .prose a {
-    @apply text-sequoia-green hover:text-green-dark underline;
+    @apply text-brand-green underline underline-offset-4 hover:text-green-dark;
   }
 
   .prose strong {
-    @apply font-bold text-sequoia-black;
+    @apply font-semibold text-sequoia-black;
   }
 
   .prose code {
-    @apply bg-transparent px-1 py-0.5 rounded-sm border border-sequoia-black/10 text-sm;
+    @apply bg-off-white px-1.5 py-0.5 rounded-sm border border-sequoia-black/10 text-[0.9em];
   }
 
   .prose pre {
-    @apply bg-transparent p-4 rounded-sm overflow-x-auto mb-4 border border-sequoia-black/10;
+    @apply bg-off-white p-4 rounded-sm overflow-x-auto mb-6 border border-sequoia-black/10;
   }
 
   .prose blockquote {
-    @apply border-l-4 border-sequoia-green pl-4 italic my-4;
+    @apply my-8 border-l-4 border-brand-green bg-off-white/80 py-4 pl-5 pr-4 text-[1.02rem] not-italic text-sequoia-black/85;
   }
 
   .prose img {
-    @apply rounded-sm my-4;
+    @apply my-8 rounded-sm;
   }
 
   .prose table {
-    @apply w-full border-collapse mb-4;
+    @apply mb-8 w-full overflow-hidden rounded-sm border-collapse text-[0.95rem];
+  }
+
+  .prose thead {
+    @apply bg-off-white;
   }
 
   .prose th,
   .prose td {
-    @apply border px-4 py-2;
-    border-color: rgb(21 40 40 / 0.2);
+    @apply border border-sequoia-black/12 px-4 py-3 text-left align-top;
   }
 
   .prose th {
-    @apply bg-sequoia-white font-semibold;
+    @apply font-semibold text-sequoia-black;
+  }
+
+  .prose td {
+    @apply text-sequoia-black/85;
+  }
+
+  .prose hr {
+    @apply my-10 border-sequoia-black/10;
   }
 
   .lineup-scroll {
