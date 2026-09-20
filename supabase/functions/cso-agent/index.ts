@@ -323,13 +323,13 @@ serve(async (req) => {
   let payload: ContactPayload;
 
   if (intentType === "draft_response") {
-    // 既存 lead からペイロードを再構成
-    let body: any = {};
-    try {
-      body = await req.clone().json();
-    } catch { /* noop */ }
-    const p = body.payload ?? {};
-    const leadId = p.lead_id;
+    // 既存 lead からペイロードを再構成（通常パスと同じ secret 検証を必須にする）
+    const authResult = await validateRequest<{ payload?: { lead_id?: string } }>(req, {
+      requiredFields: [],
+    });
+    if (authResult instanceof Response) return authResult;
+
+    const leadId = authResult.payload?.lead_id;
     if (!leadId) {
       return new Response(JSON.stringify({ error: "lead_id required for draft_response" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },

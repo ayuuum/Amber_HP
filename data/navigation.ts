@@ -10,10 +10,3 @@ export const mainNav = [
   { label: 'Company', href: '/company' },
 ] as const
 
-export const serviceMegaMenu = [
-  {
-    title: 'Services',
-    description: '業務変革からAI・業務システム、データ連携まで',
-    href: '/service/ai-solution',
-  },
-] as const

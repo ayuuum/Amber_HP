@@ -53,6 +53,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/fire-ops" className={linkClass}>
+                  消防設備点検システム
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog" className={linkClass}>
                   Blog
                 </Link>

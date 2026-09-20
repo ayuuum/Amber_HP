@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_JP } from 'next/font/google'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import HashScrollHandler from '@/components/HashScrollHandler'
@@ -105,6 +107,8 @@ export default function RootLayout({
             {children}
           </PageTransitionWrapper>
           <Analytics />
+          <VercelAnalytics />
+          <SpeedInsights />
         </LocaleProvider>
       </body>
     </html>

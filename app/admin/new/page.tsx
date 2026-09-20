@@ -58,6 +58,7 @@ export default function NewArticlePage() {
     try {
       const response = await fetch('/api/admin/upload', {
         method: 'POST',
+        credentials: 'include',
         body: uploadFormData,
       })
 
@@ -95,6 +96,7 @@ export default function NewArticlePage() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(formData),
       })
 
@@ -148,8 +150,8 @@ export default function NewArticlePage() {
               onChange={handleChange}
               className="w-full px-4 py-3 border border-sequoia-black rounded-sm bg-white text-sequoia-black focus:outline-none focus:border-sequoia-black"
             >
-              <option value="development">AIシステム開発</option>
-              <option value="training">生成AI活用研修</option>
+              <option value="development">AI・業務システム</option>
+              <option value="training">生成AI研修</option>
             </select>
           </div>
         </div>

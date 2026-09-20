@@ -82,7 +82,7 @@ export default function CasesPage() {
                       ) : null}
                       <div className="mb-6 grid gap-3 sm:grid-cols-2">
                         <div className="rounded-sm border border-sequoia-black/8 bg-off-white px-4 py-3">
-                          <p className="mb-1 text-[11px] tracking-wide text-secondary">Before</p>
+                          <p className="mb-1 text-[11px] tracking-wide text-secondary">導入前</p>
                           <p className="text-sm text-sequoia-black">{item.before}</p>
                         </div>
                         <div className="rounded-sm border border-brand-green/15 bg-light-green/50 px-4 py-3">

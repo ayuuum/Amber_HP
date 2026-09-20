@@ -61,6 +61,7 @@ export const cases: CaseItem[] = [
     relatedServices: [
       { label: 'Services', href: '/service/ai-solution' },
       { label: 'AI・業務システム開発', href: '/service/ai-solution#build' },
+      { label: '消防設備点検・補修案件管理システム', href: '/fire-ops' },
     ],
     image: aiSolutionAssets.cases.fire,
     imageAlt: '消防設備点検業の支援イメージ',

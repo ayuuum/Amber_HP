@@ -1,14 +1,15 @@
 # 株式会社Amber コーポレートサイト
 
-株式会社Amberのコーポレートサイトです。Next.js、TypeScript、Tailwind CSS、microCMSを使用して構築されています。
+株式会社Amberのコーポレートサイトです。ブランドメッセージは **Technology for Essential Industries.** です。
 
 ## 技術スタック
 
 - **フレームワーク**: Next.js 14 (App Router)
 - **言語**: TypeScript
 - **スタイリング**: Tailwind CSS
-- **CMS**: microCMS
+- **コンテンツ**: Markdown（`content/blog/`）+ 管理画面
 - **デプロイ**: Vercel
+- **問い合わせ連携**: Notion / Supabase / Resend / CSO Agent（任意）
 
 ## セットアップ
 
@@ -20,17 +21,27 @@ npm install
 
 ### 2. 環境変数の設定
 
-`.env.local`ファイルを作成し、以下の環境変数を設定してください：
+`.env.local` を作成し、少なくとも以下を設定してください。
 
 ```env
-NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN=your-service-domain
-NEXT_PUBLIC_MICROCMS_API_KEY=your-api-key
 NEXT_PUBLIC_SITE_URL=https://www.amber-inc.com
-ADMIN_PASSWORD=your-admin-password
-CONTACT_FORM_WEBHOOK_URL=https://script.google.com/macros/s/xxxxx/exec
+ADMIN_PASSWORD=your-strong-admin-password
+# 任意: Cookie署名用（未設定時は ADMIN_PASSWORD を使用）
+ADMIN_SESSION_SECRET=your-long-random-secret
+
+# お問い合わせ（使うものだけ）
+NOTION_TOKEN=
+NOTION_CONTACT_DATABASE_ID=
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+RESEND_API_KEY=
+CONTACT_EMAIL=ayumu.matsui@amber-inc.com
+CSO_AGENT_URL=
+CSO_AGENT_SECRET=
+CSO_AGENT_ANON_KEY=
 ```
 
-**お問い合わせフォーム（Google Sheets + メール通知）** を使う場合は、`CONTACT_FORM_WEBHOOK_URL` に Google Apps Script の Web アプリ URL を設定してください。セットアップ手順は [docs/contact-form-gas-setup.md](docs/contact-form-gas-setup.md) を参照してください。
+`ADMIN_PASSWORD` は **8文字以上** 必須です。未設定や `admin123` では管理ログインできません。
 
 ### 3. 開発サーバーの起動
 
@@ -38,118 +49,79 @@ CONTACT_FORM_WEBHOOK_URL=https://script.google.com/macros/s/xxxxx/exec
 npm run dev
 ```
 
-ブラウザで [http://localhost:3000](http://localhost:3000) を開いて確認してください。
+既定ポートは **3020** です（`http://localhost:3020`）。
 
 ## デプロイ
 
-### Vercelへのデプロイ
+1. Vercel にプロジェクトをインポート
+2. 上記の環境変数を設定（特に `ADMIN_PASSWORD` / `NEXT_PUBLIC_SITE_URL`）
+3. デプロイ
 
-1. [Vercel](https://vercel.com)にプロジェクトをインポート
-2. 環境変数を設定：
-   - `NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN`
-   - `NEXT_PUBLIC_MICROCMS_API_KEY`
-   - `NEXT_PUBLIC_SITE_URL`
-   - `ADMIN_PASSWORD`（管理画面のパスワード）
-   - `CONTACT_FORM_WEBHOOK_URL`（お問い合わせフォーム用・[セットアップ手順](docs/contact-form-gas-setup.md)参照）
-3. デプロイを実行
+## コーポレート運用
 
-## microCMSの設定
+ニュース更新頻度、問い合わせ KPI、リリース前チェックは [docs/corporate-ops-kpi.md](docs/corporate-ops-kpi.md) を参照してください。
 
-ブログ・コンテンツ用の API エンドポイントを設定してください。
-
-## お問い合わせフォーム（Google Sheets + メール通知）
-
-お問い合わせは **Google Apps Script** で Google スプレッドシートに保存し、メール通知を受け取る構成です。無料で利用できます。手順は [docs/contact-form-gas-setup.md](docs/contact-form-gas-setup.md) を参照してください。
-
-## コーポレート運用（更新ルール・KPI）
-
-ニュース更新頻度、問い合わせ・主要導線の KPI、リリース前の品質チェックの目安は [docs/corporate-ops-kpi.md](docs/corporate-ops-kpi.md) にまとめています。
+お問い合わせフローの詳細は [docs/contact-form-cso-agent.md](docs/contact-form-cso-agent.md) を参照してください。
 
 ## プロジェクト構造
 
 ```
 ├── app/
 │   ├── api/
-│   │   └── contact/        # お問い合わせAPI
+│   │   ├── contact/           # お問い合わせAPI
+│   │   └── admin/             # 管理API（Cookie認証必須）
 │   ├── service/
-│   │   ├── consulting/
-│   │   │   └── blog/       # AI導入支援向けブログ
-│   │   ├── training/
-│   │   │   └── blog/       # 生成AI研修向けブログ
-│   │   └── saas/
-│   │       └── blog/       # ホームサービス向け業務システム向けブログ
-│   ├── globals.css         # グローバルスタイル
-│   ├── layout.tsx          # ルートレイアウト
-│   └── page.tsx            # トップページ
+│   │   ├── ai-solution/       # サービス本体
+│   │   ├── ai-training/       # 研修LP・記事
+│   │   └── development/blog/  # 記事（個別URL。一覧は /blog へ集約）
+│   ├── blog/                  # Insights 一覧
+│   ├── legal/tokushoho/       # 特定商取引法に基づく表記
+│   ├── layout.tsx
+│   └── page.tsx
 ├── components/
-│   ├── sections/           # 各セクションコンポーネント
-│   ├── Header.tsx          # ヘッダー
-│   └── Footer.tsx          # フッター
-├── content/
-│   └── blog/              # ブログ記事（Markdown）
-│       ├── consulting/    # AI導入支援向け記事
-│       ├── training/      # 生成AI研修向け記事
-│       └── saas/          # ホームサービス向け業務システム向け記事
-├── lib/
-│   ├── microcms.ts        # microCMSクライアント
-│   └── markdown.ts        # Markdownパース用ユーティリティ
-└── public/                # 静的ファイル
+│   ├── home/                  # トップセクション
+│   ├── Header.tsx / Footer.tsx
+│   └── admin/
+├── content/blog/
+│   ├── development/
+│   └── training/
+├── data/                      # ページコピー・サービス定義
+└── lib/
+    ├── markdown.ts
+    ├── admin-auth.ts
+    └── contact-delivery.ts
 ```
 
-## ブログ機能
+## ブログ
 
-### ブログ記事の投稿方法
-
-ブログ記事は以下の2つの方法で追加できます：
-
-#### 方法1: 管理画面から追加（推奨）
+### 管理画面
 
 1. `/admin/login` にアクセス
-2. 環境変数 `ADMIN_PASSWORD` で設定したパスワードでログイン
-3. 「新規作成」ボタンから記事を作成
-4. タイトル、カテゴリ、説明、本文などを入力
-5. 画像は「画像アップロード」ボタンからアップロード可能
-6. プレビュー機能で確認してから保存
+2. `ADMIN_PASSWORD` でログイン（HttpOnly Cookie セッション）
+3. 記事の作成・編集・削除、画像アップロード
 
-#### 方法2: エディタから直接追加
+### Markdown 直接追加
 
-1. `content/blog/`ディレクトリ内の該当カテゴリフォルダにMarkdownファイルを作成
-2. フロントマターにメタデータを記述
-3. 記事本文をMarkdown形式で記述
-4. ビルド時に自動的にページが生成されます
-
-**注意**: 管理画面とエディタの両方から追加できますが、管理画面で作成した記事もMarkdownファイルとして保存されます。
-
-### 記事のフロントマター例
+`content/blog/development/` または `content/blog/training/` に `.md` を追加します。
 
 ```markdown
 ---
 title: "記事タイトル"
 description: "記事の説明"
 date: "2026-01-15"
-category: "consulting"  # consulting, training, saas のいずれか
+category: "development"  # development | training
 keywords: ["キーワード1", "キーワード2"]
 ---
 
 # 記事本文
 ```
 
-### ブログのURL構造
+### URL
 
-- AI導入支援向けブログ一覧: `/service/consulting/blog`
-- 生成AI研修向けブログ一覧: `/service/training/blog`
-- ホームサービス向け業務システム向けブログ一覧: `/service/saas/blog`
-- 個別記事: `/service/{category}/blog/{slug}`
-
-## カラーパレット
-
-- **Warm Cream**: `#F5EEDF`
-- **Deep Forest Green**: `#122828`
-- **Espresso Brown**: `#3A2A1F`
-- **Warm Amber**: `#C49A6C`
-- **Stone Gray**: `#E3E0D6`
+- 一覧: `/blog`（`?category=development|training` で絞り込み）
+- 個別: `/service/development/blog/{slug}` または `/service/ai-training/blog/{slug}`
+- 旧一覧 URL は `/blog` へ 301 リダイレクト
 
 ## ライセンス
 
 © 2026 株式会社Amber. All rights reserved.
-

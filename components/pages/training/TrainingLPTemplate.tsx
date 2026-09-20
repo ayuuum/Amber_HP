@@ -64,7 +64,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
             className="max-w-3xl"
           >
             <p className="mb-4 text-sm font-medium tracking-[0.08em] text-white md:text-base">
-              研修サービス · {data.toolBadge}
+              Technology for Essential Industries. · {data.toolBadge}
             </p>
 
             <h1 className="home-hero-title mb-5 md:mb-6">
