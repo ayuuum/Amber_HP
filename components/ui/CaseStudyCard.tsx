@@ -17,6 +17,7 @@ type Props = {
     | 'change'
     | 'before'
     | 'after'
+    | 'period'
     | 'image'
     | 'imageAlt'
     | 'anonymous'
@@ -45,6 +46,12 @@ export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = 
       <div className="flex flex-1 flex-col p-6 md:p-7">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <p className="home-label text-brand-green">{item.enIndustry || item.industry}</p>
+          <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
+            {item.status}
+          </span>
+          {item.period ? (
+            <span className="text-[11px] text-secondary">{item.period}</span>
+          ) : null}
         </div>
 
         {!isCompact ? (
@@ -102,4 +109,3 @@ export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = 
     </article>
   )
 }
-

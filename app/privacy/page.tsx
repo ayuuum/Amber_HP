@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
+import { companyInfo } from '@/lib/company-info'
+import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
   title: 'プライバシーポリシー | 株式会社Amber',
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="mb-4 mt-8 text-xl font-medium text-sequoia-black">1. 個人情報の取り扱いについて</h2>
               <p>
-                株式会社Amber（以下「当社」）は、お客様の個人情報を適切に保護し、管理することを重要な責務と認識しています。
+                {companyInfo.legalName}（以下「当社」）は、お客様の個人情報を適切に保護し、管理することを重要な責務と認識しています。
                 本プライバシーポリシーは、当社が収集する個人情報の種類、利用目的、管理方法について説明します。
               </p>
             </section>
@@ -74,9 +74,10 @@ export default function PrivacyPage() {
                 個人情報に関するお問い合わせは、以下の連絡先までご連絡ください。
               </p>
               <div className="mt-4 rounded-2xl border border-sequoia-black/8 bg-off-white p-6">
-                <p className="mb-2 font-medium">株式会社Amber</p>
-                <p>メール: ayumu.matsui@amber-inc.com</p>
-                <p>電話: 080-3814-0263</p>
+                <p className="mb-2 font-medium">{companyInfo.legalName}</p>
+                <p>{companyInfo.fullAddress}</p>
+                <p>メール: {companyInfo.email}</p>
+                <p>電話: {companyInfo.phone}</p>
               </div>
             </section>
 
@@ -93,5 +94,3 @@ export default function PrivacyPage() {
     </>
   )
 }
-
-

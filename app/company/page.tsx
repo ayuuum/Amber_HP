@@ -120,7 +120,11 @@ export default function CompanyPage() {
       </section>
 
       {/* Representative — no card */}
-      <section className="home-section bg-white" aria-labelledby="company-rep-heading">
+      <section
+        id="representative"
+        className="home-section scroll-mt-24 bg-white"
+        aria-labelledby="company-rep-heading"
+      >
         <div className="home-container">
           <FadeUp>
             <p className="home-label mb-4">{representative.heading}</p>
@@ -173,6 +177,13 @@ export default function CompanyPage() {
               </div>
             ))}
           </dl>
+          <p className="mt-8 max-w-3xl text-sm text-secondary">
+            データの取り扱いとセキュリティ方針は{' '}
+            <Link href="/security" className="text-brand-green underline-offset-2 hover:underline">
+              セキュリティとデータの取り扱い
+            </Link>
+            をご覧ください。
+          </p>
         </div>
       </section>
 

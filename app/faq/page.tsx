@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
@@ -43,8 +44,18 @@ export default function FaqPage() {
           <PageBreadcrumbs items={[{ label: 'トップ', href: '/' }, { label: 'よくあるご質問' }]} />
           <div className="space-y-12">
             {faqCategories.map((category) => (
-              <div key={category.id} id={category.id}>
-                <h2 className="mb-4 text-lg font-medium text-sequoia-black">{category.title}</h2>
+              <div key={category.id} id={category.id} className="scroll-mt-24">
+                <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+                  <h2 className="text-lg font-medium text-sequoia-black">{category.title}</h2>
+                  {category.id === 'security' ? (
+                    <Link
+                      href="/security"
+                      className="text-sm font-medium text-brand-green underline-offset-2 hover:underline"
+                    >
+                      セキュリティ方針の詳細
+                    </Link>
+                  ) : null}
+                </div>
                 <FaqAccordion items={category.items} />
               </div>
             ))}

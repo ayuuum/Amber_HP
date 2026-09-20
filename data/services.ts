@@ -1,4 +1,5 @@
 import { offerings, supportMethod } from '@/data/offerings'
+import { companyInfo } from '@/lib/company-info'
 
 export const aiSolutionPage = {
   meta: {
@@ -117,7 +118,7 @@ export const aiSolutionPage = {
 export const companyPage = {
   hero: {
     brand: 'Amber',
-    heading: 'Essential Industries × Technology.',
+    heading: 'Technology for Essential Industries.',
     subheading: '暮らしを支える産業に、最新のテクノロジーを。',
     body: '製造・設備・建設・物流など、社会を支える産業の変革を、AIとソフトウェアで実装しています。',
     image: '/images/about-mission-mountain.png',
@@ -146,8 +147,8 @@ export const companyPage = {
   },
   representative: {
     heading: 'Representative',
-    name: '松井 歩武',
-    title: '代表取締役',
+    name: companyInfo.representativeName,
+    title: companyInfo.representativeTitle,
     photo: '/images/ceo-photo.png',
     bio: [
       '慶應義塾大学商学部卒業。学生時代にベンチャーキャピタルでインターンを経験。',
@@ -158,16 +159,14 @@ export const companyPage = {
   profile: {
     heading: 'Company',
     rows: [
-      { label: '会社名', value: '株式会社Amber' },
-      { label: '代表取締役', value: '松井 歩武' },
-      { label: '設立', value: '2026年' },
-      {
-        label: '事業内容',
-        value:
-          'Essential Industries向けの業務変革、AI・業務システムの設計開発、データ・既存システム連携／プロダクト事業（訪問サービス向け業務管理「Pine」）',
-      },
-      { label: '取引銀行', value: 'GMOあおぞらネット銀行、三井住友銀行' },
-      { label: '所在地', value: '〒105-0001 東京都港区虎ノ門３丁目１−１ 2階' },
+      { label: '会社名', value: companyInfo.legalName },
+      { label: '代表取締役', value: companyInfo.representativeName },
+      { label: '設立', value: companyInfo.foundedYear },
+      { label: '事業内容', value: companyInfo.businessDescription },
+      { label: '取引銀行', value: companyInfo.banks },
+      { label: '所在地', value: companyInfo.fullAddress },
+      { label: '電話', value: companyInfo.phone },
+      { label: 'メール', value: companyInfo.email },
     ],
   },
   cta: {

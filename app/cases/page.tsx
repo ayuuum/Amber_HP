@@ -34,7 +34,15 @@ export default function CasesPage() {
               <li key={item.slug}>
                 <article className="grid gap-4 py-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-10 md:py-10">
                   <div>
-                    <p className="home-label mb-3 text-brand-green">{item.enIndustry}</p>
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
+                      <p className="home-label text-brand-green">{item.enIndustry}</p>
+                      <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
+                        {item.status}
+                      </span>
+                      {item.period ? (
+                        <span className="text-[11px] text-secondary">{item.period}</span>
+                      ) : null}
+                    </div>
                     <h2 className="home-h3 mb-3">{item.theme}</h2>
                     <p className="home-body max-w-2xl text-pretty">{item.challenge}</p>
                   </div>

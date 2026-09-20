@@ -47,8 +47,13 @@ export default function CaseDetailPage({ params }: Props) {
           <p className="home-label mb-3 text-brand-green">{item.industry}</p>
           <div className="mb-4 flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
-              {item.status === '支援実績' ? '取り組み事例' : item.status}
+              {item.status}
             </span>
+            {item.period ? (
+              <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
+                {item.period}
+              </span>
+            ) : null}
             <span className="rounded-full border border-brand-green/20 bg-light-green/60 px-2.5 py-0.5 text-xs text-brand-green">
               {item.serviceLabel}
             </span>
@@ -94,6 +99,13 @@ export default function CaseDetailPage({ params }: Props) {
             <section>
               <h2 className="mb-3 text-lg font-medium text-sequoia-black">{outcomeLabel}</h2>
               <p className="leading-relaxed text-secondary">{item.change}</p>
+              {item.outcomes && item.outcomes.length > 0 ? (
+                <ul className="mt-4 list-disc space-y-1 pl-5 text-secondary">
+                  {item.outcomes.map((outcome) => (
+                    <li key={outcome}>{outcome}</li>
+                  ))}
+                </ul>
+              ) : null}
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="home-card border border-sequoia-black/8 bg-off-white p-5">
                   <p className="mb-2 text-xs text-secondary">Before</p>

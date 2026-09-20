@@ -2,7 +2,10 @@
 title: "（記事タイトル：60文字以内・主要キーワード前方）"
 description: "（記事の要約：120-160文字。検索結果に表示される説明文）"
 date: "YYYY-MM-DD"
+dateModified: "YYYY-MM-DD"
 category: "development"
+author: "松井 歩武"
+authorTitle: "代表取締役"
 keywords: ["主要キーワード", "サブキーワード1", "サブキーワード2", "サブキーワード3"]
 cover: "/images/brand/consulting-hero.png"
 coverAlt: "（カバー画像の説明：何が写っているか）"

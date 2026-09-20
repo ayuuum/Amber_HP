@@ -18,6 +18,10 @@ export type CaseItem = {
   after: string
   deliverables: string[]
   nextSteps: string
+  /** 取り組み期間（例: '2025年〜' / '進行中'） */
+  period?: string
+  /** 定性だが検証可能な変化（数値KPIの捏造はしない） */
+  outcomes?: string[]
   relatedServices: { label: string; href: string }[]
   image: string
   imageAlt: string
@@ -46,6 +50,11 @@ export const cases: CaseItem[] = [
     after: 'デジタルで進捗を追える業務フロー',
     deliverables: ['業務フロー設計', '点検報告のデジタル化', 'スケジュール管理の整備'],
     nextSteps: '利用定着と追加機能の改善を継続。',
+    period: '進行中',
+    outcomes: [
+      '点検報告とスケジュールを同一の業務フロー上で扱える設計へ移行中',
+      '現場と事務所の情報連携手順を文書化し、手戻り箇所を特定',
+    ],
     relatedServices: [
       { label: 'AI & Software', href: '/service/ai-solution#build' },
       { label: 'Data & Integration', href: '/service/ai-solution#operation' },
@@ -70,6 +79,11 @@ export const cases: CaseItem[] = [
     after: '部門横断の活用基盤',
     deliverables: ['業務課題マップ', '活用テーマ一覧', '内製化プログラム', '推進体制の設計'],
     nextSteps: '優先テーマの実装と、他部門への横展開を継続支援。',
+    period: '2025年〜',
+    outcomes: [
+      '部門横断のAI活用テーマと推進体制を設計・合意',
+      '内製化プログラムを整備し、研究と現場で共通の使い方を定義',
+    ],
     relatedServices: [
       { label: 'Business Transformation', href: '/service/ai-solution#adoption' },
       { label: 'Data & Integration', href: '/service/ai-solution#operation' },
@@ -94,6 +108,11 @@ export const cases: CaseItem[] = [
     after: '業務全体を一つの仕組みへ',
     deliverables: ['業務台帳設計', '予約・配車・顧客の統合方針', '運用ルール'],
     nextSteps: '運用定着と、追加拠点への展開を支援。',
+    period: '進行中',
+    outcomes: [
+      '予約・配車・顧客情報を横断把握できる台帳設計を策定',
+      '拠点横断の運用ルールを定義し、展開準備中',
+    ],
     relatedServices: [
       { label: 'AI & Software', href: '/service/ai-solution#build' },
       { label: 'Business Transformation', href: '/service/ai-solution#adoption' },

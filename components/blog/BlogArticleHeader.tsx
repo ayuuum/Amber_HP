@@ -8,9 +8,18 @@ type Props = {
   category: BlogCategory
 }
 
+function formatJaDate(date: string) {
+  return new Date(date).toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
 export default function BlogArticleHeader({ post, category }: Props) {
   const readingMinutes = getReadingTimeMinutes(post.content)
   const coverAlt = post.coverAlt || post.title
+  const modified = post.dateModified && post.dateModified !== post.date ? post.dateModified : null
 
   return (
     <header className="mb-12 border-b border-sequoia-black/10 pb-10">
@@ -32,13 +41,17 @@ export default function BlogArticleHeader({ post, category }: Props) {
         <span aria-hidden className="text-sequoia-black/25">
           /
         </span>
-        <time dateTime={post.date}>
-          {new Date(post.date).toLocaleDateString('ja-JP', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </time>
+        <time dateTime={post.date}>{formatJaDate(post.date)}</time>
+        {modified ? (
+          <>
+            <span aria-hidden className="text-sequoia-black/25">
+              /
+            </span>
+            <span>
+              更新 <time dateTime={modified}>{formatJaDate(modified)}</time>
+            </span>
+          </>
+        ) : null}
         <span aria-hidden className="text-sequoia-black/25">
           /
         </span>
@@ -46,8 +59,18 @@ export default function BlogArticleHeader({ post, category }: Props) {
       </div>
       <h1 className="home-h2 mb-5 text-[1.85rem] leading-tight md:text-[2.5rem]">{post.title}</h1>
       {post.description ? (
-        <p className="max-w-2xl text-base leading-relaxed text-secondary md:text-lg">{post.description}</p>
+        <p className="mb-6 max-w-2xl text-base leading-relaxed text-secondary md:text-lg">{post.description}</p>
       ) : null}
+      <p className="text-sm text-secondary">
+        <Link
+          href="/company#representative"
+          className="font-medium text-sequoia-black underline-offset-4 hover:text-brand-green hover:underline"
+        >
+          {post.author}
+        </Link>
+        <span className="text-sequoia-black/40"> · </span>
+        <span>{post.authorTitle}</span>
+      </p>
     </header>
   )
 }

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.amber-inc.com'
+import { companyInfo } from '@/lib/company-info'
+import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
   title: '利用規約 | 株式会社Amber',
@@ -25,7 +25,7 @@ export default function TermsPage() {
             <section>
               <h2 className="mb-4 mt-8 text-xl font-medium text-sequoia-black">第1条（適用）</h2>
               <p>
-                本規約は、株式会社Amber（以下「当社」）が提供するサービス（以下「本サービス」）の利用条件を定めるものです。
+                本規約は、{companyInfo.legalName}（以下「当社」）が提供するサービス（以下「本サービス」）の利用条件を定めるものです。
                 本サービスを利用するすべてのユーザー（以下「ユーザー」）は、本規約に同意したものとみなされます。
               </p>
             </section>
@@ -41,9 +41,12 @@ export default function TermsPage() {
             <section>
               <h2 className="mb-4 mt-8 text-xl font-medium text-sequoia-black">第3条（サービスの内容）</h2>
               <p>本サービスは、以下の内容を提供します：</p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>AI導入支援</li>
-                <li>ホームサービス向け業務システム</li>
+              <ul className="list-disc space-y-2 pl-6">
+                <li>Essential Industries向けの業務変革・業務設計</li>
+                <li>AI・業務システムの設計開発</li>
+                <li>データ・既存システム連携</li>
+                <li>生成AI研修・定着支援</li>
+                <li>プロダクト事業（訪問サービス向け業務管理「Pine」など）</li>
               </ul>
             </section>
 
@@ -58,7 +61,7 @@ export default function TermsPage() {
             <section>
               <h2 className="mb-4 mt-8 text-xl font-medium text-sequoia-black">第5条（禁止事項）</h2>
               <p>ユーザーは、本サービスの利用にあたり、以下の行為を行ってはなりません：</p>
-              <ul className="list-disc pl-6 space-y-2">
+              <ul className="list-disc space-y-2 pl-6">
                 <li>法令または公序良俗に違反する行為</li>
                 <li>犯罪行為に関連する行為</li>
                 <li>当社のサーバーまたはネットワークの機能を破壊したり、妨害したりする行為</li>
@@ -88,15 +91,16 @@ export default function TermsPage() {
               <p>
                 本規約に関するお問い合わせは、以下の連絡先までご連絡ください。
               </p>
-              <div className="bg-white/20 p-6 rounded-sm mt-4">
-                <p className="font-semibold mb-2">株式会社Amber</p>
-                <p>メール: ayumu.matsui@amber-inc.com</p>
-                <p>電話: 080-3814-0263</p>
+              <div className="mt-4 rounded-2xl border border-sequoia-black/8 bg-off-white p-6">
+                <p className="mb-2 font-medium">{companyInfo.legalName}</p>
+                <p>{companyInfo.fullAddress}</p>
+                <p>メール: {companyInfo.email}</p>
+                <p>電話: {companyInfo.phone}</p>
               </div>
             </section>
 
             <section>
-              <p className="text-sm text-sequoia-black/80 mt-8">
+              <p className="mt-8 text-sm text-secondary">
                 制定日: 2026年1月1日<br />
                 最終更新日: 2026年1月1日
               </p>
@@ -108,5 +112,3 @@ export default function TermsPage() {
     </>
   )
 }
-
-

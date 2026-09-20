@@ -2,7 +2,10 @@
 title: "AI導入で中小企業の業務効率化を実現する5つの方法"
 description: "中小企業のAI導入で失敗しないための具体的な方法を、現場経験から得た知見を基に解説します。"
 date: "2026-01-15"
+dateModified: "2026-01-15"
 category: "development"
+author: "松井 歩武"
+authorTitle: "代表取締役"
 keywords: ["AI導入", "中小企業", "業務効率化", "失敗防止"]
 cover: "/images/consulting-meeting.png"
 coverAlt: "業務について話し合うミーティングの様子"

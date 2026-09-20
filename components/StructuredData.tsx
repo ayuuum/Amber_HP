@@ -1,4 +1,5 @@
 import JsonLd from '@/components/JsonLd'
+import { companyInfo } from '@/lib/company-info'
 import { siteUrl, siteMetadata } from '@/lib/site-metadata'
 
 export default function StructuredData() {
@@ -9,29 +10,29 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: siteMetadata.name,
-    alternateName: 'Amber Inc.',
+    alternateName: companyInfo.legalNameEn,
     url: siteUrl,
     logo: `${siteUrl}/opengraph-image`,
     description: siteMetadata.description,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'JP',
-      addressRegion: '東京都',
-      addressLocality: '港区',
-      postalCode: '105-0001',
-      streetAddress: '虎ノ門3丁目1-1 2階',
+      addressRegion: companyInfo.addressRegion,
+      addressLocality: companyInfo.addressLocality,
+      postalCode: companyInfo.postalCode,
+      streetAddress: companyInfo.streetAddressAscii,
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+81-80-3814-0263',
+      telephone: companyInfo.phoneE164,
       contactType: 'customer service',
-      email: 'ayumu.matsui@amber-inc.com',
+      email: companyInfo.email,
       availableLanguage: ['Japanese'],
     },
     founder: {
       '@type': 'Person',
-      name: '松井 歩武',
-      jobTitle: '代表取締役',
+      name: companyInfo.representativeName,
+      jobTitle: companyInfo.representativeTitle,
       sameAs: [
         // 'https://twitter.com/ayumu_matsui',
         // 'https://www.linkedin.com/in/ayumu-matsui',
@@ -57,25 +58,25 @@ export default function StructuredData() {
     image: `${siteUrl}/opengraph-image`,
     '@id': siteUrl,
     url: siteUrl,
-    telephone: '+81-80-3814-0263',
+    telephone: companyInfo.phoneE164,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '虎ノ門3丁目1-1 2階',
-      addressLocality: '港区',
-      addressRegion: '東京都',
-      postalCode: '105-0001',
+      streetAddress: companyInfo.streetAddressAscii,
+      addressLocality: companyInfo.addressLocality,
+      addressRegion: companyInfo.addressRegion,
+      postalCode: companyInfo.postalCode,
       addressCountry: 'JP',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 35.6664,
-      longitude: 139.7466,
+      latitude: companyInfo.geo.latitude,
+      longitude: companyInfo.geo.longitude,
     },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00',
+      dayOfWeek: [...companyInfo.openingHours.days],
+      opens: companyInfo.openingHours.opens,
+      closes: companyInfo.openingHours.closes,
     },
   }
 

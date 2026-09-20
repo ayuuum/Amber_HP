@@ -6,6 +6,7 @@ import {
   getPostContentHtml,
   getCategoryName,
   getCategoryPath,
+  getCategoryListPath,
   getRelatedPosts,
 } from '@/lib/markdown'
 import Header from '@/components/Header'
@@ -82,7 +83,7 @@ export default async function DevelopmentBlogPostPage({ params }: Props) {
   const contentHtml = await getPostContentHtml(post.content)
   const relatedPosts = getRelatedPosts('development', post.slug, 3)
   const canonicalUrl = `${siteUrl}${getCategoryPath('development')}/${post.slug}`
-  const blogIndexUrl = `${siteUrl}${getCategoryPath('development')}`
+  const blogIndexUrl = `${siteUrl}${getCategoryListPath('development')}`
   const serviceUrl = `${siteUrl}/service/ai-solution`
   const ogImage = post.cover
     ? post.cover.startsWith('http')
@@ -128,14 +129,20 @@ export default async function DevelopmentBlogPostPage({ params }: Props) {
         headline: post.title,
         description: post.description,
         datePublished: post.date,
-        dateModified: post.date,
+        dateModified: post.dateModified || post.date,
         inLanguage: 'ja-JP',
         keywords: post.keywords,
         image: [ogImage],
         author: {
-          '@type': 'Organization',
-          name: '株式会社Amber',
-          url: siteUrl,
+          '@type': 'Person',
+          name: post.author,
+          jobTitle: post.authorTitle,
+          url: `${siteUrl}/company#representative`,
+          worksFor: {
+            '@type': 'Organization',
+            name: '株式会社Amber',
+            url: siteUrl,
+          },
         },
         publisher: {
           '@type': 'Organization',

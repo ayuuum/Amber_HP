@@ -55,9 +55,17 @@ export default function HomeCaseStudies() {
                 <FadeUp delay={0.04 * i}>
                   <article className="grid gap-4 py-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-10 md:py-10">
                     <div>
-                      <p className="home-label mb-3 text-brand-green">
-                        {localized?.industry ?? item.enIndustry}
-                      </p>
+                      <div className="mb-3 flex flex-wrap items-center gap-2">
+                        <p className="home-label text-brand-green">
+                          {localized?.industry ?? item.enIndustry}
+                        </p>
+                        <span className="rounded-full border border-sequoia-black/10 bg-white px-2.5 py-0.5 text-[11px] text-secondary">
+                          {item.status}
+                        </span>
+                        {item.period ? (
+                          <span className="text-[11px] text-secondary">{item.period}</span>
+                        ) : null}
+                      </div>
                       <h3 className="home-h3 mb-3">{localized?.theme ?? item.theme}</h3>
                       <p className="home-body max-w-2xl text-pretty">
                         {localized?.challenge ?? item.challenge}

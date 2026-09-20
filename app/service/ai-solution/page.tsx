@@ -211,6 +211,13 @@ export default function AiSolutionPage() {
             <SectionHeader heading="よくあるご質問" />
           </FadeUp>
           <FaqAccordion items={aiSolutionPage.faq.map((f) => ({ question: f.q, answer: f.a }))} />
+          <p className="mt-8 text-sm text-secondary">
+            セキュリティとデータの取り扱いについては{' '}
+            <Link href="/security" className="text-brand-green underline-offset-2 hover:underline">
+              セキュリティページ
+            </Link>
+            もご覧ください。
+          </p>
         </div>
       </section>
 

@@ -90,6 +90,11 @@ export default function Footer() {
                   {messages.common.tokushoho}
                 </Link>
               </li>
+              <li>
+                <Link href="/security" className={linkClass}>
+                  {messages.common.security}
+                </Link>
+              </li>
             </ul>
             <p className="mb-3 mt-8 text-xs font-medium tracking-wide text-secondary">{messages.common.products}</p>
             <ul className="space-y-0">

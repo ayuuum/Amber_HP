@@ -6,6 +6,7 @@ import { useRef } from 'react'
 import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react'
 import { MOTION_EDITORIAL, STAGGER_EDITORIAL, MOTION_EASE, editorialTransition } from '@/lib/motion-safe'
 import { contactFormInquiryTypes, contactInquiryLabels, getContactPreset, type ContactInquiryType } from '@/lib/contact'
+import { companyInfo } from '@/lib/company-info'
 
 type ContactFormData = {
   name: string
@@ -198,15 +199,28 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
               </div>
             ))}
           </div>
-          <p className="mt-8 text-sm text-secondary">
-            メールでも受け付けています:{' '}
-            <a
-              href="mailto:ayumu.matsui@amber-inc.com"
-              className="text-sequoia-black underline underline-offset-4 transition-colors hover:text-brand-green"
-            >
-              ayumu.matsui@amber-inc.com
-            </a>
-          </p>
+          <address className="mt-8 not-italic">
+            <p className="text-sm font-medium text-sequoia-black">{companyInfo.legalName}</p>
+            <p className="mt-2 text-sm leading-relaxed text-secondary">{companyInfo.fullAddress}</p>
+            <p className="mt-3 text-sm text-secondary">
+              電話:{' '}
+              <a
+                href={`tel:${companyInfo.phoneE164}`}
+                className="text-sequoia-black underline underline-offset-4 transition-colors hover:text-brand-green"
+              >
+                {companyInfo.phone}
+              </a>
+            </p>
+            <p className="mt-1 text-sm text-secondary">
+              メール:{' '}
+              <a
+                href={`mailto:${companyInfo.email}`}
+                className="text-sequoia-black underline underline-offset-4 transition-colors hover:text-brand-green"
+              >
+                {companyInfo.email}
+              </a>
+            </p>
+          </address>
         </motion.div>
 
         <motion.form

@@ -2,8 +2,11 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
-import remarkHtml from 'remark-html'
 import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypeSanitize from 'rehype-sanitize'
+import rehypeStringify from 'rehype-stringify'
+import { companyInfo } from '@/lib/company-info'
 
 const postsDirectory = path.join(process.cwd(), 'content', 'blog')
 
@@ -21,6 +24,13 @@ export type BlogPost = {
   /** カバー画像パス（例: /images/brand/consulting-hero.png） */
   cover?: string
   coverAlt?: string
+  author: string
+  authorTitle: string
+  dateModified?: string
+}
+
+function optionalString(value: unknown): string | undefined {
+  return typeof value === 'string' && value.trim() ? value.trim() : undefined
 }
 
 function toBlogPost(
@@ -39,11 +49,11 @@ function toBlogPost(
     keywords: (data.keywords as string[]) || [],
     content,
     excerpt: (data.excerpt as string) || content.substring(0, 150) + '...',
-    cover: typeof data.cover === 'string' && data.cover.trim() ? data.cover.trim() : undefined,
-    coverAlt:
-      typeof data.coverAlt === 'string' && data.coverAlt.trim()
-        ? data.coverAlt.trim()
-        : undefined,
+    cover: optionalString(data.cover),
+    coverAlt: optionalString(data.coverAlt),
+    author: optionalString(data.author) ?? companyInfo.representativeName,
+    authorTitle: optionalString(data.authorTitle) ?? companyInfo.representativeTitle,
+    dateModified: optionalString(data.dateModified),
   }
 }
 
@@ -94,7 +104,9 @@ export function getPostBySlug(
 export async function getPostContentHtml(content: string): Promise<string> {
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(remarkHtml, { sanitize: false })
+    .use(remarkRehype)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
     .process(content)
 
   return processedContent.toString()
@@ -112,12 +124,21 @@ export function getReadingTimeMinutes(content: string): number {
 
 export function getCategoryName(category: BlogCategory): string {
   const names: Record<BlogCategory, string> = {
-    development: 'AIシステム開発',
-    training: '生成AI活用研修',
+    development: 'AI・業務システム',
+    training: '生成AI研修',
   }
   return names[category]
 }
 
+export function getCategoryListPath(category: BlogCategory): string {
+  const paths: Record<BlogCategory, string> = {
+    development: '/blog?category=development',
+    training: '/blog?category=training',
+  }
+  return paths[category]
+}
+
+/** 個別記事のベースパス（末尾スラッシュなし） */
 export function getCategoryPath(category: BlogCategory): string {
   const paths: Record<BlogCategory, string> = {
     development: '/service/development/blog',
