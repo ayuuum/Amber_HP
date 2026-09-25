@@ -1,9 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { buildContactHref } from '@/lib/contact'
 import { useMessages } from '@/components/i18n/LocaleProvider'
+import HeroBackground from '@/components/ui/HeroBackground'
 
 export default function FinalCta() {
   const t = useMessages().home.finalCta
@@ -12,13 +12,12 @@ export default function FinalCta() {
   return (
     <section className="relative overflow-hidden" aria-labelledby="final-cta-heading">
       <div className="absolute inset-0">
-        <Image
-          src="/images/brand/method-forest.jpg"
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          aria-hidden
+        <HeroBackground
+          imageSrc="/images/brand/cases-hero-poster.jpg"
+          imageAlt=""
+          videoSrc="/videos/cases-hero.mp4"
+          posterSrc="/images/brand/cases-hero-poster.jpg"
+          priority={false}
         />
         <div className="absolute inset-0 bg-dark-green/70" aria-hidden />
       </div>

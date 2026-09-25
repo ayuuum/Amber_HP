@@ -25,8 +25,8 @@ export default function AiSolutionThanksPage() {
             内容を確認し、担当者よりご連絡します。構想・研修・開発・定着の進め方を、現在の状況に合わせて整理します。
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-            <PrimaryButton href="/service/ai-solution">AI活用・実装支援へ戻る</PrimaryButton>
-            <SecondaryButton href="/">トップへ戻る</SecondaryButton>
+            <PrimaryButton href="/service/ai-solution">Back to Services</PrimaryButton>
+            <SecondaryButton href="/">Back to Home</SecondaryButton>
           </div>
         </div>
       </section>

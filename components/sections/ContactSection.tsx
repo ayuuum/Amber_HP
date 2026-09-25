@@ -178,7 +178,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
           transition={editorialTransition()}
           className="order-2 lg:sticky lg:top-28 lg:order-1"
         >
-          <p className="home-label mb-4 text-brand-green">お問い合わせ</p>
+          <p className="home-label mb-4 text-brand-green">Contact</p>
           {asPage ? (
             <h1 className="home-h2 mb-5 text-[1.75rem] md:text-[2.75rem]">
               一緒に整理します。
@@ -192,7 +192,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
             内容が固まっていなくても構いません。
           </p>
           <div className="mt-8 space-y-3 border-t border-sequoia-black/10 pt-6">
-            {['Business Transformation', 'AI & Software / Data & Integration', '提携・採用・その他'].map((item) => (
+            {['Business Transformation', 'AI & Software / Data & Integration', 'Partnerships & Careers'].map((item) => (
               <div key={item} className="flex items-center gap-3 text-sm font-medium text-sequoia-black/75">
                 <span className="h-px w-8 bg-sequoia-black/15" aria-hidden />
                 <span>{item}</span>
@@ -486,7 +486,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                       className="btn-pill-outline inline-flex flex-1 gap-2"
                     >
                       <ArrowLeft className="w-5 h-5" aria-hidden="true" />
-                      戻る
+                      Back
                     </motion.button>
                     <motion.button
                       type="submit"
@@ -495,7 +495,7 @@ export default function ContactSection({ asPage = false }: { asPage?: boolean })
                       whileTap={{ scale: 0.98 }}
                       className="btn-pill-primary-solid inline-flex flex-1 gap-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                     >
-                      {isSubmitting ? '送信中…' : '送信する'}
+                      {isSubmitting ? 'Sending…' : 'Send'}
                     </motion.button>
                   </div>
                   )}

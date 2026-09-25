@@ -58,7 +58,7 @@ export default function BlogPage({
         <div className="home-container">
           <PageBreadcrumbs
             items={[
-              { label: 'トップ', href: '/' },
+              { label: 'Home', href: '/' },
               { label: 'AI活用の知見', href: filterLabel ? '/blog' : undefined },
               ...(filterLabel ? [{ label: filterLabel }] : []),
             ]}
@@ -105,7 +105,7 @@ export default function BlogPage({
           )}
         </div>
       </section>
-      <ContactCTA source="blog" ctaLabel="自社業務へのAI活用について相談する" />
+      <ContactCTA source="blog" ctaLabel="Talk to Amber" />
       <Footer />
     </main>
   )

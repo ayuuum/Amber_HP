@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CompanyContactRedirect from './CompanyContactRedirect'
+import HeroBackground from '@/components/ui/HeroBackground'
 import { companyPage } from '@/data/services'
 import { buildContactHref } from '@/lib/contact'
 import { siteUrl } from '@/lib/site-metadata'
@@ -28,13 +29,11 @@ export default function CompanyPage() {
       {/* Hero — full-bleed */}
       <section className="relative flex min-h-[70vh] items-end md:min-h-[828px] md:items-center">
         <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src={hero.image}
-            alt={hero.imageAlt}
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
+          <HeroBackground
+            imageSrc={hero.image}
+            imageAlt={hero.imageAlt}
+            videoSrc={hero.videoSrc}
+            posterSrc={hero.image}
           />
           <div
             className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0.38)_55%,rgba(0,0,0,0.48)_100%),linear-gradient(0deg,rgba(16,51,45,0.55)_0%,rgba(16,51,45,0.18)_45%,rgba(16,51,45,0.4)_100%)]"
@@ -198,13 +197,12 @@ export default function CompanyPage() {
       {/* Single CTA */}
       <section className="relative overflow-hidden" aria-labelledby="company-cta-heading">
         <div className="absolute inset-0">
-          <Image
-            src="/images/brand/method-forest.jpg"
-            alt=""
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-            aria-hidden
+          <HeroBackground
+            imageSrc="/images/brand/cases-hero-poster.jpg"
+            imageAlt=""
+            videoSrc="/videos/cases-hero.mp4"
+            posterSrc="/images/brand/cases-hero-poster.jpg"
+            priority={false}
           />
           <div className="absolute inset-0 bg-dark-green/70" aria-hidden />
         </div>

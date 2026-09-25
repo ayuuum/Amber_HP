@@ -34,6 +34,14 @@ export function isCompletedCase(status: CaseStatus): boolean {
   return status === '支援実績'
 }
 
+/** UI chrome labels (English) for case status badges */
+export const caseStatusLabel: Record<CaseStatus, string> = {
+  支援実績: 'Completed',
+  開発事例: 'Build',
+  進行中: 'In progress',
+  構想事例: 'Concept',
+}
+
 /** 優先順: 消防設備 → 製造・素材・化学 → Field Services */
 export const cases: CaseItem[] = [
   {

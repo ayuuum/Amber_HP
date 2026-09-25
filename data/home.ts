@@ -1,6 +1,6 @@
 /** ヒーローメディア */
 export const heroMedia = {
-  videoSrc: '',
+  videoSrc: '/videos/amber-hero.mp4',
   poster: '/images/brand/hero-figma.jpg',
   image: '/images/brand/hero-figma.jpg',
   imageAlt: '霧に包まれた森と山並み',

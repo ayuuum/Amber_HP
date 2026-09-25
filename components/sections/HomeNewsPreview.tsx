@@ -43,7 +43,7 @@ export default function HomeNewsPreview() {
             href="/blog"
             className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-brand-green transition-colors hover:underline"
           >
-            記事一覧を見る
+            View all
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
         </div>

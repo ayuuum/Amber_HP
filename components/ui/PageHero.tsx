@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
+import HeroBackground from '@/components/ui/HeroBackground'
 
 type PageHeroProps = {
   headingLines: readonly string[]
@@ -11,7 +12,7 @@ type PageHeroProps = {
   tone?: 'green' | 'blue' | 'amber' | 'dark' | 'offwhite'
   primaryCta?: { label: string; href: string }
   secondaryCta?: { label: string; href: string }
-  image?: { src: string; alt: string }
+  image?: { src: string; alt: string; videoSrc?: string }
   children?: ReactNode
 }
 
@@ -45,7 +46,12 @@ export default function PageHero({
     >
       {hasBackgroundImage ? (
         <div className="absolute inset-0 overflow-hidden">
-          <Image src={image.src} alt={image.alt} fill className="object-cover object-center" sizes="100vw" priority />
+          <HeroBackground
+            imageSrc={image.src}
+            imageAlt={image.alt}
+            videoSrc={image.videoSrc}
+            posterSrc={image.src}
+          />
           <div
             className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0.38)_55%,rgba(0,0,0,0.5)_100%),linear-gradient(0deg,rgba(16,51,45,0.55)_0%,rgba(16,51,45,0.18)_45%,rgba(16,51,45,0.42)_100%)]"
             aria-hidden

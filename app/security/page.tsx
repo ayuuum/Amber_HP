@@ -86,7 +86,7 @@ export default function SecurityPage() {
                   href="/contact?source=security"
                   className="inline-flex min-h-11 items-center text-sm font-medium text-brand-green hover:underline"
                 >
-                  お問い合わせフォームへ
+                  Contact
                 </Link>
               </div>
               <p className="mt-4 text-sm text-secondary">
@@ -96,11 +96,11 @@ export default function SecurityPage() {
                 </Link>
                 {' · '}
                 <Link href="/faq#security" className="text-brand-green underline-offset-2 hover:underline">
-                  セキュリティFAQ
+                  Security FAQ
                 </Link>
                 {' · '}
                 <Link href="/contact" className="text-brand-green underline-offset-2 hover:underline">
-                  お問い合わせ
+                  Contact
                 </Link>
               </p>
             </section>

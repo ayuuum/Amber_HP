@@ -1,10 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { buildContactHref } from '@/lib/contact'
 import { heroMedia } from '@/data/home'
 import { useMessages } from '@/components/i18n/LocaleProvider'
+import HeroBackground from '@/components/ui/HeroBackground'
 
 export default function HomeHero() {
   const t = useMessages().home.hero
@@ -13,13 +13,11 @@ export default function HomeHero() {
   return (
     <section className="relative flex min-h-[828px] items-end bg-dark-green md:items-center">
       <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src={heroMedia.image}
-          alt={t.imageAlt}
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
+        <HeroBackground
+          imageSrc={heroMedia.image}
+          imageAlt={t.imageAlt}
+          videoSrc={heroMedia.videoSrc}
+          posterSrc={heroMedia.poster}
         />
         <div
           className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.25)_0%,rgba(0,0,0,0.35)_55%,rgba(0,0,0,0.45)_100%),linear-gradient(0deg,rgba(16,51,45,0.55)_0%,rgba(16,51,45,0.15)_45%,rgba(16,51,45,0.35)_100%)]"

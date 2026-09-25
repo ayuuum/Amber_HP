@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
-import { isCompletedCase, type CaseItem } from '@/data/cases'
+import { caseStatusLabel, isCompletedCase, type CaseItem } from '@/data/cases'
 
 type Props = {
   item: Pick<
@@ -22,15 +22,16 @@ type Props = {
     | 'imageAlt'
     | 'anonymous'
   >
-  /** トップページ向けの簡潔表示 */
+  /** Compact layout for the home page */
   variant?: 'compact' | 'detailed'
   viewLabel?: string
 }
 
-export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = '詳しく見る' }: Props) {
+export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = 'View' }: Props) {
   const completed = isCompletedCase(item.status)
-  const afterColumnLabel = completed ? 'After' : '進行中'
+  const afterColumnLabel = completed ? 'After' : 'In progress'
   const isCompact = variant === 'compact'
+  const periodLabel = item.period === '進行中' ? 'In progress' : item.period
 
   return (
     <article className="home-card flex h-full flex-col overflow-hidden border border-sequoia-black/8 bg-white">
@@ -47,22 +48,22 @@ export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = 
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <p className="home-label text-brand-green">{item.enIndustry || item.industry}</p>
           <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
-            {item.status}
+            {caseStatusLabel[item.status]}
           </span>
           {!completed ? (
             <span className="rounded-full border border-brand-green/25 bg-light-green/60 px-2.5 py-0.5 text-[11px] text-brand-green">
-              実装伴走中
+              In delivery
             </span>
           ) : null}
-          {item.period ? (
-            <span className="text-[11px] text-secondary">{item.period}</span>
+          {periodLabel ? (
+            <span className="text-[11px] text-secondary">{periodLabel}</span>
           ) : null}
         </div>
 
         {!isCompact ? (
           <>
             <p className="mb-2 text-[11px] text-brand-green/90">{item.serviceLabel}</p>
-            {item.anonymous ? <p className="mb-2 text-[11px] text-secondary">匿名事例</p> : null}
+            {item.anonymous ? <p className="mb-2 text-[11px] text-secondary">Anonymous case</p> : null}
           </>
         ) : null}
 
@@ -73,16 +74,16 @@ export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = 
         ) : (
           <dl className="mb-4 space-y-3 text-sm leading-relaxed">
             <div>
-              <dt className="mb-1 text-xs text-secondary">業務の課題</dt>
+              <dt className="mb-1 text-xs text-secondary">Challenge</dt>
               <dd className="line-clamp-2 text-sequoia-black/80">{item.challenge}</dd>
             </div>
             <div>
-              <dt className="mb-1 text-xs text-secondary">取り組み</dt>
+              <dt className="mb-1 text-xs text-secondary">Approach</dt>
               <dd className="line-clamp-2 text-sequoia-black/80">{item.support}</dd>
             </div>
             <div>
               <dt className="mb-1 text-xs text-secondary">
-                {completed ? '変化' : '進行中の到達点'}
+                {completed ? 'Outcome' : 'Progress'}
               </dt>
               <dd className="line-clamp-2 text-sequoia-black/80">{item.change}</dd>
             </div>
@@ -92,7 +93,7 @@ export default function CaseStudyCard({ item, variant = 'detailed', viewLabel = 
         {!isCompact ? (
           <div className="mt-auto grid grid-cols-2 gap-3 border-t border-sequoia-black/8 pt-4 text-xs">
             <div>
-              <p className="mb-1 text-secondary">導入前</p>
+              <p className="mb-1 text-secondary">Before</p>
               <p className="leading-relaxed text-sequoia-black/80">{item.before}</p>
             </div>
             <div>

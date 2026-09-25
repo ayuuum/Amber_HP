@@ -51,8 +51,8 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         <div className="home-container relative z-10">
           <PageBreadcrumbs
             items={[
-              { label: 'トップ', href: '/' },
-              { label: 'AI活用・実装支援', href: '/service/ai-solution' },
+              { label: 'Home', href: '/' },
+              { label: 'Services', href: '/service/ai-solution' },
               { label: `${data.toolName} 法人研修` },
             ]}
           />
@@ -81,7 +81,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Link href={contactHref} className="btn-pill-on-dark inline-flex items-center gap-2">
-                無料相談・資料請求
+                Talk to Amber
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link href="/service/ai-solution" className="btn-pill-ghost-on-dark inline-flex items-center gap-2">
@@ -112,7 +112,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       <section className="home-section border-b border-sequoia-black/8 bg-white">
         <div className="home-container">
           <motion.div {...fadeUp} className="mb-12 max-w-3xl md:mb-16">
-            <p className="home-label mb-3 text-brand-green">よくある課題</p>
+            <p className="home-label mb-3 text-brand-green">Common challenges</p>
             <h2 className="home-h2">
               {data.toolName}の導入後、<br />こんな状態になっていませんか？
             </h2>
@@ -147,7 +147,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       <section id="courses" className="home-section border-b border-sequoia-black/8 bg-off-white">
         <div className="home-container">
           <motion.div {...fadeUp} className="mb-12 max-w-3xl md:mb-16">
-            <p className="home-label mb-3 text-brand-green">カリキュラム</p>
+            <p className="home-label mb-3 text-brand-green">Curriculum</p>
             <h2 className="home-h2">
               2コース × 10時間で、<br />定着まで設計する
             </h2>
@@ -260,7 +260,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
       <section className="home-section border-b border-sequoia-black/8 bg-white">
         <div className="home-container">
           <motion.div {...fadeUp} className="mb-12 max-w-3xl md:mb-16">
-            <p className="home-label mb-3 text-brand-green">Amberの3つの理由</p>
+            <p className="home-label mb-3 text-brand-green">Why Amber</p>
             <h2 className="home-h2">研修が「現場に根付く」理由</h2>
           </motion.div>
 
@@ -318,7 +318,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         <section className="home-section bg-white !py-14 md:!py-16">
           <div className="home-container">
             <motion.div {...fadeUp}>
-              <p className="home-label mb-6 text-brand-green">関連する研修</p>
+              <p className="home-label mb-6 text-brand-green">Related training</p>
               <div className="flex flex-wrap gap-3">
                 {data.relatedTools.map((tool) => (
                   <Link
@@ -347,7 +347,7 @@ export default function TrainingLPTemplate({ data }: { data: ToolLPData }) {
         source={data.slug}
         headingLines={['研修から定着まで、', '進め方を相談する。']}
         body={`${data.toolName}研修を含むAI活用の進め方を、現場の状況に合わせて整理します。`}
-        ctaLabel="無料相談・資料請求"
+        ctaLabel="Talk to Amber"
       />
     </main>
   )

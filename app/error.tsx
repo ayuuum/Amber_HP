@@ -27,10 +27,10 @@ export default function Error({
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <button onClick={reset} className="btn-primary">
-              もう一度試す
+              Try again
             </button>
             <Link href="/" className="btn-secondary">
-              ホームに戻る
+              Back to Home
             </Link>
           </div>
         </div>

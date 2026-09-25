@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
 import ContactCTA from '@/components/ui/ContactCTA'
 import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
-import { cases, isCompletedCase } from '@/data/cases'
+import { cases, caseStatusLabel, isCompletedCase } from '@/data/cases'
 import { siteUrl } from '@/lib/site-metadata'
 
 export const metadata: Metadata = {
@@ -26,15 +26,19 @@ export default function CasesPage() {
         eyebrow="Work"
         headingLines={['Transforming Essential Operations.']}
         body="どの産業の、どの業務を、どう変えたか。守秘のため企業名は非公開です。"
-        image={{ src: '/images/brand/method-forest.jpg', alt: '森の風景' }}
+        image={{
+          src: '/images/brand/cases-hero-poster.jpg',
+          alt: '森の風景',
+          videoSrc: '/videos/cases-hero.mp4',
+        }}
       />
       <section id="case-list" className="scroll-mt-24 bg-white py-12 md:py-16 lg:py-20">
         <div className="home-container">
           <PageBreadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Work' }]} />
           <div className="mb-8 md:mb-10">
-            <h2 className="home-h2 mb-3">支援事例</h2>
+            <h2 className="home-h2 mb-3">Case Studies</h2>
             <p className="home-body max-w-2xl text-pretty">
-              現場業務の再設計から、AI活用基盤、訪問オペの統合まで。進行中の案件は「実装伴走中」と明示しています。
+              現場業務の再設計から、AI活用基盤、訪問オペの統合まで。進行中の案件は In delivery と明示しています。
             </p>
           </div>
           <ul className="grid gap-8 md:gap-10">
@@ -56,15 +60,17 @@ export default function CasesPage() {
                       <div className="mb-3 flex flex-wrap items-center gap-2">
                         <p className="home-label text-brand-green">{item.enIndustry}</p>
                         <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
-                          {item.status}
+                          {caseStatusLabel[item.status]}
                         </span>
                         {!completed ? (
                           <span className="rounded-full border border-brand-green/25 bg-light-green/60 px-2.5 py-0.5 text-[11px] text-brand-green">
-                            実装伴走中
+                            In delivery
                           </span>
                         ) : null}
                         {item.period ? (
-                          <span className="text-[11px] text-secondary">{item.period}</span>
+                          <span className="text-[11px] text-secondary">
+                            {item.period === '進行中' ? 'In progress' : item.period}
+                          </span>
                         ) : null}
                       </div>
                       <p className="mb-2 text-sm text-sequoia-black/60">{item.scaleLabel}</p>
@@ -82,12 +88,12 @@ export default function CasesPage() {
                       ) : null}
                       <div className="mb-6 grid gap-3 sm:grid-cols-2">
                         <div className="rounded-sm border border-sequoia-black/8 bg-off-white px-4 py-3">
-                          <p className="mb-1 text-[11px] tracking-wide text-secondary">導入前</p>
+                          <p className="mb-1 text-[11px] tracking-wide text-secondary">Before</p>
                           <p className="text-sm text-sequoia-black">{item.before}</p>
                         </div>
                         <div className="rounded-sm border border-brand-green/15 bg-light-green/50 px-4 py-3">
                           <p className="mb-1 text-[11px] tracking-wide text-brand-green">
-                            {completed ? 'After' : '進行中'}
+                            {completed ? 'After' : 'In progress'}
                           </p>
                           <p className="text-sm text-sequoia-black">{item.after}</p>
                         </div>
@@ -96,7 +102,7 @@ export default function CasesPage() {
                         href={`/cases/${item.slug}`}
                         className="inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-medium text-brand-green hover:underline"
                       >
-                        詳細を見る
+                        View
                         <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                       </Link>
                     </div>

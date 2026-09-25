@@ -61,7 +61,7 @@ export default function GlobalError({
               textDecoration: 'none',
             }}
           >
-            トップへ
+            Back to Home
           </a>
         </div>
       </body>

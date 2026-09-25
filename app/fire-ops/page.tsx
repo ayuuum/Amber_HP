@@ -66,7 +66,7 @@ const breadcrumbJsonLd = {
     {
       '@type': 'ListItem',
       position: 1,
-      name: 'トップ',
+      name: 'Home',
       item: siteUrl,
     },
     {

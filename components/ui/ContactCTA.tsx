@@ -1,6 +1,6 @@
 import { buildContactHref } from '@/lib/contact'
-import Image from 'next/image'
 import { PrimaryButton } from '@/components/ui/PrimaryButton'
+import HeroBackground from '@/components/ui/HeroBackground'
 
 type ContactCTAProps = {
   headingLines?: readonly string[]
@@ -22,13 +22,12 @@ export default function ContactCTA({
   return (
     <section className={`relative overflow-hidden ${className}`}>
       <div className="absolute inset-0">
-        <Image
-          src="/images/brand/method-forest.jpg"
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          aria-hidden
+        <HeroBackground
+          imageSrc="/images/brand/cases-hero-poster.jpg"
+          imageAlt=""
+          videoSrc="/videos/cases-hero.mp4"
+          posterSrc="/images/brand/cases-hero-poster.jpg"
+          priority={false}
         />
         <div className="absolute inset-0 bg-dark-green/70" aria-hidden />
       </div>

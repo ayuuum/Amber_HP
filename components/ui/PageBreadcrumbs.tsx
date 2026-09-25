@@ -5,7 +5,7 @@ export type Crumb = { label: string; href?: string }
 
 export default function PageBreadcrumbs({ items, className }: { items: Crumb[]; className?: string }) {
   return (
-    <nav aria-label="パンくず" className={cn('mb-6 text-sm text-secondary', className)}>
+    <nav aria-label="Breadcrumb" className={cn('mb-6 text-sm text-secondary', className)}>
       <ol className="flex flex-wrap items-center gap-2">
         {items.map((item, i) => (
           <li key={`${item.label}-${i}`} className="flex items-center gap-2">

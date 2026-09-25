@@ -21,30 +21,32 @@ export default function Footer() {
               <span className="font-logo text-[1.75rem] leading-none text-brand-green">Amber</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">{messages.common.brandTagline}</p>
-            <p className="mt-5 text-xs text-secondary">
-              Products:{' '}
-              <a
-                href={siteShell.pineUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brand-green hover:underline"
-              >
-                Pine
-              </a>
-            </p>
+            <p className="mt-5 text-xs font-medium text-sequoia-black">{messages.common.products}</p>
+            <ul className="mt-2 space-y-0">
+              <li>
+                <a
+                  href={siteShell.pineUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  Pine
+                </a>
+              </li>
+              <li>
+                <Link href="/fire-ops" className={linkClass}>
+                  {messages.footer.fireOps}
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium text-sequoia-black">Explore</p>
+            <p className="mb-4 text-sm font-medium text-sequoia-black">{messages.footer.site}</p>
             <ul className="space-y-0">
               <li>
                 <Link href="/service/ai-solution" className={linkClass}>
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/#industries" className={linkClass}>
-                  {messages.nav.industries}
+                  {messages.nav.services}
                 </Link>
               </li>
               <li>
@@ -53,28 +55,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/fire-ops" className={linkClass}>
-                  消防設備点検システム
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog" className={linkClass}>
-                  Blog
+                  {messages.nav.blog}
                 </Link>
               </li>
               <li>
                 <Link href="/resources" className={linkClass}>
-                  Free Resources
+                  {messages.footer.resources}
                 </Link>
               </li>
               <li>
                 <Link href="/faq" className={linkClass}>
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href={contactHref} className={linkClass}>
-                  {messages.common.contact}
+                  {messages.footer.faq}
                 </Link>
               </li>
             </ul>
@@ -90,7 +82,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/company#representative" className={linkClass}>
-                  Representative
+                  {messages.footer.representative}
+                </Link>
+              </li>
+              <li>
+                <Link href={contactHref} className={linkClass}>
+                  {messages.common.contact}
                 </Link>
               </li>
             </ul>
@@ -111,7 +108,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/legal/tokushoho" className={linkClass}>
-                  特定商取引法に基づく表記
+                  {messages.common.tokushoho}
                 </Link>
               </li>
               <li>
@@ -123,13 +120,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-sequoia-black/8 pt-6 text-xs text-secondary md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 border-t border-sequoia-black/8 pt-6 text-xs text-secondary">
           <p>
             © {year} {messages.common.companyName}. All rights reserved.
           </p>
-          <Link href={contactHref} className="hover:text-brand-green">
-            {messages.common.contactForm}
-          </Link>
         </div>
       </div>
     </footer>

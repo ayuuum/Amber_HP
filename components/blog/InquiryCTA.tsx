@@ -24,7 +24,7 @@ export default function InquiryCTA({
 }: Props) {
   const resolvedTitle =
     title ||
-    (resourceSlug ? '無料資料をダウンロード' : '自社業務へのAI活用について相談する')
+    (resourceSlug ? 'Download free resources' : 'Talk to Amber about AI in your operations')
   const resolvedDescription =
     description ||
     (category === 'training'
@@ -33,7 +33,7 @@ export default function InquiryCTA({
         ? '必要事項の入力後、チェックリスト・プレイブックをダウンロードできます。'
         : '業務変革、AI・ソフトウェア、データ連携まで、課題の整理からご相談ください。')
   const resolvedLabel =
-    label || (resourceSlug ? '資料を受け取る' : 'AI活用について相談する')
+    label || (resourceSlug ? 'Get the resource' : 'Talk to Amber')
   const href = resourceSlug
     ? getResourcePagePath(resourceSlug)
     : buildContactHref(source, inquiry)

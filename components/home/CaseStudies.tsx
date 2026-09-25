@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { cases } from '@/data/cases'
+import { cases, caseStatusLabel, isCompletedCase } from '@/data/cases'
 import FadeUp from '@/components/home/FadeUp'
 import { useMessages } from '@/components/i18n/LocaleProvider'
 
@@ -70,15 +70,17 @@ export default function HomeCaseStudies() {
                           {localized?.industry ?? item.enIndustry}
                         </p>
                         <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-[11px] text-secondary">
-                          {item.status}
+                          {caseStatusLabel[item.status]}
                         </span>
-                        {item.status !== '支援実績' ? (
+                        {!isCompletedCase(item.status) ? (
                           <span className="rounded-full border border-brand-green/25 bg-light-green/60 px-2.5 py-0.5 text-[11px] text-brand-green">
-                            実装伴走中
+                            In delivery
                           </span>
                         ) : null}
                         {item.period ? (
-                          <span className="text-[11px] text-secondary">{item.period}</span>
+                          <span className="text-[11px] text-secondary">
+                            {item.period === '進行中' ? 'In progress' : item.period}
+                          </span>
                         ) : null}
                       </div>
                       <p className="mb-2 text-sm text-sequoia-black/60">{item.scaleLabel}</p>

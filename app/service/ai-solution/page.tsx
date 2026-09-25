@@ -168,9 +168,9 @@ export default function AiSolutionPage() {
       <section className="home-section bg-off-white">
         <div className="home-container">
           <FadeUp className="mb-10 flex flex-col gap-4 md:mb-12 md:flex-row md:items-end md:justify-between">
-            <SectionHeader heading="支援事例" className="mb-0 md:mb-0" />
+            <SectionHeader heading="Work" className="mb-0 md:mb-0" />
             <Link href="/cases" className="text-sm font-medium text-brand-green hover:underline">
-              一覧を見る
+              All Work
             </Link>
           </FadeUp>
           <ul className="grid gap-5 md:grid-cols-3">
@@ -186,7 +186,7 @@ export default function AiSolutionPage() {
       <section className="home-section bg-white">
         <div className="home-container">
           <FadeUp>
-            <SectionHeader heading="よくあるご質問" />
+            <SectionHeader heading="FAQ" />
           </FadeUp>
           <FaqAccordion items={aiSolutionPage.faq.map((f) => ({ question: f.q, answer: f.a }))} />
           <p className="mt-8 text-sm text-secondary">

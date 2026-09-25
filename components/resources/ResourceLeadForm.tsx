@@ -80,7 +80,7 @@ export default function ResourceLeadForm({ slug, resourceTitle }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="rounded-2xl border border-sequoia-black/8 bg-off-white px-6 py-8 md:px-10">
-      <h2 className="home-h3 mb-2">無料で資料を受け取る</h2>
+      <h2 className="home-h3 mb-2">Get free resources</h2>
       <p className="home-body mb-6 text-sequoia-black/70">
         お名前とメールアドレスをご入力ください。送信後にダウンロードできます。
       </p>
@@ -125,7 +125,7 @@ export default function ResourceLeadForm({ slug, resourceTitle }: Props) {
       {error ? <p className="mt-4 text-sm text-red-700">{error}</p> : null}
 
       <button type="submit" disabled={isSubmitting} className="btn-pill-primary-solid mt-6 inline-flex disabled:opacity-60">
-        {isSubmitting ? '送信中…' : '送信してダウンロード'}
+        {isSubmitting ? 'Sending…' : 'Download'}
       </button>
     </form>
   )

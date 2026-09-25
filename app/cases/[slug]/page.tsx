@@ -6,7 +6,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageBreadcrumbs from '@/components/ui/PageBreadcrumbs'
 import ContactCTA from '@/components/ui/ContactCTA'
-import { getAllCaseSlugs, getCaseBySlug, isCompletedCase } from '@/data/cases'
+import { getAllCaseSlugs, getCaseBySlug, caseStatusLabel, isCompletedCase } from '@/data/cases'
 import { siteUrl } from '@/lib/site-metadata'
 
 type Props = { params: { slug: string } }
@@ -31,8 +31,8 @@ export default function CaseDetailPage({ params }: Props) {
   const item = getCaseBySlug(params.slug)
   if (!item) notFound()
   const completed = isCompletedCase(item.status)
-  const outcomeLabel = completed ? '導入後の変化' : '実装伴走中の到達点'
-  const afterLabel = completed ? 'After' : '進行中'
+  const outcomeLabel = completed ? 'Outcome' : 'Progress'
+  const afterLabel = completed ? 'After' : 'In progress'
 
   return (
     <main className="min-h-screen bg-white">
@@ -42,19 +42,19 @@ export default function CaseDetailPage({ params }: Props) {
           <div className="mx-auto max-w-3xl">
             <PageBreadcrumbs
               items={[
-                { label: 'トップ', href: '/' },
-                { label: '支援事例', href: '/cases' },
+                { label: 'Home', href: '/' },
+                { label: 'Work', href: '/cases' },
                 { label: item.theme },
               ]}
             />
             <p className="home-label mb-3 text-brand-green">{item.industry}</p>
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <span className="rounded-full border border-sequoia-black/10 bg-off-white px-2.5 py-0.5 text-xs text-secondary">
-                {item.status}
+                {caseStatusLabel[item.status]}
               </span>
               {!completed ? (
                 <span className="rounded-full border border-brand-green/25 bg-light-green/70 px-2.5 py-0.5 text-xs text-brand-green">
-                  実装伴走中
+                  In delivery
                 </span>
               ) : null}
               {item.period && item.period !== '進行中' ? (
@@ -117,27 +117,27 @@ export default function CaseDetailPage({ params }: Props) {
 
             <div className="grid gap-10">
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">業界</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">Industry</h2>
                 <p className="leading-relaxed text-secondary">{item.industry}</p>
               </section>
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援テーマ</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">Theme</h2>
                 <p className="leading-relaxed text-secondary">{item.theme}</p>
               </section>
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援前の課題</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">Challenge</h2>
                 <p className="leading-relaxed text-secondary">{item.challenge}</p>
               </section>
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援前の状態</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">Before</h2>
                 <p className="leading-relaxed text-secondary">{item.beforeState}</p>
               </section>
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">支援内容</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">What we did</h2>
                 <p className="leading-relaxed text-secondary">{item.support}</p>
               </section>
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">成果物</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">Deliverables</h2>
                 <ul className="list-disc space-y-1 pl-5 text-secondary">
                   {item.deliverables.map((d) => (
                     <li key={d}>{d}</li>
@@ -149,11 +149,11 @@ export default function CaseDetailPage({ params }: Props) {
                 <p className="leading-relaxed text-secondary">{item.change}</p>
               </section>
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">現在進めていること</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">Next</h2>
                 <p className="leading-relaxed text-secondary">{item.nextSteps}</p>
               </section>
               <section>
-                <h2 className="mb-3 text-lg font-medium text-sequoia-black">関連サービス</h2>
+                <h2 className="mb-3 text-lg font-medium text-sequoia-black">Related</h2>
                 <ul className="flex flex-wrap gap-3">
                   {item.relatedServices.map((s) => (
                     <li key={s.href + s.label}>

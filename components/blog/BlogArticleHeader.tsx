@@ -91,7 +91,7 @@ export function BlogBackLink() {
   return (
     <div className="mb-10">
       <Link href="/blog" className="text-sm text-brand-green hover:underline">
-        ← AI活用の知見に戻る
+        ← Back to Insights
       </Link>
     </div>
   )
