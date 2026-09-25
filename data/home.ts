@@ -9,7 +9,7 @@ export const heroMedia = {
 export const heroCopy = {
   heading: '暮らしを支える産業に、最新のテクノロジーを。',
   subheading: 'Technology for Essential Industries.',
-  body: 'Amberは、製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。',
+  body: '製造・設備・建設・物流など暮らしを支える産業に AIとソフトウェアを実装する会社です。',
   primaryCta: 'Our Work',
   primaryHref: '#cases',
   secondaryCta: 'Contact',
@@ -17,54 +17,54 @@ export const heroCopy = {
 } as const
 
 export const missionSection = {
-  heading: 'Operations still run on paper and tribal knowledge.',
-  lead: '製造、建設、設備、物流。',
+  heading: '現場はまだ紙と勘で回っている',
+  lead: '製造 建設 設備 物流',
   paragraphs: [
-    '社会を動かしている産業には、高い専門性と長年蓄積された知識がある一方で、紙や表計算、分断されたシステム、属人的な業務が数多く残っています。',
-    'Amberは、AIとソフトウェアを現場に実装し、暮らしを支える産業の仕組みを次の時代へ進めます。',
+    '専門性は高い。でも日々の仕事は紙や表計算に残り分断され属人化している。',
+    'Amberはその現場にAIとソフトウェアを入れ仕組みごと先に進める。',
   ],
 } as const
 
 export const industriesSection = {
-  heading: 'Built for Essential Industries.',
-  lead: 'Amberは、社会や暮らしを支える産業を中心に取り組んでいます。',
+  heading: '暮らしを支える産業へ',
+  lead: '社会や暮らしを支える産業を中心に取り組んでいます。',
 } as const
 
 export const whatWeDoSection = {
-  heading: 'From Operations to Software.',
-  lead: 'Amberは、ツールを導入するだけではなく、業務を理解するところから実装・改善まで一貫して取り組みます。',
+  heading: '業務から仕組みをつくる',
+  lead: 'ツール導入だけで終わらせない。業務を理解してから実装し定着までやる。',
 } as const
 
 export const whatWeBuildSection = {
-  heading: 'Technology built around real operations.',
-  lead: '現場の業務に合わせて、必要な仕組みを設計・実装します。',
+  heading: '現場に合わせてつくる',
+  lead: '必要な仕組みを現場の仕事に合わせて設計し実装する。',
 } as const
 
 export const casesSection = {
-  heading: 'Transforming Essential Operations.',
-  lead: 'どの産業の、どの業務を、どう変えたか。取り組みの一例です。',
+  heading: '取り組みの一例',
+  lead: '守秘のため企業名は出していません。',
 } as const
 
 export const howWeWorkSection = {
-  heading: 'Built with the Field.',
-  lead: '現場に入り、実装まで進めます。',
+  heading: '現場から実装まで',
+  lead: '現場に入り実装までやりきる。',
 } as const
 
 export const companyTeaserSection = {
   heading: '暮らしを支える産業に、最新のテクノロジーを。',
-  subheading: '製造・設備・建設・物流の現場から、実装まで伴走します。',
+  subheading: '製造・設備・建設・物流の現場から実装まで伴走します。',
   paragraphs: [
-    '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
-    'その現場には、高い専門性と長年蓄積された知識がある一方、紙や表計算、分断されたシステム、属人的な業務も数多く残っています。',
-    'Amberは、AIとソフトウェアを現場に実装し、これらの産業を次の時代へ進めます。',
+    '日本の暮らしを支えているのは製造 建設 設備 物流をはじめとする多くの産業だ。',
+    '現場には高い専門性と蓄積された知識がある。一方で紙や表計算 分断されたシステム 属人的な業務も残っている。',
+    'AmberはAIとソフトウェアを現場に実装しこれらの産業を次の段階へ進める。',
   ],
   cta: 'Company',
   ctaHref: '/company',
 } as const
 
 export const finalCta = {
-  heading: '一緒に整理します。',
-  body: '業務やシステムの課題からご相談ください。',
+  heading: '一緒に整理します',
+  body: '業務やシステムの課題から相談してください。',
   cta: 'Talk to Amber',
 } as const
 

@@ -199,7 +199,7 @@ export const howWeWorkPrinciples = [
 
 /** @deprecated TOPでは How we work を使用。下層互換用。 */
 export const supportMethod = {
-  heading: 'Built with the Field.',
+  heading: '現場に入り、実装まで進める。',
   body: '提案や開発だけで終わらず、業務理解から実装まで現場に入って進めます。',
   features: howWeWorkPrinciples.map((p) => p.title),
 } as const

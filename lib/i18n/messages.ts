@@ -54,115 +54,115 @@ const ja = {
       imageAlt: '霧に包まれた森と山並み',
       heading: '暮らしを支える産業に、最新のテクノロジーを。',
       subheading: 'Technology for Essential Industries.',
-      body: 'Amberは、製造・設備・建設・物流など、社会を支える産業の変革をAIとソフトウェアで実装します。',
+      body: '製造・設備・建設・物流など暮らしを支える産業に AIとソフトウェアを実装する会社です。',
       primaryCta: 'Our Work',
       secondaryCta: 'Contact',
     },
     mission: {
-      heading: 'Operations still run on paper and tribal knowledge.',
-      lead: '製造、建設、設備、物流。',
+      heading: '現場はまだ紙と勘で回っている',
+      lead: '製造 建設 設備 物流',
       paragraphs: [
-        '社会を動かしている産業には、高い専門性と長年蓄積された知識がある一方で、紙や表計算、分断されたシステム、属人的な業務が数多く残っています。',
-        'Amberは、AIとソフトウェアを現場に実装し、暮らしを支える産業の仕組みを次の時代へ進めます。',
+        '専門性は高い。でも日々の仕事は紙や表計算に残り分断され属人化している。',
+        'Amberはその現場にAIとソフトウェアを入れ仕組みごと先に進める。',
       ],
     },
     industries: {
-      heading: 'Built for Essential Industries.',
-      lead: 'Amberは、社会や暮らしを支える産業を中心に取り組んでいます。',
+      heading: '暮らしを支える産業へ',
+      lead: '社会や暮らしを支える産業を中心に取り組んでいます。',
       items: {
         manufacturing: {
           title: '製造・素材・化学',
-          description: '技術文書、研究開発、ナレッジ、報告・確認業務など。',
+          description: '技術文書 研究開発 ナレッジ 報告・確認業務など',
         },
         'field-services': {
           title: '設備・保守・点検',
-          description: '点検、修繕、報告、スケジュールなど現場オペレーション。',
+          description: '点検 修繕 報告 スケジュールなど現場のオペレーション',
         },
         construction: {
           title: '建設・施工',
-          description: '進捗管理、報告、見積、現場と事務の情報連携。',
+          description: '進捗管理 報告 見積 現場と事務の情報連携',
         },
         infrastructure: {
           title: '物流・社会インフラ',
-          description: '分断されたデータと業務をつなぎ、運用の基盤をつくる。',
+          description: '分断されたデータと業務をつなぎ運用の基盤をつくる',
         },
       },
     },
     whatWeDo: {
-      heading: 'From Operations to Software.',
-      lead: 'Amberは、ツールを導入するだけではなく、業務を理解するところから実装・改善まで一貫して取り組みます。',
+      heading: '業務から仕組みをつくる',
+      lead: 'ツール導入だけで終わらせない。業務を理解してから実装し定着までやる。',
       steps: {
-        understand: { title: '業務を理解する', body: '現場の業務、システム、データ、課題を整理する。' },
+        understand: { title: '業務を理解する', body: '現場の業務・システム・データ・課題を整理する' },
         redesign: {
           title: '業務を再設計する',
-          body: 'AIとソフトウェアを前提に、業務の流れそのものを再設計する。',
+          body: 'AIとソフトウェアを前提に業務の流れを組み直す',
         },
         build: {
           title: '実装する',
-          body: 'AIエージェントや業務システム、既存システム連携を設計・開発する。',
+          body: 'AIエージェントや業務システム 既存システム連携を設計・開発する',
         },
         scale: {
           title: '定着・展開する',
-          body: '実際の業務に組み込み、改善しながら組織へ展開する。',
+          body: '実際の業務に組み込み改善しながら組織へ広げる',
         },
       },
     },
     whatWeBuild: {
-      heading: 'Technology built around real operations.',
-      lead: '現場の業務に合わせて、必要な仕組みを設計・実装します。',
+      heading: '現場に合わせてつくる',
+      lead: '必要な仕組みを現場の仕事に合わせて設計し実装する。',
       items: {
         agents: '業務を実行・支援するAIエージェント',
         apps: '現場に合わせた業務システム',
-        knowledge: '社内の知識・情報を活用する仕組み',
+        knowledge: '社内の知識・情報を活かす仕組み',
         workflow: '複雑な業務プロセスの自動化',
         data: '分断されたデータ・システムの連携',
       },
     },
     cases: {
-      heading: 'Transforming Essential Operations.',
-      lead: 'どの産業の、どの業務を、どう変えたか。取り組みの一例です。',
+      heading: '取り組みの一例',
+      lead: '守秘のため企業名は出していません。',
       items: {
         chemical: {
-          industry: 'Manufacturing & Materials',
+          industry: '製造・素材・化学',
           theme: '大規模組織のAI活用基盤を構築',
-          challenge: '業務課題の整理からテーマ設計、実装・組織展開まで一貫して支援。',
+          challenge: '課題整理からテーマ設計 実装・組織展開まで一気通貫で支援',
         },
         field: {
           industry: '訪問・現場サービス',
           theme: '訪問・現場業務を統合する業務基盤',
           challenge:
-            '予約・顧客・現場・店舗の情報が分断され、拠点をまたいだ進捗や稼働の把握が難しかった。',
+            '予約・顧客・現場・店舗の情報が分断され拠点をまたいだ進捗や稼働が見えにくかった',
         },
         fire: {
-          industry: 'Facilities & Maintenance',
+          industry: '設備・保守・点検',
           theme: '現場オペレーションの業務基盤を再構築',
-          challenge: '分断された現場と事務の業務を整理し、一貫して情報が流れる仕組みへ。',
+          challenge: '分断された現場と事務の業務を整理し情報が一本で流れる仕組みへ',
         },
       },
     },
     howWeWork: {
-      heading: 'Built with the Field.',
-      lead: '現場に入り、実装まで進めます。',
+      heading: '現場から実装まで',
+      lead: '現場に入り実装までやりきる。',
       principles: {
-        field: '現場から始める。',
-        build: '提案だけで終わらせない。',
-        integrate: 'ツールを増やすのではなく、業務に組み込む。',
-        learn: '現場で得た知見を、次の実装へつなげる。',
+        field: '現場から始める',
+        build: '提案だけで終わらせない',
+        integrate: 'ツールを増やさず業務に組み込む',
+        learn: '現場で得た知見を次の実装につなげる',
       },
     },
     company: {
       heading: '暮らしを支える産業に、最新のテクノロジーを。',
-      subheading: '製造・設備・建設・物流の現場から、実装まで伴走します。',
+      subheading: '製造・設備・建設・物流の現場から実装まで伴走します。',
       paragraphs: [
-        '日本の暮らしを支えているのは、製造、建設、設備、物流をはじめとする多くの産業です。',
-        'その現場には、高い専門性と長年蓄積された知識がある一方、紙や表計算、分断されたシステム、属人的な業務も数多く残っています。',
-        'Amberは、AIとソフトウェアを現場に実装し、これらの産業を次の時代へ進めます。',
+        '日本の暮らしを支えているのは製造 建設 設備 物流をはじめとする多くの産業だ。',
+        '現場には高い専門性と蓄積された知識がある。一方で紙や表計算 分断されたシステム 属人的な業務も残っている。',
+        'AmberはAIとソフトウェアを現場に実装しこれらの産業を次の段階へ進める。',
       ],
       cta: 'Company',
     },
     finalCta: {
-      heading: '一緒に整理します。',
-      body: '業務やシステムの課題からご相談ください。',
+      heading: '一緒に整理します',
+      body: '業務やシステムの課題から相談してください。',
       cta: 'Talk to Amber',
     },
   },
@@ -228,15 +228,15 @@ const en = {
       secondaryCta: 'Contact',
     },
     mission: {
-      heading: 'Operations still run on paper and tribal knowledge.',
+      heading: 'Much of the work still runs on paper and know-how stuck in people’s heads.',
       lead: 'Manufacturing. Construction. Facilities. Logistics.',
       paragraphs: [
-        'Essential industries hold deep expertise and accumulated knowledge—yet paper, spreadsheets, fragmented systems, and tribal processes still shape much of daily work.',
+        'Essential industries hold deep expertise and accumulated knowledge—yet paper, spreadsheets, fragmented systems, and know-how locked in individuals still shape much of daily work.',
         'Amber puts AI and software into the field, advancing the operating foundations of the industries that sustain everyday life.',
       ],
     },
     industries: {
-      heading: 'Built for Essential Industries.',
+      heading: 'Built for the industries that keep daily life running.',
       lead: 'Amber focuses on the industries that keep society and daily life running.',
       items: {
         manufacturing: {
@@ -258,7 +258,7 @@ const en = {
       },
     },
     whatWeDo: {
-      heading: 'From Operations to Software.',
+      heading: 'From understanding the work to building the system.',
       lead: 'Amber does more than deploy tools. We work from understanding operations through implementation and improvement.',
       steps: {
         understand: {
@@ -280,7 +280,7 @@ const en = {
       },
     },
     whatWeBuild: {
-      heading: 'Technology built around real operations.',
+      heading: 'Technology shaped around real field work.',
       lead: 'We design and implement the systems real operations actually need.',
       items: {
         agents: 'AI agents that execute and support operational work',
@@ -291,8 +291,8 @@ const en = {
       },
     },
     cases: {
-      heading: 'Transforming Essential Operations.',
-      lead: 'Which industry. Which operation. What changed. A few examples.',
+      heading: 'Which industry. Which operation. What changed.',
+      lead: 'Company names are withheld for confidentiality. A few examples.',
       items: {
         chemical: {
           industry: 'Manufacturing & Materials',
@@ -315,7 +315,7 @@ const en = {
       },
     },
     howWeWork: {
-      heading: 'Built with the Field.',
+      heading: 'Start in the field. Stay through implementation.',
       lead: 'We start in the field and stay through implementation.',
       principles: {
         field: 'Start from the field.',
@@ -329,7 +329,7 @@ const en = {
       subheading: 'From the field through implementation—in manufacturing, facilities, construction, and logistics.',
       paragraphs: [
         'Manufacturing, construction, facilities, logistics, and many other industries keep daily life in Japan running.',
-        'Those workplaces hold deep expertise and long-accumulated knowledge—yet paper, spreadsheets, fragmented systems, and tribal processes remain common.',
+        'Those workplaces hold deep expertise and long-accumulated knowledge—yet paper, spreadsheets, fragmented systems, and know-how locked in individuals remain common.',
         'Amber implements AI and software in the field to move these industries into the next era.',
       ],
       cta: 'Company',

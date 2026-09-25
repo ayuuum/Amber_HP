@@ -24,8 +24,8 @@ export default function CasesPage() {
       <PageHero
         tone="dark"
         eyebrow="Work"
-        headingLines={['Transforming Essential Operations.']}
-        body="どの産業の、どの業務を、どう変えたか。守秘のため企業名は非公開です。"
+        headingLines={['取り組みの一例']}
+        body="守秘のため企業名は出していません。"
         image={{
           src: '/images/brand/cases-hero-poster.jpg',
           alt: '森の風景',
@@ -36,9 +36,9 @@ export default function CasesPage() {
         <div className="home-container">
           <PageBreadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Work' }]} />
           <div className="mb-8 md:mb-10">
-            <h2 className="home-h2 mb-3">Case Studies</h2>
+            <h2 className="home-h2 mb-3">取り組みの一例</h2>
             <p className="home-body max-w-2xl text-pretty">
-              現場業務の再設計から、AI活用基盤、訪問オペの統合まで。進行中の案件は In delivery と明示しています。
+              現場業務の再設計からAI活用基盤 訪問オペの統合まで。進行中の案件は In delivery と明示しています。
             </p>
           </div>
           <ul className="grid gap-8 md:gap-10">
